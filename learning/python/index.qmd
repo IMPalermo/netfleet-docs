@@ -1,0 +1,21 @@
+
+---
+title: "Python Engineering"
+---
+
+# Python Engineering
+
+مسیر یادگیری Python با تمرکز بر مهندسی زیرساخت و توسعه NetFleet.
+
+## Month 01: Python Fundamentals
+
+### Week 01: Core Concepts
+
+| Session | Topic | Status |
+|---|---|---|
+| Day 01 | Variables and Data Structures | In Progress |
+| Day 02 | Conditions and Logic | Upcoming |
+| Day 03 | Loops and Iteration | Upcoming |
+| Day 04 | Functions | Upcoming |
+
+[شروع یادگیری Python ←](week-01/day-01.qmd)

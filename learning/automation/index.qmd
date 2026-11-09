@@ -1,0 +1,7 @@
+---
+title: "Infrastructure Automation"
+---
+
+# Infrastructure Automation
+
+Learning path for NetFleet engineering.
