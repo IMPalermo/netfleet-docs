@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="مبانی شبکه‌های کامپیوتری، معماری ارتباطات و انتقال داده">
 
-<title>Week 1 | Day 1 – NetFleet Docs</title>
+<title>Introduction to Computer Networks – NetFleet Docs</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -43,10 +79,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-57ed3a935a28463f2c68fd94771f4c27.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-d642d50d59ab386976122e8f999eb6fd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-2a0edf55b8f7ef50adbf293540c66b1f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -100,8 +136,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../../learning/python/index.html" aria-current="page"> 
-<span class="menu-text">Learning</span></a>
+    <a class="nav-link" href="../../../learning/networking/index.html"> 
+<span class="menu-text">Networking</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -110,2047 +146,28 @@ ul.task-list li input[type="checkbox"] {
             <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" aria-label="Toolbar">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../learning/automation/index.html">Learning</a></li><li class="breadcrumb-item"><a href="../../../learning/networking/index.html">Networking Engineering</a></li><li class="breadcrumb-item"><a href="../../../learning/networking/week-01/day-01.html">Week 01</a></li><li class="breadcrumb-item"><a href="../../../learning/networking/week-01/day-01.html">Week 1 | Day 1</a></li></ol></nav>
-        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../about.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-1-label">Learning</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../learning/automation/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text" id="quarto-sidebar-section-2-label">Infrastructure Automation</span></a>
-            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section: Infrastructure Automation">
-              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
-            </button> 
-      </div>
-      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-3-label">Week 01</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-01/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-01/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-01/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-01/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-01/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-4-label">Week 02</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-02/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-02/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-02/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-02/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-02/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-5-label">Week 03</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-03/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-03/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-03/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-03/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-03/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-6-label">Week 04</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-04/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-04/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-04/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-04/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-04/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-controls="quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-7-label">Week 05</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-7" aria-labelledby="quarto-sidebar-section-7-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-05/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-05/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-05/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-05/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-05/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-8-label">Week 06</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-8" aria-labelledby="quarto-sidebar-section-8-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-06/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-06/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-06/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-06/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/automation/week-06/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../learning/backend/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text" id="quarto-sidebar-section-9-label">Backend Engineering</span></a>
-            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-controls="quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section: Backend Engineering">
-              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
-            </button> 
-      </div>
-      <ul id="quarto-sidebar-section-9" aria-labelledby="quarto-sidebar-section-9-label" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-controls="quarto-sidebar-section-10" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-10-label">Week 01</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-10" aria-labelledby="quarto-sidebar-section-10-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-01/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-01/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-01/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-01/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-01/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-controls="quarto-sidebar-section-11" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-11-label">Week 02</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-11" aria-labelledby="quarto-sidebar-section-11-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-02/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-02/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-02/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-02/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-02/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-controls="quarto-sidebar-section-12" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-12-label">Week 03</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-12" aria-labelledby="quarto-sidebar-section-12-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-03/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-03/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-03/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-03/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-03/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-controls="quarto-sidebar-section-13" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-13-label">Week 04</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-13" aria-labelledby="quarto-sidebar-section-13-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-04/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-04/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-04/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-04/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-04/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-controls="quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-14-label">Week 05</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-14" aria-labelledby="quarto-sidebar-section-14-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-05/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-05/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-05/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-05/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-05/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-controls="quarto-sidebar-section-15" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-15-label">Week 06</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-15" aria-labelledby="quarto-sidebar-section-15-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-06/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-06/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-06/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-06/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-06/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-controls="quarto-sidebar-section-16" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-16-label">Week 07</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-16" aria-labelledby="quarto-sidebar-section-16-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-07/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-07/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-07/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-07/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-07/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-controls="quarto-sidebar-section-17" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-17-label">Week 08</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-17" aria-labelledby="quarto-sidebar-section-17-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-08/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-08/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-08/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-08/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/backend/week-08/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../learning/infrastructure/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text" id="quarto-sidebar-section-18-label">Infrastructure Management</span></a>
-            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-controls="quarto-sidebar-section-18" aria-expanded="false" aria-label="Toggle section: Infrastructure Management">
-              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
-            </button> 
-      </div>
-      <ul id="quarto-sidebar-section-18" aria-labelledby="quarto-sidebar-section-18-label" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-controls="quarto-sidebar-section-19" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-19-label">Week 01</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-19" aria-labelledby="quarto-sidebar-section-19-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-01/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-01/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-01/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-01/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-01/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" aria-controls="quarto-sidebar-section-20" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-20-label">Week 02</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-20" aria-labelledby="quarto-sidebar-section-20-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-02/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-02/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-02/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-02/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-02/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" aria-controls="quarto-sidebar-section-21" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-21-label">Week 03</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-21" aria-labelledby="quarto-sidebar-section-21-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-03/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-03/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-03/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-03/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-03/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" aria-controls="quarto-sidebar-section-22" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-22-label">Week 04</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-22" aria-labelledby="quarto-sidebar-section-22-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-04/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-04/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-04/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-04/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-04/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" aria-controls="quarto-sidebar-section-23" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-23-label">Week 05</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-23" aria-labelledby="quarto-sidebar-section-23-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-05/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-05/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-05/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-05/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-05/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" aria-controls="quarto-sidebar-section-24" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-24-label">Week 06</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-24" aria-labelledby="quarto-sidebar-section-24-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-06/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-06/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-06/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-06/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/infrastructure/week-06/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../learning/linux/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text" id="quarto-sidebar-section-25-label">Linux Engineering</span></a>
-            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" aria-controls="quarto-sidebar-section-25" aria-expanded="false" aria-label="Toggle section: Linux Engineering">
-              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
-            </button> 
-      </div>
-      <ul id="quarto-sidebar-section-25" aria-labelledby="quarto-sidebar-section-25-label" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" aria-controls="quarto-sidebar-section-26" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-26-label">Week 01</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-26" aria-labelledby="quarto-sidebar-section-26-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-01/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-01/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-01/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-01/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-01/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" aria-controls="quarto-sidebar-section-27" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-27-label">Week 02</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-27" aria-labelledby="quarto-sidebar-section-27-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-02/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-02/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-02/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-02/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-02/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" aria-controls="quarto-sidebar-section-28" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-28-label">Week 03</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-28" aria-labelledby="quarto-sidebar-section-28-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-03/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-03/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-03/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-03/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-03/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-29" aria-controls="quarto-sidebar-section-29" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-29-label">Week 04</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-29" aria-labelledby="quarto-sidebar-section-29-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-04/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-04/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-04/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-04/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-04/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" aria-controls="quarto-sidebar-section-30" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-30-label">Week 05</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-30" aria-labelledby="quarto-sidebar-section-30-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-05/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-05/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-05/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-05/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-05/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-31" aria-controls="quarto-sidebar-section-31" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-31-label">Week 06</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-31" aria-labelledby="quarto-sidebar-section-31-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-06/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-06/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-06/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-06/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-06/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-32" aria-controls="quarto-sidebar-section-32" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-32-label">Week 07</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-32" aria-labelledby="quarto-sidebar-section-32-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-07/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-07/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-07/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-07/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-07/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-33" aria-controls="quarto-sidebar-section-33" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-33-label">Week 08</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-33" aria-labelledby="quarto-sidebar-section-33-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-08/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-08/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-08/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-08/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/linux/week-08/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../learning/networking/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text" id="quarto-sidebar-section-34-label">Networking Engineering</span></a>
-            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-34" aria-controls="quarto-sidebar-section-34" aria-expanded="true" aria-label="Toggle section: Networking Engineering">
-              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
-            </button> 
-      </div>
-      <ul id="quarto-sidebar-section-34" aria-labelledby="quarto-sidebar-section-34-label" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-35" aria-controls="quarto-sidebar-section-35" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-35-label">Week 01</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-35" aria-labelledby="quarto-sidebar-section-35-label" class="collapse list-unstyled sidebar-section depth3 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-01/day-01.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Week 1 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-01/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-01/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-01/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-01/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-36" aria-controls="quarto-sidebar-section-36" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-36-label">Week 02</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-36" aria-labelledby="quarto-sidebar-section-36-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-02/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-02/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-02/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-02/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-02/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-37" aria-controls="quarto-sidebar-section-37" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-37-label">Week 03</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-37" aria-labelledby="quarto-sidebar-section-37-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-03/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-03/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-03/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-03/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-03/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-38" aria-controls="quarto-sidebar-section-38" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-38-label">Week 04</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-38" aria-labelledby="quarto-sidebar-section-38-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-04/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-04/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-04/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-04/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-04/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-39" aria-controls="quarto-sidebar-section-39" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-39-label">Week 05</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-39" aria-labelledby="quarto-sidebar-section-39-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-05/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-05/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-05/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-05/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-05/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-40" aria-controls="quarto-sidebar-section-40" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-40-label">Week 06</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-40" aria-labelledby="quarto-sidebar-section-40-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-06/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-06/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-06/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-06/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-06/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-41" aria-controls="quarto-sidebar-section-41" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-41-label">Week 07</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-41" aria-labelledby="quarto-sidebar-section-41-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-07/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-07/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-07/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-07/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-07/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-42" aria-controls="quarto-sidebar-section-42" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-42-label">Week 08</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-42" aria-labelledby="quarto-sidebar-section-42-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-08/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-08/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-08/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-08/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/networking/week-08/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../learning/python/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text" id="quarto-sidebar-section-43-label">Python Engineering</span></a>
-            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-43" aria-controls="quarto-sidebar-section-43" aria-expanded="false" aria-label="Toggle section: Python Engineering">
-              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
-            </button> 
-      </div>
-      <ul id="quarto-sidebar-section-43" aria-labelledby="quarto-sidebar-section-43-label" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-44" aria-controls="quarto-sidebar-section-44" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-44-label">Week 01</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-44" aria-labelledby="quarto-sidebar-section-44-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-01/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 01 | Python Fundamentals</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-01/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-01/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-01/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-01/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-45" aria-controls="quarto-sidebar-section-45" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-45-label">Week 02</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-45" aria-labelledby="quarto-sidebar-section-45-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-02/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-02/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-02/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-02/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-02/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-46" aria-controls="quarto-sidebar-section-46" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-46-label">Week 03</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-46" aria-labelledby="quarto-sidebar-section-46-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-03/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-03/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-03/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-03/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-03/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-47" aria-controls="quarto-sidebar-section-47" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-47-label">Week 04</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-47" aria-labelledby="quarto-sidebar-section-47-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-04/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-04/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-04/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-04/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-04/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-48" aria-controls="quarto-sidebar-section-48" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-48-label">Week 05</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-48" aria-labelledby="quarto-sidebar-section-48-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-05/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-05/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-05/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-05/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-05/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-49" aria-controls="quarto-sidebar-section-49" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-49-label">Week 06</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-49" aria-labelledby="quarto-sidebar-section-49-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-06/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-06/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-06/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-06/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-06/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-50" aria-controls="quarto-sidebar-section-50" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-50-label">Week 07</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-50" aria-labelledby="quarto-sidebar-section-50-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-07/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-07/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-07/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-07/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-07/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-51" aria-controls="quarto-sidebar-section-51" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-51-label">Week 08</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-51" aria-labelledby="quarto-sidebar-section-51-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-08/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-08/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-08/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-08/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/python/week-08/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../learning/security/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text" id="quarto-sidebar-section-52-label">Security &amp; Reliability</span></a>
-            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-52" aria-controls="quarto-sidebar-section-52" aria-expanded="false" aria-label="Toggle section: Security &amp; Reliability">
-              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
-            </button> 
-      </div>
-      <ul id="quarto-sidebar-section-52" aria-labelledby="quarto-sidebar-section-52-label" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-53" aria-controls="quarto-sidebar-section-53" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-53-label">Week 01</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-53" aria-labelledby="quarto-sidebar-section-53-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-01/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-01/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-01/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-01/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-01/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-54" aria-controls="quarto-sidebar-section-54" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-54-label">Week 02</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-54" aria-labelledby="quarto-sidebar-section-54-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-02/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-02/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-02/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-02/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-02/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-55" aria-controls="quarto-sidebar-section-55" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-55-label">Week 03</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-55" aria-labelledby="quarto-sidebar-section-55-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-03/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-03/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-03/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-03/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-03/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-56" aria-controls="quarto-sidebar-section-56" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-56-label">Week 04</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-56" aria-labelledby="quarto-sidebar-section-56-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-04/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-04/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-04/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-04/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-04/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-57" aria-controls="quarto-sidebar-section-57" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-57-label">Week 05</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-57" aria-labelledby="quarto-sidebar-section-57-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-05/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-05/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-05/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-05/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-05/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-58" aria-controls="quarto-sidebar-section-58" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-58-label">Week 06</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-58" aria-labelledby="quarto-sidebar-section-58-label" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-06/day-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-06/day-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-06/day-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-06/day-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../learning/security/week-06/day-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6 | Day 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#week-1---day-1" id="toc-week-1---day-1" class="nav-link active" data-scroll-target="#week-1---day-1">Week 1 - Day 1</a>
-  <ul class="collapse">
-  <li><a href="#موضوع-جلسه" id="toc-موضوع-جلسه" class="nav-link" data-scroll-target="#موضوع-جلسه">موضوع جلسه</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../learning/automation/index.html">Learning</a></li><li class="breadcrumb-item"><a href="../../../learning/networking/index.html">Networking Engineering</a></li><li class="breadcrumb-item"><a href="../../../learning/networking/week-01/day-01.html">Week 01</a></li><li class="breadcrumb-item"><a href="../../../learning/networking/week-01/day-01.html">Week 1 | Day 1</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 1 | Day 1</h1>
+<h1 class="title">Introduction to Computer Networks</h1>
+<p class="subtitle lead">Week 01 · Day 01</p>
 </div>
 
+<div>
+  <div class="description">
+    مبانی شبکه‌های کامپیوتری، معماری ارتباطات و انتقال داده
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -2165,15 +182,476 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="week-1---day-1" class="level1">
-<h1>Week 1 - Day 1</h1>
-<section id="موضوع-جلسه" class="level2 persian">
-<h2 class="anchored" data-anchor-id="موضوع-جلسه">موضوع جلسه</h2>
-<p>محتوای این جلسه در آینده تکمیل خواهد شد.</p>
+<div class="persian">
+<section id="جلسه-اول-آشنایی-با-شبکههای-کامپیوتری" class="level1">
+<h1>جلسه اول: آشنایی با شبکه‌های کامپیوتری</h1>
+<section id="شبکه-کامپیوتری-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="شبکه-کامپیوتری-چیست">1. شبکه کامپیوتری چیست؟</h2>
+<p>شبکه کامپیوتری (Computer Network) مجموعه‌ای از دستگاه‌های مستقل است که از طریق یک بستر ارتباطی به یکدیگر متصل شده‌اند تا بتوانند اطلاعات، منابع و سرویس‌ها را به اشتراک بگذارند.</p>
+<p>این دستگاه‌ها می‌توانند شامل موارد زیر باشند:</p>
+<ul>
+<li>کامپیوترهای شخصی</li>
+<li>لپ‌تاپ‌ها و تلفن‌های همراه</li>
+<li>سرورها</li>
+<li>پرینترهای شبکه</li>
+<li>روترها و سوئیچ‌ها</li>
+<li>تجهیزات اینترنت اشیا (IoT)</li>
+</ul>
+<p>برای مثال، وقتی از لپ‌تاپ خود وارد یک وب‌سایت می‌شوید، دستگاه شما باید بتواند با سروری در نقطه‌ای دیگر از جهان ارتباط برقرار کند. این ارتباط از طریق مجموعه‌ای از تجهیزات، پروتکل‌ها و استانداردهای شبکه انجام می‌شود.</p>
+<section id="چرا-شبکه-به-وجود-آمد" class="level3">
+<h3 class="anchored" data-anchor-id="چرا-شبکه-به-وجود-آمد">چرا شبکه به وجود آمد؟</h3>
+<p>فرض کنید در یک شرکت ۳۰ کامپیوتر وجود دارد. اگر شبکه‌ای وجود نداشته باشد، انتقال فایل بین کامپیوترها، استفاده مشترک از پرینتر و دسترسی به سرور مرکزی بسیار دشوار خواهد بود.</p>
+<p>شبکه این مشکلات را حل می‌کند:</p>
+<ol type="1">
+<li>اشتراک‌گذاری منابع</li>
+<li>انتقال اطلاعات</li>
+<li>ارتباط بین کاربران</li>
+<li>مدیریت متمرکز سیستم‌ها</li>
+<li>دسترسی به سرویس‌های راه دور</li>
+<li>افزایش مقیاس‌پذیری زیرساخت</li>
+</ol>
+<p><strong>نکته مهندسی:</strong> شبکه فقط اتصال چند کامپیوتر به یکدیگر نیست. شبکه یک زیرساخت ارتباطی است که سرویس‌های نرم‌افزاری و سیستم‌های سازمانی روی آن فعالیت می‌کنند.</p>
+<hr>
 </section>
+</section>
+<section id="انواع-شبکه-بر-اساس-محدوده-جغرافیایی" class="level2">
+<h2 class="anchored" data-anchor-id="انواع-شبکه-بر-اساس-محدوده-جغرافیایی">2. انواع شبکه بر اساس محدوده جغرافیایی</h2>
+<p>شبکه‌ها را می‌توان بر اساس محدوده پوشش جغرافیایی دسته‌بندی کرد.</p>
+<section id="lan---local-area-network" class="level3">
+<h3 class="anchored" data-anchor-id="lan---local-area-network">LAN - Local Area Network</h3>
+<p>شبکه محلی، شبکه‌ای است که محدوده جغرافیایی کوچکی را پوشش می‌دهد.</p>
+<p>مثال‌ها:</p>
+<ul>
+<li>شبکه یک خانه</li>
+<li>شبکه یک شرکت</li>
+<li>شبکه یک آزمایشگاه دانشگاه</li>
+<li>شبکه یک طبقه از ساختمان</li>
+</ul>
+<p>ویژگی‌های رایج:</p>
+<ul>
+<li>محدوده جغرافیایی محدود</li>
+<li>مدیریت نسبتاً ساده‌تر</li>
+<li>استفاده از Ethernet یا Wi-Fi</li>
+<li>امکان اشتراک‌گذاری منابع محلی</li>
+</ul>
+</section>
+<section id="wan---wide-area-network" class="level3">
+<h3 class="anchored" data-anchor-id="wan---wide-area-network">WAN - Wide Area Network</h3>
+<p>شبکه گسترده، شبکه‌ای است که مناطق جغرافیایی بزرگ را به یکدیگر متصل می‌کند.</p>
+<p>مثال:</p>
+<p>فرض کنید یک شرکت در تهران، اصفهان و شیراز دفتر دارد. برای ارتباط شبکه‌ای بین این شعبه‌ها می‌توان از زیرساخت WAN استفاده کرد.</p>
+<p>ویژگی‌های رایج:</p>
+<ul>
+<li>پوشش جغرافیایی گسترده</li>
+<li>اتصال شبکه‌های مستقل</li>
+<li>استفاده از زیرساخت اپراتورها</li>
+<li>نیاز به مسیریابی بین شبکه‌ها</li>
+</ul>
+</section>
+<section id="man---metropolitan-area-network" class="level3">
+<h3 class="anchored" data-anchor-id="man---metropolitan-area-network">MAN - Metropolitan Area Network</h3>
+<p>شبکه‌ای با محدوده پوشش در سطح یک شهر یا منطقه شهری است.</p>
+<p>برای مثال، یک شبکه ارتباطی که چند ساختمان یک سازمان را در نقاط مختلف یک شهر متصل می‌کند.</p>
+</section>
+<section id="مقایسه" class="level3">
+<h3 class="anchored" data-anchor-id="مقایسه">مقایسه</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>نوع</th>
+<th>محدوده معمول</th>
+<th>مثال</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PAN</td>
+<td>شخصی</td>
+<td>اتصال موبایل به ساعت هوشمند</td>
+</tr>
+<tr class="even">
+<td>LAN</td>
+<td>ساختمان یا محیط محدود</td>
+<td>شبکه شرکت</td>
+</tr>
+<tr class="odd">
+<td>MAN</td>
+<td>شهر</td>
+<td>شبکه شهری</td>
+</tr>
+<tr class="even">
+<td>WAN</td>
+<td>مناطق گسترده</td>
+<td>ارتباط شعب شرکت</td>
+</tr>
+</tbody>
+</table>
+<p>نکته: این دسته‌بندی‌ها محدوده‌های مفهومی هستند و مرز فیزیکی کاملاً ثابتی ندارند.</p>
+<hr>
+</section>
+</section>
+<section id="اینترنت-دقیقا-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="اینترنت-دقیقا-چیست">3. اینترنت دقیقاً چیست؟</h2>
+<p>Internet یک شبکه عظیم متشکل از شبکه‌های مستقل است.</p>
+<p>به همین دلیل از عبارت Network of Networks برای توصیف اینترنت استفاده می‌شود.</p>
+<p>میلیون‌ها شبکه در سراسر جهان از طریق تجهیزات و پروتکل‌های استاندارد با یکدیگر ارتباط برقرار می‌کنند.</p>
+<p>اینترنت متعلق به یک کامپیوتر یا یک سازمان واحد نیست. شبکه‌های مختلف توسط سازمان‌ها، شرکت‌ها، اپراتورها و ارائه‌دهندگان خدمات اینترنت مدیریت می‌شوند.</p>
+<section id="تفاوت-internet-و-web" class="level3">
+<h3 class="anchored" data-anchor-id="تفاوت-internet-و-web">تفاوت Internet و Web</h3>
+<p>این دو مفهوم یکسان نیستند.</p>
+<p><strong>Internet:</strong> زیرساخت ارتباطی جهانی است.</p>
+<p><strong>World Wide Web:</strong> مجموعه‌ای از صفحات و منابعی است که از طریق اینترنت و عمدتاً با پروتکل HTTP و HTTPS در دسترس هستند.</p>
+<p>برای مثال:</p>
+<ul>
+<li>ایمیل می‌تواند از اینترنت استفاده کند.</li>
+<li>بازی آنلاین از اینترنت استفاده می‌کند.</li>
+<li>تماس VoIP از اینترنت استفاده می‌کند.</li>
+<li>وب‌سایت‌ها از طریق Web در اینترنت قابل دسترسی هستند.</li>
+</ul>
+<p>بنابراین Web فقط یکی از سرویس‌های قابل ارائه روی اینترنت است.</p>
+<hr>
+</section>
+</section>
+<section id="client-و-server" class="level2">
+<h2 class="anchored" data-anchor-id="client-و-server">4. Client و Server</h2>
+<p>یکی از مهم‌ترین مدل‌های ارتباطی در شبکه، معماری Client-Server است.</p>
+<section id="client-چیست" class="level3">
+<h3 class="anchored" data-anchor-id="client-چیست">Client چیست؟</h3>
+<p>Client دستگاه یا نرم‌افزاری است که برای دریافت یک سرویس به سیستم دیگری درخواست ارسال می‌کند.</p>
+<p>مثال:</p>
+<ul>
+<li>مرورگر Chrome</li>
+<li>اپلیکیشن موبایل</li>
+<li>نرم‌افزار مدیریت شبکه</li>
+<li>کلاینت SSH</li>
+</ul>
+</section>
+<section id="server-چیست" class="level3">
+<h3 class="anchored" data-anchor-id="server-چیست">Server چیست؟</h3>
+<p>Server سیستم یا نرم‌افزاری است که درخواست‌ها را دریافت کرده و سرویس موردنظر را ارائه می‌دهد.</p>
+<p>مثال:</p>
+<ul>
+<li>Web Server</li>
+<li>DNS Server</li>
+<li>Database Server</li>
+<li>File Server</li>
+<li>DHCP Server</li>
+</ul>
+</section>
+<section id="یک-مثال-واقعی" class="level3">
+<h3 class="anchored" data-anchor-id="یک-مثال-واقعی">یک مثال واقعی</h3>
+<p>فرض کنید آدرس یک وب‌سایت را در مرورگر وارد می‌کنید.</p>
+<ol type="1">
+<li>مرورگر درخواست لازم را آماده می‌کند.</li>
+<li>دستگاه شما اطلاعات مقصد را مشخص می‌کند.</li>
+<li>درخواست از طریق شبکه ارسال می‌شود.</li>
+<li>سرور درخواست را دریافت می‌کند.</li>
+<li>سرور پاسخ مناسب را تولید می‌کند.</li>
+<li>پاسخ از طریق شبکه به دستگاه شما بازمی‌گردد.</li>
+<li>مرورگر محتوا را نمایش می‌دهد.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Client و Server الزاماً دو دستگاه فیزیکی جدا نیستند. یک کامپیوتر می‌تواند در یک ارتباط Client و در ارتباط دیگری Server باشد.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="تجهیزات-اصلی-شبکه" class="level2">
+<h2 class="anchored" data-anchor-id="تجهیزات-اصلی-شبکه">5. تجهیزات اصلی شبکه</h2>
+<p>برای ساخت یک شبکه، تجهیزات مختلفی مورد استفاده قرار می‌گیرند.</p>
+<section id="network-interface-card-nic" class="level3">
+<h3 class="anchored" data-anchor-id="network-interface-card-nic">Network Interface Card (NIC)</h3>
+<p>کارت شبکه، رابطی است که امکان اتصال یک دستگاه به شبکه را فراهم می‌کند.</p>
+<p>هر رابط شبکه می‌تواند یک آدرس سخت‌افزاری به نام MAC Address داشته باشد.</p>
+<p>NIC ممکن است به شکل زیر باشد:</p>
+<ul>
+<li>Ethernet Adapter</li>
+<li>Wireless Adapter</li>
+<li>Virtual Network Adapter</li>
+</ul>
+</section>
+<section id="switch" class="level3">
+<h3 class="anchored" data-anchor-id="switch">Switch</h3>
+<p>سوئیچ دستگاهی است که معمولاً برای اتصال تجهیزات داخل یک شبکه محلی استفاده می‌شود.</p>
+<p>سوئیچ Ethernet در لایه دوم مدل OSI فعالیت می‌کند و برای انتقال فریم‌ها از جدول MAC Address استفاده می‌کند.</p>
+<p>برای مثال، اگر چند کامپیوتر در یک اتاق داشته باشیم، می‌توانیم آن‌ها را به یک سوئیچ متصل کنیم.</p>
+</section>
+<section id="router" class="level3">
+<h3 class="anchored" data-anchor-id="router">Router</h3>
+<p>روتر دستگاهی است که شبکه‌های مختلف را به یکدیگر متصل می‌کند.</p>
+<p>روتر برای انتقال Packetها بین شبکه‌ها از اطلاعات مسیریابی استفاده می‌کند.</p>
+<p>برای مثال، روتر خانه شما می‌تواند شبکه داخلی خانه را به شبکه ارائه‌دهنده اینترنت متصل کند.</p>
+</section>
+<section id="access-point" class="level3">
+<h3 class="anchored" data-anchor-id="access-point">Access Point</h3>
+<p>Access Point امکان اتصال بی‌سیم دستگاه‌ها به شبکه را فراهم می‌کند.</p>
+<p>دستگاه‌هایی مانند موبایل و لپ‌تاپ می‌توانند از طریق Wi-Fi به آن متصل شوند.</p>
+</section>
+<section id="modem" class="level3">
+<h3 class="anchored" data-anchor-id="modem">Modem</h3>
+<p>Modem برای برقراری ارتباط با برخی فناوری‌های دسترسی به اینترنت مورد استفاده قرار می‌گیرد.</p>
+<p>نوع مودم به فناوری ارتباطی وابسته است؛ مانند DSL یا Cable.</p>
+<p>نکته: در بسیاری از تجهیزات خانگی، مودم، روتر، سوئیچ و Access Point در یک دستگاه ترکیب شده‌اند.</p>
+<hr>
+</section>
+</section>
+<section id="packet-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="packet-چیست">6. Packet چیست؟</h2>
+<p>یکی از مفاهیم بنیادی شبکه، Packet است.</p>
+<p>وقتی اطلاعاتی از یک دستگاه به دستگاه دیگر ارسال می‌شود، داده‌ها می‌توانند به واحدهای کوچک‌تری تقسیم شوند.</p>
+<p>این واحدها در لایه‌های مختلف شبکه ساختارهای مشخصی دارند.</p>
+<p>برای مثال، در ارتباط مبتنی بر TCP/IP:</p>
+<ul>
+<li>Application Data: داده تولیدشده توسط برنامه</li>
+<li>TCP Segment: داده به‌همراه اطلاعات TCP</li>
+<li>IP Packet: بسته شامل اطلاعات IP</li>
+<li>Ethernet Frame: فریم قابل انتقال در شبکه محلی</li>
+</ul>
+<p>این فرایند Encapsulation نام دارد.</p>
+<section id="encapsulation" class="level3">
+<h3 class="anchored" data-anchor-id="encapsulation">Encapsulation</h3>
+<p>هر لایه اطلاعات کنترلی موردنیاز خود را به داده اضافه می‌کند.</p>
+<p>نمای ساده:</p>
+<p>Application Data ↓ TCP Segment ↓ IP Packet ↓ Ethernet Frame ↓ Physical Transmission</p>
+<p>در مقصد، فرایند معکوس انجام می‌شود که Decapsulation نام دارد.</p>
+</section>
+<section id="چرا-packetها-مهم-هستند" class="level3">
+<h3 class="anchored" data-anchor-id="چرا-packetها-مهم-هستند">چرا Packetها مهم هستند؟</h3>
+<p>چون شبکه‌ها معمولاً داده‌های بزرگ را به‌صورت یک جریان یکپارچه و بدون ساختار ارسال نمی‌کنند.</p>
+<p>تقسیم داده به واحدهای مناسب، مدیریت انتقال، مسیریابی و کنترل ارتباط را ممکن می‌کند.</p>
+<hr>
+</section>
+</section>
+<section id="network-topology" class="level2">
+<h2 class="anchored" data-anchor-id="network-topology">7. Network Topology</h2>
+<p>Topology به ساختار اتصال تجهیزات در یک شبکه گفته می‌شود.</p>
+<section id="star-topology" class="level3">
+<h3 class="anchored" data-anchor-id="star-topology">Star Topology</h3>
+<p>در این ساختار تمام دستگاه‌ها به یک نقطه مرکزی مانند Switch متصل می‌شوند.</p>
+<p>مزایا: - مدیریت ساده - عیب‌یابی نسبتاً آسان - خرابی یک کابل معمولاً فقط یک دستگاه را تحت تأثیر قرار می‌دهد.</p>
+<p>محدودیت: - خرابی دستگاه مرکزی می‌تواند ارتباط تعداد زیادی از دستگاه‌ها را قطع کند.</p>
+</section>
+<section id="bus-topology" class="level3">
+<h3 class="anchored" data-anchor-id="bus-topology">Bus Topology</h3>
+<p>در این ساختار چند دستگاه از یک مسیر ارتباطی مشترک استفاده می‌کنند.</p>
+<p>این توپولوژی بیشتر جنبه تاریخی و آموزشی دارد و در شبکه‌های مدرن Ethernet کمتر استفاده می‌شود.</p>
+</section>
+<section id="ring-topology" class="level3">
+<h3 class="anchored" data-anchor-id="ring-topology">Ring Topology</h3>
+<p>در این ساختار دستگاه‌ها به شکل حلقه به یکدیگر متصل می‌شوند.</p>
+</section>
+<section id="mesh-topology" class="level3">
+<h3 class="anchored" data-anchor-id="mesh-topology">Mesh Topology</h3>
+<p>در ساختار Mesh چندین مسیر ارتباطی بین تجهیزات وجود دارد.</p>
+<p>مزیت اصلی آن افزایش افزونگی (Redundancy) و امکان استفاده از مسیرهای جایگزین است.</p>
+</section>
+<section id="توپولوژی-یک-شبکه-سازمانی-ساده" class="level3">
+<h3 class="anchored" data-anchor-id="توپولوژی-یک-شبکه-سازمانی-ساده">توپولوژی یک شبکه سازمانی ساده</h3>
+<pre class="text"><code>                 Internet
+                    |
+                  Router
+                    |
+                  Switch
+             /      |      \
+            /       |       \
+          PC-1    Server    PC-2
+                    |
+                Access Point
+                    |
+              Laptop / Mobile</code></pre>
+<hr>
+</section>
+</section>
+<section id="پروتکل-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="پروتکل-چیست">8. پروتکل چیست؟</h2>
+<p>پروتکل مجموعه‌ای از قوانین و استانداردهاست که نحوه ارتباط بین دستگاه‌ها را مشخص می‌کند.</p>
+<p>بدون پروتکل مشترک، دستگاه‌ها نمی‌توانند اطلاعات را به شکلی قابل فهم برای یکدیگر تبادل کنند.</p>
+<p>برخی پروتکل‌های مهم:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Protocol</th>
+<th>کاربرد</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IP</td>
+<td>آدرس‌دهی و انتقال بین شبکه‌ها</td>
+</tr>
+<tr class="even">
+<td>TCP</td>
+<td>انتقال قابل اعتماد داده</td>
+</tr>
+<tr class="odd">
+<td>UDP</td>
+<td>انتقال داده بدون تضمین تحویل</td>
+</tr>
+<tr class="even">
+<td>HTTP</td>
+<td>انتقال محتوای وب</td>
+</tr>
+<tr class="odd">
+<td>HTTPS</td>
+<td>ارتباط امن وب</td>
+</tr>
+<tr class="even">
+<td>DNS</td>
+<td>تبدیل نام دامنه به اطلاعات آدرس</td>
+</tr>
+<tr class="odd">
+<td>DHCP</td>
+<td>تخصیص خودکار تنظیمات شبکه</td>
+</tr>
+<tr class="even">
+<td>SSH</td>
+<td>دسترسی امن از راه دور</td>
+</tr>
+<tr class="odd">
+<td>ARP</td>
+<td>یافتن MAC مربوط به IPv4 در شبکه محلی</td>
+</tr>
+</tbody>
+</table>
+<p>در جلسات آینده هرکدام از این مفاهیم را عمیق‌تر بررسی می‌کنیم.</p>
+<hr>
+</section>
+<section id="یک-ارتباط-واقعی-از-ابتدا-تا-انتها" class="level2">
+<h2 class="anchored" data-anchor-id="یک-ارتباط-واقعی-از-ابتدا-تا-انتها">9. یک ارتباط واقعی از ابتدا تا انتها</h2>
+<p>فرض کنید لپ‌تاپ شما به Wi-Fi خانه متصل است و می‌خواهید وارد یک وب‌سایت شوید.</p>
+<p>در پشت صحنه چه اتفاقی می‌افتد؟</p>
+<ol type="1">
+<li>دستگاه شما از تنظیمات شبکه خود استفاده می‌کند.</li>
+<li>در صورت نیاز، DNS برای یافتن آدرس مقصد مورد استفاده قرار می‌گیرد.</li>
+<li>سیستم مشخص می‌کند مقصد در شبکه محلی است یا خارج از آن.</li>
+<li>اگر مقصد خارج از شبکه محلی باشد، Packet به سمت Default Gateway ارسال می‌شود.</li>
+<li>روتر Packet را به سمت شبکه بعدی هدایت می‌کند.</li>
+<li>Packet ممکن است از چندین Router در مسیر عبور کند.</li>
+<li>سرور مقصد درخواست را دریافت می‌کند.</li>
+<li>پاسخ به سمت دستگاه شما بازمی‌گردد.</li>
+</ol>
+<p>این توضیح یک تصویر کلی است. جزئیات DNS، ARP، Routing، NAT و TCP در جلسات بعدی بررسی خواهند شد.</p>
+<hr>
+</section>
+<section id="نگاه-مهندسی-چرا-این-مفاهیم-برای-network-automation-مهم-هستند" class="level2">
+<h2 class="anchored" data-anchor-id="نگاه-مهندسی-چرا-این-مفاهیم-برای-network-automation-مهم-هستند">10. نگاه مهندسی: چرا این مفاهیم برای Network Automation مهم هستند؟</h2>
+<p>هدف ما فقط یادگیری شبکه نیست. مقصد شغلی ما Network Automation Engineering است.</p>
+<p>فرض کنید در یک شرکت ۱۰۰ روتر و سوئیچ وجود دارد.</p>
+<p>مدیر شبکه باید:</p>
+<ul>
+<li>وضعیت تجهیزات را بررسی کند.</li>
+<li>تنظیمات دستگاه‌ها را دریافت کند.</li>
+<li>نسخه پشتیبان تهیه کند.</li>
+<li>خطاهای شبکه را تشخیص دهد.</li>
+<li>تغییرات پیکربندی را اعمال کند.</li>
+<li>از یکسان بودن تنظیمات اطمینان حاصل کند.</li>
+</ul>
+<p>انجام دستی تمام این کارها زمان‌بر و مستعد خطاست.</p>
+<p>در آینده از Python، SSH، APIs، Ansible و ابزارهای مدیریت شبکه برای خودکارسازی این وظایف استفاده خواهیم کرد.</p>
+<p>اما یک قانون مهم وجود دارد:</p>
+<p><strong>قبل از خودکارسازی یک فرایند، باید منطق فنی آن را بفهمیم.</strong></p>
+<p>اگر ندانیم Router چگونه Packet را مسیریابی می‌کند، نوشتن اسکریپتی برای مدیریت روترها صرفاً اتوماسیون بدون درک خواهد بود.</p>
+<hr>
+</section>
+</section>
+<section id="بخش-عملی-اولین-آزمایش-شبکه" class="level1">
+<h1>بخش عملی: اولین آزمایش شبکه</h1>
+<p>در این تمرین از PowerShell ویندوز استفاده می‌کنیم.</p>
+<section id="تمرین-۱-مشاهده-تنظیمات-شبکه" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-۱-مشاهده-تنظیمات-شبکه">تمرین ۱: مشاهده تنظیمات شبکه</h3>
+<p>PowerShell را باز کن و دستور زیر را اجرا کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>موارد زیر را پیدا کن:</p>
+<ul>
+<li>IPv4 Address</li>
+<li>Subnet Mask</li>
+<li>Default Gateway</li>
+<li>Physical Address</li>
+<li>DNS Servers</li>
+</ul>
+<p>این اطلاعات نشان می‌دهند دستگاه تو چگونه در شبکه شناسایی و مسیریابی می‌شود.</p>
+</section>
+<section id="تمرین-۲-بررسی-ارتباط-با-gateway" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-۲-بررسی-ارتباط-با-gateway">تمرین ۲: بررسی ارتباط با Gateway</h3>
+<p>ابتدا آدرس Default Gateway را پیدا کن.</p>
+<p>سپس دستور زیر را با آدرس واقعی Gateway خودت اجرا کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">192.168</span><span class="op">.</span><span class="dv">1.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>آدرس بالا فقط نمونه است و ممکن است با شبکه تو متفاوت باشد.</p>
+<p>اگر پاسخ دریافت کردی، یعنی مقصد به درخواست ICMP پاسخ داده است.</p>
+<p>البته پاسخ نگرفتن لزوماً به معنای قطع بودن شبکه نیست، چون ممکن است ICMP مسدود شده باشد.</p>
+</section>
+<section id="تمرین-۳-بررسی-مسیر-ارتباطی" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-۳-بررسی-مسیر-ارتباطی">تمرین ۳: بررسی مسیر ارتباطی</h3>
+<p>دستور زیر را اجرا کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tracert <span class="dv">8.8</span><span class="op">.</span><span class="dv">8.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این دستور تلاش می‌کند مسیر عبور Packetها تا مقصد را نمایش دهد.</p>
+<p>هر ردیف معمولاً نمایانگر یک Hop است.</p>
+<p>اگر بعضی ردیف‌ها ستاره نشان دادند، ممکن است تجهیزات میانی به پیام‌های مورد استفاده برای این بررسی پاسخ ندهند.</p>
+</section>
+<section id="تمرین-۴-بررسی-dns" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-۴-بررسی-dns">تمرین ۴: بررسی DNS</h3>
+<p>دستور زیر را اجرا کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nslookup google<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>خروجی نشان می‌دهد کدام DNS Server به درخواست تو پاسخ داده و چه اطلاعاتی درباره نام دامنه برگردانده است.</p>
+<hr>
+</section>
+</section>
+<section id="پرسشهای-ارزیابی" class="level1">
+<h1>پرسش‌های ارزیابی</h1>
+<p>به این پرسش‌ها بدون جست‌وجوی پاسخ فکر کن:</p>
+<ol type="1">
+<li>تفاوت اصلی Switch و Router چیست؟</li>
+<li>چرا اینترنت را Network of Networks می‌نامند؟</li>
+<li>آیا Web و Internet یک مفهوم هستند؟</li>
+<li>تفاوت Client و Server چیست؟</li>
+<li>چرا داده‌ها به Packet تقسیم می‌شوند؟</li>
+<li>تفاوت LAN و WAN چیست؟</li>
+<li>Default Gateway چه نقشی در ارتباط با شبکه‌های دیگر دارد؟</li>
+<li>اگر دو کامپیوتر در یک شبکه محلی باشند، آیا همیشه برای ارتباط با یکدیگر به Router نیاز دارند؟ چرا؟</li>
+<li>اگر DNS از کار بیفتد، آیا ممکن است هنوز بتوان با IP به یک سرور متصل شد؟</li>
+<li>چرا در اتوماسیون شبکه باید قبل از اجرای تغییرات، رفتار تجهیزات را درک کنیم؟</li>
+</ol>
+<hr>
+</section>
+<section id="منابع-تکمیلی" class="level1">
+<h1>منابع تکمیلی</h1>
+<p>برای مطالعه عمیق‌تر:</p>
+<ol type="1">
+<li><a href="https://www.netacad.com/">Cisco Networking Basics</a></li>
+<li><a href="https://learningnetwork.cisco.com/s/ccna-exam-topics">Cisco CCNA Exam Topics</a></li>
+<li><a href="https://www.cloudflare.com/learning/network-layer/what-is-a-computer-network/">Cloudflare Learning Center: What is a Computer Network?</a></li>
+<li><a href="https://www.wireshark.org/docs/">Wireshark Documentation</a></li>
+</ol>
+<p><strong>پیشنهاد:</strong> فعلاً لازم نیست تمام منابع را بخوانی. ابتدا مفاهیم همین جلسه را درک کن و آزمایش‌های عملی را انجام بده.</p>
+<hr>
+</section>
+<section id="معیار-تکمیل-جلسه" class="level1">
+<h1>معیار تکمیل جلسه</h1>
+<ul class="task-list">
+<li><label><input type="checkbox">درک مفهوم شبکه و کاربرد آن</label></li>
+<li><label><input type="checkbox">شناخت LAN، WAN و Internet</label></li>
+<li><label><input type="checkbox">درک معماری Client-Server</label></li>
+<li><label><input type="checkbox">شناخت Switch، Router و Access Point</label></li>
+<li><label><input type="checkbox">درک Packet و Encapsulation</label></li>
+<li><label><input type="checkbox">آشنایی با Network Topology</label></li>
+<li><label><input type="checkbox">اجرای چهار آزمایش PowerShell</label></li>
+<li><label><input type="checkbox">پاسخ‌گویی به پرسش‌های ارزیابی</label></li>
+</ul>
+<p><strong>خروجی مورد انتظار:</strong> بتوانی یک شبکه ساده را توضیح بدهی، تجهیزات اصلی آن را تشخیص بدهی و اطلاعات پایه اتصال کامپیوتر خودت را بررسی کنی.</p>
+</section>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -2249,7 +727,25 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/IMPalermo\.github\.io\/netfleet-docs\/");
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -2264,6 +760,12 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
           if (!link.classList.contains('no-external-icon')) {
           }
         }
