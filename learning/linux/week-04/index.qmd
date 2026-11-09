@@ -1,0 +1,21 @@
+---
+title: "Week 4 - Linux Networking"
+---
+
+::: {.persian}
+# هفته 4: Linux Networking
+
+این هفته روی موضوع **Linux Networking** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Linux Network Interfaces](day-01.qmd)
+- [Day 2: IP Addressing with iproute2](day-02.qmd)
+- [Day 3: Routes and Neighbor Tables](day-03.qmd)
+- [Day 4: DNS Resolution on Linux](day-04.qmd)
+- [Day 5: Socket Inspection with ss](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

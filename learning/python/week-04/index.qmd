@@ -1,0 +1,21 @@
+---
+title: "Week 4 - Working with Data"
+---
+
+::: {.persian}
+# هفته 4: Working with Data
+
+این هفته روی موضوع **Working with Data** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Reading and Writing Text Files](day-01.qmd)
+- [Day 2: JSON Data Processing](day-02.qmd)
+- [Day 3: CSV Data Processing](day-03.qmd)
+- [Day 4: Regular Expressions](day-04.qmd)
+- [Day 5: Pathlib and Filesystem Automation](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

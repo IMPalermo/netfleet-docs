@@ -1,0 +1,21 @@
+---
+title: "Week 4 - Configuration Automation"
+---
+
+::: {.persian}
+# هفته 4: Configuration Automation
+
+این هفته روی موضوع **Configuration Automation** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Configuration Templates](day-01.qmd)
+- [Day 2: Jinja2 for Network Configurations](day-02.qmd)
+- [Day 3: Pre-Change Validation](day-03.qmd)
+- [Day 4: Safe Configuration Deployment](day-04.qmd)
+- [Day 5: Rollback and Change Verification](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

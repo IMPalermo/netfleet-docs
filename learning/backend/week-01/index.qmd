@@ -1,0 +1,21 @@
+---
+title: "Week 1 - Web and HTTP Foundations"
+---
+
+::: {.persian}
+# هفته 1: Web and HTTP Foundations
+
+این هفته روی موضوع **Web and HTTP Foundations** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: How the Web Works](day-01.qmd)
+- [Day 2: HTTP Request and Response](day-02.qmd)
+- [Day 3: Methods, Status Codes and Headers](day-03.qmd)
+- [Day 4: TLS and HTTPS Fundamentals](day-04.qmd)
+- [Day 5: Cookies, Sessions and Statelessness](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

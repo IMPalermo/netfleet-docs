@@ -1,0 +1,21 @@
+---
+title: "Week 1 - Infrastructure Foundations"
+---
+
+::: {.persian}
+# هفته 1: Infrastructure Foundations
+
+این هفته روی موضوع **Infrastructure Foundations** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Infrastructure as Code Concepts](day-01.qmd)
+- [Day 2: Git Workflows for Infrastructure](day-02.qmd)
+- [Day 3: Configuration Management Principles](day-03.qmd)
+- [Day 4: Secrets and Configuration Separation](day-04.qmd)
+- [Day 5: Infrastructure Documentation](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

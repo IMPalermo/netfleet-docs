@@ -1,0 +1,21 @@
+---
+title: "Week 8 - Python Network Project"
+---
+
+::: {.persian}
+# هفته 8: Python Network Project
+
+این هفته روی موضوع **Python Network Project** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Build a Network Inventory CLI](day-01.qmd)
+- [Day 2: Add Reachability Checks](day-02.qmd)
+- [Day 3: Export JSON and CSV Reports](day-03.qmd)
+- [Day 4: Add Tests and Logging](day-04.qmd)
+- [Day 5: Python Network Tool Practical Assessment](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

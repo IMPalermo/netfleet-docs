@@ -1,0 +1,21 @@
+---
+title: "Week 4 - Infrastructure as Code"
+---
+
+::: {.persian}
+# هفته 4: Infrastructure as Code
+
+این هفته روی موضوع **Infrastructure as Code** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Terraform Core Workflow](day-01.qmd)
+- [Day 2: Providers, Resources and State](day-02.qmd)
+- [Day 3: Variables, Outputs and Modules](day-03.qmd)
+- [Day 4: Plan Review and Safe Apply](day-04.qmd)
+- [Day 5: Drift Detection and State Management](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

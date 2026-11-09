@@ -1,0 +1,21 @@
+---
+title: "Week 5 - Monitoring and Response"
+---
+
+::: {.persian}
+# هفته 5: Monitoring and Response
+
+این هفته روی موضوع **Monitoring and Response** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Security Logging Fundamentals](day-01.qmd)
+- [Day 2: Indicators and Detection Logic](day-02.qmd)
+- [Day 3: Incident Response Lifecycle](day-03.qmd)
+- [Day 4: Containment and Evidence Handling](day-04.qmd)
+- [Day 5: Vulnerability Prioritization](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

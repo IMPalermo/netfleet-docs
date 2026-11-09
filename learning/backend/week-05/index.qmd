@@ -1,0 +1,21 @@
+---
+title: "Week 5 - API Security"
+---
+
+::: {.persian}
+# هفته 5: API Security
+
+این هفته روی موضوع **API Security** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Authentication and Authorization](day-01.qmd)
+- [Day 2: API Keys and Bearer Tokens](day-02.qmd)
+- [Day 3: Password Hashing Fundamentals](day-03.qmd)
+- [Day 4: Input Validation and Injection Risks](day-04.qmd)
+- [Day 5: CORS, Rate Limits and Secure Defaults](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

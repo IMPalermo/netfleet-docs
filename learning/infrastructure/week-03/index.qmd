@@ -1,0 +1,21 @@
+---
+title: "Week 3 - Virtualization and Cloud"
+---
+
+::: {.persian}
+# هفته 3: Virtualization and Cloud
+
+این هفته روی موضوع **Virtualization and Cloud** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Virtual Machines and Hypervisors](day-01.qmd)
+- [Day 2: Virtual Networking](day-02.qmd)
+- [Day 3: Cloud Networking Fundamentals](day-03.qmd)
+- [Day 4: Identity and Access in Cloud Platforms](day-04.qmd)
+- [Day 5: Hybrid Infrastructure Concepts](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

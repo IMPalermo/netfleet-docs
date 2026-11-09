@@ -1,0 +1,21 @@
+---
+title: "Week 6 - Security Project"
+---
+
+::: {.persian}
+# هفته 6: Security Project
+
+این هفته روی موضوع **Security Project** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Threat Model a Network Lab](day-01.qmd)
+- [Day 2: Create a Secure Configuration Baseline](day-02.qmd)
+- [Day 3: Validate Firewall and Access Rules](day-03.qmd)
+- [Day 4: Build a Basic Security Audit Report](day-04.qmd)
+- [Day 5: Security Practical Assessment](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

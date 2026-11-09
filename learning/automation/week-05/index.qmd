@@ -1,0 +1,21 @@
+---
+title: "Week 5 - Automation Quality"
+---
+
+::: {.persian}
+# هفته 5: Automation Quality
+
+این هفته روی موضوع **Automation Quality** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Parsing and Normalizing Device Data](day-01.qmd)
+- [Day 2: Concurrency and Rate Control](day-02.qmd)
+- [Day 3: Retries and Failure Handling](day-03.qmd)
+- [Day 4: Testing Automation with Mocks](day-04.qmd)
+- [Day 5: Audit Trails and Change Reports](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

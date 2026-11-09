@@ -1,0 +1,21 @@
+---
+title: "Week 6 - Infrastructure Project"
+---
+
+::: {.persian}
+# هفته 6: Infrastructure Project
+
+این هفته روی موضوع **Infrastructure Project** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Design a Small Lab Environment](day-01.qmd)
+- [Day 2: Provision Services Reproducibly](day-02.qmd)
+- [Day 3: Automate Configuration](day-03.qmd)
+- [Day 4: Add Monitoring and Recovery](day-04.qmd)
+- [Day 5: Infrastructure Capstone Assessment](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

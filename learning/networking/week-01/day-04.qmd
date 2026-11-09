@@ -1,13 +1,226 @@
 ---
-title: "Week 1 | Day 4"
+title: "IPv4 Addressing and Subnetting"
+subtitle: "Week 01 | Day 04"
 ---
 
-# Week 1 - Day 4
-
 ::: {.persian}
+# IPv4 Addressing و Subnetting
 
-## موضوع جلسه
+## اهداف یادگیری
 
-محتوای این جلسه در آینده تکمیل خواهد شد.
+- ساختار IPv4 را درک کنی.
+- تفاوت Network و Host Portion را توضیح بدهی.
+- Subnet Mask و CIDR را بخوانی.
+- Network Address و Broadcast Address را محاسبه کنی.
+- Subnet سیستم خودت را بررسی کنی.
 
+## 1. IPv4 چیست؟
+
+IPv4 یک سیستم آدرس‌دهی ۳۲ بیتی است.
+
+نمونه:
+
+```text
+192.168.1.10
+```
+
+این آدرس از چهار Octet تشکیل شده است. هر Octet هشت بیت دارد و مقدار آن بین 0 تا 255 است.
+
+در مجموع:
+
+```text
+4 × 8 = 32 bits
+```
+
+## 2. Network و Host
+
+یک IPv4 Address از دو بخش منطقی تشکیل می‌شود:
+
+- Network Portion: مشخص می‌کند آدرس متعلق به کدام شبکه است.
+- Host Portion: دستگاه را در آن شبکه مشخص می‌کند.
+
+Subnet Mask تعیین می‌کند کدام بیت‌ها متعلق به بخش شبکه هستند.
+
+مثال:
+
+```text
+IP Address:  192.168.1.10
+Subnet Mask: 255.255.255.0
+```
+
+در این مثال سه Octet اول بخش شبکه هستند.
+
+## 3. CIDR چیست؟
+
+CIDR تعداد بیت‌های بخش شبکه را مشخص می‌کند.
+
+مثلاً:
+
+```text
+192.168.1.10/24
+```
+
+یعنی 24 بیت برای Network Portion استفاده شده است.
+
+| CIDR | Subnet Mask |
+|---|---|
+| /8 | 255.0.0.0 |
+| /16 | 255.255.0.0 |
+| /24 | 255.255.255.0 |
+| /25 | 255.255.255.128 |
+| /26 | 255.255.255.192 |
+| /27 | 255.255.255.224 |
+| /28 | 255.255.255.240 |
+| /30 | 255.255.255.252 |
+
+## 4. محاسبه یک Subnet
+
+مثال:
+
+```text
+192.168.10.0/24
+```
+
+تعداد بیت‌های Host:
+
+```text
+32 - 24 = 8
+```
+
+تعداد کل آدرس‌ها:
+
+```text
+2^8 = 256
+```
+
+در یک Subnet معمولی /24:
+- Network Address: 192.168.10.0
+- اولین Host: 192.168.10.1
+- آخرین Host: 192.168.10.254
+- Broadcast Address: 192.168.10.255
+
+تعداد آدرس‌های قابل استفاده برای Host در این مثال 254 است.
+
+## 5. مثال Subnetting با /26
+
+شبکه:
+
+```text
+192.168.1.0/26
+```
+
+Subnet Mask:
+
+```text
+255.255.255.192
+```
+
+اندازه بلوک:
+
+```text
+256 - 192 = 64
+```
+
+پس محدوده‌ها:
+
+| Subnet | Network | Host Range | Broadcast |
+|---|---|---|---|
+| 1 | .0 | .1 تا .62 | .63 |
+| 2 | .64 | .65 تا .126 | .127 |
+| 3 | .128 | .129 تا .190 | .191 |
+| 4 | .192 | .193 تا .254 | .255 |
+
+این تقسیم‌بندی زمانی کاربرد دارد که بخواهیم یک شبکه را به چند شبکه کوچک‌تر تقسیم کنیم.
+
+## 6. Private و Public IP
+
+بازه‌های Private IPv4:
+
+| Range | CIDR |
+|---|---|
+| 10.0.0.0 تا 10.255.255.255 | 10.0.0.0/8 |
+| 172.16.0.0 تا 172.31.255.255 | 172.16.0.0/12 |
+| 192.168.0.0 تا 192.168.255.255 | 192.168.0.0/16 |
+
+آدرس‌های Private مستقیماً در اینترنت عمومی Route نمی‌شوند. معمولاً برای دسترسی به اینترنت از NAT استفاده می‌شود.
+
+## 7. Default Gateway
+
+Default Gateway روتر یا رابط لایه سومی است که سیستم برای ارسال ترافیک به مقصدهای خارج از شبکه محلی از آن استفاده می‌کند.
+
+اگر مقصد در Subnet محلی نباشد، سیستم بسته را به Gateway ارسال می‌کند.
+
+## 8. آزمایش عملی PowerShell
+
+### مشاهده IP Configuration
+
+```powershell
+Get-NetIPConfiguration
+```
+
+### مشاهده IPv4 Addressها
+
+```powershell
+Get-NetIPAddress -AddressFamily IPv4
+```
+
+### مشاهده Route Table
+
+```powershell
+route print -4
+```
+
+### مشاهده Routeها با PowerShell
+
+```powershell
+Get-NetRoute -AddressFamily IPv4
+```
+
+این خروجی‌ها را بررسی کن:
+- IP Address
+- Prefix Length
+- Default Gateway
+- Interface Index
+- Destination Prefix
+
+## 9. تمرین محاسباتی
+
+برای هر مورد Network Address، Broadcast Address و Host Range را محاسبه کن:
+
+1. 192.168.5.20/24
+2. 192.168.5.70/26
+3. 10.10.10.100/25
+4. 172.16.4.10/28
+
+سپس پاسخ‌ها را با یک Subnet Calculator معتبر مقایسه کن. ابتدا خودت محاسبه کن.
+
+## 10. ارتباط با Network Automation
+
+IPAM یا IP Address Management یکی از بخش‌های مهم مدیریت زیرساخت است.
+
+در NetFleet در آینده می‌توانیم:
+- IPهای تخصیص‌یافته را ثبت کنیم.
+- Subnetها را مدیریت کنیم.
+- IPهای تکراری را شناسایی کنیم.
+- ظرفیت آزاد هر Subnet را محاسبه کنیم.
+- اطلاعات را از تجهیزات شبکه جمع‌آوری کنیم.
+
+## ارزیابی
+
+1. IPv4 چند بیت دارد؟
+2. /24 به چه معناست؟
+3. Network Address چیست؟
+4. Broadcast Address چه کاربردی دارد؟
+5. تفاوت Private IP و Public IP چیست؟
+6. Default Gateway چه زمانی استفاده می‌شود؟
+7. در یک Subnet /26 چند آدرس کل وجود دارد؟
+8. چرا Subnetting برای طراحی شبکه مهم است؟
+
+## منابع
+
+- [RFC 4632: CIDR](https://www.rfc-editor.org/rfc/rfc4632)
+- [RFC 1918: Private Address Allocation](https://www.rfc-editor.org/rfc/rfc1918)
+- [Microsoft Get-NetIPAddress](https://learn.microsoft.com/en-us/powershell/module/nettcpip/get-netipaddress)
+
+**خروجی مورد انتظار:** بتوانی یک Subnet را محاسبه کنی و تنظیمات IP سیستم را تحلیل کنی.
 :::

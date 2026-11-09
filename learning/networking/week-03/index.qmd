@@ -1,0 +1,21 @@
+---
+title: "Week 3 - Routing Fundamentals"
+---
+
+::: {.persian}
+# هفته 3: Routing Fundamentals
+
+این هفته روی موضوع **Routing Fundamentals** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Routing Tables and Next-Hop Logic](day-01.qmd)
+- [Day 2: Static Routing](day-02.qmd)
+- [Day 3: Default Routes](day-03.qmd)
+- [Day 4: Inter-VLAN Routing](day-04.qmd)
+- [Day 5: Routing Troubleshooting](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

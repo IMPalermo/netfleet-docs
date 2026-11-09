@@ -1,0 +1,21 @@
+---
+title: "Week 3 - Python API Development"
+---
+
+::: {.persian}
+# هفته 3: Python API Development
+
+این هفته روی موضوع **Python API Development** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Flask Application Structure](day-01.qmd)
+- [Day 2: Routing and Request Handling](day-02.qmd)
+- [Day 3: Input Validation and Serialization](day-03.qmd)
+- [Day 4: Configuration and Environment Variables](day-04.qmd)
+- [Day 5: Application Logging and Error Handling](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

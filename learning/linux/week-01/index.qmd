@@ -1,0 +1,21 @@
+---
+title: "Week 1 - Linux Environment"
+---
+
+::: {.persian}
+# هفته 1: Linux Environment
+
+این هفته روی موضوع **Linux Environment** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Linux Distributions and Architecture](day-01.qmd)
+- [Day 2: Shell and Terminal Fundamentals](day-02.qmd)
+- [Day 3: Filesystem Hierarchy](day-03.qmd)
+- [Day 4: Working with Files and Directories](day-04.qmd)
+- [Day 5: Getting Help with man and --help](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

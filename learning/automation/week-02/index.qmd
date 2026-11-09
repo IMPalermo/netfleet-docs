@@ -1,0 +1,21 @@
+---
+title: "Week 2 - Device Connectivity"
+---
+
+::: {.persian}
+# هفته 2: Device Connectivity
+
+این هفته روی موضوع **Device Connectivity** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: SSH Automation Concepts](day-01.qmd)
+- [Day 2: Paramiko and Secure Connections](day-02.qmd)
+- [Day 3: Netmiko Device Sessions](day-03.qmd)
+- [Day 4: Structured Command Output](day-04.qmd)
+- [Day 5: Connection Pools and Timeouts](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

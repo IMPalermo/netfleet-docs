@@ -1,0 +1,21 @@
+---
+title: "Week 8 - Backend Project"
+---
+
+::: {.persian}
+# هفته 8: Backend Project
+
+این هفته روی موضوع **Backend Project** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Design a Network Inventory API](day-01.qmd)
+- [Day 2: Implement CRUD Endpoints](day-02.qmd)
+- [Day 3: Connect Persistent Storage](day-03.qmd)
+- [Day 4: Add Authentication and Tests](day-04.qmd)
+- [Day 5: Backend API Practical Assessment](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

@@ -1,0 +1,21 @@
+---
+title: "Week 5 - SSH and Remote Operations"
+---
+
+::: {.persian}
+# هفته 5: SSH and Remote Operations
+
+این هفته روی موضوع **SSH and Remote Operations** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: SSH Client and Server](day-01.qmd)
+- [Day 2: SSH Keys and Agent](day-02.qmd)
+- [Day 3: Secure Copy and Rsync](day-03.qmd)
+- [Day 4: SSH Hardening](day-04.qmd)
+- [Day 5: Remote Administration Lab](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

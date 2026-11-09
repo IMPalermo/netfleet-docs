@@ -1,0 +1,21 @@
+---
+title: "Week 2 - Containers"
+---
+
+::: {.persian}
+# هفته 2: Containers
+
+این هفته روی موضوع **Containers** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Container Concepts and Images](day-01.qmd)
+- [Day 2: Dockerfiles and Build Context](day-02.qmd)
+- [Day 3: Container Networking](day-03.qmd)
+- [Day 4: Volumes and Persistent Data](day-04.qmd)
+- [Day 5: Docker Compose for Services](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

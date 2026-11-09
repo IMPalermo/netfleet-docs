@@ -1,0 +1,21 @@
+---
+title: "Week 3 - Linux and Host Security"
+---
+
+::: {.persian}
+# هفته 3: Linux and Host Security
+
+این هفته روی موضوع **Linux and Host Security** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Linux Hardening Principles](day-01.qmd)
+- [Day 2: SSH Security and Access Control](day-02.qmd)
+- [Day 3: Host Firewalls](day-03.qmd)
+- [Day 4: Patch and Vulnerability Management](day-04.qmd)
+- [Day 5: Audit Logs and Detection](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

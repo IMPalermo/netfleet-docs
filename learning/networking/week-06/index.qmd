@@ -1,0 +1,21 @@
+---
+title: "Week 6 - Wireless and Network Access"
+---
+
+::: {.persian}
+# هفته 6: Wireless and Network Access
+
+این هفته روی موضوع **Wireless and Network Access** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Wi-Fi Architecture and Standards](day-01.qmd)
+- [Day 2: Wireless Security Basics](day-02.qmd)
+- [Day 3: 802.1X and Network Authentication](day-03.qmd)
+- [Day 4: VPN Fundamentals](day-04.qmd)
+- [Day 5: Remote Access Troubleshooting](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

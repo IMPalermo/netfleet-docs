@@ -1,0 +1,21 @@
+---
+title: "Week 2 - API Design"
+---
+
+::: {.persian}
+# هفته 2: API Design
+
+این هفته روی موضوع **API Design** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: REST Architectural Constraints](day-01.qmd)
+- [Day 2: Resource and Endpoint Design](day-02.qmd)
+- [Day 3: JSON Schemas and Validation](day-03.qmd)
+- [Day 4: Pagination, Filtering and Sorting](day-04.qmd)
+- [Day 5: API Error Design and Versioning](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

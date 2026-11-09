@@ -1,0 +1,21 @@
+---
+title: "Week 7 - Data Models and Automation"
+---
+
+::: {.persian}
+# هفته 7: Data Models and Automation
+
+این هفته روی موضوع **Data Models and Automation** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Dataclasses and Structured Inventory](day-01.qmd)
+- [Day 2: Parsing Command Output](day-02.qmd)
+- [Day 3: Configuration Data Validation](day-03.qmd)
+- [Day 4: Concurrent Tasks and Thread Pools](day-04.qmd)
+- [Day 5: Safe Automation Patterns](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

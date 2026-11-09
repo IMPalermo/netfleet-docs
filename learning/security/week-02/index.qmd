@@ -1,0 +1,21 @@
+---
+title: "Week 2 - Network Security"
+---
+
+::: {.persian}
+# هفته 2: Network Security
+
+این هفته روی موضوع **Network Security** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Firewalls and Rule Design](day-01.qmd)
+- [Day 2: Network Segmentation](day-02.qmd)
+- [Day 3: VPN Security Concepts](day-03.qmd)
+- [Day 4: TLS, Certificates and PKI](day-04.qmd)
+- [Day 5: Secure Management Protocols](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

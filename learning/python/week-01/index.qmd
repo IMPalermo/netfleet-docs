@@ -1,0 +1,21 @@
+---
+title: "Week 1 - Python Foundations"
+---
+
+::: {.persian}
+# هفته 1: Python Foundations
+
+این هفته روی موضوع **Python Foundations** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Python Runtime and Development Environment](day-01.qmd)
+- [Day 2: Variables and Core Data Types](day-02.qmd)
+- [Day 3: Strings and Formatting](day-03.qmd)
+- [Day 4: Numbers, Booleans and Operators](day-04.qmd)
+- [Day 5: Input, Output and Type Conversion](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

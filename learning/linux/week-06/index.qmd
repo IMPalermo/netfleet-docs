@@ -1,0 +1,21 @@
+---
+title: "Week 6 - Bash Automation"
+---
+
+::: {.persian}
+# هفته 6: Bash Automation
+
+این هفته روی موضوع **Bash Automation** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Bash Variables and Quoting](day-01.qmd)
+- [Day 2: Conditions and Loops](day-02.qmd)
+- [Day 3: Functions and Exit Codes](day-03.qmd)
+- [Day 4: Pipes, Redirection and Text Processing](day-04.qmd)
+- [Day 5: Reliable Shell Scripts](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

@@ -1,0 +1,21 @@
+---
+title: "Week 5 - Delivery and Observability"
+---
+
+::: {.persian}
+# هفته 5: Delivery and Observability
+
+این هفته روی موضوع **Delivery and Observability** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: CI/CD Pipeline Concepts](day-01.qmd)
+- [Day 2: Automated Validation in CI](day-02.qmd)
+- [Day 3: Metrics, Logs and Traces](day-03.qmd)
+- [Day 4: Prometheus and Grafana Concepts](day-04.qmd)
+- [Day 5: Backup, Recovery and Reliability](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

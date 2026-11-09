@@ -1,0 +1,21 @@
+---
+title: "Week 4 - Application and API Security"
+---
+
+::: {.persian}
+# هفته 4: Application and API Security
+
+این هفته روی موضوع **Application and API Security** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: OWASP Top 10 Overview](day-01.qmd)
+- [Day 2: Secrets Management](day-02.qmd)
+- [Day 3: API Authentication Risks](day-03.qmd)
+- [Day 4: Input Validation and Injection](day-04.qmd)
+- [Day 5: Dependency and Supply Chain Security](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

@@ -1,0 +1,21 @@
+---
+title: "Week 3 - Functions and Structure"
+---
+
+::: {.persian}
+# هفته 3: Functions and Structure
+
+این هفته روی موضوع **Functions and Structure** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Defining and Calling Functions](day-01.qmd)
+- [Day 2: Parameters, Return Values and Scope](day-02.qmd)
+- [Day 3: Modules and Imports](day-03.qmd)
+- [Day 4: Exceptions and Error Handling](day-04.qmd)
+- [Day 5: Writing Readable and Testable Code](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

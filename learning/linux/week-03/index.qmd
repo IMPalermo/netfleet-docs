@@ -1,0 +1,21 @@
+---
+title: "Week 3 - Linux Administration"
+---
+
+::: {.persian}
+# هفته 3: Linux Administration
+
+این هفته روی موضوع **Linux Administration** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Package Management](day-01.qmd)
+- [Day 2: Systemd and Service Management](day-02.qmd)
+- [Day 3: Logs with journalctl](day-03.qmd)
+- [Day 4: Storage, Partitions and Filesystems](day-04.qmd)
+- [Day 5: Mounts, fstab and Disk Usage](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

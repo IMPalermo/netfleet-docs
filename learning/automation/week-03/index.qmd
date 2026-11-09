@@ -1,0 +1,21 @@
+---
+title: "Week 3 - Network APIs"
+---
+
+::: {.persian}
+# هفته 3: Network APIs
+
+این هفته روی موضوع **Network APIs** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Network Device APIs](day-01.qmd)
+- [Day 2: RESTCONF Fundamentals](day-02.qmd)
+- [Day 3: NETCONF and YANG Concepts](day-03.qmd)
+- [Day 4: Authentication and API Sessions](day-04.qmd)
+- [Day 5: Working with API Responses](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

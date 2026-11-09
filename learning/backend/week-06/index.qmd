@@ -1,0 +1,21 @@
+---
+title: "Week 6 - API Engineering"
+---
+
+::: {.persian}
+# هفته 6: API Engineering
+
+این هفته روی موضوع **API Engineering** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: OpenAPI and API Documentation](day-01.qmd)
+- [Day 2: Automated API Testing](day-02.qmd)
+- [Day 3: Database Migrations](day-03.qmd)
+- [Day 4: Background Jobs and Task Queues](day-04.qmd)
+- [Day 5: Caching and Performance Basics](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

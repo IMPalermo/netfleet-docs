@@ -1,0 +1,21 @@
+---
+title: "Week 5 - Network Programming"
+---
+
+::: {.persian}
+# هفته 5: Network Programming
+
+این هفته روی موضوع **Network Programming** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: IP Address Handling with ipaddress](day-01.qmd)
+- [Day 2: DNS Lookups with Python](day-02.qmd)
+- [Day 3: TCP Client and Server Basics](day-03.qmd)
+- [Day 4: HTTP Requests and REST APIs](day-04.qmd)
+- [Day 5: Timeouts, Retries and Network Errors](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

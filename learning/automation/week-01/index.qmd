@@ -1,0 +1,21 @@
+---
+title: "Week 1 - Automation Foundations"
+---
+
+::: {.persian}
+# هفته 1: Automation Foundations
+
+این هفته روی موضوع **Automation Foundations** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Why Network Automation Matters](day-01.qmd)
+- [Day 2: Automation Workflows and Control Loops](day-02.qmd)
+- [Day 3: CLI Automation Risks and Guardrails](day-03.qmd)
+- [Day 4: Inventory and Source of Truth](day-04.qmd)
+- [Day 5: Idempotency and Desired State](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

@@ -1,0 +1,21 @@
+---
+title: "Week 8 - Linux Operations Project"
+---
+
+::: {.persian}
+# هفته 8: Linux Operations Project
+
+این هفته روی موضوع **Linux Operations Project** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Cron and Scheduled Tasks](day-01.qmd)
+- [Day 2: System Backup and Restore](day-02.qmd)
+- [Day 3: Firewall Basics with nftables](day-03.qmd)
+- [Day 4: Secure Server Baseline](day-04.qmd)
+- [Day 5: Linux Administration Practical Assessment](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

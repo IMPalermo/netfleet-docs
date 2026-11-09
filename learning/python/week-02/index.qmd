@@ -1,0 +1,21 @@
+---
+title: "Week 2 - Control Flow"
+---
+
+::: {.persian}
+# هفته 2: Control Flow
+
+این هفته روی موضوع **Control Flow** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Conditions and Boolean Logic](day-01.qmd)
+- [Day 2: For Loops and Iteration](day-02.qmd)
+- [Day 3: While Loops and Loop Control](day-03.qmd)
+- [Day 4: Lists and Tuples](day-04.qmd)
+- [Day 5: Dictionaries and Sets](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

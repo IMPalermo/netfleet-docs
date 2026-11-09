@@ -1,0 +1,21 @@
+---
+title: "Week 4 - Data Persistence"
+---
+
+::: {.persian}
+# هفته 4: Data Persistence
+
+این هفته روی موضوع **Data Persistence** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Relational Database Fundamentals](day-01.qmd)
+- [Day 2: SQL Queries and Joins](day-02.qmd)
+- [Day 3: Schema Design and Constraints](day-03.qmd)
+- [Day 4: Transactions and ACID](day-04.qmd)
+- [Day 5: SQLite to PostgreSQL Concepts](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

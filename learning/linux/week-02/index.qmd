@@ -1,0 +1,21 @@
+---
+title: "Week 2 - Users and Permissions"
+---
+
+::: {.persian}
+# هفته 2: Users and Permissions
+
+این هفته روی موضوع **Users and Permissions** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Users and Groups](day-01.qmd)
+- [Day 2: Ownership and Permission Bits](day-02.qmd)
+- [Day 3: sudo and Privilege Boundaries](day-03.qmd)
+- [Day 4: Processes and Signals](day-04.qmd)
+- [Day 5: Environment Variables and Shell Profiles](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::
