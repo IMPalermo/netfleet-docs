@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Deep understanding of Ethernet framing, MAC addressing, switching, ARP resolution, VLAN behavior, Layer 2 security and packet-level troubleshooting">
 
 <title>Ethernet, MAC Address and ARP – NetFleet Docs</title>
 <style>
@@ -150,38 +151,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#ethernet-mac-address-و-arp" id="toc-ethernet-mac-address-و-arp" class="nav-link active" data-scroll-target="#ethernet-mac-address-و-arp">Ethernet، MAC Address و ARP</a>
-  <ul class="collapse">
-  <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">اهداف یادگیری</a></li>
-  <li><a href="#ethernet-چیست" id="toc-ethernet-چیست" class="nav-link" data-scroll-target="#ethernet-چیست">1. Ethernet چیست؟</a></li>
-  <li><a href="#mac-address" id="toc-mac-address" class="nav-link" data-scroll-target="#mac-address">2. MAC Address</a></li>
-  <li><a href="#ip-در-برابر-mac" id="toc-ip-در-برابر-mac" class="nav-link" data-scroll-target="#ip-در-برابر-mac">3. IP در برابر MAC</a></li>
-  <li><a href="#ethernet-frame" id="toc-ethernet-frame" class="nav-link" data-scroll-target="#ethernet-frame">4. Ethernet Frame</a></li>
-  <li><a href="#switch-چگونه-کار-میکند" id="toc-switch-چگونه-کار-میکند" class="nav-link" data-scroll-target="#switch-چگونه-کار-میکند">5. Switch چگونه کار می‌کند؟</a></li>
-  <li><a href="#arp-چیست" id="toc-arp-چیست" class="nav-link" data-scroll-target="#arp-چیست">6. ARP چیست؟</a>
-  <ul class="collapse">
-  <li><a href="#نکته-مهم-درباره-gateway" id="toc-نکته-مهم-درباره-gateway" class="nav-link" data-scroll-target="#نکته-مهم-درباره-gateway">نکته مهم درباره Gateway</a></li>
-  </ul></li>
-  <li><a href="#آزمایش-عملی" id="toc-آزمایش-عملی" class="nav-link" data-scroll-target="#آزمایش-عملی">7. آزمایش عملی</a>
-  <ul class="collapse">
-  <li><a href="#مشاهده-کارتهای-شبکه" id="toc-مشاهده-کارتهای-شبکه" class="nav-link" data-scroll-target="#مشاهده-کارتهای-شبکه">مشاهده کارت‌های شبکه</a></li>
-  <li><a href="#مشاهده-mac-address" id="toc-مشاهده-mac-address" class="nav-link" data-scroll-target="#مشاهده-mac-address">مشاهده MAC Address</a></li>
-  <li><a href="#مشاهده-جدول-arp" id="toc-مشاهده-جدول-arp" class="nav-link" data-scroll-target="#مشاهده-جدول-arp">مشاهده جدول ARP</a></li>
-  <li><a href="#مشاهده-جدول-همسایهها" id="toc-مشاهده-جدول-همسایهها" class="nav-link" data-scroll-target="#مشاهده-جدول-همسایهها">مشاهده جدول همسایه‌ها</a></li>
-  <li><a href="#ایجاد-ترافیک-و-بررسی-مجدد" id="toc-ایجاد-ترافیک-و-بررسی-مجدد" class="nav-link" data-scroll-target="#ایجاد-ترافیک-و-بررسی-مجدد">ایجاد ترافیک و بررسی مجدد</a></li>
-  </ul></li>
-  <li><a href="#آزمایش-wireshark" id="toc-آزمایش-wireshark" class="nav-link" data-scroll-target="#آزمایش-wireshark">8. آزمایش Wireshark</a></li>
-  <li><a href="#ارتباط-با-automation" id="toc-ارتباط-با-automation" class="nav-link" data-scroll-target="#ارتباط-با-automation">9. ارتباط با Automation</a></li>
-  <li><a href="#ارزیابی" id="toc-ارزیابی" class="nav-link" data-scroll-target="#ارزیابی">ارزیابی</a></li>
-  <li><a href="#منابع" id="toc-منابع" class="nav-link" data-scroll-target="#منابع">منابع</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
@@ -189,9 +160,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Ethernet, MAC Address and ARP</h1>
-<p class="subtitle lead">Week 01 | Day 03</p>
+<p class="subtitle lead">Week 01 · Day 03</p>
 </div>
 
+<div>
+  <div class="description">
+    Deep understanding of Ethernet framing, MAC addressing, switching, ARP resolution, VLAN behavior, Layer 2 security and packet-level troubleshooting
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -206,71 +182,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="ethernet-mac-address-و-arp" class="level1 persian">
-<h1>Ethernet، MAC Address و ARP</h1>
-<section id="اهداف-یادگیری" class="level2">
-<h2 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h2>
+<div class="persian">
+<section id="جلسه-سوم-ethernet-mac-address-و-arp" class="level1">
+<h1>جلسه سوم: Ethernet، MAC Address و ARP</h1>
+<blockquote class="blockquote">
+هدف این جلسه حفظ کردن ساختار Ethernet Frame یا چند دستور ARP نیست. هدف این است که بتوانی مسیر واقعی تحویل یک Frame را تحلیل کنی، تصمیم‌های یک Switch را توضیح بدهی و تشخیص بدهی یک سیستم برای ارتباط با مقصد محلی یا مقصد خارج از Subnet به کدام MAC Address نیاز دارد.
+</blockquote>
+<section id="مقدمه-جلسه" class="level3">
+<h3 class="anchored" data-anchor-id="مقدمه-جلسه">مقدمه جلسه</h3>
+<p>در شبکه، داشتن IP Address به‌تنهایی برای ارسال داده کافی نیست. IP به سیستم کمک می‌کند مقصد منطقی را مشخص کند، اما برای تحویل داده روی یک شبکه Ethernet، رابط شبکه باید یک Frame بسازد و آدرس لایه دوم مقصد را تعیین کند.</p>
+<p>این جلسه سه سازوکار را به یک زنجیره عملیاتی متصل می‌کند:</p>
+<ol type="1">
+<li><strong>Ethernet:</strong> قالب انتقال داده در شبکه محلی.</li>
+<li><strong>Switching:</strong> یادگیری آدرس‌های MAC و انتخاب پورت خروجی.</li>
+<li><strong>ARP:</strong> پیدا کردن MAC Address متناظر با یک IPv4 Address در شبکه محلی.</li>
+</ol>
+<p>در پایان باید بتوانی توضیح بدهی وقتی یک کامپیوتر به یک سیستم دیگر ارتباط برقرار می‌کند، چگونه IP مقصد به MAC مقصد لایه دوم تبدیل می‌شود، سوئیچ چه تصمیمی می‌گیرد و چرا MAC مقصد در ارتباط با یک سیستم خارج از Subnet با MAC مقصد نهایی متفاوت است.</p>
+</section>
+<section id="اهداف-یادگیری" class="level3">
+<h3 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h3>
+<p>پس از پایان این جلسه باید بتوانی:</p>
 <ul>
-<li>مفهوم Ethernet و Frame را بشناسی.</li>
-<li>MAC Address را از IP Address تفکیک کنی.</li>
-<li>نقش Switch را توضیح بدهی.</li>
-<li>عملکرد ARP را در شبکه محلی درک کنی.</li>
-<li>اطلاعات واقعی سیستم را با PowerShell بررسی کنی.</li>
+<li>ساختار و اجزای Ethernet II Frame را تحلیل کنی.</li>
+<li>تفاوت MAC Address و IP Address را از دیدگاه عملیاتی توضیح بدهی.</li>
+<li>بیت‌های I/G و U/L را در MAC Address تفسیر کنی.</li>
+<li>Unicast، Broadcast و Multicast را تشخیص بدهی.</li>
+<li>تفاوت EtherType، Length و VLAN Tag را درک کنی.</li>
+<li>فرایند MAC Learning و Forwarding را توضیح بدهی.</li>
+<li>رفتار Known Unicast، Unknown Unicast و Broadcast را مقایسه کنی.</li>
+<li>نقش VLAN در جداسازی Broadcast Domain را بفهمی.</li>
+<li>ARP Request و ARP Reply را تحلیل کنی.</li>
+<li>رفتار ARP برای مقصد Local و Remote را تشخیص بدهی.</li>
+<li>ARP Cache و Neighbor Table را در Windows بررسی کنی.</li>
+<li>خطر ARP Spoofing و روش‌های مقابله با آن را بشناسی.</li>
+<li>با PowerShell و Wireshark یک مشکل لایه دوم را عیب‌یابی کنی.</li>
 </ul>
+<hr>
+</section>
+<section id="ethernet-fundamentals" class="level2">
+<h2 class="anchored" data-anchor-id="ethernet-fundamentals">1. Ethernet Fundamentals</h2>
 </section>
 <section id="ethernet-چیست" class="level2">
 <h2 class="anchored" data-anchor-id="ethernet-چیست">1. Ethernet چیست؟</h2>
-<p>Ethernet یکی از فناوری‌های اصلی شبکه‌های محلی سیمی است.</p>
-<p>Ethernet مشخص می‌کند دستگاه‌ها چگونه داده را در قالب Frame منتقل کنند و چگونه از آدرس‌های MAC برای شناسایی رابط‌های شبکه استفاده شود.</p>
-<p>استانداردهای Ethernet در خانواده IEEE 802.3 تعریف شده‌اند.</p>
-</section>
-<section id="mac-address" class="level2">
-<h2 class="anchored" data-anchor-id="mac-address">2. MAC Address</h2>
-<p>هر رابط شبکه برای ارتباط در لایه دوم از یک آدرس MAC استفاده می‌کند.</p>
-<p>نمونه:</p>
-<pre class="text"><code>A4:5E:60:12:34:56</code></pre>
-<p>MAC Address معمولاً به شکل ۴۸ بیتی نمایش داده می‌شود.</p>
-<p>دو بخش اصلی آن: - بخش ابتدایی: شناسه سازنده یا OUI - بخش انتهایی: شناسه اختصاص داده‌شده به رابط</p>
-<p>نکته مهم: MAC Address همیشه یک شناسه ثابت و قابل اعتماد برای شناسایی فیزیکی دستگاه نیست. سیستم‌عامل‌ها می‌توانند از MAC تصادفی یا تغییر یافته استفاده کنند.</p>
-</section>
-<section id="ip-در-برابر-mac" class="level2">
-<h2 class="anchored" data-anchor-id="ip-در-برابر-mac">3. IP در برابر MAC</h2>
+<p>Ethernet خانواده‌ای از فناوری‌های شبکه محلی است که استانداردهای اصلی آن در IEEE 802.3 تعریف شده‌اند.</p>
+<p>Ethernet نحوه انتقال داده در شبکه محلی را مشخص می‌کند. این فناوری برای انتقال داده از Frame استفاده می‌کند و در شبکه‌های متداول Ethernet، آدرس MAC برای شناسایی مبدأ و مقصد در لایه دوم به کار می‌رود.</p>
+<p>اجزای اصلی یک ارتباط Ethernet عبارت‌اند از:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>ویژگی</th>
-<th>MAC</th>
-<th>IP</th>
+<th>جزء</th>
+<th>نقش</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>لایه</td>
-<td>Data Link</td>
-<td>Network</td>
+<td>NIC</td>
+<td>رابط شبکه دستگاه</td>
 </tr>
 <tr class="even">
-<td>کاربرد</td>
-<td>ارتباط محلی</td>
-<td>آدرس‌دهی و مسیریابی</td>
+<td>Ethernet Medium</td>
+<td>رسانه انتقال مانند کابل مسی یا فیبر</td>
 </tr>
 <tr class="odd">
-<td>نمونه</td>
-<td>AA:BB:CC:11:22:33</td>
-<td>192.168.1.10</td>
+<td>MAC Address</td>
+<td>آدرس‌دهی لایه دوم</td>
 </tr>
 <tr class="even">
-<td>نوع</td>
-<td>آدرس رابط شبکه</td>
-<td>آدرس منطقی</td>
+<td>Ethernet Frame</td>
+<td>قالب انتقال داده</td>
+</tr>
+<tr class="odd">
+<td>Switch</td>
+<td>انتقال Frame بر اساس اطلاعات لایه دوم</td>
 </tr>
 </tbody>
 </table>
-<p>یک بسته IP هنگام عبور از روترها می‌تواند در فریم‌های متفاوت قرار بگیرد. آدرس MAC فریم در هر شبکه محلی ممکن است تغییر کند، اما IP مبدأ و مقصد معمولاً تا رسیدن به مقصد نهایی حفظ می‌شوند، مگر اینکه NAT یا سازوکارهای دیگری آن‌ها را تغییر دهند.</p>
-</section>
-<section id="ethernet-frame" class="level2">
-<h2 class="anchored" data-anchor-id="ethernet-frame">4. Ethernet Frame</h2>
-<p>یک فریم Ethernet معمولی شامل بخش‌های زیر است:</p>
+<section id="ethernet-در-مدل-osi" class="level4">
+<h4 class="anchored" data-anchor-id="ethernet-در-مدل-osi">1.1 Ethernet در مدل OSI</h4>
+<p>Ethernet عمدتاً با دو لایه اول مدل OSI مرتبط است:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -280,117 +269,1344 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>Destination MAC</td>
-<td>آدرس MAC مقصد</td>
+<td>Physical Layer</td>
+<td>انتقال سیگنال و بیت روی رسانه</td>
 </tr>
 <tr class="even">
-<td>Source MAC</td>
-<td>آدرس MAC مبدأ</td>
+<td>Data Link Layer</td>
+<td>ساخت و پردازش Frame</td>
 </tr>
 <tr class="odd">
-<td>EtherType</td>
-<td>مشخص کردن نوع Payload</td>
+<td>MAC Sublayer</td>
+<td>آدرس‌دهی و کنترل دسترسی به رسانه</td>
 </tr>
 <tr class="even">
-<td>Payload</td>
-<td>داده</td>
-</tr>
-<tr class="odd">
-<td>FCS</td>
-<td>بررسی خطا در فریم</td>
+<td>LLC Sublayer</td>
+<td>ارائه رابط منطقی به لایه‌های بالاتر</td>
 </tr>
 </tbody>
 </table>
-<p>سوئیچ‌ها از اطلاعات لایه دوم برای انتقال فریم‌ها استفاده می‌کنند.</p>
+<p>در شبکه‌های Ethernet امروزی، Switchهای معمولی عمدتاً در Data Link Layer فعالیت می‌کنند. البته تجهیزات Multilayer Switch می‌توانند قابلیت Routing در لایه سوم را نیز ارائه دهند.</p>
+</section>
+<section id="استانداردهای-ieee-802.3" class="level4">
+<h4 class="anchored" data-anchor-id="استانداردهای-ieee-802.3">1.2 استانداردهای IEEE 802.3</h4>
+<p>چند نمونه از فناوری‌های Ethernet:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>استاندارد</th>
+<th style="text-align: right;">سرعت اسمی</th>
+<th>رسانه متداول</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10BASE-T</td>
+<td style="text-align: right;">10 Mbps</td>
+<td>Twisted Pair</td>
+</tr>
+<tr class="even">
+<td>100BASE-TX</td>
+<td style="text-align: right;">100 Mbps</td>
+<td>Twisted Pair</td>
+</tr>
+<tr class="odd">
+<td>1000BASE-T</td>
+<td style="text-align: right;">1 Gbps</td>
+<td>Twisted Pair</td>
+</tr>
+<tr class="even">
+<td>10GBASE-T</td>
+<td style="text-align: right;">10 Gbps</td>
+<td>Twisted Pair</td>
+</tr>
+<tr class="odd">
+<td>10GBASE-SR</td>
+<td style="text-align: right;">10 Gbps</td>
+<td>Multimode Fiber</td>
+</tr>
+<tr class="even">
+<td>100GBASE-SR4</td>
+<td style="text-align: right;">100 Gbps</td>
+<td>Multimode Fiber</td>
+</tr>
+</tbody>
+</table>
+<p>نکته مهندسی: سرعت Link، Throughput و Application Goodput سه مفهوم متفاوت‌اند.</p>
+<ul>
+<li><strong>Link Speed:</strong> نرخ اسمی انتقال روی لینک.</li>
+<li><strong>Throughput:</strong> مقدار داده‌ای که در واحد زمان از مسیر عبور می‌کند.</li>
+<li><strong>Goodput:</strong> مقدار داده مفید برنامه، بدون احتساب سربار پروتکل‌ها و Retransmissionها.</li>
+</ul>
+<p>بنابراین یک لینک 1 Gbps لزوماً به برنامه کاربردی Throughput دقیقاً برابر 1 Gbps نمی‌دهد.</p>
+</section>
+</section>
+<section id="mac-address" class="level2">
+<h2 class="anchored" data-anchor-id="mac-address">2. MAC Address</h2>
+<p>MAC Address برای آدرس‌دهی در Data Link Layer استفاده می‌شود.</p>
+<p>در Ethernet متداول، MAC Address از 48 بیت یا 6 Octet تشکیل شده است.</p>
+<p>نمونه:</p>
+<pre class="text"><code>A4:5E:60:12:34:56</code></pre>
+<p>هر دو رقم هگزادسیمال یک Octet را تشکیل می‌دهند:</p>
+<pre class="text"><code>A4 : 5E : 60 : 12 : 34 : 56
+ 1    2    3    4    5    6</code></pre>
+<p>در نتیجه:</p>
+<pre class="text"><code>6 Octets × 8 bits = 48 bits</code></pre>
+<section id="ساختار-mac-address" class="level4">
+<h4 class="anchored" data-anchor-id="ساختار-mac-address">2.1 ساختار MAC Address</h4>
+<p>در آدرس‌های Individual که به‌صورت جهانی تخصیص داده می‌شوند، ساختار رایج شامل دو بخش است:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>بخش</th>
+<th style="text-align: right;">اندازه</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OUI</td>
+<td style="text-align: right;">24 بیت در ساختار رایج</td>
+<td>شناسه تخصیص سازمان</td>
+</tr>
+<tr class="even">
+<td>بخش اختصاصی رابط</td>
+<td style="text-align: right;">24 بیت</td>
+<td>شناسه‌ای که سازمان برای رابط اختصاص می‌دهد</td>
+</tr>
+</tbody>
+</table>
+<p>OUI مخفف Organizationally Unique Identifier است.</p>
+<p>نکته مهم: ساختار تخصیص IEEE فقط به یک قالب ساده 24+24 محدود نیست. IEEE انواع مختلفی از شناسه‌های MAC و بلوک‌های تخصیص را مدیریت می‌کند. همچنین MAC محلی یا تصادفی الزاماً نشان‌دهنده سازنده فیزیکی NIC نیست.</p>
+</section>
+<section id="بیتهای-ig-و-ul" class="level4">
+<h4 class="anchored" data-anchor-id="بیتهای-ig-و-ul">2.2 بیت‌های I/G و U/L</h4>
+<p>دو بیت کم‌ارزش اولین Octet اهمیت ویژه دارند:</p>
+<ul>
+<li><strong>I/G:</strong> مشخص می‌کند آدرس Individual است یا Group.</li>
+<li><strong>U/L:</strong> مشخص می‌کند آدرس Universally Administered است یا Locally Administered.</li>
+</ul>
+<p>مثال:</p>
+<pre class="text"><code>A4 = 10100100</code></pre>
+<p>بیت‌های کم‌ارزش:</p>
+<pre class="text"><code>Bit 0 = I/G
+Bit 1 = U/L</code></pre>
+<p>تفسیر:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">I/G</th>
+<th style="text-align: right;">U/L</th>
+<th>مفهوم</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>Individual, Universally Administered</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td>Individual, Locally Administered</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td>Group, Universally Administered</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>Group, Locally Administered</td>
+</tr>
+</tbody>
+</table>
+<p>اگر I/G برابر صفر باشد، آدرس Individual یا Unicast است.</p>
+<p>اگر I/G برابر یک باشد، آدرس Group است. Broadcast نیز یک حالت خاص از Group Address محسوب می‌شود.</p>
+<p>اگر U/L برابر یک باشد، آدرس Locally Administered است.</p>
+</section>
+<section id="uaa-و-laa" class="level4">
+<h4 class="anchored" data-anchor-id="uaa-و-laa">2.3 UAA و LAA</h4>
+<p><strong>Universally Administered Address (UAA)</strong></p>
+<p>آدرسی که تحت ساختار تخصیص جهانی IEEE قرار دارد.</p>
+<p><strong>Locally Administered Address (LAA)</strong></p>
+<p>آدرسی که به‌صورت محلی توسط سیستم‌عامل، مدیر شبکه یا Hypervisor تنظیم شده است.</p>
+<p>موارد استفاده:</p>
+<ul>
+<li>MAC Randomization در Wi-Fi</li>
+<li>ماشین‌های مجازی</li>
+<li>آزمایشگاه‌های شبکه</li>
+<li>جایگزینی آدرس رابط در سناریوهای خاص</li>
+</ul>
+<p>نتیجه عملی: MAC Address به‌تنهایی ابزار قابل اعتمادی برای اثبات هویت فیزیکی یک دستگاه نیست.</p>
+</section>
+</section>
+<section id="انواع-آدرس-mac" class="level2">
+<h2 class="anchored" data-anchor-id="انواع-آدرس-mac">3. انواع آدرس MAC</h2>
+<section id="unicast" class="level4">
+<h4 class="anchored" data-anchor-id="unicast">3.1 Unicast</h4>
+<p>Unicast برای ارسال Frame به یک مقصد Individual استفاده می‌شود.</p>
+<pre class="text"><code>Source MAC:      AA:AA:AA:AA:AA:AA
+Destination MAC: BB:BB:BB:BB:BB:BB</code></pre>
+<p>در صورت وجود MAC مقصد در جدول سوئیچ، Frame به پورت مربوطه Forward می‌شود.</p>
+</section>
+<section id="broadcast" class="level4">
+<h4 class="anchored" data-anchor-id="broadcast">3.2 Broadcast</h4>
+<p>آدرس Broadcast در Ethernet:</p>
+<pre class="text"><code>FF:FF:FF:FF:FF:FF</code></pre>
+<p>این آدرس به تمام اعضای Broadcast Domain مربوطه اشاره می‌کند.</p>
+<p>ARP Request در IPv4 روی Ethernet معمولاً از Broadcast استفاده می‌کند.</p>
+<p>سوئیچ Broadcast را در VLAN مربوطه به پورت‌های مناسب Flood می‌کند، به‌جز پورتی که Frame از آن دریافت شده است.</p>
+<p>روترها به‌صورت عادی Broadcast لایه دوم را بین شبکه‌های مختلف عبور نمی‌دهند.</p>
+</section>
+<section id="multicast" class="level4">
+<h4 class="anchored" data-anchor-id="multicast">3.3 Multicast</h4>
+<p>Multicast برای ارسال اطلاعات به اعضای یک گروه استفاده می‌شود.</p>
+<p>کاربردهای رایج:</p>
+<ul>
+<li>برخی پروتکل‌های Routing</li>
+<li>سرویس‌های Discovery</li>
+<li>Streaming</li>
+<li>پروتکل‌های گروهی</li>
+</ul>
+<p>در Ethernet، Group Address با I/G برابر یک مشخص می‌شود.</p>
+</section>
+<section id="مقایسه" class="level4">
+<h4 class="anchored" data-anchor-id="مقایسه">3.4 مقایسه</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ویژگی</th>
+<th>Unicast</th>
+<th>Broadcast</th>
+<th>Multicast</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>گیرنده</td>
+<td>یک مقصد</td>
+<td>تمام اعضای Broadcast Domain</td>
+<td>اعضای گروه</td>
+</tr>
+<tr class="even">
+<td>نمونه</td>
+<td>MAC یک NIC</td>
+<td>FF:FF:FF:FF:FF:FF</td>
+<td>Group MAC</td>
+</tr>
+<tr class="odd">
+<td>کاربرد</td>
+<td>ارتباط معمولی</td>
+<td>ARP Request</td>
+<td>ترافیک گروهی</td>
+</tr>
+<tr class="even">
+<td>رفتار Switch</td>
+<td>پورت مقصد</td>
+<td>Flood در VLAN</td>
+<td>وابسته به عضویت و Snooping</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="ethernet-frame" class="level2">
+<h2 class="anchored" data-anchor-id="ethernet-frame">2. Ethernet Frame</h2>
+</section>
+<section id="ساختار-ethernet-ii-frame" class="level2">
+<h2 class="anchored" data-anchor-id="ساختار-ethernet-ii-frame">4. ساختار Ethernet II Frame</h2>
+<p>داده لایه‌های بالاتر برای انتقال روی Ethernet در قالب Frame قرار می‌گیرد.</p>
+<p>ساختار Ethernet II بدون VLAN Tag:</p>
+<pre class="text"><code>+----------------------+----------------------+
+| Destination MAC      | 6 Bytes              |
++----------------------+----------------------+
+| Source MAC           | 6 Bytes              |
++----------------------+----------------------+
+| EtherType            | 2 Bytes              |
++----------------------+----------------------+
+| Payload              | 46 - 1500 Bytes      |
++----------------------+----------------------+
+| Frame Check Sequence | 4 Bytes              |
++----------------------+----------------------+</code></pre>
+<p>حداقل اندازه Frame از Destination MAC تا FCS برابر 64 بایت و حداکثر اندازه معمول آن 1518 بایت است. این اعداد برای Ethernet استاندارد بدون VLAN Tag هستند.</p>
+<section id="destination-mac" class="level4">
+<h4 class="anchored" data-anchor-id="destination-mac">4.1 Destination MAC</h4>
+<p>آدرس مقصد لایه دوم است.</p>
+<p>سوئیچ از این فیلد برای تصمیم‌گیری درباره Forwarding استفاده می‌کند.</p>
+</section>
+<section id="source-mac" class="level4">
+<h4 class="anchored" data-anchor-id="source-mac">4.2 Source MAC</h4>
+<p>آدرس مبدأ لایه دوم است.</p>
+<p>سوئیچ با مشاهده Source MAC می‌تواند یاد بگیرد که آن MAC از کدام پورت و VLAN قابل دسترسی است.</p>
+</section>
+<section id="ethertype" class="level4">
+<h4 class="anchored" data-anchor-id="ethertype">4.3 EtherType</h4>
+<p>EtherType نوع پروتکل موجود در Payload را مشخص می‌کند.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>EtherType</th>
+<th>پروتکل</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0800</td>
+<td>IPv4</td>
+</tr>
+<tr class="even">
+<td>0x0806</td>
+<td>ARP</td>
+</tr>
+<tr class="odd">
+<td>0x86DD</td>
+<td>IPv6</td>
+</tr>
+<tr class="even">
+<td>0x8100</td>
+<td>IEEE 802.1Q Tag</td>
+</tr>
+</tbody>
+</table>
+<p>مثال:</p>
+<p>اگر EtherType برابر <code>0x0800</code> باشد، Payload مربوط به IPv4 است.</p>
+<p>اگر EtherType برابر <code>0x0806</code> باشد، Payload مربوط به ARP است.</p>
+<p>نکته فنی: در Ethernet II، فیلد دو بایتی بعد از Source MAC به‌عنوان EtherType تفسیر می‌شود. در قالب IEEE 802.3، مقدار Length و ساختار LLC/SNAP مطرح است. این دو قالب را نباید بدون توجه به مقدار فیلد با یکدیگر اشتباه گرفت.</p>
+</section>
+<section id="payload-و-padding" class="level4">
+<h4 class="anchored" data-anchor-id="payload-و-padding">4.4 Payload و Padding</h4>
+<p>Payload محتوای اصلی Frame است.</p>
+<p>در Ethernet استاندارد، حداقل Payload برابر 46 بایت است. اگر داده کمتر باشد، Padding اضافه می‌شود.</p>
+<p>حداکثر Payload معمول Ethernet برابر 1500 بایت است که با MTU معمول IPv4 روی Ethernet ارتباط دارد.</p>
+<p>Jumbo Frame می‌تواند Payload بزرگ‌تری داشته باشد، اما باید تمام تجهیزات و مسیر انتقال از آن پشتیبانی کنند.</p>
+</section>
+<section id="frame-check-sequence" class="level4">
+<h4 class="anchored" data-anchor-id="frame-check-sequence">4.5 Frame Check Sequence</h4>
+<p>FCS یک فیلد 4 بایتی است که برای تشخیص خرابی Frame استفاده می‌شود.</p>
+<p>این فیلد بر اساس CRC-32 محاسبه می‌شود.</p>
+<p>FCS:</p>
+<ul>
+<li>خطای انتقال را تشخیص می‌دهد.</li>
+<li>خطا را اصلاح نمی‌کند.</li>
+<li>برای رمزنگاری یا احراز هویت نیست.</li>
+</ul>
+<p>اگر NIC گیرنده Frame خراب را تشخیص دهد، معمولاً آن را دور می‌اندازد.</p>
+<p>نکته عملی: بسیاری از کارت‌های شبکه FCS را قبل از تحویل Frame به سیستم‌عامل بررسی و حذف می‌کنند. به همین دلیل ممکن است در Capture معمول Wireshark مقدار FCS را نبینی.</p>
+</section>
+<section id="preamble-و-sfd" class="level4">
+<h4 class="anchored" data-anchor-id="preamble-و-sfd">4.6 Preamble و SFD</h4>
+<p>پیش از Frame روی رسانه Ethernet، اطلاعاتی برای هم‌زمان‌سازی و مشخص‌کردن شروع Frame منتقل می‌شود:</p>
+<ul>
+<li>Preamble: الگوی هم‌زمان‌سازی.</li>
+<li>SFD: مشخص‌کننده شروع Frame.</li>
+</ul>
+<p>در نمایش معمول Frame در Wireshark، این بخش‌ها عموماً نمایش داده نمی‌شوند.</p>
+</section>
+<section id="تفاوت-frame-و-packet" class="level4">
+<h4 class="anchored" data-anchor-id="تفاوت-frame-و-packet">4.7 تفاوت Frame و Packet</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>اصطلاح</th>
+<th>لایه</th>
+<th>مفهوم</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bit</td>
+<td>Physical</td>
+<td>واحد انتقال فیزیکی</td>
+</tr>
+<tr class="even">
+<td>Frame</td>
+<td>Data Link</td>
+<td>واحد داده لایه دوم</td>
+</tr>
+<tr class="odd">
+<td>Packet</td>
+<td>Network</td>
+<td>واحد داده IP</td>
+</tr>
+<tr class="even">
+<td>Segment</td>
+<td>Transport</td>
+<td>واحد داده TCP</td>
+</tr>
+<tr class="odd">
+<td>Datagram</td>
+<td>Transport</td>
+<td>واحد داده UDP</td>
+</tr>
+</tbody>
+</table>
+<p>نمونه Encapsulation:</p>
+<pre class="text"><code>Ethernet Frame
+    └── IPv4 Packet
+          └── TCP Segment
+                └── Application Data</code></pre>
+<p>در هر مرحله، لایه مربوطه Header خود را به داده اضافه می‌کند.</p>
+</section>
+</section>
+<section id="vlan-tag-و-ieee-802.1q" class="level2">
+<h2 class="anchored" data-anchor-id="vlan-tag-و-ieee-802.1q">5. VLAN Tag و IEEE 802.1Q</h2>
+<p>در شبکه‌های VLAN، Frame ممکن است دارای Tag باشد.</p>
+<p>استاندارد IEEE 802.1Q اطلاعات VLAN و اولویت را به Frame اضافه می‌کند.</p>
+<p>ساختار ساده‌شده:</p>
+<pre class="text"><code>Destination MAC
+Source MAC
+802.1Q Tag
+EtherType
+Payload
+FCS</code></pre>
+<p>Tag استاندارد 802.1Q چهار بایت است و شامل بخش‌های زیر می‌شود:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>فیلد</th>
+<th style="text-align: right;">اندازه</th>
+<th>کاربرد</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TPID</td>
+<td style="text-align: right;">16 بیت</td>
+<td>شناسایی Tag</td>
+</tr>
+<tr class="even">
+<td>PCP</td>
+<td style="text-align: right;">3 بیت</td>
+<td>اولویت ترافیک</td>
+</tr>
+<tr class="odd">
+<td>DEI</td>
+<td style="text-align: right;">1 بیت</td>
+<td>Drop Eligible Indicator</td>
+</tr>
+<tr class="even">
+<td>VID</td>
+<td style="text-align: right;">12 بیت</td>
+<td>شناسه VLAN</td>
+</tr>
+</tbody>
+</table>
+<p>VID دوازده بیت است. مقادیر 0 و 4095 رزروشده هستند و شناسه‌های معمول قابل استفاده VLAN از 1 تا 4094 هستند.</p>
+<p>VLAN یک Broadcast Domain منطقی مستقل ایجاد می‌کند.</p>
+<p>بنابراین Broadcast در VLAN 10 به‌صورت عادی وارد VLAN 20 نمی‌شود.</p>
+<hr>
+</section>
+<section id="switching" class="level2">
+<h2 class="anchored" data-anchor-id="switching">3. Switching</h2>
 </section>
 <section id="switch-چگونه-کار-میکند" class="level2">
-<h2 class="anchored" data-anchor-id="switch-چگونه-کار-میکند">5. Switch چگونه کار می‌کند؟</h2>
-<p>سوئیچ معمولاً جدول MAC Address یا CAM Table دارد.</p>
-<p>فرض کن: - کامپیوتر A به Port 1 متصل است. - کامپیوتر B به Port 2 متصل است. - کامپیوتر C به Port 3 متصل است.</p>
-<p>وقتی فریمی از کامپیوتر A دریافت می‌شود، سوئیچ MAC مبدأ را یاد می‌گیرد و آن را به Port 1 نسبت می‌دهد.</p>
-<p>سپس MAC مقصد را در جدول جست‌وجو می‌کند.</p>
-<p>اگر مقصد را بشناسد، فریم را به پورت مربوطه می‌فرستد. اگر مقصد ناشناخته باشد، فریم را در همان VLAN به سایر پورت‌های مناسب Flood می‌کند.</p>
+<h2 class="anchored" data-anchor-id="switch-چگونه-کار-میکند">6. Switch چگونه کار می‌کند؟</h2>
+<p>Switch لایه دوم Frameها را بر اساس اطلاعات لایه دوم منتقل می‌کند.</p>
+<p>چرخه ساده پردازش Frame:</p>
+<ol type="1">
+<li>دریافت Frame از پورت ورودی</li>
+<li>بررسی Source MAC</li>
+<li>یادگیری Source MAC در جدول MAC</li>
+<li>بررسی Destination MAC</li>
+<li>تصمیم‌گیری برای Forward، Filter یا Flood</li>
+<li>ارسال Frame از پورت یا پورت‌های مناسب</li>
+</ol>
+<p>جدول MAC ممکن است با نام‌های زیر نیز شناخته شود:</p>
+<ul>
+<li>MAC Address Table</li>
+<li>CAM Table</li>
+<li>Forwarding Database یا FDB</li>
+</ul>
+<section id="mac-learning" class="level4">
+<h4 class="anchored" data-anchor-id="mac-learning">6.1 MAC Learning</h4>
+<p>فرض کنیم سه کامپیوتر به یک Switch متصل هستند:</p>
+<pre class="text"><code>PC-A                 PC-B
+Port 1               Port 2
+  \                    /
+   \                  /
+      +-------------+
+      |   Switch    |
+      +-------------+
+             |
+           Port 3
+             |
+           PC-C</code></pre>
+<p>وقتی PC-A یک Frame ارسال می‌کند، سوئیچ Source MAC را بررسی می‌کند.</p>
+<p>فرض کنیم:</p>
+<pre class="text"><code>Source MAC: AA:AA:AA:AA:AA:AA
+Ingress Port: 1
+VLAN: 10</code></pre>
+<p>سوئیچ می‌تواند این اطلاعات را یاد بگیرد:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>MAC Address</th>
+<th style="text-align: right;">VLAN</th>
+<th>Port</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AA:AA:AA:AA:AA:AA</td>
+<td style="text-align: right;">10</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>اگر بعداً از Port 2 فریمی با Source MAC برابر <code>BB:BB:BB:BB:BB:BB</code> دریافت کند، جدول گسترش می‌یابد.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>MAC Address</th>
+<th style="text-align: right;">VLAN</th>
+<th>Port</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AA:AA:AA:AA:AA:AA</td>
+<td style="text-align: right;">10</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>BB:BB:BB:BB:BB:BB</td>
+<td style="text-align: right;">10</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>نکته کلیدی: یادگیری MAC بر اساس Source MAC انجام می‌شود، نه Destination MAC.</p>
+<p>در پیاده‌سازی واقعی، سوئیچ اطلاعات MAC را همراه با VLAN و Interface نگهداری می‌کند. یک MAC یکسان ممکن است در VLANهای متفاوت به‌صورت مستقل وجود داشته باشد.</p>
+</section>
+<section id="forwarding-decision" class="level4">
+<h4 class="anchored" data-anchor-id="forwarding-decision">6.2 Forwarding Decision</h4>
+<p>سه وضعیت مهم وجود دارد:</p>
+<p><strong>حالت اول: Known Unicast</strong></p>
+<p>اگر Destination MAC در جدول وجود داشته باشد و از پورت دیگری قابل دسترسی باشد، Frame به همان پورت Forward می‌شود.</p>
+<p><strong>حالت دوم: Unknown Unicast</strong></p>
+<p>اگر Destination MAC در جدول وجود نداشته باشد، سوئیچ Frame را در VLAN مربوطه Flood می‌کند.</p>
+<p><strong>حالت سوم: Broadcast</strong></p>
+<p>اگر Destination MAC برابر <code>FF:FF:FF:FF:FF:FF</code> باشد، Frame به پورت‌های مناسب همان VLAN Flood می‌شود.</p>
+<p>در حالت معمول، Frame به پورت ورودی بازگردانده نمی‌شود.</p>
+</section>
+<section id="تفاوت-flooding-و-forwarding" class="level4">
+<h4 class="anchored" data-anchor-id="تفاوت-flooding-و-forwarding">6.3 تفاوت Flooding و Forwarding</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>رفتار</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Forwarding</td>
+<td>ارسال به پورت مشخص</td>
+</tr>
+<tr class="even">
+<td>Flooding</td>
+<td>ارسال به چند پورت مجاز</td>
+</tr>
+<tr class="odd">
+<td>Filtering</td>
+<td>جلوگیری از ارسال غیرضروری Frame</td>
+</tr>
+</tbody>
+</table>
+<p>Unknown Unicast و Broadcast ممکن است هر دو Flood شوند، اما علت آن‌ها متفاوت است:</p>
+<ul>
+<li>در Unknown Unicast، سوئیچ مقصد را در جدول پیدا نمی‌کند.</li>
+<li>در Broadcast، مقصد از ابتدا تمام اعضای Broadcast Domain است.</li>
+</ul>
+</section>
+<section id="mac-aging" class="level4">
+<h4 class="anchored" data-anchor-id="mac-aging">6.4 MAC Aging</h4>
+<p>اطلاعات MAC معمولاً برای همیشه در جدول باقی نمی‌ماند.</p>
+<p>سوئیچ برای حذف Entryهای قدیمی از Aging Timer استفاده می‌کند.</p>
+<p>اگر از یک MAC برای مدت مشخصی Frame دریافت نشود، Entry آن ممکن است حذف شود.</p>
+<p>پس از حذف Entry، اولین Frame بعدی به مقصد ناشناخته ممکن است دوباره Flood شود.</p>
+<p>مقدار Aging Timer وابسته به سازنده و تنظیمات Switch است.</p>
+</section>
+<section id="mac-flapping" class="level4">
+<h4 class="anchored" data-anchor-id="mac-flapping">6.5 MAC Flapping</h4>
+<p>MAC Flapping زمانی رخ می‌دهد که یک MAC Address در فاصله زمانی کوتاه از پورت‌های متفاوتی یاد گرفته شود.</p>
+<p>دلایل احتمالی:</p>
+<ul>
+<li>Loop لایه دوم</li>
+<li>اتصال اشتباه کابل‌ها</li>
+<li>تغییر مسیر در توپولوژی</li>
+<li>Virtualization یا طراحی خاص شبکه</li>
+<li>جابه‌جایی واقعی دستگاه</li>
+</ul>
+<p>MAC Flapping به‌تنهایی اثبات وجود Loop نیست، اما یک علامت هشدار مهم است و باید همراه با لاگ‌ها و توپولوژی بررسی شود.</p>
+</section>
+<section id="collision-domain-و-broadcast-domain" class="level4">
+<h4 class="anchored" data-anchor-id="collision-domain-و-broadcast-domain">6.6 Collision Domain و Broadcast Domain</h4>
+<p>Collision Domain و Broadcast Domain دو مفهوم متفاوت‌اند.</p>
+<p>در شبکه‌های Switched Full-Duplex امروزی، هر پورت سوئیچ معمولاً Collision Domain مستقل دارد و Collision به شکل شبکه‌های قدیمی Half-Duplex موضوع رایجی نیست.</p>
+<p>اما Broadcast Domain به محدوده‌ای گفته می‌شود که Broadcast لایه دوم در آن منتشر می‌شود.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>مفهوم</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Collision Domain</td>
+<td>محدوده اشتراک رسانه در Ethernet Half-Duplex</td>
+</tr>
+<tr class="even">
+<td>Broadcast Domain</td>
+<td>محدوده انتشار Broadcast لایه دوم</td>
+</tr>
+<tr class="odd">
+<td>VLAN</td>
+<td>ابزار جداسازی منطقی Broadcast Domain</td>
+</tr>
+</tbody>
+</table>
+<p>روتر یا مرز لایه سوم معمولاً Broadcast Domainها را از یکدیگر جدا می‌کند.</p>
+<hr>
+</section>
+</section>
+<section id="arp" class="level2">
+<h2 class="anchored" data-anchor-id="arp">4. ARP</h2>
 </section>
 <section id="arp-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="arp-چیست">6. ARP چیست؟</h2>
-<p>در شبکه IPv4، دستگاه برای ارسال فریم به یک IP محلی معمولاً به MAC مقصد نیاز دارد.</p>
-<p>ARP این نگاشت را پیدا می‌کند.</p>
-<p>مثال:</p>
-<pre class="text"><code>Who has 192.168.1.1?
-Tell 192.168.1.10</code></pre>
-<p>دستگاهی که IP برابر 192.168.1.1 دارد، پاسخ می‌دهد و MAC خود را اعلام می‌کند.</p>
-<p>نتیجه در ARP Cache ذخیره می‌شود تا برای هر ارتباط دوباره درخواست ارسال نشود.</p>
-<section id="نکته-مهم-درباره-gateway" class="level3">
-<h3 class="anchored" data-anchor-id="نکته-مهم-درباره-gateway">نکته مهم درباره Gateway</h3>
-<p>اگر مقصد IP خارج از Subnet محلی باشد، سیستم معمولاً MAC مربوط به Default Gateway را پیدا می‌کند، نه MAC سرور مقصد نهایی را.</p>
+<h2 class="anchored" data-anchor-id="arp-چیست">7. ARP چیست؟</h2>
+<p>Address Resolution Protocol یا ARP برای پیدا کردن MAC Address متناظر با یک IPv4 Address در شبکه محلی استفاده می‌شود.</p>
+<p>فرض کنیم کامپیوتر A اطلاعات زیر را دارد:</p>
+<pre class="text"><code>IPv4: 192.168.10.10/24
+MAC:  AA:AA:AA:AA:AA:AA</code></pre>
+<p>و می‌خواهد با کامپیوتر B ارتباط برقرار کند:</p>
+<pre class="text"><code>IPv4: 192.168.10.20/24</code></pre>
+<p>سیستم مبدأ می‌داند IP مقصد چیست، اما هنوز MAC مقصد را نمی‌داند.</p>
+<p>بنابراین باید ARP را اجرا کند.</p>
+<section id="arp-request" class="level4">
+<h4 class="anchored" data-anchor-id="arp-request">7.1 ARP Request</h4>
+<p>کامپیوتر A یک ARP Request می‌سازد.</p>
+<p>اطلاعات مهم پیام:</p>
+<pre class="text"><code>Sender IP:  192.168.10.10
+Sender MAC: AA:AA:AA:AA:AA:AA
+
+Target IP:  192.168.10.20
+Target MAC: 00:00:00:00:00:00</code></pre>
+<p>سپس پیام در یک Ethernet Frame با Destination MAC زیر قرار می‌گیرد:</p>
+<pre class="text"><code>FF:FF:FF:FF:FF:FF</code></pre>
+<p>به همین دلیل تمام دستگاه‌های همان Broadcast Domain می‌توانند ARP Request را دریافت کنند.</p>
 </section>
+<section id="arp-reply" class="level4">
+<h4 class="anchored" data-anchor-id="arp-reply">7.2 ARP Reply</h4>
+<p>دستگاهی که مالک IPv4 موردنظر است، می‌تواند ARP Reply ارسال کند.</p>
+<p>مثلاً:</p>
+<pre class="text"><code>Sender IP:  192.168.10.20
+Sender MAC: BB:BB:BB:BB:BB:BB</code></pre>
+<p>این پاسخ معمولاً به MAC فرستنده ARP Request ارسال می‌شود.</p>
+<p>کامپیوتر A اکنون می‌تواند نگاشت زیر را در ARP Cache ذخیره کند:</p>
+<pre class="text"><code>192.168.10.20 -&gt; BB:BB:BB:BB:BB:BB</code></pre>
 </section>
-<section id="آزمایش-عملی" class="level2">
-<h2 class="anchored" data-anchor-id="آزمایش-عملی">7. آزمایش عملی</h2>
-<section id="مشاهده-کارتهای-شبکه" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-کارتهای-شبکه">مشاهده کارت‌های شبکه</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="توالی-کامل-arp" class="level4">
+<h4 class="anchored" data-anchor-id="توالی-کامل-arp">7.3 توالی کامل ARP</h4>
+<pre class="text"><code>PC-A                     Switch                    PC-B
+ |                          |                         |
+ |---- ARP Request --------&gt;|                         |
+ |     Broadcast            |---- Flood ------------&gt;|
+ |                          |                         |
+ |                          |&lt;--- ARP Reply ----------|
+ |&lt;--- ARP Reply -----------|                         |
+ |                          |                         |
+ |---- Unicast Data --------&gt;|---- Forward ----------&gt;|</code></pre>
+<p>این نمودار یک ارتباط ساده در یک VLAN را نشان می‌دهد.</p>
+<p>نکته مهم: ARP یک پروتکل IPv4 است. در IPv6 برای Neighbor Discovery از ICMPv6 و سازوکارهای NDP استفاده می‌شود.</p>
 </section>
-<section id="مشاهده-mac-address" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-mac-address">مشاهده MAC Address</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter <span class="op">|</span> <span class="fu">Select-Object</span> Name<span class="op">,</span> MacAddress<span class="op">,</span> Status<span class="op">,</span> LinkSpeed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="مشاهده-جدول-arp" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-جدول-arp">مشاهده جدول ARP</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>arp <span class="op">-</span>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="مشاهده-جدول-همسایهها" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-جدول-همسایهها">مشاهده جدول همسایه‌ها</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor <span class="op">-</span>AddressFamily IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="ایجاد-ترافیک-و-بررسی-مجدد" class="level3">
-<h3 class="anchored" data-anchor-id="ایجاد-ترافیک-و-بررسی-مجدد">ایجاد ترافیک و بررسی مجدد</h3>
-<p>ابتدا:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">8.8</span><span class="op">.</span><span class="dv">8.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>سپس:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>arp <span class="op">-</span>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>بررسی کن آیا MAC مربوط به Gateway در جدول مشاهده می‌شود یا خیر.</p>
-</section>
-</section>
-<section id="آزمایش-wireshark" class="level2">
-<h2 class="anchored" data-anchor-id="آزمایش-wireshark">8. آزمایش Wireshark</h2>
-<p>Wireshark را اجرا کن و روی Interface فعال Capture بگیر.</p>
-<p>فیلتر:</p>
+<section id="ethertype-مربوط-به-arp" class="level4">
+<h4 class="anchored" data-anchor-id="ethertype-مربوط-به-arp">7.4 EtherType مربوط به ARP</h4>
+<p>در Ethernet II، پیام ARP با EtherType زیر مشخص می‌شود:</p>
+<pre class="text"><code>0x0806</code></pre>
+<p>در Wireshark می‌توانی از فیلتر زیر استفاده کنی:</p>
 <pre class="text"><code>arp</code></pre>
-<p>سپس در PowerShell:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>arp <span class="op">-</span>d <span class="op">*</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">192.168</span><span class="op">.</span><span class="dv">1.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>به‌جای IP نمونه، آدرس واقعی Gateway خودت را قرار بده.</p>
-<p>در Wireshark به این موارد توجه کن: - ARP Request - ARP Reply - Sender IP - Sender MAC - Target IP</p>
-<p>حذف ARP Cache فقط برای آزمایش انجام می‌شود و ممکن است برای چند لحظه ارتباط محلی را تحت تأثیر قرار دهد.</p>
 </section>
-<section id="ارتباط-با-automation" class="level2">
-<h2 class="anchored" data-anchor-id="ارتباط-با-automation">9. ارتباط با Automation</h2>
-<p>در پروژه NetFleet می‌توانیم: - MAC Address تجهیزات را جمع‌آوری کنیم. - تغییرات جدول ARP را بررسی کنیم. - دستگاه‌های جدید شبکه را شناسایی کنیم. - وضعیت Interfaceها را مانیتور کنیم.</p>
-<p>البته ARP به‌تنهایی ابزار قطعی شناسایی دستگاه نیست.</p>
 </section>
-<section id="ارزیابی" class="level2">
-<h2 class="anchored" data-anchor-id="ارزیابی">ارزیابی</h2>
+<section id="local-destination-و-remote-destination" class="level2">
+<h2 class="anchored" data-anchor-id="local-destination-و-remote-destination">8. Local Destination و Remote Destination</h2>
+<p>یکی از مهم‌ترین مفاهیم این جلسه، تفاوت MAC مقصد در ارتباط محلی و ارتباط خارج از Subnet است.</p>
+<section id="مقصد-در-همان-subnet" class="level4">
+<h4 class="anchored" data-anchor-id="مقصد-در-همان-subnet">8.1 مقصد در همان Subnet</h4>
+<p>فرض کنیم:</p>
+<pre class="text"><code>PC-A:
+IP:      192.168.10.10
+Mask:    255.255.255.0
+
+PC-B:
+IP:      192.168.10.20
+Mask:    255.255.255.0</code></pre>
+<p>هر دو دستگاه در شبکه <code>192.168.10.0/24</code> قرار دارند.</p>
+<p>PC-A تشخیص می‌دهد مقصد Local است.</p>
+<p>بنابراین برای پیدا کردن MAC مقصد، ARP Request مربوط به IP کامپیوتر B را ارسال می‌کند.</p>
+<p>پس از دریافت پاسخ:</p>
+<pre class="text"><code>Destination IP:  192.168.10.20
+Destination MAC: BB:BB:BB:BB:BB:BB</code></pre>
+<p>Frame مستقیماً برای MAC کامپیوتر B ساخته می‌شود.</p>
+</section>
+<section id="مقصد-خارج-از-subnet" class="level4">
+<h4 class="anchored" data-anchor-id="مقصد-خارج-از-subnet">8.2 مقصد خارج از Subnet</h4>
+<p>حالا فرض کنیم:</p>
+<pre class="text"><code>PC-A:
+IP:      192.168.10.10
+Mask:    255.255.255.0
+Gateway: 192.168.10.1
+
+Remote Server:
+IP:      8.8.8.8</code></pre>
+<p>PC-A تشخیص می‌دهد <code>8.8.8.8</code> در Subnet محلی نیست.</p>
+<p>در این شرایط، سیستم باید بسته را به Next Hop یا Default Gateway تحویل دهد.</p>
+<p>اگر MAC Gateway در ARP Cache وجود نداشته باشد، سیستم ARP Request را برای IP زیر ارسال می‌کند:</p>
+<pre class="text"><code>192.168.10.1</code></pre>
+<p>پس از دریافت MAC Gateway، Frame به شکل زیر ساخته می‌شود:</p>
+<pre class="text"><code>Destination IP:  8.8.8.8
+Destination MAC: MAC of Default Gateway</code></pre>
+<p>این دو مقصد را با هم اشتباه نگیر:</p>
+<ul>
+<li>Destination IP همچنان IP سرور نهایی است.</li>
+<li>Destination MAC آدرس رابط لایه دوم Next Hop است.</li>
+</ul>
+<p>در روتر بعدی، Frame لایه دوم جدیدی ساخته می‌شود. IP مقصد معمولاً تغییر نمی‌کند، مگر در شرایطی مانند NAT یا تغییرات مسیریابی خاص.</p>
+</section>
+<section id="جدول-مقایسه" class="level4">
+<h4 class="anchored" data-anchor-id="جدول-مقایسه">8.3 جدول مقایسه</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ویژگی</th>
+<th>Local Destination</th>
+<th>Remote Destination</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>تشخیص مقصد</td>
+<td>در Subnet محلی</td>
+<td>خارج از Subnet</td>
+</tr>
+<tr class="even">
+<td>ARP برای</td>
+<td>IP مقصد</td>
+<td>IP مربوط به Next Hop</td>
+</tr>
+<tr class="odd">
+<td>Destination MAC</td>
+<td>MAC مقصد محلی</td>
+<td>MAC Gateway</td>
+</tr>
+<tr class="even">
+<td>Destination IP</td>
+<td>IP مقصد نهایی</td>
+<td>IP مقصد نهایی</td>
+</tr>
+<tr class="odd">
+<td>عبور از Router</td>
+<td>معمولاً خیر</td>
+<td>بله</td>
+</tr>
+</tbody>
+</table>
+<p>این مفهوم در عیب‌یابی شبکه بسیار مهم است. اگر کامپیوتر می‌تواند Gateway را Ping کند اما به مقصد خارجی دسترسی ندارد، مشکل لزوماً در ARP محلی نیست و باید Routing، NAT، Firewall و مسیر بالادستی بررسی شوند.</p>
+</section>
+</section>
+<section id="arp-cache-و-neighbor-table" class="level2">
+<h2 class="anchored" data-anchor-id="arp-cache-و-neighbor-table">9. ARP Cache و Neighbor Table</h2>
+<p>برای جلوگیری از ارسال ARP Request تکراری، سیستم‌عامل نگاشت‌های IP و MAC را به‌صورت موقت نگهداری می‌کند.</p>
+<p>این اطلاعات در ARP Cache قرار می‌گیرند.</p>
+<p>در Windows، دستورات زیر کاربردی‌اند:</p>
+<p>نمایش جدول:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>arp <span class="op">-</span>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>نمایش Neighbor Table:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>فقط IPv4:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor <span class="op">-</span>AddressFamily IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>نمایش اطلاعات یک Interface:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor <span class="op">-</span>InterfaceIndex <span class="dv">12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>عدد 12 فقط نمونه است. InterfaceIndex واقعی را از دستور زیر پیدا کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPInterface</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="وضعیتهای-neighbor" class="level4">
+<h4 class="anchored" data-anchor-id="وضعیتهای-neighbor">9.1 وضعیت‌های Neighbor</h4>
+<p>در Windows ممکن است وضعیت‌هایی مانند موارد زیر ببینی:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>State</th>
+<th>مفهوم کلی</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reachable</td>
+<td>همسایه اخیراً قابل دسترسی تأیید شده</td>
+</tr>
+<tr class="even">
+<td>Stale</td>
+<td>اطلاعات موجود است، اما اخیراً تأیید نشده</td>
+</tr>
+<tr class="odd">
+<td>Delay</td>
+<td>سیستم برای تأیید مجدد منتظر مانده</td>
+</tr>
+<tr class="even">
+<td>Probe</td>
+<td>تلاش برای بررسی مجدد همسایه</td>
+</tr>
+<tr class="odd">
+<td>Incomplete</td>
+<td>فرایند Resolve هنوز کامل نشده</td>
+</tr>
+<tr class="even">
+<td>Unreachable</td>
+<td>همسایه قابل دسترسی تشخیص داده نشده</td>
+</tr>
+<tr class="odd">
+<td>Permanent</td>
+<td>Entry دائمی یا دستی</td>
+</tr>
+</tbody>
+</table>
+<p>تفسیر دقیق Stateها باید با توجه به پیاده‌سازی سیستم‌عامل و نوع Interface انجام شود.</p>
+</section>
+<section id="حذف-یک-entry-مشخص" class="level4">
+<h4 class="anchored" data-anchor-id="حذف-یک-entry-مشخص">9.2 حذف یک Entry مشخص</h4>
+<p>برای حذف یک Neighbor Entry:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Remove-NetNeighbor <span class="op">-</span>IPAddress <span class="st">"192.168.10.20"</span> <span class="op">-</span>Confirm<span class="op">:</span><span class="va">$false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>اگر دستور با خطای دسترسی مواجه شد، PowerShell را با دسترسی Administrator اجرا کن.</p>
+<p>برای پاک‌کردن گسترده Cache بدون نیاز، عجله نکن. ابتدا Entry موردنظر و علت مشکل را مشخص کن.</p>
+<hr>
+</section>
+</section>
+<section id="arp-security" class="level2">
+<h2 class="anchored" data-anchor-id="arp-security">5. ARP Security</h2>
+</section>
+<section id="gratuitous-arp" class="level2">
+<h2 class="anchored" data-anchor-id="gratuitous-arp">10. Gratuitous ARP</h2>
+<p>Gratuitous ARP پیامی است که دستگاه برای اعلام یا بررسی ارتباط یک IPv4 Address با MAC خود ارسال می‌کند.</p>
+<p>کاربردهای رایج:</p>
+<ul>
+<li>اعلام تغییر MAC برای یک IP</li>
+<li>کمک به به‌روزرسانی Cache دستگاه‌های دیگر</li>
+<li>تشخیص Duplicate IP در برخی سناریوها</li>
+<li>برخی عملیات Failover و High Availability</li>
+</ul>
+<p>Gratuitous ARP لزوماً نشانه حمله نیست.</p>
+</section>
+<section id="arp-spoofing-و-arp-poisoning" class="level2">
+<h2 class="anchored" data-anchor-id="arp-spoofing-و-arp-poisoning">11. ARP Spoofing و ARP Poisoning</h2>
+<p>ARP در شبکه‌های IPv4 سنتی مکانیزم احراز هویت رمزنگاری‌شده ندارد.</p>
+<p>یک مهاجم در همان Broadcast Domain ممکن است پیام ARP جعلی ارسال کند و تلاش کند نگاشت IP به MAC را تغییر دهد.</p>
+<p>مثال:</p>
+<p>نگاشت واقعی:</p>
+<pre class="text"><code>192.168.10.1 -&gt; AA:AA:AA:AA:AA:AA</code></pre>
+<p>نگاشت جعلی:</p>
+<pre class="text"><code>192.168.10.1 -&gt; CC:CC:CC:CC:CC:CC</code></pre>
+<p>اگر دستگاه قربانی این اطلاعات جعلی را بپذیرد، ممکن است ترافیک خود را به MAC مهاجم ارسال کند.</p>
+<p>این وضعیت می‌تواند زمینه حمله Man-in-the-Middle را فراهم کند.</p>
+<section id="نشانههای-احتمالی" class="level4">
+<h4 class="anchored" data-anchor-id="نشانههای-احتمالی">11.1 نشانه‌های احتمالی</h4>
+<ul>
+<li>تغییر غیرمنتظره MAC مربوط به Gateway</li>
+<li>مشاهده ARP Replyهای غیرعادی</li>
+<li>چند MAC متفاوت برای یک IP در زمان کوتاه</li>
+<li>هشدارهای امنیتی Switch</li>
+<li>اختلال یا تغییر مسیر غیرمنتظره ترافیک</li>
+</ul>
+<p>هیچ‌کدام از این نشانه‌ها به‌تنهایی اثبات قطعی حمله نیستند.</p>
+</section>
+<section id="روشهای-مقابله" class="level4">
+<h4 class="anchored" data-anchor-id="روشهای-مقابله">11.2 روش‌های مقابله</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>راهکار</th>
+<th>نقش</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DHCP Snooping</td>
+<td>ایجاد Binding معتبر برای IP و MAC</td>
+</tr>
+<tr class="even">
+<td>Dynamic ARP Inspection</td>
+<td>اعتبارسنجی ARP نسبت به Bindingها</td>
+</tr>
+<tr class="odd">
+<td>Port Security</td>
+<td>محدود کردن MACهای مجاز روی پورت</td>
+</tr>
+<tr class="even">
+<td>VLAN Segmentation</td>
+<td>محدود کردن محدوده انتشار ترافیک</td>
+</tr>
+<tr class="odd">
+<td>Static ARP در موارد محدود</td>
+<td>تثبیت نگاشت برای تجهیزات خاص</td>
+</tr>
+<tr class="even">
+<td>Monitoring</td>
+<td>تشخیص تغییرات و رفتار غیرعادی</td>
+</tr>
+</tbody>
+</table>
+<p>DAI و DHCP Snooping در بسیاری از سوئیچ‌های مدیریتی می‌توانند در کنار یکدیگر استفاده شوند.</p>
+<hr>
+</section>
+</section>
+<section id="آزمایشهای-عملی" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایشهای-عملی">6. آزمایش‌های عملی</h2>
+</section>
+<section id="lab-01-مشاهده-mac-address-در-windows" class="level2">
+<h2 class="anchored" data-anchor-id="lab-01-مشاهده-mac-address-در-windows">12. Lab 01: مشاهده MAC Address در Windows</h2>
+<p>ابتدا PowerShell را باز کن.</p>
+<p>نمایش Interfaceها:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>نمایش MAC Addressها:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter <span class="op">|</span> <span class="fu">Select-Object</span> Name<span class="op">,</span> Status<span class="op">,</span> MacAddress<span class="op">,</span> LinkSpeed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>نمایش IP و Interface:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="وظیفه-آزمایش" class="level4">
+<h4 class="anchored" data-anchor-id="وظیفه-آزمایش">وظیفه آزمایش</h4>
 <ol type="1">
-<li>MAC Address در کدام لایه استفاده می‌شود؟</li>
-<li>سوئیچ چگونه MAC Address را یاد می‌گیرد؟</li>
-<li>ARP چه مسئله‌ای را حل می‌کند؟</li>
-<li>تفاوت Unknown Unicast و Broadcast چیست؟</li>
-<li>وقتی مقصد خارج از Subnet باشد، MAC کدام دستگاه استفاده می‌شود؟</li>
-<li>چرا جدول ARP ممکن است خالی باشد؟</li>
-<li>تفاوت <code>arp -a</code> و <code>Get-NetNeighbor</code> چیست؟</li>
+<li>نام کارت شبکه فعال را پیدا کن.</li>
+<li>MAC Address آن را یادداشت کن.</li>
+<li>Link Speed را بررسی کن.</li>
+<li>وضعیت Interface را مشخص کن.</li>
+<li>تفاوت MAC Address و IPv4 Address را با یک مثال توضیح بده.</li>
 </ol>
 </section>
-<section id="منابع" class="level2">
-<h2 class="anchored" data-anchor-id="منابع">منابع</h2>
+</section>
+<section id="lab-02-بررسی-arp-cache" class="level2">
+<h2 class="anchored" data-anchor-id="lab-02-بررسی-arp-cache">13. Lab 02: بررسی ARP Cache</h2>
+<p>ابتدا جدول فعلی را مشاهده کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>arp <span class="op">-</span>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>سپس:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor <span class="op">-</span>AddressFamily IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Default Gateway را پیدا کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مقدار Default Gateway را یادداشت کن.</p>
+<p>سپس تلاش کن Gateway را Ping کنی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>ping <span class="op">&lt;</span>GATEWAY-IP<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>به‌جای <code>&lt;GATEWAY-IP&gt;</code> آدرس واقعی Gateway خودت را قرار بده.</p>
+<p>دوباره جدول را بررسی کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>arp <span class="op">-</span>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="سؤال-آزمایش" class="level4">
+<h4 class="anchored" data-anchor-id="سؤال-آزمایش">سؤال آزمایش</h4>
+<p>آیا MAC مربوط به Gateway در جدول دیده می‌شود؟</p>
+<p>اگر دیده می‌شود، آیا می‌توان نتیجه گرفت که مسیر اینترنت نیز سالم است؟</p>
+<p>پاسخ مورد انتظار: خیر. موفقیت ARP و ارتباط با Gateway فقط بخشی از مسیر را تأیید می‌کند.</p>
+</section>
+</section>
+<section id="lab-03-مشاهده-arp-در-wireshark" class="level2">
+<h2 class="anchored" data-anchor-id="lab-03-مشاهده-arp-در-wireshark">14. Lab 03: مشاهده ARP در Wireshark</h2>
+<p>Wireshark را اجرا کن و Interface فعال شبکه را انتخاب کن.</p>
+<p>برای مشاهده ARP از Display Filter زیر استفاده کن:</p>
+<pre class="text"><code>arp</code></pre>
+<p>برای مشاهده Requestها:</p>
+<pre class="text"><code>arp.opcode == 1</code></pre>
+<p>برای مشاهده Replyها:</p>
+<pre class="text"><code>arp.opcode == 2</code></pre>
+<p>برای مشاهده پیام‌های IPv4 و ARP:</p>
+<pre class="text"><code>eth.type == 0x0806</code></pre>
+<section id="تولید-ترافیک-آزمایش" class="level4">
+<h4 class="anchored" data-anchor-id="تولید-ترافیک-آزمایش">تولید ترافیک آزمایش</h4>
+<p>برای مشاهده ARP جدید، ابتدا IP مقصدی را انتخاب کن که در شبکه محلی قرار دارد و مطمئن هستی در حال حاضر در Cache نیست.</p>
+<p>سپس Entry همان IP را در صورت وجود حذف کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>Remove-NetNeighbor <span class="op">-</span>IPAddress <span class="st">"192.168.10.20"</span> <span class="op">-</span>Confirm<span class="op">:</span><span class="va">$false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>آدرس بالا نمونه است. فقط در صورت وجود مقصد مناسب در شبکه خودت از آن استفاده کن.</p>
+<p>اکنون ارتباط را ایجاد کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">192.168</span><span class="op">.</span><span class="dv">10.20</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>در Wireshark بررسی کن:</p>
+<ol type="1">
+<li>ARP Request از چه MAC و IP ارسال شده است؟</li>
+<li>Target IP چه مقداری دارد؟</li>
+<li>Destination MAC در Ethernet Header چیست؟</li>
+<li>آیا ARP Reply دریافت شده است؟</li>
+<li>MAC پاسخ‌دهنده چیست؟</li>
+</ol>
+<p>نکته: اگر مقصد خاموش باشد، ممکن است ARP Reply دریافت نکنی. این نتیجه به‌تنهایی خرابی کارت شبکه را ثابت نمی‌کند.</p>
+</section>
+</section>
+<section id="lab-04-مقایسه-مقصد-local-و-remote" class="level2">
+<h2 class="anchored" data-anchor-id="lab-04-مقایسه-مقصد-local-و-remote">15. Lab 04: مقایسه مقصد Local و Remote</h2>
+<p>دو ارتباط را بررسی کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>ping <span class="op">&lt;</span>LOCAL-IP<span class="op">&gt;</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">8.8</span><span class="op">.</span><span class="dv">8.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>در Wireshark، Ethernet Header و IP Header را بررسی کن.</p>
+<p>برای ارتباط Local:</p>
 <ul>
-<li><a href="https://standards.ieee.org/standard/802_3-2022.html">IEEE 802.3</a></li>
-<li><a href="https://www.wireshark.org/docs/wsug_html_chunked/">Wireshark User Guide</a></li>
-<li><a href="https://learn.microsoft.com/en-us/powershell/module/nettcpip/get-netneighbor">Microsoft Get-NetNeighbor</a></li>
+<li>Destination IP باید IP مقصد محلی باشد.</li>
+<li>Destination MAC باید MAC مقصد محلی باشد.</li>
 </ul>
-<p><strong>خروجی مورد انتظار:</strong> بتوانی ارتباط MAC، ARP و Switching را در یک LAN توضیح بدهی.</p>
+<p>برای ارتباط Remote:</p>
+<ul>
+<li>Destination IP همچنان IP مقصد نهایی است.</li>
+<li>Destination MAC باید MAC مربوط به Next Hop باشد.</li>
+</ul>
+<p>اگر در Capture فقط ترافیک یک Interface را مشاهده می‌کنی، به این نکته توجه کن که Offloadهای NIC، نوع Capture و محل ثبت بسته ممکن است روی جزئیات مشاهده‌شده تأثیر بگذارند.</p>
+</section>
+<section id="lab-05-تحلیل-جدول-mac-در-switch" class="level2">
+<h2 class="anchored" data-anchor-id="lab-05-تحلیل-جدول-mac-در-switch">16. Lab 05: تحلیل جدول MAC در Switch</h2>
+<p>اگر به Switch مدیریتی یا محیط شبیه‌سازی مانند Packet Tracer دسترسی داری، این آزمایش را اجرا کن.</p>
+<p>سه دستگاه را به یک Switch متصل کن.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>دستگاه</th>
+<th>IP</th>
+<th>Port</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PC-A</td>
+<td>192.168.10.10/24</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>PC-B</td>
+<td>192.168.10.20/24</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>PC-C</td>
+<td>192.168.10.30/24</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>از PC-A به PC-B ترافیک ارسال کن.</p>
+<p>سپس جدول MAC سوئیچ را بررسی کن.</p>
+<p>در بسیاری از سوئیچ‌های Cisco:</p>
+<pre class="text"><code>show mac address-table</code></pre>
+<p>برای مشاهده یک MAC مشخص:</p>
+<pre class="text"><code>show mac address-table address aaaa.aaaa.aaaa</code></pre>
+<p>برای مشاهده Interface:</p>
+<pre class="text"><code>show interfaces status</code></pre>
+<p>نام و Syntax دستورها ممکن است بین سیستم‌عامل‌ها و مدل‌های مختلف Switch تفاوت داشته باشد.</p>
+<section id="خروجی-مورد-انتظار" class="level4">
+<h4 class="anchored" data-anchor-id="خروجی-مورد-انتظار">خروجی مورد انتظار</h4>
+<p>باید بتوانی مشخص کنی:</p>
+<ul>
+<li>MAC هر دستگاه روی کدام Port یاد گرفته شده است.</li>
+<li>آیا جدول MAC با ارسال ترافیک تغییر کرده است؟</li>
+<li>اگر Entry مقصد حذف شود، رفتار Switch چه خواهد بود؟</li>
+<li>آیا دو VLAN می‌توانند MAC Table مستقل داشته باشند؟</li>
+</ul>
+<hr>
 </section>
 </section>
+<section id="troubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting">7. Troubleshooting</h2>
+</section>
+<section id="سناریوی-اول-ارتباط-local-برقرار-نمیشود" class="level2">
+<h2 class="anchored" data-anchor-id="سناریوی-اول-ارتباط-local-برقرار-نمیشود">17. سناریوی اول: ارتباط Local برقرار نمی‌شود</h2>
+<p>وضعیت:</p>
+<p>دو سیستم در یک Subnet هستند، اما نمی‌توانند یکدیگر را Ping کنند.</p>
+<p>بررسی مرحله‌ای:</p>
+<ol type="1">
+<li>Link Status کارت شبکه را بررسی کن.</li>
+<li>IP و Subnet Mask هر دو سیستم را بررسی کن.</li>
+<li>مطمئن شو هر دو در VLAN یکسان قرار دارند.</li>
+<li>ARP Cache را بررسی کن.</li>
+<li>در Wireshark بررسی کن ARP Request ارسال می‌شود یا نه.</li>
+<li>بررسی کن ARP Reply دریافت می‌شود یا نه.</li>
+<li>Port Security و ACLهای احتمالی را بررسی کن.</li>
+<li>Firewall سیستم مقصد را بررسی کن.</li>
+</ol>
+<p>دستورات مفید:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor <span class="op">-</span>AddressFamily IPv4</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>arp <span class="op">-</span>a</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>ping <span class="op">&lt;</span>DESTINATION-IP<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>تفسیر:</p>
+<ul>
+<li>اگر ARP Request ارسال نمی‌شود، Routing، Subnet و وضعیت Interface را بررسی کن.</li>
+<li>اگر Request ارسال می‌شود اما Reply نمی‌آید، VLAN، کابل، مقصد، Duplicate IP و تنظیمات لایه دوم را بررسی کن.</li>
+<li>اگر ARP موفق است اما Ping شکست می‌خورد، ICMP و Firewall را نیز بررسی کن.</li>
+</ul>
+</section>
+<section id="سناریوی-دوم-gateway-در-دسترس-است-اما-اینترنت-کار-نمیکند" class="level2">
+<h2 class="anchored" data-anchor-id="سناریوی-دوم-gateway-در-دسترس-است-اما-اینترنت-کار-نمیکند">18. سناریوی دوم: Gateway در دسترس است اما اینترنت کار نمی‌کند</h2>
+<p>وضعیت:</p>
+<p>کامپیوتر می‌تواند Gateway را Ping کند، اما به IPهای خارجی دسترسی ندارد.</p>
+<p>در این شرایط، صرفاً پاک‌کردن ARP Cache راه‌حل مهندسی نیست.</p>
+<p>بررسی‌ها:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>route print</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>ping <span class="op">&lt;</span>GATEWAY-IP<span class="op">&gt;</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>tracert <span class="dv">8.8</span><span class="op">.</span><span class="dv">8.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>موارد قابل بررسی:</p>
+<ul>
+<li>Default Route</li>
+<li>Routing در Gateway</li>
+<li>NAT</li>
+<li>Firewall</li>
+<li>مسیر بالادستی ISP</li>
+<li>DNS، اگر دسترسی IP برقرار است اما نام دامنه Resolve نمی‌شود</li>
+</ul>
+<p>نکته: Ping موفق به Gateway فقط ارتباط تا Gateway را تأیید می‌کند، نه سلامت اینترنت.</p>
+</section>
+<section id="سناریوی-سوم-mac-flapping" class="level2">
+<h2 class="anchored" data-anchor-id="سناریوی-سوم-mac-flapping">19. سناریوی سوم: MAC Flapping</h2>
+<p>وضعیت:</p>
+<p>سوئیچ گزارش می‌دهد یک MAC Address بین دو پورت جابه‌جا می‌شود.</p>
+<p>بررسی:</p>
+<ol type="1">
+<li>توپولوژی کابل‌کشی را بررسی کن.</li>
+<li>وجود Loop لایه دوم را بررسی کن.</li>
+<li>وضعیت STP را بررسی کن.</li>
+<li>وجود دستگاه‌های مجازی یا Bridgeهای غیرمنتظره را بررسی کن.</li>
+<li>لاگ‌های Switch را با زمان وقوع رویداد تطبیق بده.</li>
+</ol>
+<p>در محیط Cisco:</p>
+<pre class="text"><code>show spanning-tree
+show mac address-table dynamic
+show logging</code></pre>
+<p>MAC Flapping یک علامت است، نه تشخیص نهایی. علت باید با شواهد توپولوژی و لاگ‌ها مشخص شود.</p>
+<hr>
+</section>
+<section id="network-automation" class="level2">
+<h2 class="anchored" data-anchor-id="network-automation">8. Network Automation</h2>
+</section>
+<section id="جمعآوری-اطلاعات-mac-و-interface-با-powershell" class="level2">
+<h2 class="anchored" data-anchor-id="جمعآوری-اطلاعات-mac-و-interface-با-powershell">20. جمع‌آوری اطلاعات MAC و Interface با PowerShell</h2>
+<p>نمونه زیر اطلاعات کارت‌های شبکه را جمع‌آوری می‌کند:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="va">$adapters</span> <span class="op">=</span> Get-NetAdapter <span class="op">|</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Select-Object</span> Name<span class="op">,</span> InterfaceDescription<span class="op">,</span> Status<span class="op">,</span> MacAddress<span class="op">,</span> LinkSpeed</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="va">$adapters</span> <span class="op">|</span> <span class="fu">Format-Table</span> <span class="op">-</span>AutoSize</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>ذخیره خروجی در CSV:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb57"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="va">$adapters</span> <span class="op">|</span> <span class="fu">Export-Csv</span> `</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span>Path <span class="st">".\netfleet-adapters.csv"</span> `</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span>NoTypeInformation `</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span>Encoding UTF8</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="جمعآوری-neighbor-table" class="level2">
+<h2 class="anchored" data-anchor-id="جمعآوری-neighbor-table">21. جمع‌آوری Neighbor Table</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb58"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="va">$neighbors</span> <span class="op">=</span> Get-NetNeighbor <span class="op">-</span>AddressFamily IPv4 <span class="op">|</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Select-Object</span> InterfaceIndex<span class="op">,</span> IPAddress<span class="op">,</span> LinkLayerAddress<span class="op">,</span> State</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="va">$neighbors</span> <span class="op">|</span> <span class="fu">Format-Table</span> <span class="op">-</span>AutoSize</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>ذخیره خروجی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="va">$neighbors</span> <span class="op">|</span> <span class="fu">Export-Csv</span> `</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span>Path <span class="st">".\netfleet-neighbors.csv"</span> `</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span>NoTypeInformation `</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span>Encoding UTF8</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="تشخیص-وضعیت-neighbor" class="level2">
+<h2 class="anchored" data-anchor-id="تشخیص-وضعیت-neighbor">22. تشخیص وضعیت Neighbor</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor <span class="op">-</span>AddressFamily IPv4 <span class="op">|</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Where-Object</span> <span class="op">{</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">$_</span><span class="op">.</span><span class="fu">State</span> <span class="op">-eq</span> <span class="st">"Incomplete"</span> <span class="op">-or</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">$_</span><span class="op">.</span><span class="fu">State</span> <span class="op">-eq</span> <span class="st">"Unreachable"</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="op">|</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Format-Table</span> InterfaceIndex<span class="op">,</span> IPAddress<span class="op">,</span> LinkLayerAddress<span class="op">,</span> State <span class="op">-</span>AutoSize</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این دستور فقط Entryهایی را نمایش می‌دهد که در وضعیت‌های مشخص قرار دارند. وجود یک Entry در این وضعیت‌ها باید با زمان مشاهده، نوع Interface و شرایط شبکه تفسیر شود.</p>
+<section id="چالش-automation" class="level4">
+<h4 class="anchored" data-anchor-id="چالش-automation">چالش Automation</h4>
+<p>یک اسکریپت طراحی کن که:</p>
+<ol type="1">
+<li>Interfaceهای فعال را پیدا کند.</li>
+<li>MAC Address آن‌ها را استخراج کند.</li>
+<li>Neighbor Table را جمع‌آوری کند.</li>
+<li>Entryهای Incomplete و Unreachable را جدا کند.</li>
+<li>گزارش CSV تولید کند.</li>
+<li>زمان اجرای گزارش را در نام فایل ثبت کند.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="engineering-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="engineering-challenge">9. Engineering Challenge</h2>
+</section>
+<section id="سناریوی-واقعی-کاربران-یک-vlan-به-سرور-محلی-دسترسی-ندارند" class="level2">
+<h2 class="anchored" data-anchor-id="سناریوی-واقعی-کاربران-یک-vlan-به-سرور-محلی-دسترسی-ندارند">23. سناریوی واقعی: کاربران یک VLAN به سرور محلی دسترسی ندارند</h2>
+<p>در یک شرکت، سه بخش به یک Switch متصل هستند:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>بخش</th>
+<th style="text-align: right;">VLAN</th>
+<th>Subnet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Users</td>
+<td style="text-align: right;">10</td>
+<td>192.168.10.0/24</td>
+</tr>
+<tr class="even">
+<td>Servers</td>
+<td style="text-align: right;">20</td>
+<td>192.168.20.0/24</td>
+</tr>
+<tr class="odd">
+<td>Management</td>
+<td style="text-align: right;">99</td>
+<td>192.168.99.0/24</td>
+</tr>
+</tbody>
+</table>
+<p>کاربران VLAN 10 نمی‌توانند به سرور زیر دسترسی پیدا کنند:</p>
+<pre class="text"><code>Server IP: 192.168.20.10</code></pre>
+<p>اما کاربران VLAN 20 به سرور دسترسی دارند.</p>
+<section id="مأموریت-تو" class="level4">
+<h4 class="anchored" data-anchor-id="مأموریت-تو">مأموریت تو</h4>
+<p>بدون تغییر تصادفی تنظیمات، مسیر عیب‌یابی را طراحی کن.</p>
+<p>به این سؤال‌ها پاسخ بده:</p>
+<ol type="1">
+<li>آیا ARP مستقیم برای MAC سرور از VLAN 10 انجام می‌شود؟</li>
+<li>اگر مقصد در Subnet دیگری باشد، Next Hop چیست؟</li>
+<li>آیا Gateway مربوط به VLAN 10 در دسترس است؟</li>
+<li>آیا Routing بین VLAN 10 و VLAN 20 برقرار است؟</li>
+<li>آیا ACL یا Firewall ترافیک را مسدود کرده است؟</li>
+<li>آیا سرور Default Gateway صحیح دارد؟</li>
+<li>چگونه با Wireshark تشخیص می‌دهی مشکل در ARP است یا در Routing؟</li>
+</ol>
+</section>
+<section id="معیار-پاسخ-مهندسی" class="level4">
+<h4 class="anchored" data-anchor-id="معیار-پاسخ-مهندسی">معیار پاسخ مهندسی</h4>
+<p>پاسخ مناسب باید این زنجیره را بررسی کند:</p>
+<pre class="text"><code>Client
+  |
+  | ARP for Default Gateway
+  |
+VLAN 10 Gateway
+  |
+  | Layer 3 Routing
+  |
+VLAN 20
+  |
+  | ARP for Server
+  |
+Server</code></pre>
+<p>نکته کلیدی: کلاینت VLAN 10 برای رسیدن به سرور VLAN 20 معمولاً MAC سرور را Resolve نمی‌کند. کلاینت MAC مربوط به Gateway محلی خود را Resolve می‌کند. سپس روتر یا سوئیچ لایه سوم در VLAN مقصد، MAC سرور را Resolve می‌کند.</p>
+<hr>
+</section>
+</section>
+<section id="جمعبندی-و-ارزیابی" class="level2">
+<h2 class="anchored" data-anchor-id="جمعبندی-و-ارزیابی">10. جمع‌بندی و ارزیابی</h2>
+</section>
+<section id="نکات-کلیدی-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="نکات-کلیدی-جلسه">24. نکات کلیدی جلسه</h2>
+<ul>
+<li>Ethernet فناوری اصلی انتقال داده در شبکه‌های محلی سیمی است.</li>
+<li>MAC Address در لایه دوم برای تحویل Frame استفاده می‌شود.</li>
+<li>MAC متداول Ethernet از 48 بیت تشکیل شده است.</li>
+<li>بیت I/G نوع Individual یا Group را مشخص می‌کند.</li>
+<li>بیت U/L نوع مدیریت جهانی یا محلی را مشخص می‌کند.</li>
+<li>Ethernet II از EtherType برای شناسایی پروتکل Payload استفاده می‌کند.</li>
+<li>FCS برای تشخیص خطا به کار می‌رود.</li>
+<li>Switch با Source MAC یاد می‌گیرد و با Destination MAC تصمیم Forwarding می‌گیرد.</li>
+<li>Unknown Unicast و Broadcast در شرایط مشخص Flood می‌شوند.</li>
+<li>VLANها Broadcast Domainها را از یکدیگر جدا می‌کنند.</li>
+<li>ARP نگاشت IPv4 به MAC را در شبکه محلی پیدا می‌کند.</li>
+<li>برای مقصد Remote، سیستم MAC مربوط به Next Hop را Resolve می‌کند.</li>
+<li>ARP Cache از تکرار غیرضروری Requestها جلوگیری می‌کند.</li>
+<li>ARP Spoofing می‌تواند مسیر ترافیک را منحرف کند.</li>
+<li>Wireshark و PowerShell ابزارهای مهم تحلیل و عیب‌یابی این مفاهیم هستند.</li>
+</ul>
+</section>
+<section id="تمرینهای-پایان-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="تمرینهای-پایان-جلسه">25. تمرین‌های پایان جلسه</h2>
+<ol type="1">
+<li>ساختار 48 بیتی MAC Address را توضیح بده.</li>
+<li>تفاوت I/G و U/L چیست؟</li>
+<li>چرا ARP Request معمولاً Broadcast است؟</li>
+<li>سوئیچ چگونه Source MAC را یاد می‌گیرد؟</li>
+<li>تفاوت Unknown Unicast و Broadcast چیست؟</li>
+<li>EtherTypeهای IPv4، ARP و IPv6 را بنویس.</li>
+<li>چرا FCS برای اصلاح خطا کافی نیست؟</li>
+<li>VLAN چگونه Broadcast Domain را جدا می‌کند؟</li>
+<li>تفاوت ARP در ارتباط Local و Remote چیست؟</li>
+<li>چرا Destination MAC در مسیر روتر تغییر می‌کند؟</li>
+<li>Gratuitous ARP چه کاربردی دارد؟</li>
+<li>ARP Spoofing چگونه می‌تواند باعث Man-in-the-Middle شود؟</li>
+<li>DHCP Snooping و DAI چه نقشی در امنیت ARP دارند؟</li>
+<li>در چه شرایطی ARP موفق است اما Ping شکست می‌خورد؟</li>
+<li>MAC Flapping چه علت‌هایی می‌تواند داشته باشد؟</li>
+</ol>
+</section>
+<section id="منابع-فنی" class="level2">
+<h2 class="anchored" data-anchor-id="منابع-فنی">26. منابع فنی</h2>
+<ul>
+<li>IEEE 802.3: Ethernet Standard</li>
+<li>IEEE 802.1Q: Bridges and VLANs</li>
+<li>RFC 826: An Ethernet Address Resolution Protocol</li>
+<li>RFC 894: A Standard for the Transmission of IP Datagrams over Ethernet Networks</li>
+<li>RFC 1122: Requirements for Internet Hosts</li>
+<li>Microsoft Learn: Get-NetNeighbor</li>
+<li>Microsoft Learn: Get-NetAdapter</li>
+<li>Wireshark User’s Guide: Display Filters</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="interactive-knowledge-check" class="level1">
+<h1>Interactive Knowledge Check</h1>
+<p>در آزمون زیر ۱۰ سؤال چهارگزینه‌ای وجود دارد. بعد از انتخاب پاسخ، توضیح هر سؤال نمایش داده می‌شود.</p>
+<link rel="stylesheet" href="../../../assets/css/quiz.css">
+
+<section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-day03-title">
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-day03-title" class="anchored" data-anchor-id="interactive-knowledge-check">آزمون تعاملی جلسه سوم</h2>
+      <p>Ethernet, MAC Address and ARP</p>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress">
+    <div class="nf-quiz-progress-track">
+      <div class="nf-quiz-progress-bar" data-progress=""></div>
+    </div>
+    <div class="nf-quiz-progress-meta">
+      <span data-progress-text="">سؤال ۱ از ۱۰</span>
+      <span data-score="">امتیاز: ۰</span>
+    </div>
+  </div>
+
+  <div data-content="">
+    <h3 data-question="" class="anchored"></h3>
+    <div data-options=""></div>
+    <div data-feedback="" aria-live="polite"></div>
+    <button type="button" data-next="" hidden="" disabled="">سؤال بعدی</button>
+  </div>
+
+  <div data-result="" class="nf-quiz-result" hidden="">
+    <h3 class="anchored">نتیجه آزمون</h3>
+    <div data-final-score=""></div>
+    <div data-percentage=""></div>
+    <p data-result-message=""></p>
+    <button type="button" data-restart="">تکرار آزمون</button>
+  </div>
+
+  <script type="application/json" data-quiz-questions="">
+[{"explanation":"سوئیچ Source MAC را همراه با پورت ورودی و VLAN ثبت می‌کند. Destination MAC برای تصمیم Forwarding استفاده می‌شود.","answer":1,"question":"یک Switch لایه دوم برای یادگیری MAC Address از کدام فیلد Frame استفاده می‌کند؟","options":["Destination MAC","Source MAC","EtherType","FCS"]},{"explanation":"I/G کم‌ارزش‌ترین بیت اولین Octet است. مقدار 1 نشان‌دهنده Group Address است که Multicast و Broadcast را شامل می‌شود.","answer":2,"question":"در MAC Address مقدار بیت I/G برابر 1 چه مفهومی دارد؟","options":["آدرس Locally Administered است","آدرس Unicast است","آدرس Group است","آدرس Broadcast است"]},{"explanation":"برای مقصد خارج از Subnet، فریم به MAC آدرس Next Hop یا Default Gateway ارسال می‌شود، نه MAC مقصد نهایی.","answer":2,"question":"کامپیوتر A می‌خواهد به یک IP در Subnet دیگری ارتباط برقرار کند. مقصد Ethernet Frame اولیه چیست؟","options":["MAC Address مقصد نهایی","FF:FF:FF:FF:FF:FF","MAC Address Default Gateway","MAC Address سرور DNS"]},{"explanation":"EtherType مقدار 0x0806 پروتکل ARP را مشخص می‌کند.","answer":1,"question":"EtherType برابر 0x0806 نشان‌دهنده کدام پروتکل است؟","options":["IPv4","ARP","IPv6","802.1Q"]},{"explanation":"Unknown Unicast در VLAN مربوطه Flood می‌شود. این رفتار با Broadcast یکسان نیست، هرچند خروجی Flooding مشابه است.","answer":2,"question":"اگر Destination MAC در جدول سوئیچ وجود نداشته باشد، رفتار معمول چیست؟","options":["Drop کردن قطعی Frame","ارسال فقط به پورت مدیریت","Flood کردن در VLAN مربوطه، به‌جز پورت ورودی","ارسال Frame به Default Gateway"]},{"explanation":"در IPv4 روی Ethernet، ARP Request معمولاً Broadcast است تا مالک IP موردنظر بتواند پاسخ دهد.","answer":1,"question":"ARP Request در Ethernet معمولاً به چه آدرسی ارسال می‌شود؟","options":["00:00:00:00:00:00","FF:FF:FF:FF:FF:FF","MAC مقصد مورد جست‌وجو","MAC آدرس Gateway در تمام شرایط"]},{"explanation":"FCS از CRC برای تشخیص خرابی احتمالی Frame استفاده می‌کند. این سازوکار Error Detection است، نه Error Correction.","answer":1,"question":"کدام گزینه درباره FCS صحیح است؟","options":["برای رمزنگاری Frame استفاده می‌شود","خطا را تشخیص می‌دهد، نه اینکه آن را اصلاح کند","آدرس مقصد را نگهداری می‌کند","شماره VLAN را مشخص می‌کند"]},{"explanation":"VID یک فیلد 12 بیتی است و شناسه VLAN را مشخص می‌کند.","answer":2,"question":"کدام فیلد در Tag استاندارد 802.1Q شناسه VLAN را نگهداری می‌کند؟","options":["PCP","DEI","VID","TPID"]},{"explanation":"ARP Cache نگاشت‌های IPv4 به آدرس‌های لایه دوم را نگهداری می‌کند تا برای هر ارتباط نیاز به ARP Request تکراری نباشد.","answer":0,"question":"ARP Cache کامپیوتر شامل چه اطلاعاتی است؟","options":["نگاشت IPv4 به MAC Address","نگاشت Domain به IP","جدول Routeهای اینترنت","شماره پورت TCP سرویس‌ها"]},{"explanation":"DAI می‌تواند اعتبار پیام‌های ARP را با استفاده از Bindingهای معتبر بررسی کند. DHCP Snooping معمولاً منبع ایجاد این Bindingها است.","answer":1,"question":"کدام روش یکی از راهکارهای مقابله با ARP Spoofing در شبکه سوئیچ‌شده است؟","options":["غیرفعال کردن تمام MAC Addressها","Dynamic ARP Inspection همراه با DHCP Snooping","افزایش MTU به 9000","تغییر EtherType به IPv6"]}]
+  </script>
+  <script src="../../../assets/js/labs/quiz-engine.js" defer=""></script>
+</section>
+</section>
+</div>
 
 
 
@@ -896,6 +2112,17 @@ Tell 192.168.1.10</code></pre>
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
+<script>
+(() => {
+  const base = window.location.pathname.startsWith("/netfleet-docs/")
+    ? "/netfleet-docs/"
+    : "/";
+  const script = document.createElement("script");
+  script.src = base + "assets/js/labs/network-fundamentals.js";
+  script.async = false;
+  document.head.appendChild(script);
+})();
+</script>
 
 
 

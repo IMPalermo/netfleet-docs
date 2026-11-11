@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Deep understanding of TCP, UDP, DNS, DHCP, transport-layer communication, network services, packet analysis and troubleshooting">
 
 <title>TCP, UDP, DNS and DHCP – NetFleet Docs</title>
 <style>
@@ -110,6 +111,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -155,37 +159,134 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tcp-udp-dns-و-dhcp" id="toc-tcp-udp-dns-و-dhcp" class="nav-link active" data-scroll-target="#tcp-udp-dns-و-dhcp">TCP، UDP، DNS و DHCP</a>
+  <li><a href="#جلسه-پنجم-tcp-udp-dns-و-dhcp" id="toc-جلسه-پنجم-tcp-udp-dns-و-dhcp" class="nav-link active" data-scroll-target="#جلسه-پنجم-tcp-udp-dns-و-dhcp">جلسه پنجم: TCP، UDP، DNS و DHCP</a>
   <ul class="collapse">
-  <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">اهداف یادگیری</a></li>
-  <li><a href="#transport-layer" id="toc-transport-layer" class="nav-link" data-scroll-target="#transport-layer">1. Transport Layer</a></li>
-  <li><a href="#tcp-چیست" id="toc-tcp-چیست" class="nav-link" data-scroll-target="#tcp-چیست">2. TCP چیست؟</a>
+  <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">1. اهداف یادگیری</a></li>
+  <li><a href="#جایگاه-پروتکلها-در-مدل-tcpip" id="toc-جایگاه-پروتکلها-در-مدل-tcpip" class="nav-link" data-scroll-target="#جایگاه-پروتکلها-در-مدل-tcpip">2. جایگاه پروتکل‌ها در مدل TCP/IP</a>
   <ul class="collapse">
-  <li><a href="#tcp-three-way-handshake" id="toc-tcp-three-way-handshake" class="nav-link" data-scroll-target="#tcp-three-way-handshake">TCP Three-Way Handshake</a></li>
+  <li><a href="#مسیر-یک-ارتباط" id="toc-مسیر-یک-ارتباط" class="nav-link" data-scroll-target="#مسیر-یک-ارتباط">مسیر یک ارتباط</a></li>
   </ul></li>
-  <li><a href="#udp-چیست" id="toc-udp-چیست" class="nav-link" data-scroll-target="#udp-چیست">3. UDP چیست؟</a></li>
-  <li><a href="#مقایسه-tcp-و-udp" id="toc-مقایسه-tcp-و-udp" class="nav-link" data-scroll-target="#مقایسه-tcp-و-udp">4. مقایسه TCP و UDP</a></li>
-  <li><a href="#port-number" id="toc-port-number" class="nav-link" data-scroll-target="#port-number">5. Port Number</a></li>
-  <li><a href="#dns-چیست" id="toc-dns-چیست" class="nav-link" data-scroll-target="#dns-چیست">6. DNS چیست؟</a></li>
-  <li><a href="#dhcp-چیست" id="toc-dhcp-چیست" class="nav-link" data-scroll-target="#dhcp-چیست">7. DHCP چیست؟</a>
+  <li><a href="#tcp-چیست" id="toc-tcp-چیست" class="nav-link" data-scroll-target="#tcp-چیست">3. TCP چیست؟</a>
   <ul class="collapse">
-  <li><a href="#فرآیند-dora" id="toc-فرآیند-dora" class="nav-link" data-scroll-target="#فرآیند-dora">فرآیند DORA</a></li>
+  <li><a href="#ویژگیهای-tcp" id="toc-ویژگیهای-tcp" class="nav-link" data-scroll-target="#ویژگیهای-tcp">ویژگی‌های TCP</a></li>
+  <li><a href="#tcp-چگونه-قابل-اعتماد-است" id="toc-tcp-چگونه-قابل-اعتماد-است" class="nav-link" data-scroll-target="#tcp-چگونه-قابل-اعتماد-است">TCP چگونه قابل اعتماد است؟</a></li>
   </ul></li>
-  <li><a href="#آزمایش-عملی-powershell" id="toc-آزمایش-عملی-powershell" class="nav-link" data-scroll-target="#آزمایش-عملی-powershell">8. آزمایش عملی PowerShell</a>
+  <li><a href="#tcp-three-way-handshake" id="toc-tcp-three-way-handshake" class="nav-link" data-scroll-target="#tcp-three-way-handshake">4. TCP Three-Way Handshake</a>
   <ul class="collapse">
-  <li><a href="#بررسی-dns" id="toc-بررسی-dns" class="nav-link" data-scroll-target="#بررسی-dns">بررسی DNS</a></li>
-  <li><a href="#بررسی-جزئیات-dns" id="toc-بررسی-جزئیات-dns" class="nav-link" data-scroll-target="#بررسی-جزئیات-dns">بررسی جزئیات DNS</a></li>
-  <li><a href="#بررسی-پورت-tcp" id="toc-بررسی-پورت-tcp" class="nav-link" data-scroll-target="#بررسی-پورت-tcp">بررسی پورت TCP</a></li>
-  <li><a href="#مشاهده-اتصالهای-فعال" id="toc-مشاهده-اتصالهای-فعال" class="nav-link" data-scroll-target="#مشاهده-اتصالهای-فعال">مشاهده اتصال‌های فعال</a></li>
-  <li><a href="#مشاهده-processهای-مرتبط-با-اتصال" id="toc-مشاهده-processهای-مرتبط-با-اتصال" class="nav-link" data-scroll-target="#مشاهده-processهای-مرتبط-با-اتصال">مشاهده Processهای مرتبط با اتصال</a></li>
-  <li><a href="#بررسی-process-با-pid" id="toc-بررسی-process-با-pid" class="nav-link" data-scroll-target="#بررسی-process-با-pid">بررسی Process با PID</a></li>
-  <li><a href="#مشاهده-تنظیمات-dhcp" id="toc-مشاهده-تنظیمات-dhcp" class="nav-link" data-scroll-target="#مشاهده-تنظیمات-dhcp">مشاهده تنظیمات DHCP</a></li>
-  <li><a href="#مشاهده-وضعیت-dhcp-رابطها" id="toc-مشاهده-وضعیت-dhcp-رابطها" class="nav-link" data-scroll-target="#مشاهده-وضعیت-dhcp-رابطها">مشاهده وضعیت DHCP رابط‌ها</a></li>
+  <li><a href="#مرحله-اول-syn" id="toc-مرحله-اول-syn" class="nav-link" data-scroll-target="#مرحله-اول-syn">مرحله اول: SYN</a></li>
+  <li><a href="#مرحله-دوم-syn-ack" id="toc-مرحله-دوم-syn-ack" class="nav-link" data-scroll-target="#مرحله-دوم-syn-ack">مرحله دوم: SYN-ACK</a></li>
+  <li><a href="#مرحله-سوم-ack" id="toc-مرحله-سوم-ack" class="nav-link" data-scroll-target="#مرحله-سوم-ack">مرحله سوم: ACK</a></li>
+  <li><a href="#خلاصه-handshake" id="toc-خلاصه-handshake" class="nav-link" data-scroll-target="#خلاصه-handshake">خلاصه Handshake</a></li>
+  <li><a href="#چرا-سه-مرحله-لازم-است" id="toc-چرا-سه-مرحله-لازم-است" class="nav-link" data-scroll-target="#چرا-سه-مرحله-لازم-است">چرا سه مرحله لازم است؟</a></li>
   </ul></li>
-  <li><a href="#تمرین-عیبیابی" id="toc-تمرین-عیبیابی" class="nav-link" data-scroll-target="#تمرین-عیبیابی">9. تمرین عیب‌یابی</a></li>
-  <li><a href="#ارتباط-با-network-automation" id="toc-ارتباط-با-network-automation" class="nav-link" data-scroll-target="#ارتباط-با-network-automation">10. ارتباط با Network Automation</a></li>
-  <li><a href="#ارزیابی" id="toc-ارزیابی" class="nav-link" data-scroll-target="#ارزیابی">ارزیابی</a></li>
-  <li><a href="#منابع" id="toc-منابع" class="nav-link" data-scroll-target="#منابع">منابع</a></li>
+  <li><a href="#tcp-flags" id="toc-tcp-flags" class="nav-link" data-scroll-target="#tcp-flags">5. TCP Flags</a>
+  <ul class="collapse">
+  <li><a href="#syn-flood-چیست" id="toc-syn-flood-چیست" class="nav-link" data-scroll-target="#syn-flood-چیست">SYN Flood چیست؟</a></li>
+  <li><a href="#پایان-ارتباط-tcp" id="toc-پایان-ارتباط-tcp" class="nav-link" data-scroll-target="#پایان-ارتباط-tcp">پایان ارتباط TCP</a></li>
+  </ul></li>
+  <li><a href="#sequence-number-و-acknowledgment-number" id="toc-sequence-number-و-acknowledgment-number" class="nav-link" data-scroll-target="#sequence-number-و-acknowledgment-number">6. Sequence Number و Acknowledgment Number</a>
+  <ul class="collapse">
+  <li><a href="#sequence-number" id="toc-sequence-number" class="nav-link" data-scroll-target="#sequence-number">Sequence Number</a></li>
+  <li><a href="#acknowledgment-number" id="toc-acknowledgment-number" class="nav-link" data-scroll-target="#acknowledgment-number">Acknowledgment Number</a></li>
+  <li><a href="#نکته-فنی" id="toc-نکته-فنی" class="nav-link" data-scroll-target="#نکته-فنی">نکته فنی</a></li>
+  </ul></li>
+  <li><a href="#tcp-flow-control-و-congestion-control" id="toc-tcp-flow-control-و-congestion-control" class="nav-link" data-scroll-target="#tcp-flow-control-و-congestion-control">7. TCP Flow Control و Congestion Control</a>
+  <ul class="collapse">
+  <li><a href="#flow-control" id="toc-flow-control" class="nav-link" data-scroll-target="#flow-control">Flow Control</a></li>
+  <li><a href="#congestion-control" id="toc-congestion-control" class="nav-link" data-scroll-target="#congestion-control">Congestion Control</a></li>
+  </ul></li>
+  <li><a href="#udp-چیست" id="toc-udp-چیست" class="nav-link" data-scroll-target="#udp-چیست">8. UDP چیست؟</a>
+  <ul class="collapse">
+  <li><a href="#ویژگیهای-udp" id="toc-ویژگیهای-udp" class="nav-link" data-scroll-target="#ویژگیهای-udp">ویژگی‌های UDP</a></li>
+  <li><a href="#کاربردهای-udp" id="toc-کاربردهای-udp" class="nav-link" data-scroll-target="#کاربردهای-udp">کاربردهای UDP</a></li>
+  <li><a href="#مقایسه-tcp-و-udp" id="toc-مقایسه-tcp-و-udp" class="nav-link" data-scroll-target="#مقایسه-tcp-و-udp">مقایسه TCP و UDP</a></li>
+  </ul></li>
+  <li><a href="#port-numbers-و-socket" id="toc-port-numbers-و-socket" class="nav-link" data-scroll-target="#port-numbers-و-socket">9. Port Numbers و Socket</a>
+  <ul class="collapse">
+  <li><a href="#محدوده-portها" id="toc-محدوده-portها" class="nav-link" data-scroll-target="#محدوده-portها">محدوده Portها</a></li>
+  <li><a href="#portهای-مهم" id="toc-portهای-مهم" class="nav-link" data-scroll-target="#portهای-مهم">Portهای مهم</a></li>
+  <li><a href="#socket-چیست" id="toc-socket-چیست" class="nav-link" data-scroll-target="#socket-چیست">Socket چیست؟</a></li>
+  </ul></li>
+  <li><a href="#dns-چیست" id="toc-dns-چیست" class="nav-link" data-scroll-target="#dns-چیست">10. DNS چیست؟</a>
+  <ul class="collapse">
+  <li><a href="#فرآیند-dns-resolution" id="toc-فرآیند-dns-resolution" class="nav-link" data-scroll-target="#فرآیند-dns-resolution">فرآیند DNS Resolution</a></li>
+  <li><a href="#recursive-و-iterative-query" id="toc-recursive-و-iterative-query" class="nav-link" data-scroll-target="#recursive-و-iterative-query">Recursive و Iterative Query</a></li>
+  <li><a href="#dns-cache" id="toc-dns-cache" class="nav-link" data-scroll-target="#dns-cache">DNS Cache</a></li>
+  </ul></li>
+  <li><a href="#انواع-dns-records" id="toc-انواع-dns-records" class="nav-link" data-scroll-target="#انواع-dns-records">11. انواع DNS Records</a>
+  <ul class="collapse">
+  <li><a href="#forward-lookup" id="toc-forward-lookup" class="nav-link" data-scroll-target="#forward-lookup">Forward Lookup</a></li>
+  <li><a href="#reverse-lookup" id="toc-reverse-lookup" class="nav-link" data-scroll-target="#reverse-lookup">Reverse Lookup</a></li>
+  <li><a href="#dns-over-https-و-dns-over-tls" id="toc-dns-over-https-و-dns-over-tls" class="nav-link" data-scroll-target="#dns-over-https-و-dns-over-tls">DNS over HTTPS و DNS over TLS</a></li>
+  <li><a href="#dns-over-tcp" id="toc-dns-over-tcp" class="nav-link" data-scroll-target="#dns-over-tcp">DNS over TCP</a></li>
+  </ul></li>
+  <li><a href="#dhcp-چیست" id="toc-dhcp-چیست" class="nav-link" data-scroll-target="#dhcp-چیست">12. DHCP چیست؟</a>
+  <ul class="collapse">
+  <li><a href="#dhcp-چه-اطلاعاتی-ارائه-میدهد" id="toc-dhcp-چه-اطلاعاتی-ارائه-میدهد" class="nav-link" data-scroll-target="#dhcp-چه-اطلاعاتی-ارائه-میدهد">DHCP چه اطلاعاتی ارائه می‌دهد؟</a></li>
+  <li><a href="#dhcp-dora" id="toc-dhcp-dora" class="nav-link" data-scroll-target="#dhcp-dora">DHCP DORA</a></li>
+  <li><a href="#مرحله-اول-discover" id="toc-مرحله-اول-discover" class="nav-link" data-scroll-target="#مرحله-اول-discover">مرحله اول: Discover</a></li>
+  <li><a href="#مرحله-دوم-offer" id="toc-مرحله-دوم-offer" class="nav-link" data-scroll-target="#مرحله-دوم-offer">مرحله دوم: Offer</a></li>
+  <li><a href="#مرحله-سوم-request" id="toc-مرحله-سوم-request" class="nav-link" data-scroll-target="#مرحله-سوم-request">مرحله سوم: Request</a></li>
+  <li><a href="#مرحله-چهارم-acknowledgment" id="toc-مرحله-چهارم-acknowledgment" class="nav-link" data-scroll-target="#مرحله-چهارم-acknowledgment">مرحله چهارم: Acknowledgment</a></li>
+  <li><a href="#dhcp-lease" id="toc-dhcp-lease" class="nav-link" data-scroll-target="#dhcp-lease">DHCP Lease</a></li>
+  <li><a href="#dhcp-relay" id="toc-dhcp-relay" class="nav-link" data-scroll-target="#dhcp-relay">DHCP Relay</a></li>
+  </ul></li>
+  <li><a href="#dhcp-و-dns-در-کنار-یکدیگر" id="toc-dhcp-و-dns-در-کنار-یکدیگر" class="nav-link" data-scroll-target="#dhcp-و-dns-در-کنار-یکدیگر">13. DHCP و DNS در کنار یکدیگر</a></li>
+  <li><a href="#آزمایش-عملی-powershell" id="toc-آزمایش-عملی-powershell" class="nav-link" data-scroll-target="#آزمایش-عملی-powershell">14. آزمایش عملی PowerShell</a>
+  <ul class="collapse">
+  <li><a href="#lab-1-مشاهده-تنظیمات-ip-و-dhcp" id="toc-lab-1-مشاهده-تنظیمات-ip-و-dhcp" class="nav-link" data-scroll-target="#lab-1-مشاهده-تنظیمات-ip-و-dhcp">Lab 1: مشاهده تنظیمات IP و DHCP</a></li>
+  <li><a href="#lab-2-مشاهده-dns-configuration" id="toc-lab-2-مشاهده-dns-configuration" class="nav-link" data-scroll-target="#lab-2-مشاهده-dns-configuration">Lab 2: مشاهده DNS Configuration</a></li>
+  <li><a href="#lab-3-تست-dns-resolution" id="toc-lab-3-تست-dns-resolution" class="nav-link" data-scroll-target="#lab-3-تست-dns-resolution">Lab 3: تست DNS Resolution</a></li>
+  <li><a href="#lab-4-تست-dns-با-dns-server-مشخص" id="toc-lab-4-تست-dns-با-dns-server-مشخص" class="nav-link" data-scroll-target="#lab-4-تست-dns-با-dns-server-مشخص">Lab 4: تست DNS با DNS Server مشخص</a></li>
+  <li><a href="#lab-5-مشاهده-cache-محلی-dns" id="toc-lab-5-مشاهده-cache-محلی-dns" class="nav-link" data-scroll-target="#lab-5-مشاهده-cache-محلی-dns">Lab 5: مشاهده Cache محلی DNS</a></li>
+  <li><a href="#lab-6-مشاهده-tcp-connections" id="toc-lab-6-مشاهده-tcp-connections" class="nav-link" data-scroll-target="#lab-6-مشاهده-tcp-connections">Lab 6: مشاهده TCP Connections</a></li>
+  <li><a href="#lab-7-بررسی-udp-endpointها" id="toc-lab-7-بررسی-udp-endpointها" class="nav-link" data-scroll-target="#lab-7-بررسی-udp-endpointها">Lab 7: بررسی UDP Endpointها</a></li>
+  <li><a href="#lab-8-بررسی-port-و-سرویس-مقصد" id="toc-lab-8-بررسی-port-و-سرویس-مقصد" class="nav-link" data-scroll-target="#lab-8-بررسی-port-و-سرویس-مقصد">Lab 8: بررسی Port و سرویس مقصد</a></li>
+  <li><a href="#lab-9-مشاهده-جزئیات-processهای-شبکه" id="toc-lab-9-مشاهده-جزئیات-processهای-شبکه" class="nav-link" data-scroll-target="#lab-9-مشاهده-جزئیات-processهای-شبکه">Lab 9: مشاهده جزئیات Processهای شبکه</a></li>
+  <li><a href="#lab-10-بررسی-dhcp-lease" id="toc-lab-10-بررسی-dhcp-lease" class="nav-link" data-scroll-target="#lab-10-بررسی-dhcp-lease">Lab 10: بررسی DHCP Lease</a></li>
+  </ul></li>
+  <li><a href="#wireshark-lab" id="toc-wireshark-lab" class="nav-link" data-scroll-target="#wireshark-lab">15. Wireshark Lab</a>
+  <ul class="collapse">
+  <li><a href="#lab-1-مشاهده-tcp-handshake" id="toc-lab-1-مشاهده-tcp-handshake" class="nav-link" data-scroll-target="#lab-1-مشاهده-tcp-handshake">Lab 1: مشاهده TCP Handshake</a></li>
+  <li><a href="#lab-2-مشاهده-dns" id="toc-lab-2-مشاهده-dns" class="nav-link" data-scroll-target="#lab-2-مشاهده-dns">Lab 2: مشاهده DNS</a></li>
+  <li><a href="#lab-3-مشاهده-dhcp" id="toc-lab-3-مشاهده-dhcp" class="nav-link" data-scroll-target="#lab-3-مشاهده-dhcp">Lab 3: مشاهده DHCP</a></li>
+  <li><a href="#lab-4-تحلیل-udp" id="toc-lab-4-تحلیل-udp" class="nav-link" data-scroll-target="#lab-4-تحلیل-udp">Lab 4: تحلیل UDP</a></li>
+  <li><a href="#نکته-مهم" id="toc-نکته-مهم" class="nav-link" data-scroll-target="#نکته-مهم">نکته مهم</a></li>
+  </ul></li>
+  <li><a href="#troubleshooting-سناریومحور" id="toc-troubleshooting-سناریومحور" class="nav-link" data-scroll-target="#troubleshooting-سناریومحور">16. Troubleshooting سناریومحور</a>
+  <ul class="collapse">
+  <li><a href="#scenario-1-کاربر-ip-دارد-اما-سایتها-باز-نمیشوند" id="toc-scenario-1-کاربر-ip-دارد-اما-سایتها-باز-نمیشوند" class="nav-link" data-scroll-target="#scenario-1-کاربر-ip-دارد-اما-سایتها-باز-نمیشوند">Scenario 1: کاربر IP دارد اما سایت‌ها باز نمی‌شوند</a></li>
+  <li><a href="#scenario-2-سایت-با-ip-باز-میشود-اما-با-domain-باز-نمیشود" id="toc-scenario-2-سایت-با-ip-باز-میشود-اما-با-domain-باز-نمیشود" class="nav-link" data-scroll-target="#scenario-2-سایت-با-ip-باز-میشود-اما-با-domain-باز-نمیشود">Scenario 2: سایت با IP باز می‌شود اما با Domain باز نمی‌شود</a></li>
+  <li><a href="#scenario-3-کامپیوتر-ip-برابر-169.254.x.x-گرفته-است" id="toc-scenario-3-کامپیوتر-ip-برابر-169.254.x.x-گرفته-است" class="nav-link" data-scroll-target="#scenario-3-کامپیوتر-ip-برابر-169.254.x.x-گرفته-است">Scenario 3: کامپیوتر IP برابر 169.254.x.x گرفته است</a></li>
+  <li><a href="#scenario-4-tcp-connection-failed" id="toc-scenario-4-tcp-connection-failed" class="nav-link" data-scroll-target="#scenario-4-tcp-connection-failed">Scenario 4: TCP Connection Failed</a></li>
+  <li><a href="#scenario-5-dns-query-timeout" id="toc-scenario-5-dns-query-timeout" class="nav-link" data-scroll-target="#scenario-5-dns-query-timeout">Scenario 5: DNS Query Timeout</a></li>
+  </ul></li>
+  <li><a href="#network-automation-و-کاربرد-در-دنیای-واقعی" id="toc-network-automation-و-کاربرد-در-دنیای-واقعی" class="nav-link" data-scroll-target="#network-automation-و-کاربرد-در-دنیای-واقعی">17. Network Automation و کاربرد در دنیای واقعی</a>
+  <ul class="collapse">
+  <li><a href="#dns-monitoring" id="toc-dns-monitoring" class="nav-link" data-scroll-target="#dns-monitoring">DNS Monitoring</a></li>
+  <li><a href="#tcp-monitoring" id="toc-tcp-monitoring" class="nav-link" data-scroll-target="#tcp-monitoring">TCP Monitoring</a></li>
+  <li><a href="#dhcp-monitoring" id="toc-dhcp-monitoring" class="nav-link" data-scroll-target="#dhcp-monitoring">DHCP Monitoring</a></li>
+  <li><a href="#نمونه-ساده-health-check-در-powershell" id="toc-نمونه-ساده-health-check-در-powershell" class="nav-link" data-scroll-target="#نمونه-ساده-health-check-در-powershell">نمونه ساده Health Check در PowerShell</a></li>
+  <li><a href="#چرا-این-مهارت-مهم-است" id="toc-چرا-این-مهارت-مهم-است" class="nav-link" data-scroll-target="#چرا-این-مهارت-مهم-است">چرا این مهارت مهم است؟</a></li>
+  </ul></li>
+  <li><a href="#جمعبندی-هفته-اول" id="toc-جمعبندی-هفته-اول" class="nav-link" data-scroll-target="#جمعبندی-هفته-اول">18. جمع‌بندی هفته اول</a>
+  <ul class="collapse">
+  <li><a href="#نقشه-ذهنی-هفته-اول" id="toc-نقشه-ذهنی-هفته-اول" class="nav-link" data-scroll-target="#نقشه-ذهنی-هفته-اول">نقشه ذهنی هفته اول</a></li>
+  <li><a href="#مفاهیم-کلیدی-که-باید-به-خاطر-بسپارید" id="toc-مفاهیم-کلیدی-که-باید-به-خاطر-بسپارید" class="nav-link" data-scroll-target="#مفاهیم-کلیدی-که-باید-به-خاطر-بسپارید">مفاهیم کلیدی که باید به خاطر بسپارید</a></li>
+  </ul></li>
+  <li><a href="#چالش-پایانی-هفته-اول" id="toc-چالش-پایانی-هفته-اول" class="nav-link" data-scroll-target="#چالش-پایانی-هفته-اول">19. چالش پایانی هفته اول</a>
+  <ul class="collapse">
+  <li><a href="#وظایف-شما" id="toc-وظایف-شما" class="nav-link" data-scroll-target="#وظایف-شما">وظایف شما</a></li>
+  </ul></li>
+  <li><a href="#اشتباهات-رایج" id="toc-اشتباهات-رایج" class="nav-link" data-scroll-target="#اشتباهات-رایج">20. اشتباهات رایج</a>
+  <ul class="collapse">
+  <li><a href="#rfc-documents" id="toc-rfc-documents" class="nav-link" data-scroll-target="#rfc-documents">RFC Documents</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#ابزارهای-پیشنهادی" id="toc-ابزارهای-پیشنهادی" class="nav-link" data-scroll-target="#ابزارهای-پیشنهادی">ابزارهای پیشنهادی</a></li>
+  </ul></li>
+  <li><a href="#ارزیابی-پایان-جلسه" id="toc-ارزیابی-پایان-جلسه" class="nav-link" data-scroll-target="#ارزیابی-پایان-جلسه">22. ارزیابی پایان جلسه</a></li>
+  <li><a href="#خروجی-مورد-انتظار-جلسه" id="toc-خروجی-مورد-انتظار-جلسه" class="nav-link" data-scroll-target="#خروجی-مورد-انتظار-جلسه">23. خروجی مورد انتظار جلسه</a></li>
+  <li><a href="#مسیر-بعدی-یادگیری" id="toc-مسیر-بعدی-یادگیری" class="nav-link" data-scroll-target="#مسیر-بعدی-یادگیری">24. مسیر بعدی یادگیری</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -196,9 +297,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">TCP, UDP, DNS and DHCP</h1>
-<p class="subtitle lead">Week 01 | Day 05</p>
+<p class="subtitle lead">Week 01 · Day 05</p>
 </div>
 
+<div>
+  <div class="description">
+    Deep understanding of TCP, UDP, DNS, DHCP, transport-layer communication, network services, packet analysis and troubleshooting
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -213,290 +319,1444 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="tcp-udp-dns-و-dhcp" class="level1 persian">
-<h1>TCP، UDP، DNS و DHCP</h1>
+<section id="جلسه-پنجم-tcp-udp-dns-و-dhcp" class="level1 persian">
+<h1>جلسه پنجم: TCP، UDP، DNS و DHCP</h1>
+<blockquote class="blockquote">
+هدف این جلسه صرفاً حفظ کردن شماره پورت‌ها یا مراحل Handshake نیست. هدف این است که بتوانی ارتباط میان برنامه‌ها، انتقال داده، Name Resolution و تخصیص خودکار تنظیمات شبکه را تحلیل و مشکلات واقعی این سرویس‌ها را عیب‌یابی کنی.
+</blockquote>
 <section id="اهداف-یادگیری" class="level2">
-<h2 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h2>
+<h2 class="anchored" data-anchor-id="اهداف-یادگیری">1. اهداف یادگیری</h2>
+<p>در پایان این جلسه باید بتوانید:</p>
 <ul>
-<li>تفاوت TCP و UDP را درک کنی.</li>
-<li>Port Number و Socket را بشناسی.</li>
-<li>فرآیند DNS Resolution را توضیح بدهی.</li>
-<li>DHCP و فرآیند تخصیص IP را بشناسی.</li>
-<li>اتصال‌های واقعی سیستم را با PowerShell بررسی کنی.</li>
+<li>تفاوت TCP و UDP را از نظر عملکرد و کاربرد توضیح دهید.</li>
+<li>فرآیند TCP Three-Way Handshake را تحلیل کنید.</li>
+<li>نقش TCP Flags، Sequence Number و Acknowledgment Number را بشناسید.</li>
+<li>مفهوم Port و Socket را در ارتباطات شبکه توضیح دهید.</li>
+<li>فرآیند DNS Resolution و انواع رکوردهای DNS را درک کنید.</li>
+<li>مراحل DHCP DORA را توضیح دهید.</li>
+<li>با PowerShell وضعیت ارتباطات TCP، تنظیمات DNS و DHCP را بررسی کنید.</li>
+<li>ترافیک TCP، UDP، DNS و DHCP را در Wireshark تحلیل کنید.</li>
+<li>مشکلات رایج ارتباطات شبکه را عیب‌یابی کنید.</li>
 </ul>
+<hr>
 </section>
-<section id="transport-layer" class="level2">
-<h2 class="anchored" data-anchor-id="transport-layer">1. Transport Layer</h2>
-<p>لایه Transport ارتباط بین برنامه‌های در حال اجرا روی دستگاه‌های مختلف را مدیریت می‌کند.</p>
-<p>دو پروتکل اصلی این لایه:</p>
-<ul>
-<li>TCP</li>
-<li>UDP</li>
-</ul>
-<p>هر دو از Port Number برای شناسایی سرویس‌ها و برنامه‌ها استفاده می‌کنند.</p>
-</section>
-<section id="tcp-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="tcp-چیست">2. TCP چیست؟</h2>
-<p>TCP یک پروتکل Connection-oriented است.</p>
-<p>ویژگی‌های مهم: - برقراری ارتباط قبل از انتقال داده - ترتیب‌دهی داده‌ها - تأیید دریافت - ارسال مجدد داده‌های ازدست‌رفته - کنترل جریان و کنترل ازدحام</p>
-<section id="tcp-three-way-handshake" class="level3">
-<h3 class="anchored" data-anchor-id="tcp-three-way-handshake">TCP Three-Way Handshake</h3>
-<p>برقراری اتصال TCP معمولاً با سه مرحله انجام می‌شود:</p>
-<ol type="1">
-<li>Client یک SYN ارسال می‌کند.</li>
-<li>Server با SYN-ACK پاسخ می‌دهد.</li>
-<li>Client یک ACK ارسال می‌کند.</li>
-</ol>
-<p>پس از این فرآیند، اتصال آماده انتقال داده است.</p>
-<p>TCP برای سرویس‌هایی مانند HTTPS، SSH و بسیاری از ارتباطات مدیریتی استفاده می‌شود.</p>
-</section>
-</section>
-<section id="udp-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="udp-چیست">3. UDP چیست؟</h2>
-<p>UDP بدون برقراری اتصال اولیه داده را ارسال می‌کند.</p>
-<p>ویژگی‌ها: - سربار کمتر - عدم تضمین تحویل - عدم تضمین ترتیب بسته‌ها - مناسب برای کاربردهایی که تأخیر مهم است</p>
-<p>نمونه کاربردها: - DNS در بسیاری از Queryها - VoIP - بازی‌های آنلاین - برخی ارتباطات ویدئویی</p>
-<p>نکته: DNS فقط UDP نیست. برای پاسخ‌های بزرگ‌تر، Zone Transfer و شرایط دیگر از TCP نیز استفاده می‌شود.</p>
-</section>
-<section id="مقایسه-tcp-و-udp" class="level2">
-<h2 class="anchored" data-anchor-id="مقایسه-tcp-و-udp">4. مقایسه TCP و UDP</h2>
+<section id="جایگاه-پروتکلها-در-مدل-tcpip" class="level2">
+<h2 class="anchored" data-anchor-id="جایگاه-پروتکلها-در-مدل-tcpip">2. جایگاه پروتکل‌ها در مدل TCP/IP</h2>
+<p>تا اینجا با Ethernet، MAC Address، ARP و IPv4 آشنا شدیم. حالا باید ببینیم برنامه‌های کامپیوتری چگونه با یکدیگر ارتباط برقرار می‌کنند.</p>
+<p>در مدل TCP/IP، پروتکل‌های TCP و UDP در لایه Transport قرار می‌گیرند.</p>
+<p>DNS و DHCP نیز سرویس‌های مهم لایه Application هستند که برای انتقال پیام‌هایشان از پروتکل‌های Transport استفاده می‌کنند.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>ویژگی</th>
+<th>Protocol</th>
+<th>Main Function</th>
+<th>Transport</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TCP</td>
+<td>Reliable communication</td>
+<td>TCP</td>
+</tr>
+<tr class="even">
+<td>UDP</td>
+<td>Datagram delivery</td>
+<td>UDP</td>
+</tr>
+<tr class="odd">
+<td>DNS</td>
+<td>Name resolution</td>
+<td>Usually UDP, also TCP</td>
+</tr>
+<tr class="even">
+<td>DHCP</td>
+<td>Automatic IP configuration</td>
+<td>UDP</td>
+</tr>
+</tbody>
+</table>
+<p>نکته مهم: DNS و DHCP خودشان پروتکل‌های لایه کاربرد هستند، اما برای انتقال پیام‌هایشان از UDP یا TCP استفاده می‌کنند.</p>
+<section id="مسیر-یک-ارتباط" class="level3">
+<h3 class="anchored" data-anchor-id="مسیر-یک-ارتباط">مسیر یک ارتباط</h3>
+<p>وقتی یک برنامه می‌خواهد با یک سرور ارتباط برقرار کند، معمولاً این مراحل اتفاق می‌افتند:</p>
+<ol type="1">
+<li>برنامه مقصد را با نام دامنه مشخص می‌کند.</li>
+<li>سیستم با DNS آدرس IP مقصد را پیدا می‌کند.</li>
+<li>سیستم با استفاده از IP و Port مقصد، ارتباط را برقرار می‌کند.</li>
+<li>TCP یا UDP داده را منتقل می‌کند.</li>
+<li>IP و Ethernet اطلاعات را برای انتقال در شبکه آماده می‌کنند.</li>
+</ol>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+
+<pre class="mermaid mermaid-js">flowchart TD
+    A["Application"] --&gt; B["DNS Resolution"]
+    B --&gt; C["Destination IP"]
+    C --&gt; D["TCP or UDP"]
+    D --&gt; E["IP"]
+    E --&gt; F["Ethernet"]
+    F --&gt; G["Network"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="tcp-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="tcp-چیست">3. TCP چیست؟</h2>
+<p>TCP مخفف Transmission Control Protocol است.</p>
+<p>TCP یک پروتکل Connection-Oriented است. یعنی قبل از انتقال داده، دو طرف ارتباط یک اتصال منطقی برقرار می‌کنند.</p>
+<p>TCP تلاش می‌کند داده‌ها را به‌صورت قابل اعتماد، مرتب و بدون تحویل تکراری به برنامه مقصد برساند.</p>
+<section id="ویژگیهای-tcp" class="level3">
+<h3 class="anchored" data-anchor-id="ویژگیهای-tcp">ویژگی‌های TCP</h3>
+<ul>
+<li>Connection-Oriented</li>
+<li>Reliable Delivery</li>
+<li>Ordered Delivery</li>
+<li>Error Detection</li>
+<li>Retransmission</li>
+<li>Flow Control</li>
+<li>Congestion Control</li>
+<li>Full-Duplex Communication</li>
+</ul>
+</section>
+<section id="tcp-چگونه-قابل-اعتماد-است" class="level3">
+<h3 class="anchored" data-anchor-id="tcp-چگونه-قابل-اعتماد-است">TCP چگونه قابل اعتماد است؟</h3>
+<p>فرض کنید یک فایل 100 مگابایتی از کامپیوتر A به سرور B ارسال می‌کنید.</p>
+<p>TCP داده را به بخش‌هایی تقسیم می‌کند. هر بخش دارای اطلاعات کنترلی است.</p>
+<p>گیرنده با استفاده از شماره‌های Sequence و Acknowledgment می‌تواند مشخص کند چه داده‌ای دریافت شده است.</p>
+<p>اگر بخشی از داده گم شود، TCP می‌تواند آن را دوباره ارسال کند.</p>
+<p>توجه کنید TCP تضمین نمی‌کند که شبکه هیچ Packet Loss نداشته باشد. بلکه مکانیزم‌هایی دارد که با Loss مقابله می‌کنند.</p>
+<hr>
+</section>
+</section>
+<section id="tcp-three-way-handshake" class="level2">
+<h2 class="anchored" data-anchor-id="tcp-three-way-handshake">4. TCP Three-Way Handshake</h2>
+<p>قبل از انتقال داده در یک اتصال TCP معمولی، سه مرحله برای برقراری اتصال انجام می‌شود.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant C as Client
+    participant S as Server
+    C-&gt;&gt;S: SYN
+    S-&gt;&gt;C: SYN + ACK
+    C-&gt;&gt;S: ACK
+    Note over C,S: TCP Connection Established
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<section id="مرحله-اول-syn" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-اول-syn">مرحله اول: SYN</h3>
+<p>Client یک Segment با Flag برابر SYN به Server می‌فرستد.</p>
+<p>Client در این پیام اعلام می‌کند که می‌خواهد یک اتصال TCP برقرار کند.</p>
+</section>
+<section id="مرحله-دوم-syn-ack" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-دوم-syn-ack">مرحله دوم: SYN-ACK</h3>
+<p>Server درخواست را دریافت می‌کند و در صورت پذیرش، Segment دارای دو Flag زیر را ارسال می‌کند:</p>
+<ul>
+<li>SYN</li>
+<li>ACK</li>
+</ul>
+<p>Server با این پیام هم درخواست Client را تأیید می‌کند و هم اطلاعات شروع ارتباط خودش را اعلام می‌کند.</p>
+</section>
+<section id="مرحله-سوم-ack" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-سوم-ack">مرحله سوم: ACK</h3>
+<p>Client پیام Server را دریافت می‌کند و یک ACK ارسال می‌کند.</p>
+<p>پس از تکمیل Handshake، ارتباط TCP برقرار شده است و انتقال داده می‌تواند آغاز شود.</p>
+</section>
+<section id="خلاصه-handshake" class="level3">
+<h3 class="anchored" data-anchor-id="خلاصه-handshake">خلاصه Handshake</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Sender</th>
+<th>Flags</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Client → Server</td>
+<td>SYN</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Server → Client</td>
+<td>SYN, ACK</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Client → Server</td>
+<td>ACK</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="چرا-سه-مرحله-لازم-است" class="level3">
+<h3 class="anchored" data-anchor-id="چرا-سه-مرحله-لازم-است">چرا سه مرحله لازم است؟</h3>
+<p>این فرآیند به دو طرف اجازه می‌دهد ارتباط را هماهنگ کنند و شماره‌های اولیه Sequence را مبادله کنند.</p>
+<p>این کار به شناسایی ارتباط معتبر و آماده‌سازی انتقال داده کمک می‌کند.</p>
+<hr>
+</section>
+</section>
+<section id="tcp-flags" class="level2">
+<h2 class="anchored" data-anchor-id="tcp-flags">5. TCP Flags</h2>
+<p>TCP Header دارای Flagهایی است که وضعیت و هدف یک Segment را مشخص می‌کنند.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Flag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SYN</td>
+<td>شروع و هماهنگی اتصال</td>
+</tr>
+<tr class="even">
+<td>ACK</td>
+<td>تأیید دریافت داده یا اطلاعات کنترلی</td>
+</tr>
+<tr class="odd">
+<td>FIN</td>
+<td>درخواست پایان منظم اتصال</td>
+</tr>
+<tr class="even">
+<td>RST</td>
+<td>قطع یا رد فوری اتصال</td>
+</tr>
+<tr class="odd">
+<td>PSH</td>
+<td>درخواست تحویل سریع‌تر داده به برنامه</td>
+</tr>
+<tr class="even">
+<td>URG</td>
+<td>نشان‌دهنده وجود داده فوری</td>
+</tr>
+<tr class="odd">
+<td>ECE</td>
+<td>علامت‌گذاری اطلاعات مربوط به ECN</td>
+</tr>
+<tr class="even">
+<td>CWR</td>
+<td>اعلام واکنش فرستنده به ازدحام ECN</td>
+</tr>
+</tbody>
+</table>
+<section id="syn-flood-چیست" class="level3">
+<h3 class="anchored" data-anchor-id="syn-flood-چیست">SYN Flood چیست؟</h3>
+<p>در حمله SYN Flood، مهاجم تعداد زیادی درخواست SYN ارسال می‌کند، اما Handshake را کامل نمی‌کند.</p>
+<p>در نتیجه منابع Server ممکن است درگیر اتصال‌های نیمه‌باز شوند.</p>
+<p>روش‌های دفاعی می‌توانند شامل موارد زیر باشند:</p>
+<ul>
+<li>SYN Cookies</li>
+<li>Firewall Rules</li>
+<li>Rate Limiting</li>
+<li>DDoS Protection</li>
+<li>Monitoring Connection States</li>
+</ul>
+</section>
+<section id="پایان-ارتباط-tcp" class="level3">
+<h3 class="anchored" data-anchor-id="پایان-ارتباط-tcp">پایان ارتباط TCP</h3>
+<p>TCP معمولاً با استفاده از FIN و ACK اتصال را به‌صورت کنترل‌شده می‌بندد.</p>
+<p>در حالت معمول، هر سمت ارتباط می‌تواند جریان ارسال داده خودش را جداگانه خاتمه دهد.</p>
+<p>RST برای قطع ناگهانی یا رد اتصال استفاده می‌شود.</p>
+<hr>
+</section>
+</section>
+<section id="sequence-number-و-acknowledgment-number" class="level2">
+<h2 class="anchored" data-anchor-id="sequence-number-و-acknowledgment-number">6. Sequence Number و Acknowledgment Number</h2>
+<p>TCP برای مدیریت جریان داده از شماره‌های Sequence و Acknowledgment استفاده می‌کند.</p>
+<section id="sequence-number" class="level3">
+<h3 class="anchored" data-anchor-id="sequence-number">Sequence Number</h3>
+<p>این شماره موقعیت داده در جریان بایت‌های TCP را مشخص می‌کند.</p>
+</section>
+<section id="acknowledgment-number" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgment-number">Acknowledgment Number</h3>
+<p>این شماره معمولاً نشان می‌دهد گیرنده انتظار دارد بایت بعدی از چه موقعیتی دریافت شود.</p>
+<p>مثال ساده:</p>
+<p>فرض کنید Client داده‌ای ارسال می‌کند که از Sequence Number برابر 1000 شروع می‌شود و 500 بایت دارد.</p>
+<p>در صورت دریافت صحیح، گیرنده می‌تواند Acknowledgment Number برابر 1500 را اعلام کند.</p>
+<p>یعنی بایت‌های تا قبل از 1500 دریافت شده‌اند و گیرنده منتظر بایت بعدی است.</p>
+</section>
+<section id="نکته-فنی" class="level3">
+<h3 class="anchored" data-anchor-id="نکته-فنی">نکته فنی</h3>
+<p>TCP معمولاً از Cumulative Acknowledgment استفاده می‌کند. در صورت فعال بودن قابلیت‌هایی مانند SACK، گیرنده می‌تواند اطلاعات دقیق‌تری درباره بخش‌های دریافت‌شده ارائه دهد.</p>
+<hr>
+</section>
+</section>
+<section id="tcp-flow-control-و-congestion-control" class="level2">
+<h2 class="anchored" data-anchor-id="tcp-flow-control-و-congestion-control">7. TCP Flow Control و Congestion Control</h2>
+<p>این دو مفهوم شبیه به هم نیستند.</p>
+<section id="flow-control" class="level3">
+<h3 class="anchored" data-anchor-id="flow-control">Flow Control</h3>
+<p>Flow Control از گیرنده محافظت می‌کند.</p>
+<p>اگر گیرنده سرعت پردازش داده کمتری داشته باشد، می‌تواند با استفاده از Receive Window به فرستنده اعلام کند چه مقدار داده دیگر می‌تواند دریافت کند.</p>
+</section>
+<section id="congestion-control" class="level3">
+<h3 class="anchored" data-anchor-id="congestion-control">Congestion Control</h3>
+<p>Congestion Control برای جلوگیری از فشار بیش از حد به شبکه استفاده می‌شود.</p>
+<p>TCP با مکانیزم‌هایی مانند موارد زیر وضعیت ارسال را مدیریت می‌کند:</p>
+<ul>
+<li>Congestion Window</li>
+<li>Slow Start</li>
+<li>Congestion Avoidance</li>
+<li>Fast Retransmit</li>
+<li>Fast Recovery</li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Mechanism</th>
+<th>Protects</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flow Control</td>
+<td>Receiver</td>
+</tr>
+<tr class="even">
+<td>Congestion Control</td>
+<td>Network</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="udp-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="udp-چیست">8. UDP چیست؟</h2>
+<p>UDP مخفف User Datagram Protocol است.</p>
+<p>UDP یک پروتکل Connectionless است.</p>
+<p>برخلاف TCP، قبل از ارسال داده نیازی به Three-Way Handshake ندارد.</p>
+<p>UDP داده‌ها را در قالب Datagram ارسال می‌کند.</p>
+<section id="ویژگیهای-udp" class="level3">
+<h3 class="anchored" data-anchor-id="ویژگیهای-udp">ویژگی‌های UDP</h3>
+<ul>
+<li>Connectionless</li>
+<li>بدون تضمین تحویل</li>
+<li>بدون تضمین ترتیب دریافت</li>
+<li>بدون مکانیزم Retransmission داخلی</li>
+<li>سربار کم</li>
+<li>مناسب برای ارتباطات حساس به تأخیر</li>
+</ul>
+<p>UDP در صورت نیاز به مکانیزم‌های اطمینان از تحویل، این قابلیت‌ها را به پروتکل یا برنامه بالاتر واگذار می‌کند.</p>
+</section>
+<section id="کاربردهای-udp" class="level3">
+<h3 class="anchored" data-anchor-id="کاربردهای-udp">کاربردهای UDP</h3>
+<ul>
+<li>DNS</li>
+<li>DHCP</li>
+<li>VoIP</li>
+<li>Online Gaming</li>
+<li>Live Streaming</li>
+<li>NTP</li>
+<li>برخی ارتباطات VPN</li>
+</ul>
+</section>
+<section id="مقایسه-tcp-و-udp" class="level3">
+<h3 class="anchored" data-anchor-id="مقایسه-tcp-و-udp">مقایسه TCP و UDP</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Feature</th>
 <th>TCP</th>
 <th>UDP</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>اتصال اولیه</td>
-<td>دارد</td>
-<td>ندارد</td>
+<td>Connection</td>
+<td>Connection-Oriented</td>
+<td>Connectionless</td>
 </tr>
 <tr class="even">
-<td>تضمین تحویل</td>
-<td>با مکانیزم‌های انتقال</td>
-<td>ندارد</td>
+<td>Handshake</td>
+<td>Yes</td>
+<td>No</td>
 </tr>
 <tr class="odd">
-<td>ترتیب داده</td>
-<td>مدیریت می‌شود</td>
-<td>تضمین نمی‌شود</td>
+<td>Reliability</td>
+<td>Built-in mechanisms</td>
+<td>No delivery guarantee</td>
 </tr>
 <tr class="even">
-<td>سربار</td>
-<td>بیشتر</td>
-<td>کمتر</td>
+<td>Ordering</td>
+<td>Yes</td>
+<td>No guarantee</td>
 </tr>
 <tr class="odd">
-<td>کاربرد نمونه</td>
-<td>HTTPS، SSH</td>
-<td>Voice، بعضی DNS Queryها</td>
+<td>Retransmission</td>
+<td>Yes</td>
+<td>No built-in retransmission</td>
+</tr>
+<tr class="even">
+<td>Header</td>
+<td>Minimum 20 bytes</td>
+<td>8 bytes</td>
+</tr>
+<tr class="odd">
+<td>Flow Control</td>
+<td>Yes</td>
+<td>No built-in flow control</td>
+</tr>
+<tr class="even">
+<td>Typical Use</td>
+<td>Web, SSH, File Transfer</td>
+<td>DNS, DHCP, Real-time traffic</td>
 </tr>
 </tbody>
 </table>
-<p>هیچ‌کدام همیشه بهتر نیستند. انتخاب به نیاز برنامه بستگی دارد.</p>
+<p>نکته: UDP لزوماً همیشه سریع‌تر از TCP نیست. عملکرد واقعی به نوع برنامه، شبکه و شرایط ارتباط بستگی دارد.</p>
+<hr>
 </section>
-<section id="port-number" class="level2">
-<h2 class="anchored" data-anchor-id="port-number">5. Port Number</h2>
-<p>Port Number یک مقدار ۱۶ بیتی است.</p>
-<p>چند پورت شناخته‌شده:</p>
+</section>
+<section id="port-numbers-و-socket" class="level2">
+<h2 class="anchored" data-anchor-id="port-numbers-و-socket">9. Port Numbers و Socket</h2>
+<p>آدرس IP مشخص می‌کند داده به کدام Host برسد.</p>
+<p>Port Number مشخص می‌کند داده به کدام سرویس یا Endpoint در آن Host تحویل داده شود.</p>
+<p>مثلاً:</p>
+<ul>
+<li>IP Address: 192.168.1.10</li>
+<li>TCP Port: 443</li>
+</ul>
+<p>این ترکیب نشان می‌دهد که ارتباط با سرویس HTTPS روی میزبان موردنظر برقرار می‌شود.</p>
+<section id="محدوده-portها" class="level3">
+<h3 class="anchored" data-anchor-id="محدوده-portها">محدوده Portها</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Port</th>
-<th>Protocol / Service</th>
+<th>Range</th>
+<th>Category</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>22</td>
-<td>SSH</td>
+<td>0–1023</td>
+<td>Well-Known Ports</td>
 </tr>
 <tr class="even">
-<td>53</td>
-<td>DNS</td>
+<td>1024–49151</td>
+<td>Registered Ports</td>
 </tr>
 <tr class="odd">
-<td>67/68</td>
-<td>DHCP</td>
-</tr>
-<tr class="even">
-<td>80</td>
-<td>HTTP</td>
-</tr>
-<tr class="odd">
-<td>123</td>
-<td>NTP</td>
-</tr>
-<tr class="even">
-<td>443</td>
-<td>HTTPS</td>
+<td>49152–65535</td>
+<td>Dynamic / Private Ports</td>
 </tr>
 </tbody>
 </table>
-<p>پورت‌ها در سه دسته کلی قرار می‌گیرند: - Well-known: 0 تا 1023 - Registered: 1024 تا 49151 - Dynamic/Private: 49152 تا 65535</p>
-<p>یک ارتباط شبکه‌ای معمولاً با IP مبدأ، Port مبدأ، IP مقصد، Port مقصد و Protocol قابل شناسایی است.</p>
+</section>
+<section id="portهای-مهم" class="level3">
+<h3 class="anchored" data-anchor-id="portهای-مهم">Portهای مهم</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Port</th>
+<th>Protocol</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>20/21</td>
+<td>TCP</td>
+<td>FTP</td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td>TCP</td>
+<td>SSH</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>TCP</td>
+<td>Telnet</td>
+</tr>
+<tr class="even">
+<td>25</td>
+<td>TCP</td>
+<td>SMTP</td>
+</tr>
+<tr class="odd">
+<td>53</td>
+<td>UDP/TCP</td>
+<td>DNS</td>
+</tr>
+<tr class="even">
+<td>67/68</td>
+<td>UDP</td>
+<td>DHCP</td>
+</tr>
+<tr class="odd">
+<td>80</td>
+<td>TCP</td>
+<td>HTTP</td>
+</tr>
+<tr class="even">
+<td>110</td>
+<td>TCP</td>
+<td>POP3</td>
+</tr>
+<tr class="odd">
+<td>123</td>
+<td>UDP</td>
+<td>NTP</td>
+</tr>
+<tr class="even">
+<td>143</td>
+<td>TCP</td>
+<td>IMAP</td>
+</tr>
+<tr class="odd">
+<td>161/162</td>
+<td>UDP</td>
+<td>SNMP</td>
+</tr>
+<tr class="even">
+<td>389</td>
+<td>TCP/UDP</td>
+<td>LDAP</td>
+</tr>
+<tr class="odd">
+<td>443</td>
+<td>TCP</td>
+<td>HTTPS</td>
+</tr>
+<tr class="even">
+<td>445</td>
+<td>TCP</td>
+<td>SMB</td>
+</tr>
+<tr class="odd">
+<td>514</td>
+<td>UDP</td>
+<td>Syslog</td>
+</tr>
+<tr class="even">
+<td>3389</td>
+<td>TCP/UDP</td>
+<td>RDP</td>
+</tr>
+</tbody>
+</table>
+<p>توجه: بعضی سرویس‌های مدرن می‌توانند از Transport یا Portهای دیگری هم استفاده کنند. جدول بالا Portهای رایج را نشان می‌دهد.</p>
+</section>
+<section id="socket-چیست" class="level3">
+<h3 class="anchored" data-anchor-id="socket-چیست">Socket چیست؟</h3>
+<p>Socket یک Endpoint ارتباطی است.</p>
+<p>در ارتباطات IP، ترکیبی از آدرس IP، Port و نوع پروتکل به شناسایی ارتباط کمک می‌کند.</p>
+<p>یک TCP Connection معمولاً با این چهار مقدار شناسایی می‌شود:</p>
+<ul>
+<li>Source IP</li>
+<li>Source Port</li>
+<li>Destination IP</li>
+<li>Destination Port</li>
+</ul>
+<p>به این مجموعه Four-Tuple می‌گویند.</p>
+<hr>
+</section>
 </section>
 <section id="dns-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="dns-چیست">6. DNS چیست؟</h2>
-<p>DNS نام دامنه را به اطلاعاتی مانند IP Address تبدیل می‌کند.</p>
-<p>مثال:</p>
-<pre class="text"><code>example.com -&gt; IP Address</code></pre>
-<p>فرآیند ساده‌شده: 1. برنامه درخواست نام دامنه می‌دهد. 2. سیستم Cache را بررسی می‌کند. 3. در صورت نیاز از DNS Resolver سؤال می‌کند. 4. Resolver پاسخ را پیدا می‌کند. 5. نتیجه به سیستم برمی‌گردد.</p>
-<p>انواع رکوردهای رایج:</p>
+<h2 class="anchored" data-anchor-id="dns-چیست">10. DNS چیست؟</h2>
+<p>DNS مخفف Domain Name System است.</p>
+<p>DNS نام دامنه را به اطلاعاتی مانند آدرس IP تبدیل می‌کند.</p>
+<p>انسان‌ها معمولاً نام‌هایی مانند example.com را به خاطر می‌سپارند، اما برای برقراری ارتباط شبکه‌ای به آدرس IP نیاز داریم.</p>
+<p>DNS این فاصله را پر می‌کند.</p>
+<section id="فرآیند-dns-resolution" class="level3">
+<h3 class="anchored" data-anchor-id="فرآیند-dns-resolution">فرآیند DNS Resolution</h3>
+<p>فرض کنید مرورگر می‌خواهد به example.com متصل شود.</p>
+<ol type="1">
+<li>سیستم ابتدا ممکن است Cache محلی را بررسی کند.</li>
+<li>اگر پاسخ موجود نباشد، درخواست به DNS Resolver ارسال می‌شود.</li>
+<li>Resolver ممکن است Cache خودش را بررسی کند.</li>
+<li>در صورت نیاز، Resolver سراغ Root DNS Server می‌رود.</li>
+<li>Root Server اطلاعات مربوط به TLD را معرفی می‌کند.</li>
+<li>TLD Server آدرس Authoritative Name Server را معرفی می‌کند.</li>
+<li>Authoritative Server پاسخ نهایی را ارائه می‌دهد.</li>
+<li>Resolver پاسخ را به Client برمی‌گرداند.</li>
+</ol>
+<p>در عمل، Resolver ممکن است از Cache استفاده کند و تمام مراحل بالا در هر درخواست تکرار نمی‌شوند.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+
+<pre class="mermaid mermaid-js">flowchart TD
+    A["Client"] --&gt; B["Recursive Resolver"]
+    B --&gt; C["Root DNS"]
+    C --&gt; D["TLD DNS"]
+    D --&gt; E["Authoritative DNS"]
+    E --&gt; B
+    B --&gt; A
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="recursive-و-iterative-query" class="level3">
+<h3 class="anchored" data-anchor-id="recursive-و-iterative-query">Recursive و Iterative Query</h3>
+<p><strong>Recursive Query:</strong></p>
+<p>Client از DNS Resolver درخواست پاسخ نهایی می‌کند. Resolver مسئول پیدا کردن پاسخ است یا خطا را برمی‌گرداند.</p>
+<p><strong>Iterative Query:</strong></p>
+<p>سرور DNS ممکن است به‌جای پاسخ نهایی، آدرس سرور دیگری را معرفی کند که اطلاعات بیشتری دارد.</p>
+</section>
+<section id="dns-cache" class="level3">
+<h3 class="anchored" data-anchor-id="dns-cache">DNS Cache</h3>
+<p>DNS برای کاهش تأخیر و بار شبکه از Cache استفاده می‌کند.</p>
+<p>هر رکورد DNS معمولاً دارای TTL است.</p>
+<p>TTL مشخص می‌کند اطلاعات تا چه مدت می‌توانند در Cache معتبر در نظر گرفته شوند.</p>
+<hr>
+</section>
+</section>
+<section id="انواع-dns-records" class="level2">
+<h2 class="anchored" data-anchor-id="انواع-dns-records">11. انواع DNS Records</h2>
+<p>DNS فقط برای تبدیل نام به IPv4 نیست.</p>
+<p>رکوردهای متنوعی برای اهداف مختلف وجود دارند.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Record</th>
-<th>کاربرد</th>
+<th>Purpose</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>A</td>
 <td>نام به IPv4</td>
+<td>example.com → IPv4</td>
 </tr>
 <tr class="even">
 <td>AAAA</td>
 <td>نام به IPv6</td>
+<td>example.com → IPv6</td>
 </tr>
 <tr class="odd">
 <td>CNAME</td>
-<td>نام مستعار</td>
+<td>Alias</td>
+<td>www → example.com</td>
 </tr>
 <tr class="even">
 <td>MX</td>
 <td>Mail Server</td>
+<td>mail.example.com</td>
 </tr>
 <tr class="odd">
-<td>TXT</td>
-<td>متن و اطلاعات اعتبارسنجی</td>
-</tr>
-<tr class="even">
 <td>NS</td>
 <td>Name Server</td>
+<td>ns1.example.com</td>
+</tr>
+<tr class="even">
+<td>TXT</td>
+<td>Text Information</td>
+<td>SPF / Verification</td>
 </tr>
 <tr class="odd">
 <td>PTR</td>
 <td>Reverse DNS</td>
+<td>IP → Hostname</td>
+</tr>
+<tr class="even">
+<td>SOA</td>
+<td>Zone Information</td>
+<td>Primary DNS / Serial</td>
+</tr>
+<tr class="odd">
+<td>SRV</td>
+<td>Service Location</td>
+<td>Service / Port</td>
 </tr>
 </tbody>
 </table>
+<section id="forward-lookup" class="level3">
+<h3 class="anchored" data-anchor-id="forward-lookup">Forward Lookup</h3>
+<p>تبدیل نام دامنه به آدرس IP.</p>
+</section>
+<section id="reverse-lookup" class="level3">
+<h3 class="anchored" data-anchor-id="reverse-lookup">Reverse Lookup</h3>
+<p>تبدیل آدرس IP به نام میزبان با استفاده از PTR Record.</p>
+</section>
+<section id="dns-over-https-و-dns-over-tls" class="level3">
+<h3 class="anchored" data-anchor-id="dns-over-https-و-dns-over-tls">DNS over HTTPS و DNS over TLS</h3>
+<p>در DNS سنتی، درخواست‌ها معمولاً به شکل رمزنگاری‌نشده ارسال می‌شوند.</p>
+<p>DoH درخواست DNS را در HTTPS منتقل می‌کند.</p>
+<p>DoT از TLS برای رمزنگاری ارتباط DNS استفاده می‌کند.</p>
+<p>این روش‌ها می‌توانند حریم خصوصی مسیر بین Client و Resolver را بهبود دهند، اما به‌تنهایی همه مشکلات امنیتی DNS را حل نمی‌کنند.</p>
+</section>
+<section id="dns-over-tcp" class="level3">
+<h3 class="anchored" data-anchor-id="dns-over-tcp">DNS over TCP</h3>
+<p>DNS فقط UDP نیست.</p>
+<p>DNS از UDP و TCP روی Port 53 استفاده می‌کند.</p>
+<p>TCP می‌تواند برای پاسخ‌های بزرگ، Zone Transfer و شرایطی که انتقال قابل اعتماد لازم است استفاده شود.</p>
+<hr>
+</section>
 </section>
 <section id="dhcp-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="dhcp-چیست">7. DHCP چیست؟</h2>
-<p>DHCP تنظیمات شبکه را به شکل خودکار در اختیار Client قرار می‌دهد.</p>
-<p>اطلاعات متداول: - IP Address - Subnet Mask یا Prefix - Default Gateway - DNS Server - Lease Time</p>
-<section id="فرآیند-dora" class="level3">
-<h3 class="anchored" data-anchor-id="فرآیند-dora">فرآیند DORA</h3>
-<ol type="1">
-<li>Discover: کلاینت دنبال DHCP Server می‌گردد.</li>
-<li>Offer: سرور یک پیشنهاد ارسال می‌کند.</li>
-<li>Request: کلاینت پیشنهاد را درخواست می‌کند.</li>
-<li>Acknowledge: سرور تخصیص را تأیید می‌کند.</li>
-</ol>
-<p>این فرآیند معمولاً با پیام‌های Broadcast و UDP انجام می‌شود.</p>
+<h2 class="anchored" data-anchor-id="dhcp-چیست">12. DHCP چیست؟</h2>
+<p>DHCP مخفف Dynamic Host Configuration Protocol است.</p>
+<p>DHCP به دستگاه‌ها اجازه می‌دهد تنظیمات شبکه را به‌صورت خودکار دریافت کنند.</p>
+<p>بدون DHCP، مدیر شبکه باید اطلاعاتی مانند IP و Subnet Mask را برای هر دستگاه به‌صورت دستی تنظیم کند.</p>
+<section id="dhcp-چه-اطلاعاتی-ارائه-میدهد" class="level3">
+<h3 class="anchored" data-anchor-id="dhcp-چه-اطلاعاتی-ارائه-میدهد">DHCP چه اطلاعاتی ارائه می‌دهد؟</h3>
+<ul>
+<li>IP Address</li>
+<li>Subnet Mask</li>
+<li>Default Gateway</li>
+<li>DNS Server</li>
+<li>Lease Duration</li>
+<li>Domain Name</li>
+<li>سایر Optionهای پیکربندی</li>
+</ul>
 </section>
+<section id="dhcp-dora" class="level3">
+<h3 class="anchored" data-anchor-id="dhcp-dora">DHCP DORA</h3>
+<p>فرآیند اصلی دریافت آدرس IPv4 از DHCP Server با چهار مرحله شناخته می‌شود:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant C as DHCP Client
+    participant S as DHCP Server
+    C-&gt;&gt;S: Discover
+    S-&gt;&gt;C: Offer
+    C-&gt;&gt;S: Request
+    S-&gt;&gt;C: Acknowledgment
+    Note over C,S: Lease Assigned
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="مرحله-اول-discover" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-اول-discover">مرحله اول: Discover</h3>
+<p>Client هنوز IP معتبر ندارد.</p>
+<p>برای پیدا کردن DHCP Server یک DHCP Discover ارسال می‌کند.</p>
+<p>در حالت معمول:</p>
+<ul>
+<li>Source IP: 0.0.0.0</li>
+<li>Destination IP: 255.255.255.255</li>
+<li>Source UDP Port: 68</li>
+<li>Destination UDP Port: 67</li>
+</ul>
+</section>
+<section id="مرحله-دوم-offer" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-دوم-offer">مرحله دوم: Offer</h3>
+<p>DHCP Server یک پیشنهاد شامل IP و تنظیمات شبکه ارسال می‌کند.</p>
+</section>
+<section id="مرحله-سوم-request" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-سوم-request">مرحله سوم: Request</h3>
+<p>Client اعلام می‌کند که پیشنهاد موردنظر را می‌پذیرد.</p>
+</section>
+<section id="مرحله-چهارم-acknowledgment" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-چهارم-acknowledgment">مرحله چهارم: Acknowledgment</h3>
+<p>DHCP Server درخواست را تأیید می‌کند و Lease را اختصاص می‌دهد.</p>
+<p>پس از تکمیل فرآیند، Client می‌تواند از تنظیمات اختصاص‌یافته استفاده کند.</p>
+</section>
+<section id="dhcp-lease" class="level3">
+<h3 class="anchored" data-anchor-id="dhcp-lease">DHCP Lease</h3>
+<p>آدرس DHCP معمولاً برای یک بازه زمانی مشخص اختصاص داده می‌شود.</p>
+<p>این بازه Lease Time نام دارد.</p>
+<p>Client پیش از پایان Lease تلاش می‌کند آن را تمدید کند.</p>
+<p>در رفتار استاندارد DHCPv4:</p>
+<ul>
+<li>T1 معمولاً در 50 درصد Lease Time است.</li>
+<li>T2 معمولاً در 87.5 درصد Lease Time است.</li>
+</ul>
+<p>این زمان‌ها مقادیر پیش‌فرض رایج هستند و ممکن است بر اساس شرایط یا تنظیمات متفاوت باشند.</p>
+</section>
+<section id="dhcp-relay" class="level3">
+<h3 class="anchored" data-anchor-id="dhcp-relay">DHCP Relay</h3>
+<p>در شبکه‌های مختلف، DHCP Broadcast به‌صورت معمول از Router عبور نمی‌کند.</p>
+<p>اگر DHCP Server در Subnet دیگری باشد، می‌توان از DHCP Relay Agent استفاده کرد.</p>
+<p>در Cisco IOS معمولاً از دستور زیر استفاده می‌شود:</p>
+<pre class="text"><code>ip helper-address 192.168.10.10</code></pre>
+<p>این دستور روی Interface مربوط به شبکه Client تنظیم می‌شود و درخواست‌های DHCP را به Server مشخص‌شده Relay می‌کند.</p>
+<hr>
+</section>
+</section>
+<section id="dhcp-و-dns-در-کنار-یکدیگر" class="level2">
+<h2 class="anchored" data-anchor-id="dhcp-و-dns-در-کنار-یکدیگر">13. DHCP و DNS در کنار یکدیگر</h2>
+<p>DHCP و DNS دو سرویس متفاوت هستند، اما در شبکه‌های سازمانی به‌شدت با یکدیگر همکاری می‌کنند.</p>
+<p>DHCP به Client آدرس IP و DNS Server را معرفی می‌کند.</p>
+<p>DNS نام دستگاه‌ها و سرویس‌ها را به اطلاعات شبکه تبدیل می‌کند.</p>
+<p>مثال:</p>
+<ol type="1">
+<li>لپ‌تاپ به شبکه متصل می‌شود.</li>
+<li>DHCP به آن IP برابر 192.168.1.100 اختصاص می‌دهد.</li>
+<li>DHCP آدرس Gateway و DNS Server را نیز ارائه می‌کند.</li>
+<li>کاربر آدرس intranet.company.local را وارد می‌کند.</li>
+<li>Client از DNS برای پیدا کردن IP سرور استفاده می‌کند.</li>
+<li>ارتباط با سرور برقرار می‌شود.</li>
+</ol>
+<hr>
 </section>
 <section id="آزمایش-عملی-powershell" class="level2">
-<h2 class="anchored" data-anchor-id="آزمایش-عملی-powershell">8. آزمایش عملی PowerShell</h2>
-<section id="بررسی-dns" class="level3">
-<h3 class="anchored" data-anchor-id="بررسی-dns">بررسی DNS</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nslookup example<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="بررسی-جزئیات-dns" class="level3">
-<h3 class="anchored" data-anchor-id="بررسی-جزئیات-dns">بررسی جزئیات DNS</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Resolve-DnsName example<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="بررسی-پورت-tcp" class="level3">
-<h3 class="anchored" data-anchor-id="بررسی-پورت-tcp">بررسی پورت TCP</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection example<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="مشاهده-اتصالهای-فعال" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-اتصالهای-فعال">مشاهده اتصال‌های فعال</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="مشاهده-processهای-مرتبط-با-اتصال" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-processهای-مرتبط-با-اتصال">مشاهده Processهای مرتبط با اتصال</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection <span class="op">|</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Select-Object</span> LocalAddress<span class="op">,</span> LocalPort<span class="op">,</span> RemoteAddress<span class="op">,</span> RemotePort<span class="op">,</span> State<span class="op">,</span> OwningProcess</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="بررسی-process-با-pid" class="level3">
-<h3 class="anchored" data-anchor-id="بررسی-process-با-pid">بررسی Process با PID</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Process</span> <span class="op">-</span>Id <span class="dv">1234</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>به‌جای 1234 مقدار PID واقعی را قرار بده.</p>
-</section>
-<section id="مشاهده-تنظیمات-dhcp" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-تنظیمات-dhcp">مشاهده تنظیمات DHCP</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="مشاهده-وضعیت-dhcp-رابطها" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-وضعیت-dhcp-رابطها">مشاهده وضعیت DHCP رابط‌ها</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPInterface <span class="op">-</span>AddressFamily IPv4 <span class="op">|</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Select-Object</span> InterfaceAlias<span class="op">,</span> Dhcp<span class="op">,</span> ConnectionState</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="تمرین-عیبیابی" class="level2">
-<h2 class="anchored" data-anchor-id="تمرین-عیبیابی">9. تمرین عیب‌یابی</h2>
-<p>سناریو: یک سیستم به اینترنت دسترسی ندارد.</p>
-<p>به ترتیب این موارد را بررسی کن:</p>
-<ol type="1">
-<li>آیا کارت شبکه فعال است؟</li>
-<li>آیا IP معتبر دریافت شده است؟</li>
-<li>آیا Gateway قابل دسترسی است؟</li>
-<li>آیا ارتباط با IP عمومی برقرار می‌شود؟</li>
-<li>آیا DNS نام دامنه را Resolve می‌کند؟</li>
-<li>آیا پورت سرویس مقصد قابل دسترسی است؟</li>
-</ol>
-<p>دستورات پیشنهادی:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ping <span class="op">&lt;</span>gateway-ip<span class="op">&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">1.1</span><span class="op">.</span><span class="dv">1.1</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">nslookup</span> example<span class="op">.</span><span class="fu">com</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>Test-NetConnection example<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>توجه: موفقیت یا شکست Ping به‌تنهایی اثبات‌کننده وضعیت کل سرویس نیست. ممکن است ICMP مسدود باشد ولی TCP کار کند.</p>
-</section>
-<section id="ارتباط-با-network-automation" class="level2">
-<h2 class="anchored" data-anchor-id="ارتباط-با-network-automation">10. ارتباط با Network Automation</h2>
-<p>این مفاهیم در اتوماسیون شبکه کاربرد مستقیم دارند:</p>
+<h2 class="anchored" data-anchor-id="آزمایش-عملی-powershell">14. آزمایش عملی PowerShell</h2>
+<p>در این بخش با ابزارهای داخلی Windows وضعیت TCP، UDP، DNS و DHCP را بررسی می‌کنیم.</p>
+<section id="lab-1-مشاهده-تنظیمات-ip-و-dhcp" class="level3">
+<h3 class="anchored" data-anchor-id="lab-1-مشاهده-تنظیمات-ip-و-dhcp">Lab 1: مشاهده تنظیمات IP و DHCP</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>به موارد زیر توجه کنید:</p>
 <ul>
-<li>بررسی دسترسی به سرویس‌ها با TCP</li>
-<li>مانیتورینگ DNS</li>
-<li>بررسی DHCP و IP Assignment</li>
-<li>جمع‌آوری اطلاعات اتصال‌ها</li>
-<li>ساخت گزارش از وضعیت سرویس‌های شبکه</li>
+<li>IPv4 Address</li>
+<li>Subnet Mask</li>
+<li>Default Gateway</li>
+<li>DHCP Enabled</li>
+<li>DHCP Server</li>
+<li>DNS Servers</li>
+<li>Lease Obtained</li>
+<li>Lease Expires</li>
 </ul>
-<p>در مراحل بعدی NetFleet، از Python برای اجرای تست‌های اتصال و تحلیل نتایج استفاده خواهیم کرد.</p>
 </section>
-<section id="ارزیابی" class="level2">
-<h2 class="anchored" data-anchor-id="ارزیابی">ارزیابی</h2>
+<section id="lab-2-مشاهده-dns-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="lab-2-مشاهده-dns-configuration">Lab 2: مشاهده DNS Configuration</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Get-DnsClientServerAddress</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این دستور DNS Serverهای تنظیم‌شده روی Interfaceهای سیستم را نشان می‌دهد.</p>
+</section>
+<section id="lab-3-تست-dns-resolution" class="level3">
+<h3 class="anchored" data-anchor-id="lab-3-تست-dns-resolution">Lab 3: تست DNS Resolution</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Resolve-DnsName example<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مشاهده رکورد A:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Resolve-DnsName example<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Type A</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مشاهده رکورد AAAA:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Resolve-DnsName example<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Type AAAA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مشاهده رکورد MX:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Resolve-DnsName gmail<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Type MX</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مشاهده رکورد NS:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Resolve-DnsName example<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Type NS</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lab-4-تست-dns-با-dns-server-مشخص" class="level3">
+<h3 class="anchored" data-anchor-id="lab-4-تست-dns-با-dns-server-مشخص">Lab 4: تست DNS با DNS Server مشخص</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Resolve-DnsName example<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Server <span class="dv">1.1</span><span class="op">.</span><span class="dv">1.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این دستور درخواست را به DNS Server مشخص‌شده می‌فرستد.</p>
+</section>
+<section id="lab-5-مشاهده-cache-محلی-dns" class="level3">
+<h3 class="anchored" data-anchor-id="lab-5-مشاهده-cache-محلی-dns">Lab 5: مشاهده Cache محلی DNS</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Get-DnsClientCache</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>پاک کردن Cache:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Clear-DnsClientCache</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lab-6-مشاهده-tcp-connections" class="level3">
+<h3 class="anchored" data-anchor-id="lab-6-مشاهده-tcp-connections">Lab 6: مشاهده TCP Connections</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مشاهده فقط ارتباط‌های Established:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection <span class="op">-</span>State Established</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مشاهده ارتباط‌های Listening:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection <span class="op">-</span>State Listen</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lab-7-بررسی-udp-endpointها" class="level3">
+<h3 class="anchored" data-anchor-id="lab-7-بررسی-udp-endpointها">Lab 7: بررسی UDP Endpointها</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Get-NetUDPEndpoint</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lab-8-بررسی-port-و-سرویس-مقصد" class="level3">
+<h3 class="anchored" data-anchor-id="lab-8-بررسی-port-و-سرویس-مقصد">Lab 8: بررسی Port و سرویس مقصد</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection example<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>به مقدار زیر توجه کنید:</p>
+<pre class="text"><code>TcpTestSucceeded</code></pre>
+<p>اگر True باشد، اتصال TCP به Port موردنظر موفق بوده است.</p>
+<p>نکته: این تست فقط برقراری اتصال TCP را بررسی می‌کند، نه عملکرد کامل سرویس HTTPS.</p>
+</section>
+<section id="lab-9-مشاهده-جزئیات-processهای-شبکه" class="level3">
+<h3 class="anchored" data-anchor-id="lab-9-مشاهده-جزئیات-processهای-شبکه">Lab 9: مشاهده جزئیات Processهای شبکه</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection <span class="op">|</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Select-Object</span> LocalAddress<span class="op">,</span> LocalPort<span class="op">,</span> RemoteAddress<span class="op">,</span> RemotePort<span class="op">,</span> State<span class="op">,</span> OwningProcess</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>برای مشاهده نام Process:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection <span class="op">-</span>State Established <span class="op">|</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ForEach-Object</span> <span class="op">{</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">$process</span> <span class="op">=</span> <span class="fu">Get-Process</span> <span class="op">-</span>Id <span class="va">$_</span><span class="op">.</span><span class="fu">OwningProcess</span> <span class="op">-</span>ErrorAction SilentlyContinue</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">[</span>PSCustomObject<span class="op">]</span>@<span class="op">{</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">Process</span>       <span class="op">=</span> <span class="va">$process</span><span class="op">.</span><span class="fu">ProcessName</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>            LocalAddress  <span class="op">=</span> <span class="va">$_</span><span class="op">.</span><span class="fu">LocalAddress</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            LocalPort     <span class="op">=</span> <span class="va">$_</span><span class="op">.</span><span class="fu">LocalPort</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>            RemoteAddress <span class="op">=</span> <span class="va">$_</span><span class="op">.</span><span class="fu">RemoteAddress</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>            RemotePort    <span class="op">=</span> <span class="va">$_</span><span class="op">.</span><span class="fu">RemotePort</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>            State         <span class="op">=</span> <span class="va">$_</span><span class="op">.</span><span class="fu">State</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lab-10-بررسی-dhcp-lease" class="level3">
+<h3 class="anchored" data-anchor-id="lab-10-بررسی-dhcp-lease">Lab 10: بررسی DHCP Lease</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>در صورت نیاز به تمدید آدرس:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>renew</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>برای آزاد کردن آدرس:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>release</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>هشدار: دستور Release ارتباط شبکه را موقتاً قطع می‌کند. در سیستم‌های Remote یا هنگام اتصال از راه دور، بدون داشتن دسترسی جایگزین از آن استفاده نکنید.</p>
+<hr>
+</section>
+</section>
+<section id="wireshark-lab" class="level2">
+<h2 class="anchored" data-anchor-id="wireshark-lab">15. Wireshark Lab</h2>
+<p>در این بخش باید ترافیک واقعی شبکه را مشاهده کنیم.</p>
+<p>Wireshark به ما اجازه می‌دهد Packetها را Capture و تحلیل کنیم.</p>
+<section id="lab-1-مشاهده-tcp-handshake" class="level3">
+<h3 class="anchored" data-anchor-id="lab-1-مشاهده-tcp-handshake">Lab 1: مشاهده TCP Handshake</h3>
 <ol type="1">
-<li>تفاوت Connection-oriented و Connectionless چیست؟</li>
-<li>TCP Handshake چند مرحله دارد؟</li>
-<li>چرا UDP برای بعضی کاربردهای Real-time مناسب است؟</li>
-<li>DNS چه کاری انجام می‌دهد؟</li>
-<li>تفاوت A و AAAA چیست؟</li>
-<li>DHCP DORA شامل چه مراحلی است؟</li>
-<li>پورت 443 معمولاً برای چیست؟</li>
-<li>چرا Ping موفق لزوماً به معنی فعال بودن HTTPS نیست؟</li>
-<li><code>Test-NetConnection</code> چه اطلاعاتی می‌دهد؟</li>
+<li>Wireshark را باز کنید.</li>
+<li>Interface فعال را انتخاب کنید.</li>
+<li>Capture را شروع کنید.</li>
+<li>در مرورگر به یک وب‌سایت HTTPS متصل شوید.</li>
+<li>از Display Filter زیر استفاده کنید:</li>
 </ol>
+<pre class="text"><code>tcp.flags.syn == 1</code></pre>
+<p>برای مشاهده SYN بدون ACK:</p>
+<pre class="text"><code>tcp.flags.syn == 1 &amp;&amp; tcp.flags.ack == 0</code></pre>
+<p>برای مشاهده SYN-ACK:</p>
+<pre class="text"><code>tcp.flags.syn == 1 &amp;&amp; tcp.flags.ack == 1</code></pre>
+<p>به Source Port، Destination Port و Sequence Number توجه کنید.</p>
 </section>
-<section id="منابع" class="level2">
-<h2 class="anchored" data-anchor-id="منابع">منابع</h2>
+<section id="lab-2-مشاهده-dns" class="level3">
+<h3 class="anchored" data-anchor-id="lab-2-مشاهده-dns">Lab 2: مشاهده DNS</h3>
+<p>در Display Filter بنویسید:</p>
+<pre class="text"><code>dns</code></pre>
+<p>سپس یک دامنه جدید را در مرورگر باز کنید.</p>
+<p>به موارد زیر توجه کنید:</p>
 <ul>
-<li><a href="https://www.rfc-editor.org/rfc/rfc9293">RFC 9293: TCP</a></li>
-<li><a href="https://www.rfc-editor.org/rfc/rfc768">RFC 768: UDP</a></li>
-<li><a href="https://www.rfc-editor.org/rfc/rfc1034">RFC 1034: DNS Concepts</a></li>
-<li><a href="https://www.rfc-editor.org/rfc/rfc2131">RFC 2131: DHCP</a></li>
-<li><a href="https://learn.microsoft.com/en-us/powershell/module/nettcpip/test-netconnection">Microsoft Test-NetConnection</a></li>
+<li>Query Name</li>
+<li>Query Type</li>
+<li>Response</li>
+<li>Answer</li>
+<li>TTL</li>
 </ul>
-<p><strong>خروجی مورد انتظار:</strong> بتوانی تفاوت TCP و UDP را توضیح بدهی و یک اتصال شبکه را مرحله‌به‌مرحله عیب‌یابی کنی.</p>
+</section>
+<section id="lab-3-مشاهده-dhcp" class="level3">
+<h3 class="anchored" data-anchor-id="lab-3-مشاهده-dhcp">Lab 3: مشاهده DHCP</h3>
+<p>فیلتر:</p>
+<pre class="text"><code>dhcp</code></pre>
+<p>در نسخه‌های قدیمی‌تر Wireshark ممکن است فیلتر زیر استفاده شود:</p>
+<pre class="text"><code>bootp</code></pre>
+<p>در صورت نیاز، Interface شبکه را مجدداً فعال کنید یا Lease را تمدید کنید تا پیام‌های DHCP تولید شوند.</p>
+<p>به پیام‌های زیر توجه کنید:</p>
+<ul>
+<li>Discover</li>
+<li>Offer</li>
+<li>Request</li>
+<li>ACK</li>
+</ul>
+</section>
+<section id="lab-4-تحلیل-udp" class="level3">
+<h3 class="anchored" data-anchor-id="lab-4-تحلیل-udp">Lab 4: تحلیل UDP</h3>
+<p>فیلتر:</p>
+<pre class="text"><code>udp</code></pre>
+<p>به Source Port و Destination Port توجه کنید.</p>
+</section>
+<section id="نکته-مهم" class="level3">
+<h3 class="anchored" data-anchor-id="نکته-مهم">نکته مهم</h3>
+<p>Capture ترافیک DHCP ممکن است به‌دلیل تنظیمات فعلی Client یا نوع شبکه، تمام چهار مرحله DORA را نشان ندهد.</p>
+<hr>
 </section>
 </section>
+<section id="troubleshooting-سناریومحور" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting-سناریومحور">16. Troubleshooting سناریومحور</h2>
+<section id="scenario-1-کاربر-ip-دارد-اما-سایتها-باز-نمیشوند" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-1-کاربر-ip-دارد-اما-سایتها-باز-نمیشوند">Scenario 1: کاربر IP دارد اما سایت‌ها باز نمی‌شوند</h3>
+<p>احتمال‌ها:</p>
+<ul>
+<li>DNS Server در دسترس نیست.</li>
+<li>DNS Record اشتباه است.</li>
+<li>Gateway مشکل دارد.</li>
+<li>ارتباط TCP به مقصد برقرار نمی‌شود.</li>
+<li>Firewall ترافیک را مسدود کرده است.</li>
+</ul>
+<p>روش بررسی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Resolve-DnsName example<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection example<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="scenario-2-سایت-با-ip-باز-میشود-اما-با-domain-باز-نمیشود" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-2-سایت-با-ip-باز-میشود-اما-با-domain-باز-نمیشود">Scenario 2: سایت با IP باز می‌شود اما با Domain باز نمی‌شود</h3>
+<p>احتمال زیاد مشکل در DNS Resolution است.</p>
+<p>بررسی کنید:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>Resolve-DnsName example<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>سپس DNS Cache را بررسی کنید:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Get-DnsClientCache</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="scenario-3-کامپیوتر-ip-برابر-169.254.x.x-گرفته-است" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-3-کامپیوتر-ip-برابر-169.254.x.x-گرفته-است">Scenario 3: کامپیوتر IP برابر 169.254.x.x گرفته است</h3>
+<p>این محدوده Link-Local است.</p>
+<p>در Windows، آدرس‌دهی خودکار از این محدوده معمولاً APIPA نامیده می‌شود.</p>
+<p>این وضعیت می‌تواند نشان دهد Client نتوانسته از DHCP یک آدرس دریافت کند.</p>
+<p>موارد بررسی:</p>
+<ul>
+<li>DHCP Server روشن است؟</li>
+<li>DHCP Scope آدرس آزاد دارد؟</li>
+<li>VLAN درست است؟</li>
+<li>DHCP Relay تنظیم شده است؟</li>
+<li>مسیر شبکه تا DHCP Server برقرار است؟</li>
+</ul>
+</section>
+<section id="scenario-4-tcp-connection-failed" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-4-tcp-connection-failed">Scenario 4: TCP Connection Failed</h3>
+<p>دستور:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection <span class="dv">192.168</span><span class="op">.</span><span class="dv">1.10</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>موارد احتمالی:</p>
+<ul>
+<li>سرویس مقصد اجرا نیست.</li>
+<li>Port در حال Listen نیست.</li>
+<li>Firewall ترافیک را Block می‌کند.</li>
+<li>Routing اشتباه است.</li>
+<li>مسیر شبکه قطع شده است.</li>
+</ul>
+</section>
+<section id="scenario-5-dns-query-timeout" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-5-dns-query-timeout">Scenario 5: DNS Query Timeout</h3>
+<p>بررسی کنید:</p>
+<ul>
+<li>آیا DNS Server قابل دسترس است؟</li>
+<li>آیا UDP Port 53 مسدود شده؟</li>
+<li>آیا TCP Port 53 در شرایط لازم قابل دسترس است؟</li>
+<li>آیا DNS Server پاسخ صحیح می‌دهد؟</li>
+<li>آیا تنظیمات DNS Client درست هستند؟</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="network-automation-و-کاربرد-در-دنیای-واقعی" class="level2">
+<h2 class="anchored" data-anchor-id="network-automation-و-کاربرد-در-دنیای-واقعی">17. Network Automation و کاربرد در دنیای واقعی</h2>
+<p>یک Network Automation Engineer باید بتواند وضعیت سرویس‌های شبکه را به‌صورت خودکار بررسی کند.</p>
+<p>چند نمونه از کارهای قابل اتوماسیون:</p>
+<section id="dns-monitoring" class="level3">
+<h3 class="anchored" data-anchor-id="dns-monitoring">DNS Monitoring</h3>
+<ul>
+<li>بررسی دوره‌ای DNS Resolution</li>
+<li>مقایسه پاسخ چند DNS Server</li>
+<li>ثبت زمان پاسخ</li>
+<li>تشخیص خطای Name Resolution</li>
+</ul>
+</section>
+<section id="tcp-monitoring" class="level3">
+<h3 class="anchored" data-anchor-id="tcp-monitoring">TCP Monitoring</h3>
+<ul>
+<li>بررسی Portهای حیاتی</li>
+<li>شناسایی Connectionهای غیرعادی</li>
+<li>بررسی وضعیت سرویس‌ها</li>
+<li>ثبت Connectionهای ناموفق</li>
+</ul>
+</section>
+<section id="dhcp-monitoring" class="level3">
+<h3 class="anchored" data-anchor-id="dhcp-monitoring">DHCP Monitoring</h3>
+<ul>
+<li>بررسی Scopeهای دارای ظرفیت کم</li>
+<li>شناسایی آدرس‌های نامعتبر</li>
+<li>پایش Leaseها</li>
+<li>تشخیص DHCP Serverهای ناشناس</li>
+</ul>
+</section>
+<section id="نمونه-ساده-health-check-در-powershell" class="level3">
+<h3 class="anchored" data-anchor-id="نمونه-ساده-health-check-در-powershell">نمونه ساده Health Check در PowerShell</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="va">$targets</span> <span class="op">=</span> <span class="op">@(</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    @<span class="op">{</span> Name <span class="op">=</span> <span class="st">"DNS"</span><span class="op">;</span> Host <span class="op">=</span> <span class="st">"1.1.1.1"</span><span class="op">;</span> Port <span class="op">=</span> <span class="dv">53</span> <span class="op">},</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    @<span class="op">{</span> Name <span class="op">=</span> <span class="st">"HTTPS"</span><span class="op">;</span> Host <span class="op">=</span> <span class="st">"example.com"</span><span class="op">;</span> Port <span class="op">=</span> <span class="dv">443</span> <span class="op">},</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    @<span class="op">{</span> Name <span class="op">=</span> <span class="st">"SSH"</span><span class="op">;</span> Host <span class="op">=</span> <span class="st">"github.com"</span><span class="op">;</span> Port <span class="op">=</span> <span class="dv">22</span> <span class="op">}</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="op">)</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="cf">foreach</span> <span class="op">(</span><span class="va">$target</span> <span class="kw">in</span> <span class="va">$targets</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">$result</span> <span class="op">=</span> Test-NetConnection `</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span>ComputerName <span class="va">$target</span><span class="op">.</span><span class="fu">Host</span> `</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span>Port <span class="va">$target</span><span class="op">.</span><span class="fu">Port</span> `</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span>WarningAction SilentlyContinue</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">[</span>PSCustomObject<span class="op">]</span>@<span class="op">{</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>        Service <span class="op">=</span> <span class="va">$target</span><span class="op">.</span><span class="fu">Name</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>        Host    <span class="op">=</span> <span class="va">$target</span><span class="op">.</span><span class="fu">Host</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>        Port    <span class="op">=</span> <span class="va">$target</span><span class="op">.</span><span class="fu">Port</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>        Status  <span class="op">=</span> <span class="cf">if</span> <span class="op">(</span><span class="va">$result</span><span class="op">.</span><span class="fu">TcpTestSucceeded</span><span class="op">)</span> <span class="op">{</span> <span class="st">"Online"</span> <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span> <span class="st">"Failed"</span> <span class="op">}</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این نمونه برای تست TCP است. بررسی DNS و UDP به روش‌های مخصوص خود نیاز دارند.</p>
+</section>
+<section id="چرا-این-مهارت-مهم-است" class="level3">
+<h3 class="anchored" data-anchor-id="چرا-این-مهارت-مهم-است">چرا این مهارت مهم است؟</h3>
+<p>در شبکه‌های سازمانی، بررسی دستی ده‌ها یا صدها سرویس زمان‌بر است.</p>
+<p>Automation به مهندس شبکه کمک می‌کند وضعیت سرویس‌ها را سریع‌تر بررسی کند، خطاها را ثبت کند و برای تحلیل‌های بعدی داده جمع‌آوری کند.</p>
+<hr>
+</section>
+</section>
+<section id="جمعبندی-هفته-اول" class="level2">
+<h2 class="anchored" data-anchor-id="جمعبندی-هفته-اول">18. جمع‌بندی هفته اول</h2>
+<p>در پنج جلسه اول، پایه‌های اصلی شبکه را ساختیم.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Day</th>
+<th>Topic</th>
+<th>Core Concept</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Day01</td>
+<td>Computer Networks</td>
+<td>Network Fundamentals</td>
+</tr>
+<tr class="even">
+<td>Day02</td>
+<td>OSI and TCP/IP</td>
+<td>Network Models</td>
+</tr>
+<tr class="odd">
+<td>Day03</td>
+<td>Ethernet, MAC and ARP</td>
+<td>Local Network Communication</td>
+</tr>
+<tr class="even">
+<td>Day04</td>
+<td>IPv4 and Subnetting</td>
+<td>Logical Addressing</td>
+</tr>
+<tr class="odd">
+<td>Day05</td>
+<td>TCP, UDP, DNS and DHCP</td>
+<td>Transport and Network Services</td>
+</tr>
+</tbody>
+</table>
+<section id="نقشه-ذهنی-هفته-اول" class="level3">
+<h3 class="anchored" data-anchor-id="نقشه-ذهنی-هفته-اول">نقشه ذهنی هفته اول</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+
+<pre class="mermaid mermaid-js">flowchart TD
+    A["Network Fundamentals"] --&gt; B["OSI / TCP-IP"]
+    B --&gt; C["Ethernet / MAC / ARP"]
+    C --&gt; D["IPv4 / Subnetting"]
+    D --&gt; E["TCP / UDP"]
+    E --&gt; F["DNS / DHCP"]
+    F --&gt; G["Network Troubleshooting"]
+    G --&gt; H["Network Automation"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="مفاهیم-کلیدی-که-باید-به-خاطر-بسپارید" class="level3">
+<h3 class="anchored" data-anchor-id="مفاهیم-کلیدی-که-باید-به-خاطر-بسپارید">مفاهیم کلیدی که باید به خاطر بسپارید</h3>
+<ul>
+<li>IP Address میزبان را در شبکه شناسایی می‌کند.</li>
+<li>Port برنامه یا سرویس مقصد را مشخص می‌کند.</li>
+<li>TCP ارتباط قابل اعتماد و مرتب فراهم می‌کند.</li>
+<li>UDP انتقال Datagram با سربار کمتر ارائه می‌دهد.</li>
+<li>DNS نام دامنه را به اطلاعاتی مانند IP تبدیل می‌کند.</li>
+<li>DHCP تنظیمات شبکه را به‌صورت خودکار اختصاص می‌دهد.</li>
+<li>Wireshark به ما اجازه می‌دهد رفتار واقعی پروتکل‌ها را ببینیم.</li>
+<li>PowerShell ابزار مهمی برای بررسی و اتوماسیون شبکه در Windows است.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="چالش-پایانی-هفته-اول" class="level2">
+<h2 class="anchored" data-anchor-id="چالش-پایانی-هفته-اول">19. چالش پایانی هفته اول</h2>
+<p>فرض کنید یک شرکت کوچک دارای 30 کارمند است.</p>
+<p>کاربران گزارش می‌دهند:</p>
+<ul>
+<li>بعضی کامپیوترها IP دریافت نمی‌کنند.</li>
+<li>بعضی کاربران می‌توانند با IP به سرور متصل شوند، اما با نام دامنه نه.</li>
+<li>اتصال HTTPS به یک سرویس داخلی برقرار نمی‌شود.</li>
+<li>مدیر شبکه می‌خواهد وضعیت Portهای حیاتی را به‌صورت خودکار بررسی کند.</li>
+</ul>
+<section id="وظایف-شما" class="level3">
+<h3 class="anchored" data-anchor-id="وظایف-شما">وظایف شما</h3>
+<ol type="1">
+<li>برای مشکل دریافت IP، مسیر عیب‌یابی DHCP را طراحی کنید.</li>
+<li>توضیح دهید چگونه مشکل DNS را از مشکل Routing تشخیص می‌دهید.</li>
+<li>با PowerShell اتصال TCP به Port 443 را بررسی کنید.</li>
+<li>توضیح دهید در Wireshark چگونه DHCP DORA را مشاهده می‌کنید.</li>
+<li>یک Health Check ساده برای سه سرویس طراحی کنید.</li>
+</ol>
+<p>هدف این چالش حفظ کردن دستورها نیست. باید بتوانید از روی نشانه‌ها، لایه و سرویس مشکل‌دار را پیدا کنید.</p>
+<hr>
+<hr>
+</section>
+</section>
+<section id="اشتباهات-رایج" class="level2">
+<h2 class="anchored" data-anchor-id="اشتباهات-رایج">20. اشتباهات رایج</h2>
+<ol type="1">
+<li>تصور اینکه UDP همیشه سریع‌تر از TCP است؛ عملکرد واقعی به شرایط شبکه و نوع برنامه وابسته است.</li>
+<li>تصور اینکه DNS فقط از UDP استفاده می‌کند؛ DNS می‌تواند از TCP نیز استفاده کند.</li>
+<li>اشتباه گرفتن UDP Port 67 و 68؛ Server از 67 و Client از 68 استفاده می‌کند.</li>
+<li>تصور اینکه دریافت آدرس 169.254.x.x به معنی دریافت IP از DHCP Server است؛ این آدرس معمولاً Link-Local و حاصل APIPA است.</li>
+<li>تصور اینکه موفقیت TCP Handshake به معنی سالم بودن کامل Application است.</li>
+<li>اشتباه گرفتن Flow Control با Congestion Control؛ اولی از Receiver و دومی از شبکه محافظت می‌کند.</li>
+<li>تصور اینکه Acknowledgment Number شماره آخرین بایت دریافت‌شده است؛ معمولاً شماره بایت بعدی مورد انتظار را نشان می‌دهد.</li>
+<li>تصور اینکه هر DNS Query الزاماً باید به Root DNS Server برسد؛ Cache می‌تواند بسیاری از مراحل را حذف کند.</li>
+<li>تصور اینکه DHCP Broadcast بدون Relay از Router عبور می‌کند.</li>
+<li>فرض اینکه موفقیت <code>Test-NetConnection</code> روی Port 443 به معنی سالم بودن کامل HTTPS است؛ این تست فقط برقراری TCP را بررسی می‌کند. ## 21. منابع و مطالعه بیشتر</li>
+</ol>
+<section id="rfc-documents" class="level3">
+<h3 class="anchored" data-anchor-id="rfc-documents">RFC Documents</h3>
+<ul>
+<li>RFC 9293: Transmission Control Protocol</li>
+<li>RFC 768: User Datagram Protocol</li>
+<li>RFC 1034: Domain Names - Concepts and Facilities</li>
+<li>RFC 1035: Domain Names - Implementation and Specification</li>
+<li>RFC 2131: Dynamic Host Configuration Protocol</li>
+<li>RFC 2132: DHCP Options and BOOTP Vendor Extensions</li>
+</ul>
+</section>
+<section id="documentation" class="level3">
+<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
+<ul>
+<li>Microsoft Learn: PowerShell Networking</li>
+<li>Wireshark User’s Guide</li>
+<li>Wireshark Display Filter Reference</li>
+<li>Cisco Networking Documentation</li>
+</ul>
+</section>
+<section id="ابزارهای-پیشنهادی" class="level3">
+<h3 class="anchored" data-anchor-id="ابزارهای-پیشنهادی">ابزارهای پیشنهادی</h3>
+<ul>
+<li>Wireshark</li>
+<li>Windows PowerShell</li>
+<li>Test-NetConnection</li>
+<li>Resolve-DnsName</li>
+<li>ipconfig</li>
+</ul>
+<hr>
+<hr>
+</section>
+</section>
+<section id="ارزیابی-پایان-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="ارزیابی-پایان-جلسه">22. ارزیابی پایان جلسه</h2>
+<p>قبل از پایان هفته اول باید بتوانی به این پرسش‌ها پاسخ بدهی:</p>
+<ol type="1">
+<li>تفاوت Connection-Oriented و Connectionless چیست؟</li>
+<li>مراحل TCP Three-Way Handshake را توضیح بده.</li>
+<li>Sequence Number و Acknowledgment Number چه نقشی دارند؟</li>
+<li>تفاوت Flow Control و Congestion Control چیست؟</li>
+<li>چرا UDP برای برخی کاربردهای Real-Time مناسب است؟</li>
+<li>تفاوت IP Address، Port Number و Socket چیست؟</li>
+<li>DNS Resolution چگونه از طریق Recursive Resolver انجام می‌شود؟</li>
+<li>تفاوت رکوردهای A، AAAA، CNAME و MX چیست؟</li>
+<li>مراحل DHCP DORA را با Portهای مورد استفاده توضیح بده.</li>
+<li>DHCP Relay چه مشکلی را حل می‌کند؟</li>
+<li>چرا ممکن است Ping موفق باشد اما TCP Port 443 در دسترس نباشد؟</li>
+<li>چگونه با Wireshark یک TCP Handshake یا DHCP DORA را تحلیل می‌کنی؟</li>
+</ol>
+<hr>
+</section>
+<section id="خروجی-مورد-انتظار-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="خروجی-مورد-انتظار-جلسه">23. خروجی مورد انتظار جلسه</h2>
+<p>در پایان این جلسه باید بتوانی:</p>
+<ul>
+<li>فرآیند برقراری و پایان اتصال TCP را تحلیل کنی.</li>
+<li>نقش TCP Flags، Sequence و Acknowledgment را توضیح بدهی.</li>
+<li>تفاوت کاربردی TCP و UDP را تشخیص بدهی.</li>
+<li>ارتباط میان IP، Port و Socket را درک کنی.</li>
+<li>DNS Resolution و انواع اصلی DNS Recordها را تحلیل کنی.</li>
+<li>DHCP DORA، Lease و Relay را توضیح بدهی.</li>
+<li>با PowerShell وضعیت DNS، DHCP، TCP و UDP را بررسی کنی.</li>
+<li>با Wireshark ترافیک این پروتکل‌ها را Capture و تحلیل کنی.</li>
+<li>برای مشکلات شبکه یک مسیر Troubleshooting ساختاریافته طراحی کنی.</li>
+<li>یک Health Check ساده برای سرویس‌های شبکه بسازی.</li>
+</ul>
+<hr>
+</section>
+<section id="مسیر-بعدی-یادگیری" class="level2">
+<h2 class="anchored" data-anchor-id="مسیر-بعدی-یادگیری">24. مسیر بعدی یادگیری</h2>
+<p><strong>پایان هفته اول</strong></p>
+<p>در هفته اول، مبانی ارتباطات شبکه را از مدل‌های معماری و Ethernet تا IPv4، Subnetting و سرویس‌های Transport و Application بررسی کردیم.</p>
+<p>در هفته دوم وارد Switching Fundamentals می‌شویم و یاد می‌گیریم Switchها چگونه Frameها را پردازش می‌کنند، VLAN چگونه شبکه را تقسیم می‌کند و چرا STP برای جلوگیری از Loop اهمیت دارد.</p>
+<p><strong>جلسه بعد: Ethernet Frame Structure</strong> ## پایان هفته اول</p>
+<p>تبریک! شما اکنون با مفاهیم اصلی ارتباطات شبکه، مدل‌های شبکه، Ethernet، ARP، IPv4، Subnetting، TCP، UDP، DNS و DHCP آشنا شده‌اید.</p>
+<p>در هفته دوم وارد مباحث Switching Fundamentals، Ethernet Frame، MAC Learning، VLAN و Spanning Tree می‌شویم.</p>
+</section>
+</section>
+<link rel="stylesheet" href="../../../assets/css/quiz.css">
+
+<section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-day05-title">
+
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-day05-title" class="anchored">آزمون تعاملی جلسه پنجم</h2>
+      <p>۱۰ سؤال برای سنجش درک شما از TCP، UDP، DNS و DHCP</p>
+    </div>
+  </div>
+
+  <div class="nf-quiz-content" data-content="">
+
+    <div class="nf-quiz-progress">
+      <div class="nf-quiz-progress-track">
+        <div class="nf-quiz-progress-bar" data-progress=""></div>
+      </div>
+
+      <div class="nf-quiz-progress-meta">
+        <span data-progress-text=""></span>
+        <span data-score=""></span>
+      </div>
+    </div>
+
+    <h3 data-question="" class="anchored"></h3>
+
+    <div data-options=""></div>
+
+    <div data-feedback=""></div>
+
+    <button type="button" data-next="" hidden="">
+      سؤال بعدی
+    </button>
+
+  </div>
+
+  <div class="nf-quiz-result" data-result="" hidden="">
+    <div data-final-score=""></div>
+    <div data-percentage=""></div>
+    <p data-result-message=""></p>
+
+    <button type="button" data-restart="">
+      شروع دوباره آزمون
+    </button>
+  </div>
+
+  <script type="application/json" data-quiz-questions="">
+[
+  {
+    "question": "کدام گزینه ترتیب صحیح TCP Three-Way Handshake را نشان می‌دهد؟",
+    "options": [
+      "SYN → ACK → FIN",
+      "SYN → SYN-ACK → ACK",
+      "ACK → SYN → SYN-ACK",
+      "SYN → FIN → ACK"
+    ],
+    "answer": 1,
+    "explanation": "در مرحله اول Client پیام SYN می‌فرستد، Server با SYN-ACK پاسخ می‌دهد و Client با ACK اتصال را تکمیل می‌کند."
+  },
+  {
+    "question": "حداقل اندازه TCP Header بدون Options چقدر است؟",
+    "options": [
+      "8 bytes",
+      "12 bytes",
+      "20 bytes",
+      "32 bytes"
+    ],
+    "answer": 2,
+    "explanation": "حداقل اندازه TCP Header برابر 20 بایت است. با وجود Options اندازه Header می‌تواند بیشتر شود."
+  },
+  {
+    "question": "کدام گزینه تفاوت اصلی TCP و UDP را بهتر بیان می‌کند؟",
+    "options": [
+      "UDP همیشه سریع‌تر است",
+      "TCP از IP استفاده نمی‌کند",
+      "TCP مکانیزم تحویل قابل اعتماد و مرتب دارد، UDP چنین تضمینی ندارد",
+      "UDP فقط برای شبکه‌های محلی است"
+    ],
+    "answer": 2,
+    "explanation": "TCP دارای مکانیزم‌هایی مانند ACK و Retransmission است. UDP تحویل یا ترتیب داده‌ها را تضمین نمی‌کند."
+  },
+  {
+    "question": "DHCP Server معمولاً روی کدام UDP Port منتظر درخواست Client است؟",
+    "options": [
+      "53",
+      "67",
+      "68",
+      "443"
+    ],
+    "answer": 1,
+    "explanation": "DHCP Server از UDP Port 67 استفاده می‌کند و DHCP Client معمولاً از UDP Port 68 استفاده می‌کند."
+  },
+  {
+    "question": "ترتیب صحیح فرآیند DHCP DORA کدام است؟",
+    "options": [
+      "Discover, Offer, Request, Acknowledgment",
+      "Request, Discover, Offer, Acknowledgment",
+      "Offer, Discover, Acknowledgment, Request",
+      "Discover, Request, Acknowledgment, Offer"
+    ],
+    "answer": 0,
+    "explanation": "DORA مخفف Discover, Offer, Request, Acknowledgment است."
+  },
+  {
+    "question": "کدام DNS Record برای تبدیل نام دامنه به IPv4 استفاده می‌شود؟",
+    "options": [
+      "AAAA",
+      "MX",
+      "PTR",
+      "A"
+    ],
+    "answer": 3,
+    "explanation": "رکورد A یک نام دامنه را به آدرس IPv4 نگاشت می‌کند."
+  },
+  {
+    "question": "کدام ابزار PowerShell برای مشاهده TCP Connectionهای برقرارشده مناسب است؟",
+    "options": [
+      "Get-NetUDPEndpoint",
+      "Get-NetTCPConnection -State Established",
+      "Get-DnsClientCache",
+      "Get-NetAdapter"
+    ],
+    "answer": 1,
+    "explanation": "Get-NetTCPConnection با فیلتر Established اتصال‌های TCP برقرارشده را نمایش می‌دهد."
+  },
+  {
+    "question": "کامپیوتری آدرس 169.254.20.10 دریافت کرده است. محتمل‌ترین توضیح چیست؟",
+    "options": [
+      "DHCP به‌درستی آدرس عمومی داده است",
+      "کامپیوتر از IPv6 استفاده می‌کند",
+      "Windows از آدرس Link-Local استفاده کرده و احتمالاً DHCP در دسترس نبوده است",
+      "DNS Server آدرس IP را تغییر داده است"
+    ],
+    "answer": 2,
+    "explanation": "169.254.0.0/16 محدوده IPv4 Link-Local است. در Windows معمولاً در صورت شکست دریافت DHCP، آدرس APIPA انتخاب می‌شود."
+  },
+  {
+    "question": "کدام Display Filter در Wireshark برای مشاهده TCP SYN بدون ACK مناسب است؟",
+    "options": [
+      "tcp.port == 53",
+      "tcp.flags.syn == 1 && tcp.flags.ack == 0",
+      "udp.flags.syn == 1",
+      "dns.flags.response == 1"
+    ],
+    "answer": 1,
+    "explanation": "این فیلتر Segmentهایی را نمایش می‌دهد که SYN دارند اما ACK آن‌ها صفر است."
+  },
+  {
+    "question": "اگر یک وب‌سایت با IP باز شود اما با نام دامنه باز نشود، کدام بخش را باید در اولویت بررسی کرد؟",
+    "options": [
+      "DNS Resolution",
+      "Ethernet Frame Size",
+      "RAM سیستم",
+      "DHCP Lease Duration"
+    ],
+    "answer": 0,
+    "explanation": "وقتی دسترسی با IP برقرار است اما نام دامنه Resolve نمی‌شود، DNS یکی از نخستین مواردی است که باید بررسی شود."
+  }
+]
+  </script>
+
+</section>
+
+<script src="../../../assets/js/labs/quiz-engine.js" defer=""></script>
 
 
 
@@ -1002,6 +2262,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
+<script>
+(() => {
+  const base = window.location.pathname.startsWith("/netfleet-docs/")
+    ? "/netfleet-docs/"
+    : "/";
+  const script = document.createElement("script");
+  script.src = base + "assets/js/labs/network-fundamentals.js";
+  script.async = false;
+  document.head.appendChild(script);
+})();
+</script>
 
 
 

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="مبانی شبکه‌های کامپیوتری، معماری ارتباطات و انتقال داده">
+<meta name="description" content="Understanding computer networks, communication architecture, network devices and practical connectivity testing">
 
 <title>Introduction to Computer Networks – NetFleet Docs</title>
 <style>
@@ -151,8 +151,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#جلسه-اول-آشنایی-با-شبکههای-کامپیوتری" id="toc-جلسه-اول-آشنایی-با-شبکههای-کامپیوتری" class="nav-link active" data-scroll-target="#جلسه-اول-آشنایی-با-شبکههای-کامپیوتری">جلسه اول: آشنایی با شبکه‌های کامپیوتری</a>
+  <ul class="collapse">
+  <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">1. اهداف یادگیری</a></li>
+  <li><a href="#سناریوی-واقعی-اینترنت-شرکت-قطع-شده-است" id="toc-سناریوی-واقعی-اینترنت-شرکت-قطع-شده-است" class="nav-link" data-scroll-target="#سناریوی-واقعی-اینترنت-شرکت-قطع-شده-است">2. سناریوی واقعی: اینترنت شرکت قطع شده است!</a></li>
+  <li><a href="#شبکه-کامپیوتری-چیست" id="toc-شبکه-کامپیوتری-چیست" class="nav-link" data-scroll-target="#شبکه-کامپیوتری-چیست">3. شبکه کامپیوتری چیست؟</a>
+  <ul class="collapse">
+  <li><a href="#چرا-به-شبکه-نیاز-داریم" id="toc-چرا-به-شبکه-نیاز-داریم" class="nav-link" data-scroll-target="#چرا-به-شبکه-نیاز-داریم">3.1 چرا به شبکه نیاز داریم؟</a></li>
+  <li><a href="#یک-مثال-ساده" id="toc-یک-مثال-ساده" class="nav-link" data-scroll-target="#یک-مثال-ساده">3.2 یک مثال ساده</a></li>
+  </ul></li>
+  <li><a href="#انواع-شبکه-از-نظر-محدوده-جغرافیایی" id="toc-انواع-شبکه-از-نظر-محدوده-جغرافیایی" class="nav-link" data-scroll-target="#انواع-شبکه-از-نظر-محدوده-جغرافیایی">4. انواع شبکه از نظر محدوده جغرافیایی</a>
+  <ul class="collapse">
+  <li><a href="#pan-personal-area-network" id="toc-pan-personal-area-network" class="nav-link" data-scroll-target="#pan-personal-area-network">4.1 PAN: Personal Area Network</a></li>
+  <li><a href="#lan-local-area-network" id="toc-lan-local-area-network" class="nav-link" data-scroll-target="#lan-local-area-network">4.2 LAN: Local Area Network</a></li>
+  <li><a href="#wlan-wireless-local-area-network" id="toc-wlan-wireless-local-area-network" class="nav-link" data-scroll-target="#wlan-wireless-local-area-network">4.3 WLAN: Wireless Local Area Network</a></li>
+  <li><a href="#man-metropolitan-area-network" id="toc-man-metropolitan-area-network" class="nav-link" data-scroll-target="#man-metropolitan-area-network">4.4 MAN: Metropolitan Area Network</a></li>
+  <li><a href="#wan-wide-area-network" id="toc-wan-wide-area-network" class="nav-link" data-scroll-target="#wan-wide-area-network">4.5 WAN: Wide Area Network</a></li>
+  </ul></li>
+  <li><a href="#اجزای-اصلی-یک-شبکه" id="toc-اجزای-اصلی-یک-شبکه" class="nav-link" data-scroll-target="#اجزای-اصلی-یک-شبکه">5. اجزای اصلی یک شبکه</a>
+  <ul class="collapse">
+  <li><a href="#end-devices" id="toc-end-devices" class="nav-link" data-scroll-target="#end-devices">5.1 End Devices</a></li>
+  <li><a href="#network-interface-card-nic" id="toc-network-interface-card-nic" class="nav-link" data-scroll-target="#network-interface-card-nic">5.2 Network Interface Card (NIC)</a></li>
+  <li><a href="#switch" id="toc-switch" class="nav-link" data-scroll-target="#switch">5.3 Switch</a></li>
+  <li><a href="#router" id="toc-router" class="nav-link" data-scroll-target="#router">5.4 Router</a></li>
+  <li><a href="#access-point" id="toc-access-point" class="nav-link" data-scroll-target="#access-point">5.5 Access Point</a></li>
+  <li><a href="#server" id="toc-server" class="nav-link" data-scroll-target="#server">5.6 Server</a></li>
+  </ul></li>
+  <li><a href="#client-و-server-چگونه-کار-میکنند" id="toc-client-و-server-چگونه-کار-میکنند" class="nav-link" data-scroll-target="#client-و-server-چگونه-کار-میکنند">6. Client و Server چگونه کار می‌کنند؟</a></li>
+  <li><a href="#داده-چگونه-در-شبکه-منتقل-میشود" id="toc-داده-چگونه-در-شبکه-منتقل-میشود" class="nav-link" data-scroll-target="#داده-چگونه-در-شبکه-منتقل-میشود">7. داده چگونه در شبکه منتقل می‌شود؟</a></li>
+  <li><a href="#یک-مثال-واقعی-از-مسیر-ارتباطی" id="toc-یک-مثال-واقعی-از-مسیر-ارتباطی" class="nav-link" data-scroll-target="#یک-مثال-واقعی-از-مسیر-ارتباطی">8. یک مثال واقعی از مسیر ارتباطی</a></li>
+  <li><a href="#آزمایش-عملی-اول-شناسایی-شبکه-سیستم-خودت" id="toc-آزمایش-عملی-اول-شناسایی-شبکه-سیستم-خودت" class="nav-link" data-scroll-target="#آزمایش-عملی-اول-شناسایی-شبکه-سیستم-خودت">9. آزمایش عملی اول: شناسایی شبکه سیستم خودت</a>
+  <ul class="collapse">
+  <li><a href="#تحلیل-خروجی" id="toc-تحلیل-خروجی" class="nav-link" data-scroll-target="#تحلیل-خروجی">تحلیل خروجی</a></li>
+  </ul></li>
+  <li><a href="#آزمایش-عملی-دوم-بررسی-ارتباط-شبکه" id="toc-آزمایش-عملی-دوم-بررسی-ارتباط-شبکه" class="nav-link" data-scroll-target="#آزمایش-عملی-دوم-بررسی-ارتباط-شبکه">10. آزمایش عملی دوم: بررسی ارتباط شبکه</a>
+  <ul class="collapse">
+  <li><a href="#test-1-بررسی-tcpip-loopback" id="toc-test-1-بررسی-tcpip-loopback" class="nav-link" data-scroll-target="#test-1-بررسی-tcpip-loopback">Test 1: بررسی TCP/IP Loopback</a></li>
+  <li><a href="#test-2-بررسی-ارتباط-با-یک-ip-عمومی" id="toc-test-2-بررسی-ارتباط-با-یک-ip-عمومی" class="nav-link" data-scroll-target="#test-2-بررسی-ارتباط-با-یک-ip-عمومی">Test 2: بررسی ارتباط با یک IP عمومی</a></li>
+  <li><a href="#test-3-بررسی-dns" id="toc-test-3-بررسی-dns" class="nav-link" data-scroll-target="#test-3-بررسی-dns">Test 3: بررسی DNS</a></li>
+  <li><a href="#test-4-بررسی-مسیر-شبکه" id="toc-test-4-بررسی-مسیر-شبکه" class="nav-link" data-scroll-target="#test-4-بررسی-مسیر-شبکه">Test 4: بررسی مسیر شبکه</a></li>
+  <li><a href="#test-5-مشاهده-جدول-arp" id="toc-test-5-مشاهده-جدول-arp" class="nav-link" data-scroll-target="#test-5-مشاهده-جدول-arp">Test 5: مشاهده جدول ARP</a></li>
+  </ul></li>
+  <li><a href="#آزمایش-عملی-سوم-بررسی-gateway-و-dns" id="toc-آزمایش-عملی-سوم-بررسی-gateway-و-dns" class="nav-link" data-scroll-target="#آزمایش-عملی-سوم-بررسی-gateway-و-dns">11. آزمایش عملی سوم: بررسی Gateway و DNS</a></li>
+  <li><a href="#چالش-عیبیابی-اینترنت-کار-نمیکند" id="toc-چالش-عیبیابی-اینترنت-کار-نمیکند" class="nav-link" data-scroll-target="#چالش-عیبیابی-اینترنت-کار-نمیکند">12. چالش عیب‌یابی: اینترنت کار نمی‌کند!</a>
+  <ul class="collapse">
+  <li><a href="#سؤال-اول" id="toc-سؤال-اول" class="nav-link" data-scroll-target="#سؤال-اول">سؤال اول</a></li>
+  <li><a href="#سؤال-دوم" id="toc-سؤال-دوم" class="nav-link" data-scroll-target="#سؤال-دوم">سؤال دوم</a></li>
+  <li><a href="#سؤال-سوم" id="toc-سؤال-سوم" class="nav-link" data-scroll-target="#سؤال-سوم">سؤال سوم</a></li>
+  </ul></li>
+  <li><a href="#engineering-challenge" id="toc-engineering-challenge" class="nav-link" data-scroll-target="#engineering-challenge">13. Engineering Challenge</a></li>
+  <li><a href="#ابزارهای-مورد-استفاده-در-این-مسیر" id="toc-ابزارهای-مورد-استفاده-در-این-مسیر" class="nav-link" data-scroll-target="#ابزارهای-مورد-استفاده-در-این-مسیر">14. ابزارهای مورد استفاده در این مسیر</a></li>
+  <li><a href="#منابع-آموزشی" id="toc-منابع-آموزشی" class="nav-link" data-scroll-target="#منابع-آموزشی">15. منابع آموزشی</a></li>
+  <li><a href="#ارزیابی-پایان-جلسه" id="toc-ارزیابی-پایان-جلسه" class="nav-link" data-scroll-target="#ارزیابی-پایان-جلسه">16. ارزیابی پایان جلسه</a></li>
+  <li><a href="#خروجی-مورد-انتظار-جلسه" id="toc-خروجی-مورد-انتظار-جلسه" class="nav-link" data-scroll-target="#خروجی-مورد-انتظار-جلسه">خروجی مورد انتظار جلسه</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
@@ -165,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    مبانی شبکه‌های کامپیوتری، معماری ارتباطات و انتقال داده
+    Understanding computer networks, communication architecture, network devices and practical connectivity testing
   </div>
 </div>
 
@@ -182,474 +241,471 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="persian">
-<section id="جلسه-اول-آشنایی-با-شبکههای-کامپیوتری" class="level1">
+<section id="جلسه-اول-آشنایی-با-شبکههای-کامپیوتری" class="level1 persian">
 <h1>جلسه اول: آشنایی با شبکه‌های کامپیوتری</h1>
+<section id="اهداف-یادگیری" class="level2">
+<h2 class="anchored" data-anchor-id="اهداف-یادگیری">1. اهداف یادگیری</h2>
+<p>در پایان این جلسه باید بتوانی:</p>
+<ul>
+<li>مفهوم شبکه کامپیوتری و کاربرد آن را توضیح بدهی.</li>
+<li>تفاوت ارتباط محلی و ارتباط بین شبکه‌ها را درک کنی.</li>
+<li>اجزای اصلی یک شبکه را شناسایی کنی.</li>
+<li>نقش Client، Server، Switch، Router و Access Point را توضیح بدهی.</li>
+<li>مسیر تقریبی ارسال داده از کامپیوتر خودت به یک سرور اینترنتی را تشریح کنی.</li>
+<li>با ابزارهای خط فرمان، وضعیت اتصال سیستم را بررسی کنی.</li>
+<li>مشکلات اولیه اتصال شبکه را به‌صورت اصولی عیب‌یابی کنی.</li>
+</ul>
+</section>
+<section id="سناریوی-واقعی-اینترنت-شرکت-قطع-شده-است" class="level2">
+<h2 class="anchored" data-anchor-id="سناریوی-واقعی-اینترنت-شرکت-قطع-شده-است">2. سناریوی واقعی: اینترنت شرکت قطع شده است!</h2>
+<p>تصور کن به‌عنوان یک Network Engineer در یک شرکت استخدام شده‌ای.</p>
+<p>صبح یکی از کارمندان به تو اطلاع می‌دهد:</p>
+<p>«کامپیوتر من به شبکه وصله، ولی اینترنت ندارم.»</p>
+<p>در همان زمان:</p>
+<ul>
+<li>کامپیوتر همکارش اینترنت دارد.</li>
+<li>پرینتر شبکه قابل دسترسی است.</li>
+<li>چراغ پورت شبکه روی کامپیوتر روشن است.</li>
+<li>مرورگر نمی‌تواند وب‌سایت‌ها را باز کند.</li>
+</ul>
+<p>اولین واکنش تو نباید Restart کردن مودم یا تغییر تصادفی تنظیمات باشد.</p>
+<p>یک مهندس شبکه باید بتواند مشکل را مرحله‌به‌مرحله محدود کند.</p>
+<p>برای این کار ابتدا باید بفهمیم شبکه چیست و کامپیوترها چطور با یکدیگر ارتباط برقرار می‌کنند.</p>
+</section>
 <section id="شبکه-کامپیوتری-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="شبکه-کامپیوتری-چیست">1. شبکه کامپیوتری چیست؟</h2>
-<p>شبکه کامپیوتری (Computer Network) مجموعه‌ای از دستگاه‌های مستقل است که از طریق یک بستر ارتباطی به یکدیگر متصل شده‌اند تا بتوانند اطلاعات، منابع و سرویس‌ها را به اشتراک بگذارند.</p>
-<p>این دستگاه‌ها می‌توانند شامل موارد زیر باشند:</p>
+<h2 class="anchored" data-anchor-id="شبکه-کامپیوتری-چیست">3. شبکه کامپیوتری چیست؟</h2>
+<p>Computer Network مجموعه‌ای از دستگاه‌های متصل به یکدیگر است که می‌توانند داده و منابع را با یکدیگر به اشتراک بگذارند.</p>
+<p>این دستگاه‌ها ممکن است شامل موارد زیر باشند:</p>
 <ul>
-<li>کامپیوترهای شخصی</li>
-<li>لپ‌تاپ‌ها و تلفن‌های همراه</li>
-<li>سرورها</li>
-<li>پرینترهای شبکه</li>
-<li>روترها و سوئیچ‌ها</li>
-<li>تجهیزات اینترنت اشیا (IoT)</li>
+<li>Desktop Computers</li>
+<li>Laptops</li>
+<li>Servers</li>
+<li>Smartphones</li>
+<li>Printers</li>
+<li>Routers</li>
+<li>Switches</li>
+<li>IoT Devices</li>
 </ul>
-<p>برای مثال، وقتی از لپ‌تاپ خود وارد یک وب‌سایت می‌شوید، دستگاه شما باید بتواند با سروری در نقطه‌ای دیگر از جهان ارتباط برقرار کند. این ارتباط از طریق مجموعه‌ای از تجهیزات، پروتکل‌ها و استانداردهای شبکه انجام می‌شود.</p>
-<section id="چرا-شبکه-به-وجود-آمد" class="level3">
-<h3 class="anchored" data-anchor-id="چرا-شبکه-به-وجود-آمد">چرا شبکه به وجود آمد؟</h3>
-<p>فرض کنید در یک شرکت ۳۰ کامپیوتر وجود دارد. اگر شبکه‌ای وجود نداشته باشد، انتقال فایل بین کامپیوترها، استفاده مشترک از پرینتر و دسترسی به سرور مرکزی بسیار دشوار خواهد بود.</p>
-<p>شبکه این مشکلات را حل می‌کند:</p>
-<ol type="1">
-<li>اشتراک‌گذاری منابع</li>
-<li>انتقال اطلاعات</li>
-<li>ارتباط بین کاربران</li>
-<li>مدیریت متمرکز سیستم‌ها</li>
-<li>دسترسی به سرویس‌های راه دور</li>
-<li>افزایش مقیاس‌پذیری زیرساخت</li>
-</ol>
-<p><strong>نکته مهندسی:</strong> شبکه فقط اتصال چند کامپیوتر به یکدیگر نیست. شبکه یک زیرساخت ارتباطی است که سرویس‌های نرم‌افزاری و سیستم‌های سازمانی روی آن فعالیت می‌کنند.</p>
-<hr>
+<p>هر دستگاهی که بتواند در یک شبکه ارتباط برقرار کند، می‌تواند یک Network Node محسوب شود.</p>
+<section id="چرا-به-شبکه-نیاز-داریم" class="level3">
+<h3 class="anchored" data-anchor-id="چرا-به-شبکه-نیاز-داریم">3.1 چرا به شبکه نیاز داریم؟</h3>
+<p>شبکه‌ها برای اهداف مختلفی ساخته می‌شوند:</p>
+<p><strong>Resource Sharing</strong></p>
+<p>چند کاربر می‌توانند از یک پرینتر یا فضای ذخیره‌سازی مشترک استفاده کنند.</p>
+<p><strong>Communication</strong></p>
+<p>دستگاه‌ها می‌توانند اطلاعات را با یکدیگر مبادله کنند.</p>
+<p><strong>Centralized Management</strong></p>
+<p>مدیر شبکه می‌تواند کاربران، دسترسی‌ها و منابع را از یک نقطه مدیریت کند.</p>
+<p><strong>Scalability</strong></p>
+<p>می‌توان دستگاه‌ها و سرویس‌های جدید را بدون بازطراحی کامل زیرساخت به شبکه اضافه کرد.</p>
+<p><strong>Automation</strong></p>
+<p>سیستم‌ها می‌توانند بدون دخالت مستقیم انسان با یکدیگر ارتباط برقرار کنند و عملیات مختلفی انجام دهند.</p>
 </section>
-</section>
-<section id="انواع-شبکه-بر-اساس-محدوده-جغرافیایی" class="level2">
-<h2 class="anchored" data-anchor-id="انواع-شبکه-بر-اساس-محدوده-جغرافیایی">2. انواع شبکه بر اساس محدوده جغرافیایی</h2>
-<p>شبکه‌ها را می‌توان بر اساس محدوده پوشش جغرافیایی دسته‌بندی کرد.</p>
-<section id="lan---local-area-network" class="level3">
-<h3 class="anchored" data-anchor-id="lan---local-area-network">LAN - Local Area Network</h3>
-<p>شبکه محلی، شبکه‌ای است که محدوده جغرافیایی کوچکی را پوشش می‌دهد.</p>
-<p>مثال‌ها:</p>
+<section id="یک-مثال-ساده" class="level3">
+<h3 class="anchored" data-anchor-id="یک-مثال-ساده">3.2 یک مثال ساده</h3>
+<p>فرض کن یک شرکت ۲۰ کامپیوتر، دو پرینتر و یک سرور دارد.</p>
+<p>بدون شبکه، انتقال اطلاعات و استفاده مشترک از منابع دشوار خواهد بود.</p>
+<p>اما با ایجاد شبکه:</p>
 <ul>
-<li>شبکه یک خانه</li>
-<li>شبکه یک شرکت</li>
-<li>شبکه یک آزمایشگاه دانشگاه</li>
-<li>شبکه یک طبقه از ساختمان</li>
-</ul>
-<p>ویژگی‌های رایج:</p>
-<ul>
-<li>محدوده جغرافیایی محدود</li>
-<li>مدیریت نسبتاً ساده‌تر</li>
-<li>استفاده از Ethernet یا Wi-Fi</li>
-<li>امکان اشتراک‌گذاری منابع محلی</li>
+<li>تمام کامپیوترها می‌توانند به سرور متصل شوند.</li>
+<li>کاربران می‌توانند فایل‌های مشترک را مشاهده کنند.</li>
+<li>چند کاربر می‌توانند از پرینترهای مشترک استفاده کنند.</li>
+<li>مدیر شبکه می‌تواند دسترسی‌ها را کنترل کند.</li>
 </ul>
 </section>
-<section id="wan---wide-area-network" class="level3">
-<h3 class="anchored" data-anchor-id="wan---wide-area-network">WAN - Wide Area Network</h3>
-<p>شبکه گسترده، شبکه‌ای است که مناطق جغرافیایی بزرگ را به یکدیگر متصل می‌کند.</p>
-<p>مثال:</p>
-<p>فرض کنید یک شرکت در تهران، اصفهان و شیراز دفتر دارد. برای ارتباط شبکه‌ای بین این شعبه‌ها می‌توان از زیرساخت WAN استفاده کرد.</p>
-<p>ویژگی‌های رایج:</p>
-<ul>
-<li>پوشش جغرافیایی گسترده</li>
-<li>اتصال شبکه‌های مستقل</li>
-<li>استفاده از زیرساخت اپراتورها</li>
-<li>نیاز به مسیریابی بین شبکه‌ها</li>
-</ul>
 </section>
-<section id="man---metropolitan-area-network" class="level3">
-<h3 class="anchored" data-anchor-id="man---metropolitan-area-network">MAN - Metropolitan Area Network</h3>
-<p>شبکه‌ای با محدوده پوشش در سطح یک شهر یا منطقه شهری است.</p>
-<p>برای مثال، یک شبکه ارتباطی که چند ساختمان یک سازمان را در نقاط مختلف یک شهر متصل می‌کند.</p>
+<section id="انواع-شبکه-از-نظر-محدوده-جغرافیایی" class="level2">
+<h2 class="anchored" data-anchor-id="انواع-شبکه-از-نظر-محدوده-جغرافیایی">4. انواع شبکه از نظر محدوده جغرافیایی</h2>
+<section id="pan-personal-area-network" class="level3">
+<h3 class="anchored" data-anchor-id="pan-personal-area-network">4.1 PAN: Personal Area Network</h3>
+<p>شبکه‌ای در محدوده شخصی و بسیار کوچک.</p>
+<p>مثال: - اتصال گوشی به هدفون Bluetooth - اتصال ساعت هوشمند به تلفن همراه</p>
 </section>
-<section id="مقایسه" class="level3">
-<h3 class="anchored" data-anchor-id="مقایسه">مقایسه</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>نوع</th>
-<th>محدوده معمول</th>
-<th>مثال</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>PAN</td>
-<td>شخصی</td>
-<td>اتصال موبایل به ساعت هوشمند</td>
-</tr>
-<tr class="even">
-<td>LAN</td>
-<td>ساختمان یا محیط محدود</td>
-<td>شبکه شرکت</td>
-</tr>
-<tr class="odd">
-<td>MAN</td>
-<td>شهر</td>
-<td>شبکه شهری</td>
-</tr>
-<tr class="even">
-<td>WAN</td>
-<td>مناطق گسترده</td>
-<td>ارتباط شعب شرکت</td>
-</tr>
-</tbody>
-</table>
-<p>نکته: این دسته‌بندی‌ها محدوده‌های مفهومی هستند و مرز فیزیکی کاملاً ثابتی ندارند.</p>
-<hr>
+<section id="lan-local-area-network" class="level3">
+<h3 class="anchored" data-anchor-id="lan-local-area-network">4.2 LAN: Local Area Network</h3>
+<p>شبکه‌ای در محدوده‌ای محدود مانند خانه، دفتر یا ساختمان.</p>
+<p>مثال: - شبکه داخلی یک شرکت - شبکه کامپیوترهای یک آزمایشگاه</p>
+</section>
+<section id="wlan-wireless-local-area-network" class="level3">
+<h3 class="anchored" data-anchor-id="wlan-wireless-local-area-network">4.3 WLAN: Wireless Local Area Network</h3>
+<p>نوعی شبکه محلی که ارتباط آن از طریق فناوری بی‌سیم، معمولاً Wi-Fi، انجام می‌شود.</p>
+</section>
+<section id="man-metropolitan-area-network" class="level3">
+<h3 class="anchored" data-anchor-id="man-metropolitan-area-network">4.4 MAN: Metropolitan Area Network</h3>
+<p>شبکه‌ای که محدوده‌ای در اندازه یک شهر یا منطقه شهری را پوشش می‌دهد.</p>
+</section>
+<section id="wan-wide-area-network" class="level3">
+<h3 class="anchored" data-anchor-id="wan-wide-area-network">4.5 WAN: Wide Area Network</h3>
+<p>شبکه‌ای با محدوده جغرافیایی گسترده که می‌تواند چند شهر، کشور یا قاره را به یکدیگر متصل کند.</p>
+<p>اینترنت شناخته‌شده‌ترین نمونه از یک شبکه بسیار گسترده و متصل از شبکه‌هاست.</p>
 </section>
 </section>
-<section id="اینترنت-دقیقا-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="اینترنت-دقیقا-چیست">3. اینترنت دقیقاً چیست؟</h2>
-<p>Internet یک شبکه عظیم متشکل از شبکه‌های مستقل است.</p>
-<p>به همین دلیل از عبارت Network of Networks برای توصیف اینترنت استفاده می‌شود.</p>
-<p>میلیون‌ها شبکه در سراسر جهان از طریق تجهیزات و پروتکل‌های استاندارد با یکدیگر ارتباط برقرار می‌کنند.</p>
-<p>اینترنت متعلق به یک کامپیوتر یا یک سازمان واحد نیست. شبکه‌های مختلف توسط سازمان‌ها، شرکت‌ها، اپراتورها و ارائه‌دهندگان خدمات اینترنت مدیریت می‌شوند.</p>
-<section id="تفاوت-internet-و-web" class="level3">
-<h3 class="anchored" data-anchor-id="تفاوت-internet-و-web">تفاوت Internet و Web</h3>
-<p>این دو مفهوم یکسان نیستند.</p>
-<p><strong>Internet:</strong> زیرساخت ارتباطی جهانی است.</p>
-<p><strong>World Wide Web:</strong> مجموعه‌ای از صفحات و منابعی است که از طریق اینترنت و عمدتاً با پروتکل HTTP و HTTPS در دسترس هستند.</p>
-<p>برای مثال:</p>
-<ul>
-<li>ایمیل می‌تواند از اینترنت استفاده کند.</li>
-<li>بازی آنلاین از اینترنت استفاده می‌کند.</li>
-<li>تماس VoIP از اینترنت استفاده می‌کند.</li>
-<li>وب‌سایت‌ها از طریق Web در اینترنت قابل دسترسی هستند.</li>
-</ul>
-<p>بنابراین Web فقط یکی از سرویس‌های قابل ارائه روی اینترنت است.</p>
-<hr>
+<section id="اجزای-اصلی-یک-شبکه" class="level2">
+<h2 class="anchored" data-anchor-id="اجزای-اصلی-یک-شبکه">5. اجزای اصلی یک شبکه</h2>
+<p>برای ساخت یک شبکه، به مجموعه‌ای از تجهیزات و نرم‌افزارها نیاز داریم.</p>
+<section id="end-devices" class="level3">
+<h3 class="anchored" data-anchor-id="end-devices">5.1 End Devices</h3>
+<p>دستگاه‌هایی که در شبکه داده تولید یا دریافت می‌کنند.</p>
+<p>مثال: - کامپیوتر - سرور - لپ‌تاپ - تلفن همراه</p>
 </section>
-</section>
-<section id="client-و-server" class="level2">
-<h2 class="anchored" data-anchor-id="client-و-server">4. Client و Server</h2>
-<p>یکی از مهم‌ترین مدل‌های ارتباطی در شبکه، معماری Client-Server است.</p>
-<section id="client-چیست" class="level3">
-<h3 class="anchored" data-anchor-id="client-چیست">Client چیست؟</h3>
-<p>Client دستگاه یا نرم‌افزاری است که برای دریافت یک سرویس به سیستم دیگری درخواست ارسال می‌کند.</p>
-<p>مثال:</p>
-<ul>
-<li>مرورگر Chrome</li>
-<li>اپلیکیشن موبایل</li>
-<li>نرم‌افزار مدیریت شبکه</li>
-<li>کلاینت SSH</li>
-</ul>
-</section>
-<section id="server-چیست" class="level3">
-<h3 class="anchored" data-anchor-id="server-چیست">Server چیست؟</h3>
-<p>Server سیستم یا نرم‌افزاری است که درخواست‌ها را دریافت کرده و سرویس موردنظر را ارائه می‌دهد.</p>
-<p>مثال:</p>
-<ul>
-<li>Web Server</li>
-<li>DNS Server</li>
-<li>Database Server</li>
-<li>File Server</li>
-<li>DHCP Server</li>
-</ul>
-</section>
-<section id="یک-مثال-واقعی" class="level3">
-<h3 class="anchored" data-anchor-id="یک-مثال-واقعی">یک مثال واقعی</h3>
-<p>فرض کنید آدرس یک وب‌سایت را در مرورگر وارد می‌کنید.</p>
-<ol type="1">
-<li>مرورگر درخواست لازم را آماده می‌کند.</li>
-<li>دستگاه شما اطلاعات مقصد را مشخص می‌کند.</li>
-<li>درخواست از طریق شبکه ارسال می‌شود.</li>
-<li>سرور درخواست را دریافت می‌کند.</li>
-<li>سرور پاسخ مناسب را تولید می‌کند.</li>
-<li>پاسخ از طریق شبکه به دستگاه شما بازمی‌گردد.</li>
-<li>مرورگر محتوا را نمایش می‌دهد.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Client و Server الزاماً دو دستگاه فیزیکی جدا نیستند. یک کامپیوتر می‌تواند در یک ارتباط Client و در ارتباط دیگری Server باشد.</p>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="تجهیزات-اصلی-شبکه" class="level2">
-<h2 class="anchored" data-anchor-id="تجهیزات-اصلی-شبکه">5. تجهیزات اصلی شبکه</h2>
-<p>برای ساخت یک شبکه، تجهیزات مختلفی مورد استفاده قرار می‌گیرند.</p>
 <section id="network-interface-card-nic" class="level3">
-<h3 class="anchored" data-anchor-id="network-interface-card-nic">Network Interface Card (NIC)</h3>
-<p>کارت شبکه، رابطی است که امکان اتصال یک دستگاه به شبکه را فراهم می‌کند.</p>
-<p>هر رابط شبکه می‌تواند یک آدرس سخت‌افزاری به نام MAC Address داشته باشد.</p>
-<p>NIC ممکن است به شکل زیر باشد:</p>
-<ul>
-<li>Ethernet Adapter</li>
-<li>Wireless Adapter</li>
-<li>Virtual Network Adapter</li>
-</ul>
+<h3 class="anchored" data-anchor-id="network-interface-card-nic">5.2 Network Interface Card (NIC)</h3>
+<p>کارت یا رابط شبکه، امکان اتصال دستگاه به شبکه را فراهم می‌کند.</p>
+<p>NIC می‌تواند از Ethernet یا Wi-Fi استفاده کند.</p>
+<p>هر رابط شبکه معمولاً یک MAC Address دارد که در ارتباطات لایه دوم نقش مهمی ایفا می‌کند.</p>
 </section>
 <section id="switch" class="level3">
-<h3 class="anchored" data-anchor-id="switch">Switch</h3>
-<p>سوئیچ دستگاهی است که معمولاً برای اتصال تجهیزات داخل یک شبکه محلی استفاده می‌شود.</p>
-<p>سوئیچ Ethernet در لایه دوم مدل OSI فعالیت می‌کند و برای انتقال فریم‌ها از جدول MAC Address استفاده می‌کند.</p>
-<p>برای مثال، اگر چند کامپیوتر در یک اتاق داشته باشیم، می‌توانیم آن‌ها را به یک سوئیچ متصل کنیم.</p>
+<h3 class="anchored" data-anchor-id="switch">5.3 Switch</h3>
+<p>Switch دستگاهی است که دستگاه‌های مختلف را در یک شبکه محلی به یکدیگر متصل می‌کند.</p>
+<p>سوئیچ‌های Ethernet معمولاً با استفاده از MAC Address تصمیم می‌گیرند فریم‌ها را از کدام پورت ارسال کنند.</p>
+<p>برای مثال، اگر کامپیوتر A بخواهد به کامپیوتر B در همان شبکه محلی اطلاعات بفرستد، سوئیچ می‌تواند فریم را به پورت متصل به B ارسال کند.</p>
 </section>
 <section id="router" class="level3">
-<h3 class="anchored" data-anchor-id="router">Router</h3>
-<p>روتر دستگاهی است که شبکه‌های مختلف را به یکدیگر متصل می‌کند.</p>
-<p>روتر برای انتقال Packetها بین شبکه‌ها از اطلاعات مسیریابی استفاده می‌کند.</p>
-<p>برای مثال، روتر خانه شما می‌تواند شبکه داخلی خانه را به شبکه ارائه‌دهنده اینترنت متصل کند.</p>
+<h3 class="anchored" data-anchor-id="router">5.4 Router</h3>
+<p>Router شبکه‌های IP مختلف را به یکدیگر متصل می‌کند.</p>
+<p>وظیفه اصلی آن Forward کردن Packetها بر اساس Routing Table است.</p>
+<p>مثلاً: - اتصال شبکه داخلی شرکت به اینترنت - اتصال دو شعبه یک شرکت - انتقال ترافیک بین VLANها در صورت پیکربندی مناسب</p>
 </section>
 <section id="access-point" class="level3">
-<h3 class="anchored" data-anchor-id="access-point">Access Point</h3>
+<h3 class="anchored" data-anchor-id="access-point">5.5 Access Point</h3>
 <p>Access Point امکان اتصال بی‌سیم دستگاه‌ها به شبکه را فراهم می‌کند.</p>
-<p>دستگاه‌هایی مانند موبایل و لپ‌تاپ می‌توانند از طریق Wi-Fi به آن متصل شوند.</p>
+<p>گوشی یا لپ‌تاپ از طریق Wi-Fi به Access Point متصل می‌شود و در بسیاری از شبکه‌ها از آن مسیر به شبکه کابلی دسترسی پیدا می‌کند.</p>
 </section>
-<section id="modem" class="level3">
-<h3 class="anchored" data-anchor-id="modem">Modem</h3>
-<p>Modem برای برقراری ارتباط با برخی فناوری‌های دسترسی به اینترنت مورد استفاده قرار می‌گیرد.</p>
-<p>نوع مودم به فناوری ارتباطی وابسته است؛ مانند DSL یا Cable.</p>
-<p>نکته: در بسیاری از تجهیزات خانگی، مودم، روتر، سوئیچ و Access Point در یک دستگاه ترکیب شده‌اند.</p>
-<hr>
+<section id="server" class="level3">
+<h3 class="anchored" data-anchor-id="server">5.6 Server</h3>
+<p>سرور سیستمی است که سرویس یا منبعی را در اختیار کلاینت‌ها قرار می‌دهد.</p>
+<p>مثال: - Web Server - DNS Server - DHCP Server - File Server - Database Server</p>
 </section>
 </section>
-<section id="packet-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="packet-چیست">6. Packet چیست؟</h2>
-<p>یکی از مفاهیم بنیادی شبکه، Packet است.</p>
-<p>وقتی اطلاعاتی از یک دستگاه به دستگاه دیگر ارسال می‌شود، داده‌ها می‌توانند به واحدهای کوچک‌تری تقسیم شوند.</p>
-<p>این واحدها در لایه‌های مختلف شبکه ساختارهای مشخصی دارند.</p>
-<p>برای مثال، در ارتباط مبتنی بر TCP/IP:</p>
+<section id="client-و-server-چگونه-کار-میکنند" class="level2">
+<h2 class="anchored" data-anchor-id="client-و-server-چگونه-کار-میکنند">6. Client و Server چگونه کار می‌کنند؟</h2>
+<p>یکی از رایج‌ترین مدل‌های ارتباطی در شبکه، Client-Server Architecture است.</p>
+<p>در این مدل:</p>
 <ul>
-<li>Application Data: داده تولیدشده توسط برنامه</li>
-<li>TCP Segment: داده به‌همراه اطلاعات TCP</li>
-<li>IP Packet: بسته شامل اطلاعات IP</li>
-<li>Ethernet Frame: فریم قابل انتقال در شبکه محلی</li>
+<li>Client درخواست ارسال می‌کند.</li>
+<li>Server درخواست را دریافت و پردازش می‌کند.</li>
+<li>Server پاسخ را برمی‌گرداند.</li>
 </ul>
-<p>این فرایند Encapsulation نام دارد.</p>
-<section id="encapsulation" class="level3">
-<h3 class="anchored" data-anchor-id="encapsulation">Encapsulation</h3>
-<p>هر لایه اطلاعات کنترلی موردنیاز خود را به داده اضافه می‌کند.</p>
-<p>نمای ساده:</p>
-<p>Application Data ↓ TCP Segment ↓ IP Packet ↓ Ethernet Frame ↓ Physical Transmission</p>
-<p>در مقصد، فرایند معکوس انجام می‌شود که Decapsulation نام دارد.</p>
+<p>مثال:</p>
+<p>وقتی آدرس یک وب‌سایت را در مرورگر وارد می‌کنی، مرورگر نقش Client را دارد و سرور وب درخواست را دریافت می‌کند.</p>
+<p>البته معماری شبکه همیشه Client-Server نیست. مدل Peer-to-Peer نیز وجود دارد که در آن دستگاه‌ها می‌توانند مستقیماً منابع خود را با یکدیگر به اشتراک بگذارند.</p>
 </section>
-<section id="چرا-packetها-مهم-هستند" class="level3">
-<h3 class="anchored" data-anchor-id="چرا-packetها-مهم-هستند">چرا Packetها مهم هستند؟</h3>
-<p>چون شبکه‌ها معمولاً داده‌های بزرگ را به‌صورت یک جریان یکپارچه و بدون ساختار ارسال نمی‌کنند.</p>
-<p>تقسیم داده به واحدهای مناسب، مدیریت انتقال، مسیریابی و کنترل ارتباط را ممکن می‌کند.</p>
-<hr>
-</section>
-</section>
-<section id="network-topology" class="level2">
-<h2 class="anchored" data-anchor-id="network-topology">7. Network Topology</h2>
-<p>Topology به ساختار اتصال تجهیزات در یک شبکه گفته می‌شود.</p>
-<section id="star-topology" class="level3">
-<h3 class="anchored" data-anchor-id="star-topology">Star Topology</h3>
-<p>در این ساختار تمام دستگاه‌ها به یک نقطه مرکزی مانند Switch متصل می‌شوند.</p>
-<p>مزایا: - مدیریت ساده - عیب‌یابی نسبتاً آسان - خرابی یک کابل معمولاً فقط یک دستگاه را تحت تأثیر قرار می‌دهد.</p>
-<p>محدودیت: - خرابی دستگاه مرکزی می‌تواند ارتباط تعداد زیادی از دستگاه‌ها را قطع کند.</p>
-</section>
-<section id="bus-topology" class="level3">
-<h3 class="anchored" data-anchor-id="bus-topology">Bus Topology</h3>
-<p>در این ساختار چند دستگاه از یک مسیر ارتباطی مشترک استفاده می‌کنند.</p>
-<p>این توپولوژی بیشتر جنبه تاریخی و آموزشی دارد و در شبکه‌های مدرن Ethernet کمتر استفاده می‌شود.</p>
-</section>
-<section id="ring-topology" class="level3">
-<h3 class="anchored" data-anchor-id="ring-topology">Ring Topology</h3>
-<p>در این ساختار دستگاه‌ها به شکل حلقه به یکدیگر متصل می‌شوند.</p>
-</section>
-<section id="mesh-topology" class="level3">
-<h3 class="anchored" data-anchor-id="mesh-topology">Mesh Topology</h3>
-<p>در ساختار Mesh چندین مسیر ارتباطی بین تجهیزات وجود دارد.</p>
-<p>مزیت اصلی آن افزایش افزونگی (Redundancy) و امکان استفاده از مسیرهای جایگزین است.</p>
-</section>
-<section id="توپولوژی-یک-شبکه-سازمانی-ساده" class="level3">
-<h3 class="anchored" data-anchor-id="توپولوژی-یک-شبکه-سازمانی-ساده">توپولوژی یک شبکه سازمانی ساده</h3>
-<pre class="text"><code>                 Internet
-                    |
-                  Router
-                    |
-                  Switch
-             /      |      \
-            /       |       \
-          PC-1    Server    PC-2
-                    |
-                Access Point
-                    |
-              Laptop / Mobile</code></pre>
-<hr>
-</section>
-</section>
-<section id="پروتکل-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="پروتکل-چیست">8. پروتکل چیست؟</h2>
-<p>پروتکل مجموعه‌ای از قوانین و استانداردهاست که نحوه ارتباط بین دستگاه‌ها را مشخص می‌کند.</p>
-<p>بدون پروتکل مشترک، دستگاه‌ها نمی‌توانند اطلاعات را به شکلی قابل فهم برای یکدیگر تبادل کنند.</p>
-<p>برخی پروتکل‌های مهم:</p>
+<section id="داده-چگونه-در-شبکه-منتقل-میشود" class="level2">
+<h2 class="anchored" data-anchor-id="داده-چگونه-در-شبکه-منتقل-میشود">7. داده چگونه در شبکه منتقل می‌شود؟</h2>
+<p>برای انتقال اطلاعات، داده به واحدهای کوچک‌تری تقسیم می‌شود.</p>
+<p>در شبکه‌های مختلف اصطلاحات متفاوتی داریم:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Protocol</th>
-<th>کاربرد</th>
+<th>لایه یا فناوری</th>
+<th>واحد داده</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>IP</td>
-<td>آدرس‌دهی و انتقال بین شبکه‌ها</td>
+<td>Application</td>
+<td>Data</td>
 </tr>
 <tr class="even">
-<td>TCP</td>
-<td>انتقال قابل اعتماد داده</td>
+<td>Transport</td>
+<td>Segment / Datagram</td>
 </tr>
 <tr class="odd">
-<td>UDP</td>
-<td>انتقال داده بدون تضمین تحویل</td>
+<td>Network</td>
+<td>Packet</td>
 </tr>
 <tr class="even">
-<td>HTTP</td>
-<td>انتقال محتوای وب</td>
+<td>Data Link</td>
+<td>Frame</td>
 </tr>
 <tr class="odd">
-<td>HTTPS</td>
-<td>ارتباط امن وب</td>
-</tr>
-<tr class="even">
-<td>DNS</td>
-<td>تبدیل نام دامنه به اطلاعات آدرس</td>
-</tr>
-<tr class="odd">
-<td>DHCP</td>
-<td>تخصیص خودکار تنظیمات شبکه</td>
-</tr>
-<tr class="even">
-<td>SSH</td>
-<td>دسترسی امن از راه دور</td>
-</tr>
-<tr class="odd">
-<td>ARP</td>
-<td>یافتن MAC مربوط به IPv4 در شبکه محلی</td>
+<td>Physical</td>
+<td>Bits</td>
 </tr>
 </tbody>
 </table>
-<p>در جلسات آینده هرکدام از این مفاهیم را عمیق‌تر بررسی می‌کنیم.</p>
-<hr>
+<p>این فرایند بخشی از مفهومی است که بعداً با نام Encapsulation به‌صورت عمیق بررسی خواهیم کرد.</p>
+<p>در یک ارتباط معمولی، داده از سیستم مبدأ خارج می‌شود، از تجهیزات شبکه عبور می‌کند و در مقصد دوباره پردازش می‌شود.</p>
 </section>
-<section id="یک-ارتباط-واقعی-از-ابتدا-تا-انتها" class="level2">
-<h2 class="anchored" data-anchor-id="یک-ارتباط-واقعی-از-ابتدا-تا-انتها">9. یک ارتباط واقعی از ابتدا تا انتها</h2>
-<p>فرض کنید لپ‌تاپ شما به Wi-Fi خانه متصل است و می‌خواهید وارد یک وب‌سایت شوید.</p>
-<p>در پشت صحنه چه اتفاقی می‌افتد؟</p>
+<section id="یک-مثال-واقعی-از-مسیر-ارتباطی" class="level2">
+<h2 class="anchored" data-anchor-id="یک-مثال-واقعی-از-مسیر-ارتباطی">8. یک مثال واقعی از مسیر ارتباطی</h2>
+<p>فرض کن کامپیوتر تو می‌خواهد به یک وب‌سایت روی اینترنت متصل شود.</p>
+<p>مسیر ساده‌شده می‌تواند چنین باشد:</p>
 <ol type="1">
-<li>دستگاه شما از تنظیمات شبکه خود استفاده می‌کند.</li>
-<li>در صورت نیاز، DNS برای یافتن آدرس مقصد مورد استفاده قرار می‌گیرد.</li>
-<li>سیستم مشخص می‌کند مقصد در شبکه محلی است یا خارج از آن.</li>
-<li>اگر مقصد خارج از شبکه محلی باشد، Packet به سمت Default Gateway ارسال می‌شود.</li>
-<li>روتر Packet را به سمت شبکه بعدی هدایت می‌کند.</li>
-<li>Packet ممکن است از چندین Router در مسیر عبور کند.</li>
-<li>سرور مقصد درخواست را دریافت می‌کند.</li>
-<li>پاسخ به سمت دستگاه شما بازمی‌گردد.</li>
+<li>مرورگر درخواست را ایجاد می‌کند.</li>
+<li>سیستم عامل از تنظیمات شبکه استفاده می‌کند.</li>
+<li>در صورت نیاز، نام دامنه به IP Address تبدیل می‌شود.</li>
+<li>سیستم تشخیص می‌دهد مقصد در شبکه محلی است یا خارج از آن.</li>
+<li>اگر مقصد خارج از شبکه محلی باشد، Packet به Default Gateway ارسال می‌شود.</li>
+<li>Router آن را بر اساس Routing Table به مسیر بعدی هدایت می‌کند.</li>
+<li>Packet از چند شبکه عبور می‌کند تا به مقصد برسد.</li>
+<li>سرور مقصد پاسخ را برمی‌گرداند.</li>
 </ol>
-<p>این توضیح یک تصویر کلی است. جزئیات DNS، ARP، Routing، NAT و TCP در جلسات بعدی بررسی خواهند شد.</p>
-<hr>
+<p>این توضیح ساده‌شده است. جزئیات DNS، ARP، TCP، IP و Routing را در جلسات آینده بررسی می‌کنیم.</p>
 </section>
-<section id="نگاه-مهندسی-چرا-این-مفاهیم-برای-network-automation-مهم-هستند" class="level2">
-<h2 class="anchored" data-anchor-id="نگاه-مهندسی-چرا-این-مفاهیم-برای-network-automation-مهم-هستند">10. نگاه مهندسی: چرا این مفاهیم برای Network Automation مهم هستند؟</h2>
-<p>هدف ما فقط یادگیری شبکه نیست. مقصد شغلی ما Network Automation Engineering است.</p>
-<p>فرض کنید در یک شرکت ۱۰۰ روتر و سوئیچ وجود دارد.</p>
-<p>مدیر شبکه باید:</p>
-<ul>
-<li>وضعیت تجهیزات را بررسی کند.</li>
-<li>تنظیمات دستگاه‌ها را دریافت کند.</li>
-<li>نسخه پشتیبان تهیه کند.</li>
-<li>خطاهای شبکه را تشخیص دهد.</li>
-<li>تغییرات پیکربندی را اعمال کند.</li>
-<li>از یکسان بودن تنظیمات اطمینان حاصل کند.</li>
-</ul>
-<p>انجام دستی تمام این کارها زمان‌بر و مستعد خطاست.</p>
-<p>در آینده از Python، SSH، APIs، Ansible و ابزارهای مدیریت شبکه برای خودکارسازی این وظایف استفاده خواهیم کرد.</p>
-<p>اما یک قانون مهم وجود دارد:</p>
-<p><strong>قبل از خودکارسازی یک فرایند، باید منطق فنی آن را بفهمیم.</strong></p>
-<p>اگر ندانیم Router چگونه Packet را مسیریابی می‌کند، نوشتن اسکریپتی برای مدیریت روترها صرفاً اتوماسیون بدون درک خواهد بود.</p>
-<hr>
-</section>
-</section>
-<section id="بخش-عملی-اولین-آزمایش-شبکه" class="level1">
-<h1>بخش عملی: اولین آزمایش شبکه</h1>
-<p>در این تمرین از PowerShell ویندوز استفاده می‌کنیم.</p>
-<section id="تمرین-۱-مشاهده-تنظیمات-شبکه" class="level3">
-<h3 class="anchored" data-anchor-id="تمرین-۱-مشاهده-تنظیمات-شبکه">تمرین ۱: مشاهده تنظیمات شبکه</h3>
+<section id="آزمایش-عملی-اول-شناسایی-شبکه-سیستم-خودت" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایش-عملی-اول-شناسایی-شبکه-سیستم-خودت">9. آزمایش عملی اول: شناسایی شبکه سیستم خودت</h2>
+<p>در این آزمایش از Windows PowerShell استفاده می‌کنیم.</p>
 <p>PowerShell را باز کن و دستور زیر را اجرا کن:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>موارد زیر را پیدا کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>اطلاعات زیر را پیدا کن:</p>
 <ul>
+<li>نام Network Adapter</li>
 <li>IPv4 Address</li>
 <li>Subnet Mask</li>
 <li>Default Gateway</li>
-<li>Physical Address</li>
 <li>DNS Servers</li>
+<li>Physical Address</li>
 </ul>
-<p>این اطلاعات نشان می‌دهند دستگاه تو چگونه در شبکه شناسایی و مسیریابی می‌شود.</p>
-</section>
-<section id="تمرین-۲-بررسی-ارتباط-با-gateway" class="level3">
-<h3 class="anchored" data-anchor-id="تمرین-۲-بررسی-ارتباط-با-gateway">تمرین ۲: بررسی ارتباط با Gateway</h3>
-<p>ابتدا آدرس Default Gateway را پیدا کن.</p>
-<p>سپس دستور زیر را با آدرس واقعی Gateway خودت اجرا کن:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">192.168</span><span class="op">.</span><span class="dv">1.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>آدرس بالا فقط نمونه است و ممکن است با شبکه تو متفاوت باشد.</p>
-<p>اگر پاسخ دریافت کردی، یعنی مقصد به درخواست ICMP پاسخ داده است.</p>
-<p>البته پاسخ نگرفتن لزوماً به معنای قطع بودن شبکه نیست، چون ممکن است ICMP مسدود شده باشد.</p>
-</section>
-<section id="تمرین-۳-بررسی-مسیر-ارتباطی" class="level3">
-<h3 class="anchored" data-anchor-id="تمرین-۳-بررسی-مسیر-ارتباطی">تمرین ۳: بررسی مسیر ارتباطی</h3>
-<p>دستور زیر را اجرا کن:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tracert <span class="dv">8.8</span><span class="op">.</span><span class="dv">8.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>این دستور تلاش می‌کند مسیر عبور Packetها تا مقصد را نمایش دهد.</p>
-<p>هر ردیف معمولاً نمایانگر یک Hop است.</p>
-<p>اگر بعضی ردیف‌ها ستاره نشان دادند، ممکن است تجهیزات میانی به پیام‌های مورد استفاده برای این بررسی پاسخ ندهند.</p>
-</section>
-<section id="تمرین-۴-بررسی-dns" class="level3">
-<h3 class="anchored" data-anchor-id="تمرین-۴-بررسی-dns">تمرین ۴: بررسی DNS</h3>
-<p>دستور زیر را اجرا کن:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nslookup google<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>خروجی نشان می‌دهد کدام DNS Server به درخواست تو پاسخ داده و چه اطلاعاتی درباره نام دامنه برگردانده است.</p>
-<hr>
+<section id="تحلیل-خروجی" class="level3">
+<h3 class="anchored" data-anchor-id="تحلیل-خروجی">تحلیل خروجی</h3>
+<p><strong>IPv4 Address</strong></p>
+<p>آدرس IPv4 اختصاص‌یافته به رابط شبکه است.</p>
+<p><strong>Subnet Mask</strong></p>
+<p>مشخص می‌کند کدام بخش از آدرس IP به Network Portion و کدام بخش به Host Portion مربوط است.</p>
+<p><strong>Default Gateway</strong></p>
+<p>مسیر پیش‌فرض برای ارسال ترافیک به شبکه‌های دیگر است.</p>
+<p><strong>DNS Server</strong></p>
+<p>سروری است که در تبدیل نام دامنه به IP Address به سیستم کمک می‌کند.</p>
+<p><strong>Physical Address</strong></p>
+<p>آدرس MAC رابط شبکه است.</p>
+<p>نکته: اطلاعات خروجی را با اطلاعات دستگاه دیگری مقایسه نکن. هر Network Adapter می‌تواند تنظیمات مستقل خودش را داشته باشد.</p>
 </section>
 </section>
-<section id="پرسشهای-ارزیابی" class="level1">
-<h1>پرسش‌های ارزیابی</h1>
-<p>به این پرسش‌ها بدون جست‌وجوی پاسخ فکر کن:</p>
+<section id="آزمایش-عملی-دوم-بررسی-ارتباط-شبکه" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایش-عملی-دوم-بررسی-ارتباط-شبکه">10. آزمایش عملی دوم: بررسی ارتباط شبکه</h2>
+<p>دستورهای زیر را به‌ترتیب اجرا کن.</p>
+<section id="test-1-بررسی-tcpip-loopback" class="level3">
+<h3 class="anchored" data-anchor-id="test-1-بررسی-tcpip-loopback">Test 1: بررسی TCP/IP Loopback</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">127.0</span><span class="op">.</span><span class="dv">0.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این آدرس به Loopback Interface اشاره می‌کند.</p>
+<p>این آزمایش برای بررسی اولیه عملکرد TCP/IP در سیستم محلی مفید است، اما سالم بودن کل کارت شبکه فیزیکی را ثابت نمی‌کند.</p>
+</section>
+<section id="test-2-بررسی-ارتباط-با-یک-ip-عمومی" class="level3">
+<h3 class="anchored" data-anchor-id="test-2-بررسی-ارتباط-با-یک-ip-عمومی">Test 2: بررسی ارتباط با یک IP عمومی</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">8.8</span><span class="op">.</span><span class="dv">8.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>اگر پاسخ دریافت کردی، یعنی ICMP Echo به مقصد برگشته است.</p>
+<p>اگر پاسخی دریافت نکردی، هنوز نمی‌توان نتیجه گرفت که اینترنت قطع است؛ ممکن است ICMP در مسیر مسدود شده باشد.</p>
+</section>
+<section id="test-3-بررسی-dns" class="level3">
+<h3 class="anchored" data-anchor-id="test-3-بررسی-dns">Test 3: بررسی DNS</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ping google<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>در این مرحله سیستم باید نام دامنه را به IP تبدیل کند.</p>
+<p>اگر Ping به IP عمومی موفق باشد اما نام دامنه Resolve نشود، احتمال وجود مشکل DNS مطرح می‌شود.</p>
+</section>
+<section id="test-4-بررسی-مسیر-شبکه" class="level3">
+<h3 class="anchored" data-anchor-id="test-4-بررسی-مسیر-شبکه">Test 4: بررسی مسیر شبکه</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tracert google<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این دستور تلاش می‌کند مسیر عبور بسته‌ها تا مقصد را نمایش دهد.</p>
+<p>ممکن است بعضی Routerها به درخواست‌های Traceroute پاسخ ندهند. وجود <code>*</code> لزوماً به معنای خرابی شبکه نیست.</p>
+</section>
+<section id="test-5-مشاهده-جدول-arp" class="level3">
+<h3 class="anchored" data-anchor-id="test-5-مشاهده-جدول-arp">Test 5: مشاهده جدول ARP</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>arp <span class="op">-</span>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این دستور نگاشت‌های شناخته‌شده IP به MAC Address را نمایش می‌دهد.</p>
+</section>
+</section>
+<section id="آزمایش-عملی-سوم-بررسی-gateway-و-dns" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایش-عملی-سوم-بررسی-gateway-و-dns">11. آزمایش عملی سوم: بررسی Gateway و DNS</h2>
+<p>این دستورات را اجرا کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>برای بررسی دسترسی به Gateway:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection <span class="dv">192.168</span><span class="op">.</span><span class="dv">1.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>آدرس را با Default Gateway واقعی سیستم خودت جایگزین کن.</p>
+<p>برای بررسی پورت HTTPS یک سرور:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection google<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>به مقدار <code>TcpTestSucceeded</code> توجه کن.</p>
+<p>اگر مقدار True باشد، اتصال TCP به پورت موردنظر برقرار شده است.</p>
+<p>این تست به‌تنهایی سلامت کامل وب‌سایت یا کیفیت اینترنت را اثبات نمی‌کند.</p>
+</section>
+<section id="چالش-عیبیابی-اینترنت-کار-نمیکند" class="level2">
+<h2 class="anchored" data-anchor-id="چالش-عیبیابی-اینترنت-کار-نمیکند">12. چالش عیب‌یابی: اینترنت کار نمی‌کند!</h2>
+<p>سناریو:</p>
+<p>یک کامپیوتر به شبکه کابلی متصل است، اما کاربر نمی‌تواند وب‌سایت‌ها را باز کند.</p>
+<p>نتایج بررسی:</p>
+<ul>
+<li>Link چراغ پورت روشن است.</li>
+<li>IPv4 Address برابر <code>169.254.20.15</code> است.</li>
+<li>Default Gateway خالی است.</li>
+<li>کامپیوترهای دیگر اینترنت دارند.</li>
+</ul>
+<section id="سؤال-اول" class="level3">
+<h3 class="anchored" data-anchor-id="سؤال-اول">سؤال اول</h3>
+<p>چه اتفاقی احتمالاً رخ داده است؟</p>
+</section>
+<section id="سؤال-دوم" class="level3">
+<h3 class="anchored" data-anchor-id="سؤال-دوم">سؤال دوم</h3>
+<p>چرا آدرس 169.254.x.x می‌تواند نشانه مشکل در دریافت تنظیمات DHCP باشد؟</p>
+</section>
+<section id="سؤال-سوم" class="level3">
+<h3 class="anchored" data-anchor-id="سؤال-سوم">سؤال سوم</h3>
+<p>برای بررسی مشکل از چه دستورهایی استفاده می‌کنی؟</p>
+<p>راهنمایی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>all</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>release</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>renew</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>دقت کن که اجرای Release و Renew اتصال فعلی را تغییر می‌دهد. این دستورات را در محیط آزمایش یا با آگاهی از اثر آن‌ها اجرا کن.</p>
+</section>
+</section>
+<section id="engineering-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="engineering-challenge">13. Engineering Challenge</h2>
+<p>یک گزارش فنی کوتاه از شبکه سیستم خودت تهیه کن.</p>
+<p>گزارش باید شامل این موارد باشد:</p>
 <ol type="1">
-<li>تفاوت اصلی Switch و Router چیست؟</li>
-<li>چرا اینترنت را Network of Networks می‌نامند؟</li>
-<li>آیا Web و Internet یک مفهوم هستند؟</li>
-<li>تفاوت Client و Server چیست؟</li>
-<li>چرا داده‌ها به Packet تقسیم می‌شوند؟</li>
+<li>نوع اتصال: Ethernet یا Wi-Fi</li>
+<li>نام Network Adapter</li>
+<li>IPv4 Address</li>
+<li>Subnet Mask</li>
+<li>Default Gateway</li>
+<li>DNS Server</li>
+<li>نتیجه Ping به Loopback</li>
+<li>نتیجه بررسی یک IP عمومی</li>
+<li>نتیجه بررسی DNS</li>
+<li>نتیجه Traceroute</li>
+</ol>
+<p>در پایان گزارش، توضیح بده که آیا سیستم تو می‌تواند با شبکه محلی و اینترنت ارتباط برقرار کند یا خیر.</p>
+<p><strong>قانون مهم:</strong> هیچ‌وقت فقط بر اساس یک تست، درباره سلامت کل شبکه نتیجه‌گیری نکن.</p>
+</section>
+<section id="ابزارهای-مورد-استفاده-در-این-مسیر" class="level2">
+<h2 class="anchored" data-anchor-id="ابزارهای-مورد-استفاده-در-این-مسیر">14. ابزارهای مورد استفاده در این مسیر</h2>
+<ul>
+<li>PowerShell: ابزار اصلی آزمایش‌های اولیه در Windows</li>
+<li>Wireshark: مشاهده و تحلیل Packetها</li>
+<li>Cisco Packet Tracer: طراحی و شبیه‌سازی شبکه</li>
+<li>Linux CLI: اجرای آزمایش‌های شبکه در محیط Linux</li>
+</ul>
+</section>
+<section id="منابع-آموزشی" class="level2">
+<h2 class="anchored" data-anchor-id="منابع-آموزشی">15. منابع آموزشی</h2>
+<ul>
+<li><a href="https://www.netacad.com/">Cisco Networking Academy</a></li>
+<li><a href="https://www.netacad.com/courses/getting-started-cisco-packet-tracer/1000">Cisco Packet Tracer</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/nettcpip/get-netipconfiguration">Microsoft: Get-NetIPConfiguration</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/nettcpip/test-netconnection">Microsoft: Test-NetConnection</a></li>
+<li><a href="https://www.wireshark.org/docs/wsug_html/">Wireshark User Guide</a></li>
+</ul>
+</section>
+<section id="ارزیابی-پایان-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="ارزیابی-پایان-جلسه">16. ارزیابی پایان جلسه</h2>
+<p>قبل از رفتن به جلسه دوم باید بتوانی به این پرسش‌ها پاسخ بدهی:</p>
+<ol type="1">
+<li>Network چیست؟</li>
 <li>تفاوت LAN و WAN چیست؟</li>
-<li>Default Gateway چه نقشی در ارتباط با شبکه‌های دیگر دارد؟</li>
-<li>اگر دو کامپیوتر در یک شبکه محلی باشند، آیا همیشه برای ارتباط با یکدیگر به Router نیاز دارند؟ چرا؟</li>
-<li>اگر DNS از کار بیفتد، آیا ممکن است هنوز بتوان با IP به یک سرور متصل شد؟</li>
-<li>چرا در اتوماسیون شبکه باید قبل از اجرای تغییرات، رفتار تجهیزات را درک کنیم؟</li>
+<li>وظیفه Switch و Router چه تفاوتی دارد؟</li>
+<li>Default Gateway چه کاربردی دارد؟</li>
+<li>DNS چه مشکلی را حل می‌کند؟</li>
+<li>MAC Address در چه سطحی از ارتباط شبکه اهمیت دارد؟</li>
+<li>چرا Ping نام دامنه با Ping آدرس IP تفاوت دارد؟</li>
+<li>آدرس 169.254.x.x معمولاً چه مفهومی دارد؟</li>
+<li>آیا موفقیت Ping به معنی سالم بودن کامل اینترنت است؟</li>
+<li>برای عیب‌یابی اولیه یک کامپیوتر بدون اینترنت از کجا شروع می‌کنی؟</li>
 </ol>
 <hr>
 </section>
-<section id="منابع-تکمیلی" class="level1">
-<h1>منابع تکمیلی</h1>
-<p>برای مطالعه عمیق‌تر:</p>
-<ol type="1">
-<li><a href="https://www.netacad.com/">Cisco Networking Basics</a></li>
-<li><a href="https://learningnetwork.cisco.com/s/ccna-exam-topics">Cisco CCNA Exam Topics</a></li>
-<li><a href="https://www.cloudflare.com/learning/network-layer/what-is-a-computer-network/">Cloudflare Learning Center: What is a Computer Network?</a></li>
-<li><a href="https://www.wireshark.org/docs/">Wireshark Documentation</a></li>
-</ol>
-<p><strong>پیشنهاد:</strong> فعلاً لازم نیست تمام منابع را بخوانی. ابتدا مفاهیم همین جلسه را درک کن و آزمایش‌های عملی را انجام بده.</p>
-<hr>
+<section id="خروجی-مورد-انتظار-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="خروجی-مورد-انتظار-جلسه">خروجی مورد انتظار جلسه</h2>
+<p>در پایان این جلسه باید یک گزارش واقعی از وضعیت شبکه کامپیوتر خودت داشته باشی و بتوانی توضیح بدهی که دستگاهت چگونه به شبکه متصل می‌شود و برای ارتباط با اینترنت از چه اجزایی استفاده می‌کند.</p>
+<p><strong>جلسه بعد: OSI and TCP/IP Models</strong></p>
 </section>
-<section id="معیار-تکمیل-جلسه" class="level1">
-<h1>معیار تکمیل جلسه</h1>
-<ul class="task-list">
-<li><label><input type="checkbox">درک مفهوم شبکه و کاربرد آن</label></li>
-<li><label><input type="checkbox">شناخت LAN، WAN و Internet</label></li>
-<li><label><input type="checkbox">درک معماری Client-Server</label></li>
-<li><label><input type="checkbox">شناخت Switch، Router و Access Point</label></li>
-<li><label><input type="checkbox">درک Packet و Encapsulation</label></li>
-<li><label><input type="checkbox">آشنایی با Network Topology</label></li>
-<li><label><input type="checkbox">اجرای چهار آزمایش PowerShell</label></li>
-<li><label><input type="checkbox">پاسخ‌گویی به پرسش‌های ارزیابی</label></li>
-</ul>
-<p><strong>خروجی مورد انتظار:</strong> بتوانی یک شبکه ساده را توضیح بدهی، تجهیزات اصلی آن را تشخیص بدهی و اطلاعات پایه اتصال کامپیوتر خودت را بررسی کنی.</p>
 </section>
-</div>
+<link rel="stylesheet" href="../../../../assets/css/quiz.css">
+
+<section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-title">
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-title" class="anchored">آزمون تعاملی جلسه اول</h2>
+    </div>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score="">0</strong></div>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress" role="progressbar" aria-label="پیشرفت آزمون" aria-valuemin="0" aria-valuemax="100">
+    <div class="nf-quiz-progress-bar" data-progress=""></div>
+  </div>
+  <div class="nf-quiz-progress-label" data-progress-text=""></div>
+
+  <div data-content="">
+    <h3 class="nf-quiz-question anchored" data-question=""></h3>
+    <div class="nf-quiz-options" data-options=""></div>
+    <div class="nf-quiz-feedback" data-feedback="" aria-live="polite"></div>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next="" hidden="">سؤال بعدی</button>
+    </div>
+  </div>
+
+  <div class="nf-quiz-result" data-result="" hidden="" aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+    <h3 class="anchored">نتیجه آزمون</h3>
+    <div class="nf-quiz-result-score" data-final-score=""></div>
+    <div class="nf-quiz-result-score" data-percentage=""></div>
+    <p data-result-message=""></p>
+    <button class="nf-quiz-primary" type="button" data-restart="">تلاش مجدد</button>
+  </div>
+
+
+<script type="application/json" data-quiz-questions="">
+[
+  {
+    "options": [
+      "Router",
+      "Switch",
+      "Modem",
+      "DNS Server"
+    ],
+    "explanation": "Switch با یادگیری MAC Addressها، فریم‌های Ethernet را به پورت مناسب در شبکه محلی هدایت می‌کند.",
+    "question": "کدام دستگاه برای اتصال چند دستگاه در یک شبکه محلی و ارسال فریم بر اساس MAC Address استفاده می‌شود؟",
+    "answer": 1
+  },
+  {
+    "options": [
+      "تخصیص آدرس MAC",
+      "تبدیل نام دامنه به IP",
+      "ارسال ترافیک به خارج از شبکه محلی",
+      "تخصیص آدرس IP به کلاینت"
+    ],
+    "explanation": "وقتی مقصد خارج از Subnet محلی باشد، سیستم بسته را به Default Gateway می‌فرستد.",
+    "question": "وظیفه اصلی Default Gateway چیست؟",
+    "answer": 2
+  },
+  {
+    "options": [
+      "DNS",
+      "HTTP",
+      "DHCP",
+      "ARP"
+    ],
+    "explanation": "DHCP اطلاعاتی مانند IP Address، Subnet Mask، Default Gateway و DNS Server را در اختیار کلاینت قرار می‌دهد.",
+    "question": "کدام سرویس معمولاً آدرس IP را به‌صورت خودکار به کلاینت اختصاص می‌دهد؟",
+    "answer": 2
+  },
+  {
+    "options": [
+      "ارتباط موفق با DHCP Server",
+      "عدم دریافت پاسخ DHCP و اختصاص آدرس APIPA",
+      "وجود یک DNS Server معتبر",
+      "اتصال موفق به Default Gateway"
+    ],
+    "explanation": "آدرس‌های 169.254.0.0/16 معمولاً در شرایط عدم دریافت پاسخ DHCP به‌صورت خودکار استفاده می‌شوند.",
+    "question": "سیستم شما آدرس 169.254.20.15 دریافت کرده است. محتمل‌ترین علت چیست؟",
+    "answer": 1
+  },
+  {
+    "options": [
+      "احتمال وجود مشکل در DNS",
+      "خرابی قطعی کارت شبکه",
+      "اشتباه بودن MAC Address",
+      "خاموش بودن Switch"
+    ],
+    "explanation": "ارتباط با IP برقرار است، اما ممکن است تبدیل نام دامنه به آدرس IP توسط DNS انجام نشود.",
+    "question": "چرا ممکن است Ping به 8.8.8.8 موفق باشد اما Ping به google.com شکست بخورد؟",
+    "answer": 0
+  }
+]
+</script></section>
+
+<script src="../../../../assets/js/labs/quiz-engine.js" defer=""></script>
 
 
 
@@ -1155,6 +1211,17 @@ Note
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
+<script>
+(() => {
+  const base = window.location.pathname.startsWith("/netfleet-docs/")
+    ? "/netfleet-docs/"
+    : "/";
+  const script = document.createElement("script");
+  script.src = base + "assets/js/labs/network-fundamentals.js";
+  script.async = false;
+  document.head.appendChild(script);
+})();
+</script>
 
 
 

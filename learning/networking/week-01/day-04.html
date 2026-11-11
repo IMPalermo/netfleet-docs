@@ -155,27 +155,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ipv4-addressing-و-subnetting" id="toc-ipv4-addressing-و-subnetting" class="nav-link active" data-scroll-target="#ipv4-addressing-و-subnetting">IPv4 Addressing و Subnetting</a>
+  <li><a href="#جلسه-چهارم-آدرسدهی-ipv4-و-subnetting" id="toc-جلسه-چهارم-آدرسدهی-ipv4-و-subnetting" class="nav-link active" data-scroll-target="#جلسه-چهارم-آدرسدهی-ipv4-و-subnetting">جلسه چهارم: آدرس‌دهی IPv4 و Subnetting</a>
   <ul class="collapse">
-  <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">اهداف یادگیری</a></li>
-  <li><a href="#ipv4-چیست" id="toc-ipv4-چیست" class="nav-link" data-scroll-target="#ipv4-چیست">1. IPv4 چیست؟</a></li>
-  <li><a href="#network-و-host" id="toc-network-و-host" class="nav-link" data-scroll-target="#network-و-host">2. Network و Host</a></li>
-  <li><a href="#cidr-چیست" id="toc-cidr-چیست" class="nav-link" data-scroll-target="#cidr-چیست">3. CIDR چیست؟</a></li>
-  <li><a href="#محاسبه-یک-subnet" id="toc-محاسبه-یک-subnet" class="nav-link" data-scroll-target="#محاسبه-یک-subnet">4. محاسبه یک Subnet</a></li>
-  <li><a href="#مثال-subnetting-با-26" id="toc-مثال-subnetting-با-26" class="nav-link" data-scroll-target="#مثال-subnetting-با-26">5. مثال Subnetting با /26</a></li>
-  <li><a href="#private-و-public-ip" id="toc-private-و-public-ip" class="nav-link" data-scroll-target="#private-و-public-ip">6. Private و Public IP</a></li>
-  <li><a href="#default-gateway" id="toc-default-gateway" class="nav-link" data-scroll-target="#default-gateway">7. Default Gateway</a></li>
-  <li><a href="#آزمایش-عملی-powershell" id="toc-آزمایش-عملی-powershell" class="nav-link" data-scroll-target="#آزمایش-عملی-powershell">8. آزمایش عملی PowerShell</a>
+  <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">1. اهداف یادگیری</a></li>
+  <li><a href="#ipv4-چیست" id="toc-ipv4-چیست" class="nav-link" data-scroll-target="#ipv4-چیست">2. IPv4 چیست؟</a></li>
+  <li><a href="#decimal-و-binary" id="toc-decimal-و-binary" class="nav-link" data-scroll-target="#decimal-و-binary">3. Decimal و Binary</a></li>
+  <li><a href="#network-portion-و-host-portion" id="toc-network-portion-و-host-portion" class="nav-link" data-scroll-target="#network-portion-و-host-portion">4. Network Portion و Host Portion</a></li>
+  <li><a href="#subnet-mask-چیست" id="toc-subnet-mask-چیست" class="nav-link" data-scroll-target="#subnet-mask-چیست">5. Subnet Mask چیست؟</a></li>
+  <li><a href="#cidr-و-prefix-length" id="toc-cidr-و-prefix-length" class="nav-link" data-scroll-target="#cidr-و-prefix-length">6. CIDR و Prefix Length</a></li>
+  <li><a href="#network-address-و-broadcast-address" id="toc-network-address-و-broadcast-address" class="nav-link" data-scroll-target="#network-address-و-broadcast-address">7. Network Address و Broadcast Address</a></li>
+  <li><a href="#subnetting-چیست" id="toc-subnetting-چیست" class="nav-link" data-scroll-target="#subnetting-چیست">8. Subnetting چیست؟</a>
   <ul class="collapse">
-  <li><a href="#مشاهده-ip-configuration" id="toc-مشاهده-ip-configuration" class="nav-link" data-scroll-target="#مشاهده-ip-configuration">مشاهده IP Configuration</a></li>
-  <li><a href="#مشاهده-ipv4-addressها" id="toc-مشاهده-ipv4-addressها" class="nav-link" data-scroll-target="#مشاهده-ipv4-addressها">مشاهده IPv4 Addressها</a></li>
-  <li><a href="#مشاهده-route-table" id="toc-مشاهده-route-table" class="nav-link" data-scroll-target="#مشاهده-route-table">مشاهده Route Table</a></li>
-  <li><a href="#مشاهده-routeها-با-powershell" id="toc-مشاهده-routeها-با-powershell" class="nav-link" data-scroll-target="#مشاهده-routeها-با-powershell">مشاهده Routeها با PowerShell</a></li>
+  <li><a href="#روش-block-size" id="toc-روش-block-size" class="nav-link" data-scroll-target="#روش-block-size">8.1. روش Block Size</a></li>
+  <li><a href="#مثال-محاسبه-یک-ip" id="toc-مثال-محاسبه-یک-ip" class="nav-link" data-scroll-target="#مثال-محاسبه-یک-ip">8.2. مثال محاسبه یک IP</a></li>
   </ul></li>
-  <li><a href="#تمرین-محاسباتی" id="toc-تمرین-محاسباتی" class="nav-link" data-scroll-target="#تمرین-محاسباتی">9. تمرین محاسباتی</a></li>
-  <li><a href="#ارتباط-با-network-automation" id="toc-ارتباط-با-network-automation" class="nav-link" data-scroll-target="#ارتباط-با-network-automation">10. ارتباط با Network Automation</a></li>
-  <li><a href="#ارزیابی" id="toc-ارزیابی" class="nav-link" data-scroll-target="#ارزیابی">ارزیابی</a></li>
-  <li><a href="#منابع" id="toc-منابع" class="nav-link" data-scroll-target="#منابع">منابع</a></li>
+  <li><a href="#محاسبه-subnet-با-عملیات-and" id="toc-محاسبه-subnet-با-عملیات-and" class="nav-link" data-scroll-target="#محاسبه-subnet-با-عملیات-and">9. محاسبه Subnet با عملیات AND</a></li>
+  <li><a href="#vlsm-چیست" id="toc-vlsm-چیست" class="nav-link" data-scroll-target="#vlsm-چیست">10. VLSM چیست؟</a>
+  <ul class="collapse">
+  <li><a href="#طراحی-subnetها" id="toc-طراحی-subnetها" class="nav-link" data-scroll-target="#طراحی-subnetها">10.1. طراحی Subnetها</a></li>
+  </ul></li>
+  <li><a href="#private-و-public-ipv4" id="toc-private-و-public-ipv4" class="nav-link" data-scroll-target="#private-و-public-ipv4">11. Private و Public IPv4</a></li>
+  <li><a href="#آدرسهای-ویژه-ipv4" id="toc-آدرسهای-ویژه-ipv4" class="nav-link" data-scroll-target="#آدرسهای-ویژه-ipv4">12. آدرس‌های ویژه IPv4</a>
+  <ul class="collapse">
+  <li><a href="#loopback" id="toc-loopback" class="nav-link" data-scroll-target="#loopback">Loopback</a></li>
+  <li><a href="#apipa" id="toc-apipa" class="nav-link" data-scroll-target="#apipa">APIPA</a></li>
+  <li><a href="#multicast" id="toc-multicast" class="nav-link" data-scroll-target="#multicast">Multicast</a></li>
+  </ul></li>
+  <li><a href="#default-gateway-و-routing" id="toc-default-gateway-و-routing" class="nav-link" data-scroll-target="#default-gateway-و-routing">13. Default Gateway و Routing</a>
+  <ul class="collapse">
+  <li><a href="#مثال" id="toc-مثال" class="nav-link" data-scroll-target="#مثال">مثال</a></li>
+  </ul></li>
+  <li><a href="#بررسی-ipv4-در-windows-با-powershell" id="toc-بررسی-ipv4-در-windows-با-powershell" class="nav-link" data-scroll-target="#بررسی-ipv4-در-windows-با-powershell">14. بررسی IPv4 در Windows با PowerShell</a>
+  <ul class="collapse">
+  <li><a href="#مشاهده-تنظیمات-ip" id="toc-مشاهده-تنظیمات-ip" class="nav-link" data-scroll-target="#مشاهده-تنظیمات-ip">مشاهده تنظیمات IP</a></li>
+  <li><a href="#مشاهده-تمام-ipv4-addressها" id="toc-مشاهده-تمام-ipv4-addressها" class="nav-link" data-scroll-target="#مشاهده-تمام-ipv4-addressها">مشاهده تمام IPv4 Addressها</a></li>
+  <li><a href="#مشاهده-default-route" id="toc-مشاهده-default-route" class="nav-link" data-scroll-target="#مشاهده-default-route">مشاهده Default Route</a></li>
+  <li><a href="#مشاهده-routing-table" id="toc-مشاهده-routing-table" class="nav-link" data-scroll-target="#مشاهده-routing-table">مشاهده Routing Table</a></li>
+  <li><a href="#مشاهده-arp-neighbor-cache" id="toc-مشاهده-arp-neighbor-cache" class="nav-link" data-scroll-target="#مشاهده-arp-neighbor-cache">مشاهده ARP / Neighbor Cache</a></li>
+  <li><a href="#بررسی-دسترسی-به-gateway" id="toc-بررسی-دسترسی-به-gateway" class="nav-link" data-scroll-target="#بررسی-دسترسی-به-gateway">بررسی دسترسی به Gateway</a></li>
+  <li><a href="#استخراج-اطلاعات-یک-interface" id="toc-استخراج-اطلاعات-یک-interface" class="nav-link" data-scroll-target="#استخراج-اطلاعات-یک-interface">استخراج اطلاعات یک Interface</a></li>
+  </ul></li>
+  <li><a href="#lab-1-تحلیل-تنظیمات-ip-سیستم" id="toc-lab-1-تحلیل-تنظیمات-ip-سیستم" class="nav-link" data-scroll-target="#lab-1-تحلیل-تنظیمات-ip-سیستم">15. Lab 1: تحلیل تنظیمات IP سیستم</a></li>
+  <li><a href="#lab-2-طراحی-subnet-برای-یک-سازمان" id="toc-lab-2-طراحی-subnet-برای-یک-سازمان" class="nav-link" data-scroll-target="#lab-2-طراحی-subnet-برای-یک-سازمان">16. Lab 2: طراحی Subnet برای یک سازمان</a></li>
+  <li><a href="#lab-3-cisco-ios" id="toc-lab-3-cisco-ios" class="nav-link" data-scroll-target="#lab-3-cisco-ios">17. Lab 3: Cisco IOS</a></li>
+  <li><a href="#troubleshooting-عیبیابی-ipv4" id="toc-troubleshooting-عیبیابی-ipv4" class="nav-link" data-scroll-target="#troubleshooting-عیبیابی-ipv4">18. Troubleshooting: عیب‌یابی IPv4</a>
+  <ul class="collapse">
+  <li><a href="#مشکل-اول-ip-address-اشتباه" id="toc-مشکل-اول-ip-address-اشتباه" class="nav-link" data-scroll-target="#مشکل-اول-ip-address-اشتباه">مشکل اول: IP Address اشتباه</a></li>
+  <li><a href="#مشکل-دوم-subnet-mask-اشتباه" id="toc-مشکل-دوم-subnet-mask-اشتباه" class="nav-link" data-scroll-target="#مشکل-دوم-subnet-mask-اشتباه">مشکل دوم: Subnet Mask اشتباه</a></li>
+  <li><a href="#مشکل-سوم-default-gateway-اشتباه" id="toc-مشکل-سوم-default-gateway-اشتباه" class="nav-link" data-scroll-target="#مشکل-سوم-default-gateway-اشتباه">مشکل سوم: Default Gateway اشتباه</a></li>
+  <li><a href="#مشکل-چهارم-ip-conflict" id="toc-مشکل-چهارم-ip-conflict" class="nav-link" data-scroll-target="#مشکل-چهارم-ip-conflict">مشکل چهارم: IP Conflict</a></li>
+  <li><a href="#مشکل-پنجم-مشکل-dhcp" id="toc-مشکل-پنجم-مشکل-dhcp" class="nav-link" data-scroll-target="#مشکل-پنجم-مشکل-dhcp">مشکل پنجم: مشکل DHCP</a></li>
+  </ul></li>
+  <li><a href="#network-automation-و-ipam" id="toc-network-automation-و-ipam" class="nav-link" data-scroll-target="#network-automation-و-ipam">19. Network Automation و IPAM</a></li>
+  <li><a href="#جمعبندی" id="toc-جمعبندی" class="nav-link" data-scroll-target="#جمعبندی">20. جمع‌بندی</a></li>
+  <li><a href="#تمرین-نهایی" id="toc-تمرین-نهایی" class="nav-link" data-scroll-target="#تمرین-نهایی">21. تمرین نهایی</a></li>
+  <li><a href="#منابع-و-استانداردها" id="toc-منابع-و-استانداردها" class="nav-link" data-scroll-target="#منابع-و-استانداردها">منابع و استانداردها</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -203,154 +237,585 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="ipv4-addressing-و-subnetting" class="level1 persian">
-<h1>IPv4 Addressing و Subnetting</h1>
+<section id="جلسه-چهارم-آدرسدهی-ipv4-و-subnetting" class="level1 persian">
+<h1>جلسه چهارم: آدرس‌دهی IPv4 و Subnetting</h1>
 <section id="اهداف-یادگیری" class="level2">
-<h2 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h2>
+<h2 class="anchored" data-anchor-id="اهداف-یادگیری">1. اهداف یادگیری</h2>
+<p>در پایان این جلسه باید بتوانی:</p>
 <ul>
-<li>ساختار IPv4 را درک کنی.</li>
-<li>تفاوت Network و Host Portion را توضیح بدهی.</li>
-<li>Subnet Mask و CIDR را بخوانی.</li>
-<li>Network Address و Broadcast Address را محاسبه کنی.</li>
-<li>Subnet سیستم خودت را بررسی کنی.</li>
+<li>ساختار ۳۲ بیتی IPv4 را تحلیل کنی.</li>
+<li>آدرس‌های Decimal و Binary را تبدیل کنی.</li>
+<li>Network Address و Host Address را تشخیص بدهی.</li>
+<li>Subnet Mask و CIDR Prefix را تفسیر کنی.</li>
+<li>Network ID و Broadcast Address را محاسبه کنی.</li>
+<li>با روش Block Size شبکه را تقسیم‌بندی کنی.</li>
+<li>با VLSM برای بخش‌های مختلف سازمان آدرس‌دهی طراحی کنی.</li>
+<li>نقش Default Gateway در ارسال Packet را توضیح بدهی.</li>
+<li>تنظیمات IP را با PowerShell بررسی و عیب‌یابی کنی.</li>
 </ul>
+<hr>
 </section>
 <section id="ipv4-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="ipv4-چیست">1. IPv4 چیست؟</h2>
-<p>IPv4 یک سیستم آدرس‌دهی ۳۲ بیتی است.</p>
-<p>نمونه:</p>
-<pre class="text"><code>192.168.1.10</code></pre>
-<p>این آدرس از چهار Octet تشکیل شده است. هر Octet هشت بیت دارد و مقدار آن بین 0 تا 255 است.</p>
-<p>در مجموع:</p>
-<pre class="text"><code>4 × 8 = 32 bits</code></pre>
+<h2 class="anchored" data-anchor-id="ipv4-چیست">2. IPv4 چیست؟</h2>
+<p>IPv4 یکی از پروتکل‌های اصلی لایه Network در مدل TCP/IP است که برای آدرس‌دهی و انتقال Packet بین شبکه‌ها استفاده می‌شود.</p>
+<p>هر آدرس IPv4 دارای ۳۲ بیت است و به چهار بخش ۸ بیتی تقسیم می‌شود.</p>
+<p>مثال:</p>
+<p><code>192.168.10.25</code></p>
+<p>هر بخش را Octet می‌نامیم.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Octet</th>
+<th style="text-align: right;">مقدار Decimal</th>
+<th style="text-align: right;">تعداد بیت</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>اول</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td>دوم</td>
+<td style="text-align: right;">168</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td>سوم</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td>چهارم</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td>مجموع</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">32</td>
+</tr>
+</tbody>
+</table>
+<p>هر Octet می‌تواند عددی بین 0 تا 255 داشته باشد.</p>
+<p>[ 2^8 = 256 ]</p>
+<p>بنابراین محدوده هر Octet برابر 0 تا 255 است.</p>
 </section>
-<section id="network-و-host" class="level2">
-<h2 class="anchored" data-anchor-id="network-و-host">2. Network و Host</h2>
+<section id="decimal-و-binary" class="level2">
+<h2 class="anchored" data-anchor-id="decimal-و-binary">3. Decimal و Binary</h2>
+<p>کامپیوتر داده‌ها را در سطح سخت‌افزار به‌صورت بیت‌های صفر و یک پردازش می‌کند. برای فهم Subnetting باید بتوانیم بین نمایش Decimal و Binary جابه‌جا شویم.</p>
+<p>ارزش بیت‌های یک Octet:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>موقعیت بیت</th>
+<th style="text-align: right;">7</th>
+<th style="text-align: right;">6</th>
+<th style="text-align: right;">5</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">3</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ارزش Decimal</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>مثال تبدیل 192:</p>
+<p>[ 192 = 128 + 64 ]</p>
+<p>پس:</p>
+<p><code>192 = 11000000</code></p>
+<p>مثال تبدیل 168:</p>
+<p>[ 168 = 128 + 32 + 8 ]</p>
+<p>پس:</p>
+<p><code>168 = 10101000</code></p>
+<p>در نتیجه:</p>
+<p><code>192.168.10.25</code></p>
+<p>به شکل Binary:</p>
+<p><code>11000000.10101000.00001010.00011001</code></p>
+<p><strong>نکته:</strong> برای تبدیل Decimal به Binary، اعداد 128، 64، 32، 16، 8، 4، 2 و 1 را بررسی می‌کنیم. اگر آن مقدار در عدد موردنظر وجود داشته باشد، بیت مربوطه 1 و در غیر این صورت 0 است.</p>
+<hr>
+</section>
+<section id="network-portion-و-host-portion" class="level2">
+<h2 class="anchored" data-anchor-id="network-portion-و-host-portion">4. Network Portion و Host Portion</h2>
 <p>یک IPv4 Address از دو بخش منطقی تشکیل می‌شود:</p>
 <ul>
-<li>Network Portion: مشخص می‌کند آدرس متعلق به کدام شبکه است.</li>
-<li>Host Portion: دستگاه را در آن شبکه مشخص می‌کند.</li>
+<li>Network Portion: مشخص می‌کند دستگاه عضو کدام شبکه است.</li>
+<li>Host Portion: دستگاه را در همان شبکه مشخص می‌کند.</li>
 </ul>
-<p>Subnet Mask تعیین می‌کند کدام بیت‌ها متعلق به بخش شبکه هستند.</p>
 <p>مثال:</p>
-<pre class="text"><code>IP Address:  192.168.1.10
-Subnet Mask: 255.255.255.0</code></pre>
-<p>در این مثال سه Octet اول بخش شبکه هستند.</p>
+<p><code>192.168.10.25/24</code></p>
+<p>در Prefix <code>/24</code>:</p>
+<ul>
+<li>24 بیت اول برای Network است.</li>
+<li>8 بیت آخر برای Host است.</li>
+</ul>
+<p>نمایش Binary:</p>
+<p><code>11111111.11111111.11111111.00000000</code></p>
+<p>این مقدار معادل Subnet Mask زیر است:</p>
+<p><code>255.255.255.0</code></p>
 </section>
-<section id="cidr-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="cidr-چیست">3. CIDR چیست؟</h2>
-<p>CIDR تعداد بیت‌های بخش شبکه را مشخص می‌کند.</p>
-<p>مثلاً:</p>
-<pre class="text"><code>192.168.1.10/24</code></pre>
-<p>یعنی 24 بیت برای Network Portion استفاده شده است.</p>
+<section id="subnet-mask-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="subnet-mask-چیست">5. Subnet Mask چیست؟</h2>
+<p>Subnet Mask مشخص می‌کند کدام بیت‌های IP به Network و کدام بیت‌ها به Host تعلق دارند.</p>
+<p>در Subnet Mask:</p>
+<ul>
+<li>بیت‌های 1 نشان‌دهنده Network Portion هستند.</li>
+<li>بیت‌های 0 نشان‌دهنده Host Portion هستند.</li>
+</ul>
+<p>چند نمونه:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>CIDR</th>
 <th>Subnet Mask</th>
+<th style="text-align: right;">تعداد بیت Host</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>/8</td>
 <td>255.0.0.0</td>
+<td style="text-align: right;">24</td>
 </tr>
 <tr class="even">
 <td>/16</td>
 <td>255.255.0.0</td>
+<td style="text-align: right;">16</td>
 </tr>
 <tr class="odd">
 <td>/24</td>
 <td>255.255.255.0</td>
+<td style="text-align: right;">8</td>
 </tr>
 <tr class="even">
 <td>/25</td>
 <td>255.255.255.128</td>
+<td style="text-align: right;">7</td>
 </tr>
 <tr class="odd">
 <td>/26</td>
 <td>255.255.255.192</td>
+<td style="text-align: right;">6</td>
 </tr>
 <tr class="even">
 <td>/27</td>
 <td>255.255.255.224</td>
+<td style="text-align: right;">5</td>
 </tr>
 <tr class="odd">
 <td>/28</td>
 <td>255.255.255.240</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
+<td>/29</td>
+<td>255.255.255.248</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
 <td>/30</td>
 <td>255.255.255.252</td>
+<td style="text-align: right;">2</td>
 </tr>
 </tbody>
 </table>
+<p>هرچه Prefix بزرگ‌تر باشد، تعداد بیت‌های Network بیشتر و تعداد بیت‌های Host کمتر می‌شود.</p>
 </section>
-<section id="محاسبه-یک-subnet" class="level2">
-<h2 class="anchored" data-anchor-id="محاسبه-یک-subnet">4. محاسبه یک Subnet</h2>
+<section id="cidr-و-prefix-length" class="level2">
+<h2 class="anchored" data-anchor-id="cidr-و-prefix-length">6. CIDR و Prefix Length</h2>
+<p>CIDR مخفف Classless Inter-Domain Routing است.</p>
+<p>در CIDR به‌جای تکیه بر Classهای قدیمی A، B و C، تعداد بیت‌های Network را مستقیماً مشخص می‌کنیم.</p>
+<p>مثلاً:</p>
+<p><code>10.20.30.0/24</code></p>
+<p>عدد 24 یعنی 24 بیت ابتدایی برای شناسایی Network استفاده می‌شوند.</p>
+<p>فرمول تعداد آدرس‌ها:</p>
+<p>[ Total = 2^{32-Prefix} ]</p>
+<p>برای تعداد Hostهای قابل استفاده در Subnetهای معمول:</p>
+<p>[ Usable = 2^{32-Prefix}-2 ]</p>
+<p>دو آدرس معمولاً برای Network Address و Broadcast Address رزرو می‌شوند.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Prefix</th>
+<th style="text-align: right;">کل آدرس‌ها</th>
+<th style="text-align: right;">Host قابل استفاده</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>/24</td>
+<td style="text-align: right;">256</td>
+<td style="text-align: right;">254</td>
+</tr>
+<tr class="even">
+<td>/25</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">126</td>
+</tr>
+<tr class="odd">
+<td>/26</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td>/27</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="odd">
+<td>/28</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="even">
+<td>/29</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td>/30</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<p>این قاعده برای Subnetهای معمول IPv4 است. در شبکه‌های Point-to-Point، Prefix <code>/31</code> طبق RFC 3021 می‌تواند هر دو آدرس را برای دو سر لینک استفاده کند. Prefix <code>/32</code> نیز یک آدرس منفرد را مشخص می‌کند.</p>
+<hr>
+</section>
+<section id="network-address-و-broadcast-address" class="level2">
+<h2 class="anchored" data-anchor-id="network-address-و-broadcast-address">7. Network Address و Broadcast Address</h2>
+<p>هر Subnet معمولاً دو آدرس ویژه دارد:</p>
+<p><strong>Network Address</strong></p>
+<p>تمام بیت‌های Host برابر صفر هستند. این آدرس برای شناسایی خود Subnet استفاده می‌شود.</p>
+<p><strong>Broadcast Address</strong></p>
+<p>تمام بیت‌های Host برابر یک هستند. این آدرس برای ارسال Broadcast به تمام Hostهای همان Subnet استفاده می‌شود.</p>
 <p>مثال:</p>
-<pre class="text"><code>192.168.10.0/24</code></pre>
-<p>تعداد بیت‌های Host:</p>
-<pre class="text"><code>32 - 24 = 8</code></pre>
-<p>تعداد کل آدرس‌ها:</p>
-<pre class="text"><code>2^8 = 256</code></pre>
-<p>در یک Subnet معمولی /24: - Network Address: 192.168.10.0 - اولین Host: 192.168.10.1 - آخرین Host: 192.168.10.254 - Broadcast Address: 192.168.10.255</p>
-<p>تعداد آدرس‌های قابل استفاده برای Host در این مثال 254 است.</p>
+<p><code>192.168.10.0/24</code></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>نوع</th>
+<th>آدرس</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Network</td>
+<td>192.168.10.0</td>
+</tr>
+<tr class="even">
+<td>First Usable Host</td>
+<td>192.168.10.1</td>
+</tr>
+<tr class="odd">
+<td>Last Usable Host</td>
+<td>192.168.10.254</td>
+</tr>
+<tr class="even">
+<td>Broadcast</td>
+<td>192.168.10.255</td>
+</tr>
+</tbody>
+</table>
+<hr>
 </section>
-<section id="مثال-subnetting-با-26" class="level2">
-<h2 class="anchored" data-anchor-id="مثال-subnetting-با-26">5. مثال Subnetting با /26</h2>
-<p>شبکه:</p>
-<pre class="text"><code>192.168.1.0/26</code></pre>
-<p>Subnet Mask:</p>
-<pre class="text"><code>255.255.255.192</code></pre>
-<p>اندازه بلوک:</p>
-<pre class="text"><code>256 - 192 = 64</code></pre>
-<p>پس محدوده‌ها:</p>
+<section id="subnetting-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="subnetting-چیست">8. Subnetting چیست؟</h2>
+<p>Subnetting فرآیند تقسیم یک شبکه IP بزرگ به چند شبکه کوچک‌تر است.</p>
+<p>دلایل استفاده:</p>
+<ol type="1">
+<li>کاهش Broadcast Domain</li>
+<li>مدیریت بهتر آدرس‌های IP</li>
+<li>جداسازی بخش‌های سازمان</li>
+<li>بهبود ساختار امنیتی</li>
+<li>ساده‌تر شدن مدیریت و عیب‌یابی</li>
+<li>طراحی بهینه‌تر شبکه</li>
+</ol>
+<p>فرض کن سازمانی شبکه زیر را در اختیار دارد:</p>
+<p><code>192.168.1.0/24</code></p>
+<p>اگر بخواهیم آن را به چهار Subnet مساوی تقسیم کنیم، باید دو بیت از بخش Host قرض بگیریم.</p>
+<p>[ 2^2 = 4 ]</p>
+<p>Prefix جدید:</p>
+<p>[ /24+2=/26 ]</p>
+<p>Subnet Mask جدید:</p>
+<p><code>255.255.255.192</code></p>
+<p>هر Subnet شامل 64 آدرس و 62 Host قابل استفاده خواهد بود.</p>
+<section id="روش-block-size" class="level3">
+<h3 class="anchored" data-anchor-id="روش-block-size">8.1. روش Block Size</h3>
+<p>یکی از روش‌های سریع محاسبه Subnet، روش Block Size است.</p>
+<p>فرمول:</p>
+<p>[ Block&nbsp;Size = 256 - Subnet&nbsp;Mask&nbsp;Octet ]</p>
+<p>برای <code>/26</code>:</p>
+<p><code>255.255.255.192</code></p>
+<p>بنابراین:</p>
+<p>[ 256-192=64 ]</p>
+<p>پس مرز Subnetها در Octet آخر با فاصله 64 واحد افزایش پیدا می‌کند.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Subnet</th>
-<th>Network</th>
-<th>Host Range</th>
+<th>Network Address</th>
+<th>Usable Range</th>
 <th>Broadcast</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>1</td>
-<td>.0</td>
+<td>192.168.1.0</td>
 <td>.1 تا .62</td>
 <td>.63</td>
 </tr>
 <tr class="even">
 <td>2</td>
-<td>.64</td>
+<td>192.168.1.64</td>
 <td>.65 تا .126</td>
 <td>.127</td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>.128</td>
+<td>192.168.1.128</td>
 <td>.129 تا .190</td>
 <td>.191</td>
 </tr>
 <tr class="even">
 <td>4</td>
-<td>.192</td>
+<td>192.168.1.192</td>
 <td>.193 تا .254</td>
 <td>.255</td>
 </tr>
 </tbody>
 </table>
-<p>این تقسیم‌بندی زمانی کاربرد دارد که بخواهیم یک شبکه را به چند شبکه کوچک‌تر تقسیم کنیم.</p>
 </section>
-<section id="private-و-public-ip" class="level2">
-<h2 class="anchored" data-anchor-id="private-و-public-ip">6. Private و Public IP</h2>
-<p>بازه‌های Private IPv4:</p>
+<section id="مثال-محاسبه-یک-ip" class="level3">
+<h3 class="anchored" data-anchor-id="مثال-محاسبه-یک-ip">8.2. مثال محاسبه یک IP</h3>
+<p>فرض کن IP زیر را داریم:</p>
+<p><code>192.168.10.77/26</code></p>
+<p>ابتدا Subnet Mask را پیدا می‌کنیم:</p>
+<p><code>255.255.255.192</code></p>
+<p>Block Size:</p>
+<p>[ 256-192=64 ]</p>
+<p>مرز Subnetها:</p>
+<ul>
+<li>0</li>
+<li>64</li>
+<li>128</li>
+<li>192</li>
+</ul>
+<p>عدد 77 بین 64 و 128 قرار دارد.</p>
+<p>پس:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Range</th>
+<th>مشخصه</th>
+<th>مقدار</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IP Address</td>
+<td>192.168.10.77</td>
+</tr>
+<tr class="even">
+<td>Prefix</td>
+<td>/26</td>
+</tr>
+<tr class="odd">
+<td>Network</td>
+<td>192.168.10.64</td>
+</tr>
+<tr class="even">
+<td>First Host</td>
+<td>192.168.10.65</td>
+</tr>
+<tr class="odd">
+<td>Last Host</td>
+<td>192.168.10.126</td>
+</tr>
+<tr class="even">
+<td>Broadcast</td>
+<td>192.168.10.127</td>
+</tr>
+<tr class="odd">
+<td>Usable Hosts</td>
+<td>62</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="محاسبه-subnet-با-عملیات-and" class="level2">
+<h2 class="anchored" data-anchor-id="محاسبه-subnet-با-عملیات-and">9. محاسبه Subnet با عملیات AND</h2>
+<p>روش دقیق‌تر و بنیادی‌تر Subnetting استفاده از عملیات Bitwise AND است.</p>
+<p>قانون AND:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Bit A</th>
+<th style="text-align: right;">Bit B</th>
+<th style="text-align: right;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>برای محاسبه Network Address:</p>
+<p>[ IP&nbsp;Address&nbsp;AND&nbsp;Subnet&nbsp;Mask ]</p>
+<p>مثال:</p>
+<p>IP:</p>
+<p><code>192.168.10.77</code></p>
+<p>Mask:</p>
+<p><code>255.255.255.192</code></p>
+<p>در Octet آخر:</p>
+<p><code>01001101</code> (77)</p>
+<p><code>11000000</code> (192)</p>
+<p>نتیجه AND:</p>
+<p><code>01000000</code> (64)</p>
+<p>بنابراین Network Address:</p>
+<p><code>192.168.10.64</code></p>
+<p>این روش درک عمیق‌تری از Subnetting ایجاد می‌کند و پایه بسیاری از محاسبات شبکه است.</p>
+<hr>
+</section>
+<section id="vlsm-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="vlsm-چیست">10. VLSM چیست؟</h2>
+<p>VLSM مخفف Variable Length Subnet Mask است.</p>
+<p>در Subnetting معمولی ممکن است تمام Subnetها اندازه یکسانی داشته باشند؛ اما در VLSM می‌توانیم برای هر بخش شبکه، Subnet متناسب با نیاز آن انتخاب کنیم.</p>
+<p>فرض کن یک سازمان شبکه زیر را دارد:</p>
+<p><code>192.168.50.0/24</code></p>
+<p>نیاز بخش‌ها:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>بخش</th>
+<th style="text-align: right;">تعداد Host موردنیاز</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Engineering</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td>Sales</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td>Support</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td>Management</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<p>برای هر بخش باید کوچک‌ترین Subnet مناسب را انتخاب کنیم.</p>
+<section id="طراحی-subnetها" class="level3">
+<h3 class="anchored" data-anchor-id="طراحی-subnetها">10.1. طراحی Subnetها</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>بخش</th>
+<th>Subnet</th>
+<th style="text-align: right;">ظرفیت قابل استفاده</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Engineering</td>
+<td>192.168.50.0/25</td>
+<td style="text-align: right;">126</td>
+</tr>
+<tr class="even">
+<td>Sales</td>
+<td>192.168.50.128/26</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="odd">
+<td>Support</td>
+<td>192.168.50.192/27</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td>Management</td>
+<td>192.168.50.224/28</td>
+<td style="text-align: right;">14</td>
+</tr>
+</tbody>
+</table>
+<p>محدوده کامل:</p>
+<p><strong>Engineering</strong></p>
+<ul>
+<li>Network: 192.168.50.0</li>
+<li>Usable: 192.168.50.1 تا 192.168.50.126</li>
+<li>Broadcast: 192.168.50.127</li>
+</ul>
+<p><strong>Sales</strong></p>
+<ul>
+<li>Network: 192.168.50.128</li>
+<li>Usable: 192.168.50.129 تا 192.168.50.190</li>
+<li>Broadcast: 192.168.50.191</li>
+</ul>
+<p><strong>Support</strong></p>
+<ul>
+<li>Network: 192.168.50.192</li>
+<li>Usable: 192.168.50.193 تا 192.168.50.222</li>
+<li>Broadcast: 192.168.50.223</li>
+</ul>
+<p><strong>Management</strong></p>
+<ul>
+<li>Network: 192.168.50.224</li>
+<li>Usable: 192.168.50.225 تا 192.168.50.238</li>
+<li>Broadcast: 192.168.50.239</li>
+</ul>
+<p>بازه <code>192.168.50.240/28</code> نیز در این طراحی آزاد باقی می‌ماند.</p>
+<p><strong>اصل مهم VLSM:</strong> تخصیص را معمولاً از بزرگ‌ترین نیاز به کوچک‌ترین نیاز انجام می‌دهیم تا فضای آدرس‌دهی هدر نرود.</p>
+<hr>
+</section>
+</section>
+<section id="private-و-public-ipv4" class="level2">
+<h2 class="anchored" data-anchor-id="private-و-public-ipv4">11. Private و Public IPv4</h2>
+<p>تمام آدرس‌های IPv4 برای استفاده مستقیم در اینترنت عمومی طراحی نشده‌اند.</p>
+<p>سه محدوده Private طبق RFC 1918:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>محدوده</th>
 <th>CIDR</th>
 </tr>
 </thead>
@@ -369,71 +834,425 @@ Subnet Mask: 255.255.255.0</code></pre>
 </tr>
 </tbody>
 </table>
-<p>آدرس‌های Private مستقیماً در اینترنت عمومی Route نمی‌شوند. معمولاً برای دسترسی به اینترنت از NAT استفاده می‌شود.</p>
+<p>این محدوده‌ها در اینترنت عمومی Route نمی‌شوند.</p>
+<p>آدرس‌های Public برای ارتباط عمومی اینترنت استفاده می‌شوند و تخصیص آن‌ها تحت مدیریت ساختارهای آدرس‌دهی اینترنت انجام می‌شود.</p>
 </section>
-<section id="default-gateway" class="level2">
-<h2 class="anchored" data-anchor-id="default-gateway">7. Default Gateway</h2>
-<p>Default Gateway روتر یا رابط لایه سومی است که سیستم برای ارسال ترافیک به مقصدهای خارج از شبکه محلی از آن استفاده می‌کند.</p>
-<p>اگر مقصد در Subnet محلی نباشد، سیستم بسته را به Gateway ارسال می‌کند.</p>
+<section id="آدرسهای-ویژه-ipv4" class="level2">
+<h2 class="anchored" data-anchor-id="آدرسهای-ویژه-ipv4">12. آدرس‌های ویژه IPv4</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>محدوده یا آدرس</th>
+<th>کاربرد</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>127.0.0.0/8</td>
+<td>Loopback</td>
+</tr>
+<tr class="even">
+<td>169.254.0.0/16</td>
+<td>Link-Local / APIPA</td>
+</tr>
+<tr class="odd">
+<td>224.0.0.0/4</td>
+<td>Multicast</td>
+</tr>
+<tr class="even">
+<td>255.255.255.255</td>
+<td>Limited Broadcast</td>
+</tr>
+<tr class="odd">
+<td>0.0.0.0</td>
+<td>Unspecified Address</td>
+</tr>
+<tr class="even">
+<td>0.0.0.0/0</td>
+<td>Default Route</td>
+</tr>
+</tbody>
+</table>
+<section id="loopback" class="level3">
+<h3 class="anchored" data-anchor-id="loopback">Loopback</h3>
+<p>آدرس <code>127.0.0.1</code> برای ارتباط با خود سیستم استفاده می‌شود.</p>
 </section>
-<section id="آزمایش-عملی-powershell" class="level2">
-<h2 class="anchored" data-anchor-id="آزمایش-عملی-powershell">8. آزمایش عملی PowerShell</h2>
-<section id="مشاهده-ip-configuration" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-ip-configuration">مشاهده IP Configuration</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="apipa" class="level3">
+<h3 class="anchored" data-anchor-id="apipa">APIPA</h3>
+<p>اگر دستگاه نتواند از DHCP آدرس دریافت کند، ممکن است آدرسی از محدوده <code>169.254.0.0/16</code> برای خود انتخاب کند.</p>
 </section>
-<section id="مشاهده-ipv4-addressها" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-ipv4-addressها">مشاهده IPv4 Addressها</h3>
+<section id="multicast" class="level3">
+<h3 class="anchored" data-anchor-id="multicast">Multicast</h3>
+<p>محدوده <code>224.0.0.0/4</code> برای ارتباطات Multicast استفاده می‌شود.</p>
+<hr>
+</section>
+</section>
+<section id="default-gateway-و-routing" class="level2">
+<h2 class="anchored" data-anchor-id="default-gateway-و-routing">13. Default Gateway و Routing</h2>
+<p>Default Gateway معمولاً آدرس رابط روتر یا دستگاه لایه سوم در شبکه محلی است.</p>
+<p>وقتی کامپیوتر می‌خواهد Packet ارسال کند، ابتدا بررسی می‌کند مقصد در Subnet خودش قرار دارد یا خیر.</p>
+<p><strong>حالت اول: مقصد Local است</strong></p>
+<p>کامپیوتر با استفاده از Subnet Mask متوجه می‌شود مقصد در همان شبکه قرار دارد. سپس MAC Address مقصد را با ARP پیدا می‌کند و فریم را مستقیماً برای آن ارسال می‌کند.</p>
+<p><strong>حالت دوم: مقصد Remote است</strong></p>
+<p>کامپیوتر تشخیص می‌دهد مقصد خارج از Subnet است. سپس MAC Address مربوط به Default Gateway را پیدا می‌کند و Packet را به آن تحویل می‌دهد.</p>
+<p>در این حالت:</p>
+<ul>
+<li>Destination IP همچنان IP مقصد نهایی است.</li>
+<li>Destination MAC فریم اولیه، MAC رابط Gateway است.</li>
+</ul>
+<p>روتر با بررسی Routing Table تصمیم می‌گیرد Packet را به کدام مسیر ارسال کند.</p>
+<section id="مثال" class="level3">
+<h3 class="anchored" data-anchor-id="مثال">مثال</h3>
+<p>فرض کن:</p>
+<ul>
+<li>IP سیستم: <code>192.168.1.20/24</code></li>
+<li>Gateway: <code>192.168.1.1</code></li>
+<li>Destination: <code>8.8.8.8</code></li>
+</ul>
+<p>چون <code>8.8.8.8</code> در Subnet محلی نیست، سیستم Packet را به Default Gateway تحویل می‌دهد.</p>
+<hr>
+</section>
+</section>
+<section id="بررسی-ipv4-در-windows-با-powershell" class="level2">
+<h2 class="anchored" data-anchor-id="بررسی-ipv4-در-windows-با-powershell">14. بررسی IPv4 در Windows با PowerShell</h2>
+<p>برای یادگیری Network Automation باید بتوانی اطلاعات شبکه را از سیستم‌عامل استخراج کنی.</p>
+<section id="مشاهده-تنظیمات-ip" class="level3">
+<h3 class="anchored" data-anchor-id="مشاهده-تنظیمات-ip">مشاهده تنظیمات IP</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="مشاهده-تمام-ipv4-addressها" class="level3">
+<h3 class="anchored" data-anchor-id="مشاهده-تمام-ipv4-addressها">مشاهده تمام IPv4 Addressها</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPAddress <span class="op">-</span>AddressFamily IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="مشاهده-default-route" class="level3">
+<h3 class="anchored" data-anchor-id="مشاهده-default-route">مشاهده Default Route</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Get-NetRoute <span class="op">-</span>AddressFamily IPv4 <span class="op">-</span>DestinationPrefix <span class="st">"0.0.0.0/0"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="مشاهده-routing-table" class="level3">
+<h3 class="anchored" data-anchor-id="مشاهده-routing-table">مشاهده Routing Table</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>route print <span class="op">-</span><span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="مشاهده-arp-neighbor-cache" class="level3">
+<h3 class="anchored" data-anchor-id="مشاهده-arp-neighbor-cache">مشاهده ARP / Neighbor Cache</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor <span class="op">-</span>AddressFamily IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="بررسی-دسترسی-به-gateway" class="level3">
+<h3 class="anchored" data-anchor-id="بررسی-دسترسی-به-gateway">بررسی دسترسی به Gateway</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Test-Connection</span> <span class="dv">192.168</span><span class="op">.</span><span class="dv">1.1</span> <span class="op">-</span>Count <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>آدرس Gateway را با آدرس واقعی شبکه خودت جایگزین کن.</p>
+</section>
+<section id="استخراج-اطلاعات-یک-interface" class="level3">
+<h3 class="anchored" data-anchor-id="استخراج-اطلاعات-یک-interface">استخراج اطلاعات یک Interface</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration <span class="op">|</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Select-Object</span> InterfaceAlias<span class="op">,</span> IPv4Address<span class="op">,</span> IPv4DefaultGateway<span class="op">,</span> DNSServer</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="lab-1-تحلیل-تنظیمات-ip-سیستم" class="level2">
+<h2 class="anchored" data-anchor-id="lab-1-تحلیل-تنظیمات-ip-سیستم">15. Lab 1: تحلیل تنظیمات IP سیستم</h2>
+<p>در PowerShell دستورات زیر را اجرا کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Get-NetIPAddress <span class="op">-</span>AddressFamily IPv4</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>Get-NetRoute <span class="op">-</span>AddressFamily IPv4</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor <span class="op">-</span>AddressFamily IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>موارد زیر را شناسایی کن:</p>
+<ol type="1">
+<li>IPv4 Address کارت شبکه فعال</li>
+<li>Prefix Length</li>
+<li>Default Gateway</li>
+<li>DNS Server</li>
+<li>Network Interface Alias</li>
+</ol>
+<p>سپس مشخص کن سیستم از DHCP استفاده می‌کند یا IP آن به‌صورت دستی تنظیم شده است.</p>
+<p>برای بررسی DHCP:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPInterface <span class="op">-</span>AddressFamily IPv4 <span class="op">|</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Select-Object</span> InterfaceAlias<span class="op">,</span> Dhcp<span class="op">,</span> ConnectionState</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lab-2-طراحی-subnet-برای-یک-سازمان" class="level2">
+<h2 class="anchored" data-anchor-id="lab-2-طراحی-subnet-برای-یک-سازمان">16. Lab 2: طراحی Subnet برای یک سازمان</h2>
+<p>یک شرکت چهار بخش دارد:</p>
+<ul>
+<li>Development: 60 Host</li>
+<li>Finance: 25 Host</li>
+<li>HR: 12 Host</li>
+<li>IT: 6 Host</li>
+</ul>
+<p>شبکه اصلی:</p>
+<p><code>10.10.10.0/24</code></p>
+<p>وظایف:</p>
+<ol type="1">
+<li>برای هر بخش Prefix مناسب پیدا کن.</li>
+<li>Network Address هر بخش را محاسبه کن.</li>
+<li>Broadcast Address را مشخص کن.</li>
+<li>First و Last Usable Host را پیدا کن.</li>
+<li>آدرس‌های آزاد باقی‌مانده را مشخص کن.</li>
+<li>بررسی کن هیچ دو Subnet با یکدیگر Overlap نداشته باشند.</li>
+</ol>
+<p>از VLSM استفاده کن و تخصیص را از بزرگ‌ترین بخش شروع کن.</p>
+</section>
+<section id="lab-3-cisco-ios" class="level2">
+<h2 class="anchored" data-anchor-id="lab-3-cisco-ios">17. Lab 3: Cisco IOS</h2>
+<p>در یک روتر Cisco، نمونه تنظیم یک Interface به شکل زیر است:</p>
+<pre class="text"><code>enable
+configure terminal
+
+interface gigabitEthernet 0/0
+ip address 192.168.10.1 255.255.255.0
+no shutdown
+exit
+
+end
+show ip interface brief
+show ip route</code></pre>
+<p>این مثال فرض می‌کند Interface موردنظر در سناریوی آزمایشگاهی وجود دارد.</p>
+<p>برای بررسی وضعیت Interfaceها و Routing Table از دستورات زیر استفاده کن:</p>
+<pre class="text"><code>show ip interface brief
+show running-config
+show ip route
+show arp</code></pre>
+<hr>
+</section>
+<section id="troubleshooting-عیبیابی-ipv4" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting-عیبیابی-ipv4">18. Troubleshooting: عیب‌یابی IPv4</h2>
+<section id="مشکل-اول-ip-address-اشتباه" class="level3">
+<h3 class="anchored" data-anchor-id="مشکل-اول-ip-address-اشتباه">مشکل اول: IP Address اشتباه</h3>
+<p>دو دستگاه ممکن است در Subnetهای متفاوت قرار گرفته باشند و بدون Routing مناسب نتوانند با یکدیگر ارتباط برقرار کنند.</p>
+<p>بررسی:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPAddress <span class="op">-</span>AddressFamily IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="مشاهده-route-table" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-route-table">مشاهده Route Table</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>route print <span class="op">-</span><span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="مشکل-دوم-subnet-mask-اشتباه" class="level3">
+<h3 class="anchored" data-anchor-id="مشکل-دوم-subnet-mask-اشتباه">مشکل دوم: Subnet Mask اشتباه</h3>
+<p>Subnet Mask نادرست ممکن است باعث شود سیستم مقصد Local را Remote تشخیص دهد یا برعکس.</p>
+<p>بررسی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="مشاهده-routeها-با-powershell" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-routeها-با-powershell">مشاهده Routeها با PowerShell</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Get-NetRoute <span class="op">-</span>AddressFamily IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>این خروجی‌ها را بررسی کن: - IP Address - Prefix Length - Default Gateway - Interface Index - Destination Prefix</p>
+<section id="مشکل-سوم-default-gateway-اشتباه" class="level3">
+<h3 class="anchored" data-anchor-id="مشکل-سوم-default-gateway-اشتباه">مشکل سوم: Default Gateway اشتباه</h3>
+<p>اگر Gateway در Subnet صحیح نباشد یا دسترسی به آن وجود نداشته باشد، ارتباط با شبکه‌های خارج از Subnet ممکن است مختل شود.</p>
+<p>بررسی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Get-NetRoute <span class="op">-</span>AddressFamily IPv4 <span class="op">-</span>DestinationPrefix <span class="st">"0.0.0.0/0"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="مشکل-چهارم-ip-conflict" class="level3">
+<h3 class="anchored" data-anchor-id="مشکل-چهارم-ip-conflict">مشکل چهارم: IP Conflict</h3>
+<p>اگر دو دستگاه از یک IP یکسان استفاده کنند، ممکن است ارتباط شبکه ناپایدار شود.</p>
+<p>بررسی Neighbor Cache:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor <span class="op">-</span>AddressFamily IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="مشکل-پنجم-مشکل-dhcp" class="level3">
+<h3 class="anchored" data-anchor-id="مشکل-پنجم-مشکل-dhcp">مشکل پنجم: مشکل DHCP</h3>
+<p>اگر سیستم نتواند از DHCP آدرس بگیرد، ممکن است از محدوده APIPA استفاده کند.</p>
+<p>بررسی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>وجود IP از محدوده <code>169.254.0.0/16</code> می‌تواند نشانه مشکل در دریافت تنظیمات DHCP باشد.</p>
+<hr>
 </section>
 </section>
-<section id="تمرین-محاسباتی" class="level2">
-<h2 class="anchored" data-anchor-id="تمرین-محاسباتی">9. تمرین محاسباتی</h2>
-<p>برای هر مورد Network Address، Broadcast Address و Host Range را محاسبه کن:</p>
-<ol type="1">
-<li>192.168.5.20/24</li>
-<li>192.168.5.70/26</li>
-<li>10.10.10.100/25</li>
-<li>172.16.4.10/28</li>
-</ol>
-<p>سپس پاسخ‌ها را با یک Subnet Calculator معتبر مقایسه کن. ابتدا خودت محاسبه کن.</p>
-</section>
-<section id="ارتباط-با-network-automation" class="level2">
-<h2 class="anchored" data-anchor-id="ارتباط-با-network-automation">10. ارتباط با Network Automation</h2>
-<p>IPAM یا IP Address Management یکی از بخش‌های مهم مدیریت زیرساخت است.</p>
-<p>در NetFleet در آینده می‌توانیم: - IPهای تخصیص‌یافته را ثبت کنیم. - Subnetها را مدیریت کنیم. - IPهای تکراری را شناسایی کنیم. - ظرفیت آزاد هر Subnet را محاسبه کنیم. - اطلاعات را از تجهیزات شبکه جمع‌آوری کنیم.</p>
-</section>
-<section id="ارزیابی" class="level2">
-<h2 class="anchored" data-anchor-id="ارزیابی">ارزیابی</h2>
-<ol type="1">
-<li>IPv4 چند بیت دارد؟</li>
-<li>/24 به چه معناست؟</li>
-<li>Network Address چیست؟</li>
-<li>Broadcast Address چه کاربردی دارد؟</li>
-<li>تفاوت Private IP و Public IP چیست؟</li>
-<li>Default Gateway چه زمانی استفاده می‌شود؟</li>
-<li>در یک Subnet /26 چند آدرس کل وجود دارد؟</li>
-<li>چرا Subnetting برای طراحی شبکه مهم است؟</li>
-</ol>
-</section>
-<section id="منابع" class="level2">
-<h2 class="anchored" data-anchor-id="منابع">منابع</h2>
+<section id="network-automation-و-ipam" class="level2">
+<h2 class="anchored" data-anchor-id="network-automation-و-ipam">19. Network Automation و IPAM</h2>
+<p>در شبکه‌های کوچک ممکن است مدیر شبکه آدرس‌ها را به‌صورت دستی مدیریت کند؛ اما در شبکه‌های بزرگ این روش خطاپذیر و دشوار است.</p>
+<p>دو مفهوم مهم:</p>
+<p><strong>IPAM (IP Address Management)</strong></p>
+<p>سامانه‌ای برای مدیریت متمرکز IP Addressها، Subnetها، تخصیص آدرس‌ها و جلوگیری از تداخل است.</p>
+<p><strong>Network Automation</strong></p>
+<p>با استفاده از اسکریپت‌ها و ابزارهای اتوماسیون می‌توان:</p>
 <ul>
-<li><a href="https://www.rfc-editor.org/rfc/rfc4632">RFC 4632: CIDR</a></li>
-<li><a href="https://www.rfc-editor.org/rfc/rfc1918">RFC 1918: Private Address Allocation</a></li>
-<li><a href="https://learn.microsoft.com/en-us/powershell/module/nettcpip/get-netipaddress">Microsoft Get-NetIPAddress</a></li>
+<li>Subnetهای موردنیاز را محاسبه کرد.</li>
+<li>IPهای تکراری را شناسایی کرد.</li>
+<li>وضعیت Interfaceها را بررسی کرد.</li>
+<li>گزارش آدرس‌دهی تولید کرد.</li>
+<li>تنظیمات دستگاه‌های شبکه را مدیریت کرد.</li>
 </ul>
-<p><strong>خروجی مورد انتظار:</strong> بتوانی یک Subnet را محاسبه کنی و تنظیمات IP سیستم را تحلیل کنی.</p>
+<p>در آینده می‌توانیم یک Subnet Calculator تعاملی برای NetFleet بسازیم که ورودی IP و Prefix را دریافت کند و Network Address، Broadcast، Host Range و تعداد Hostها را محاسبه کند.</p>
+<hr>
 </section>
+<section id="جمعبندی" class="level2">
+<h2 class="anchored" data-anchor-id="جمعبندی">20. جمع‌بندی</h2>
+<p>مفاهیم کلیدی این جلسه:</p>
+<ul>
+<li>IPv4 دارای 32 بیت است.</li>
+<li>Subnet Mask مرز Network و Host را مشخص می‌کند.</li>
+<li>CIDR تعداد بیت‌های Network را نشان می‌دهد.</li>
+<li>Network Address اولین آدرس Subnet است.</li>
+<li>Broadcast Address آخرین آدرس Subnet معمولی است.</li>
+<li>Block Size برای پیدا کردن مرز Subnetها استفاده می‌شود.</li>
+<li>VLSM امکان تخصیص Subnetهای با اندازه متفاوت را فراهم می‌کند.</li>
+<li>Default Gateway مسیر خروج از Subnet محلی را فراهم می‌کند.</li>
+<li>Routing Table در انتخاب مسیر Packet نقش دارد.</li>
+<li>PowerShell برای بررسی و عیب‌یابی تنظیمات شبکه ابزار قدرتمندی است.</li>
+</ul>
+</section>
+<section id="تمرین-نهایی" class="level2">
+<h2 class="anchored" data-anchor-id="تمرین-نهایی">21. تمرین نهایی</h2>
+<p>برای IP زیر اطلاعات کامل Subnet را محاسبه کن:</p>
+<p><code>172.16.25.130/27</code></p>
+<p>موارد موردنیاز:</p>
+<ol type="1">
+<li>Subnet Mask</li>
+<li>Block Size</li>
+<li>Network Address</li>
+<li>Broadcast Address</li>
+<li>First Usable Host</li>
+<li>Last Usable Host</li>
+<li>تعداد Hostهای قابل استفاده</li>
+</ol>
+<p>سپس توضیح بده اگر مقصد خارج از این Subnet باشد، سیستم برای ارسال Packet چه مسیری را انتخاب می‌کند.</p>
+<hr>
+</section>
+<section id="منابع-و-استانداردها" class="level2">
+<h2 class="anchored" data-anchor-id="منابع-و-استانداردها">منابع و استانداردها</h2>
+<ol type="1">
+<li><a href="https://www.rfc-editor.org/rfc/rfc4632">RFC 4632: Classless Inter-domain Routing</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc1918">RFC 1918: Address Allocation for Private Internets</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc3021">RFC 3021: Using 31-Bit Prefixes on IPv4 Point-to-Point Links</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/nettcpip/get-netipaddress">Microsoft Learn: Get-NetIPAddress</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/nettcpip/get-netroute">Microsoft Learn: Get-NetRoute</a></li>
+</ol>
+</section>
+</section>
+<link rel="stylesheet" href="../../../assets/css/quiz.css">
+
+<section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-day04-title">
+<div class="nf-quiz-header">
+<div>
+<div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+<h2 id="nf-quiz-day04-title" class="anchored">آزمون تعاملی جلسه چهارم</h2>
+</div>
+<div class="nf-quiz-stats">
+<div class="nf-quiz-stat">امتیاز: <strong data-score="">0</strong></div>
+</div>
+</div>
+
+<div class="nf-quiz-progress" role="progressbar" aria-label="پیشرفت آزمون" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+<div class="nf-quiz-progress-bar" data-progress=""></div>
+</div>
+
+<div class="nf-quiz-progress-label" data-progress-text=""></div>
+
+<div data-content="">
+<h3 class="nf-quiz-question anchored" data-question=""></h3>
+<div class="nf-quiz-options" data-options=""></div>
+<div class="nf-quiz-feedback" data-feedback="" aria-live="polite"></div>
+<div class="nf-quiz-actions">
+<button class="nf-quiz-primary" type="button" data-next="" hidden="">
+سؤال بعدی
+</button>
+</div>
+</div>
+
+<div class="nf-quiz-result" data-result="" hidden="" aria-live="polite">
+<div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+<h3 class="anchored">نتیجه آزمون</h3>
+<div class="nf-quiz-result-score" data-final-score=""></div>
+<div class="nf-quiz-result-score" data-percentage=""></div>
+<p data-result-message=""></p>
+<button class="nf-quiz-primary" type="button" data-restart="">
+تلاش مجدد
+</button>
+</div>
+
+<script type="application/json" data-quiz-questions="">
+[
+  {
+    "question": "یک آدرس IPv4 چند بیت دارد؟",
+    "options": ["16 بیت", "24 بیت", "32 بیت", "64 بیت"],
+    "answer": 2,
+    "explanation": "IPv4 از 32 بیت تشکیل شده که در قالب چهار Octet هشت‌بیتی نمایش داده می‌شود."
+  },
+  {
+    "question": "Subnet Mask با Prefix /26 کدام است؟",
+    "options": [
+      "255.255.255.0",
+      "255.255.255.128",
+      "255.255.255.192",
+      "255.255.255.224"
+    ],
+    "answer": 2,
+    "explanation": "در /26، دو بیت اول Octet چهارم نیز Network هستند؛ بنابراین مقدار آن Octet برابر 192 می‌شود."
+  },
+  {
+    "question": "در یک Subnet معمولی با Prefix /27 چند Host قابل استفاده داریم؟",
+    "options": ["14", "30", "32", "62"],
+    "answer": 1,
+    "explanation": "پنج بیت Host داریم. 2 به توان 5 برابر 32 آدرس است و با کنار گذاشتن Network و Broadcast، 30 Host باقی می‌ماند."
+  },
+  {
+    "question": "Network Address مربوط به 192.168.10.77/26 کدام است؟",
+    "options": [
+      "192.168.10.0",
+      "192.168.10.32",
+      "192.168.10.64",
+      "192.168.10.128"
+    ],
+    "answer": 2,
+    "explanation": "Block Size برابر 64 است. عدد 77 در بازه 64 تا 127 قرار می‌گیرد؛ پس Network برابر 192.168.10.64 است."
+  },
+  {
+    "question": "Block Size برای Subnet Mask برابر 255.255.255.224 چقدر است؟",
+    "options": ["16", "32", "64", "128"],
+    "answer": 1,
+    "explanation": "Block Size از تفریق Octet مربوطه از 256 به دست می‌آید: 256 منهای 224 برابر 32."
+  },
+  {
+    "question": "در طراحی VLSM، معمولاً تخصیص Subnetها را از کدام بخش آغاز می‌کنیم؟",
+    "options": [
+      "کوچک‌ترین بخش",
+      "بزرگ‌ترین بخش",
+      "بخش دارای کمترین IP",
+      "بخش دارای Default Gateway"
+    ],
+    "answer": 1,
+    "explanation": "با تخصیص بزرگ‌ترین نیازها در ابتدا، احتمال هدررفتن فضای پیوسته آدرس‌دهی کاهش پیدا می‌کند."
+  },
+  {
+    "question": "اگر مقصد خارج از Subnet محلی باشد، کامپیوتر معمولاً Destination MAC فریم اولیه را متعلق به چه دستگاهی قرار می‌دهد؟",
+    "options": [
+      "دستگاه مقصد نهایی",
+      "DNS Server",
+      "Default Gateway",
+      "تمام دستگاه‌های شبکه"
+    ],
+    "answer": 2,
+    "explanation": "برای مقصد Remote، کامپیوتر Packet را به MAC Address رابط Default Gateway تحویل می‌دهد."
+  },
+  {
+    "question": "آدرس 169.254.10.20 معمولاً به کدام محدوده تعلق دارد؟",
+    "options": [
+      "Private Class A",
+      "Loopback",
+      "APIPA / Link-Local",
+      "Multicast"
+    ],
+    "answer": 2,
+    "explanation": "محدوده 169.254.0.0/16 برای IPv4 Link-Local استفاده می‌شود و ممکن است در صورت شکست DHCP مشاهده شود."
+  },
+  {
+    "question": "کدام دستور PowerShell برای مشاهده Routing Table مناسب است؟",
+    "options": [
+      "Get-NetNeighbor",
+      "route print -4",
+      "Get-Process",
+      "Get-NetAdapterStatistics"
+    ],
+    "answer": 1,
+    "explanation": "دستور route print -4 جدول مسیرهای IPv4 سیستم را نمایش می‌دهد."
+  },
+  {
+    "question": "Network Address مربوط به 172.16.25.130/27 کدام است؟",
+    "options": [
+      "172.16.25.96",
+      "172.16.25.112",
+      "172.16.25.128",
+      "172.16.25.160"
+    ],
+    "answer": 2,
+    "explanation": "در /27 اندازه هر بلوک 32 است. عدد 130 در بازه 128 تا 159 قرار دارد؛ بنابراین Network برابر 172.16.25.128 است."
+  }
+]
+</script>
+<script src="../../../assets/js/labs/quiz-engine.js"></script>
 </section>
 
 
@@ -940,6 +1759,17 @@ Subnet Mask: 255.255.255.0</code></pre>
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
+<script>
+(() => {
+  const base = window.location.pathname.startsWith("/netfleet-docs/")
+    ? "/netfleet-docs/"
+    : "/";
+  const script = document.createElement("script");
+  script.src = base + "assets/js/labs/network-fundamentals.js";
+  script.async = false;
+  document.head.appendChild(script);
+})();
+</script>
 
 
 

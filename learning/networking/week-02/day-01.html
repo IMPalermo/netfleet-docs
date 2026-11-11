@@ -155,23 +155,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ethernet-frame-structure" id="toc-ethernet-frame-structure" class="nav-link active" data-scroll-target="#ethernet-frame-structure">Ethernet Frame Structure</a>
+  <li><a href="#جلسه-اول-هفته-دوم-ساختار-فریم-اترنت" id="toc-جلسه-اول-هفته-دوم-ساختار-فریم-اترنت" class="nav-link active" data-scroll-target="#جلسه-اول-هفته-دوم-ساختار-فریم-اترنت">جلسه اول هفته دوم: ساختار فریم اترنت</a>
   <ul class="collapse">
+  <li><a href="#مقدمه-جلسه" id="toc-مقدمه-جلسه" class="nav-link" data-scroll-target="#مقدمه-جلسه">مقدمه جلسه</a></li>
   <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">اهداف یادگیری</a></li>
-  <li><a href="#جایگاه-موضوع-در-مسیر-مهندسی" id="toc-جایگاه-موضوع-در-مسیر-مهندسی" class="nav-link" data-scroll-target="#جایگاه-موضوع-در-مسیر-مهندسی">1. جایگاه موضوع در مسیر مهندسی</a></li>
-  <li><a href="#مفاهیم-کلیدی" id="toc-مفاهیم-کلیدی" class="nav-link" data-scroll-target="#مفاهیم-کلیدی">2. مفاهیم کلیدی</a></li>
-  <li><a href="#دیدگاه-مهندسی" id="toc-دیدگاه-مهندسی" class="nav-link" data-scroll-target="#دیدگاه-مهندسی">3. دیدگاه مهندسی</a></li>
-  <li><a href="#آزمایشگاه-عملی" id="toc-آزمایشگاه-عملی" class="nav-link" data-scroll-target="#آزمایشگاه-عملی">4. آزمایشگاه عملی</a>
+  <li><a href="#جایگاه-ethernet-frame-در-مدل-شبکه" id="toc-جایگاه-ethernet-frame-در-مدل-شبکه" class="nav-link" data-scroll-target="#جایگاه-ethernet-frame-در-مدل-شبکه">1. جایگاه Ethernet Frame در مدل شبکه</a>
   <ul class="collapse">
-  <li><a href="#آزمایشگاه-پایه" id="toc-آزمایشگاه-پایه" class="nav-link" data-scroll-target="#آزمایشگاه-پایه">آزمایشگاه پایه</a></li>
-  <li><a href="#گزارش-آزمایشگاه" id="toc-گزارش-آزمایشگاه" class="nav-link" data-scroll-target="#گزارش-آزمایشگاه">گزارش آزمایشگاه</a></li>
+  <li><a href="#از-داده-برنامه-تا-فریم" id="toc-از-داده-برنامه-تا-فریم" class="nav-link" data-scroll-target="#از-داده-برنامه-تا-فریم">1.1 از داده برنامه تا فریم</a></li>
+  <li><a href="#تفاوت-segment-packet-و-frame" id="toc-تفاوت-segment-packet-و-frame" class="nav-link" data-scroll-target="#تفاوت-segment-packet-و-frame">1.2 تفاوت Segment، Packet و Frame</a></li>
+  <li><a href="#چرا-هر-لایه-هدر-خودش-را-دارد" id="toc-چرا-هر-لایه-هدر-خودش-را-دارد" class="nav-link" data-scroll-target="#چرا-هر-لایه-هدر-خودش-را-دارد">1.3 چرا هر لایه هدر خودش را دارد؟</a></li>
   </ul></li>
-  <li><a href="#سناریوی-عیبیابی" id="toc-سناریوی-عیبیابی" class="nav-link" data-scroll-target="#سناریوی-عیبیابی">5. سناریوی عیب‌یابی</a></li>
-  <li><a href="#ارتباط-با-netfleet" id="toc-ارتباط-با-netfleet" class="nav-link" data-scroll-target="#ارتباط-با-netfleet">6. ارتباط با NetFleet</a></li>
-  <li><a href="#تمرین-و-ارزیابی" id="toc-تمرین-و-ارزیابی" class="nav-link" data-scroll-target="#تمرین-و-ارزیابی">7. تمرین و ارزیابی</a></li>
-  <li><a href="#تکلیف" id="toc-تکلیف" class="nav-link" data-scroll-target="#تکلیف">8. تکلیف</a></li>
-  <li><a href="#معیار-تکمیل-جلسه" id="toc-معیار-تکمیل-جلسه" class="nav-link" data-scroll-target="#معیار-تکمیل-جلسه">معیار تکمیل جلسه</a></li>
-  <li><a href="#منابع-پیشنهادی-برای-مطالعه-بیشتر" id="toc-منابع-پیشنهادی-برای-مطالعه-بیشتر" class="nav-link" data-scroll-target="#منابع-پیشنهادی-برای-مطالعه-بیشتر">منابع پیشنهادی برای مطالعه بیشتر</a></li>
+  <li><a href="#ساختار-کلی-ethernet-frame" id="toc-ساختار-کلی-ethernet-frame" class="nav-link" data-scroll-target="#ساختار-کلی-ethernet-frame">2. ساختار کلی Ethernet Frame</a>
+  <ul class="collapse">
+  <li><a href="#نمای-کلی-فریم" id="toc-نمای-کلی-فریم" class="nav-link" data-scroll-target="#نمای-کلی-فریم">2.1 نمای کلی فریم</a></li>
+  <li><a href="#preamble" id="toc-preamble" class="nav-link" data-scroll-target="#preamble">2.2 Preamble</a></li>
+  <li><a href="#start-frame-delimiter-sfd" id="toc-start-frame-delimiter-sfd" class="nav-link" data-scroll-target="#start-frame-delimiter-sfd">2.3 Start Frame Delimiter (SFD)</a></li>
+  <li><a href="#destination-mac" id="toc-destination-mac" class="nav-link" data-scroll-target="#destination-mac">2.4 Destination MAC</a></li>
+  <li><a href="#source-mac" id="toc-source-mac" class="nav-link" data-scroll-target="#source-mac">2.5 Source MAC</a></li>
+  <li><a href="#ethertype" id="toc-ethertype" class="nav-link" data-scroll-target="#ethertype">2.6 EtherType</a></li>
+  </ul></li>
+  <li><a href="#payload-و-محدودیت-اندازه-فریم" id="toc-payload-و-محدودیت-اندازه-فریم" class="nav-link" data-scroll-target="#payload-و-محدودیت-اندازه-فریم">3. Payload و محدودیت اندازه فریم</a>
+  <ul class="collapse">
+  <li><a href="#payload-چیست" id="toc-payload-چیست" class="nav-link" data-scroll-target="#payload-چیست">3.1 Payload چیست؟</a></li>
+  <li><a href="#maximum-transmission-unit-mtu" id="toc-maximum-transmission-unit-mtu" class="nav-link" data-scroll-target="#maximum-transmission-unit-mtu">3.2 Maximum Transmission Unit (MTU)</a></li>
+  <li><a href="#interframe-gap" id="toc-interframe-gap" class="nav-link" data-scroll-target="#interframe-gap">3.3 Interframe Gap</a></li>
+  <li><a href="#jumbo-frames" id="toc-jumbo-frames" class="nav-link" data-scroll-target="#jumbo-frames">3.4 Jumbo Frames</a></li>
+  </ul></li>
+  <li><a href="#ethernet-ii-در-برابر-ieee-802.3" id="toc-ethernet-ii-در-برابر-ieee-802.3" class="nav-link" data-scroll-target="#ethernet-ii-در-برابر-ieee-802.3">4. Ethernet II در برابر IEEE 802.3</a>
+  <ul class="collapse">
+  <li><a href="#ethernet-ii" id="toc-ethernet-ii" class="nav-link" data-scroll-target="#ethernet-ii">4.1 Ethernet II</a></li>
+  <li><a href="#ieee-802.3" id="toc-ieee-802.3" class="nav-link" data-scroll-target="#ieee-802.3">4.2 IEEE 802.3</a></li>
+  <li><a href="#تفاوت-اصلی" id="toc-تفاوت-اصلی" class="nav-link" data-scroll-target="#تفاوت-اصلی">4.3 تفاوت اصلی</a></li>
+  </ul></li>
+  <li><a href="#vlan-tag-و-استاندارد-802.1q" id="toc-vlan-tag-و-استاندارد-802.1q" class="nav-link" data-scroll-target="#vlan-tag-و-استاندارد-802.1q">5. VLAN Tag و استاندارد 802.1Q</a>
+  <ul class="collapse">
+  <li><a href="#چرا-vlan-tag-لازم-است" id="toc-چرا-vlan-tag-لازم-است" class="nav-link" data-scroll-target="#چرا-vlan-tag-لازم-است">5.1 چرا VLAN Tag لازم است؟</a></li>
+  <li><a href="#tpid" id="toc-tpid" class="nav-link" data-scroll-target="#tpid">5.2 TPID</a></li>
+  <li><a href="#tci" id="toc-tci" class="nav-link" data-scroll-target="#tci">5.3 TCI</a></li>
+  <li><a href="#اثر-vlan-tag-بر-اندازه-فریم" id="toc-اثر-vlan-tag-بر-اندازه-فریم" class="nav-link" data-scroll-target="#اثر-vlan-tag-بر-اندازه-فریم">5.4 اثر VLAN Tag بر اندازه فریم</a></li>
+  <li><a href="#access-و-trunk" id="toc-access-و-trunk" class="nav-link" data-scroll-target="#access-و-trunk">5.5 Access و Trunk</a></li>
+  </ul></li>
+  <li><a href="#frame-check-sequence-و-تشخیص-خطا" id="toc-frame-check-sequence-و-تشخیص-خطا" class="nav-link" data-scroll-target="#frame-check-sequence-و-تشخیص-خطا">6. Frame Check Sequence و تشخیص خطا</a>
+  <ul class="collapse">
+  <li><a href="#fcs-چیست" id="toc-fcs-چیست" class="nav-link" data-scroll-target="#fcs-چیست">6.1 FCS چیست؟</a></li>
+  <li><a href="#fcs-چه-کاری-انجام-نمیدهد" id="toc-fcs-چه-کاری-انجام-نمیدهد" class="nav-link" data-scroll-target="#fcs-چه-کاری-انجام-نمیدهد">6.2 FCS چه کاری انجام نمی‌دهد؟</a></li>
+  <li><a href="#crc-error-در-سوئیچ" id="toc-crc-error-در-سوئیچ" class="nav-link" data-scroll-target="#crc-error-در-سوئیچ">6.3 CRC Error در سوئیچ</a></li>
+  </ul></li>
+  <li><a href="#چرخه-واقعی-یک-فریم-در-شبکه" id="toc-چرخه-واقعی-یک-فریم-در-شبکه" class="nav-link" data-scroll-target="#چرخه-واقعی-یک-فریم-در-شبکه">7. چرخه واقعی یک فریم در شبکه</a>
+  <ul class="collapse">
+  <li><a href="#مرحله-اول-تولید-داده" id="toc-مرحله-اول-تولید-داده" class="nav-link" data-scroll-target="#مرحله-اول-تولید-داده">مرحله اول: تولید داده</a></li>
+  <li><a href="#مرحله-دوم-آمادهسازی-لایه-انتقال" id="toc-مرحله-دوم-آمادهسازی-لایه-انتقال" class="nav-link" data-scroll-target="#مرحله-دوم-آمادهسازی-لایه-انتقال">مرحله دوم: آماده‌سازی لایه انتقال</a></li>
+  <li><a href="#مرحله-سوم-ساخت-packet" id="toc-مرحله-سوم-ساخت-packet" class="nav-link" data-scroll-target="#مرحله-سوم-ساخت-packet">مرحله سوم: ساخت Packet</a></li>
+  <li><a href="#مرحله-چهارم-تعیین-mac-مقصد" id="toc-مرحله-چهارم-تعیین-mac-مقصد" class="nav-link" data-scroll-target="#مرحله-چهارم-تعیین-mac-مقصد">مرحله چهارم: تعیین MAC مقصد</a></li>
+  <li><a href="#مرحله-پنجم-ساخت-ethernet-frame" id="toc-مرحله-پنجم-ساخت-ethernet-frame" class="nav-link" data-scroll-target="#مرحله-پنجم-ساخت-ethernet-frame">مرحله پنجم: ساخت Ethernet Frame</a></li>
+  <li><a href="#مرحله-ششم-پردازش-در-سوئیچ" id="toc-مرحله-ششم-پردازش-در-سوئیچ" class="nav-link" data-scroll-target="#مرحله-ششم-پردازش-در-سوئیچ">مرحله ششم: پردازش در سوئیچ</a></li>
+  <li><a href="#مرحله-هفتم-دریافت-در-مقصد" id="toc-مرحله-هفتم-دریافت-در-مقصد" class="nav-link" data-scroll-target="#مرحله-هفتم-دریافت-در-مقصد">مرحله هفتم: دریافت در مقصد</a></li>
+  </ul></li>
+  <li><a href="#آزمایش-عملی-اول-مشاهده-ethernet-frame-در-wireshark" id="toc-آزمایش-عملی-اول-مشاهده-ethernet-frame-در-wireshark" class="nav-link" data-scroll-target="#آزمایش-عملی-اول-مشاهده-ethernet-frame-در-wireshark">8. آزمایش عملی اول: مشاهده Ethernet Frame در Wireshark</a>
+  <ul class="collapse">
+  <li><a href="#هدف" id="toc-هدف" class="nav-link" data-scroll-target="#هدف">هدف</a></li>
+  <li><a href="#ابزار-موردنیاز" id="toc-ابزار-موردنیاز" class="nav-link" data-scroll-target="#ابزار-موردنیاز">ابزار موردنیاز</a></li>
+  <li><a href="#مراحل-اجرا" id="toc-مراحل-اجرا" class="nav-link" data-scroll-target="#مراحل-اجرا">مراحل اجرا</a></li>
+  <li><a href="#مواردی-که-باید-پیدا-کنی" id="toc-مواردی-که-باید-پیدا-کنی" class="nav-link" data-scroll-target="#مواردی-که-باید-پیدا-کنی">مواردی که باید پیدا کنی</a></li>
+  <li><a href="#فیلترهای-مفید-wireshark" id="toc-فیلترهای-مفید-wireshark" class="nav-link" data-scroll-target="#فیلترهای-مفید-wireshark">فیلترهای مفید Wireshark</a></li>
+  <li><a href="#پرسش-آزمایش" id="toc-پرسش-آزمایش" class="nav-link" data-scroll-target="#پرسش-آزمایش">پرسش آزمایش</a></li>
+  </ul></li>
+  <li><a href="#آزمایش-عملی-دوم-مشاهده-mac-address-در-سیستم" id="toc-آزمایش-عملی-دوم-مشاهده-mac-address-در-سیستم" class="nav-link" data-scroll-target="#آزمایش-عملی-دوم-مشاهده-mac-address-در-سیستم">9. آزمایش عملی دوم: مشاهده MAC Address در سیستم</a>
+  <ul class="collapse">
+  <li><a href="#در-windows" id="toc-در-windows" class="nav-link" data-scroll-target="#در-windows">در Windows</a></li>
+  <li><a href="#تحلیل-خروجی" id="toc-تحلیل-خروجی" class="nav-link" data-scroll-target="#تحلیل-خروجی">تحلیل خروجی</a></li>
+  </ul></li>
+  <li><a href="#آزمایش-عملی-سوم-محاسبه-اندازه-فریم" id="toc-آزمایش-عملی-سوم-محاسبه-اندازه-فریم" class="nav-link" data-scroll-target="#آزمایش-عملی-سوم-محاسبه-اندازه-فریم">10. آزمایش عملی سوم: محاسبه اندازه فریم</a>
+  <ul class="collapse">
+  <li><a href="#تمرین-محاسباتی" id="toc-تمرین-محاسباتی" class="nav-link" data-scroll-target="#تمرین-محاسباتی">تمرین محاسباتی</a></li>
+  </ul></li>
+  <li><a href="#عیبیابی-مهندسی-فریم-اترنت" id="toc-عیبیابی-مهندسی-فریم-اترنت" class="nav-link" data-scroll-target="#عیبیابی-مهندسی-فریم-اترنت">11. عیب‌یابی مهندسی فریم اترنت</a>
+  <ul class="collapse">
+  <li><a href="#سناریو-1-ارتباط-برقرار-نمیشود-اما-link-روشن-است" id="toc-سناریو-1-ارتباط-برقرار-نمیشود-اما-link-روشن-است" class="nav-link" data-scroll-target="#سناریو-1-ارتباط-برقرار-نمیشود-اما-link-روشن-است">سناریو 1: ارتباط برقرار نمی‌شود، اما Link روشن است</a></li>
+  <li><a href="#سناریو-2-افزایش-crc-error" id="toc-سناریو-2-افزایش-crc-error" class="nav-link" data-scroll-target="#سناریو-2-افزایش-crc-error">سناریو 2: افزایش CRC Error</a></li>
+  <li><a href="#سناریو-3-ارتباط-vlanها-مشکل-دارد" id="toc-سناریو-3-ارتباط-vlanها-مشکل-دارد" class="nav-link" data-scroll-target="#سناریو-3-ارتباط-vlanها-مشکل-دارد">سناریو 3: ارتباط VLANها مشکل دارد</a></li>
+  <li><a href="#سناریو-4-مشکل-در-انتقال-فریمهای-بزرگ" id="toc-سناریو-4-مشکل-در-انتقال-فریمهای-بزرگ" class="nav-link" data-scroll-target="#سناریو-4-مشکل-در-انتقال-فریمهای-بزرگ">سناریو 4: مشکل در انتقال فریم‌های بزرگ</a></li>
+  </ul></li>
+  <li><a href="#خطاهای-مفهومی-رایج" id="toc-خطاهای-مفهومی-رایج" class="nav-link" data-scroll-target="#خطاهای-مفهومی-رایج">12. خطاهای مفهومی رایج</a></li>
+  <li><a href="#چالش-netfleet" id="toc-چالش-netfleet" class="nav-link" data-scroll-target="#چالش-netfleet">13. چالش NetFleet</a>
+  <ul class="collapse">
+  <li><a href="#سناریو" id="toc-سناریو" class="nav-link" data-scroll-target="#سناریو">سناریو</a></li>
+  <li><a href="#مأموریت" id="toc-مأموریت" class="nav-link" data-scroll-target="#مأموریت">مأموریت</a></li>
+  <li><a href="#خروجی-مورد-انتظار" id="toc-خروجی-مورد-انتظار" class="nav-link" data-scroll-target="#خروجی-مورد-انتظار">خروجی مورد انتظار</a></li>
+  </ul></li>
+  <li><a href="#جمعبندی-جلسه" id="toc-جمعبندی-جلسه" class="nav-link" data-scroll-target="#جمعبندی-جلسه">14. جمع‌بندی جلسه</a></li>
+  <li><a href="#تمرینهای-پایان-جلسه" id="toc-تمرینهای-پایان-جلسه" class="nav-link" data-scroll-target="#تمرینهای-پایان-جلسه">15. تمرین‌های پایان جلسه</a>
+  <ul class="collapse">
+  <li><a href="#تمرین-نظری" id="toc-تمرین-نظری" class="nav-link" data-scroll-target="#تمرین-نظری">تمرین نظری</a></li>
+  <li><a href="#تمرین-عملی" id="toc-تمرین-عملی" class="nav-link" data-scroll-target="#تمرین-عملی">تمرین عملی</a></li>
+  <li><a href="#منابع" id="toc-منابع" class="nav-link" data-scroll-target="#منابع">منابع</a></li>
+  </ul></li>
+  <li><a href="#آزمون-تعاملی-جلسه" id="toc-آزمون-تعاملی-جلسه" class="nav-link" data-scroll-target="#آزمون-تعاملی-جلسه">16. آزمون تعاملی جلسه</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -182,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Ethernet Frame Structure</h1>
-<p class="subtitle lead">Networking Fundamentals | Week 2 | Day 1</p>
+<p class="subtitle lead">ساختار فریم اترنت، Encapsulation و تحلیل در سطح لایه پیوند داده</p>
 </div>
 
 
@@ -199,146 +278,967 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="ethernet-frame-structure" class="level1 persian">
-<h1>Ethernet Frame Structure</h1>
-<p><text></text></p>
-<p><strong>مسیر:</strong> شبکه<br>
-<strong>هفته:</strong> 2، Switching Fundamentals<br>
-<strong>جلسه:</strong> 1 از ۵</p>
+<section id="جلسه-اول-هفته-دوم-ساختار-فریم-اترنت" class="level1 persian">
+<h1>جلسه اول هفته دوم: ساختار فریم اترنت</h1>
+<section id="مقدمه-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="مقدمه-جلسه">مقدمه جلسه</h2>
+<p>در جلسه‌های هفته اول با مدل‌های OSI و TCP/IP، آدرس MAC، نقش سوئیچ و مفهوم ARP آشنا شدیم. اکنون یک قدم عمیق‌تر می‌شویم و چیزی را بررسی می‌کنیم که در شبکه محلی واقعاً روی رسانه انتقال حرکت می‌کند: <strong>Ethernet Frame</strong>.</p>
+<p>وقتی یک برنامه داده‌ای را ارسال می‌کند، داده در لایه‌های مختلف شبکه کپسوله می‌شود. در لایه پیوند داده، اطلاعات لازم برای تحویل محلی به آن اضافه می‌شوند و نتیجه، یک فریم اترنت است.</p>
+<p>درک ساختار فریم برای مهندسی شبکه ضروری است؛ زیرا بسیاری از مشکلاتی که در ظاهر به IP، TCP یا حتی عملکرد سوئیچ مربوط به نظر می‌رسند، در واقع از تشخیص اشتباه مرز فریم، VLAN Tag، MTU، آدرس MAC یا خطاهای لایه دوم ناشی می‌شوند.</p>
+<p>در این جلسه یاد می‌گیریم یک فریم را نه فقط به‌عنوان چند بایت داده، بلکه به‌عنوان یک ساختار استاندارد و قابل تحلیل بررسی کنیم.</p>
+</section>
 <section id="اهداف-یادگیری" class="level2">
 <h2 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h2>
-<p>در پایان این جلسه باید بتوانی: - مفهوم Ethernet Frame Structure را با زبان خودت توضیح بدهی. - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی. - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی. - یک آزمایش کنترل‌شده اجرا و نتیجه آن را مستند کنی. - خطاها، محدودیت‌ها و ملاحظات امنیتی را توضیح بدهی.</p>
-</section>
-<section id="جایگاه-موضوع-در-مسیر-مهندسی" class="level2">
-<h2 class="anchored" data-anchor-id="جایگاه-موضوع-در-مسیر-مهندسی">1. جایگاه موضوع در مسیر مهندسی</h2>
-<p>این جلسه بخشی از مسیر <strong>شبکه</strong> است. موضوع «Ethernet Frame Structure» را باید در ارتباط با مباحث قبلی و بعدی ببینی، نه به‌عنوان یک دستور یا مفهوم جداافتاده.</p>
-<p>در کار مهندسی، هدف فقط حفظ کردن اصطلاحات نیست. باید بتوانی مسئله را تعریف کنی، شواهد جمع‌آوری کنی، فرضیه بسازی، آن را آزمایش کنی و نتیجه را با دقت گزارش بدهی.</p>
-</section>
-<section id="مفاهیم-کلیدی" class="level2">
-<h2 class="anchored" data-anchor-id="مفاهیم-کلیدی">2. مفاهیم کلیدی</h2>
-<p>هنگام مطالعه این موضوع، این پرسش‌ها را پاسخ بده:</p>
-<ol type="1">
-<li>این فناوری یا مفهوم چه مسئله‌ای را حل می‌کند؟</li>
-<li>اجزای اصلی آن چیست و هر جزء چه مسئولیتی دارد؟</li>
-<li>ورودی، خروجی و وابستگی‌های آن کدام‌اند؟</li>
-<li>در چه شرایطی درست کار نمی‌کند؟</li>
-<li>چه خطاهای پیکربندی یا عملیاتی در آن رایج‌اند؟</li>
-<li>چه داده‌ای برای تشخیص وضعیت آن باید جمع‌آوری شود؟</li>
-</ol>
-<p>واژگان جدید را در یک واژه‌نامه شخصی ثبت کن. برای هر اصطلاح، تعریف فارسی، نام انگلیسی و یک مثال فنی بنویس.</p>
-</section>
-<section id="دیدگاه-مهندسی" class="level2">
-<h2 class="anchored" data-anchor-id="دیدگاه-مهندسی">3. دیدگاه مهندسی</h2>
-<p>برای تحلیل درست، بین این سه مورد تفاوت بگذار:</p>
+<p>در پایان این جلسه باید بتوانی:</p>
 <ul>
-<li><strong>Configuration:</strong> چیزی که تنظیم شده است.</li>
-<li><strong>Operational State:</strong> وضعیتی که سیستم واقعاً در آن قرار دارد.</li>
-<li><strong>Observed Evidence:</strong> شواهدی که از خروجی ابزارها، لاگ‌ها یا تست‌ها به دست می‌آیند.</li>
+<li>تفاوت Frame، Packet و Segment را توضیح بدهی.</li>
+<li>نقش Encapsulation و Decapsulation را در انتقال داده تشریح کنی.</li>
+<li>اجزای اصلی Ethernet Frame را از نظر ترتیب و اندازه بشناسی.</li>
+<li>تفاوت Ethernet II و IEEE 802.3 را توضیح بدهی.</li>
+<li>مقدار EtherType را در تشخیص پروتکل لایه بالاتر تفسیر کنی.</li>
+<li>اثر VLAN Tag و استاندارد 802.1Q را بر ساختار فریم تشخیص بدهی.</li>
+<li>تفاوت MTU، اندازه فریم و اندازه Payload را محاسبه کنی.</li>
+<li>نقش FCS و CRC را در تشخیص خطا توضیح بدهی.</li>
+<li>فریم‌های واقعی را در Wireshark تحلیل کنی.</li>
+<li>مشکلات رایج مرتبط با فریم اترنت را عیب‌یابی کنی.</li>
 </ul>
-<p>این سه مورد همیشه یکسان نیستند. یک پیکربندی صحیح لزوماً تضمین نمی‌کند سرویس در عمل سالم باشد.</p>
+<hr>
 </section>
-<section id="آزمایشگاه-عملی" class="level2">
-<h2 class="anchored" data-anchor-id="آزمایشگاه-عملی">4. آزمایشگاه عملی</h2>
-<section id="آزمایشگاه-پایه" class="level3">
-<h3 class="anchored" data-anchor-id="آزمایشگاه-پایه">آزمایشگاه پایه</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Get-NetRoute <span class="op">-</span>AddressFamily IPv4</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Test-NetConnection <span class="dv">1.1</span><span class="op">.</span><span class="dv">1.1</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>خروجی را ثبت کن، فیلدهای مهم را توضیح بده و مشخص کن کدام بخش از موضوع امروز را نشان می‌دهد.</p>
+<section id="جایگاه-ethernet-frame-در-مدل-شبکه" class="level2">
+<h2 class="anchored" data-anchor-id="جایگاه-ethernet-frame-در-مدل-شبکه">1. جایگاه Ethernet Frame در مدل شبکه</h2>
+<section id="از-داده-برنامه-تا-فریم" class="level3">
+<h3 class="anchored" data-anchor-id="از-داده-برنامه-تا-فریم">1.1 از داده برنامه تا فریم</h3>
+<p>فرض کن یک سیستم قصد دارد به یک وب‌سرور درخواست HTTP ارسال کند. داده در مسیر خروجی از چند مرحله عبور می‌کند:</p>
+<ol type="1">
+<li>لایه کاربرد، داده مربوط به برنامه را تولید می‌کند.</li>
+<li>لایه انتقال، اطلاعات TCP یا UDP را اضافه می‌کند.</li>
+<li>لایه شبکه، هدر IP را اضافه می‌کند.</li>
+<li>لایه پیوند داده، هدر و Trailer مربوط به Ethernet را اضافه می‌کند.</li>
+<li>لایه فیزیکی، بیت‌ها را روی رسانه انتقال ارسال می‌کند.</li>
+</ol>
+<p>در این مسیر، هر لایه اطلاعات کنترلی موردنیاز خودش را اضافه می‌کند.</p>
+<p>به این فرایند <strong>Encapsulation</strong> می‌گوییم.</p>
+<p>در سمت گیرنده، فرایند معکوس انجام می‌شود. هر لایه اطلاعات مربوط به خودش را بررسی می‌کند و بخش مربوط به لایه بالاتر را تحویل می‌دهد. این فرایند <strong>Decapsulation</strong> نام دارد.</p>
 </section>
-<section id="گزارش-آزمایشگاه" class="level3">
-<h3 class="anchored" data-anchor-id="گزارش-آزمایشگاه">گزارش آزمایشگاه</h3>
-<p>گزارش خود را با این قالب تکمیل کن:</p>
+<section id="تفاوت-segment-packet-و-frame" class="level3">
+<h3 class="anchored" data-anchor-id="تفاوت-segment-packet-و-frame">1.2 تفاوت Segment، Packet و Frame</h3>
+<p>این سه اصطلاح را نباید به‌جای یکدیگر استفاده کرد.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>بخش</th>
-<th>چیزی که باید ثبت شود</th>
+<th>واحد داده</th>
+<th>لایه</th>
+<th>نمونه</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>هدف</td>
-<td>چه چیزی را می‌خواهی بررسی کنی؟</td>
+<td>Segment</td>
+<td>Transport</td>
+<td>TCP Segment</td>
 </tr>
 <tr class="even">
-<td>محیط</td>
-<td>سیستم‌عامل، ابزار و نسخه</td>
+<td>Datagram</td>
+<td>Transport</td>
+<td>UDP Datagram</td>
 </tr>
 <tr class="odd">
-<td>فرضیه</td>
-<td>انتظار داری چه اتفاقی بیفتد؟</td>
+<td>Packet</td>
+<td>Network</td>
+<td>IPv4 Packet</td>
 </tr>
 <tr class="even">
-<td>اجرا</td>
-<td>مراحل و دستورهای اجراشده</td>
+<td>Frame</td>
+<td>Data Link</td>
+<td>Ethernet Frame</td>
 </tr>
 <tr class="odd">
-<td>مشاهده</td>
-<td>خروجی واقعی</td>
+<td>Bits</td>
+<td>Physical</td>
+<td>بیت‌های ارسالی روی رسانه</td>
+</tr>
+</tbody>
+</table>
+<p>نکته مهم: اصطلاح PDU یا Protocol Data Unit به واحد داده در یک لایه اشاره می‌کند. نام دقیق PDU بسته به پروتکل و لایه متفاوت است.</p>
+<p>برای مثال، IP یک Packet را حمل می‌کند، درحالی‌که Ethernet آن Packet را در Payload خود قرار می‌دهد.</p>
+</section>
+<section id="چرا-هر-لایه-هدر-خودش-را-دارد" class="level3">
+<h3 class="anchored" data-anchor-id="چرا-هر-لایه-هدر-خودش-را-دارد">1.3 چرا هر لایه هدر خودش را دارد؟</h3>
+<p>هر پروتکل مسئولیت مشخصی دارد:</p>
+<ul>
+<li>TCP درباره ارتباط انتهابه‌انتها، ترتیب داده و کنترل جریان اطلاعات دارد.</li>
+<li>IP درباره آدرس‌دهی منطقی و مسیریابی اطلاعات دارد.</li>
+<li>Ethernet درباره تحویل فریم در شبکه محلی و شناسایی فرستنده و گیرنده محلی اطلاعات دارد.</li>
+</ul>
+<p>آدرس MAC و آدرس IP دو مفهوم متفاوت‌اند. MAC برای تحویل در یک لینک محلی استفاده می‌شود، اما IP برای ارتباط منطقی میان شبکه‌ها به کار می‌رود.</p>
+<p><strong>نکته مهندسی:</strong> آدرس MAC مقصد در فریم الزاماً MAC سیستم نهایی نیست. اگر مقصد در شبکه دیگری باشد، فریم معمولاً به MAC رابط روتر یا Default Gateway ارسال می‌شود.</p>
+<hr>
+</section>
+</section>
+<section id="ساختار-کلی-ethernet-frame" class="level2">
+<h2 class="anchored" data-anchor-id="ساختار-کلی-ethernet-frame">2. ساختار کلی Ethernet Frame</h2>
+<section id="نمای-کلی-فریم" class="level3">
+<h3 class="anchored" data-anchor-id="نمای-کلی-فریم">2.1 نمای کلی فریم</h3>
+<p>ساختار رایج Ethernet II بدون VLAN به شکل زیر است:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>فیلد</th>
+<th style="text-align: right;">اندازه</th>
+<th>وظیفه</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Destination MAC</td>
+<td style="text-align: right;">6 Bytes</td>
+<td>آدرس MAC مقصد</td>
 </tr>
 <tr class="even">
-<td>تحلیل</td>
-<td>نتیجه چه معنایی دارد؟</td>
+<td>Source MAC</td>
+<td style="text-align: right;">6 Bytes</td>
+<td>آدرس MAC مبدأ</td>
 </tr>
 <tr class="odd">
-<td>محدودیت</td>
-<td>چه چیزی هنوز اثبات نشده است؟</td>
+<td>EtherType</td>
+<td style="text-align: right;">2 Bytes</td>
+<td>تعیین پروتکل Payload</td>
+</tr>
+<tr class="even">
+<td>Payload</td>
+<td style="text-align: right;">46 تا 1500 Bytes</td>
+<td>داده لایه بالاتر</td>
+</tr>
+<tr class="odd">
+<td>FCS</td>
+<td style="text-align: right;">4 Bytes</td>
+<td>تشخیص خطای فریم</td>
+</tr>
+</tbody>
+</table>
+<p>در کنار این ساختار، هنگام ارسال روی رسانه، Preamble و Start Frame Delimiter نیز وجود دارند.</p>
+<p>Preamble و SFD برای همگام‌سازی و مشخص کردن شروع فریم استفاده می‌شوند، اما معمولاً در شمارش اندازه فریم Ethernet از Destination MAC تا FCS محاسبه نمی‌شوند.</p>
+</section>
+<section id="preamble" class="level3">
+<h3 class="anchored" data-anchor-id="preamble">2.2 Preamble</h3>
+<p>اندازه Preamble برابر 7 بایت است.</p>
+<p>این بخش الگوی بیتی مشخصی دارد و به گیرنده کمک می‌کند برای دریافت فریم همگام شود.</p>
+<p>مقدار متداول آن:</p>
+<p><code>10101010</code> تکرارشده برای 7 بایت.</p>
+<p>Preamble جزئی از داده Payload نیست و نباید آن را با هدر IP یا Ethernet اشتباه گرفت.</p>
+</section>
+<section id="start-frame-delimiter-sfd" class="level3">
+<h3 class="anchored" data-anchor-id="start-frame-delimiter-sfd">2.3 Start Frame Delimiter (SFD)</h3>
+<p>SFD یک بایت است و پایان بخش همگام‌سازی و آغاز فریم را مشخص می‌کند.</p>
+<p>مقدار متداول آن:</p>
+<p><code>10101011</code></p>
+<p>پس از SFD، فیلد Destination MAC آغاز می‌شود.</p>
+</section>
+<section id="destination-mac" class="level3">
+<h3 class="anchored" data-anchor-id="destination-mac">2.4 Destination MAC</h3>
+<p>این فیلد 6 بایت یا 48 بیت است.</p>
+<p>آدرس مقصد مشخص می‌کند فریم برای کدام رابط شبکه یا گروهی از رابط‌ها ارسال شده است.</p>
+<p>چند نوع آدرس مهم:</p>
+<ul>
+<li>Unicast: یک مقصد مشخص.</li>
+<li>Multicast: یک گروه از مقصدها.</li>
+<li>Broadcast: تمام میزبان‌های Broadcast Domain.</li>
+</ul>
+<p>آدرس Broadcast در Ethernet برابر است با:</p>
+<p><code>FF:FF:FF:FF:FF:FF</code></p>
+<p>نمونه یک MAC Unicast:</p>
+<p><code>00:1A:2B:3C:4D:5E</code></p>
+</section>
+<section id="source-mac" class="level3">
+<h3 class="anchored" data-anchor-id="source-mac">2.5 Source MAC</h3>
+<p>این فیلد نیز 6 بایت است و آدرس رابطی را مشخص می‌کند که فریم را در آن لینک ارسال کرده است.</p>
+<p>سوئیچ‌های لایه دوم معمولاً با بررسی Source MAC و پورت ورودی، جدول MAC Address خود را یاد می‌گیرند.</p>
+<p>یک نکته مهم: Source MAC در هر لینک می‌تواند تغییر کند. هنگامی که روتر Packet را از یک رابط دریافت و از رابط دیگری ارسال می‌کند، فریم جدیدی ساخته می‌شود و آدرس‌های MAC متناسب با لینک جدید خواهند بود.</p>
+</section>
+<section id="ethertype" class="level3">
+<h3 class="anchored" data-anchor-id="ethertype">2.6 EtherType</h3>
+<p>EtherType دو بایت است و نوع پروتکل موجود در Payload را مشخص می‌کند.</p>
+<p>چند مقدار شناخته‌شده:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>EtherType</th>
+<th>پروتکل</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0800</td>
+<td>IPv4</td>
+</tr>
+<tr class="even">
+<td>0x0806</td>
+<td>ARP</td>
+</tr>
+<tr class="odd">
+<td>0x86DD</td>
+<td>IPv6</td>
+</tr>
+<tr class="even">
+<td>0x8100</td>
+<td>VLAN Tag با 802.1Q</td>
+</tr>
+</tbody>
+</table>
+<p>برای مثال اگر EtherType برابر <code>0x0800</code> باشد، Payload فریم حاوی یک بسته IPv4 است.</p>
+<p>در Ethernet II، مقادیر EtherType معمولاً برابر یا بزرگ‌تر از 1536 ده‌دهی هستند.</p>
+<p>در قالب IEEE 802.3، فیلد بعد از Source MAC می‌تواند Length باشد. برای همین تشخیص این دو قالب فقط با نام فیلد کافی نیست و باید مقدار آن نیز بررسی شود.</p>
+<hr>
+</section>
+</section>
+<section id="payload-و-محدودیت-اندازه-فریم" class="level2">
+<h2 class="anchored" data-anchor-id="payload-و-محدودیت-اندازه-فریم">3. Payload و محدودیت اندازه فریم</h2>
+<section id="payload-چیست" class="level3">
+<h3 class="anchored" data-anchor-id="payload-چیست">3.1 Payload چیست؟</h3>
+<p>Payload بخشی از فریم است که داده لایه بالاتر را حمل می‌کند.</p>
+<p>در Ethernet استاندارد، اندازه Payload معمولاً بین 46 تا 1500 بایت است.</p>
+<p>چرا حداقل 46 بایت؟</p>
+<p>در Ethernet کلاسیک، حداقل اندازه فریم از Destination MAC تا FCS برابر 64 بایت تعریف شده است.</p>
+<p>محاسبه:</p>
+<ul>
+<li>Destination MAC: 6 Bytes</li>
+<li>Source MAC: 6 Bytes</li>
+<li>EtherType: 2 Bytes</li>
+<li>FCS: 4 Bytes</li>
+</ul>
+<p>مجموع فیلدهای ثابت: 18 بایت</p>
+<p>بنابراین:</p>
+<p><code>64 - 18 = 46 Bytes</code></p>
+<p>اگر داده لایه بالاتر کمتر از 46 بایت باشد، Padding اضافه می‌شود تا حداقل اندازه فریم رعایت شود.</p>
+<p>Padding بخشی از Payload فریم محسوب می‌شود، اما الزاماً داده معنادار برنامه نیست.</p>
+</section>
+<section id="maximum-transmission-unit-mtu" class="level3">
+<h3 class="anchored" data-anchor-id="maximum-transmission-unit-mtu">3.2 Maximum Transmission Unit (MTU)</h3>
+<p>MTU حداکثر اندازه Payload لایه شبکه است که می‌تواند بدون نیاز به Fragmentation در یک لینک منتقل شود.</p>
+<p>در Ethernet معمولی، MTU رایج IPv4 برابر 1500 بایت است.</p>
+<p>دقت کن:</p>
+<p><strong>MTU با اندازه کل فریم یکسان نیست.</strong></p>
+<p>اگر Payload فریم یک بسته IP با اندازه 1500 بایت باشد، اندازه فریم استاندارد بدون VLAN چنین است:</p>
+<p><code>6 + 6 + 2 + 1500 + 4 = 1518 Bytes</code></p>
+<p>بنابراین:</p>
+<ul>
+<li>MTU: 1500 Bytes</li>
+<li>Header Ethernet: 14 Bytes</li>
+<li>FCS: 4 Bytes</li>
+<li>Frame Size: 1518 Bytes</li>
+</ul>
+<p>Preamble و SFD در این عدد محاسبه نشده‌اند.</p>
+</section>
+<section id="interframe-gap" class="level3">
+<h3 class="anchored" data-anchor-id="interframe-gap">3.3 Interframe Gap</h3>
+<p>Ethernet برای فاصله زمانی میان فریم‌های متوالی، Interframe Gap در نظر می‌گیرد.</p>
+<p>مقدار استاندارد آن معادل زمان انتقال 96 بیت است.</p>
+<p>این فاصله بخشی از فریم نیست و نباید آن را به اندازه فریم اضافه کرد.</p>
+</section>
+<section id="jumbo-frames" class="level3">
+<h3 class="anchored" data-anchor-id="jumbo-frames">3.4 Jumbo Frames</h3>
+<p>در برخی شبکه‌ها از Jumbo Frame استفاده می‌شود.</p>
+<p>Jumbo Frame فریمی با Payload بزرگ‌تر از 1500 بایت است. مقدار رایج در بسیاری از محیط‌ها حدود 9000 بایت است، اما مقدار دقیق به تجهیزات و تنظیمات شبکه بستگی دارد.</p>
+<p>برای استفاده صحیح از Jumbo Frame، مسیر انتقال باید از ابتدا تا انتها با اندازه موردنظر سازگار باشد.</p>
+<p>اگر یک سوئیچ یا رابط در مسیر نتواند فریم بزرگ را بپذیرد، ممکن است Packet Drop یا مشکلات ارتباطی رخ دهد.</p>
+<p><strong>نکته عملی:</strong> فعال کردن Jumbo Frame فقط روی یک سیستم کافی نیست. تمام لینک‌ها و تجهیزات مسیر باید از اندازه موردنظر پشتیبانی کنند.</p>
+<hr>
+</section>
+</section>
+<section id="ethernet-ii-در-برابر-ieee-802.3" class="level2">
+<h2 class="anchored" data-anchor-id="ethernet-ii-در-برابر-ieee-802.3">4. Ethernet II در برابر IEEE 802.3</h2>
+<section id="ethernet-ii" class="level3">
+<h3 class="anchored" data-anchor-id="ethernet-ii">4.1 Ethernet II</h3>
+<p>Ethernet II قالبی است که فیلد دو بایتی پس از Source MAC در آن EtherType است.</p>
+<p>این قالب در شبکه‌های امروزی بسیار رایج است.</p>
+<p>مثال:</p>
+<p><code>00:11:22:33:44:55 | 00:AA:BB:CC:DD:EE | 0x0800 | IPv4 Payload</code></p>
+<p>در این مثال:</p>
+<ul>
+<li>شش بایت اول MAC مقصد است.</li>
+<li>شش بایت بعد MAC مبدأ است.</li>
+<li>مقدار <code>0x0800</code> نشان‌دهنده IPv4 است.</li>
+</ul>
+</section>
+<section id="ieee-802.3" class="level3">
+<h3 class="anchored" data-anchor-id="ieee-802.3">4.2 IEEE 802.3</h3>
+<p>در قالب IEEE 802.3، فیلد دو بایتی پس از Source MAC طول داده را نشان می‌دهد.</p>
+<p>برای تشخیص نوع پروتکل لایه بالاتر، ممکن است LLC یا SNAP نیز استفاده شود.</p>
+<p>در این حالت، ساختار Payload با Ethernet II متفاوت است.</p>
+</section>
+<section id="تفاوت-اصلی" class="level3">
+<h3 class="anchored" data-anchor-id="تفاوت-اصلی">4.3 تفاوت اصلی</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ویژگی</th>
+<th>Ethernet II</th>
+<th>IEEE 802.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>فیلد دو بایتی</td>
+<td>EtherType</td>
+<td>Length</td>
+</tr>
+<tr class="even">
+<td>تشخیص پروتکل</td>
+<td>مستقیم با EtherType</td>
+<td>با LLC/SNAP</td>
+</tr>
+<tr class="odd">
+<td>کاربرد امروزی</td>
+<td>بسیار رایج</td>
+<td>در برخی قالب‌ها و کاربردها</td>
+</tr>
+</tbody>
+</table>
+<p>برای تحلیل Packet Capture باید بدانیم Wireshark دقیقاً چه قالبی را تشخیص داده است.</p>
+<hr>
+</section>
+</section>
+<section id="vlan-tag-و-استاندارد-802.1q" class="level2">
+<h2 class="anchored" data-anchor-id="vlan-tag-و-استاندارد-802.1q">5. VLAN Tag و استاندارد 802.1Q</h2>
+<section id="چرا-vlan-tag-لازم-است" class="level3">
+<h3 class="anchored" data-anchor-id="چرا-vlan-tag-لازم-است">5.1 چرا VLAN Tag لازم است؟</h3>
+<p>در شبکه‌های دارای VLAN، لازم است شناسه VLAN همراه فریم حمل شود تا تجهیزات شبکه بتوانند ترافیک را به VLAN صحیح نسبت دهند.</p>
+<p>استاندارد IEEE 802.1Q برای این کار از یک Tag چهار بایتی استفاده می‌کند.</p>
+<p>در فریم Tagged، ساختار کلی چنین می‌شود:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>فیلد</th>
+<th style="text-align: right;">اندازه</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Destination MAC</td>
+<td style="text-align: right;">6 Bytes</td>
+</tr>
+<tr class="even">
+<td>Source MAC</td>
+<td style="text-align: right;">6 Bytes</td>
+</tr>
+<tr class="odd">
+<td>TPID</td>
+<td style="text-align: right;">2 Bytes</td>
+</tr>
+<tr class="even">
+<td>TCI</td>
+<td style="text-align: right;">2 Bytes</td>
+</tr>
+<tr class="odd">
+<td>EtherType</td>
+<td style="text-align: right;">2 Bytes</td>
+</tr>
+<tr class="even">
+<td>Payload</td>
+<td style="text-align: right;">متغیر</td>
+</tr>
+<tr class="odd">
+<td>FCS</td>
+<td style="text-align: right;">4 Bytes</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="tpid" class="level3">
+<h3 class="anchored" data-anchor-id="tpid">5.2 TPID</h3>
+<p>TPID مخفف Tag Protocol Identifier است.</p>
+<p>مقدار رایج آن:</p>
+<p><code>0x8100</code></p>
+<p>این مقدار نشان می‌دهد فریم دارای 802.1Q Tag است.</p>
 </section>
-<section id="سناریوی-عیبیابی" class="level2">
-<h2 class="anchored" data-anchor-id="سناریوی-عیبیابی">5. سناریوی عیب‌یابی</h2>
-<p>فرض کن بخشی از زیرساخت مطابق انتظار کار نمی‌کند.</p>
-<ol type="1">
-<li>محدوده مشکل را مشخص کن.</li>
-<li>آخرین تغییرات را بررسی کن.</li>
-<li>وضعیت فعلی را بدون ایجاد تغییر جمع‌آوری کن.</li>
-<li>فرضیه‌های محتمل را از ساده به پیچیده مرتب کن.</li>
-<li>هر فرضیه را با یک آزمایش مشخص بررسی کن.</li>
-<li>نتیجه و شواهد را مستند کن.</li>
-</ol>
-<p>از تغییر هم‌زمان چند متغیر خودداری کن؛ در غیر این صورت تشخیص علت واقعی دشوار می‌شود.</p>
+<section id="tci" class="level3">
+<h3 class="anchored" data-anchor-id="tci">5.3 TCI</h3>
+<p>TCI یا Tag Control Information دو بایت است و از بخش‌های زیر تشکیل می‌شود:</p>
+<ul>
+<li>PCP: سه بیت برای اولویت‌بندی ترافیک.</li>
+<li>DEI: یک بیت برای نشان دادن قابلیت Drop در شرایط ازدحام.</li>
+<li>VID: دوازده بیت برای VLAN Identifier.</li>
+</ul>
+<p>VLAN ID دوازده بیتی است. بازه عددی آن از 0 تا 4095 است، اما VLAN IDهای 0 و 4095 برای استفاده عادی به‌عنوان شناسه VLAN قابل تخصیص نیستند.</p>
+<p>در محیط‌های رایج، VLANهای قابل استفاده معمولاً از 1 تا 4094 هستند.</p>
 </section>
-<section id="ارتباط-با-netfleet" class="level2">
-<h2 class="anchored" data-anchor-id="ارتباط-با-netfleet">6. ارتباط با NetFleet</h2>
-<p>در پروژه NetFleet باید بتوانیم دانش این جلسه را به یک قابلیت قابل اندازه‌گیری تبدیل کنیم.</p>
-<p>به این پرسش پاسخ بده:</p>
-<p><strong>اگر بخواهیم موضوع «Ethernet Frame Structure» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟</strong></p>
-<p>طرح اولیه خود را با سه بخش بنویس: - Data Source - Validation Rule - Expected Output</p>
+<section id="اثر-vlan-tag-بر-اندازه-فریم" class="level3">
+<h3 class="anchored" data-anchor-id="اثر-vlan-tag-بر-اندازه-فریم">5.4 اثر VLAN Tag بر اندازه فریم</h3>
+<p>Tag استاندارد 802.1Q چهار بایت به فریم اضافه می‌کند.</p>
+<p>بنابراین یک فریم Tagged با Payload برابر 1500 بایت، بدون در نظر گرفتن Preamble و SFD، می‌تواند 1522 بایت باشد:</p>
+<p><code>1518 + 4 = 1522 Bytes</code></p>
+<p>تجهیزات باید از اندازه فریم Tagged پشتیبانی کنند.</p>
 </section>
-<section id="تمرین-و-ارزیابی" class="level2">
-<h2 class="anchored" data-anchor-id="تمرین-و-ارزیابی">7. تمرین و ارزیابی</h2>
-<ol type="1">
-<li>موضوع امروز را در پنج جمله توضیح بده.</li>
-<li>سه اصطلاح مهم آن را تعریف کن.</li>
-<li>یک کاربرد واقعی و یک محدودیت آن را نام ببر.</li>
-<li>یک خطای رایج را توضیح بده و روش تشخیص آن را بنویس.</li>
-<li>مشخص کن چه چیزی را می‌توان خودکار کرد و چه چیزی به تأیید انسانی نیاز دارد.</li>
-</ol>
+<section id="access-و-trunk" class="level3">
+<h3 class="anchored" data-anchor-id="access-و-trunk">5.5 Access و Trunk</h3>
+<p>در حالت رایج:</p>
+<ul>
+<li>Access Port ترافیک یک VLAN را برای دستگاه انتهایی حمل می‌کند.</li>
+<li>Trunk Port می‌تواند ترافیک چند VLAN را حمل کند و معمولاً VLANها را با Tag مشخص می‌کند.</li>
+<li>Native VLAN در برخی تنظیمات Trunk می‌تواند بدون Tag منتقل شود.</li>
+</ul>
+<p>رفتار دقیق به تنظیمات سوئیچ و نوع پیکربندی وابسته است.</p>
+<hr>
 </section>
-<section id="تکلیف" class="level2">
-<h2 class="anchored" data-anchor-id="تکلیف">8. تکلیف</h2>
-<p>یک گزارش کوتاه فنی تهیه کن که شامل هدف، معماری یا مفهوم، مراحل آزمایش، شواهد، نتیجه‌گیری و منابع باشد. از ادعایی که با آزمایش یا منبع معتبر پشتیبانی نمی‌شود خودداری کن.</p>
 </section>
-<section id="معیار-تکمیل-جلسه" class="level2">
-<h2 class="anchored" data-anchor-id="معیار-تکمیل-جلسه">معیار تکمیل جلسه</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">می‌توانم مفهوم را بدون نگاه به جزوه توضیح بدهم.</label></li>
-<li><label><input type="checkbox">می‌توانم آزمایش را دوباره اجرا کنم.</label></li>
-<li><label><input type="checkbox">خروجی را می‌توانم تفسیر کنم.</label></li>
-<li><label><input type="checkbox">محدودیت‌ها و ریسک‌ها را می‌شناسم.</label></li>
-<li><label><input type="checkbox">می‌توانم کاربرد آن را در NetFleet شرح بدهم.</label></li>
+<section id="frame-check-sequence-و-تشخیص-خطا" class="level2">
+<h2 class="anchored" data-anchor-id="frame-check-sequence-و-تشخیص-خطا">6. Frame Check Sequence و تشخیص خطا</h2>
+<section id="fcs-چیست" class="level3">
+<h3 class="anchored" data-anchor-id="fcs-چیست">6.1 FCS چیست؟</h3>
+<p>FCS مخفف Frame Check Sequence است.</p>
+<p>این فیلد چهار بایت است و برای تشخیص خطا در فریم استفاده می‌شود.</p>
+<p>Ethernet از الگوریتم CRC-32 برای محاسبه مقدار FCS استفاده می‌کند.</p>
+<p>فرستنده بر اساس بیت‌های فریم مقدار CRC را محاسبه می‌کند و آن را در FCS قرار می‌دهد.</p>
+<p>گیرنده نیز محاسبه را انجام می‌دهد و مقدار دریافتی را بررسی می‌کند.</p>
+<p>اگر بررسی نامعتبر باشد، فریم خراب تشخیص داده می‌شود.</p>
+</section>
+<section id="fcs-چه-کاری-انجام-نمیدهد" class="level3">
+<h3 class="anchored" data-anchor-id="fcs-چه-کاری-انجام-نمیدهد">6.2 FCS چه کاری انجام نمی‌دهد؟</h3>
+<p>FCS:</p>
+<ul>
+<li>خطا را اصلاح نمی‌کند.</li>
+<li>تضمین نمی‌کند داده از ابتدا تا انتها سالم باقی بماند.</li>
+<li>جایگزین TCP یا مکانیزم‌های لایه‌های بالاتر نیست.</li>
+<li>برای احراز هویت یا رمزنگاری طراحی نشده است.</li>
+</ul>
+<p>FCS فقط مکانیزمی برای تشخیص خطا در سطح فریم است.</p>
+</section>
+<section id="crc-error-در-سوئیچ" class="level3">
+<h3 class="anchored" data-anchor-id="crc-error-در-سوئیچ">6.3 CRC Error در سوئیچ</h3>
+<p>اگر روی یک پورت تعداد CRC Error افزایش پیدا کند، ممکن است مشکلاتی مانند موارد زیر وجود داشته باشد:</p>
+<ul>
+<li>کابل یا کانکتور معیوب.</li>
+<li>تداخل الکترومغناطیسی.</li>
+<li>مشکل در ماژول یا Transceiver.</li>
+<li>مشکل فیزیکی در پورت.</li>
+<li>ناسازگاری یا اختلال در لینک.</li>
+</ul>
+<p>CRC Error به‌تنهایی علت قطعی را مشخص نمی‌کند. باید شمارنده‌ها، وضعیت لینک و مسیر فیزیکی بررسی شوند.</p>
+<hr>
+</section>
+</section>
+<section id="چرخه-واقعی-یک-فریم-در-شبکه" class="level2">
+<h2 class="anchored" data-anchor-id="چرخه-واقعی-یک-فریم-در-شبکه">7. چرخه واقعی یک فریم در شبکه</h2>
+<p>فرض کن Host A قصد دارد با Host B در همان VLAN ارتباط برقرار کند.</p>
+<section id="مرحله-اول-تولید-داده" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-اول-تولید-داده">مرحله اول: تولید داده</h3>
+<p>برنامه روی Host A داده‌ای تولید می‌کند.</p>
+</section>
+<section id="مرحله-دوم-آمادهسازی-لایه-انتقال" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-دوم-آمادهسازی-لایه-انتقال">مرحله دوم: آماده‌سازی لایه انتقال</h3>
+<p>TCP یا UDP اطلاعات موردنیاز خود را به داده اضافه می‌کند.</p>
+</section>
+<section id="مرحله-سوم-ساخت-packet" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-سوم-ساخت-packet">مرحله سوم: ساخت Packet</h3>
+<p>لایه شبکه هدر IP را اضافه می‌کند.</p>
+</section>
+<section id="مرحله-چهارم-تعیین-mac-مقصد" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-چهارم-تعیین-mac-مقصد">مرحله چهارم: تعیین MAC مقصد</h3>
+<p>اگر مقصد در همان Subnet باشد، Host A به MAC مقصد نیاز دارد.</p>
+<p>اگر MAC مقصد در ARP Cache موجود نباشد، ممکن است درخواست ARP ارسال شود.</p>
+<p>اگر مقصد خارج از Subnet باشد، MAC مربوط به Default Gateway لازم است.</p>
+</section>
+<section id="مرحله-پنجم-ساخت-ethernet-frame" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-پنجم-ساخت-ethernet-frame">مرحله پنجم: ساخت Ethernet Frame</h3>
+<p>سیستم:</p>
+<ul>
+<li>Destination MAC را مشخص می‌کند.</li>
+<li>Source MAC را قرار می‌دهد.</li>
+<li>EtherType مناسب را درج می‌کند.</li>
+<li>Packet را در Payload قرار می‌دهد.</li>
+<li>در صورت نیاز Padding اضافه می‌کند.</li>
+<li>FCS را محاسبه می‌کند.</li>
 </ul>
 </section>
-<section id="منابع-پیشنهادی-برای-مطالعه-بیشتر" class="level2">
-<h2 class="anchored" data-anchor-id="منابع-پیشنهادی-برای-مطالعه-بیشتر">منابع پیشنهادی برای مطالعه بیشتر</h2>
-<p>منابع رسمی و مستندات ابزارها را در اولویت قرار بده. نسخه و تاریخ دسترسی را در گزارش ثبت کن. لینک‌های این جلسه باید پیش از انتشار نهایی توسط مدرس یا بازبین بررسی شوند.</p>
+<section id="مرحله-ششم-پردازش-در-سوئیچ" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-ششم-پردازش-در-سوئیچ">مرحله ششم: پردازش در سوئیچ</h3>
+<p>سوئیچ فریم را دریافت می‌کند و Source MAC را برای یادگیری در جدول MAC بررسی می‌کند.</p>
+<p>سپس Destination MAC را جست‌وجو می‌کند:</p>
+<ul>
+<li>اگر مقصد شناخته شده باشد، فریم را به پورت مناسب Forward می‌کند.</li>
+<li>اگر مقصد ناشناخته باشد، ممکن است فریم را در VLAN مربوطه Flood کند.</li>
+<li>اگر Broadcast باشد، آن را در محدوده Broadcast Domain منتشر می‌کند.</li>
+</ul>
+</section>
+<section id="مرحله-هفتم-دریافت-در-مقصد" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-هفتم-دریافت-در-مقصد">مرحله هفتم: دریافت در مقصد</h3>
+<p>مقصد فریم را دریافت و اطلاعات لایه دوم را بررسی می‌کند. سپس Payload را به لایه شبکه تحویل می‌دهد.</p>
+<hr>
 </section>
 </section>
+<section id="آزمایش-عملی-اول-مشاهده-ethernet-frame-در-wireshark" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایش-عملی-اول-مشاهده-ethernet-frame-در-wireshark">8. آزمایش عملی اول: مشاهده Ethernet Frame در Wireshark</h2>
+<section id="هدف" class="level3">
+<h3 class="anchored" data-anchor-id="هدف">هدف</h3>
+<p>مشاهده ساختار واقعی فریم و شناسایی فیلدهای MAC، EtherType، IP و TCP یا UDP.</p>
+</section>
+<section id="ابزار-موردنیاز" class="level3">
+<h3 class="anchored" data-anchor-id="ابزار-موردنیاز">ابزار موردنیاز</h3>
+<ul>
+<li>Wireshark</li>
+<li>یک رابط شبکه فعال</li>
+<li>دسترسی به یک شبکه آزمایشگاهی یا اتصال معمولی</li>
+</ul>
+</section>
+<section id="مراحل-اجرا" class="level3">
+<h3 class="anchored" data-anchor-id="مراحل-اجرا">مراحل اجرا</h3>
+<ol type="1">
+<li>Wireshark را باز کن.</li>
+<li>رابط شبکه فعال را انتخاب کن.</li>
+<li>Capture را شروع کن.</li>
+<li>یک وب‌سایت باز کن یا دستور Ping اجرا کن.</li>
+<li>Capture را متوقف کن.</li>
+<li>یک Packet مربوط به IPv4 را انتخاب کن.</li>
+<li>بخش Ethernet II را باز کن.</li>
+</ol>
+</section>
+<section id="مواردی-که-باید-پیدا-کنی" class="level3">
+<h3 class="anchored" data-anchor-id="مواردی-که-باید-پیدا-کنی">مواردی که باید پیدا کنی</h3>
+<ul>
+<li>Destination MAC</li>
+<li>Source MAC</li>
+<li>Type</li>
+<li>Internet Protocol Version 4</li>
+<li>TCP یا UDP</li>
+<li>Payload</li>
+</ul>
+</section>
+<section id="فیلترهای-مفید-wireshark" class="level3">
+<h3 class="anchored" data-anchor-id="فیلترهای-مفید-wireshark">فیلترهای مفید Wireshark</h3>
+<p>نمایش فریم‌های Ethernet:</p>
+<p><code>eth</code></p>
+<p>نمایش فریم‌های IPv4:</p>
+<p><code>eth.type == 0x0800</code></p>
+<p>نمایش ARP:</p>
+<p><code>arp</code></p>
+<p>نمایش IPv6:</p>
+<p><code>eth.type == 0x86dd</code></p>
+<p>نمایش فریم‌های VLAN Tagged:</p>
+<p><code>vlan</code></p>
+</section>
+<section id="پرسش-آزمایش" class="level3">
+<h3 class="anchored" data-anchor-id="پرسش-آزمایش">پرسش آزمایش</h3>
+<p>اگر EtherType برابر <code>0x0806</code> باشد، چه پروتکلی در Payload قرار دارد؟</p>
+<p>پاسخ مورد انتظار: ARP.</p>
+<hr>
+</section>
+</section>
+<section id="آزمایش-عملی-دوم-مشاهده-mac-address-در-سیستم" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایش-عملی-دوم-مشاهده-mac-address-در-سیستم">9. آزمایش عملی دوم: مشاهده MAC Address در سیستم</h2>
+<section id="در-windows" class="level3">
+<h3 class="anchored" data-anchor-id="در-windows">در Windows</h3>
+<p>PowerShell را باز کن و دستور زیر را اجرا کن:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter <span class="op">|</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Select-Object</span> Name<span class="op">,</span> Status<span class="op">,</span> MacAddress<span class="op">,</span> LinkSpeed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>برای مشاهده جزئیات IP و رابط‌ها:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>برای مشاهده جدول ARP:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Get-NetNeighbor <span class="op">-</span>AddressFamily IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>برای مشاهده اطلاعات رابط شبکه:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="تحلیل-خروجی" class="level3">
+<h3 class="anchored" data-anchor-id="تحلیل-خروجی">تحلیل خروجی</h3>
+<p>در خروجی باید بتوانی موارد زیر را تشخیص بدهی:</p>
+<ul>
+<li>نام رابط شبکه</li>
+<li>MAC Address</li>
+<li>وضعیت رابط</li>
+<li>سرعت لینک</li>
+<li>آدرس IPv4</li>
+<li>Default Gateway</li>
+</ul>
+<p><strong>نکته:</strong> MAC Address رابط شبکه با IP Address آن متفاوت است. تغییر IP لزوماً به معنای تغییر MAC نیست.</p>
+<hr>
+</section>
+</section>
+<section id="آزمایش-عملی-سوم-محاسبه-اندازه-فریم" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایش-عملی-سوم-محاسبه-اندازه-فریم">10. آزمایش عملی سوم: محاسبه اندازه فریم</h2>
+<p>فرض کن یک فریم Ethernet II دارای Payload به اندازه 1200 بایت است و VLAN Tag ندارد.</p>
+<p>اندازه فریم از Destination MAC تا FCS:</p>
+<p><code>6 + 6 + 2 + 1200 + 4 = 1218 Bytes</code></p>
+<p>حالا اگر همین فریم دارای VLAN Tag باشد:</p>
+<p><code>1218 + 4 = 1222 Bytes</code></p>
+<p>اگر Payload برابر 1500 بایت باشد:</p>
+<ul>
+<li>بدون VLAN: 1518 بایت</li>
+<li>با VLAN Tag: 1522 بایت</li>
+</ul>
+<p>این محاسبات Preamble، SFD و Interframe Gap را شامل نمی‌شوند.</p>
+<section id="تمرین-محاسباتی" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-محاسباتی">تمرین محاسباتی</h3>
+<p>اندازه فریم Ethernet II را در شرایط زیر محاسبه کن:</p>
+<ol type="1">
+<li>Payload برابر 46 بایت و بدون VLAN.</li>
+<li>Payload برابر 1000 بایت و بدون VLAN.</li>
+<li>Payload برابر 1500 بایت و با VLAN Tag.</li>
+</ol>
+<p>پاسخ‌ها را با فرمول ساختار فریم بررسی کن.</p>
+<hr>
+</section>
+</section>
+<section id="عیبیابی-مهندسی-فریم-اترنت" class="level2">
+<h2 class="anchored" data-anchor-id="عیبیابی-مهندسی-فریم-اترنت">11. عیب‌یابی مهندسی فریم اترنت</h2>
+<section id="سناریو-1-ارتباط-برقرار-نمیشود-اما-link-روشن-است" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-1-ارتباط-برقرار-نمیشود-اما-link-روشن-است">سناریو 1: ارتباط برقرار نمی‌شود، اما Link روشن است</h3>
+<p>روشن بودن Link فقط نشان می‌دهد لایه فیزیکی احتمالاً ارتباط برقرار کرده است.</p>
+<p>موارد زیر را بررسی کن:</p>
+<ol type="1">
+<li>وضعیت رابط شبکه.</li>
+<li>VLAN مربوط به پورت.</li>
+<li>MAC Address یادگرفته‌شده در سوئیچ.</li>
+<li>جدول ARP.</li>
+<li>خطاهای Interface.</li>
+<li>تنظیمات IP و Subnet.</li>
+</ol>
+</section>
+<section id="سناریو-2-افزایش-crc-error" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-2-افزایش-crc-error">سناریو 2: افزایش CRC Error</h3>
+<p>اگر شمارنده CRC روی یک پورت افزایش می‌یابد:</p>
+<ol type="1">
+<li>کابل را بررسی کن.</li>
+<li>کانکتورها را بررسی کن.</li>
+<li>در صورت امکان کابل را تعویض کن.</li>
+<li>Transceiver را بررسی کن.</li>
+<li>شمارنده خطا را قبل و بعد از آزمایش مقایسه کن.</li>
+</ol>
+<p>در تجهیزات Cisco، بسته به مدل و سیستم‌عامل می‌توان از دستور زیر استفاده کرد:</p>
+<pre class="text"><code>show interfaces</code></pre>
+<p>برای بررسی جدول MAC:</p>
+<pre class="text"><code>show mac address-table</code></pre>
+</section>
+<section id="سناریو-3-ارتباط-vlanها-مشکل-دارد" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-3-ارتباط-vlanها-مشکل-دارد">سناریو 3: ارتباط VLANها مشکل دارد</h3>
+<p>موارد زیر را بررسی کن:</p>
+<ul>
+<li>آیا Access VLAN درست است؟</li>
+<li>آیا Trunk فعال است؟</li>
+<li>آیا VLAN موردنظر روی Trunk مجاز است؟</li>
+<li>آیا Native VLAN در دو سمت سازگار است؟</li>
+<li>آیا فریم Tagged و Untagged مطابق انتظار منتقل می‌شود؟</li>
+</ul>
+</section>
+<section id="سناریو-4-مشکل-در-انتقال-فریمهای-بزرگ" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-4-مشکل-در-انتقال-فریمهای-بزرگ">سناریو 4: مشکل در انتقال فریم‌های بزرگ</h3>
+<p>اگر فریم‌های کوچک منتقل می‌شوند اما انتقال داده بزرگ شکست می‌خورد:</p>
+<ul>
+<li>MTU رابط‌ها را بررسی کن.</li>
+<li>Jumbo Frame را فقط در صورت پشتیبانی کامل مسیر فعال کن.</li>
+<li>در صورت استفاده از VLAN، محدودیت اندازه فریم تجهیزات را بررسی کن.</li>
+<li>Packet Drop و Interface Error را بررسی کن.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="خطاهای-مفهومی-رایج" class="level2">
+<h2 class="anchored" data-anchor-id="خطاهای-مفهومی-رایج">12. خطاهای مفهومی رایج</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>برداشت اشتباه</th>
+<th>مفهوم صحیح</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MAC Address همان IP است</td>
+<td>MAC شناسه لایه پیوند داده است و IP آدرس لایه شبکه</td>
+</tr>
+<tr class="even">
+<td>MTU اندازه کل فریم است</td>
+<td>MTU اندازه Payload لایه شبکه را مشخص می‌کند</td>
+</tr>
+<tr class="odd">
+<td>FCS خطا را اصلاح می‌کند</td>
+<td>FCS برای تشخیص خطا استفاده می‌شود</td>
+</tr>
+<tr class="even">
+<td>Preamble بخشی از Payload است</td>
+<td>Preamble برای همگام‌سازی استفاده می‌شود</td>
+</tr>
+<tr class="odd">
+<td>هر فریم فقط برای یک MAC ارسال می‌شود</td>
+<td>Unicast، Multicast و Broadcast وجود دارند</td>
+</tr>
+<tr class="even">
+<td>VLAN Tag همان EtherType است</td>
+<td>Tag شامل TPID و TCI است و EtherType اصلی پس از آن قرار می‌گیرد</td>
+</tr>
+<tr class="odd">
+<td>MAC مبدأ در تمام مسیر ثابت می‌ماند</td>
+<td>در عبور از روتر، فریم جدید با MACهای لینک بعدی ساخته می‌شود</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="چالش-netfleet" class="level2">
+<h2 class="anchored" data-anchor-id="چالش-netfleet">13. چالش NetFleet</h2>
+<p><badge color="info">NETFLEET ENGINEERING CHALLENGE</badge></p>
+<section id="سناریو" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو">سناریو</h3>
+<p>یک شبکه کوچک با مشخصات زیر داریم:</p>
+<ul>
+<li>Host A در VLAN 10</li>
+<li>Host B در VLAN 10</li>
+<li>Host C در VLAN 20</li>
+<li>هر سه میزبان به یک سوئیچ مدیریتی متصل هستند.</li>
+<li>ارتباط Host A و Host B برقرار است.</li>
+<li>Host A نمی‌تواند با Host C ارتباط برقرار کند.</li>
+</ul>
+</section>
+<section id="مأموریت" class="level3">
+<h3 class="anchored" data-anchor-id="مأموریت">مأموریت</h3>
+<p>به‌عنوان مهندس شبکه، مراحل تحلیل را طراحی کن.</p>
+<ol type="1">
+<li>MAC Address میزبان‌ها را مشخص کن.</li>
+<li>جدول MAC سوئیچ را بررسی کن.</li>
+<li>VLAN پورت‌های Access را بررسی کن.</li>
+<li>مشخص کن آیا برای ارتباط VLAN 10 و VLAN 20 به Routing نیاز است.</li>
+<li>یک Packet Capture تهیه کن.</li>
+<li>فریم ARP را از فریم IPv4 تشخیص بده.</li>
+<li>توضیح بده در صورت ارسال ترافیک به شبکه دیگر، Destination MAC فریم چه خواهد بود.</li>
+</ol>
+</section>
+<section id="خروجی-مورد-انتظار" class="level3">
+<h3 class="anchored" data-anchor-id="خروجی-مورد-انتظار">خروجی مورد انتظار</h3>
+<p>یک گزارش کوتاه شامل:</p>
+<ul>
+<li>توپولوژی منطقی</li>
+<li>جدول VLAN و پورت‌ها</li>
+<li>تحلیل MAC Address</li>
+<li>تحلیل EtherType</li>
+<li>علت احتمالی عدم ارتباط</li>
+<li>راه‌حل پیشنهادی</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="جمعبندی-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="جمعبندی-جلسه">14. جمع‌بندی جلسه</h2>
+<p>در این جلسه ساختار فریم اترنت را از دیدگاه مهندسی بررسی کردیم.</p>
+<p>مهم‌ترین نکات:</p>
+<ul>
+<li>Ethernet Frame واحد داده اصلی لایه پیوند داده در Ethernet است.</li>
+<li>Destination MAC و Source MAC هرکدام 6 بایت هستند.</li>
+<li>EtherType پروتکل Payload را مشخص می‌کند.</li>
+<li>Payload معمولی Ethernet بین 46 تا 1500 بایت است.</li>
+<li>حداقل اندازه فریم از MAC مقصد تا FCS برابر 64 بایت است.</li>
+<li>اندازه فریم استاندارد با Payload برابر 1500 بایت، بدون VLAN، برابر 1518 بایت است.</li>
+<li>802.1Q چهار بایت Tag به فریم اضافه می‌کند.</li>
+<li>FCS با CRC-32 برای تشخیص خطا استفاده می‌شود.</li>
+<li>Preamble و SFD در اندازه متداول فریم محاسبه نمی‌شوند.</li>
+<li>MTU با اندازه کل فریم یکسان نیست.</li>
+</ul>
+<p><strong>ارتباط با جلسه بعد:</strong> در جلسه بعد بررسی می‌کنیم سوئیچ چگونه Source MAC را یاد می‌گیرد، جدول MAC را می‌سازد و بر اساس Destination MAC تصمیم Forwarding می‌گیرد.</p>
+<hr>
+</section>
+<section id="تمرینهای-پایان-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="تمرینهای-پایان-جلسه">15. تمرین‌های پایان جلسه</h2>
+<section id="تمرین-نظری" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-نظری">تمرین نظری</h3>
+<ol type="1">
+<li>تفاوت Frame و Packet را با یک مثال توضیح بده.</li>
+<li>چرا Ethernet به حداقل اندازه فریم نیاز دارد؟</li>
+<li>EtherType چه نقشی دارد؟</li>
+<li>چرا MTU برابر 1500 به معنی فریم 1500 بایتی نیست؟</li>
+<li>تفاوت Ethernet II و IEEE 802.3 چیست؟</li>
+<li>VLAN Tag از چه بخش‌هایی تشکیل شده است؟</li>
+<li>FCS چگونه خطا را تشخیص می‌دهد؟</li>
+<li>چرا MAC مقصد در عبور از روتر تغییر می‌کند؟</li>
+</ol>
+</section>
+<section id="تمرین-عملی" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-عملی">تمرین عملی</h3>
+<ol type="1">
+<li>با PowerShell MAC Address رابط شبکه خود را پیدا کن.</li>
+<li>با Wireshark یک فریم IPv4 پیدا کن.</li>
+<li>مقدار EtherType را ثبت کن.</li>
+<li>یک فریم ARP پیدا کن و آن را با IPv4 مقایسه کن.</li>
+<li>یک فریم Tagged پیدا کن، اگر در محیط آزمایشگاهی در دسترس است.</li>
+<li>اندازه فریم را از روی فیلدهای آن محاسبه کن.</li>
+</ol>
+</section>
+<section id="منابع" class="level3">
+<h3 class="anchored" data-anchor-id="منابع">منابع</h3>
+<ul>
+<li>IEEE 802.3 Ethernet Working Group: https://www.ieee802.org/3/</li>
+<li>IEEE 802.1Q VLAN Standard: https://www.ieee802.org/1/pages/802.1Q.html</li>
+<li>Wireshark User Guide: https://www.wireshark.org/docs/wsug_html_chunked/</li>
+<li>Wireshark Display Filter Reference: https://www.wireshark.org/docs/dfref/</li>
+<li>RFC 894 - A Standard for the Transmission of IP Datagrams over Ethernet: https://www.rfc-editor.org/rfc/rfc894</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="آزمون-تعاملی-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="آزمون-تعاملی-جلسه">16. آزمون تعاملی جلسه</h2>
+<p>به 10 سؤال زیر پاسخ بده. بعد از انتخاب هر گزینه، توضیح پاسخ نمایش داده می‌شود. در پایان نمره و درصد موفقیتت را مشاهده خواهی کرد.</p>
+</section>
+</section>
+<link rel="stylesheet" href="../../../assets/css/quiz.css">
+
+<section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-week02-day01-title">
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-week02-day01-title" class="anchored">آزمون تعاملی جلسه اول هفته دوم</h2>
+      <p>Ethernet Frame Structure</p>
+    </div>
+    <div class="nf-quiz-score">
+      <span>امتیاز</span>
+      <strong data-score="">0</strong>
+      <small>از 10</small>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress-wrap">
+    <div class="nf-quiz-progress-label">
+      <span>پیشرفت آزمون</span>
+      <span data-progress-text="">سؤال 1 از 10</span>
+    </div>
+    <div class="nf-quiz-progress-track">
+      <div class="nf-quiz-progress" data-progress="" style="width:0%" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+    </div>
+  </div>
+
+  <div class="nf-quiz-content" data-content="">
+    <h3 class="nf-quiz-question anchored" data-question=""></h3>
+    <div class="nf-quiz-options" data-options=""></div>
+    <div class="nf-quiz-feedback" data-feedback="" aria-live="polite"></div>
+    <button class="nf-quiz-next" data-next="" type="button" hidden="">سؤال بعدی</button>
+  </div>
+
+  <div class="nf-quiz-result" data-result="" hidden="">
+    <div class="nf-quiz-result-icon">✓</div>
+    <h3 class="anchored">آزمون به پایان رسید</h3>
+    <div class="nf-quiz-final-score" data-final-score="">0 از 10</div>
+    <div class="nf-quiz-percentage" data-percentage="">0%</div>
+    <p data-result-message=""></p>
+    <button class="nf-quiz-restart" data-restart="" type="button">شروع دوباره آزمون</button>
+  </div>
+
+  <script type="application/json" data-quiz-questions="">
+  [
+    {
+      "question": "کدام گزینه ترتیب صحیح Encapsulation را از دیدگاه ارسال داده نشان می‌دهد؟",
+      "options": [
+        "Frame → Packet → Segment → Data",
+        "Data → Segment → Packet → Frame",
+        "Packet → Frame → Data → Segment",
+        "Segment → Data → Frame → Packet"
+      ],
+      "answer": 1,
+      "explanation": "داده برنامه ابتدا در لایه انتقال به Segment یا Datagram تبدیل می‌شود، سپس در لایه شبکه Packet و در لایه پیوند داده Frame ساخته می‌شود."
+    },
+    {
+      "question": "اندازه Destination MAC و Source MAC در Ethernet به‌ترتیب چقدر است؟",
+      "options": [
+        "هرکدام 4 بایت",
+        "هرکدام 8 بایت",
+        "هرکدام 6 بایت",
+        "هرکدام 2 بایت"
+      ],
+      "answer": 2,
+      "explanation": "هر آدرس MAC استاندارد 48 بیت یا 6 بایت است."
+    },
+    {
+      "question": "مقدار EtherType برابر 0x0800 نشان‌دهنده کدام پروتکل است؟",
+      "options": [
+        "ARP",
+        "IPv4",
+        "IPv6",
+        "802.1Q"
+      ],
+      "answer": 1,
+      "explanation": "مقدار 0x0800 شناسه EtherType برای IPv4 است. مقدار 0x0806 برای ARP و 0x86DD برای IPv6 استفاده می‌شود."
+    },
+    {
+      "question": "چرا حداقل اندازه Payload در Ethernet معمولی 46 بایت است؟",
+      "options": [
+        "برای جا دادن آدرس IPv6",
+        "برای تضمین حداقل اندازه فریم 64 بایتی",
+        "به دلیل اندازه EtherType",
+        "برای نگهداری VLAN ID"
+      ],
+      "answer": 1,
+      "explanation": "فیلدهای MAC مقصد، MAC مبدأ، EtherType و FCS مجموعاً 18 بایت هستند. برای رسیدن به حداقل فریم 64 بایتی، Payload باید حداقل 46 بایت باشد."
+    },
+    {
+      "question": "اندازه یک فریم Ethernet II با Payload برابر 1500 بایت و بدون VLAN، از MAC مقصد تا FCS چقدر است؟",
+      "options": [
+        "1500 بایت",
+        "1514 بایت",
+        "1518 بایت",
+        "1522 بایت"
+      ],
+      "answer": 2,
+      "explanation": "6 + 6 + 2 + 1500 + 4 برابر 1518 بایت است. این محاسبه Preamble و SFD را شامل نمی‌شود."
+    },
+    {
+      "question": "کدام گزینه درباره FCS صحیح است؟",
+      "options": [
+        "خطاهای فریم را اصلاح می‌کند",
+        "برای رمزنگاری Payload استفاده می‌شود",
+        "با CRC-32 خطاهای انتقال فریم را تشخیص می‌دهد",
+        "آدرس IP مقصد را نگهداری می‌کند"
+      ],
+      "answer": 2,
+      "explanation": "FCS از CRC-32 برای تشخیص خرابی فریم استفاده می‌کند، اما وظیفه اصلاح خطا یا رمزنگاری را ندارد."
+    },
+    {
+      "question": "در فریم Tagged با استاندارد 802.1Q، اندازه Tag چند بایت است؟",
+      "options": [
+        "2 بایت",
+        "4 بایت",
+        "6 بایت",
+        "8 بایت"
+      ],
+      "answer": 1,
+      "explanation": "802.1Q از TPID دو بایتی و TCI دو بایتی تشکیل شده است؛ در مجموع چهار بایت."
+    },
+    {
+      "question": "کدام گزینه تفاوت MTU و Frame Size را درست توضیح می‌دهد؟",
+      "options": [
+        "هر دو همیشه دقیقاً 1500 بایت هستند",
+        "MTU اندازه کل فریم به‌همراه FCS است",
+        "MTU اندازه Payload لایه شبکه را مشخص می‌کند، اما Frame Size شامل سربار لایه دوم نیز هست",
+        "MTU فقط برای VLAN استفاده می‌شود"
+      ],
+      "answer": 2,
+      "explanation": "MTU رایج Ethernet برابر 1500 بایت است، اما فریم با احتساب Header و FCS به 1518 بایت می‌رسد."
+    },
+    {
+      "question": "اگر فیلد EtherType برابر 0x0806 باشد، Payload معمولاً مربوط به چیست؟",
+      "options": [
+        "IPv4",
+        "ARP",
+        "IPv6",
+        "TCP"
+      ],
+      "answer": 1,
+      "explanation": "0x0806 شناسه پروتکل ARP است که برای نگاشت IPv4 به MAC در شبکه محلی استفاده می‌شود."
+    },
+    {
+      "question": "وقتی یک Packet از روتر عبور می‌کند و وارد لینک Ethernet دیگری می‌شود، چه اتفاقی برای فریم رخ می‌دهد؟",
+      "options": [
+        "همان فریم با همان MACها بدون تغییر عبور می‌کند",
+        "روتر فقط EtherType را حذف می‌کند",
+        "روتر فریم ورودی را پردازش می‌کند و برای لینک خروجی فریم جدیدی با MACهای مناسب می‌سازد",
+        "آدرس IP و MAC همیشه هم‌زمان تغییر می‌کنند"
+      ],
+      "answer": 2,
+      "explanation": "روتر هدر لایه دوم ورودی را کنار می‌گذارد، Packet لایه شبکه را پردازش می‌کند و برای لینک خروجی یک فریم جدید با MAC مبدأ و مقصد همان لینک می‌سازد."
+    }
+  ]
+  </script>
+</section>
+
+<script src="../../../assets/js/labs/quiz-engine.js" defer=""></script>
 
 
 
@@ -844,6 +1744,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
+<script>
+(() => {
+  const base = window.location.pathname.startsWith("/netfleet-docs/")
+    ? "/netfleet-docs/"
+    : "/";
+  const script = document.createElement("script");
+  script.src = base + "assets/js/labs/network-fundamentals.js";
+  script.async = false;
+  document.head.appendChild(script);
+})();
+</script>
 
 
 

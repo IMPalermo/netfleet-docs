@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Deep understanding of network architecture, OSI layers, TCP/IP, encapsulation, packet analysis and layered troubleshooting">
 
 <title>OSI and TCP/IP Models – NetFleet Docs</title>
 <style>
@@ -155,30 +156,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#مدلهای-osi-و-tcpip" id="toc-مدلهای-osi-و-tcpip" class="nav-link active" data-scroll-target="#مدلهای-osi-و-tcpip">مدل‌های OSI و TCP/IP</a>
+  <li><a href="#جلسه-دوم-مدلهای-osi-و-tcpip" id="toc-جلسه-دوم-مدلهای-osi-و-tcpip" class="nav-link active" data-scroll-target="#جلسه-دوم-مدلهای-osi-و-tcpip">جلسه دوم: مدل‌های OSI و TCP/IP</a>
   <ul class="collapse">
-  <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">اهداف یادگیری</a></li>
-  <li><a href="#چرا-به-مدل-شبکه-نیاز-داریم" id="toc-چرا-به-مدل-شبکه-نیاز-داریم" class="nav-link" data-scroll-target="#چرا-به-مدل-شبکه-نیاز-داریم">1. چرا به مدل شبکه نیاز داریم؟</a></li>
-  <li><a href="#مدل-osi" id="toc-مدل-osi" class="nav-link" data-scroll-target="#مدل-osi">2. مدل OSI</a>
+  <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">1. اهداف یادگیری</a></li>
+  <li><a href="#چرا-شبکه-به-مدل-لایهای-نیاز-دارد" id="toc-چرا-شبکه-به-مدل-لایهای-نیاز-دارد" class="nav-link" data-scroll-target="#چرا-شبکه-به-مدل-لایهای-نیاز-دارد">2. چرا شبکه به مدل لایه‌ای نیاز دارد؟</a>
   <ul class="collapse">
-  <li><a href="#لایههای-مهم-در-عمل" id="toc-لایههای-مهم-در-عمل" class="nav-link" data-scroll-target="#لایههای-مهم-در-عمل">لایه‌های مهم در عمل</a></li>
+  <li><a href="#مفهوم-layering" id="toc-مفهوم-layering" class="nav-link" data-scroll-target="#مفهوم-layering">2.1. مفهوم Layering</a></li>
+  <li><a href="#مزایای-معماری-لایهای" id="toc-مزایای-معماری-لایهای" class="nav-link" data-scroll-target="#مزایای-معماری-لایهای">2.2. مزایای معماری لایه‌ای</a></li>
+  <li><a href="#مثال-واقعی" id="toc-مثال-واقعی" class="nav-link" data-scroll-target="#مثال-واقعی">مثال واقعی</a></li>
   </ul></li>
-  <li><a href="#مدل-tcpip" id="toc-مدل-tcpip" class="nav-link" data-scroll-target="#مدل-tcpip">3. مدل TCP/IP</a></li>
-  <li><a href="#encapsulation-چیست" id="toc-encapsulation-چیست" class="nav-link" data-scroll-target="#encapsulation-چیست">4. Encapsulation چیست؟</a>
+  <li><a href="#مدل-osi-چیست" id="toc-مدل-osi-چیست" class="nav-link" data-scroll-target="#مدل-osi-چیست">3. مدل OSI چیست؟</a></li>
+  <li><a href="#بررسی-عمیق-لایههای-osi" id="toc-بررسی-عمیق-لایههای-osi" class="nav-link" data-scroll-target="#بررسی-عمیق-لایههای-osi">4. بررسی عمیق لایه‌های OSI</a>
   <ul class="collapse">
-  <li><a href="#اصطلاحات-مهم" id="toc-اصطلاحات-مهم" class="nav-link" data-scroll-target="#اصطلاحات-مهم">اصطلاحات مهم</a></li>
+  <li><a href="#layer-1-physical" id="toc-layer-1-physical" class="nav-link" data-scroll-target="#layer-1-physical">Layer 1: Physical</a></li>
+  <li><a href="#layer-2-data-link" id="toc-layer-2-data-link" class="nav-link" data-scroll-target="#layer-2-data-link">Layer 2: Data Link</a></li>
+  <li><a href="#layer-3-network" id="toc-layer-3-network" class="nav-link" data-scroll-target="#layer-3-network">Layer 3: Network</a></li>
+  <li><a href="#layer-4-transport" id="toc-layer-4-transport" class="nav-link" data-scroll-target="#layer-4-transport">Layer 4: Transport</a></li>
+  <li><a href="#layer-5-session" id="toc-layer-5-session" class="nav-link" data-scroll-target="#layer-5-session">Layer 5: Session</a></li>
+  <li><a href="#layer-6-presentation" id="toc-layer-6-presentation" class="nav-link" data-scroll-target="#layer-6-presentation">Layer 6: Presentation</a></li>
+  <li><a href="#layer-7-application" id="toc-layer-7-application" class="nav-link" data-scroll-target="#layer-7-application">Layer 7: Application</a></li>
   </ul></li>
-  <li><a href="#مثال-واقعی" id="toc-مثال-واقعی" class="nav-link" data-scroll-target="#مثال-واقعی">5. مثال واقعی</a></li>
-  <li><a href="#آزمایش-عملی" id="toc-آزمایش-عملی" class="nav-link" data-scroll-target="#آزمایش-عملی">6. آزمایش عملی</a>
+  <li><a href="#مدل-tcpip" id="toc-مدل-tcpip" class="nav-link" data-scroll-target="#مدل-tcpip">5. مدل TCP/IP</a>
   <ul class="collapse">
-  <li><a href="#مشاهده-اطلاعات-کارت-شبکه" id="toc-مشاهده-اطلاعات-کارت-شبکه" class="nav-link" data-scroll-target="#مشاهده-اطلاعات-کارت-شبکه">مشاهده اطلاعات کارت شبکه</a></li>
-  <li><a href="#مشاهده-تنظیمات-ip" id="toc-مشاهده-تنظیمات-ip" class="nav-link" data-scroll-target="#مشاهده-تنظیمات-ip">مشاهده تنظیمات IP</a></li>
-  <li><a href="#بررسی-مسیر-ارتباط" id="toc-بررسی-مسیر-ارتباط" class="nav-link" data-scroll-target="#بررسی-مسیر-ارتباط">بررسی مسیر ارتباط</a></li>
+  <li><a href="#مقایسه-osi-و-tcpip" id="toc-مقایسه-osi-و-tcpip" class="nav-link" data-scroll-target="#مقایسه-osi-و-tcpip">مقایسه OSI و TCP/IP</a></li>
+  <li><a href="#نکته-مهندسی" id="toc-نکته-مهندسی" class="nav-link" data-scroll-target="#نکته-مهندسی">نکته مهندسی</a></li>
   </ul></li>
-  <li><a href="#تمرین-عیبیابی" id="toc-تمرین-عیبیابی" class="nav-link" data-scroll-target="#تمرین-عیبیابی">7. تمرین عیب‌یابی</a></li>
-  <li><a href="#ارتباط-با-network-automation" id="toc-ارتباط-با-network-automation" class="nav-link" data-scroll-target="#ارتباط-با-network-automation">8. ارتباط با Network Automation</a></li>
-  <li><a href="#ارزیابی" id="toc-ارزیابی" class="nav-link" data-scroll-target="#ارزیابی">ارزیابی</a></li>
-  <li><a href="#منابع" id="toc-منابع" class="nav-link" data-scroll-target="#منابع">منابع</a></li>
+  <li><a href="#encapsulation-و-decapsulation" id="toc-encapsulation-و-decapsulation" class="nav-link" data-scroll-target="#encapsulation-و-decapsulation">6. Encapsulation و Decapsulation</a>
+  <ul class="collapse">
+  <li><a href="#فرایند-encapsulation" id="toc-فرایند-encapsulation" class="nav-link" data-scroll-target="#فرایند-encapsulation">6.1. فرایند Encapsulation</a></li>
+  <li><a href="#اصطلاحات-pdu" id="toc-اصطلاحات-pdu" class="nav-link" data-scroll-target="#اصطلاحات-pdu">6.2. اصطلاحات PDU</a></li>
+  <li><a href="#decapsulation" id="toc-decapsulation" class="nav-link" data-scroll-target="#decapsulation">6.3. Decapsulation</a></li>
+  <li><a href="#چرا-encapsulation-مهم-است" id="toc-چرا-encapsulation-مهم-است" class="nav-link" data-scroll-target="#چرا-encapsulation-مهم-است">6.4. چرا Encapsulation مهم است؟</a></li>
+  </ul></li>
+  <li><a href="#تحلیل-یک-ارتباط-واقعی-https" id="toc-تحلیل-یک-ارتباط-واقعی-https" class="nav-link" data-scroll-target="#تحلیل-یک-ارتباط-واقعی-https">7. تحلیل یک ارتباط واقعی HTTPS</a>
+  <ul class="collapse">
+  <li><a href="#مرحله-اول-dns-resolution" id="toc-مرحله-اول-dns-resolution" class="nav-link" data-scroll-target="#مرحله-اول-dns-resolution">مرحله اول: DNS Resolution</a></li>
+  <li><a href="#مرحله-دوم-انتخاب-مقصد-و-route" id="toc-مرحله-دوم-انتخاب-مقصد-و-route" class="nav-link" data-scroll-target="#مرحله-دوم-انتخاب-مقصد-و-route">مرحله دوم: انتخاب مقصد و Route</a></li>
+  <li><a href="#مرحله-سوم-برقراری-ارتباط" id="toc-مرحله-سوم-برقراری-ارتباط" class="nav-link" data-scroll-target="#مرحله-سوم-برقراری-ارتباط">مرحله سوم: برقراری ارتباط</a></li>
+  <li><a href="#مرحله-چهارم-انتقال-داده" id="toc-مرحله-چهارم-انتقال-داده" class="nav-link" data-scroll-target="#مرحله-چهارم-انتقال-داده">مرحله چهارم: انتقال داده</a></li>
+  <li><a href="#مرحله-پنجم-دریافت-پاسخ" id="toc-مرحله-پنجم-دریافت-پاسخ" class="nav-link" data-scroll-target="#مرحله-پنجم-دریافت-پاسخ">مرحله پنجم: دریافت پاسخ</a></li>
+  </ul></li>
+  <li><a href="#مشاهده-ارتباط-لایهها-با-wireshark" id="toc-مشاهده-ارتباط-لایهها-با-wireshark" class="nav-link" data-scroll-target="#مشاهده-ارتباط-لایهها-با-wireshark">8. مشاهده ارتباط لایه‌ها با Wireshark</a>
+  <ul class="collapse">
+  <li><a href="#آزمایش-اول-capture" id="toc-آزمایش-اول-capture" class="nav-link" data-scroll-target="#آزمایش-اول-capture">آزمایش اول: Capture</a></li>
+  <li><a href="#آزمایش-دوم-فیلتر-dns" id="toc-آزمایش-دوم-فیلتر-dns" class="nav-link" data-scroll-target="#آزمایش-دوم-فیلتر-dns">آزمایش دوم: فیلتر DNS</a></li>
+  <li><a href="#آزمایش-سوم-فیلتر-tcp" id="toc-آزمایش-سوم-فیلتر-tcp" class="nav-link" data-scroll-target="#آزمایش-سوم-فیلتر-tcp">آزمایش سوم: فیلتر TCP</a></li>
+  <li><a href="#آزمایش-چهارم-فیلتر-tls" id="toc-آزمایش-چهارم-فیلتر-tls" class="nav-link" data-scroll-target="#آزمایش-چهارم-فیلتر-tls">آزمایش چهارم: فیلتر TLS</a></li>
+  <li><a href="#آزمایش-پنجم-فیلتر-icmp" id="toc-آزمایش-پنجم-فیلتر-icmp" class="nav-link" data-scroll-target="#آزمایش-پنجم-فیلتر-icmp">آزمایش پنجم: فیلتر ICMP</a></li>
+  <li><a href="#بررسی-یک-packet" id="toc-بررسی-یک-packet" class="nav-link" data-scroll-target="#بررسی-یک-packet">بررسی یک Packet</a></li>
+  </ul></li>
+  <li><a href="#عیبیابی-بر-اساس-مدل-osi" id="toc-عیبیابی-بر-اساس-مدل-osi" class="nav-link" data-scroll-target="#عیبیابی-بر-اساس-مدل-osi">9. عیب‌یابی بر اساس مدل OSI</a>
+  <ul class="collapse">
+  <li><a href="#سناریو-اول-هیچ-ارتباطی-وجود-ندارد" id="toc-سناریو-اول-هیچ-ارتباطی-وجود-ندارد" class="nav-link" data-scroll-target="#سناریو-اول-هیچ-ارتباطی-وجود-ندارد">سناریو اول: هیچ ارتباطی وجود ندارد</a></li>
+  <li><a href="#سناریو-دوم-ارتباط-محلی-برقرار-نیست" id="toc-سناریو-دوم-ارتباط-محلی-برقرار-نیست" class="nav-link" data-scroll-target="#سناریو-دوم-ارتباط-محلی-برقرار-نیست">سناریو دوم: ارتباط محلی برقرار نیست</a></li>
+  <li><a href="#سناریو-سوم-اینترنت-با-ip-کار-میکند-اما-با-نام-دامنه-نه" id="toc-سناریو-سوم-اینترنت-با-ip-کار-میکند-اما-با-نام-دامنه-نه" class="nav-link" data-scroll-target="#سناریو-سوم-اینترنت-با-ip-کار-میکند-اما-با-نام-دامنه-نه">سناریو سوم: اینترنت با IP کار می‌کند اما با نام دامنه نه</a></li>
+  <li><a href="#سناریو-چهارم-سرور-قابل-دسترسی-است-اما-سرویس-باز-نیست" id="toc-سناریو-چهارم-سرور-قابل-دسترسی-است-اما-سرویس-باز-نیست" class="nav-link" data-scroll-target="#سناریو-چهارم-سرور-قابل-دسترسی-است-اما-سرویس-باز-نیست">سناریو چهارم: سرور قابل دسترسی است اما سرویس باز نیست</a></li>
+  <li><a href="#سناریو-پنجم-ارتباط-tcp-برقرار-است-اما-وبسایت-خطا-میدهد" id="toc-سناریو-پنجم-ارتباط-tcp-برقرار-است-اما-وبسایت-خطا-میدهد" class="nav-link" data-scroll-target="#سناریو-پنجم-ارتباط-tcp-برقرار-است-اما-وبسایت-خطا-میدهد">سناریو پنجم: ارتباط TCP برقرار است اما وب‌سایت خطا می‌دهد</a></li>
+  <li><a href="#جدول-عیبیابی" id="toc-جدول-عیبیابی" class="nav-link" data-scroll-target="#جدول-عیبیابی">جدول عیب‌یابی</a></li>
+  </ul></li>
+  <li><a href="#ارتباط-مدل-osi-با-network-automation" id="toc-ارتباط-مدل-osi-با-network-automation" class="nav-link" data-scroll-target="#ارتباط-مدل-osi-با-network-automation">10. ارتباط مدل OSI با Network Automation</a>
+  <ul class="collapse">
+  <li><a href="#مثال-اول-بررسی-interfaceها" id="toc-مثال-اول-بررسی-interfaceها" class="nav-link" data-scroll-target="#مثال-اول-بررسی-interfaceها">مثال اول: بررسی Interfaceها</a></li>
+  <li><a href="#مثال-دوم-بررسی-ip-configuration" id="toc-مثال-دوم-بررسی-ip-configuration" class="nav-link" data-scroll-target="#مثال-دوم-بررسی-ip-configuration">مثال دوم: بررسی IP Configuration</a></li>
+  <li><a href="#مثال-سوم-بررسی-tcp" id="toc-مثال-سوم-بررسی-tcp" class="nav-link" data-scroll-target="#مثال-سوم-بررسی-tcp">مثال سوم: بررسی TCP</a></li>
+  <li><a href="#مثال-چهارم-بررسی-سرویس" id="toc-مثال-چهارم-بررسی-سرویس" class="nav-link" data-scroll-target="#مثال-چهارم-بررسی-سرویس">مثال چهارم: بررسی سرویس</a></li>
+  <li><a href="#ارتباط-با-python" id="toc-ارتباط-با-python" class="nav-link" data-scroll-target="#ارتباط-با-python">ارتباط با Python</a></li>
+  </ul></li>
+  <li><a href="#چالش-مهندسی" id="toc-چالش-مهندسی" class="nav-link" data-scroll-target="#چالش-مهندسی">11. چالش مهندسی</a>
+  <ul class="collapse">
+  <li><a href="#سناریو-سرویس-وب-شرکت-در-دسترس-نیست" id="toc-سناریو-سرویس-وب-شرکت-در-دسترس-نیست" class="nav-link" data-scroll-target="#سناریو-سرویس-وب-شرکت-در-دسترس-نیست">سناریو: سرویس وب شرکت در دسترس نیست</a></li>
+  <li><a href="#مأموریت-تو" id="toc-مأموریت-تو" class="nav-link" data-scroll-target="#مأموریت-تو">مأموریت تو</a></li>
+  <li><a href="#محدودیت" id="toc-محدودیت" class="nav-link" data-scroll-target="#محدودیت">محدودیت</a></li>
+  </ul></li>
+  <li><a href="#اشتباهات-رایج" id="toc-اشتباهات-رایج" class="nav-link" data-scroll-target="#اشتباهات-رایج">12. اشتباهات رایج</a></li>
+  <li><a href="#منابع-آموزشی" id="toc-منابع-آموزشی" class="nav-link" data-scroll-target="#منابع-آموزشی">13. منابع آموزشی</a>
+  <ul class="collapse">
+  <li><a href="#منابع-اصلی" id="toc-منابع-اصلی" class="nav-link" data-scroll-target="#منابع-اصلی">منابع اصلی</a></li>
+  <li><a href="#استانداردها-و-منابع-فنی" id="toc-استانداردها-و-منابع-فنی" class="nav-link" data-scroll-target="#استانداردها-و-منابع-فنی">استانداردها و منابع فنی</a></li>
+  </ul></li>
+  <li><a href="#ارزیابی-پایان-جلسه" id="toc-ارزیابی-پایان-جلسه" class="nav-link" data-scroll-target="#ارزیابی-پایان-جلسه">14. ارزیابی پایان جلسه</a></li>
+  <li><a href="#خروجی-مورد-انتظار-جلسه" id="toc-خروجی-مورد-انتظار-جلسه" class="nav-link" data-scroll-target="#خروجی-مورد-انتظار-جلسه">خروجی مورد انتظار جلسه</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -189,9 +246,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">OSI and TCP/IP Models</h1>
-<p class="subtitle lead">Week 01 | Day 02</p>
+<p class="subtitle lead">Week 01 · Day 02</p>
 </div>
 
+<div>
+  <div class="description">
+    Deep understanding of network architecture, OSI layers, TCP/IP, encapsulation, packet analysis and layered troubleshooting
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -206,90 +268,617 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="مدلهای-osi-و-tcpip" class="level1 persian">
-<h1>مدل‌های OSI و TCP/IP</h1>
+<section id="جلسه-دوم-مدلهای-osi-و-tcpip" class="level1 persian">
+<h1>جلسه دوم: مدل‌های OSI و TCP/IP</h1>
+<blockquote class="blockquote">
+هدف این جلسه حفظ کردن هفت لایه نیست. هدف این است که بتوانی یک ارتباط شبکه را از دید معماری، پروتکل، Packet و عیب‌یابی تحلیل کنی.
+</blockquote>
 <section id="اهداف-یادگیری" class="level2">
-<h2 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h2>
-<p>در پایان این جلسه باید بتوانی: - لایه‌های هفت‌گانه OSI را توضیح بدهی. - مدل TCP/IP را با OSI مقایسه کنی. - مفهوم Encapsulation و Decapsulation را درک کنی. - برای مشکلات شبکه، لایه احتمالی خطا را تشخیص بدهی.</p>
+<h2 class="anchored" data-anchor-id="اهداف-یادگیری">1. اهداف یادگیری</h2>
+<p>در پایان این جلسه باید بتوانی:</p>
+<ul>
+<li>معماری لایه‌ای شبکه را توضیح بدهی و دلیل استفاده از آن را درک کنی.</li>
+<li>وظایف هر هفت لایه OSI را با مثال‌های واقعی تشریح کنی.</li>
+<li>تفاوت مدل مرجع OSI و معماری TCP/IP را توضیح بدهی.</li>
+<li>Encapsulation و Decapsulation را مرحله‌به‌مرحله تحلیل کنی.</li>
+<li>تفاوت Data، Segment، Datagram، Packet، Frame و Bits را تشخیص بدهی.</li>
+<li>نقش MAC Address، IP Address و Port Number را در ارتباط شبکه توضیح بدهی.</li>
+<li>با Wireshark ارتباط میان لایه‌ها را در یک ارتباط واقعی مشاهده کنی.</li>
+<li>برای یک مشکل شبکه، لایه‌های محتمل خطا را شناسایی کنی.</li>
+<li>از مدل لایه‌ای برای طراحی فرآیندهای Network Automation استفاده کنی.</li>
+</ul>
+<hr>
 </section>
-<section id="چرا-به-مدل-شبکه-نیاز-داریم" class="level2">
-<h2 class="anchored" data-anchor-id="چرا-به-مدل-شبکه-نیاز-داریم">1. چرا به مدل شبکه نیاز داریم؟</h2>
-<p>شبکه از اجزای متعددی تشکیل شده است: کارت شبکه، سوئیچ، روتر، سیستم‌عامل، پروتکل‌ها و برنامه‌ها.</p>
-<p>اگر تمام این اجزا بدون ساختار مشترک طراحی می‌شدند، ارتباط بین تجهیزات مختلف بسیار دشوار بود.</p>
-<p>مدل‌های شبکه، ارتباط را به بخش‌های کوچک‌تر تقسیم می‌کنند. هر لایه مسئولیت مشخصی دارد و با لایه‌های مجاور تعامل می‌کند.</p>
+<section id="چرا-شبکه-به-مدل-لایهای-نیاز-دارد" class="level2">
+<h2 class="anchored" data-anchor-id="چرا-شبکه-به-مدل-لایهای-نیاز-دارد">2. چرا شبکه به مدل لایه‌ای نیاز دارد؟</h2>
+<p>تصور کن می‌خواهیم یک کامپیوتر با سیستم‌عامل Windows را به سروری در یک کشور دیگر متصل کنیم.</p>
+<p>در این ارتباط اجزای زیادی دخالت دارند:</p>
+<ul>
+<li>مرورگر وب</li>
+<li>سیستم‌عامل</li>
+<li>TCP یا UDP</li>
+<li>IP</li>
+<li>کارت شبکه</li>
+<li>Switch</li>
+<li>Router</li>
+<li>کابل یا ارتباط بی‌سیم</li>
+<li>تجهیزات شبکه بین مبدأ و مقصد</li>
+<li>سیستم‌عامل سرور</li>
+<li>برنامه‌ای که روی سرور اجرا می‌شود</li>
+</ul>
+<p>هر کدام از این اجزا وظیفه متفاوتی دارند.</p>
+<p>اگر تمام این وظایف در یک ساختار یکپارچه و بدون تفکیک طراحی می‌شدند، تغییر یا عیب‌یابی هر قسمت می‌توانست کل سیستم ارتباطی را پیچیده کند.</p>
+<section id="مفهوم-layering" class="level3">
+<h3 class="anchored" data-anchor-id="مفهوم-layering">2.1. مفهوم Layering</h3>
+<p>در معماری لایه‌ای، وظایف ارتباطی به چند بخش مستقل تقسیم می‌شوند.</p>
+<p>هر لایه:</p>
+<ol type="1">
+<li>مسئولیت مشخصی دارد.</li>
+<li>خدماتی را برای لایه بالاتر فراهم می‌کند.</li>
+<li>از خدمات لایه پایین‌تر استفاده می‌کند.</li>
+<li>برای ارتباط خود از قوانین و پروتکل‌های مشخصی پیروی می‌کند.</li>
+</ol>
+<p>این معماری باعث می‌شود بتوانیم یک بخش از شبکه را تغییر دهیم، بدون اینکه مجبور باشیم تمام بخش‌های دیگر را از ابتدا طراحی کنیم.</p>
 </section>
-<section id="مدل-osi" class="level2">
-<h2 class="anchored" data-anchor-id="مدل-osi">2. مدل OSI</h2>
-<p>مدل OSI یک مدل مرجع هفت‌لایه‌ای است.</p>
+<section id="مزایای-معماری-لایهای" class="level3">
+<h3 class="anchored" data-anchor-id="مزایای-معماری-لایهای">2.2. مزایای معماری لایه‌ای</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>مزیت</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Modularity</td>
+<td>تقسیم سیستم پیچیده به بخش‌های کوچک‌تر</td>
+</tr>
+<tr class="even">
+<td>Interoperability</td>
+<td>امکان ارتباط تجهیزات و سیستم‌های مختلف</td>
+</tr>
+<tr class="odd">
+<td>Troubleshooting</td>
+<td>محدود کردن محدوده احتمالی مشکل</td>
+</tr>
+<tr class="even">
+<td>Scalability</td>
+<td>توسعه سیستم بدون بازطراحی کامل</td>
+</tr>
+<tr class="odd">
+<td>Standardization</td>
+<td>استفاده از استانداردها و پروتکل‌های مشترک</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="مثال-واقعی" class="level3">
+<h3 class="anchored" data-anchor-id="مثال-واقعی">مثال واقعی</h3>
+<p>فرض کن شرکت تصمیم می‌گیرد Switchهای خود را از یک تولیدکننده به تولیدکننده دیگری تغییر دهد.</p>
+<p>اگر تجهیزات جدید از استانداردهای Ethernet و پروتکل‌های مورد نیاز پشتیبانی کنند، برنامه‌های کاربردی و سرویس‌های شبکه لزوماً نیازی به تغییر ندارند.</p>
+<p>این یکی از مزایای جداسازی وظایف در معماری شبکه است.</p>
+<hr>
+</section>
+</section>
+<section id="مدل-osi-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="مدل-osi-چیست">3. مدل OSI چیست؟</h2>
+<p>مدل OSI مخفف Open Systems Interconnection است.</p>
+<p>این مدل توسط ISO برای توصیف و استانداردسازی مفاهیم ارتباط میان سیستم‌های مختلف توسعه داده شد.</p>
+<p>OSI دارای هفت لایه است.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>شماره</th>
-<th>لایه</th>
+<th>Layer</th>
 <th>وظیفه اصلی</th>
+<th>نمونه مفاهیم</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>7</td>
 <td>Application</td>
-<td>سرویس‌های شبکه برای برنامه‌ها</td>
+<td>خدمات شبکه برای برنامه‌ها</td>
+<td>HTTP, DNS, SMTP</td>
 </tr>
 <tr class="even">
 <td>6</td>
 <td>Presentation</td>
-<td>قالب‌بندی، رمزنگاری و فشرده‌سازی</td>
+<td>نمایش و تبدیل داده</td>
+<td>Encoding, Encryption</td>
 </tr>
 <tr class="odd">
 <td>5</td>
 <td>Session</td>
 <td>مدیریت نشست ارتباطی</td>
+<td>Session Management</td>
 </tr>
 <tr class="even">
 <td>4</td>
 <td>Transport</td>
-<td>ارتباط انتها به انتها و پورت‌ها</td>
+<td>انتقال انتها به انتها</td>
+<td>TCP, UDP</td>
 </tr>
 <tr class="odd">
 <td>3</td>
 <td>Network</td>
-<td>آدرس‌دهی منطقی و مسیریابی</td>
+<td>آدرس‌دهی و مسیریابی</td>
+<td>IPv4, IPv6</td>
 </tr>
 <tr class="even">
 <td>2</td>
 <td>Data Link</td>
-<td>فریم، MAC و ارتباط محلی</td>
+<td>انتقال فریم در لینک محلی</td>
+<td>Ethernet, MAC</td>
 </tr>
 <tr class="odd">
 <td>1</td>
 <td>Physical</td>
-<td>انتقال بیت روی رسانه</td>
+<td>انتقال سیگنال و بیت</td>
+<td>Cable, Fiber, Radio</td>
 </tr>
 </tbody>
 </table>
-<section id="لایههای-مهم-در-عمل" class="level3">
-<h3 class="anchored" data-anchor-id="لایههای-مهم-در-عمل">لایه‌های مهم در عمل</h3>
-<p><strong>Layer 1: Physical</strong></p>
-<p>کابل، فیبر نوری، سیگنال رادیویی، کانکتور و سرعت انتقال در این لایه قرار می‌گیرند.</p>
-<p><strong>Layer 2: Data Link</strong></p>
-<p>ارتباط در شبکه محلی، Ethernet، MAC Address و Switching در این لایه مطرح هستند.</p>
-<p><strong>Layer 3: Network</strong></p>
-<p>IP Address و Routing وظایف اصلی این لایه‌اند.</p>
-<p><strong>Layer 4: Transport</strong></p>
-<p>TCP و UDP و شماره پورت‌ها در این لایه قرار می‌گیرند.</p>
-<p><strong>Layer 7: Application</strong></p>
-<p>پروتکل‌هایی مانند HTTP، DNS و SSH در این سطح استفاده می‌شوند.</p>
-<p>نکته: مدل OSI یک مدل مفهومی است. نباید تصور کنیم تمام پروتکل‌های واقعی دقیقاً در یک خانه از آن قرار می‌گیرند.</p>
+<p>نکته مهم: OSI یک مدل مرجع است. در شبکه واقعی، مرز پروتکل‌ها همیشه دقیقاً مطابق مرزهای این هفت لایه نیست.</p>
+<hr>
+</section>
+<section id="بررسی-عمیق-لایههای-osi" class="level2">
+<h2 class="anchored" data-anchor-id="بررسی-عمیق-لایههای-osi">4. بررسی عمیق لایه‌های OSI</h2>
+<section id="layer-1-physical" class="level3">
+<h3 class="anchored" data-anchor-id="layer-1-physical">Layer 1: Physical</h3>
+<p><badge color="info">L1 · Physical</badge></p>
+<p>این لایه مسئول انتقال بیت‌ها از طریق رسانه فیزیکی است.</p>
+<p>در این لایه هنوز مفاهیمی مانند IP Address یا TCP Port مطرح نیستند.</p>
+<p>وظایف اصلی:</p>
+<ul>
+<li>تبدیل بیت‌ها به سیگنال قابل انتقال</li>
+<li>انتقال سیگنال از طریق کابل، فیبر یا امواج رادیویی</li>
+<li>تعیین مشخصات فیزیکی Interface</li>
+<li>مشخصات الکتریکی، نوری و رادیویی</li>
+<li>نرخ انتقال داده و ویژگی‌های رسانه</li>
+</ul>
+<section id="اجزای-مرتبط" class="level4">
+<h4 class="anchored" data-anchor-id="اجزای-مرتبط">اجزای مرتبط</h4>
+<ul>
+<li>Ethernet Cable</li>
+<li>Fiber Optic</li>
+<li>RJ45 Connector</li>
+<li>Network Interface</li>
+<li>Repeater</li>
+<li>Hub</li>
+<li>Wireless Radio</li>
+</ul>
+</section>
+<section id="مثال-عیبیابی" class="level4">
+<h4 class="anchored" data-anchor-id="مثال-عیبیابی">مثال عیب‌یابی</h4>
+<p>کاربری می‌گوید کامپیوترش به شبکه متصل نمی‌شود.</p>
+<p>اولین بررسی‌ها:</p>
+<ul>
+<li>آیا کابل متصل است؟</li>
+<li>چراغ Link روی کارت شبکه روشن است؟</li>
+<li>Interface فعال است؟</li>
+<li>کابل یا پورت Switch مشکل فیزیکی دارد؟</li>
+<li>سرعت و Duplex دو سمت ارتباط با یکدیگر سازگارند؟</li>
+</ul>
+<p>در این شرایط باید از لایه فیزیکی شروع کنیم.</p>
+</section>
+<section id="آزمایش-عملی" class="level4">
+<h4 class="anchored" data-anchor-id="آزمایش-عملی">آزمایش عملی</h4>
+<p>در PowerShell:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>برای مشاهده وضعیت Interfaceها:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter <span class="op">|</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Format-Table</span> Name<span class="op">,</span> InterfaceDescription<span class="op">,</span> Status<span class="op">,</span> LinkSpeed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>به ستون‌های Status و LinkSpeed توجه کن.</p>
+<p><strong>تمرین:</strong> اگر Status یک Interface برابر Disconnected باشد، چه مواردی را بررسی می‌کنی؟</p>
+<hr>
 </section>
 </section>
-<section id="مدل-tcpip" class="level2">
-<h2 class="anchored" data-anchor-id="مدل-tcpip">3. مدل TCP/IP</h2>
-<p>مدل TCP/IP به معماری واقعی اینترنت نزدیک‌تر است.</p>
+<section id="layer-2-data-link" class="level3">
+<h3 class="anchored" data-anchor-id="layer-2-data-link">Layer 2: Data Link</h3>
+<p><badge color="info">L2 · Data Link</badge></p>
+<p>این لایه وظیفه انتقال Frame میان دستگاه‌هایی را بر عهده دارد که از طریق یک لینک یا شبکه محلی به یکدیگر متصل هستند.</p>
+<p>یکی از مفاهیم کلیدی این لایه MAC Address است.</p>
+<section id="وظایف-مهم" class="level4">
+<h4 class="anchored" data-anchor-id="وظایف-مهم">وظایف مهم</h4>
+<ul>
+<li>Frame Encapsulation</li>
+<li>MAC Addressing</li>
+<li>Media Access Control</li>
+<li>Frame Delivery</li>
+<li>Error Detection در سطح Frame</li>
+</ul>
+</section>
+<section id="mac-address" class="level4">
+<h4 class="anchored" data-anchor-id="mac-address">MAC Address</h4>
+<p>MAC Address یک شناسه مورد استفاده در ارتباطات لایه دوم است.</p>
+<p>یک MAC Address متداول Ethernet دارای 48 بیت است.</p>
+<p>مثال:</p>
+<pre class="text"><code>00:1A:2B:3C:4D:5E</code></pre>
+<p>این مقدار معمولاً به شکل شش بخش hexadecimal نمایش داده می‌شود.</p>
+</section>
+<section id="ethernet-frame" class="level4">
+<h4 class="anchored" data-anchor-id="ethernet-frame">Ethernet Frame</h4>
+<p>یک Ethernet Frame معمولی شامل بخش‌های زیر است:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>TCP/IP</th>
-<th>لایه‌های متناظر OSI</th>
+<th>Field</th>
+<th>کاربرد</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Destination MAC</td>
+<td>MAC مقصد</td>
+</tr>
+<tr class="even">
+<td>Source MAC</td>
+<td>MAC مبدأ</td>
+</tr>
+<tr class="odd">
+<td>EtherType</td>
+<td>مشخص کردن نوع پروتکل بالاتر</td>
+</tr>
+<tr class="even">
+<td>Payload</td>
+<td>داده حمل‌شده</td>
+</tr>
+<tr class="odd">
+<td>FCS</td>
+<td>بررسی خطای Frame</td>
+</tr>
+</tbody>
+</table>
+<p>در Ethernet معمولی، FCS برای تشخیص خرابی Frame استفاده می‌شود.</p>
+</section>
+<section id="نقش-switch" class="level4">
+<h4 class="anchored" data-anchor-id="نقش-switch">نقش Switch</h4>
+<p>Switchهای لایه دوم از MAC Address برای تصمیم‌گیری درباره ارسال Frame استفاده می‌کنند.</p>
+<p>سه مرحله مهم:</p>
+<ol type="1">
+<li>دریافت Frame</li>
+<li>یادگیری Source MAC و پورت ورودی</li>
+<li>بررسی Destination MAC و انتخاب پورت خروجی</li>
+</ol>
+<p>این اطلاعات در MAC Address Table نگهداری می‌شوند.</p>
+</section>
+<section id="آزمایش-عملی-1" class="level4">
+<h4 class="anchored" data-anchor-id="آزمایش-عملی-1">آزمایش عملی</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مشاهده MAC Address:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter <span class="op">|</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Select-Object</span> Name<span class="op">,</span> MacAddress<span class="op">,</span> Status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مشاهده ARP Cache:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>arp <span class="op">-</span>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>نکته: ARP از نظر عملکرد بین آدرس‌دهی IPv4 و Ethernet ارتباط برقرار می‌کند. ARP معمولاً به‌عنوان پروتکل مستقلی میان لایه‌های Network و Data Link توضیح داده می‌شود، نه یک پروتکل ساده و کاملاً محدود به یک لایه.</p>
+<hr>
+</section>
+</section>
+<section id="layer-3-network" class="level3">
+<h3 class="anchored" data-anchor-id="layer-3-network">Layer 3: Network</h3>
+<p><badge color="info">L3 · Network</badge></p>
+<p>این لایه مسئول آدرس‌دهی منطقی و انتقال Packet بین شبکه‌های مختلف است.</p>
+<p>مهم‌ترین پروتکل‌های این لایه:</p>
+<ul>
+<li>IPv4</li>
+<li>IPv6</li>
+<li>ICMP</li>
+</ul>
+<section id="ip-address" class="level4">
+<h4 class="anchored" data-anchor-id="ip-address">IP Address</h4>
+<p>IP Address مشخص می‌کند یک Interface در ساختار آدرس‌دهی IP چه آدرسی دارد.</p>
+<p>مثال:</p>
+<pre class="text"><code>192.168.10.25</code></pre>
+</section>
+<section id="routing" class="level4">
+<h4 class="anchored" data-anchor-id="routing">Routing</h4>
+<p>اگر مقصد در شبکه محلی نباشد، سیستم باید Packet را به یک Router یا Default Gateway ارسال کند.</p>
+<p>Router با استفاده از Routing Table درباره مسیر بعدی تصمیم می‌گیرد.</p>
+</section>
+<section id="مثال" class="level4">
+<h4 class="anchored" data-anchor-id="مثال">مثال</h4>
+<p>فرض کن:</p>
+<pre class="text"><code>Your IP:       192.168.10.25
+Subnet Mask:   255.255.255.0
+Gateway:       192.168.10.1
+Destination:   8.8.8.8</code></pre>
+<p>مقصد در Subnet محلی قرار ندارد.</p>
+<p>بنابراین سیستم Packet را به Gateway ارسال می‌کند.</p>
+<p>نکته بسیار مهم:</p>
+<p>در یک ارتباط معمولی Routed، آدرس IP مبدأ و مقصد در طول مسیر باقی می‌مانند، اما آدرس‌های MAC در هر لینک لایه دوم می‌توانند تغییر کنند.</p>
+<p>این تفاوت یکی از مهم‌ترین مفاهیم برای درک Routing است.</p>
+</section>
+<section id="آزمایش-عملی-2" class="level4">
+<h4 class="anchored" data-anchor-id="آزمایش-عملی-2">آزمایش عملی</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مشاهده جدول مسیریابی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>route print</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>مشاهده مسیر تا مقصد:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tracert <span class="dv">8.8</span><span class="op">.</span><span class="dv">8.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="layer-4-transport" class="level3">
+<h3 class="anchored" data-anchor-id="layer-4-transport">Layer 4: Transport</h3>
+<p><badge color="info">L4 · Transport</badge></p>
+<p>این لایه ارتباط منطقی میان برنامه‌های در حال اجرا روی سیستم‌های مختلف را مدیریت می‌کند.</p>
+<p>دو پروتکل بسیار مهم:</p>
+<ul>
+<li>TCP</li>
+<li>UDP</li>
+</ul>
+<section id="tcp" class="level4">
+<h4 class="anchored" data-anchor-id="tcp">TCP</h4>
+<p>TCP یک پروتکل Connection-oriented است.</p>
+<p>ویژگی‌های مهم:</p>
+<ul>
+<li>اتصال منطقی با Three-Way Handshake</li>
+<li>Sequence Number</li>
+<li>Acknowledgment</li>
+<li>Retransmission</li>
+<li>Flow Control</li>
+<li>Congestion Control</li>
+</ul>
+</section>
+<section id="tcp-three-way-handshake" class="level4">
+<h4 class="anchored" data-anchor-id="tcp-three-way-handshake">TCP Three-Way Handshake</h4>
+<p>فرآیند برقراری اتصال TCP:</p>
+<pre class="text"><code>Client                  Server
+  |                        |
+  |-------- SYN ----------&gt;|
+  |                        |
+  |&lt;----- SYN + ACK -------|
+  |                        |
+  |-------- ACK ----------&gt;|
+  |                        |
+  |     Connection         |
+  |      Established       |</code></pre>
+<p>سه مرحله:</p>
+<ol type="1">
+<li>Client درخواست اتصال می‌فرستد.</li>
+<li>Server درخواست را تأیید می‌کند.</li>
+<li>Client تأیید نهایی را ارسال می‌کند.</li>
+</ol>
+</section>
+<section id="udp" class="level4">
+<h4 class="anchored" data-anchor-id="udp">UDP</h4>
+<p>UDP پروتکلی Connectionless است.</p>
+<p>ویژگی‌ها:</p>
+<ul>
+<li>سربار کمتر نسبت به TCP</li>
+<li>بدون تضمین تحویل در سطح پروتکل</li>
+<li>بدون Three-Way Handshake</li>
+<li>مناسب برای کاربردهایی که تأخیر اهمیت زیادی دارد</li>
+</ul>
+</section>
+<section id="مقایسه-tcp-و-udp" class="level4">
+<h4 class="anchored" data-anchor-id="مقایسه-tcp-و-udp">مقایسه TCP و UDP</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ویژگی</th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Connection</td>
+<td>Connection-oriented</td>
+<td>Connectionless</td>
+</tr>
+<tr class="even">
+<td>Reliability</td>
+<td>دارای سازوکار تحویل قابل اطمینان</td>
+<td>بدون تضمین تحویل</td>
+</tr>
+<tr class="odd">
+<td>Ordering</td>
+<td>پشتیبانی می‌کند</td>
+<td>تضمین نمی‌کند</td>
+</tr>
+<tr class="even">
+<td>Retransmission</td>
+<td>دارد</td>
+<td>در خود UDP ندارد</td>
+</tr>
+<tr class="odd">
+<td>Overhead</td>
+<td>بیشتر</td>
+<td>کمتر</td>
+</tr>
+<tr class="even">
+<td>نمونه کاربرد</td>
+<td>HTTPS روی TCP، SSH</td>
+<td>DNS معمولی، VoIP، QUIC</td>
+</tr>
+</tbody>
+</table>
+<p>نکته: DNS معمولاً از UDP استفاده می‌کند، اما در شرایطی مانند پاسخ‌های بزرگ یا Zone Transfer می‌تواند از TCP هم استفاده کند.</p>
+</section>
+<section id="port-number" class="level4">
+<h4 class="anchored" data-anchor-id="port-number">Port Number</h4>
+<p>Port مشخص می‌کند داده به کدام سرویس یا Endpoint برنامه‌ای تحویل داده شود.</p>
+<p>نمونه‌ها:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Port</th>
+<th>Protocol / Service</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>22</td>
+<td>SSH</td>
+</tr>
+<tr class="even">
+<td>53</td>
+<td>DNS</td>
+</tr>
+<tr class="odd">
+<td>80</td>
+<td>HTTP</td>
+</tr>
+<tr class="even">
+<td>443</td>
+<td>HTTPS</td>
+</tr>
+<tr class="odd">
+<td>3389</td>
+<td>RDP</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="آزمایش-عملی-3" class="level4">
+<h4 class="anchored" data-anchor-id="آزمایش-عملی-3">آزمایش عملی</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection <span class="op">|</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Select-Object</span> <span class="op">-</span>First <span class="dv">15</span> LocalAddress<span class="op">,</span> LocalPort<span class="op">,</span> RemoteAddress<span class="op">,</span> RemotePort<span class="op">,</span> State</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>بررسی پورت یک سرویس:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection google<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>در خروجی، مقدار <code>TcpTestSucceeded</code> را بررسی کن.</p>
+<hr>
+</section>
+</section>
+<section id="layer-5-session" class="level3">
+<h3 class="anchored" data-anchor-id="layer-5-session">Layer 5: Session</h3>
+<p><badge color="info">L5 · Session</badge></p>
+<p>این لایه در مدل OSI مسئول مفاهیم مرتبط با ایجاد، مدیریت و پایان دادن به نشست‌های ارتباطی است.</p>
+<p>وظایف مفهومی:</p>
+<ul>
+<li>Session Establishment</li>
+<li>Session Maintenance</li>
+<li>Session Termination</li>
+<li>Dialog Control</li>
+<li>Synchronization</li>
+</ul>
+<section id="مثال-1" class="level4">
+<h4 class="anchored" data-anchor-id="مثال-1">مثال</h4>
+<p>تصور کن یک برنامه در حال برقراری ارتباط با یک سرویس راه دور است.</p>
+<p>برنامه باید بداند:</p>
+<ul>
+<li>نشست ارتباطی چه زمانی آغاز شده است؟</li>
+<li>آیا نشست هنوز معتبر است؟</li>
+<li>آیا ارتباط باید ادامه پیدا کند؟</li>
+<li>چه زمانی نشست پایان می‌یابد؟</li>
+</ul>
+<p>در سیستم‌های واقعی، بسیاری از این وظایف می‌توانند توسط Application، Library یا پروتکل‌های دیگر پیاده‌سازی شوند.</p>
+<p>بنابراین نباید انتظار داشته باشیم همیشه یک پروتکل مستقل و مشخص به نام Session Layer در سیستم‌عامل ببینیم.</p>
+<hr>
+</section>
+</section>
+<section id="layer-6-presentation" class="level3">
+<h3 class="anchored" data-anchor-id="layer-6-presentation">Layer 6: Presentation</h3>
+<p><badge color="info">L6 · Presentation</badge></p>
+<p>این لایه در مدل OSI مسئول نحوه نمایش، تبدیل و قالب‌بندی داده است.</p>
+<p>مفاهیم مهم:</p>
+<ul>
+<li>Data Encoding</li>
+<li>Character Set Conversion</li>
+<li>Data Serialization</li>
+<li>Compression</li>
+<li>Encryption</li>
+</ul>
+<section id="مثالهای-واقعی" class="level4">
+<h4 class="anchored" data-anchor-id="مثالهای-واقعی">مثال‌های واقعی</h4>
+<p>JSON:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"hostname"</span><span class="fu">:</span> <span class="st">"router-01"</span><span class="fu">,</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"management_ip"</span><span class="fu">:</span> <span class="st">"192.168.10.1"</span><span class="fu">,</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"status"</span><span class="fu">:</span> <span class="st">"online"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این ساختار روشی برای نمایش و تبادل داده میان برنامه‌هاست.</p>
+<p>Encoding:</p>
+<ul>
+<li>UTF-8</li>
+<li>ASCII</li>
+</ul>
+<p>Serialization:</p>
+<ul>
+<li>JSON</li>
+<li>XML</li>
+<li>Protocol Buffers</li>
+</ul>
+<p>Encryption:</p>
+<ul>
+<li>TLS</li>
+</ul>
+<p>نکته: TLS معمولاً در منابع آموزشی با Layer 6 مرتبط می‌شود، اما در معماری واقعی اینترنت یک نگاشت کاملاً دقیق و یک‌به‌یک به لایه‌های OSI ندارد.</p>
+<hr>
+</section>
+</section>
+<section id="layer-7-application" class="level3">
+<h3 class="anchored" data-anchor-id="layer-7-application">Layer 7: Application</h3>
+<p><badge color="success">L7 · Application</badge></p>
+<p>این لایه خدمات شبکه را برای برنامه‌های کاربردی فراهم می‌کند.</p>
+<p>پروتکل‌های مهم:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Protocol</th>
+<th>کاربرد</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HTTP</td>
+<td>انتقال محتوای وب</td>
+</tr>
+<tr class="even">
+<td>HTTPS</td>
+<td>ارتباط وب با TLS</td>
+</tr>
+<tr class="odd">
+<td>DNS</td>
+<td>تبدیل نام دامنه به IP</td>
+</tr>
+<tr class="even">
+<td>SSH</td>
+<td>مدیریت امن سیستم‌های راه دور</td>
+</tr>
+<tr class="odd">
+<td>SMTP</td>
+<td>ارسال ایمیل</td>
+</tr>
+<tr class="even">
+<td>DHCP</td>
+<td>تخصیص خودکار تنظیمات IP</td>
+</tr>
+<tr class="odd">
+<td>SNMP</td>
+<td>مدیریت و مانیتورینگ تجهیزات</td>
+</tr>
+</tbody>
+</table>
+<section id="مثال-واقعی-1" class="level4">
+<h4 class="anchored" data-anchor-id="مثال-واقعی-1">مثال واقعی</h4>
+<p>وقتی در مرورگر آدرس زیر را وارد می‌کنی:</p>
+<pre class="text"><code>https://example.com</code></pre>
+<p>برنامه مرورگر باید بتواند:</p>
+<ol type="1">
+<li>نام دامنه را Resolve کند.</li>
+<li>مقصد شبکه را پیدا کند.</li>
+<li>ارتباط مناسب را برقرار کند.</li>
+<li>درخواست وب را ارسال کند.</li>
+<li>پاسخ سرور را پردازش کند.</li>
+</ol>
+<p>این فرایند به همکاری چندین لایه وابسته است.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="مدل-tcpip" class="level2">
+<h2 class="anchored" data-anchor-id="مدل-tcpip">5. مدل TCP/IP</h2>
+<p>مدل TCP/IP به معماری واقعی ارتباطات اینترنت نزدیک‌تر است.</p>
+<p>این مدل معمولاً در چهار لایه نمایش داده می‌شود.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>TCP/IP Layer</th>
+<th>لایه‌های OSI متناظر</th>
 </tr>
 </thead>
 <tbody>
@@ -306,32 +895,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>3</td>
 </tr>
 <tr class="even">
-<td>Network Access</td>
+<td>Network Access / Link</td>
 <td>1، 2</td>
 </tr>
 </tbody>
 </table>
-<p>در بسیاری از منابع، لایه آخر TCP/IP با نام Link نیز معرفی می‌شود.</p>
+<p>در برخی منابع، مدل TCP/IP با پنج لایه نیز نمایش داده می‌شود؛ در این نمایش، Physical و Data Link جدا هستند.</p>
+<p>بنابراین هنگام مطالعه منابع مختلف ممکن است با دو نوع نمودار مواجه شوی.</p>
+<section id="مقایسه-osi-و-tcpip" class="level3">
+<h3 class="anchored" data-anchor-id="مقایسه-osi-و-tcpip">مقایسه OSI و TCP/IP</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ویژگی</th>
+<th>OSI</th>
+<th>TCP/IP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>تعداد لایه</td>
+<td>7</td>
+<td>معمولاً 4</td>
+</tr>
+<tr class="even">
+<td>ماهیت</td>
+<td>Reference Model</td>
+<td>Protocol Architecture</td>
+</tr>
+<tr class="odd">
+<td>کاربرد آموزشی</td>
+<td>بسیار مهم</td>
+<td>بسیار مهم</td>
+</tr>
+<tr class="even">
+<td>ارتباط با اینترنت واقعی</td>
+<td>مدل مرجع</td>
+<td>نزدیک‌تر به پیاده‌سازی اینترنت</td>
+</tr>
+<tr class="odd">
+<td>تفکیک Session و Presentation</td>
+<td>جداگانه</td>
+<td>در Application ادغام شده‌اند</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="encapsulation-چیست" class="level2">
-<h2 class="anchored" data-anchor-id="encapsulation-چیست">4. Encapsulation چیست؟</h2>
-<p>هنگامی که یک برنامه داده‌ای ارسال می‌کند، هر لایه اطلاعات کنترلی مورد نیاز خود را به آن اضافه می‌کند.</p>
-<p>فرآیند ساده‌شده:</p>
-<ol type="1">
-<li>Application: داده برنامه</li>
-<li>Transport: اضافه شدن TCP یا UDP Header</li>
-<li>Network: اضافه شدن IP Header</li>
-<li>Data Link: اضافه شدن Ethernet Header و Trailer</li>
-<li>Physical: تبدیل به سیگنال و ارسال</li>
-</ol>
-<p>در سمت گیرنده، فرآیند معکوس انجام می‌شود که Decapsulation نام دارد.</p>
-<section id="اصطلاحات-مهم" class="level3">
-<h3 class="anchored" data-anchor-id="اصطلاحات-مهم">اصطلاحات مهم</h3>
+<section id="نکته-مهندسی" class="level3">
+<h3 class="anchored" data-anchor-id="نکته-مهندسی">نکته مهندسی</h3>
+<p>OSI و TCP/IP رقیب یکدیگر نیستند.</p>
+<p>OSI به ما کمک می‌کند معماری ارتباط را تحلیل کنیم.</p>
+<p>TCP/IP کمک می‌کند پروتکل‌های واقعی مورد استفاده در اینترنت را درک کنیم.</p>
+<p>یک Network Engineer باید هر دو را بشناسد.</p>
+<hr>
+</section>
+</section>
+<section id="encapsulation-و-decapsulation" class="level2">
+<h2 class="anchored" data-anchor-id="encapsulation-و-decapsulation">6. Encapsulation و Decapsulation</h2>
+<p>یکی از مهم‌ترین مفاهیم این جلسه Encapsulation است.</p>
+<p>وقتی یک برنامه داده‌ای برای ارسال تولید می‌کند، داده از لایه‌های مختلف عبور می‌کند.</p>
+<p>هر لایه اطلاعات کنترلی مورد نیاز خود را به داده اضافه می‌کند.</p>
+<p>این اطلاعات معمولاً در قالب Header و در برخی موارد Trailer قرار می‌گیرند.</p>
+<section id="فرایند-encapsulation" class="level3">
+<h3 class="anchored" data-anchor-id="فرایند-encapsulation">6.1. فرایند Encapsulation</h3>
+<pre class="text"><code>Application Layer
+       |
+       v
+     DATA
+       |
+       v
+Transport Layer
+       |
+       v
+ [TCP Header | DATA]
+       |
+       v
+Network Layer
+       |
+       v
+[IP Header | TCP Segment]
+       |
+       v
+Data Link Layer
+       |
+       v
+[Ethernet Header | IP Packet | FCS]
+       |
+       v
+Physical Layer
+       |
+       v
+       BITS</code></pre>
+</section>
+<section id="اصطلاحات-pdu" class="level3">
+<h3 class="anchored" data-anchor-id="اصطلاحات-pdu">6.2. اصطلاحات PDU</h3>
+<p>PDU مخفف Protocol Data Unit است.</p>
+<p>هر لایه می‌تواند واحد داده را با نام متفاوتی توصیف کند.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>لایه</th>
-<th>واحد داده</th>
+<th>PDU</th>
 </tr>
 </thead>
 <tbody>
@@ -341,93 +1005,574 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td>Transport</td>
-<td>Segment یا Datagram</td>
+<td>Segment در TCP</td>
 </tr>
 <tr class="odd">
+<td>Transport</td>
+<td>Datagram در UDP</td>
+</tr>
+<tr class="even">
 <td>Network</td>
 <td>Packet</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Data Link</td>
 <td>Frame</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Physical</td>
 <td>Bits</td>
 </tr>
 </tbody>
 </table>
+<p>نکته: نام‌گذاری PDU به پروتکل وابسته است. برای مثال TCP Segment و UDP Datagram نام‌های دقیق‌تری هستند.</p>
 </section>
+<section id="decapsulation" class="level3">
+<h3 class="anchored" data-anchor-id="decapsulation">6.3. Decapsulation</h3>
+<p>در مقصد، فرآیند معکوس اتفاق می‌افتد.</p>
+<p>هر لایه اطلاعات مربوط به خودش را پردازش می‌کند و داده را به لایه بالاتر تحویل می‌دهد.</p>
+<pre class="text"><code>Received Bits
+      |
+      v
+Physical Layer
+      |
+      v
+Ethernet Frame
+      |
+      v
+Network Layer
+      |
+      v
+IP Packet
+      |
+      v
+Transport Layer
+      |
+      v
+TCP Segment / UDP Datagram
+      |
+      v
+Application Data</code></pre>
 </section>
-<section id="مثال-واقعی" class="level2">
-<h2 class="anchored" data-anchor-id="مثال-واقعی">5. مثال واقعی</h2>
-<p>فرض کن در مرورگر آدرس یک وب‌سایت را وارد می‌کنی.</p>
+<section id="چرا-encapsulation-مهم-است" class="level3">
+<h3 class="anchored" data-anchor-id="چرا-encapsulation-مهم-است">6.4. چرا Encapsulation مهم است؟</h3>
+<p>چون هر لایه می‌تواند بدون نیاز به دانستن جزئیات داخلی تمام لایه‌های دیگر، وظیفه خودش را انجام دهد.</p>
+<p>برای مثال:</p>
 <ul>
-<li>مرورگر درخواست HTTP را ایجاد می‌کند.</li>
-<li>لایه Transport داده را در TCP قرار می‌دهد.</li>
-<li>لایه Network آدرس IP مبدأ و مقصد را اضافه می‌کند.</li>
-<li>لایه Data Link فریم Ethernet را آماده می‌کند.</li>
-<li>کارت شبکه داده را ارسال می‌کند.</li>
+<li>Ethernet مسئول Frame Delivery است.</li>
+<li>IP مسئول آدرس‌دهی و Routing است.</li>
+<li>TCP مسئول قابلیت اطمینان و ترتیب داده‌هاست.</li>
+<li>HTTP مسئول قالب و معنای درخواست وب است.</li>
 </ul>
-<p>هر لایه وظیفه خودش را انجام می‌دهد؛ این جداسازی باعث می‌شود سیستم پیچیده شبکه قابل مدیریت باشد.</p>
-</section>
-<section id="آزمایش-عملی" class="level2">
-<h2 class="anchored" data-anchor-id="آزمایش-عملی">6. آزمایش عملی</h2>
-<p>PowerShell را باز کن.</p>
-<section id="مشاهده-اطلاعات-کارت-شبکه" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-اطلاعات-کارت-شبکه">مشاهده اطلاعات کارت شبکه</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="مشاهده-تنظیمات-ip" class="level3">
-<h3 class="anchored" data-anchor-id="مشاهده-تنظیمات-ip">مشاهده تنظیمات IP</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="بررسی-مسیر-ارتباط" class="level3">
-<h3 class="anchored" data-anchor-id="بررسی-مسیر-ارتباط">بررسی مسیر ارتباط</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tracert <span class="dv">8.8</span><span class="op">.</span><span class="dv">8.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>هر دستور از زاویه متفاوتی به شبکه نگاه می‌کند. خروجی‌ها را ذخیره کن و تفاوتشان را توضیح بده.</p>
+<p>این تفکیک، معماری شبکه را قابل توسعه و عیب‌یابی می‌کند.</p>
+<hr>
 </section>
 </section>
-<section id="تمرین-عیبیابی" class="level2">
-<h2 class="anchored" data-anchor-id="تمرین-عیبیابی">7. تمرین عیب‌یابی</h2>
-<p>برای هر مشکل، لایه محتمل را مشخص کن:</p>
+<section id="تحلیل-یک-ارتباط-واقعی-https" class="level2">
+<h2 class="anchored" data-anchor-id="تحلیل-یک-ارتباط-واقعی-https">7. تحلیل یک ارتباط واقعی HTTPS</h2>
+<p>حالا یک سناریوی واقعی را بررسی می‌کنیم.</p>
+<p>فرض کن سیستم تو می‌خواهد به این مقصد متصل شود:</p>
+<pre class="text"><code>https://example.com</code></pre>
+<section id="مرحله-اول-dns-resolution" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-اول-dns-resolution">مرحله اول: DNS Resolution</h3>
+<p>مرورگر یا سیستم‌عامل باید آدرس IP مربوط به نام دامنه را پیدا کند.</p>
+<p>در این مرحله از DNS استفاده می‌شود.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Resolve-DnsName example<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>خروجی شامل اطلاعات مربوط به پاسخ DNS است.</p>
+</section>
+<section id="مرحله-دوم-انتخاب-مقصد-و-route" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-دوم-انتخاب-مقصد-و-route">مرحله دوم: انتخاب مقصد و Route</h3>
+<p>سیستم باید تشخیص دهد مقصد در شبکه محلی قرار دارد یا خیر.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>route print</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>اگر مقصد خارج از شبکه محلی باشد، سیستم از Default Gateway استفاده می‌کند.</p>
+</section>
+<section id="مرحله-سوم-برقراری-ارتباط" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-سوم-برقراری-ارتباط">مرحله سوم: برقراری ارتباط</h3>
+<p>در HTTPS مبتنی بر TCP، ابتدا TCP Connection برقرار می‌شود.</p>
+<p>معمولاً:</p>
+<pre class="text"><code>Client -&gt; Server : SYN
+Server -&gt; Client : SYN-ACK
+Client -&gt; Server : ACK</code></pre>
+<p>سپس فرآیند TLS Handshake انجام می‌شود.</p>
+</section>
+<section id="مرحله-چهارم-انتقال-داده" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-چهارم-انتقال-داده">مرحله چهارم: انتقال داده</h3>
+<p>پس از آماده شدن ارتباط امن، داده‌های HTTP از طریق TLS منتقل می‌شوند.</p>
+<p>در HTTPS مبتنی بر HTTP/1.1 یا HTTP/2، معمولاً TCP استفاده می‌شود.</p>
+<p>اما HTTP/3 از QUIC استفاده می‌کند که بر بستر UDP ساخته شده است.</p>
+<p>این تفاوت نشان می‌دهد که معماری پروتکل‌های واقعی همیشه به یک مسیر ساده و ثابت محدود نیست.</p>
+</section>
+<section id="مرحله-پنجم-دریافت-پاسخ" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-پنجم-دریافت-پاسخ">مرحله پنجم: دریافت پاسخ</h3>
+<p>سرور درخواست را پردازش می‌کند و پاسخ را به Client برمی‌گرداند.</p>
+<p>سیستم مقصد داده را از لایه‌های پایین به بالا پردازش می‌کند.</p>
+<hr>
+</section>
+</section>
+<section id="مشاهده-ارتباط-لایهها-با-wireshark" class="level2">
+<h2 class="anchored" data-anchor-id="مشاهده-ارتباط-لایهها-با-wireshark">8. مشاهده ارتباط لایه‌ها با Wireshark</h2>
+<p>Wireshark یکی از ابزارهای اصلی تحلیل Packet در مهندسی شبکه است.</p>
+<p>با این ابزار می‌توانی بسته‌های واقعی را مشاهده و فیلتر کنی.</p>
+<section id="آزمایش-اول-capture" class="level3">
+<h3 class="anchored" data-anchor-id="آزمایش-اول-capture">آزمایش اول: Capture</h3>
 <ol type="1">
-<li>کابل Ethernet قطع شده است.</li>
-<li>سیستم IP معتبر ندارد.</li>
-<li>Gateway قابل دسترسی نیست.</li>
-<li>پورت TCP سرویس بسته است.</li>
-<li>وب‌سایت درخواست HTTP را رد می‌کند.</li>
-</ol>
-<p>ممکن است یک مشکل چند لایه را درگیر کند؛ هدف، انتخاب نقطه شروع منطقی برای عیب‌یابی است.</p>
-</section>
-<section id="ارتباط-با-network-automation" class="level2">
-<h2 class="anchored" data-anchor-id="ارتباط-با-network-automation">8. ارتباط با Network Automation</h2>
-<p>یک مهندس Network Automation باید بتواند داده‌های شبکه را در لایه‌های مختلف جمع‌آوری و تحلیل کند.</p>
-<p>برای مثال: - بررسی وضعیت Interfaceها - خواندن IP Configuration - بررسی Routeها - تست TCP Portها - تحلیل درخواست‌های API</p>
-<p>شناخت لایه‌ها کمک می‌کند خروجی ابزارهای اتوماسیون را درست تفسیر کنی.</p>
-</section>
-<section id="ارزیابی" class="level2">
-<h2 class="anchored" data-anchor-id="ارزیابی">ارزیابی</h2>
-<ol type="1">
-<li>مدل OSI چند لایه دارد؟</li>
-<li>تفاوت وظیفه Layer 2 و Layer 3 چیست؟</li>
-<li>TCP در کدام لایه قرار می‌گیرد؟</li>
-<li>Encapsulation چه کاری انجام می‌دهد؟</li>
-<li>چرا مدل TCP/IP به اینترنت واقعی نزدیک‌تر است؟</li>
-<li>واحد داده در لایه Network چیست؟</li>
-<li>یک مشکل فیزیکی را با یک مشکل منطقی مقایسه کن.</li>
+<li>Wireshark را اجرا کن.</li>
+<li>Interface فعال خودت را انتخاب کن.</li>
+<li>Capture را شروع کن.</li>
+<li>در مرورگر وارد <code>https://example.com</code> شو.</li>
+<li>چند ثانیه بعد Capture را متوقف کن.</li>
 </ol>
 </section>
-<section id="منابع" class="level2">
-<h2 class="anchored" data-anchor-id="منابع">منابع</h2>
+<section id="آزمایش-دوم-فیلتر-dns" class="level3">
+<h3 class="anchored" data-anchor-id="آزمایش-دوم-فیلتر-dns">آزمایش دوم: فیلتر DNS</h3>
+<pre class="text"><code>dns</code></pre>
+<p>در این فیلتر می‌توانی درخواست‌ها و پاسخ‌های DNS را بررسی کنی.</p>
+</section>
+<section id="آزمایش-سوم-فیلتر-tcp" class="level3">
+<h3 class="anchored" data-anchor-id="آزمایش-سوم-فیلتر-tcp">آزمایش سوم: فیلتر TCP</h3>
+<pre class="text"><code>tcp</code></pre>
+<p>برای مشاهده ارتباطات TCP.</p>
+</section>
+<section id="آزمایش-چهارم-فیلتر-tls" class="level3">
+<h3 class="anchored" data-anchor-id="آزمایش-چهارم-فیلتر-tls">آزمایش چهارم: فیلتر TLS</h3>
+<pre class="text"><code>tls</code></pre>
+<p>برای مشاهده پیام‌های مرتبط با TLS.</p>
+</section>
+<section id="آزمایش-پنجم-فیلتر-icmp" class="level3">
+<h3 class="anchored" data-anchor-id="آزمایش-پنجم-فیلتر-icmp">آزمایش پنجم: فیلتر ICMP</h3>
+<pre class="text"><code>icmp</code></pre>
+<p>برای مشاهده پیام‌های ICMP در IPv4.</p>
+</section>
+<section id="بررسی-یک-packet" class="level3">
+<h3 class="anchored" data-anchor-id="بررسی-یک-packet">بررسی یک Packet</h3>
+<p>وقتی یک Packet را انتخاب می‌کنی، Wireshark معمولاً اطلاعات را به‌صورت لایه‌ای نمایش می‌دهد.</p>
+<p>برای نمونه:</p>
+<pre class="text"><code>Frame
+ ├── Ethernet II
+ ├── Internet Protocol Version 4
+ ├── Transmission Control Protocol
+ └── Application Data</code></pre>
+<p>به این ترتیب می‌توانی ساختار Encapsulation را در یک ارتباط واقعی مشاهده کنی.</p>
+<p><strong>تمرین:</strong> یک Packet را انتخاب کن و موارد زیر را یادداشت کن:</p>
 <ul>
-<li><a href="https://www.cisco.com/">Cisco: OSI Model</a></li>
+<li>Source MAC</li>
+<li>Destination MAC</li>
+<li>Source IP</li>
+<li>Destination IP</li>
+<li>Source Port</li>
+<li>Destination Port</li>
+<li>Protocol</li>
+</ul>
+<p>نکته: در HTTPS، محتوای Application معمولاً رمزگذاری شده است و مشاهده Headerها به معنی مشاهده محتوای رمزگذاری‌شده نیست.</p>
+<hr>
+</section>
+</section>
+<section id="عیبیابی-بر-اساس-مدل-osi" class="level2">
+<h2 class="anchored" data-anchor-id="عیبیابی-بر-اساس-مدل-osi">9. عیب‌یابی بر اساس مدل OSI</h2>
+<p>مدل OSI یکی از ابزارهای ذهنی مهم برای Troubleshooting است.</p>
+<p>به جای اینکه بدون برنامه تنظیمات مختلف را تغییر بدهی، می‌توانی مرحله‌به‌مرحله لایه‌های محتمل مشکل را بررسی کنی.</p>
+<section id="سناریو-اول-هیچ-ارتباطی-وجود-ندارد" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-اول-هیچ-ارتباطی-وجود-ندارد">سناریو اول: هیچ ارتباطی وجود ندارد</h3>
+<p>مشکل:</p>
+<p>کامپیوتر به شبکه متصل نمی‌شود.</p>
+<p>نقطه شروع:</p>
+<p>Layer 1</p>
+<p>بررسی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="سناریو-دوم-ارتباط-محلی-برقرار-نیست" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-دوم-ارتباط-محلی-برقرار-نیست">سناریو دوم: ارتباط محلی برقرار نیست</h3>
+<p>مشکل:</p>
+<p>کامپیوتر به Switch متصل است اما دستگاه محلی دیگری را پیدا نمی‌کند.</p>
+<p>بررسی:</p>
+<ul>
+<li>وضعیت VLAN</li>
+<li>MAC Address Table</li>
+<li>ARP Cache</li>
+<li>Subnet Configuration</li>
+</ul>
+<p>نقطه شروع: Layer 2 و Layer 3</p>
+</section>
+<section id="سناریو-سوم-اینترنت-با-ip-کار-میکند-اما-با-نام-دامنه-نه" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-سوم-اینترنت-با-ip-کار-میکند-اما-با-نام-دامنه-نه">سناریو سوم: اینترنت با IP کار می‌کند اما با نام دامنه نه</h3>
+<p>مشکل:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">8.8</span><span class="op">.</span><span class="dv">8.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>موفق است اما:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>nslookup example<span class="op">.</span><span class="fu">com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>با خطا مواجه می‌شود.</p>
+<p>نقطه شروع: بررسی DNS در لایه Application و تنظیمات شبکه سیستم.</p>
+</section>
+<section id="سناریو-چهارم-سرور-قابل-دسترسی-است-اما-سرویس-باز-نیست" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-چهارم-سرور-قابل-دسترسی-است-اما-سرویس-باز-نیست">سناریو چهارم: سرور قابل دسترسی است اما سرویس باز نیست</h3>
+<p>مشکل:</p>
+<p>سرور Ping می‌شود اما اتصال به پورت 443 موفق نیست.</p>
+<p>بررسی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection example<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>نقطه شروع: Layer 4 و سپس بررسی Firewall و سرویس Application.</p>
+</section>
+<section id="سناریو-پنجم-ارتباط-tcp-برقرار-است-اما-وبسایت-خطا-میدهد" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-پنجم-ارتباط-tcp-برقرار-است-اما-وبسایت-خطا-میدهد">سناریو پنجم: ارتباط TCP برقرار است اما وب‌سایت خطا می‌دهد</h3>
+<p>ممکن است:</p>
+<ul>
+<li>سرور خطای HTTP برگرداند.</li>
+<li>تنظیمات TLS مشکل داشته باشد.</li>
+<li>برنامه سرور خطا داشته باشد.</li>
+<li>درخواست از نظر Application معتبر نباشد.</li>
+</ul>
+<p>در این حالت باید به Layer 7 و اجزای بالاتر توجه کنیم.</p>
+</section>
+<section id="جدول-عیبیابی" class="level3">
+<h3 class="anchored" data-anchor-id="جدول-عیبیابی">جدول عیب‌یابی</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>نشانه</th>
+<th>لایه‌های محتمل</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>کابل قطع است</td>
+<td>L1</td>
+</tr>
+<tr class="even">
+<td>VLAN اشتباه است</td>
+<td>L2</td>
+</tr>
+<tr class="odd">
+<td>Subnet یا Route اشتباه است</td>
+<td>L3</td>
+</tr>
+<tr class="even">
+<td>TCP Port بسته است</td>
+<td>L4</td>
+</tr>
+<tr class="odd">
+<td>مدیریت نشست مشکل دارد</td>
+<td>L5</td>
+</tr>
+<tr class="even">
+<td>Encoding یا TLS مشکل دارد</td>
+<td>L6 / L7</td>
+</tr>
+<tr class="odd">
+<td>درخواست HTTP نامعتبر است</td>
+<td>L7</td>
+</tr>
+</tbody>
+</table>
+<p>این جدول یک راهنمای اولیه است، نه قانون قطعی. یک مشکل واقعی می‌تواند چند لایه را هم‌زمان درگیر کند.</p>
+<hr>
+</section>
+</section>
+<section id="ارتباط-مدل-osi-با-network-automation" class="level2">
+<h2 class="anchored" data-anchor-id="ارتباط-مدل-osi-با-network-automation">10. ارتباط مدل OSI با Network Automation</h2>
+<p>هدف ما فقط یادگیری مفاهیم شبکه نیست.</p>
+<p>قرار است در آینده بتوانیم فرآیندهای شبکه را با Python، API و ابزارهای اتوماسیون مدیریت کنیم.</p>
+<p>برای این کار باید بدانیم هر ابزار چه چیزی را بررسی می‌کند.</p>
+<section id="مثال-اول-بررسی-interfaceها" class="level3">
+<h3 class="anchored" data-anchor-id="مثال-اول-بررسی-interfaceها">مثال اول: بررسی Interfaceها</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter <span class="op">|</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Select-Object</span> Name<span class="op">,</span> Status<span class="op">,</span> LinkSpeed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این اطلاعات برای بررسی وضعیت Interface و ارتباط فیزیکی یا Link مفید هستند.</p>
+</section>
+<section id="مثال-دوم-بررسی-ip-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="مثال-دوم-بررسی-ip-configuration">مثال دوم: بررسی IP Configuration</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>برای بررسی آدرس‌دهی و Gateway.</p>
+</section>
+<section id="مثال-سوم-بررسی-tcp" class="level3">
+<h3 class="anchored" data-anchor-id="مثال-سوم-بررسی-tcp">مثال سوم: بررسی TCP</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection <span class="op">|</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Select-Object</span> LocalPort<span class="op">,</span> RemotePort<span class="op">,</span> State</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>برای بررسی وضعیت اتصال‌های TCP.</p>
+</section>
+<section id="مثال-چهارم-بررسی-سرویس" class="level3">
+<h3 class="anchored" data-anchor-id="مثال-چهارم-بررسی-سرویس">مثال چهارم: بررسی سرویس</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection example<span class="op">.</span><span class="fu">com</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>برای بررسی قابلیت برقراری ارتباط TCP با مقصد و پورت مشخص.</p>
+</section>
+<section id="ارتباط-با-python" class="level3">
+<h3 class="anchored" data-anchor-id="ارتباط-با-python">ارتباط با Python</h3>
+<p>در آینده می‌توانیم همین بررسی‌ها را با Python به یک ابزار جمع‌آوری اطلاعات تبدیل کنیم.</p>
+<p>مثلاً یک ابزار Network Health Checker که:</p>
+<ol type="1">
+<li>وضعیت Interfaceها را دریافت کند.</li>
+<li>تنظیمات IP را بررسی کند.</li>
+<li>Gateway را تست کند.</li>
+<li>DNS Resolution را بررسی کند.</li>
+<li>چند TCP Port را آزمایش کند.</li>
+<li>نتیجه را در قالب JSON گزارش دهد.</li>
+</ol>
+<p>این دقیقاً جایی است که دانش Networking به Network Automation تبدیل می‌شود.</p>
+<hr>
+</section>
+</section>
+<section id="چالش-مهندسی" class="level2">
+<h2 class="anchored" data-anchor-id="چالش-مهندسی">11. چالش مهندسی</h2>
+<p><badge color="warning">Engineering Challenge</badge></p>
+<section id="سناریو-سرویس-وب-شرکت-در-دسترس-نیست" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-سرویس-وب-شرکت-در-دسترس-نیست">سناریو: سرویس وب شرکت در دسترس نیست</h3>
+<p>یک شرکت گزارش داده که کارمندان نمی‌توانند به سرویس داخلی زیر متصل شوند:</p>
+<pre class="text"><code>https://portal.company.local</code></pre>
+<p>اطلاعات اولیه:</p>
+<pre class="text"><code>Client IP:       192.168.10.25
+Subnet Mask:     255.255.255.0
+Default Gateway: 192.168.10.1
+Server IP:       192.168.20.10
+Service Port:    443</code></pre>
+<p>نتایج آزمایش:</p>
+<pre class="text"><code>Interface Status: Up
+Gateway Ping:     Success
+Server Ping:      Success
+DNS Resolution:   Success
+TCP Port 443:     Failed</code></pre>
+</section>
+<section id="مأموریت-تو" class="level3">
+<h3 class="anchored" data-anchor-id="مأموریت-تو">مأموریت تو</h3>
+<p>به‌عنوان Network Engineer باید:</p>
+<ol type="1">
+<li>مشخص کنی کدام لایه‌ها در این مشکل محتمل‌تر هستند.</li>
+<li>توضیح بدهی چرا موفقیت Ping به معنی سالم بودن سرویس نیست.</li>
+<li>سه علت احتمالی برای شکست TCP Port 443 پیشنهاد بدهی.</li>
+<li>حداقل سه آزمایش بعدی را مشخص کنی.</li>
+<li>یک گزارش کوتاه از مسیر عیب‌یابی بنویسی.</li>
+</ol>
+</section>
+<section id="محدودیت" class="level3">
+<h3 class="anchored" data-anchor-id="محدودیت">محدودیت</h3>
+<p>بدون شواهد، تنظیمات شبکه را تغییر نده.</p>
+<p>ابتدا داده جمع‌آوری کن، سپس فرضیه بساز و بعد آزمایش انجام بده.</p>
+<hr>
+</section>
+</section>
+<section id="اشتباهات-رایج" class="level2">
+<h2 class="anchored" data-anchor-id="اشتباهات-رایج">12. اشتباهات رایج</h2>
+<ol type="1">
+<li>تصور اینکه هر پروتکل دقیقاً فقط به یک لایه OSI تعلق دارد.</li>
+<li>اشتباه گرفتن MAC Address با IP Address.</li>
+<li>تصور اینکه Router در تمام مسیر از MAC Address اولیه استفاده می‌کند.</li>
+<li>تصور اینکه UDP هیچ‌وقت قابلیت اطمینان ندارد؛ برنامه‌ها می‌توانند روی UDP سازوکارهای خودشان را پیاده‌سازی کنند.</li>
+<li>فرض اینکه همه ارتباطات HTTPS الزاماً روی TCP هستند.</li>
+<li>تصور اینکه Session و Presentation همیشه به‌صورت دو ماژول مستقل در سیستم‌عامل وجود دارند.</li>
+<li>فرض اینکه موفقیت Ping یعنی تمام اجزای Application سالم هستند.</li>
+</ol>
+<hr>
+</section>
+<section id="منابع-آموزشی" class="level2">
+<h2 class="anchored" data-anchor-id="منابع-آموزشی">13. منابع آموزشی</h2>
+<section id="منابع-اصلی" class="level3">
+<h3 class="anchored" data-anchor-id="منابع-اصلی">منابع اصلی</h3>
+<ul>
+<li><a href="https://www.netacad.com/">Cisco Networking Academy</a></li>
 <li><a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/">Cloudflare: What is the OSI Model?</a></li>
 <li><a href="https://www.wireshark.org/docs/">Wireshark Documentation</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapter">Microsoft: Get-NetAdapter</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/nettcpip/test-netconnection">Microsoft: Test-NetConnection</a></li>
 </ul>
-<p><strong>خروجی مورد انتظار:</strong> بتوانی یک ارتباط شبکه را از دید لایه‌های مختلف توضیح بدهی.</p>
+</section>
+<section id="استانداردها-و-منابع-فنی" class="level3">
+<h3 class="anchored" data-anchor-id="استانداردها-و-منابع-فنی">استانداردها و منابع فنی</h3>
+<ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9293">RFC 9293: Transmission Control Protocol</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc768">RFC 768: User Datagram Protocol</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9114">RFC 9114: HTTP/3</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc1035">RFC 1035: Domain Names</a></li>
+</ul>
+<hr>
 </section>
 </section>
+<section id="ارزیابی-پایان-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="ارزیابی-پایان-جلسه">14. ارزیابی پایان جلسه</h2>
+<p>قبل از رفتن به جلسه سوم باید بتوانی به این پرسش‌ها پاسخ بدهی:</p>
+<ol type="1">
+<li>چرا شبکه به معماری لایه‌ای نیاز دارد؟</li>
+<li>وظیفه اصلی Layer 1 چیست؟</li>
+<li>تفاوت MAC Address و IP Address چیست؟</li>
+<li>Switch و Router در کدام لایه‌ها فعالیت می‌کنند؟</li>
+<li>تفاوت TCP و UDP چیست؟</li>
+<li>چرا Port Number اهمیت دارد؟</li>
+<li>Encapsulation چه کاری انجام می‌دهد؟</li>
+<li>تفاوت Segment و Packet چیست؟</li>
+<li>چرا در مسیر Routing آدرس MAC تغییر می‌کند اما IP معمولاً ثابت می‌ماند؟</li>
+<li>چرا موفقیت Ping به معنی سالم بودن HTTPS نیست؟</li>
+<li>تفاوت مدل OSI و TCP/IP چیست؟</li>
+<li>چطور با Wireshark می‌توان Encapsulation را مشاهده کرد؟</li>
+</ol>
+<hr>
+</section>
+<section id="خروجی-مورد-انتظار-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="خروجی-مورد-انتظار-جلسه">خروجی مورد انتظار جلسه</h2>
+<p>در پایان این جلسه باید بتوانی:</p>
+<ul>
+<li>مدل OSI را بدون حفظ‌کردن صرف، از نظر عملکرد توضیح بدهی.</li>
+<li>تفاوت OSI و TCP/IP را درک کنی.</li>
+<li>یک ارتباط واقعی را از دید Headerها و PDUها تحلیل کنی.</li>
+<li>با Wireshark یک Capture ساده انجام بدهی.</li>
+<li>برای یک مشکل شبکه، مسیر عیب‌یابی لایه‌ای طراحی کنی.</li>
+<li>تشخیص بدهی کدام اطلاعات برای یک ابزار Network Automation مفید هستند.</li>
+</ul>
+<p><strong>جلسه بعد: Ethernet, MAC Address and ARP</strong></p>
+</section>
+</section>
+<link rel="stylesheet" href="../../../../assets/css/quiz.css">
+
+<section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-title">
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-title" class="anchored">آزمون تعاملی جلسه دوم</h2>
+    </div>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score="">0</strong></div>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress" role="progressbar" aria-label="پیشرفت آزمون" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="nf-quiz-progress-bar" data-progress=""></div>
+  </div>
+
+  <div class="nf-quiz-progress-label" data-progress-text=""></div>
+
+  <div data-content="">
+    <h3 class="nf-quiz-question anchored" data-question=""></h3>
+    <div class="nf-quiz-options" data-options=""></div>
+    <div class="nf-quiz-feedback" data-feedback="" aria-live="polite"></div>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next="" hidden="">
+        سؤال بعدی
+      </button>
+    </div>
+  </div>
+
+  <div class="nf-quiz-result" data-result="" hidden="" aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+    <h3 class="anchored">نتیجه آزمون</h3>
+    <div class="nf-quiz-result-score" data-final-score=""></div>
+    <div class="nf-quiz-result-score" data-percentage=""></div>
+    <p data-result-message=""></p>
+    <button class="nf-quiz-primary" type="button" data-restart="">
+      تلاش مجدد
+    </button>
+  </div>
+
+  <script type="application/json" data-quiz-questions="">
+[
+  {
+    "options": [
+      "حذف کامل نیاز به پروتکل‌ها",
+      "تقسیم وظایف و کاهش پیچیدگی طراحی و عیب‌یابی",
+      "افزایش تعداد آدرس‌های MAC",
+      "جلوگیری از استفاده از Router"
+    ],
+    "explanation": "معماری لایه‌ای وظایف را تفکیک می‌کند و امکان توسعه، تعامل‌پذیری و عیب‌یابی ساختاریافته را فراهم می‌سازد.",
+    "question": "مهم‌ترین دلیل استفاده از معماری لایه‌ای در شبکه چیست؟",
+    "answer": 1
+  },
+  {
+    "options": [
+      "مسیریابی بسته‌ها",
+      "مدیریت نشست‌های برنامه",
+      "انتقال بیت‌ها روی رسانه فیزیکی",
+      "تبدیل نام دامنه به IP"
+    ],
+    "explanation": "لایه فیزیکی سیگنال‌ها، رسانه انتقال، کانکتورها و نحوه انتقال بیت‌ها را تعریف می‌کند.",
+    "question": "کدام مورد وظیفه اصلی Physical Layer است؟",
+    "answer": 2
+  },
+  {
+    "options": [
+      "Frame",
+      "Packet",
+      "Segment",
+      "Bit"
+    ],
+    "explanation": "در لایه Network داده معمولاً به شکل Packet بررسی می‌شود.",
+    "question": "کدام PDU معمولاً به لایه Network در مدل OSI مربوط است؟",
+    "answer": 1
+  },
+  {
+    "options": [
+      "ارسال سیگنال الکتریکی",
+      "آدرس‌دهی MAC",
+      "ارتباط انتها به انتها و استفاده از Port Number",
+      "انتخاب مسیر بین شبکه‌ها"
+    ],
+    "explanation": "Transport Layer ارتباط بین پردازش‌های دو میزبان را با سازوکارهایی مانند TCP و UDP فراهم می‌کند.",
+    "question": "وظیفه اصلی Transport Layer چیست؟",
+    "answer": 2
+  },
+  {
+    "options": [
+      "Application",
+      "Transport",
+      "Internet",
+      "Link"
+    ],
+    "explanation": "IP در Internet Layer مدل چهارلایه TCP/IP قرار می‌گیرد.",
+    "question": "در مدل TCP/IP چهارلایه، پروتکل IP در کدام لایه قرار می‌گیرد؟",
+    "answer": 2
+  },
+  {
+    "options": [
+      "حذف تمام Headerها",
+      "اضافه شدن اطلاعات کنترلی هر لایه به داده",
+      "تبدیل IP به MAC در تمام مسیر",
+      "تبدیل TCP به DNS"
+    ],
+    "explanation": "هر لایه اطلاعات موردنیاز خود را معمولاً در قالب Header و در برخی لایه‌ها Trailer اضافه می‌کند.",
+    "question": "در فرایند Encapsulation چه اتفاقی می‌افتد؟",
+    "answer": 1
+  },
+  {
+    "options": [
+      "هر دو همیشه اتصال‌گرا هستند",
+      "UDP تضمین تحویل و ترتیب دارد",
+      "TCP سازوکارهای تحویل قابل‌اعتماد و ترتیب‌دهی دارد",
+      "TCP فقط برای DNS استفاده می‌شود"
+    ],
+    "explanation": "TCP تحویل قابل‌اعتماد و مرتب‌سازی جریان داده را فراهم می‌کند؛ UDP چنین تضمین‌هایی را به‌صورت ذاتی ارائه نمی‌دهد.",
+    "question": "کدام گزینه درباره TCP و UDP صحیح است؟",
+    "answer": 2
+  },
+  {
+    "options": [
+      "چون IP در هر Router حذف می‌شود",
+      "چون هر لینک لایه دو فریم مخصوص خودش را دارد",
+      "چون DNS در هر Hop آدرس را عوض می‌کند",
+      "چون TCP آدرس MAC تولید می‌کند"
+    ],
+    "explanation": "Router بسته IP را در فریم جدید لینک خروجی قرار می‌دهد. آدرس‌های MAC مربوط به همان لینک محلی هستند.",
+    "question": "چرا در ارتباط بین دو شبکه، MAC Address در هر Hop تغییر می‌کند؟",
+    "answer": 1
+  },
+  {
+    "options": [
+      "قطعاً کابل شبکه خراب است",
+      "ممکن است سرویس، فایروال یا مسیر TCP مشکل داشته باشد",
+      "حتماً DNS خراب است",
+      "قطعاً کارت شبکه خاموش است"
+    ],
+    "explanation": "Ping و TCP Port Test دو آزمایش متفاوت‌اند. پاسخ ICMP به معنی در دسترس بودن سرویس HTTPS نیست.",
+    "question": "موفق بودن Ping به یک سرور اما شکست TCP Port 443 بیشتر چه چیزی را نشان می‌دهد؟",
+    "answer": 1
+  },
+  {
+    "options": [
+      "Wireshark",
+      "Notepad",
+      "Task Manager",
+      "Paint"
+    ],
+    "explanation": "Wireshark بسته‌ها و فریم‌های Capture شده را برای تحلیل پروتکل‌ها نمایش می‌دهد.",
+    "question": "برای مشاهده فریم‌ها و تحلیل پروتکل‌ها در شبکه از کدام ابزار استفاده می‌شود؟",
+    "answer": 0
+  }
+]
+  </script>
+</section>
+
+<script src="../../../../assets/js/labs/quiz-engine.js" defer=""></script>
 
 
 
@@ -933,6 +2078,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
+<script>
+(() => {
+  const base = window.location.pathname.startsWith("/netfleet-docs/")
+    ? "/netfleet-docs/"
+    : "/";
+  const script = document.createElement("script");
+  script.src = base + "assets/js/labs/network-fundamentals.js";
+  script.async = false;
+  document.head.appendChild(script);
+})();
+</script>
 
 
 
