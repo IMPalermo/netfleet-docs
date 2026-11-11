@@ -113,6 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="../../../assets/css/quiz.css">
 </head>
 
 <body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -1564,7 +1565,6 @@ Server</code></pre>
 <section id="interactive-knowledge-check" class="level1">
 <h1>Interactive Knowledge Check</h1>
 <p>در آزمون زیر ۱۰ سؤال چهارگزینه‌ای وجود دارد. بعد از انتخاب پاسخ، توضیح هر سؤال نمایش داده می‌شود.</p>
-<link rel="stylesheet" href="../../../assets/css/quiz.css">
 
 <section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-day03-title">
   <div class="nf-quiz-header">
@@ -1603,7 +1603,6 @@ Server</code></pre>
   <script type="application/json" data-quiz-questions="">
 [{"explanation":"سوئیچ Source MAC را همراه با پورت ورودی و VLAN ثبت می‌کند. Destination MAC برای تصمیم Forwarding استفاده می‌شود.","answer":1,"question":"یک Switch لایه دوم برای یادگیری MAC Address از کدام فیلد Frame استفاده می‌کند؟","options":["Destination MAC","Source MAC","EtherType","FCS"]},{"explanation":"I/G کم‌ارزش‌ترین بیت اولین Octet است. مقدار 1 نشان‌دهنده Group Address است که Multicast و Broadcast را شامل می‌شود.","answer":2,"question":"در MAC Address مقدار بیت I/G برابر 1 چه مفهومی دارد؟","options":["آدرس Locally Administered است","آدرس Unicast است","آدرس Group است","آدرس Broadcast است"]},{"explanation":"برای مقصد خارج از Subnet، فریم به MAC آدرس Next Hop یا Default Gateway ارسال می‌شود، نه MAC مقصد نهایی.","answer":2,"question":"کامپیوتر A می‌خواهد به یک IP در Subnet دیگری ارتباط برقرار کند. مقصد Ethernet Frame اولیه چیست؟","options":["MAC Address مقصد نهایی","FF:FF:FF:FF:FF:FF","MAC Address Default Gateway","MAC Address سرور DNS"]},{"explanation":"EtherType مقدار 0x0806 پروتکل ARP را مشخص می‌کند.","answer":1,"question":"EtherType برابر 0x0806 نشان‌دهنده کدام پروتکل است؟","options":["IPv4","ARP","IPv6","802.1Q"]},{"explanation":"Unknown Unicast در VLAN مربوطه Flood می‌شود. این رفتار با Broadcast یکسان نیست، هرچند خروجی Flooding مشابه است.","answer":2,"question":"اگر Destination MAC در جدول سوئیچ وجود نداشته باشد، رفتار معمول چیست؟","options":["Drop کردن قطعی Frame","ارسال فقط به پورت مدیریت","Flood کردن در VLAN مربوطه، به‌جز پورت ورودی","ارسال Frame به Default Gateway"]},{"explanation":"در IPv4 روی Ethernet، ARP Request معمولاً Broadcast است تا مالک IP موردنظر بتواند پاسخ دهد.","answer":1,"question":"ARP Request در Ethernet معمولاً به چه آدرسی ارسال می‌شود؟","options":["00:00:00:00:00:00","FF:FF:FF:FF:FF:FF","MAC مقصد مورد جست‌وجو","MAC آدرس Gateway در تمام شرایط"]},{"explanation":"FCS از CRC برای تشخیص خرابی احتمالی Frame استفاده می‌کند. این سازوکار Error Detection است، نه Error Correction.","answer":1,"question":"کدام گزینه درباره FCS صحیح است؟","options":["برای رمزنگاری Frame استفاده می‌شود","خطا را تشخیص می‌دهد، نه اینکه آن را اصلاح کند","آدرس مقصد را نگهداری می‌کند","شماره VLAN را مشخص می‌کند"]},{"explanation":"VID یک فیلد 12 بیتی است و شناسه VLAN را مشخص می‌کند.","answer":2,"question":"کدام فیلد در Tag استاندارد 802.1Q شناسه VLAN را نگهداری می‌کند؟","options":["PCP","DEI","VID","TPID"]},{"explanation":"ARP Cache نگاشت‌های IPv4 به آدرس‌های لایه دوم را نگهداری می‌کند تا برای هر ارتباط نیاز به ARP Request تکراری نباشد.","answer":0,"question":"ARP Cache کامپیوتر شامل چه اطلاعاتی است؟","options":["نگاشت IPv4 به MAC Address","نگاشت Domain به IP","جدول Routeهای اینترنت","شماره پورت TCP سرویس‌ها"]},{"explanation":"DAI می‌تواند اعتبار پیام‌های ARP را با استفاده از Bindingهای معتبر بررسی کند. DHCP Snooping معمولاً منبع ایجاد این Bindingها است.","answer":1,"question":"کدام روش یکی از راهکارهای مقابله با ARP Spoofing در شبکه سوئیچ‌شده است؟","options":["غیرفعال کردن تمام MAC Addressها","Dynamic ARP Inspection همراه با DHCP Snooping","افزایش MTU به 9000","تغییر EtherType به IPv6"]}]
   </script>
-  <script src="../../../assets/js/labs/quiz-engine.js" defer=""></script>
 </section>
 </section>
 </div>
@@ -2114,6 +2113,9 @@ Server</code></pre>
 </div> <!-- /content -->
 <script>
 (() => {
+  // Load the quiz engine only on pages that contain a quiz.
+  if (!document.querySelector("[data-nf-quiz]")) return;
+
   const base = window.location.pathname.startsWith("/netfleet-docs/")
     ? "/netfleet-docs/"
     : "/";

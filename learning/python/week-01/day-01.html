@@ -113,6 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="../../../assets/css/quiz.css">
 </head>
 
 <body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -1512,6 +1513,9 @@ node-03
 </div> <!-- /content -->
 <script>
 (() => {
+  // Load the quiz engine only on pages that contain a quiz.
+  if (!document.querySelector("[data-nf-quiz]")) return;
+
   const base = window.location.pathname.startsWith("/netfleet-docs/")
     ? "/netfleet-docs/"
     : "/";

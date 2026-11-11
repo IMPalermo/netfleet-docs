@@ -77,6 +77,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="../../../assets/css/quiz.css">
 </head>
 
 <body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -166,7 +167,6 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="routing-and-request-handling" class="level1 persian">
 <h1>Routing and Request Handling</h1>
-<p><text></text></p>
 <p><strong>مسیر:</strong> Backend و API<br>
 <strong>هفته:</strong> 3، Python API Development<br>
 <strong>جلسه:</strong> 2 از ۵</p>
@@ -807,6 +807,9 @@ ul.task-list li input[type="checkbox"] {
 </div> <!-- /content -->
 <script>
 (() => {
+  // Load the quiz engine only on pages that contain a quiz.
+  if (!document.querySelector("[data-nf-quiz]")) return;
+
   const base = window.location.pathname.startsWith("/netfleet-docs/")
     ? "/netfleet-docs/"
     : "/";

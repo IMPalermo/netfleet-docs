@@ -113,6 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="../../../assets/css/quiz.css">
 </head>
 
 <body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -1415,7 +1416,6 @@ TCP Port 443:     Failed</code></pre>
 <p><strong>جلسه بعد: Ethernet, MAC Address and ARP</strong></p>
 </section>
 </section>
-<link rel="stylesheet" href="../../../../assets/css/quiz.css">
 
 <section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-title">
   <div class="nf-quiz-header">
@@ -1572,7 +1572,6 @@ TCP Port 443:     Failed</code></pre>
   </script>
 </section>
 
-<script src="../../../../assets/js/labs/quiz-engine.js" defer=""></script>
 
 
 
@@ -2080,6 +2079,9 @@ TCP Port 443:     Failed</code></pre>
 </div> <!-- /content -->
 <script>
 (() => {
+  // Load the quiz engine only on pages that contain a quiz.
+  if (!document.querySelector("[data-nf-quiz]")) return;
+
   const base = window.location.pathname.startsWith("/netfleet-docs/")
     ? "/netfleet-docs/"
     : "/";
