@@ -1,46 +1,65 @@
-
 ---
 title: "NetFleet Docs"
+page-layout: full
+toc: false
 ---
 
-# Engineering Knowledge Hub
+::: {.nf-hero}
+<div class="nf-eyebrow">PERSONAL ENGINEERING WORKSPACE</div>
 
-Your personal infrastructure engineering workspace.
+# Build. Understand. Automate.
 
-## Learning Paths
+A structured learning environment for modern infrastructure and network engineering.
 
-::: {.grid}
+[Explore Networking](learning/networking/index.qmd){.nf-primary-link}
+:::
 
-::: {.g-col-12 .g-col-md-6}
+## Learning paths
+
+::: {.nf-grid}
+
+::: {.nf-card}
+<div class="nf-card-number">01 / ACTIVE</div>
+
+### Networking Engineering
+
+Learn network architecture, protocols, switching, routing, troubleshooting and practical network engineering.
+
+[Open learning path →](learning/networking/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">02 / LEARNING PATH</div>
+
 ### Python Engineering
 
-From Python fundamentals to infrastructure automation.
+Programming fundamentals, scripting, APIs and automation.
 
 [Explore Python →](learning/python/index.qmd)
 :::
 
-::: {.g-col-12 .g-col-md-6}
-### Networking
+::: {.nf-card}
+<div class="nf-card-number">03 / PLANNED</div>
 
-Protocols, network architecture and connectivity.
-
-Coming soon.
-:::
-
-::: {.g-col-12 .g-col-md-6}
 ### Linux Engineering
 
-Linux servers, SSH and system administration.
+Linux administration, shell environments, SSH and server operations.
 
-Coming soon.
+<span class="nf-muted">In development</span>
 :::
 
-::: {.g-col-12 .g-col-md-6}
+::: {.nf-card}
+<div class="nf-card-number">04 / PLANNED</div>
+
 ### Infrastructure Automation
 
-Ansible and infrastructure as code.
+Ansible, infrastructure as code and automated operations.
 
-Coming soon.
+<span class="nf-muted">In development</span>
 :::
 
+:::
+
+::: {.nf-footer}
+NETFLEET KNOWLEDGE SYSTEM · ENGINEERING IN PROGRESS
 :::

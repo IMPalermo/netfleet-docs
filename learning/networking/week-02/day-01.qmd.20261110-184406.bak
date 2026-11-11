@@ -1,0 +1,547 @@
+---
+title: "Ethernet Frame Structure"
+subtitle: "Networking Fundamentals | Week 2 | Day 1"
+description: "Understanding Ethernet frames, MAC addressing, frame fields, frame size and packet analysis."
+---
+
+::: {.persian}
+
+# Ethernet Frame Structure
+**مسیر:** شبکه  
+**هفته:** ۲، Switching Fundamentals  
+**جلسه:** ۱ از ۵
+
+## اهداف یادگیری
+
+در پایان این جلسه باید بتوانی:
+
+- ساختار یک Ethernet Frame را توضیح بدهی.
+- اجزای اصلی Ethernet II Frame را شناسایی کنی.
+- تفاوت MAC Address، IP Address و Port Number را توضیح بدهی.
+- تفاوت Frame، Packet و Segment را درک کنی.
+- اندازه فریم و ارتباط آن با MTU را تحلیل کنی.
+- با Wireshark یک فریم واقعی را بررسی کنی.
+- شواهد فنی را برای عیب‌یابی مشکلات لایه دوم جمع‌آوری کنی.
+
+## سناریوی واقعی: داده چگونه از کارت شبکه خارج می‌شود؟
+
+فرض کن یک کامپیوتر در شبکه شرکت می‌خواهد با سرور داخلی ارتباط برقرار کند.
+
+برنامه کاربردی داده تولید می‌کند. لایه انتقال آن را در قالب TCP Segment یا UDP Datagram قرار می‌دهد. لایه شبکه یک IP Packet می‌سازد و در نهایت لایه پیوند داده، اطلاعات لازم برای انتقال محلی را در قالب Ethernet Frame قرار می‌دهد.
+
+کارت شبکه این فریم را برای انتقال روی رسانه شبکه آماده می‌کند.
+
+سؤال اصلی این جلسه:
+
+**وقتی یک فریم Ethernet را دریافت می‌کنیم، دقیقاً چه اطلاعاتی داخل آن قرار دارد؟**
+
+## 1. جایگاه Ethernet در مدل شبکه
+
+Ethernet یکی از فناوری‌های اصلی شبکه‌های محلی سیمی است.
+
+استانداردهای Ethernet در خانواده IEEE 802.3 تعریف شده‌اند. این فناوری عمدتاً با دو لایه اول مدل OSI ارتباط دارد:
+
+| لایه OSI | نقش |
+|---|---|
+| Physical | انتقال بیت‌ها روی رسانه |
+| Data Link | ساختار فریم و آدرس‌دهی محلی |
+
+در مدل TCP/IP نیز Ethernet در بخش Link Layer قرار می‌گیرد.
+
+نکته مهم: Ethernet و IP دو مفهوم متفاوت‌اند. IP برای آدرس‌دهی و انتقال منطقی بین شبکه‌ها استفاده می‌شود، در حالی که Ethernet انتقال محلی فریم را مدیریت می‌کند.
+
+## 2. تفاوت Frame، Packet و Segment
+
+این سه اصطلاح را با یکدیگر اشتباه نگیر.
+
+| واحد داده | لایه | نمونه |
+|---|---|---|
+| Segment | Transport | TCP Segment |
+| Datagram | Transport | UDP Datagram |
+| Packet | Network | IPv4 Packet |
+| Frame | Data Link | Ethernet Frame |
+| Bits | Physical | بیت‌های منتقل‌شده |
+
+در یک ارتباط معمولی:
+
+1. برنامه داده تولید می‌کند.
+2. TCP یا UDP اطلاعات لایه انتقال را اضافه می‌کند.
+3. IP Header به داده اضافه می‌شود.
+4. Ethernet Header و Trailer به بسته اضافه می‌شوند.
+5. اطلاعات به شکل بیت روی رسانه منتقل می‌شوند.
+
+این فرایند Encapsulation نام دارد.
+
+## 3. ساختار Ethernet II Frame
+
+ساختار معمول Ethernet II را در جدول زیر می‌بینی:
+
+| Field | Size | توضیح |
+|---|---:|---|
+| Destination MAC | 6 Bytes | آدرس گیرنده |
+| Source MAC | 6 Bytes | آدرس فرستنده |
+| EtherType | 2 Bytes | نوع پروتکل لایه بالاتر |
+| Payload | 46 تا 1500 Bytes | داده حمل‌شده |
+| FCS | 4 Bytes | بررسی خطای فریم |
+
+قبل از این بخش‌ها، در انتقال روی رسانه، دو قسمت دیگر نیز وجود دارند:
+
+- **Preamble:** هفت بایت برای همگام‌سازی فرستنده و گیرنده.
+- **SFD:** یک بایت برای مشخص‌کردن شروع فریم.
+
+Preamble و SFD معمولاً جزو اندازه فریم Ethernet محسوب نمی‌شوند.
+
+### نمایش ساختار
+
+```text
++-------------------+-------------+
+| Field             | Size        |
++-------------------+-------------+
+| Preamble          | 7 Bytes     |
+| Start Frame Delim.| 1 Byte      |
+| Destination MAC   | 6 Bytes     |
+| Source MAC        | 6 Bytes     |
+| EtherType         | 2 Bytes     |
+| Payload           | 46-1500 B   |
+| FCS               | 4 Bytes     |
++-------------------+-------------+
+```
+
+## 4. بررسی اجزای فریم
+
+### 4.1 Destination MAC
+
+این فیلد آدرس MAC مقصد را مشخص می‌کند.
+
+سوئیچ‌های Ethernet از آدرس مقصد برای تصمیم‌گیری درباره Forward کردن فریم استفاده می‌کنند.
+
+مثال:
+
+```text
+00:1A:2B:3C:4D:5E
+```
+
+### 4.2 Source MAC
+
+این فیلد آدرس MAC فرستنده را مشخص می‌کند.
+
+سوئیچ با مشاهده Source MAC می‌تواند یاد بگیرد که یک دستگاه از کدام پورت قابل دسترسی است.
+
+این موضوع در جلسه بعد، یعنی Switch Learning، بررسی خواهد شد.
+
+### 4.3 EtherType
+
+EtherType مشخص می‌کند Payload مربوط به کدام پروتکل است.
+
+چند مقدار مهم:
+
+| EtherType | Protocol |
+|---|---|
+| 0x0800 | IPv4 |
+| 0x0806 | ARP |
+| 0x86DD | IPv6 |
+| 0x8100 | IEEE 802.1Q VLAN Tag |
+
+در Ethernet II مقدار EtherType نوع پروتکل لایه بالاتر را مشخص می‌کند.
+
+### 4.4 Payload
+
+Payload داده‌ای است که فریم حمل می‌کند.
+
+در یک فریم معمولی، Payload می‌تواند شامل یک IP Packet یا اطلاعات پروتکل دیگری باشد.
+
+حداقل Payload استاندارد Ethernet برابر 46 بایت است. اگر داده کمتر باشد، Padding اضافه می‌شود.
+
+### 4.5 Frame Check Sequence
+
+FCS شامل یک مقدار CRC-32 است که برای تشخیص خرابی فریم در زمان انتقال استفاده می‌شود.
+
+اگر فریم در مسیر انتقال خراب شود، بررسی FCS می‌تواند خطا را شناسایی کند.
+
+نکته مهم:
+
+FCS ابزار اصلاح خطا نیست. همچنین همه Packet Captureها مقدار FCS را نمایش نمی‌دهند؛ بسیاری از کارت‌های شبکه آن را پیش از تحویل فریم به نرم‌افزار حذف می‌کنند.
+
+## 5. اندازه Ethernet Frame و MTU
+
+در Ethernet استاندارد بدون VLAN:
+
+- حداقل Frame Size برابر 64 بایت است.
+- حداکثر Frame Size معمولاً 1518 بایت است.
+- این اندازه شامل Destination MAC تا FCS است.
+- Preamble و SFD در این محاسبه قرار نمی‌گیرند.
+
+حداکثر Payload معمولی 1500 بایت است.
+
+### MTU چیست؟
+
+MTU یا Maximum Transmission Unit حداکثر اندازه Payload لایه شبکه است که می‌تواند بدون Fragmentation در یک مسیر یا رابط مشخص منتقل شود.
+
+در Ethernet معمولی MTU اغلب برابر 1500 بایت است.
+
+تفاوت مهم:
+
+**MTU با Frame Size یکسان نیست.**
+
+برای مثال:
+
+```text
+Ethernet Header = 14 Bytes
+IP Packet       = 1500 Bytes
+FCS             = 4 Bytes
+
+Total Frame     = 1518 Bytes
+```
+
+در این مثال، MTU برابر 1500 بایت است، اما اندازه فریم 1518 بایت است.
+
+### VLAN Tag چه تغییری ایجاد می‌کند؟
+
+در فریم Tagged با IEEE 802.1Q، چهار بایت VLAN Tag اضافه می‌شود.
+
+بنابراین حداکثر اندازه فریم معمولاً به 1522 بایت می‌رسد.
+
+این موضوع در جلسه‌های VLAN و Access/Trunk با جزئیات بیشتری بررسی خواهد شد.
+
+## 6. انواع MAC Address
+
+سه نوع آدرس مهم را بشناس:
+
+### Unicast
+
+فریم برای یک مقصد مشخص ارسال می‌شود.
+
+### Multicast
+
+فریم برای گروهی از دستگاه‌هایی که عضو یک گروه Multicast هستند ارسال می‌شود.
+
+### Broadcast
+
+فریم برای تمام دستگاه‌های عضو Broadcast Domain ارسال می‌شود.
+
+آدرس Broadcast در Ethernet:
+
+```text
+FF:FF:FF:FF:FF:FF
+```
+
+این آدرس در فرایندهایی مانند ARP کاربرد دارد.
+
+## 7. دیدگاه مهندسی و امنیت
+
+در تحلیل Ethernet باید بین سه مفهوم تفاوت بگذاری:
+
+- **Configuration:** تنظیمات رابط شبکه و تجهیزات.
+- **Operational State:** وضعیت واقعی ارتباط.
+- **Observed Evidence:** اطلاعات مشاهده‌شده در Capture و ابزارهای تشخیصی.
+
+برای مثال، مشاهده یک MAC Address در جدول ARP به‌تنهایی اثبات نمی‌کند که فریم موردنظر واقعاً در یک Capture مشاهده شده است.
+
+همچنین MAC Address به‌تنهایی هویت قابل اعتماد یک دستگاه را تضمین نمی‌کند؛ جعل MAC یا MAC Spoofing امکان‌پذیر است.
+
+## 8. آزمایشگاه عملی اول: بررسی رابط شبکه
+
+ابتدا رابط‌های شبکه را بررسی کن.
+
+```powershell
+Get-NetAdapter |
+    Format-Table Name, InterfaceDescription, Status, MacAddress, LinkSpeed
+```
+
+سپس اطلاعات IP را مشاهده کن:
+
+```powershell
+Get-NetIPConfiguration
+```
+
+و مقدار MTU را بررسی کن:
+
+```powershell
+Get-NetIPInterface -AddressFamily IPv4 |
+    Format-Table InterfaceAlias, ConnectionState, NlMtu
+```
+
+**وظیفه:**
+
+1. نام رابط فعال را پیدا کن.
+2. MAC Address آن را ثبت کن.
+3. MTU را ثبت کن.
+4. مشخص کن کدام اطلاعات از Configuration و کدام از Operational State به دست آمده‌اند.
+
+## 9. آزمایشگاه عملی دوم: مشاهده فریم واقعی با Wireshark
+
+برای این آزمایش به Wireshark و Npcap نیاز داری.
+
+### مرحله اول: شروع Capture
+
+1. Wireshark را اجرا کن.
+2. رابط شبکه فعال را انتخاب کن.
+3. Capture را شروع کن.
+4. در PowerShell دستور زیر را اجرا کن:
+
+```powershell
+ping -n 4 1.1.1.1
+```
+
+5. Capture را متوقف کن.
+
+### مرحله دوم: فیلتر کردن ترافیک
+
+برای مشاهده فریم‌های Ethernet:
+
+```text
+eth
+```
+
+برای مشاهده ترافیک IPv4:
+
+```text
+eth.type == 0x0800
+```
+
+برای مشاهده Broadcast:
+
+```text
+eth.dst == ff:ff:ff:ff:ff:ff
+```
+
+برای مشاهده ARP:
+
+```text
+arp
+```
+
+### مرحله سوم: تحلیل یک فریم
+
+یک فریم IPv4 را انتخاب کن و بخش Ethernet II را باز کن.
+
+موارد زیر را ثبت کن:
+
+- Destination MAC
+- Source MAC
+- Type
+- Payload Protocol
+- Frame Length
+
+سپس مشخص کن آیا اطلاعات مشاهده‌شده با ساختار Ethernet II مطابقت دارد یا خیر.
+
+**نکته آزمایشگاهی:** Capture روی سیستم خودت ممکن است به دلیل Offloading، حذف FCS یا محل Capture دقیقاً تمام جزئیات فریم روی رسانه را نشان ندهد. نبودن یک فیلد در نمایش Wireshark لزوماً به معنی نبودن آن در انتقال واقعی نیست.
+
+## 10. چالش عیب‌یابی: Frame و MTU
+
+فرض کن دو دستگاه در یک شبکه محلی قرار دارند، اما انتقال بعضی بسته‌های بزرگ با مشکل مواجه می‌شود.
+
+فرضیه‌های اولیه:
+
+1. MTU دو رابط با یکدیگر سازگار نیست.
+2. مسیر شبکه از Jumbo Frame پشتیبانی نمی‌کند.
+3. فریم‌ها در یک بخش از مسیر Drop می‌شوند.
+4. مشکل از تنظیمات یا عملکرد کارت شبکه است.
+
+برای جمع‌آوری شواهد:
+
+```powershell
+Get-NetIPInterface -AddressFamily IPv4 |
+    Format-Table InterfaceAlias, NlMtu, ConnectionState
+```
+
+سپس برای آزمایش اندازه بسته IPv4:
+
+```powershell
+ping -f -l 1472 1.1.1.1
+```
+
+در IPv4 بدون Option، مقدار 1472 بایت Payload به همراه 28 بایت Header برابر 1500 بایت است.
+
+اگر آزمایش شکست خورد، فوراً نتیجه نگیر که MTU رابط اشتباه است. مقصد، مسیر، فایروال و سیاست‌های ICMP نیز می‌توانند روی نتیجه اثر بگذارند.
+
+## 11. Engineering Challenge: اتصال به NetFleet
+
+هدف این است که در آینده بتوانیم اطلاعات Ethernet را از Packet Capture استخراج و تحلیل کنیم.
+
+طرح اولیه:
+
+| بخش | طراحی |
+|---|---|
+| Data Source | فایل PCAP یا PCAPNG |
+| Extraction | استخراج Ethernet Header |
+| Validation Rule | بررسی طول فریم و نوع آدرس |
+| Analysis | شناسایی EtherType و MACها |
+| Expected Output | گزارش ساختار و وضعیت فریم |
+
+پرسش اصلی:
+
+**چگونه می‌توانیم یک فایل PCAP را دریافت کنیم، فریم‌های Ethernet را استخراج کنیم و فریم‌های غیرعادی را گزارش دهیم؟**
+
+این قابلیت می‌تواند در آینده به یک Packet Analyzer در NetFleet تبدیل شود.
+
+## 12. واژه‌نامه جلسه
+
+| اصطلاح | تعریف |
+|---|---|
+| Ethernet Frame | واحد داده در لایه پیوند داده |
+| MAC Address | آدرس سخت‌افزاری رابط شبکه |
+| EtherType | شناسه پروتکل Payload |
+| Payload | داده حمل‌شده در فریم |
+| FCS | فیلد تشخیص خطای فریم |
+| MTU | حداکثر اندازه واحد انتقال لایه شبکه |
+| VLAN Tag | اطلاعات شناسایی VLAN در فریم |
+| Encapsulation | قرار دادن داده در قالب لایه‌های شبکه |
+
+## 13. ارزیابی پایان جلسه
+
+به پرسش‌های زیر پاسخ بده:
+
+1. چرا Ethernet برای انتقال داده به Frame نیاز دارد؟
+2. Destination MAC و Source MAC چه تفاوتی دارند؟
+3. EtherType چه مسئولیتی دارد؟
+4. چرا MTU برابر 1500 بایت به معنی Frame Size برابر 1500 بایت نیست؟
+5. چرا ممکن است Wireshark مقدار FCS را نشان ندهد؟
+
+## 14. تکلیف مهندسی
+
+یک فایل Capture از ترافیک مجاز شبکه خودت تهیه کن.
+
+حداقل سه فریم را انتخاب و تحلیل کن.
+
+گزارش باید شامل این موارد باشد:
+
+- هدف آزمایش
+- محیط و ابزار
+- اطلاعات فریم
+- تحلیل MAC Address
+- مقدار EtherType
+- اندازه فریم
+- نتیجه‌گیری
+- محدودیت‌های Capture
+
+از انتشار فایل Capture حاوی اطلاعات خصوصی یا ترافیک دیگران خودداری کن.
+
+## معیار تکمیل جلسه
+
+- [ ] ساختار Ethernet II Frame را می‌شناسم.
+- [ ] تفاوت Frame، Packet و Segment را توضیح می‌دهم.
+- [ ] MAC Address و EtherType را تشخیص می‌دهم.
+- [ ] ارتباط MTU و Frame Size را درک می‌کنم.
+- [ ] یک فریم را با Wireshark تحلیل می‌کنم.
+- [ ] می‌توانم شواهد آزمایش را مستند کنم.
+- [ ] می‌توانم کاربرد این دانش را در NetFleet توضیح بدهم.
+
+## منابع پیشنهادی
+
+1. IEEE 802.3 Ethernet Standard
+2. IEEE 802.1Q VLAN Standard
+3. Wireshark User's Guide
+4. Wireshark Display Filter Reference
+5. Microsoft Learn: Get-NetAdapter و Get-NetIPInterface
+
+لینک‌ها و نسخه استانداردها باید پیش از انتشار نهایی بررسی شوند.
+
+:::
+
+<link rel="stylesheet" href="../../../../assets/css/quiz.css">
+
+<section class="nf-quiz" data-nf-quiz aria-labelledby="nf-quiz-day01-title">
+
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-day01-title">آزمون تعاملی جلسه اول هفته دوم</h2>
+      <p>Ethernet Frame Structure</p>
+    </div>
+    <div class="nf-quiz-score">
+      <span>امتیاز</span>
+      <strong data-score>0</strong>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress-track">
+    <div class="nf-quiz-progress" role="progressbar"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+         data-progress></div>
+  </div>
+
+  <div class="nf-quiz-progress-text" data-progress-text></div>
+
+  <div data-content>
+    <h3 data-question></h3>
+    <div class="nf-quiz-options" data-options></div>
+    <div class="nf-quiz-feedback" data-feedback aria-live="polite"></div>
+    <button type="button" class="nf-quiz-next" data-next hidden>
+      سؤال بعدی
+    </button>
+  </div>
+
+  <div class="nf-quiz-result" data-result hidden>
+    <h3>نتیجه آزمون</h3>
+    <strong data-final-score></strong>
+    <div data-percentage></div>
+    <p data-result-message></p>
+    <button type="button" class="nf-quiz-restart" data-restart>
+      شروع مجدد
+    </button>
+  </div>
+
+  <script type="application/json" data-quiz-questions>
+  [
+    {
+      "question": "کدام فیلد آدرس دستگاه مقصد را در Ethernet Frame مشخص می‌کند؟",
+      "options": [
+        "Source MAC",
+        "Destination MAC",
+        "EtherType",
+        "FCS"
+      ],
+      "answer": 1,
+      "explanation": "Destination MAC آدرس گیرنده فریم را مشخص می‌کند."
+    },
+    {
+      "question": "مقدار EtherType برابر 0x0800 نشان‌دهنده چیست؟",
+      "options": [
+        "ARP",
+        "IPv6",
+        "IPv4",
+        "VLAN"
+      ],
+      "answer": 2,
+      "explanation": "مقدار 0x0800 شناسه پروتکل IPv4 است."
+    },
+    {
+      "question": "حداکثر اندازه معمول Ethernet Frame بدون VLAN، با احتساب FCS، چقدر است؟",
+      "options": [
+        "1500 Bytes",
+        "1518 Bytes",
+        "1522 Bytes",
+        "9000 Bytes"
+      ],
+      "answer": 1,
+      "explanation": "فریم معمولی شامل 14 بایت Header، حداکثر 1500 بایت Payload و 4 بایت FCS است."
+    },
+    {
+      "question": "وظیفه اصلی FCS چیست؟",
+      "options": [
+        "مشخص کردن آدرس مقصد",
+        "تعیین نوع پروتکل",
+        "تشخیص خطای انتقال فریم",
+        "مشخص کردن VLAN"
+      ],
+      "answer": 2,
+      "explanation": "FCS از مقدار CRC برای تشخیص خرابی فریم استفاده می‌کند."
+    },
+    {
+      "question": "چرا ممکن است Wireshark مقدار FCS را در یک Capture نشان ندهد؟",
+      "options": [
+        "چون FCS فقط برای IPv6 است",
+        "چون سوئیچ همیشه FCS را حذف می‌کند",
+        "چون کارت شبکه ممکن است FCS را پیش از تحویل به نرم‌افزار حذف کند",
+        "چون FCS فقط در فریم‌های Broadcast وجود دارد"
+      ],
+      "answer": 2,
+      "explanation": "بسیاری از کارت‌های شبکه FCS را در سخت‌افزار بررسی و پیش از تحویل به نرم‌افزار حذف می‌کنند."
+    }
+  ]
+  </script>
+
+</section>
+
+<script src="../../../../assets/js/labs/quiz-engine.js" defer></script>

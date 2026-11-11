@@ -1,21 +1,65 @@
 ---
 title: "Week 1 - Network Foundations"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 1: Network Foundations
+::: {.nf-hero}
+<div class="nf-eyebrow">NETWORKING / WEEK 01</div>
 
-این هفته روی موضوع **Network Foundations** تمرکز دارد.
+# Network Foundations
 
-## جلسات
+Understand how computer networks communicate, address devices and transfer data.
 
-- [Day 1: What Is a Computer Network?](day-01.qmd)
-- [Day 2: OSI and TCP/IP Models](day-02.qmd)
-- [Day 3: Ethernet, MAC Address and ARP](day-03.qmd)
-- [Day 4: IPv4 Addressing and Subnetting](day-04.qmd)
-- [Day 5: TCP, UDP, DNS and DHCP](day-05.qmd)
+[← Back to Networking](../index.qmd)
+:::
 
-## خروجی هفتگی
+## Weekly sessions
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01</div>
+
+### What Is a Computer Network?
+
+[Open session →](day-01.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02</div>
+
+### OSI and TCP/IP Models
+
+[Open session →](day-02.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03</div>
+
+### Ethernet, MAC Address and ARP
+
+[Open session →](day-03.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04</div>
+
+### IPv4 Addressing and Subnetting
+
+[Open session →](day-04.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05</div>
+
+### TCP, UDP, DNS and DHCP
+
+[Open session →](day-05.qmd)
+:::
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · WEEK 01
 :::

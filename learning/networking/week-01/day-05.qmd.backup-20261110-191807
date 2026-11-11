@@ -1,0 +1,1184 @@
+---
+title: "TCP, UDP, DNS and DHCP"
+subtitle: "Week 01 | Day 05"
+---
+
+::: {.persian}
+
+# جلسه پنجم: TCP، UDP، DNS و DHCP
+
+## 1. اهداف یادگیری
+
+در پایان این جلسه باید بتوانید:
+
+- تفاوت TCP و UDP را از نظر عملکرد و کاربرد توضیح دهید.
+- فرآیند TCP Three-Way Handshake را تحلیل کنید.
+- نقش TCP Flags، Sequence Number و Acknowledgment Number را بشناسید.
+- مفهوم Port و Socket را در ارتباطات شبکه توضیح دهید.
+- فرآیند DNS Resolution و انواع رکوردهای DNS را درک کنید.
+- مراحل DHCP DORA را توضیح دهید.
+- با PowerShell وضعیت ارتباطات TCP، تنظیمات DNS و DHCP را بررسی کنید.
+- ترافیک TCP، UDP، DNS و DHCP را در Wireshark تحلیل کنید.
+- مشکلات رایج ارتباطات شبکه را عیب‌یابی کنید.
+
+---
+
+## 2. جایگاه پروتکل‌ها در مدل TCP/IP
+
+تا اینجا با Ethernet، MAC Address، ARP و IPv4 آشنا شدیم. حالا باید ببینیم برنامه‌های کامپیوتری چگونه با یکدیگر ارتباط برقرار می‌کنند.
+
+در مدل TCP/IP، پروتکل‌های TCP و UDP در لایه Transport قرار می‌گیرند.
+
+DNS و DHCP نیز سرویس‌های مهم لایه Application هستند که برای انتقال پیام‌هایشان از پروتکل‌های Transport استفاده می‌کنند.
+
+| Protocol | Main Function | Transport |
+|---|---|---|
+| TCP | Reliable communication | TCP |
+| UDP | Datagram delivery | UDP |
+| DNS | Name resolution | Usually UDP, also TCP |
+| DHCP | Automatic IP configuration | UDP |
+
+نکته مهم: DNS و DHCP خودشان پروتکل‌های لایه کاربرد هستند، اما برای انتقال پیام‌هایشان از UDP یا TCP استفاده می‌کنند.
+
+### مسیر یک ارتباط
+
+وقتی یک برنامه می‌خواهد با یک سرور ارتباط برقرار کند، معمولاً این مراحل اتفاق می‌افتند:
+
+1. برنامه مقصد را با نام دامنه مشخص می‌کند.
+2. سیستم با DNS آدرس IP مقصد را پیدا می‌کند.
+3. سیستم با استفاده از IP و Port مقصد، ارتباط را برقرار می‌کند.
+4. TCP یا UDP داده را منتقل می‌کند.
+5. IP و Ethernet اطلاعات را برای انتقال در شبکه آماده می‌کنند.
+
+```{mermaid}
+flowchart TD
+    A["Application"] --> B["DNS Resolution"]
+    B --> C["Destination IP"]
+    C --> D["TCP or UDP"]
+    D --> E["IP"]
+    E --> F["Ethernet"]
+    F --> G["Network"]
+```
+
+---
+
+## 3. TCP چیست؟
+
+TCP مخفف Transmission Control Protocol است.
+
+TCP یک پروتکل Connection-Oriented است. یعنی قبل از انتقال داده، دو طرف ارتباط یک اتصال منطقی برقرار می‌کنند.
+
+TCP تلاش می‌کند داده‌ها را به‌صورت قابل اعتماد، مرتب و بدون تحویل تکراری به برنامه مقصد برساند.
+
+### ویژگی‌های TCP
+
+- Connection-Oriented
+- Reliable Delivery
+- Ordered Delivery
+- Error Detection
+- Retransmission
+- Flow Control
+- Congestion Control
+- Full-Duplex Communication
+
+### TCP چگونه قابل اعتماد است؟
+
+فرض کنید یک فایل 100 مگابایتی از کامپیوتر A به سرور B ارسال می‌کنید.
+
+TCP داده را به بخش‌هایی تقسیم می‌کند. هر بخش دارای اطلاعات کنترلی است.
+
+گیرنده با استفاده از شماره‌های Sequence و Acknowledgment می‌تواند مشخص کند چه داده‌ای دریافت شده است.
+
+اگر بخشی از داده گم شود، TCP می‌تواند آن را دوباره ارسال کند.
+
+توجه کنید TCP تضمین نمی‌کند که شبکه هیچ Packet Loss نداشته باشد. بلکه مکانیزم‌هایی دارد که با Loss مقابله می‌کنند.
+
+---
+
+## 4. TCP Three-Way Handshake
+
+قبل از انتقال داده در یک اتصال TCP معمولی، سه مرحله برای برقراری اتصال انجام می‌شود.
+
+```{mermaid}
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    C->>S: SYN
+    S->>C: SYN + ACK
+    C->>S: ACK
+    Note over C,S: TCP Connection Established
+```
+
+### مرحله اول: SYN
+
+Client یک Segment با Flag برابر SYN به Server می‌فرستد.
+
+Client در این پیام اعلام می‌کند که می‌خواهد یک اتصال TCP برقرار کند.
+
+### مرحله دوم: SYN-ACK
+
+Server درخواست را دریافت می‌کند و در صورت پذیرش، Segment دارای دو Flag زیر را ارسال می‌کند:
+
+- SYN
+- ACK
+
+Server با این پیام هم درخواست Client را تأیید می‌کند و هم اطلاعات شروع ارتباط خودش را اعلام می‌کند.
+
+### مرحله سوم: ACK
+
+Client پیام Server را دریافت می‌کند و یک ACK ارسال می‌کند.
+
+پس از تکمیل Handshake، ارتباط TCP برقرار شده است و انتقال داده می‌تواند آغاز شود.
+
+### خلاصه Handshake
+
+| Step | Sender | Flags |
+|---|---|---|
+| 1 | Client → Server | SYN |
+| 2 | Server → Client | SYN, ACK |
+| 3 | Client → Server | ACK |
+
+### چرا سه مرحله لازم است؟
+
+این فرآیند به دو طرف اجازه می‌دهد ارتباط را هماهنگ کنند و شماره‌های اولیه Sequence را مبادله کنند.
+
+این کار به شناسایی ارتباط معتبر و آماده‌سازی انتقال داده کمک می‌کند.
+
+---
+
+## 5. TCP Flags
+
+TCP Header دارای Flagهایی است که وضعیت و هدف یک Segment را مشخص می‌کنند.
+
+| Flag | Meaning |
+|---|---|
+| SYN | شروع و هماهنگی اتصال |
+| ACK | تأیید دریافت داده یا اطلاعات کنترلی |
+| FIN | درخواست پایان منظم اتصال |
+| RST | قطع یا رد فوری اتصال |
+| PSH | درخواست تحویل سریع‌تر داده به برنامه |
+| URG | نشان‌دهنده وجود داده فوری |
+| ECE | علامت‌گذاری اطلاعات مربوط به ECN |
+| CWR | اعلام واکنش فرستنده به ازدحام ECN |
+
+### SYN Flood چیست؟
+
+در حمله SYN Flood، مهاجم تعداد زیادی درخواست SYN ارسال می‌کند، اما Handshake را کامل نمی‌کند.
+
+در نتیجه منابع Server ممکن است درگیر اتصال‌های نیمه‌باز شوند.
+
+روش‌های دفاعی می‌توانند شامل موارد زیر باشند:
+
+- SYN Cookies
+- Firewall Rules
+- Rate Limiting
+- DDoS Protection
+- Monitoring Connection States
+
+### پایان ارتباط TCP
+
+TCP معمولاً با استفاده از FIN و ACK اتصال را به‌صورت کنترل‌شده می‌بندد.
+
+در حالت معمول، هر سمت ارتباط می‌تواند جریان ارسال داده خودش را جداگانه خاتمه دهد.
+
+RST برای قطع ناگهانی یا رد اتصال استفاده می‌شود.
+
+---
+
+## 6. Sequence Number و Acknowledgment Number
+
+TCP برای مدیریت جریان داده از شماره‌های Sequence و Acknowledgment استفاده می‌کند.
+
+### Sequence Number
+
+این شماره موقعیت داده در جریان بایت‌های TCP را مشخص می‌کند.
+
+### Acknowledgment Number
+
+این شماره معمولاً نشان می‌دهد گیرنده انتظار دارد بایت بعدی از چه موقعیتی دریافت شود.
+
+مثال ساده:
+
+فرض کنید Client داده‌ای ارسال می‌کند که از Sequence Number برابر 1000 شروع می‌شود و 500 بایت دارد.
+
+در صورت دریافت صحیح، گیرنده می‌تواند Acknowledgment Number برابر 1500 را اعلام کند.
+
+یعنی بایت‌های تا قبل از 1500 دریافت شده‌اند و گیرنده منتظر بایت بعدی است.
+
+### نکته فنی
+
+TCP معمولاً از Cumulative Acknowledgment استفاده می‌کند. در صورت فعال بودن قابلیت‌هایی مانند SACK، گیرنده می‌تواند اطلاعات دقیق‌تری درباره بخش‌های دریافت‌شده ارائه دهد.
+
+---
+
+## 7. TCP Flow Control و Congestion Control
+
+این دو مفهوم شبیه به هم نیستند.
+
+### Flow Control
+
+Flow Control از گیرنده محافظت می‌کند.
+
+اگر گیرنده سرعت پردازش داده کمتری داشته باشد، می‌تواند با استفاده از Receive Window به فرستنده اعلام کند چه مقدار داده دیگر می‌تواند دریافت کند.
+
+### Congestion Control
+
+Congestion Control برای جلوگیری از فشار بیش از حد به شبکه استفاده می‌شود.
+
+TCP با مکانیزم‌هایی مانند موارد زیر وضعیت ارسال را مدیریت می‌کند:
+
+- Congestion Window
+- Slow Start
+- Congestion Avoidance
+- Fast Retransmit
+- Fast Recovery
+
+| Mechanism | Protects |
+|---|---|
+| Flow Control | Receiver |
+| Congestion Control | Network |
+
+---
+
+## 8. UDP چیست؟
+
+UDP مخفف User Datagram Protocol است.
+
+UDP یک پروتکل Connectionless است.
+
+برخلاف TCP، قبل از ارسال داده نیازی به Three-Way Handshake ندارد.
+
+UDP داده‌ها را در قالب Datagram ارسال می‌کند.
+
+### ویژگی‌های UDP
+
+- Connectionless
+- بدون تضمین تحویل
+- بدون تضمین ترتیب دریافت
+- بدون مکانیزم Retransmission داخلی
+- سربار کم
+- مناسب برای ارتباطات حساس به تأخیر
+
+UDP در صورت نیاز به مکانیزم‌های اطمینان از تحویل، این قابلیت‌ها را به پروتکل یا برنامه بالاتر واگذار می‌کند.
+
+### کاربردهای UDP
+
+- DNS
+- DHCP
+- VoIP
+- Online Gaming
+- Live Streaming
+- NTP
+- برخی ارتباطات VPN
+
+### مقایسه TCP و UDP
+
+| Feature | TCP | UDP |
+|---|---|---|
+| Connection | Connection-Oriented | Connectionless |
+| Handshake | Yes | No |
+| Reliability | Built-in mechanisms | No delivery guarantee |
+| Ordering | Yes | No guarantee |
+| Retransmission | Yes | No built-in retransmission |
+| Header | Minimum 20 bytes | 8 bytes |
+| Flow Control | Yes | No built-in flow control |
+| Typical Use | Web, SSH, File Transfer | DNS, DHCP, Real-time traffic |
+
+نکته: UDP لزوماً همیشه سریع‌تر از TCP نیست. عملکرد واقعی به نوع برنامه، شبکه و شرایط ارتباط بستگی دارد.
+
+---
+
+## 9. Port Numbers و Socket
+
+آدرس IP مشخص می‌کند داده به کدام Host برسد.
+
+Port Number مشخص می‌کند داده به کدام سرویس یا Endpoint در آن Host تحویل داده شود.
+
+مثلاً:
+
+- IP Address: 192.168.1.10
+- TCP Port: 443
+
+این ترکیب نشان می‌دهد که ارتباط با سرویس HTTPS روی میزبان موردنظر برقرار می‌شود.
+
+### محدوده Portها
+
+| Range | Category |
+|---|---|
+| 0–1023 | Well-Known Ports |
+| 1024–49151 | Registered Ports |
+| 49152–65535 | Dynamic / Private Ports |
+
+### Portهای مهم
+
+| Port | Protocol | Service |
+|---|---|---|
+| 20/21 | TCP | FTP |
+| 22 | TCP | SSH |
+| 23 | TCP | Telnet |
+| 25 | TCP | SMTP |
+| 53 | UDP/TCP | DNS |
+| 67/68 | UDP | DHCP |
+| 80 | TCP | HTTP |
+| 110 | TCP | POP3 |
+| 123 | UDP | NTP |
+| 143 | TCP | IMAP |
+| 161/162 | UDP | SNMP |
+| 389 | TCP/UDP | LDAP |
+| 443 | TCP | HTTPS |
+| 445 | TCP | SMB |
+| 514 | UDP | Syslog |
+| 3389 | TCP/UDP | RDP |
+
+توجه: بعضی سرویس‌های مدرن می‌توانند از Transport یا Portهای دیگری هم استفاده کنند. جدول بالا Portهای رایج را نشان می‌دهد.
+
+### Socket چیست؟
+
+Socket یک Endpoint ارتباطی است.
+
+در ارتباطات IP، ترکیبی از آدرس IP، Port و نوع پروتکل به شناسایی ارتباط کمک می‌کند.
+
+یک TCP Connection معمولاً با این چهار مقدار شناسایی می‌شود:
+
+- Source IP
+- Source Port
+- Destination IP
+- Destination Port
+
+به این مجموعه Four-Tuple می‌گویند.
+
+---
+
+## 10. DNS چیست؟
+
+DNS مخفف Domain Name System است.
+
+DNS نام دامنه را به اطلاعاتی مانند آدرس IP تبدیل می‌کند.
+
+انسان‌ها معمولاً نام‌هایی مانند example.com را به خاطر می‌سپارند، اما برای برقراری ارتباط شبکه‌ای به آدرس IP نیاز داریم.
+
+DNS این فاصله را پر می‌کند.
+
+### فرآیند DNS Resolution
+
+فرض کنید مرورگر می‌خواهد به example.com متصل شود.
+
+1. سیستم ابتدا ممکن است Cache محلی را بررسی کند.
+2. اگر پاسخ موجود نباشد، درخواست به DNS Resolver ارسال می‌شود.
+3. Resolver ممکن است Cache خودش را بررسی کند.
+4. در صورت نیاز، Resolver سراغ Root DNS Server می‌رود.
+5. Root Server اطلاعات مربوط به TLD را معرفی می‌کند.
+6. TLD Server آدرس Authoritative Name Server را معرفی می‌کند.
+7. Authoritative Server پاسخ نهایی را ارائه می‌دهد.
+8. Resolver پاسخ را به Client برمی‌گرداند.
+
+در عمل، Resolver ممکن است از Cache استفاده کند و تمام مراحل بالا در هر درخواست تکرار نمی‌شوند.
+
+```{mermaid}
+flowchart TD
+    A["Client"] --> B["Recursive Resolver"]
+    B --> C["Root DNS"]
+    C --> D["TLD DNS"]
+    D --> E["Authoritative DNS"]
+    E --> B
+    B --> A
+```
+
+### Recursive و Iterative Query
+
+**Recursive Query:**
+
+Client از DNS Resolver درخواست پاسخ نهایی می‌کند. Resolver مسئول پیدا کردن پاسخ است یا خطا را برمی‌گرداند.
+
+**Iterative Query:**
+
+سرور DNS ممکن است به‌جای پاسخ نهایی، آدرس سرور دیگری را معرفی کند که اطلاعات بیشتری دارد.
+
+### DNS Cache
+
+DNS برای کاهش تأخیر و بار شبکه از Cache استفاده می‌کند.
+
+هر رکورد DNS معمولاً دارای TTL است.
+
+TTL مشخص می‌کند اطلاعات تا چه مدت می‌توانند در Cache معتبر در نظر گرفته شوند.
+
+---
+
+## 11. انواع DNS Records
+
+DNS فقط برای تبدیل نام به IPv4 نیست.
+
+رکوردهای متنوعی برای اهداف مختلف وجود دارند.
+
+| Record | Purpose | Example |
+|---|---|---|
+| A | نام به IPv4 | example.com → IPv4 |
+| AAAA | نام به IPv6 | example.com → IPv6 |
+| CNAME | Alias | www → example.com |
+| MX | Mail Server | mail.example.com |
+| NS | Name Server | ns1.example.com |
+| TXT | Text Information | SPF / Verification |
+| PTR | Reverse DNS | IP → Hostname |
+| SOA | Zone Information | Primary DNS / Serial |
+| SRV | Service Location | Service / Port |
+
+### Forward Lookup
+
+تبدیل نام دامنه به آدرس IP.
+
+### Reverse Lookup
+
+تبدیل آدرس IP به نام میزبان با استفاده از PTR Record.
+
+### DNS over HTTPS و DNS over TLS
+
+در DNS سنتی، درخواست‌ها معمولاً به شکل رمزنگاری‌نشده ارسال می‌شوند.
+
+DoH درخواست DNS را در HTTPS منتقل می‌کند.
+
+DoT از TLS برای رمزنگاری ارتباط DNS استفاده می‌کند.
+
+این روش‌ها می‌توانند حریم خصوصی مسیر بین Client و Resolver را بهبود دهند، اما به‌تنهایی همه مشکلات امنیتی DNS را حل نمی‌کنند.
+
+### DNS over TCP
+
+DNS فقط UDP نیست.
+
+DNS از UDP و TCP روی Port 53 استفاده می‌کند.
+
+TCP می‌تواند برای پاسخ‌های بزرگ، Zone Transfer و شرایطی که انتقال قابل اعتماد لازم است استفاده شود.
+
+---
+
+## 12. DHCP چیست؟
+
+DHCP مخفف Dynamic Host Configuration Protocol است.
+
+DHCP به دستگاه‌ها اجازه می‌دهد تنظیمات شبکه را به‌صورت خودکار دریافت کنند.
+
+بدون DHCP، مدیر شبکه باید اطلاعاتی مانند IP و Subnet Mask را برای هر دستگاه به‌صورت دستی تنظیم کند.
+
+### DHCP چه اطلاعاتی ارائه می‌دهد؟
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+- Lease Duration
+- Domain Name
+- سایر Optionهای پیکربندی
+
+### DHCP DORA
+
+فرآیند اصلی دریافت آدرس IPv4 از DHCP Server با چهار مرحله شناخته می‌شود:
+
+```{mermaid}
+sequenceDiagram
+    participant C as DHCP Client
+    participant S as DHCP Server
+    C->>S: Discover
+    S->>C: Offer
+    C->>S: Request
+    S->>C: Acknowledgment
+    Note over C,S: Lease Assigned
+```
+
+### مرحله اول: Discover
+
+Client هنوز IP معتبر ندارد.
+
+برای پیدا کردن DHCP Server یک DHCP Discover ارسال می‌کند.
+
+در حالت معمول:
+
+- Source IP: 0.0.0.0
+- Destination IP: 255.255.255.255
+- Source UDP Port: 68
+- Destination UDP Port: 67
+
+### مرحله دوم: Offer
+
+DHCP Server یک پیشنهاد شامل IP و تنظیمات شبکه ارسال می‌کند.
+
+### مرحله سوم: Request
+
+Client اعلام می‌کند که پیشنهاد موردنظر را می‌پذیرد.
+
+### مرحله چهارم: Acknowledgment
+
+DHCP Server درخواست را تأیید می‌کند و Lease را اختصاص می‌دهد.
+
+پس از تکمیل فرآیند، Client می‌تواند از تنظیمات اختصاص‌یافته استفاده کند.
+
+### DHCP Lease
+
+آدرس DHCP معمولاً برای یک بازه زمانی مشخص اختصاص داده می‌شود.
+
+این بازه Lease Time نام دارد.
+
+Client پیش از پایان Lease تلاش می‌کند آن را تمدید کند.
+
+در رفتار استاندارد DHCPv4:
+
+- T1 معمولاً در 50 درصد Lease Time است.
+- T2 معمولاً در 87.5 درصد Lease Time است.
+
+این زمان‌ها مقادیر پیش‌فرض رایج هستند و ممکن است بر اساس شرایط یا تنظیمات متفاوت باشند.
+
+### DHCP Relay
+
+در شبکه‌های مختلف، DHCP Broadcast به‌صورت معمول از Router عبور نمی‌کند.
+
+اگر DHCP Server در Subnet دیگری باشد، می‌توان از DHCP Relay Agent استفاده کرد.
+
+در Cisco IOS معمولاً از دستور زیر استفاده می‌شود:
+
+```text
+ip helper-address 192.168.10.10
+```
+
+این دستور روی Interface مربوط به شبکه Client تنظیم می‌شود و درخواست‌های DHCP را به Server مشخص‌شده Relay می‌کند.
+
+---
+
+## 13. DHCP و DNS در کنار یکدیگر
+
+DHCP و DNS دو سرویس متفاوت هستند، اما در شبکه‌های سازمانی به‌شدت با یکدیگر همکاری می‌کنند.
+
+DHCP به Client آدرس IP و DNS Server را معرفی می‌کند.
+
+DNS نام دستگاه‌ها و سرویس‌ها را به اطلاعات شبکه تبدیل می‌کند.
+
+مثال:
+
+1. لپ‌تاپ به شبکه متصل می‌شود.
+2. DHCP به آن IP برابر 192.168.1.100 اختصاص می‌دهد.
+3. DHCP آدرس Gateway و DNS Server را نیز ارائه می‌کند.
+4. کاربر آدرس intranet.company.local را وارد می‌کند.
+5. Client از DNS برای پیدا کردن IP سرور استفاده می‌کند.
+6. ارتباط با سرور برقرار می‌شود.
+
+---
+
+## 14. آزمایش عملی PowerShell
+
+در این بخش با ابزارهای داخلی Windows وضعیت TCP، UDP، DNS و DHCP را بررسی می‌کنیم.
+
+### Lab 1: مشاهده تنظیمات IP و DHCP
+
+```powershell
+ipconfig /all
+```
+
+به موارد زیر توجه کنید:
+
+- IPv4 Address
+- Subnet Mask
+- Default Gateway
+- DHCP Enabled
+- DHCP Server
+- DNS Servers
+- Lease Obtained
+- Lease Expires
+
+### Lab 2: مشاهده DNS Configuration
+
+```powershell
+Get-DnsClientServerAddress
+```
+
+این دستور DNS Serverهای تنظیم‌شده روی Interfaceهای سیستم را نشان می‌دهد.
+
+### Lab 3: تست DNS Resolution
+
+```powershell
+Resolve-DnsName example.com
+```
+
+مشاهده رکورد A:
+
+```powershell
+Resolve-DnsName example.com -Type A
+```
+
+مشاهده رکورد AAAA:
+
+```powershell
+Resolve-DnsName example.com -Type AAAA
+```
+
+مشاهده رکورد MX:
+
+```powershell
+Resolve-DnsName gmail.com -Type MX
+```
+
+مشاهده رکورد NS:
+
+```powershell
+Resolve-DnsName example.com -Type NS
+```
+
+### Lab 4: تست DNS با DNS Server مشخص
+
+```powershell
+Resolve-DnsName example.com -Server 1.1.1.1
+```
+
+این دستور درخواست را به DNS Server مشخص‌شده می‌فرستد.
+
+### Lab 5: مشاهده Cache محلی DNS
+
+```powershell
+Get-DnsClientCache
+```
+
+پاک کردن Cache:
+
+```powershell
+Clear-DnsClientCache
+```
+
+### Lab 6: مشاهده TCP Connections
+
+```powershell
+Get-NetTCPConnection
+```
+
+مشاهده فقط ارتباط‌های Established:
+
+```powershell
+Get-NetTCPConnection -State Established
+```
+
+مشاهده ارتباط‌های Listening:
+
+```powershell
+Get-NetTCPConnection -State Listen
+```
+
+### Lab 7: بررسی UDP Endpointها
+
+```powershell
+Get-NetUDPEndpoint
+```
+
+### Lab 8: بررسی Port و سرویس مقصد
+
+```powershell
+Test-NetConnection example.com -Port 443
+```
+
+به مقدار زیر توجه کنید:
+
+```text
+TcpTestSucceeded
+```
+
+اگر True باشد، اتصال TCP به Port موردنظر موفق بوده است.
+
+نکته: این تست فقط برقراری اتصال TCP را بررسی می‌کند، نه عملکرد کامل سرویس HTTPS.
+
+### Lab 9: مشاهده جزئیات Processهای شبکه
+
+```powershell
+Get-NetTCPConnection |
+    Select-Object LocalAddress, LocalPort, RemoteAddress, RemotePort, State, OwningProcess
+```
+
+برای مشاهده نام Process:
+
+```powershell
+Get-NetTCPConnection -State Established |
+    ForEach-Object {
+        $process = Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue
+
+        [PSCustomObject]@{
+            Process       = $process.ProcessName
+            LocalAddress  = $_.LocalAddress
+            LocalPort     = $_.LocalPort
+            RemoteAddress = $_.RemoteAddress
+            RemotePort    = $_.RemotePort
+            State         = $_.State
+        }
+    }
+```
+
+### Lab 10: بررسی DHCP Lease
+
+```powershell
+ipconfig /all
+```
+
+در صورت نیاز به تمدید آدرس:
+
+```powershell
+ipconfig /renew
+```
+
+برای آزاد کردن آدرس:
+
+```powershell
+ipconfig /release
+```
+
+هشدار: دستور Release ارتباط شبکه را موقتاً قطع می‌کند. در سیستم‌های Remote یا هنگام اتصال از راه دور، بدون داشتن دسترسی جایگزین از آن استفاده نکنید.
+
+---
+
+## 15. Wireshark Lab
+
+در این بخش باید ترافیک واقعی شبکه را مشاهده کنیم.
+
+Wireshark به ما اجازه می‌دهد Packetها را Capture و تحلیل کنیم.
+
+### Lab 1: مشاهده TCP Handshake
+
+1. Wireshark را باز کنید.
+2. Interface فعال را انتخاب کنید.
+3. Capture را شروع کنید.
+4. در مرورگر به یک وب‌سایت HTTPS متصل شوید.
+5. از Display Filter زیر استفاده کنید:
+
+```text
+tcp.flags.syn == 1
+```
+
+برای مشاهده SYN بدون ACK:
+
+```text
+tcp.flags.syn == 1 && tcp.flags.ack == 0
+```
+
+برای مشاهده SYN-ACK:
+
+```text
+tcp.flags.syn == 1 && tcp.flags.ack == 1
+```
+
+به Source Port، Destination Port و Sequence Number توجه کنید.
+
+### Lab 2: مشاهده DNS
+
+در Display Filter بنویسید:
+
+```text
+dns
+```
+
+سپس یک دامنه جدید را در مرورگر باز کنید.
+
+به موارد زیر توجه کنید:
+
+- Query Name
+- Query Type
+- Response
+- Answer
+- TTL
+
+### Lab 3: مشاهده DHCP
+
+فیلتر:
+
+```text
+dhcp
+```
+
+در نسخه‌های قدیمی‌تر Wireshark ممکن است فیلتر زیر استفاده شود:
+
+```text
+bootp
+```
+
+در صورت نیاز، Interface شبکه را مجدداً فعال کنید یا Lease را تمدید کنید تا پیام‌های DHCP تولید شوند.
+
+به پیام‌های زیر توجه کنید:
+
+- Discover
+- Offer
+- Request
+- ACK
+
+### Lab 4: تحلیل UDP
+
+فیلتر:
+
+```text
+udp
+```
+
+به Source Port و Destination Port توجه کنید.
+
+### نکته مهم
+
+Capture ترافیک DHCP ممکن است به‌دلیل تنظیمات فعلی Client یا نوع شبکه، تمام چهار مرحله DORA را نشان ندهد.
+
+---
+
+## 16. Troubleshooting سناریومحور
+
+### Scenario 1: کاربر IP دارد اما سایت‌ها باز نمی‌شوند
+
+احتمال‌ها:
+
+- DNS Server در دسترس نیست.
+- DNS Record اشتباه است.
+- Gateway مشکل دارد.
+- ارتباط TCP به مقصد برقرار نمی‌شود.
+- Firewall ترافیک را مسدود کرده است.
+
+روش بررسی:
+
+```powershell
+ipconfig /all
+```
+
+```powershell
+Resolve-DnsName example.com
+```
+
+```powershell
+Test-NetConnection example.com -Port 443
+```
+
+### Scenario 2: سایت با IP باز می‌شود اما با Domain باز نمی‌شود
+
+احتمال زیاد مشکل در DNS Resolution است.
+
+بررسی کنید:
+
+```powershell
+Resolve-DnsName example.com
+```
+
+سپس DNS Cache را بررسی کنید:
+
+```powershell
+Get-DnsClientCache
+```
+
+### Scenario 3: کامپیوتر IP برابر 169.254.x.x گرفته است
+
+این محدوده Link-Local است.
+
+در Windows، آدرس‌دهی خودکار از این محدوده معمولاً APIPA نامیده می‌شود.
+
+این وضعیت می‌تواند نشان دهد Client نتوانسته از DHCP یک آدرس دریافت کند.
+
+موارد بررسی:
+
+- DHCP Server روشن است؟
+- DHCP Scope آدرس آزاد دارد؟
+- VLAN درست است؟
+- DHCP Relay تنظیم شده است؟
+- مسیر شبکه تا DHCP Server برقرار است؟
+
+### Scenario 4: TCP Connection Failed
+
+دستور:
+
+```powershell
+Test-NetConnection 192.168.1.10 -Port 443
+```
+
+موارد احتمالی:
+
+- سرویس مقصد اجرا نیست.
+- Port در حال Listen نیست.
+- Firewall ترافیک را Block می‌کند.
+- Routing اشتباه است.
+- مسیر شبکه قطع شده است.
+
+### Scenario 5: DNS Query Timeout
+
+بررسی کنید:
+
+- آیا DNS Server قابل دسترس است؟
+- آیا UDP Port 53 مسدود شده؟
+- آیا TCP Port 53 در شرایط لازم قابل دسترس است؟
+- آیا DNS Server پاسخ صحیح می‌دهد؟
+- آیا تنظیمات DNS Client درست هستند؟
+
+---
+
+## 17. Network Automation و کاربرد در دنیای واقعی
+
+یک Network Automation Engineer باید بتواند وضعیت سرویس‌های شبکه را به‌صورت خودکار بررسی کند.
+
+چند نمونه از کارهای قابل اتوماسیون:
+
+### DNS Monitoring
+
+- بررسی دوره‌ای DNS Resolution
+- مقایسه پاسخ چند DNS Server
+- ثبت زمان پاسخ
+- تشخیص خطای Name Resolution
+
+### TCP Monitoring
+
+- بررسی Portهای حیاتی
+- شناسایی Connectionهای غیرعادی
+- بررسی وضعیت سرویس‌ها
+- ثبت Connectionهای ناموفق
+
+### DHCP Monitoring
+
+- بررسی Scopeهای دارای ظرفیت کم
+- شناسایی آدرس‌های نامعتبر
+- پایش Leaseها
+- تشخیص DHCP Serverهای ناشناس
+
+### نمونه ساده Health Check در PowerShell
+
+```powershell
+$targets = @(
+    @{ Name = "DNS"; Host = "1.1.1.1"; Port = 53 },
+    @{ Name = "HTTPS"; Host = "example.com"; Port = 443 },
+    @{ Name = "SSH"; Host = "github.com"; Port = 22 }
+)
+
+foreach ($target in $targets) {
+    $result = Test-NetConnection `
+        -ComputerName $target.Host `
+        -Port $target.Port `
+        -WarningAction SilentlyContinue
+
+    [PSCustomObject]@{
+        Service = $target.Name
+        Host    = $target.Host
+        Port    = $target.Port
+        Status  = if ($result.TcpTestSucceeded) { "Online" } else { "Failed" }
+    }
+}
+```
+
+این نمونه برای تست TCP است. بررسی DNS و UDP به روش‌های مخصوص خود نیاز دارند.
+
+### چرا این مهارت مهم است؟
+
+در شبکه‌های سازمانی، بررسی دستی ده‌ها یا صدها سرویس زمان‌بر است.
+
+Automation به مهندس شبکه کمک می‌کند وضعیت سرویس‌ها را سریع‌تر بررسی کند، خطاها را ثبت کند و برای تحلیل‌های بعدی داده جمع‌آوری کند.
+
+---
+
+## 18. جمع‌بندی هفته اول
+
+در پنج جلسه اول، پایه‌های اصلی شبکه را ساختیم.
+
+| Day | Topic | Core Concept |
+|---|---|---|
+| Day01 | Computer Networks | Network Fundamentals |
+| Day02 | OSI and TCP/IP | Network Models |
+| Day03 | Ethernet, MAC and ARP | Local Network Communication |
+| Day04 | IPv4 and Subnetting | Logical Addressing |
+| Day05 | TCP, UDP, DNS and DHCP | Transport and Network Services |
+
+### نقشه ذهنی هفته اول
+
+```{mermaid}
+flowchart TD
+    A["Network Fundamentals"] --> B["OSI / TCP-IP"]
+    B --> C["Ethernet / MAC / ARP"]
+    C --> D["IPv4 / Subnetting"]
+    D --> E["TCP / UDP"]
+    E --> F["DNS / DHCP"]
+    F --> G["Network Troubleshooting"]
+    G --> H["Network Automation"]
+```
+
+### مفاهیم کلیدی که باید به خاطر بسپارید
+
+- IP Address میزبان را در شبکه شناسایی می‌کند.
+- Port برنامه یا سرویس مقصد را مشخص می‌کند.
+- TCP ارتباط قابل اعتماد و مرتب فراهم می‌کند.
+- UDP انتقال Datagram با سربار کمتر ارائه می‌دهد.
+- DNS نام دامنه را به اطلاعاتی مانند IP تبدیل می‌کند.
+- DHCP تنظیمات شبکه را به‌صورت خودکار اختصاص می‌دهد.
+- Wireshark به ما اجازه می‌دهد رفتار واقعی پروتکل‌ها را ببینیم.
+- PowerShell ابزار مهمی برای بررسی و اتوماسیون شبکه در Windows است.
+
+---
+
+## 19. چالش پایانی هفته اول
+
+فرض کنید یک شرکت کوچک دارای 30 کارمند است.
+
+کاربران گزارش می‌دهند:
+
+- بعضی کامپیوترها IP دریافت نمی‌کنند.
+- بعضی کاربران می‌توانند با IP به سرور متصل شوند، اما با نام دامنه نه.
+- اتصال HTTPS به یک سرویس داخلی برقرار نمی‌شود.
+- مدیر شبکه می‌خواهد وضعیت Portهای حیاتی را به‌صورت خودکار بررسی کند.
+
+### وظایف شما
+
+1. برای مشکل دریافت IP، مسیر عیب‌یابی DHCP را طراحی کنید.
+2. توضیح دهید چگونه مشکل DNS را از مشکل Routing تشخیص می‌دهید.
+3. با PowerShell اتصال TCP به Port 443 را بررسی کنید.
+4. توضیح دهید در Wireshark چگونه DHCP DORA را مشاهده می‌کنید.
+5. یک Health Check ساده برای سه سرویس طراحی کنید.
+
+هدف این چالش حفظ کردن دستورها نیست. باید بتوانید از روی نشانه‌ها، لایه و سرویس مشکل‌دار را پیدا کنید.
+
+---
+
+## 20. منابع و مطالعه بیشتر
+
+### RFC Documents
+
+- RFC 9293: Transmission Control Protocol
+- RFC 768: User Datagram Protocol
+- RFC 1034: Domain Names - Concepts and Facilities
+- RFC 1035: Domain Names - Implementation and Specification
+- RFC 2131: Dynamic Host Configuration Protocol
+- RFC 2132: DHCP Options and BOOTP Vendor Extensions
+
+### Documentation
+
+- Microsoft Learn: PowerShell Networking
+- Wireshark User's Guide
+- Wireshark Display Filter Reference
+- Cisco Networking Documentation
+
+### ابزارهای پیشنهادی
+
+- Wireshark
+- Windows PowerShell
+- Test-NetConnection
+- Resolve-DnsName
+- ipconfig
+
+---
+
+# پایان هفته اول
+
+تبریک! شما اکنون با مفاهیم اصلی ارتباطات شبکه، مدل‌های شبکه، Ethernet، ARP، IPv4، Subnetting، TCP، UDP، DNS و DHCP آشنا شده‌اید.
+
+در هفته دوم وارد مفاهیم عمیق‌تری از Switching، VLAN، Routing و طراحی شبکه خواهیم شد.
+
+:::
+
+<section class="nf-quiz" data-nf-quiz aria-labelledby="nf-quiz-day05-title">
+<div class="nf-quiz-header">
+<div>
+<div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+<h2 id="nf-quiz-day05-title">آزمون تعاملی جلسه پنجم</h2>
+<p>۱۰ سؤال برای سنجش درک شما از TCP، UDP، DNS و DHCP</p>
+</div>
+</div>
+<script type="application/json" data-quiz-questions>
+[
+  {
+    "question": "کدام گزینه ترتیب صحیح TCP Three-Way Handshake را نشان می‌دهد؟",
+    "options": [
+      "SYN → ACK → FIN",
+      "SYN → SYN-ACK → ACK",
+      "ACK → SYN → SYN-ACK",
+      "SYN → FIN → ACK"
+    ],
+    "answer": 1,
+    "explanation": "در مرحله اول Client پیام SYN می‌فرستد، Server با SYN-ACK پاسخ می‌دهد و Client با ACK اتصال را تکمیل می‌کند."
+  },
+  {
+    "question": "حداقل اندازه TCP Header بدون Options چقدر است؟",
+    "options": [
+      "8 bytes",
+      "12 bytes",
+      "20 bytes",
+      "32 bytes"
+    ],
+    "answer": 2,
+    "explanation": "حداقل اندازه TCP Header برابر 20 بایت است. با وجود Options اندازه Header می‌تواند بیشتر شود."
+  },
+  {
+    "question": "کدام گزینه تفاوت اصلی TCP و UDP را بهتر بیان می‌کند؟",
+    "options": [
+      "UDP همیشه سریع‌تر است",
+      "TCP از IP استفاده نمی‌کند",
+      "TCP مکانیزم تحویل قابل اعتماد و مرتب دارد، UDP چنین تضمینی ندارد",
+      "UDP فقط برای شبکه‌های محلی است"
+    ],
+    "answer": 2,
+    "explanation": "TCP دارای مکانیزم‌هایی مانند ACK و Retransmission است. UDP تحویل یا ترتیب داده‌ها را تضمین نمی‌کند."
+  },
+  {
+    "question": "DHCP Server معمولاً روی کدام UDP Port منتظر درخواست Client است؟",
+    "options": [
+      "53",
+      "67",
+      "68",
+      "443"
+    ],
+    "answer": 1,
+    "explanation": "DHCP Server از UDP Port 67 استفاده می‌کند و DHCP Client معمولاً از UDP Port 68 استفاده می‌کند."
+  },
+  {
+    "question": "ترتیب صحیح فرآیند DHCP DORA کدام است؟",
+    "options": [
+      "Discover, Offer, Request, Acknowledgment",
+      "Request, Discover, Offer, Acknowledgment",
+      "Offer, Discover, Acknowledgment, Request",
+      "Discover, Request, Acknowledgment, Offer"
+    ],
+    "answer": 0,
+    "explanation": "DORA مخفف Discover, Offer, Request, Acknowledgment است."
+  },
+  {
+    "question": "کدام DNS Record برای تبدیل نام دامنه به IPv4 استفاده می‌شود؟",
+    "options": [
+      "AAAA",
+      "MX",
+      "PTR",
+      "A"
+    ],
+    "answer": 3,
+    "explanation": "رکورد A یک نام دامنه را به آدرس IPv4 نگاشت می‌کند."
+  },
+  {
+    "question": "کدام ابزار PowerShell برای مشاهده TCP Connectionهای برقرارشده مناسب است؟",
+    "options": [
+      "Get-NetUDPEndpoint",
+      "Get-NetTCPConnection -State Established",
+      "Get-DnsClientCache",
+      "Get-NetAdapter"
+    ],
+    "answer": 1,
+    "explanation": "Get-NetTCPConnection با فیلتر Established اتصال‌های TCP برقرارشده را نمایش می‌دهد."
+  },
+  {
+    "question": "کامپیوتری آدرس 169.254.20.10 دریافت کرده است. محتمل‌ترین توضیح چیست؟",
+    "options": [
+      "DHCP به‌درستی آدرس عمومی داده است",
+      "کامپیوتر از IPv6 استفاده می‌کند",
+      "Windows از آدرس Link-Local استفاده کرده و احتمالاً DHCP در دسترس نبوده است",
+      "DNS Server آدرس IP را تغییر داده است"
+    ],
+    "answer": 2,
+    "explanation": "169.254.0.0/16 محدوده IPv4 Link-Local است. در Windows معمولاً در صورت شکست دریافت DHCP، آدرس APIPA انتخاب می‌شود."
+  },
+  {
+    "question": "کدام Display Filter در Wireshark برای مشاهده TCP SYN بدون ACK مناسب است؟",
+    "options": [
+      "tcp.port == 53",
+      "tcp.flags.syn == 1 && tcp.flags.ack == 0",
+      "udp.flags.syn == 1",
+      "dns.flags.response == 1"
+    ],
+    "answer": 1,
+    "explanation": "این فیلتر Segmentهایی را نمایش می‌دهد که SYN دارند اما ACK آن‌ها صفر است."
+  },
+  {
+    "question": "اگر یک وب‌سایت با IP باز شود اما با نام دامنه باز نشود، کدام بخش را باید در اولویت بررسی کرد؟",
+    "options": [
+      "DNS Resolution",
+      "Ethernet Frame Size",
+      "RAM سیستم",
+      "DHCP Lease Duration"
+    ],
+    "answer": 0,
+    "explanation": "وقتی دسترسی با IP برقرار است اما نام دامنه Resolve نمی‌شود، DNS یکی از نخستین مواردی است که باید بررسی شود."
+  }
+]
+</script>
+</section>

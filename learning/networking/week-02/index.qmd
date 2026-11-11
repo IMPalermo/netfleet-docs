@@ -1,21 +1,65 @@
 ---
-title: "Week 2 - Switching Fundamentals"
+title: "Week 2 - Switching"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 2: Switching Fundamentals
+::: {.nf-hero}
+<div class="nf-eyebrow">NETWORKING / WEEK 02</div>
 
-این هفته روی موضوع **Switching Fundamentals** تمرکز دارد.
+# Switching
 
-## جلسات
+Explore Ethernet switching, MAC learning, VLAN segmentation and loop prevention.
 
-- [Day 1: Ethernet Frame Structure](day-01.qmd)
-- [Day 2: Switch Learning and MAC Tables](day-02.qmd)
-- [Day 3: VLAN Concepts and Segmentation](day-03.qmd)
-- [Day 4: Access and Trunk Ports](day-04.qmd)
-- [Day 5: Spanning Tree Fundamentals](day-05.qmd)
+[← Back to Networking](../index.qmd)
+:::
 
-## خروجی هفتگی
+## Weekly sessions
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01</div>
+
+### Ethernet Frame Structure
+
+[Open session →](day-01.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02</div>
+
+### Switch Learning and MAC Tables
+
+[Open session →](day-02.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03</div>
+
+### VLAN Concepts and Segmentation
+
+[Open session →](day-03.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04</div>
+
+### Access and Trunk Ports
+
+[Open session →](day-04.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05</div>
+
+### Spanning Tree Fundamentals
+
+[Open session →](day-05.qmd)
+:::
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · WEEK 02
 :::

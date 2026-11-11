@@ -1,21 +1,65 @@
 ---
-title: "Week 6 - Wireless and Network Access"
+title: "Week 6 - Wireless and Remote Access"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 6: Wireless and Network Access
+::: {.nf-hero}
+<div class="nf-eyebrow">NETWORKING / WEEK 06</div>
 
-این هفته روی موضوع **Wireless and Network Access** تمرکز دارد.
+# Wireless and Remote Access
 
-## جلسات
+Study wireless architecture, authentication, VPNs and remote connectivity.
 
-- [Day 1: Wi-Fi Architecture and Standards](day-01.qmd)
-- [Day 2: Wireless Security Basics](day-02.qmd)
-- [Day 3: 802.1X and Network Authentication](day-03.qmd)
-- [Day 4: VPN Fundamentals](day-04.qmd)
-- [Day 5: Remote Access Troubleshooting](day-05.qmd)
+[← Back to Networking](../index.qmd)
+:::
 
-## خروجی هفتگی
+## Weekly sessions
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01</div>
+
+### Wi-Fi Architecture and Standards
+
+[Open session →](day-01.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02</div>
+
+### Wireless Security Basics
+
+[Open session →](day-02.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03</div>
+
+### 802.1X and Network Authentication
+
+[Open session →](day-03.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04</div>
+
+### VPN Fundamentals
+
+[Open session →](day-04.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05</div>
+
+### Remote Access Troubleshooting
+
+[Open session →](day-05.qmd)
+:::
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · WEEK 06
 :::

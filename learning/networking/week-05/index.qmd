@@ -1,21 +1,65 @@
 ---
-title: "Week 5 - Core Network Services"
+title: "Week 5 - Network Services"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 5: Core Network Services
+::: {.nf-hero}
+<div class="nf-eyebrow">NETWORKING / WEEK 05</div>
 
-این هفته روی موضوع **Core Network Services** تمرکز دارد.
+# Network Services
 
-## جلسات
+Understand essential network services and how they operate in production environments.
 
-- [Day 1: DNS Resolution in Depth](day-01.qmd)
-- [Day 2: DHCP Scopes and Leases](day-02.qmd)
-- [Day 3: NAT and PAT](day-03.qmd)
-- [Day 4: NTP and Time Synchronization](day-04.qmd)
-- [Day 5: Network Service Troubleshooting](day-05.qmd)
+[← Back to Networking](../index.qmd)
+:::
 
-## خروجی هفتگی
+## Weekly sessions
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01</div>
+
+### DNS Resolution in Depth
+
+[Open session →](day-01.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02</div>
+
+### DHCP Scopes and Leases
+
+[Open session →](day-02.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03</div>
+
+### NAT and PAT
+
+[Open session →](day-03.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04</div>
+
+### NTP and Time Synchronization
+
+[Open session →](day-04.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05</div>
+
+### Network Service Troubleshooting
+
+[Open session →](day-05.qmd)
+:::
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · WEEK 05
 :::

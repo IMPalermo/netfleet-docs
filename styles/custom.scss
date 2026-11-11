@@ -1,33 +1,27 @@
+/*-- scss:defaults --*/
+
+$body-bg: #090D0B;
+$body-color: #E5EAE6;
+$link-color: #A8D5B6;
+$primary: #6FAF88;
+$font-family-sans-serif: "Space Grotesk", "Vazirmatn", sans-serif;
+$font-family-monospace: "JetBrains Mono", monospace;
 
 /*-- scss:rules --*/
-/* =====================================================
-   NETFLEET DOCS
-   DARK LUXURY ENGINEERING DESIGN SYSTEM
-   ===================================================== */
 
-/* 1. FONTS */
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap');
-
-
-/* 2. DESIGN TOKENS */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700&display=swap');
 
 :root {
   --nf-bg: #090D0B;
   --nf-surface: #111813;
   --nf-card: #151E18;
-  --nf-card-hover: #1B2820;
-
+  --nf-hover: #1B2820;
   --nf-green: #6FAF88;
-  --nf-green-light: #A8D5B6;
-
+  --nf-light: #A8D5B6;
   --nf-text: #E5EAE6;
   --nf-muted: #929D94;
   --nf-border: #29352D;
 }
-
-
-/* 3. GLOBAL */
 
 html {
   scroll-behavior: smooth;
@@ -36,278 +30,270 @@ html {
 body {
   background: var(--nf-bg);
   color: var(--nf-text);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Space Grotesk", "Vazirmatn", sans-serif;
   line-height: 1.75;
 }
 
-#quarto-content {
-  background: var(--nf-bg);
-}
-
-a {
-  color: var(--nf-green);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: var(--nf-green-light);
-}
-
-
-/* 4. NAVBAR */
-
 .navbar {
-  background: #0B100D !important;
+  background: rgba(9, 13, 11, 0.96) !important;
   border-bottom: 1px solid var(--nf-border);
-  font-family: "Space Grotesk", sans-serif;
+  padding: 0.8rem 1.5rem;
+  backdrop-filter: blur(12px);
 }
 
 .navbar-brand {
-  color: var(--nf-green-light) !important;
+  color: var(--nf-light) !important;
+  font-family: "JetBrains Mono", monospace;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 0.12em;
 }
 
 .navbar .nav-link {
   color: var(--nf-muted) !important;
-  font-weight: 600;
+  transition: color 0.2s ease;
 }
 
-.navbar .nav-link:hover,
-.navbar .nav-link.active {
-  color: var(--nf-green-light) !important;
+.navbar .nav-link:hover {
+  color: var(--nf-light) !important;
 }
 
-
-/* 5. SIDEBAR */
-
-#quarto-sidebar {
-  background: var(--nf-surface);
-  border-right: 1px solid var(--nf-border);
-  font-family: "Space Grotesk", sans-serif;
+#quarto-content {
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
-#quarto-sidebar .sidebar-item {
-  margin: 3px 0;
+main.content {
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
 }
 
-#quarto-sidebar .sidebar-item a {
-  color: var(--nf-muted);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 0.96rem;
-  font-weight: 600;
-  line-height: 1.6;
-  padding: 7px 12px;
-  border-radius: 7px;
-  transition: all 0.2s ease;
-}
-
-#quarto-sidebar .sidebar-item a:hover {
-  color: var(--nf-green-light);
-  background: var(--nf-card);
-}
-
-#quarto-sidebar .sidebar-item a.active {
-  color: var(--nf-green-light) !important;
-  background: #1B2A20;
-  font-weight: 700;
-  border-left: 2px solid var(--nf-green);
-}
-
-#quarto-sidebar .sidebar-item-section > .sidebar-item-container {
+h1, h2, h3, h4 {
   color: var(--nf-text);
-  font-weight: 700;
-  letter-spacing: 0.3px;
-}
-
-
-/* 6. HEADINGS */
-
-h1, h2, h3, h4, h5 {
-  color: var(--nf-text);
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: 700;
-  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -0.035em;
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: clamp(2.2rem, 5vw, 3.7rem);
+  margin-bottom: 1rem;
 }
 
 h2 {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
   font-size: 1.65rem;
-  border-bottom: 1px solid var(--nf-border);
-  padding-bottom: 10px;
 }
 
-h3 {
-  font-size: 1.25rem;
+a {
+  color: var(--nf-light);
+  text-decoration: none;
 }
 
+a:hover {
+  color: #D0EBD8;
+}
 
-/* 7. CARDS */
+.nf-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 85% 15%, rgba(111,175,136,0.13), transparent 45%),
+    linear-gradient(135deg, #111813, #0D130F);
+  border: 1px solid var(--nf-border);
+  border-radius: 18px;
+  padding: clamp(2rem, 6vw, 4.5rem);
+  margin: 1rem 0 3rem;
+}
 
-.card {
+.nf-hero h1 {
+  max-width: 850px;
+  margin-top: 1rem;
+}
+
+.nf-hero p {
+  color: var(--nf-muted);
+  max-width: 760px;
+  font-size: 1.08rem;
+}
+
+.nf-eyebrow,
+.nf-card-number {
+  color: var(--nf-green);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+}
+
+.nf-primary-link {
+  display: inline-block;
+  margin-top: 1.1rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  background: var(--nf-green);
+  color: #08110B !important;
+  font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nf-primary-link:hover {
+  background: var(--nf-light);
+  transform: translateY(-2px);
+}
+
+.nf-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 3rem;
+}
+
+.nf-card {
+  min-width: 0;
   background: var(--nf-card);
   border: 1px solid var(--nf-border);
-  border-radius: 12px;
-  transition: all 0.25s ease;
+  border-radius: 13px;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
-.card:hover {
-  background: var(--nf-card-hover);
+.nf-card:hover {
+  background: var(--nf-hover);
   border-color: var(--nf-green);
   transform: translateY(-3px);
 }
 
+.nf-card h3 {
+  font-size: 1.2rem;
+  margin: 1rem 0 0.6rem;
+}
 
-/* 8. CODE */
+.nf-card p {
+  color: var(--nf-muted);
+  font-size: 0.94rem;
+}
 
+.nf-card a {
+  display: inline-block;
+  margin-top: 0.7rem;
+  font-weight: 600;
+}
+
+.nf-muted {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: var(--nf-muted);
+  font-size: 0.9rem;
+}
+
+.nf-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.nf-stats div {
+  display: flex;
+  flex-direction: column;
+}
+
+.nf-stats strong {
+  color: var(--nf-light);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 2rem;
+}
+
+.nf-stats span {
+  color: var(--nf-muted);
+  font-size: 0.85rem;
+}
+
+.nf-outcome {
+  background: var(--nf-surface);
+  border: 1px solid var(--nf-border);
+  border-left: 3px solid var(--nf-green);
+  border-radius: 9px;
+  padding: 1.3rem 1.5rem;
+  color: var(--nf-muted);
+}
+
+.nf-footer {
+  border-top: 1px solid var(--nf-border);
+  padding-top: 1.2rem;
+  margin-top: 4rem;
+  color: var(--nf-muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+.persian {
+  direction: rtl;
+  text-align: right;
+  font-family: "Vazirmatn", sans-serif;
+  line-height: 2.1;
+}
+
+.persian h1,
+.persian h2,
+.persian h3,
+.persian p,
+.persian li {
+  font-family: "Vazirmatn", sans-serif;
+}
+
+.persian pre,
+.persian code,
 pre,
-code,
-.sourceCode {
-  font-family: "JetBrains Mono", monospace !important;
+code {
+  direction: ltr;
+  text-align: left;
+  font-family: "JetBrains Mono", monospace;
 }
 
 pre {
-  background: #0D130F !important;
+  background: #0C120E !important;
   border: 1px solid var(--nf-border);
-  border-radius: 9px;
-  padding: 16px;
-  direction: ltr;
-  text-align: left;
+  border-radius: 10px;
+  padding: 1rem;
 }
-
-code {
-  color: var(--nf-green-light);
-}
-
-
-/* 9. TABLES */
 
 table {
   border-color: var(--nf-border) !important;
 }
 
 th {
-  color: var(--nf-green-light);
-  background: var(--nf-surface);
+  color: var(--nf-light);
 }
 
-td {
-  color: var(--nf-text);
+td, th {
+  padding: 0.7rem !important;
 }
-
-
-/* 10. TABLE OF CONTENTS */
 
 #TOC {
-  font-family: "Space Grotesk", sans-serif;
+  border-left: 1px solid var(--nf-border);
 }
 
 #TOC a {
   color: var(--nf-muted);
-  font-size: 0.9rem;
 }
 
-#TOC a.active,
-#TOC a:hover {
-  color: var(--nf-green-light);
+#TOC a:hover,
+#TOC .active {
+  color: var(--nf-light);
 }
 
-
-/* 11. PERSIAN RTL CONTENT */
-
-.persian {
-  direction: rtl !important;
-  text-align: right !important;
-  font-family: "Vazirmatn", Tahoma, sans-serif !important;
-  font-size: 1.05rem;
-  line-height: 2.15;
-  color: var(--nf-text);
+blockquote {
+  border-left: 3px solid var(--nf-green);
+  color: var(--nf-muted);
+  padding-left: 1rem;
 }
 
-/* Persian paragraphs and headings */
-
-.persian p,
-.persian h1,
-.persian h2,
-.persian h3,
-.persian h4,
-.persian li,
-.persian blockquote {
-  direction: rtl !important;
-  text-align: right !important;
-  font-family: "Vazirmatn", Tahoma, sans-serif !important;
+::selection {
+  background: rgba(111, 175, 136, 0.3);
+  color: white;
 }
-
-/* Persian heading weights */
-
-.persian h1,
-.persian h2,
-.persian h3,
-.persian h4 {
-  font-weight: 800;
-}
-
-/* Persian lists */
-
-.persian ul,
-.persian ol {
-  direction: rtl !important;
-  text-align: right !important;
-  padding-right: 2rem !important;
-  padding-left: 0 !important;
-}
-
-/* Persian tables */
-
-.persian table {
-  direction: rtl !important;
-  text-align: right !important;
-  width: 100%;
-}
-
-.persian th,
-.persian td {
-  text-align: right !important;
-  font-family: "Vazirmatn", Tahoma, sans-serif !important;
-}
-
-/* English words inside Persian sentences */
-
-.persian bdi,
-.persian .ltr {
-  direction: ltr !important;
-  unicode-bidi: isolate !important;
-  font-family: "Space Grotesk", sans-serif;
-}
-
-/* Inline code */
-
-.persian p code,
-.persian li code {
-  direction: ltr !important;
-  unicode-bidi: isolate !important;
-  display: inline-block;
-  font-family: "JetBrains Mono", monospace !important;
-  font-size: 0.9em;
-}
-
-/* Code blocks must always remain LTR */
-
-.persian pre,
-.persian pre code,
-.persian .sourceCode {
-  direction: ltr !important;
-  text-align: left !important;
-  unicode-bidi: isolate;
-  font-family: "JetBrains Mono", monospace !important;
-}
-
-
-/* 12. SCROLLBAR */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -318,18 +304,24 @@ td {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #34443A;
+  background: #34483A;
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--nf-green);
-}
+@media (max-width: 768px) {
+  .nf-grid {
+    grid-template-columns: 1fr;
+  }
 
+  .nf-hero {
+    padding: 2rem 1.4rem;
+  }
 
-/* 13. TEXT SELECTION */
+  .nf-stats {
+    gap: 1.5rem;
+  }
 
-::selection {
-  background: #315D40;
-  color: white;
+  main.content {
+    padding-top: 1.5rem;
+  }
 }

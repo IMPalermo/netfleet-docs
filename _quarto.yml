@@ -1,26 +1,22 @@
-
 project:
   type: website
   output-dir: _site
+  resources:
+    - assets/
 
 website:
   title: "NetFleet Docs"
-  description: "Personal Infrastructure Engineering Knowledge Hub"
+  description: "Infrastructure Engineering Knowledge Hub"
 
   navbar:
     title: "NETFLEET"
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Learning"
-        href: learning/python/index.qmd
+      - text: "Networking"
+        href: learning/networking/index.qmd
 
-  sidebar:
-    style: "docked"
-    search: true
-    collapse-level: 2
-    contents: auto
-
+  page-navigation: true
 format:
   html:
     theme:
@@ -31,4 +27,25 @@ format:
     code-copy: true
     code-overflow: wrap
     smooth-scroll: true
-    
+    anchor-sections: true
+    link-external-newwindow: true
+
+    include-after-body:
+      text: |
+        <script>
+        (() => {
+          const base = window.location.pathname.startsWith("/netfleet-docs/")
+            ? "/netfleet-docs/"
+            : "/";
+          const script = document.createElement("script");
+          script.src = base + "assets/js/labs/network-fundamentals.js";
+          script.async = false;
+          document.head.appendChild(script);
+        })();
+        </script>
+
+
+language:
+  title-block-author: "Author"
+
+

@@ -1,0 +1,21 @@
+---
+title: "Week 8 - Network Design and Review"
+---
+
+::: {.persian}
+# هفته 8: Network Design and Review
+
+این هفته روی موضوع **Network Design and Review** تمرکز دارد.
+
+## جلسات
+
+- [Day 1: Hierarchical Network Design](day-01.qmd)
+- [Day 2: Redundancy and High Availability](day-02.qmd)
+- [Day 3: Capacity Planning](day-03.qmd)
+- [Day 4: Network Change Management](day-04.qmd)
+- [Day 5: Networking Fundamentals Practical Assessment](day-05.qmd)
+
+## خروجی هفتگی
+
+در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+:::

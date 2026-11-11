@@ -1,0 +1,1748 @@
+
+---
+title: "Ethernet, MAC Address and ARP"
+subtitle: "Week 01 | Day 03"
+---
+
+::: {.persian}
+
+# Ethernet، MAC Address و ARP
+
+## مقدمه جلسه
+
+وقتی دو کامپیوتر در یک شبکه محلی با یکدیگر ارتباط برقرار می‌کنند، فقط دانستن IP Address کافی نیست. برای انتقال واقعی داده روی شبکه Ethernet، دستگاه باید بداند فریم را به کدام MAC Address ارسال کند.
+
+در این جلسه از آدرس‌دهی لایه دوم شروع می‌کنیم، ساختار Ethernet Frame را بررسی می‌کنیم، نحوه یادگیری MAC توسط Switch را می‌فهمیم و در نهایت با ARP ارتباط میان IPv4 و MAC Address را تحلیل می‌کنیم.
+
+در پایان باید بتوانی مسیر یک بسته را از لحظه خروج از کارت شبکه مبدأ تا رسیدن به Switch و مقصد محلی تحلیل کنی.
+
+## اهداف یادگیری
+
+در پایان این جلسه باید بتوانی:
+
+- ساختار Ethernet Frame و فیلدهای اصلی آن را تحلیل کنی.
+- تفاوت MAC Address و IP Address را از نظر کاربرد و محدوده عملکرد توضیح بدهی.
+- Unicast، Broadcast و Multicast را از یکدیگر تشخیص بدهی.
+- نحوه یادگیری و نگهداری MAC Address در Switch را توضیح بدهی.
+- رفتار Unknown Unicast و Broadcast Flooding را تحلیل کنی.
+- فرایند ARP Request و ARP Reply را از ابتدا تا انتها دنبال کنی.
+- تفاوت ارتباط با مقصد محلی و مقصد خارج از Subnet را درک کنی.
+- ARP Cache و Neighbor Table را بررسی کنی.
+- Gratuitous ARP و ARP Spoofing را بشناسی.
+- با PowerShell و Wireshark اطلاعات واقعی شبکه را تحلیل کنی.
+- یک سناریوی خرابی در لایه دوم را عیب‌یابی کنی.
+
+---
+
+# بخش اول: Ethernet Fundamentals
+
+## 1. Ethernet چیست؟
+
+Ethernet خانواده‌ای از فناوری‌های شبکه محلی سیمی است که استانداردهای آن در IEEE 802.3 تعریف شده‌اند.
+
+Ethernet مشخص می‌کند داده‌ها چگونه در قالب Frame منتقل شوند و دستگاه‌ها چگونه در یک شبکه محلی با استفاده از آدرس‌های MAC با یکدیگر ارتباط برقرار کنند.
+
+در یک شبکه Ethernet معمولی، اجزای اصلی عبارت‌اند از:
+
+- Network Interface Card یا NIC
+- Ethernet Cable
+- Switch
+- Ethernet Frame
+- MAC Address
+
+برای مثال، وقتی کامپیوتر شما یک درخواست به کامپیوتر دیگری در همان LAN ارسال می‌کند، کارت شبکه باید اطلاعات را در قالب یک Ethernet Frame قرار دهد.
+
+### 1.1 Ethernet در مدل OSI
+
+Ethernet عمدتاً با لایه Physical و Data Link مدل OSI ارتباط دارد.
+
+| بخش | وظیفه |
+|---|---|
+| Physical Layer | انتقال بیت‌ها از طریق رسانه فیزیکی |
+| Data Link Layer | ساخت و پردازش Frame |
+| MAC Sublayer | آدرس‌دهی MAC و کنترل دسترسی به رسانه |
+| LLC Sublayer | ارائه رابط منطقی به لایه‌های بالاتر |
+
+در Ethernet مدرن، سوئیچ‌ها معمولاً در لایه دوم فعالیت می‌کنند.
+
+البته تجهیزات پیشرفته ممکن است قابلیت‌های لایه سوم یا بالاتر نیز داشته باشند.
+
+### 1.2 Ethernet و استاندارد IEEE 802.3
+
+IEEE 802.3 خانواده‌ای از استانداردهای Ethernet را تعریف می‌کند.
+
+چند نمونه:
+
+| استاندارد | سرعت |
+|---|---:|
+| 10BASE-T | 10 Mbps |
+| 100BASE-TX | 100 Mbps |
+| 1000BASE-T | 1 Gbps |
+| 10GBASE-T | 10 Gbps |
+| 40GBASE-SR4 | 40 Gbps |
+| 100GBASE-SR4 | 100 Gbps |
+
+نام استانداردها معمولاً اطلاعاتی درباره سرعت، نوع رسانه و روش انتقال ارائه می‌کند.
+
+نکته مهندسی: سرعت پورت، ظرفیت واقعی انتقال داده و Throughput برنامه کاربردی یکسان نیستند. سربار پروتکل‌ها، ازدحام، محدودیت تجهیزات و شرایط شبکه روی Throughput تأثیر می‌گذارند.
+
+---
+
+## 2. MAC Address چیست؟
+
+MAC Address شناسه‌ای است که برای آدرس‌دهی در لایه دوم شبکه استفاده می‌شود.
+
+در Ethernet متداول، MAC Address معمولاً 48 بیت یا 6 بایت طول دارد.
+
+نمونه:
+
+```text
+A4:5E:60:12:34:56
+```
+
+نمایش هگزادسیمال این آدرس شامل 12 رقم است.
+
+هر دو رقم هگزادسیمال معادل یک بایت هستند:
+
+```text
+A4 : 5E : 60 : 12 : 34 : 56
+ 1    2    3    4    5    6
+```
+
+در مجموع:
+
+```text
+6 bytes × 8 bits = 48 bits
+```
+
+### 2.1 ساختار MAC Address
+
+در قالب متداول MAC Address که به‌صورت جهانی مدیریت می‌شود، دو قسمت اصلی وجود دارد:
+
+| بخش | اندازه | توضیح |
+|---|---:|---|
+| OUI | 24 بیت | شناسه سازمان یا سازنده |
+| Device Identifier | 24 بیت | بخش اختصاص داده‌شده برای رابط |
+
+OUI مخفف Organizationally Unique Identifier است.
+
+سازمان IEEE شناسه‌های مربوط به سازندگان را مدیریت می‌کند.
+
+نکته: در عمل همه MAC Addressها الزاماً شناسه ثابت سخت‌افزاری نیستند. سیستم‌عامل، Hypervisor و تجهیزات شبکه می‌توانند از آدرس‌های محلی یا تصادفی استفاده کنند.
+
+### 2.2 بیت‌های مهم در MAC Address
+
+دو بیت ابتدایی اولین بایت MAC اهمیت ویژه‌ای دارند.
+
+- I/G: مشخص می‌کند آدرس Individual است یا Group.
+- U/L: مشخص می‌کند آدرس Universally Administered است یا Locally Administered.
+
+برای نمونه، در MAC زیر:
+
+```text
+A4:5E:60:12:34:56
+```
+
+بایت اول برابر `A4` است.
+
+نمایش باینری:
+
+```text
+A4 = 10100100
+```
+
+در این بایت:
+
+- کم‌ارزش‌ترین بیت، I/G است.
+- دومین بیت کم‌ارزش، U/L است.
+
+اگر I/G برابر صفر باشد، آدرس Individual یا Unicast است.
+
+اگر I/G برابر یک باشد، آدرس Group است.
+
+اگر U/L برابر صفر باشد، آدرس به‌صورت جهانی مدیریت می‌شود.
+
+اگر U/L برابر یک باشد، آدرس Locally Administered است.
+
+### 2.3 Universal و Local MAC
+
+MAC Address می‌تواند به دو شکل مدیریت شود:
+
+**Universally Administered Address (UAA)**
+
+آدرسی که تحت ساختار تخصیص جهانی IEEE قرار دارد.
+
+**Locally Administered Address (LAA)**
+
+آدرسی که توسط سیستم‌عامل یا مدیر شبکه به‌صورت محلی تنظیم شده است.
+
+موارد استفاده از LAA:
+
+- MAC Randomization در Wi-Fi
+- ماشین‌های مجازی
+- محیط‌های آزمایشگاهی
+- تنظیمات خاص شبکه
+- سناریوهای تست و شبیه‌سازی
+
+بنابراین نباید صرفاً بر اساس MAC Address درباره هویت واقعی یک دستگاه نتیجه‌گیری کرد.
+
+---
+
+## 3. انواع MAC Address
+
+سه نوع مهم آدرس‌دهی در Ethernet عبارت‌اند از:
+
+### 3.1 Unicast
+
+آدرس Unicast برای ارتباط با یک مقصد مشخص استفاده می‌شود.
+
+مثال:
+
+```text
+Source MAC:      AA:AA:AA:AA:AA:AA
+Destination MAC: BB:BB:BB:BB:BB:BB
+```
+
+در حالت عادی، Switch تلاش می‌کند فریم را فقط از پورتی ارسال کند که MAC مقصد روی آن یاد گرفته شده است.
+
+### 3.2 Broadcast
+
+آدرس Broadcast در Ethernet برابر است با:
+
+```text
+FF:FF:FF:FF:FF:FF
+```
+
+این آدرس به تمام دستگاه‌های عضو Broadcast Domain مربوطه اشاره می‌کند.
+
+برای مثال، ARP Request در IPv4 معمولاً به‌صورت Broadcast ارسال می‌شود.
+
+سوئیچ فریم Broadcast را در همان VLAN به پورت‌های مناسب Flood می‌کند، به‌جز پورتی که فریم از آن دریافت شده است.
+
+روترها به‌صورت عادی Broadcastهای Ethernet را بین شبکه‌های مختلف Forward نمی‌کنند.
+
+### 3.3 Multicast
+
+Multicast برای ارسال اطلاعات به یک گروه از گیرندگان استفاده می‌شود.
+
+به‌جای ارسال جداگانه اطلاعات به تک‌تک دستگاه‌ها، فرستنده داده را به یک آدرس گروهی ارسال می‌کند.
+
+نمونه کاربردها:
+
+- Streaming
+- پروتکل‌های مسیریابی
+- سرویس‌های Discovery
+- برخی پروتکل‌های شبکه
+
+در Ethernet، آدرس‌های Multicast با I/G برابر یک مشخص می‌شوند.
+
+### مقایسه سه نوع آدرس
+
+| ویژگی | Unicast | Broadcast | Multicast |
+|---|---|---|---|
+| گیرنده | یک مقصد | تمام اعضای Broadcast Domain | اعضای یک گروه |
+| MAC نمونه | `00:11:22:33:44:55` | `FF:FF:FF:FF:FF:FF` | آدرس Group |
+| کاربرد | ارتباط معمولی | ARP Request | ارتباط گروهی |
+| رفتار Switch | Forward به پورت مقصد | Flood در VLAN | وابسته به پیکربندی و Multicast Snooping |
+
+---
+
+# بخش دوم: Ethernet Frame
+
+## 4. ساختار Ethernet Frame
+
+داده‌ای که در لایه دوم منتقل می‌شود در قالب Frame قرار می‌گیرد.
+
+ساختار Ethernet II Frame به شکل زیر است:
+
+```text
++----------------------+----------------------+
+| Destination MAC      | 6 Bytes              |
++----------------------+----------------------+
+| Source MAC           | 6 Bytes              |
++----------------------+----------------------+
+| EtherType            | 2 Bytes              |
++----------------------+----------------------+
+| Payload              | 46 - 1500 Bytes      |
++----------------------+----------------------+
+| Frame Check Sequence | 4 Bytes              |
++----------------------+----------------------+
+```
+
+این ساختار مربوط به Ethernet II بدون VLAN Tag است.
+
+### 4.1 Destination MAC
+
+این فیلد مشخص می‌کند فریم برای کدام مقصد یا گروه ارسال شده است.
+
+سوئیچ با بررسی Destination MAC تصمیم می‌گیرد فریم را به کدام پورت ارسال کند.
+
+### 4.2 Source MAC
+
+این فیلد MAC Address فرستنده فریم را مشخص می‌کند.
+
+یکی از مهم‌ترین کاربردهای این فیلد، یادگیری MAC توسط Switch است.
+
+سوئیچ هنگام دریافت یک فریم، Source MAC را بررسی می‌کند و آن را به پورت ورودی نسبت می‌دهد.
+
+### 4.3 EtherType
+
+EtherType مشخص می‌کند Payload متعلق به کدام پروتکل است.
+
+نمونه‌های مهم:
+
+| EtherType | پروتکل |
+|---|---|
+| `0x0800` | IPv4 |
+| `0x0806` | ARP |
+| `0x86DD` | IPv6 |
+| `0x8100` | IEEE 802.1Q VLAN Tag |
+
+برای مثال:
+
+اگر EtherType برابر `0x0800` باشد، Payload شامل یک بسته IPv4 است.
+
+اگر EtherType برابر `0x0806` باشد، Payload مربوط به ARP است.
+
+### 4.4 Payload
+
+Payload محتوای اصلی فریم است.
+
+در یک Ethernet II Frame معمولی، اندازه Payload بین 46 تا 1500 بایت است.
+
+اگر داده کمتر از حداقل اندازه لازم باشد، Padding اضافه می‌شود.
+
+در شبکه‌هایی با Jumbo Frame، اندازه Payload می‌تواند از 1500 بایت بیشتر باشد، البته همه تجهیزات مسیر باید از آن پشتیبانی کنند.
+
+### 4.5 Frame Check Sequence
+
+FCS یک فیلد 4 بایتی است که برای تشخیص خرابی احتمالی فریم استفاده می‌شود.
+
+این فیلد از الگوریتم CRC-32 استفاده می‌کند.
+
+نکته مهم:
+
+FCS برای تشخیص خطا است، نه اصلاح آن.
+
+اگر فریم در مسیر خراب شود، گیرنده می‌تواند با بررسی FCS متوجه این موضوع شود.
+
+### 4.6 تفاوت Frame و Packet
+
+این دو اصطلاح نباید با یکدیگر اشتباه گرفته شوند.
+
+| اصطلاح | لایه | توضیح |
+|---|---|---|
+| Bit | Physical | واحد انتقال فیزیکی |
+| Frame | Data Link | واحد انتقال لایه دوم |
+| Packet | Network | واحد داده در لایه سوم |
+| Segment | Transport | واحد داده TCP |
+| Datagram | Transport | معمولاً واحد داده UDP |
+
+مثال:
+
+```text
+Ethernet Frame
+    └── IPv4 Packet
+            └── TCP Segment
+                    └── Application Data
+```
+
+این ساختار نمونه‌ای از Encapsulation است.
+
+### 4.7 Preamble و SFD
+
+در انتقال فیزیکی Ethernet، قبل از Frame معمولاً Preamble و Start Frame Delimiter قرار می‌گیرند.
+
+- Preamble: برای هم‌زمان‌سازی فرستنده و گیرنده
+- SFD: نشان‌دهنده شروع فریم
+
+این فیلدها معمولاً در نمایش معمول Ethernet Frame توسط Wireshark به‌عنوان بخشی از فریم نشان داده نمی‌شوند.
+
+---
+
+## 5. VLAN Tag و Ethernet Frame
+
+در شبکه‌های VLAN، ممکن است فریم Ethernet دارای Tag باشد.
+
+استاندارد IEEE 802.1Q برای این کار استفاده می‌شود.
+
+ساختار ساده‌شده:
+
+```text
+Destination MAC
+Source MAC
+802.1Q Tag
+EtherType
+Payload
+FCS
+```
+
+Tag استاندارد 802.1Q شامل 4 بایت است.
+
+اطلاعات مهم آن:
+
+- TPID: شناسایی Tag
+- PCP: اولویت ترافیک
+- DEI: نشانگر قابلیت حذف فریم در شرایط ازدحام
+- VID: شناسه VLAN
+
+VID معمولاً 12 بیت است.
+
+مقادیر VLAN ID از 0 تا 4095 تعریف می‌شوند، اما VLAN 0 و 4095 برای کاربردهای رزروشده هستند. شناسه‌های معمول VLAN قابل استفاده 1 تا 4094 هستند.
+
+VLAN باعث تقسیم منطقی یک شبکه لایه دوم به چند Broadcast Domain می‌شود.
+
+---
+
+# بخش سوم: Switching
+
+## 6. Switch چیست؟
+
+Switch دستگاهی است که فریم‌های Ethernet را بر اساس اطلاعات لایه دوم منتقل می‌کند.
+
+مهم‌ترین وظیفه سوئیچ لایه دوم:
+
+1. دریافت Frame
+2. بررسی Source MAC
+3. یادگیری MAC و پورت ورودی
+4. بررسی Destination MAC
+5. تصمیم‌گیری برای Forward، Filter یا Flood
+
+سوئیچ معمولاً برای نگهداری اطلاعات MAC از جدول MAC Address Table استفاده می‌کند.
+
+نام‌های دیگر این جدول:
+
+- CAM Table
+- Forwarding Database (FDB)
+- MAC Address Table
+
+### 6.1 MAC Learning
+
+فرض کنیم سه کامپیوتر به یک سوئیچ متصل هستند:
+
+```text
+PC-A                  PC-B
+192.168.1.10          192.168.1.20
+MAC: AA:AA...         MAC: BB:BB...
+   |                     |
+Port 1                Port 2
+       \              /
+        +------------+
+        |   Switch   |
+        +------------+
+               |
+             Port 3
+               |
+             PC-C
+          192.168.1.30
+```
+
+وقتی PC-A فریمی ارسال می‌کند، Switch ابتدا Source MAC را می‌خواند.
+
+فرض کنیم Source MAC برابر `AA:AA:AA:AA:AA:AA` باشد.
+
+سوئیچ یاد می‌گیرد:
+
+| MAC Address | Port |
+|---|---|
+| AA:AA:AA:AA:AA:AA | 1 |
+
+اگر بعداً از Port 2 فریمی با Source MAC برابر `BB:BB:BB:BB:BB:BB` دریافت کند، جدول به این شکل درمی‌آید:
+
+| MAC Address | Port |
+|---|---|
+| AA:AA:AA:AA:AA:AA | 1 |
+| BB:BB:BB:BB:BB:BB | 2 |
+
+این فرایند MAC Learning نام دارد.
+
+نکته کلیدی: سوئیچ MAC مقصد را برای یادگیری استفاده نمی‌کند. یادگیری معمولاً بر اساس Source MAC انجام می‌شود.
+
+### 6.2 Forwarding Decision
+
+پس از یادگیری Source MAC، سوئیچ Destination MAC را بررسی می‌کند.
+
+سه حالت اصلی وجود دارد:
+
+**حالت اول: Known Unicast**
+
+اگر Destination MAC در جدول وجود داشته باشد، سوئیچ فریم را به پورت مربوطه ارسال می‌کند.
+
+**حالت دوم: Unknown Unicast**
+
+اگر Destination MAC در جدول نباشد، سوئیچ فریم را در همان VLAN به پورت‌های مناسب Flood می‌کند.
+
+**حالت سوم: Broadcast**
+
+اگر Destination MAC برابر Broadcast باشد، سوئیچ فریم را به پورت‌های مناسب همان VLAN Flood می‌کند.
+
+در حالت معمول، فریم به پورت ورودی بازگردانده نمی‌شود.
+
+### 6.3 مثال عملی
+
+فرض کنیم:
+
+- PC-A روی Port 1 است.
+- PC-B روی Port 2 است.
+- PC-C روی Port 3 است.
+
+PC-A یک فریم به MAC ناشناخته PC-B ارسال می‌کند.
+
+سوئیچ:
+
+1. Source MAC کامپیوتر A را یاد می‌گیرد.
+2. Destination MAC را در جدول جست‌وجو می‌کند.
+3. مقصد را پیدا نمی‌کند.
+4. فریم را روی پورت‌های مناسب دیگر Flood می‌کند.
+5. PC-B فریم را دریافت می‌کند.
+6. اگر PC-B پاسخ بدهد، سوئیچ Source MAC آن را نیز یاد می‌گیرد.
+
+پس از این مرحله، ارتباط Unicast می‌تواند مستقیماً از پورت مناسب عبور کند.
+
+### 6.4 MAC Aging
+
+اطلاعات MAC معمولاً برای همیشه در جدول باقی نمی‌ماند.
+
+اگر یک MAC Address برای مدت مشخصی فریمی ارسال نکند، ورودی آن می‌تواند از جدول حذف شود.
+
+این فرایند MAC Aging نام دارد.
+
+مدت زمان Aging به سازنده و تنظیمات سوئیچ بستگی دارد.
+
+چرا Aging لازم است؟
+
+- دستگاه ممکن است به پورت دیگری منتقل شود.
+- دستگاه ممکن است خاموش شود.
+- توپولوژی شبکه ممکن است تغییر کند.
+- اطلاعات قدیمی نباید برای همیشه باقی بماند.
+
+### 6.5 MAC Flapping
+
+فرض کن یک MAC Address مرتباً از دو پورت متفاوت دیده شود.
+
+سوئیچ ممکن است در مدت کوتاهی همان MAC را بین دو پورت جابه‌جا شده تشخیص دهد.
+
+این اتفاق MAC Flapping نام دارد.
+
+دلایل احتمالی:
+
+- اتصال اشتباه کابل‌ها
+- Loop در شبکه لایه دوم
+- تنظیمات نادرست Link Aggregation
+- وجود مسیرهای فیزیکی یا منطقی تکراری
+- برخی مشکلات در محیط مجازی‌سازی
+
+MAC Flapping می‌تواند باعث اختلال در Forwarding شود و باید بررسی شود.
+
+### 6.6 Collision Domain و Broadcast Domain
+
+این دو مفهوم بسیار مهم هستند.
+
+**Collision Domain**
+
+محدوده‌ای است که در آن امکان برخورد سیگنال‌های Ethernet وجود دارد.
+
+در شبکه‌های Switched Full-Duplex امروزی، هر لینک معمولاً Collision Domain مستقل دارد و Collision عملاً مسئله رایج شبکه‌های مدرن نیست.
+
+**Broadcast Domain**
+
+محدوده‌ای است که Broadcastهای لایه دوم در آن منتشر می‌شوند.
+
+هر VLAN معمولاً یک Broadcast Domain مستقل ایجاد می‌کند.
+
+| ویژگی | Collision Domain | Broadcast Domain |
+|---|---|---|
+| ارتباط | برخورد سیگنال | انتشار Broadcast |
+| تقسیم با Switch | معمولاً جدا می‌شود | لزوماً جدا نمی‌شود |
+| تقسیم با Router | جدا می‌شود | جدا می‌شود |
+| نقش VLAN | ارتباط غیرمستقیم با لینک‌ها | تقسیم منطقی |
+
+---
+
+# بخش چهارم: ARP
+
+## 7. ARP چیست؟
+
+ARP مخفف Address Resolution Protocol است.
+
+در شبکه IPv4، ARP برای پیدا کردن MAC Address مربوط به یک IPv4 Address در لینک محلی استفاده می‌شود.
+
+فرض کن کامپیوتر A می‌خواهد به این IP دسترسی پیدا کند:
+
+```text
+192.168.1.20
+```
+
+کامپیوتر A می‌داند IP مقصد چیست، اما برای ساخت Ethernet Frame به MAC مقصد نیاز دارد.
+
+ARP این مسئله را حل می‌کند.
+
+### 7.1 سناریوی ساده ARP
+
+فرض کنیم:
+
+```text
+PC-A
+IP:  192.168.1.10/24
+MAC: AA:AA:AA:AA:AA:AA
+
+PC-B
+IP:  192.168.1.20/24
+MAC: BB:BB:BB:BB:BB:BB
+```
+
+PC-A می‌خواهد با PC-B ارتباط برقرار کند.
+
+اگر اطلاعات ARP مقصد در Cache وجود نداشته باشد، PC-A یک ARP Request ارسال می‌کند.
+
+نمونه پیام:
+
+```text
+Who has 192.168.1.20?
+Tell 192.168.1.10
+```
+
+در این درخواست:
+
+- Sender IP: 192.168.1.10
+- Sender MAC: AA:AA:AA:AA:AA:AA
+- Target IP: 192.168.1.20
+- Target MAC: معمولاً صفر در Request
+
+ARP Request معمولاً با MAC مقصد Broadcast ارسال می‌شود:
+
+```text
+FF:FF:FF:FF:FF:FF
+```
+
+تمام دستگاه‌های همان Broadcast Domain درخواست را دریافت می‌کنند.
+
+دستگاهی که IP مقصد را دارد، پاسخ می‌دهد.
+
+### 7.2 ARP Reply
+
+PC-B پاسخ می‌دهد:
+
+```text
+192.168.1.20 is at BB:BB:BB:BB:BB:BB
+```
+
+این پاسخ معمولاً به‌صورت Unicast برای درخواست‌کننده ارسال می‌شود.
+
+PC-A اکنون می‌تواند MAC مربوط به PC-B را در ARP Cache نگهداری کند.
+
+### 7.3 مراحل کامل ARP Resolution
+
+```text
+PC-A                 Switch                 PC-B
+ |                      |                     |
+ | ARP Request          |                     |
+ | Broadcast            |                     |
+ |--------------------->|-------------------->|
+ |                      |                     |
+ |                      |    ARP Request      |
+ |                      |                     |
+ |                      |<--------------------|
+ |                      |    ARP Reply        |
+ |<---------------------|                     |
+ |                      |                     |
+ | Ethernet Frame       |                     |
+ | Unicast              |                     |
+ |--------------------->|-------------------->|
+```
+
+در این مثال:
+
+1. PC-A بررسی می‌کند که IP مقصد محلی است.
+2. ARP Cache را بررسی می‌کند.
+3. اگر Entry موجود نباشد، ARP Request می‌فرستد.
+4. Switch درخواست Broadcast را در VLAN منتشر می‌کند.
+5. PC-B پاسخ Unicast می‌دهد.
+6. PC-A اطلاعات MAC را ذخیره می‌کند.
+7. ارتباط داده‌ای آغاز می‌شود.
+
+### 7.4 ARP در کدام لایه است؟
+
+ARP بین عملکرد لایه دوم و سوم قرار می‌گیرد.
+
+در مدل OSI معمولاً به‌عنوان پروتکل مرتبط با Address Resolution در نظر گرفته می‌شود.
+
+ARP یک پیام مستقل برای پیدا کردن MAC از روی IPv4 است که مستقیماً داخل Ethernet Frame قرار می‌گیرد.
+
+EtherType مربوط به ARP:
+
+```text
+0x0806
+```
+
+---
+
+## 8. مهم‌ترین نکته ARP: مقصد محلی یا خارج از Subnet
+
+این بخش از مهم‌ترین مفاهیم مهندسی شبکه است.
+
+وقتی کامپیوتر می‌خواهد با یک IP ارتباط برقرار کند، ابتدا باید تشخیص دهد مقصد در Subnet خودش قرار دارد یا خارج از آن.
+
+فرض کنیم:
+
+```text
+Host IP:       192.168.1.10
+Subnet Mask:   255.255.255.0
+Gateway:       192.168.1.1
+```
+
+### 8.1 مقصد داخل Subnet
+
+مقصد:
+
+```text
+192.168.1.20
+```
+
+این IP در همان Subnet قرار دارد.
+
+بنابراین Host باید MAC Address خود مقصد را پیدا کند.
+
+```text
+Destination IP:  192.168.1.20
+Destination MAC: MAC of PC-B
+```
+
+### 8.2 مقصد خارج از Subnet
+
+مقصد:
+
+```text
+8.8.8.8
+```
+
+این IP خارج از Subnet محلی است.
+
+در این حالت Host باید فریم را به Default Gateway ارسال کند.
+
+```text
+Destination IP:  8.8.8.8
+Destination MAC: MAC of Default Gateway
+```
+
+این تفاوت بسیار مهم است:
+
+**IP مقصد نهایی همچنان 8.8.8.8 است، اما MAC مقصد در فریم Ethernet متعلق به Gateway است.**
+
+Gateway پس از دریافت بسته، آن را مسیریابی می‌کند و در لینک بعدی یک فریم جدید می‌سازد.
+
+### 8.3 مقایسه دو وضعیت
+
+| ویژگی | مقصد محلی | مقصد خارج از Subnet |
+|---|---|---|
+| IP مقصد | IP دستگاه مقصد | IP مقصد نهایی |
+| MAC مقصد | MAC دستگاه مقصد | MAC Gateway |
+| ARP برای چه کسی؟ | مقصد محلی | Default Gateway |
+| نقش Router | معمولاً نیاز نیست | ضروری است |
+
+### 8.4 چرا MAC در هر Hop تغییر می‌کند؟
+
+تصور کن بسته‌ای از کامپیوتر تو به یک سرور در اینترنت ارسال می‌شود.
+
+در هر شبکه محلی، فریم Ethernet مخصوص همان لینک ساخته می‌شود.
+
+```text
+Host
+  |
+  | Ethernet Frame 1
+  | MAC: Host -> Gateway
+  |
+Router 1
+  |
+  | Ethernet Frame 2
+  | MAC: Router 1 -> Next Hop
+  |
+Router 2
+  |
+  | Ethernet Frame 3
+  | MAC: Router 2 -> Next Hop
+  |
+Destination Network
+```
+
+در مسیریابی عادی:
+
+- MAC مبدأ و مقصد فریم در هر لینک متناسب با همان لینک تغییر می‌کنند.
+- IP مبدأ و مقصد بسته معمولاً حفظ می‌شوند.
+- NAT، تونل‌سازی و برخی سازوکارهای دیگر می‌توانند این وضعیت را تغییر دهند.
+
+این همان تفاوت اساسی آدرس‌دهی لایه دوم و لایه سوم است.
+
+---
+
+## 9. ARP Cache و Neighbor Table
+
+ارسال ARP Request برای هر ارتباط، ترافیک غیرضروری ایجاد می‌کند.
+
+به همین دلیل سیستم‌عامل اطلاعات آدرس‌های پیدا شده را برای مدتی ذخیره می‌کند.
+
+این اطلاعات در ARP Cache نگهداری می‌شوند.
+
+نمونه:
+
+```text
+Internet Address      Physical Address      Type
+192.168.1.1           00-11-22-33-44-55     dynamic
+192.168.1.20          AA-BB-CC-DD-EE-FF     dynamic
+```
+
+### 9.1 Dynamic Entry
+
+ورودی‌ای که از فرایند عادی یادگیری و Resolution ایجاد شده باشد.
+
+### 9.2 Static Entry
+
+ورودی‌ای که به‌صورت دستی یا از طریق تنظیمات سیستم تعریف شده باشد.
+
+ورودی Static معمولاً مانند ورودی Dynamic به شکل عادی با زمان منقضی نمی‌شود، اما رفتار دقیق به سیستم‌عامل و نوع Entry بستگی دارد.
+
+### 9.3 مشاهده ARP Cache
+
+در Windows:
+
+```powershell
+arp -a
+```
+
+این دستور جدول ARP را نمایش می‌دهد.
+
+### 9.4 مشاهده Neighbor Table
+
+در Windows:
+
+```powershell
+Get-NetNeighbor -AddressFamily IPv4
+```
+
+این دستور اطلاعات Neighbor مربوط به IPv4 را نمایش می‌دهد.
+
+برای مشاهده IPv6:
+
+```powershell
+Get-NetNeighbor -AddressFamily IPv6
+```
+
+نکته: در Windows، Neighbor Table گسترده‌تر از مفهوم سنتی ARP Cache است. برای IPv4 معمولاً اطلاعات ARP و برای IPv6 اطلاعات Neighbor Discovery در آن نمایش داده می‌شود.
+
+### 9.5 وضعیت‌های Neighbor
+
+بسته به سیستم‌عامل و وضعیت Neighbor، ممکن است حالت‌هایی مانند موارد زیر ببینی:
+
+| وضعیت | مفهوم کلی |
+|---|---|
+| Reachable | مقصد اخیراً قابل دسترسی تشخیص داده شده |
+| Stale | اطلاعات موجود است اما تازگی آن تأیید نشده |
+| Delay | سیستم در انتظار تأیید مجدد است |
+| Probe | سیستم در حال بررسی مجدد Neighbor است |
+| Incomplete | Resolution هنوز کامل نشده |
+| Permanent | ورودی دائمی |
+| Unreachable | مقصد قابل دسترسی تشخیص داده نشده |
+
+توجه: وضعیت‌های دقیق و نمایش آن‌ها به پیاده‌سازی سیستم‌عامل وابسته است.
+
+### 9.6 چرا ARP Table ممکن است خالی باشد؟
+
+چند دلیل رایج:
+
+- هنوز ارتباطی با دستگاه محلی برقرار نشده است.
+- Entry قبلی منقضی شده است.
+- ARP Cache پاک شده است.
+- Interface موردنظر Down است.
+- مقصد موردنظر خارج از Subnet است و باید Gateway بررسی شود.
+- سیستم از Interface یا مسیر دیگری استفاده می‌کند.
+
+خالی بودن ARP Cache به‌تنهایی نشانه خرابی شبکه نیست.
+
+---
+
+# بخش پنجم: ARP پیشرفته و امنیت
+
+## 10. Gratuitous ARP
+
+Gratuitous ARP نوعی ARP Announcement است که دستگاه درباره IP خودش در شبکه اطلاع‌رسانی می‌کند.
+
+یکی از کاربردهای آن اعلام مالکیت یا تغییر MAC مربوط به یک IPv4 Address است.
+
+کاربردهای مهم:
+
+- اعلام IP پس از تغییر MAC
+- بررسی Duplicate IP
+- اطلاع‌رسانی تغییر مسیر در برخی سناریوهای High Availability
+- به‌روزرسانی Cache دستگاه‌های دیگر
+
+مثال:
+
+فرض کن یک Gateway مجازی بین دو روتر جابه‌جا می‌شود.
+
+روتر جدید می‌تواند با ارسال Gratuitous ARP به دستگاه‌های شبکه اعلام کند که MAC مربوط به IP Gateway تغییر کرده است.
+
+این کار به به‌روزرسانی اطلاعات Neighbor کمک می‌کند.
+
+## 11. ARP Spoofing و ARP Poisoning
+
+ARP در طراحی سنتی خود احراز هویت رمزنگاری‌شده برای پاسخ‌ها ندارد.
+
+به همین دلیل یک دستگاه مخرب ممکن است پاسخ ARP جعلی ارسال کند.
+
+مثال:
+
+فرض کن Gateway واقعی دارای این اطلاعات باشد:
+
+```text
+Gateway IP: 192.168.1.1
+Gateway MAC: AA:AA:AA:AA:AA:AA
+```
+
+یک دستگاه مخرب تلاش می‌کند MAC خودش را به‌عنوان MAC مربوط به Gateway معرفی کند.
+
+در نتیجه ممکن است Host اطلاعات اشتباه را در ARP Cache ذخیره کند.
+
+این حمله ARP Spoofing یا ARP Poisoning نام دارد.
+
+### 11.1 پیامدهای امنیتی
+
+- Man-in-the-Middle
+- هدایت ترافیک به دستگاه مهاجم
+- شنود ترافیک غیررمزنگاری‌شده
+- اختلال در ارتباط شبکه
+- Denial of Service
+
+توجه: استفاده از HTTPS می‌تواند محتوای ارتباط را رمزنگاری کند، اما به‌تنهایی مانع ARP Spoofing یا تمام حملات لایه دوم نمی‌شود.
+
+### 11.2 روش‌های مقابله
+
+در شبکه‌های سازمانی، راهکارهای زیر کاربرد دارند:
+
+**Dynamic ARP Inspection (DAI)**
+
+در سوئیچ‌های پشتیبانی‌کننده، ARP Packetها بر اساس اطلاعات معتبر مانند DHCP Snooping Binding بررسی می‌شوند.
+
+**DHCP Snooping**
+
+به سوئیچ کمک می‌کند اطلاعات معتبر مربوط به تخصیص IP و MAC را نگهداری کند.
+
+**Port Security**
+
+می‌تواند تعداد یا نوع MAC Addressهای مجاز روی یک پورت را محدود کند.
+
+**Network Segmentation**
+
+با تقسیم شبکه به VLANهای مناسب، محدوده انتشار ترافیک لایه دوم کنترل می‌شود.
+
+**Static ARP**
+
+برای برخی سیستم‌ها و سناریوهای محدود قابل استفاده است، اما در شبکه‌های بزرگ مدیریت آن دشوار است.
+
+**Encryption**
+
+استفاده از TLS و VPN باعث محافظت بهتر از محتوای داده می‌شود، حتی اگر مهاجم بتواند بخشی از ترافیک را مشاهده کند.
+
+---
+
+# بخش ششم: آزمایشگاه عملی
+
+## 12. Lab 01: شناسایی Interfaceهای شبکه
+
+هدف: بررسی کارت‌های شبکه و مشخصات آن‌ها در Windows.
+
+ابتدا اجرا کن:
+
+```powershell
+Get-NetAdapter
+```
+
+سپس اطلاعات دقیق‌تر:
+
+```powershell
+Get-NetAdapter |
+    Select-Object Name, InterfaceDescription, MacAddress, Status, LinkSpeed
+```
+
+برای مشاهده Interfaceهای IPv4:
+
+```powershell
+Get-NetIPConfiguration
+```
+
+### وظیفه مهندسی
+
+موارد زیر را پیدا کن:
+
+1. نام Interface فعال
+2. MAC Address آن
+3. سرعت لینک
+4. IPv4 Address
+5. Default Gateway
+6. DNS Server
+
+نتیجه را در دفترچه مهندسی خود ثبت کن.
+
+---
+
+## 13. Lab 02: بررسی ARP Cache
+
+ابتدا جدول ARP را مشاهده کن:
+
+```powershell
+arp -a
+```
+
+سپس:
+
+```powershell
+Get-NetNeighbor -AddressFamily IPv4 |
+    Format-Table InterfaceIndex, IPAddress, LinkLayerAddress, State
+```
+
+برای مشاهده Gateway:
+
+```powershell
+Get-NetIPConfiguration |
+    Select-Object InterfaceAlias, IPv4Address, IPv4DefaultGateway
+```
+
+IP مربوط به Gateway را پیدا کن.
+
+سپس:
+
+```powershell
+ping <GATEWAY_IP>
+```
+
+به‌جای `<GATEWAY_IP>` آدرس واقعی Gateway خودت را وارد کن.
+
+حالا دوباره اجرا کن:
+
+```powershell
+arp -a
+```
+
+### پرسش آزمایشگاه
+
+- آیا Gateway در جدول دیده می‌شود؟
+- MAC آن چیست؟
+- آیا وضعیت Entry از قبل وجود داشته است؟
+- آیا IP و MAC با اطلاعات Interfaceهای شبکه سازگار هستند؟
+
+---
+
+## 14. Lab 03: تحلیل ارتباط با مقصد محلی و خارجی
+
+دو مقصد انتخاب کن:
+
+مقصد محلی:
+
+```text
+IP: 192.168.1.20
+```
+
+مقصد خارجی:
+
+```text
+IP: 8.8.8.8
+```
+
+این IPها فقط نمونه هستند و باید با ساختار واقعی شبکه خودت تطبیق داده شوند.
+
+ابتدا Route را بررسی کن:
+
+```powershell
+route print -4
+```
+
+سپس:
+
+```powershell
+Test-NetConnection 8.8.8.8
+```
+
+جدول Neighbor را بررسی کن:
+
+```powershell
+Get-NetNeighbor -AddressFamily IPv4
+```
+
+### نتیجه مورد انتظار
+
+برای ارتباط با مقصد خارجی، سیستم باید MAC مربوط به Next Hop را پیدا کند.
+
+در اغلب شبکه‌های خانگی این Next Hop همان Default Gateway است.
+
+ممکن است IP مربوط به سرور خارجی را در جدول ARP نبینی، زیرا ARP فقط برای Resolution در لینک محلی استفاده می‌شود.
+
+---
+
+## 15. Lab 04: مشاهده ARP با Wireshark
+
+Wireshark را اجرا کن.
+
+1. Interface فعال شبکه را انتخاب کن.
+2. Capture را شروع کن.
+3. فیلتر زیر را وارد کن:
+
+```text
+arp
+```
+
+4. یک ارتباط جدید با دستگاهی در LAN ایجاد کن.
+5. بسته‌های ARP را بررسی کن.
+
+برای مشاهده ARP Request:
+
+```text
+arp.opcode == 1
+```
+
+برای مشاهده ARP Reply:
+
+```text
+arp.opcode == 2
+```
+
+برای مشاهده بسته‌های مربوط به یک IP:
+
+```text
+arp.src.proto_ipv4 == 192.168.1.1
+```
+
+برای بررسی بسته‌های مرتبط با یک MAC:
+
+```text
+eth.addr == aa:bb:cc:dd:ee:ff
+```
+
+### اطلاعاتی که باید استخراج کنی
+
+- Sender MAC
+- Sender IP
+- Target MAC
+- Target IP
+- Opcode
+- Ethernet Destination MAC
+- زمان ارسال Request و Reply
+
+### تحلیل
+
+به این پرسش‌ها پاسخ بده:
+
+1. چرا ARP Request به Broadcast ارسال می‌شود؟
+2. چرا ARP Reply معمولاً Unicast است؟
+3. EtherType مربوط به ARP چیست؟
+4. در ARP Request مقدار Target MAC معمولاً چیست؟
+5. آیا تمام دستگاه‌های VLAN درخواست را دریافت می‌کنند؟
+
+نکته عملی: برای ایجاد یک ARP Request جدید می‌توانی از یک IP محلی استفاده کنی که قبلاً با آن ارتباط نداشته‌ای. پاک کردن کامل ARP Cache در سیستم اصلی ضروری نیست.
+
+---
+
+## 16. Lab 05: مشاهده رفتار MAC در یک Switch
+
+این آزمایش را می‌توانی با Packet Tracer، GNS3، EVE-NG یا تجهیزات واقعی انجام بدهی.
+
+توپولوژی:
+
+```text
+PC-A                PC-B
+   \                  /
+    \                /
+     +---- Switch ---+
+              |
+             PC-C
+```
+
+آدرس‌دهی نمونه:
+
+| دستگاه | IP | MAC |
+|---|---|---|
+| PC-A | 192.168.10.10/24 | AA:AA:AA:AA:AA:AA |
+| PC-B | 192.168.10.20/24 | BB:BB:BB:BB:BB:BB |
+| PC-C | 192.168.10.30/24 | CC:CC:CC:CC:CC:CC |
+
+مراحل:
+
+1. جدول MAC سوئیچ را خالی یا ثبت کن.
+2. از PC-A به PC-B ترافیک ارسال کن.
+3. جدول MAC را دوباره بررسی کن.
+4. بررسی کن آیا MAC مربوط به PC-A یاد گرفته شده است.
+5. پاسخ PC-B را بررسی کن.
+6. بررسی کن آیا MAC مربوط به PC-B نیز یاد گرفته شده است.
+
+اگر از Cisco IOS استفاده می‌کنی:
+
+```text
+show mac address-table
+```
+
+برای بررسی Interfaceها:
+
+```text
+show interfaces status
+```
+
+برای مشاهده اطلاعات یک MAC مشخص:
+
+```text
+show mac address-table address aaaa.aaaa.aaaa
+```
+
+دستورها ممکن است با توجه به مدل و نسخه سیستم‌عامل سوئیچ تفاوت داشته باشند.
+
+---
+
+# بخش هفتم: Troubleshooting
+
+## 17. سناریوی عیب‌یابی اول: Gateway در دسترس نیست
+
+### وضعیت
+
+کامپیوتر دارای IP زیر است:
+
+```text
+IP:      192.168.10.25
+Mask:    255.255.255.0
+Gateway: 192.168.10.1
+```
+
+کاربر نمی‌تواند Gateway را Ping کند.
+
+### مراحل بررسی
+
+**مرحله اول: وضعیت Interface**
+
+```powershell
+Get-NetAdapter
+```
+
+بررسی کن Interface فعال باشد.
+
+**مرحله دوم: تنظیمات IP**
+
+```powershell
+Get-NetIPConfiguration
+```
+
+بررسی کن IP، Subnet Mask و Gateway درست باشند.
+
+**مرحله سوم: جدول Neighbor**
+
+```powershell
+Get-NetNeighbor -AddressFamily IPv4
+```
+
+بررسی کن آیا برای Gateway یک MAC Address وجود دارد یا خیر.
+
+**مرحله چهارم: Capture**
+
+در Wireshark بررسی کن آیا ARP Request ارسال می‌شود و آیا ARP Reply دریافت می‌شود.
+
+### فرضیه‌های محتمل
+
+- کابل یا اتصال فیزیکی مشکل دارد.
+- Interface خاموش است.
+- VLAN اشتباه تنظیم شده است.
+- Gateway خاموش است.
+- IP اشتباه تنظیم شده است.
+- ARP Request به مقصد نمی‌رسد.
+- ARP Reply به مبدأ بازنمی‌گردد.
+
+نکته مهندسی: اگر ARP Resolution شکست بخورد، پیش از بررسی DNS یا برنامه‌های کاربردی باید لایه‌های پایین‌تر را بررسی کنی.
+
+---
+
+## 18. سناریوی عیب‌یابی دوم: ارتباط یک‌طرفه
+
+### وضعیت
+
+PC-A می‌تواند PC-B را Ping کند، اما PC-B نمی‌تواند PC-A را Ping کند.
+
+موارد قابل بررسی:
+
+- Windows Firewall
+- Subnet Mask
+- VLAN Membership
+- Duplicate IP
+- ARP Cache
+- مسیر بازگشت
+- وضعیت NIC
+
+برای بررسی Firewall:
+
+```powershell
+Get-NetFirewallProfile
+```
+
+برای بررسی Neighbor:
+
+```powershell
+Get-NetNeighbor -AddressFamily IPv4
+```
+
+برای مشاهده تنظیمات IP:
+
+```powershell
+ipconfig /all
+```
+
+نکته: موفقیت یا شکست Ping به‌تنهایی اثبات نمی‌کند که کل مسیر شبکه سالم یا خراب است. ICMP ممکن است توسط Firewall محدود شده باشد.
+
+---
+
+## 19. سناریوی عیب‌یابی سوم: Duplicate IP
+
+### وضعیت
+
+دو دستگاه از یک IPv4 Address استفاده می‌کنند.
+
+علائم احتمالی:
+
+- قطع و وصل شدن ارتباط
+- تغییر MAC مربوط به یک IP در ARP Table
+- هشدار Duplicate Address
+- اختلال تصادفی در دسترسی به Gateway یا سرور
+
+ابزارهای بررسی:
+
+```powershell
+arp -a
+```
+
+```powershell
+Get-NetNeighbor -AddressFamily IPv4
+```
+
+```powershell
+Get-NetIPConfiguration
+```
+
+در Wireshark نیز می‌توانی به دنبال ARP Announcementهای مشکوک و پاسخ‌های متناقض برای یک IP بگردی.
+
+تغییر MAC یک IP به‌تنهایی اثبات Duplicate IP نیست. تغییرات Gateway، Failover یا MAC Randomization هم می‌توانند علت باشند.
+
+---
+
+# بخش هشتم: Automation Engineering
+
+## 20. جمع‌آوری اطلاعات MAC با PowerShell
+
+یکی از وظایف مهندس Network Automation جمع‌آوری اطلاعات تجهیزات و Interfaceها است.
+
+نمونه:
+
+```powershell
+Get-NetAdapter |
+    Select-Object Name,
+                  InterfaceDescription,
+                  MacAddress,
+                  Status,
+                  LinkSpeed |
+    Format-Table -AutoSize
+```
+
+این دستور اطلاعات کارت‌های شبکه را به شکل خوانا نمایش می‌دهد.
+
+## 21. استخراج Neighbor Table
+
+```powershell
+Get-NetNeighbor -AddressFamily IPv4 |
+    Select-Object IPAddress,
+                  LinkLayerAddress,
+                  State,
+                  InterfaceIndex |
+    Format-Table -AutoSize
+```
+
+این خروجی می‌تواند برای بررسی وضعیت Neighborها استفاده شود.
+
+## 22. ذخیره اطلاعات در CSV
+
+برای ساخت یک گزارش ساده:
+
+```powershell
+$report = Get-NetNeighbor -AddressFamily IPv4 |
+    Select-Object IPAddress,
+                  LinkLayerAddress,
+                  State,
+                  InterfaceIndex
+
+$report | Export-Csv `
+    -Path ".\neighbor-report.csv" `
+    -NoTypeInformation `
+    -Encoding UTF8
+```
+
+حالا فایل زیر ایجاد می‌شود:
+
+```text
+neighbor-report.csv
+```
+
+این فایل می‌تواند در مراحل بعدی وارد یک سیستم تحلیل شبکه شود.
+
+## 23. چرا ARP به‌تنهایی برای Asset Discovery کافی نیست؟
+
+فرض کن می‌خواهیم تمام دستگاه‌های یک شبکه را شناسایی کنیم.
+
+ARP فقط اطلاعات مربوط به Neighborهایی را نشان می‌دهد که سیستم در محدوده مرتبط با خود شناخته یا نگهداری کرده است.
+
+بنابراین:
+
+- همه دستگاه‌های شبکه الزاماً در جدول ARP حضور ندارند.
+- دستگاه‌های خاموش ممکن است دیده نشوند.
+- دستگاه‌های خارج از Subnet مستقیماً از طریق ARP شناسایی نمی‌شوند.
+- MAC Address ممکن است تغییر کند.
+- یک MAC Address به‌تنهایی هویت قطعی دستگاه را مشخص نمی‌کند.
+
+برای Asset Discovery حرفه‌ای باید منابع دیگری مانند DHCP Lease، Switch MAC Table، DNS، SNMP و ابزارهای مدیریت دارایی نیز بررسی شوند.
+
+---
+
+# بخش نهم: Engineering Challenge
+
+## 24. چالش اصلی: تحلیل یک شبکه محلی
+
+فرض کن یک شبکه کوچک سازمانی داریم:
+
+```text
+Network: 192.168.20.0/24
+Gateway: 192.168.20.1
+
+PC-A:
+IP: 192.168.20.10
+MAC: AA:AA:AA:AA:AA:AA
+
+PC-B:
+IP: 192.168.20.20
+MAC: BB:BB:BB:BB:BB:BB
+
+PC-C:
+IP: 192.168.20.30
+MAC: CC:CC:CC:CC:CC:CC
+```
+
+هر سه کامپیوتر به یک Switch متصل هستند.
+
+### Task 1
+
+PC-A می‌خواهد با PC-B ارتباط برقرار کند.
+
+توضیح بده:
+
+- آیا ARP لازم است؟
+- چه MAC Addressی در Ethernet Destination قرار می‌گیرد؟
+- آیا Router در مسیر ارتباط قرار دارد؟
+
+### Task 2
+
+PC-A می‌خواهد به `8.8.8.8` دسترسی پیدا کند.
+
+توضیح بده:
+
+- آیا PC-A برای 8.8.8.8 درخواست ARP می‌فرستد؟
+- MAC مقصد Ethernet Frame چیست؟
+- IP مقصد در بسته IPv4 چیست؟
+
+### Task 3
+
+سوئیچ هنوز MAC مربوط به PC-B را یاد نگرفته است.
+
+توضیح بده:
+
+- چه اتفاقی برای Unknown Unicast می‌افتد؟
+- کدام پورت‌ها فریم را دریافت می‌کنند؟
+- سوئیچ از کدام MAC برای یادگیری استفاده می‌کند؟
+
+### Task 4
+
+دو دستگاه با یک IP یکسان در شبکه حضور دارند.
+
+توضیح بده:
+
+- چه علائمی ممکن است دیده شود؟
+- چگونه با Wireshark مشکل را بررسی می‌کنی؟
+- چه اطلاعاتی را برای گزارش Incident ثبت می‌کنی؟
+
+### Task 5
+
+یک گزارش PowerShell بساز که اطلاعات زیر را ذخیره کند:
+
+- IP Address
+- MAC Address
+- Neighbor State
+- Interface Index
+
+خروجی را به CSV تبدیل کن.
+
+### خروجی مورد انتظار
+
+یک گزارش فنی کوتاه شامل:
+
+1. توپولوژی شبکه
+2. جدول IP و MAC
+3. توضیح ARP Resolution
+4. تحلیل رفتار Switch
+5. نتیجه آزمایش Wireshark
+6. اسکریپت PowerShell
+7. نتیجه عیب‌یابی
+
+---
+
+# بخش دهم: ارزیابی دانش
+
+## 25. سؤالات مفهومی
+
+به این سؤالات بدون مراجعه به متن پاسخ بده:
+
+1. MAC Address چند بیت است؟
+2. تفاوت UAA و LAA چیست؟
+3. EtherType مربوط به IPv4 و ARP چیست؟
+4. حداقل و حداکثر Payload معمول Ethernet II چقدر است؟
+5. سوئیچ برای MAC Learning از کدام فیلد Frame استفاده می‌کند؟
+6. Unknown Unicast چه رفتاری دارد؟
+7. Broadcast Domain چیست؟
+8. ARP چه مسئله‌ای را حل می‌کند؟
+9. چرا ARP Request معمولاً Broadcast است؟
+10. چرا ARP Reply معمولاً Unicast است؟
+11. اگر مقصد خارج از Subnet باشد، سیستم برای چه دستگاهی ARP انجام می‌دهد؟
+12. چرا MAC Address در هر Hop تغییر می‌کند؟
+13. Gratuitous ARP چه کاربردی دارد؟
+14. ARP Spoofing چگونه می‌تواند ارتباط را مختل کند؟
+15. Dynamic ARP Inspection چه نقشی دارد؟
+
+## 26. منابع مطالعه
+
+- [IEEE 802.3 Ethernet Standard](https://standards.ieee.org/standard/802_3-2022.html)
+- [IEEE 802.1Q VLAN Standard](https://standards.ieee.org/standard/802_1Q-2022.html)
+- [RFC 826: An Ethernet Address Resolution Protocol](https://www.rfc-editor.org/rfc/rfc826)
+- [RFC 5227: IPv4 Address Conflict Detection](https://www.rfc-editor.org/rfc/rfc5227)
+- [Microsoft Get-NetNeighbor](https://learn.microsoft.com/en-us/powershell/module/nettcpip/get-netneighbor)
+- [Microsoft Get-NetAdapter](https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapter)
+- [Wireshark User Guide](https://www.wireshark.org/docs/wsug_html_chunked/)
+
+## 27. جمع‌بندی مهندسی
+
+در این جلسه چهار مفهوم اصلی را به هم متصل کردیم:
+
+**Ethernet** قالب انتقال داده در شبکه محلی را مشخص می‌کند.
+
+**MAC Address** آدرس‌دهی لایه دوم را فراهم می‌کند.
+
+**Switch** فریم‌ها را با استفاده از MAC Address Table منتقل می‌کند.
+
+**ARP** در IPv4 آدرس IP مقصد محلی را به MAC Address متناظر تبدیل می‌کند.
+
+مدل ذهنی نهایی:
+
+```text
+Application Data
+       |
+       v
+Transport Segment
+       |
+       v
+IPv4 Packet
+       |
+       v
+ARP Resolution
+       |
+       v
+Ethernet Frame
+       |
+       v
+Switch Forwarding
+       |
+       v
+Destination NIC
+```
+
+نکته‌ای که باید همیشه به خاطر داشته باشی:
+
+**IP مشخص می‌کند داده در سطح شبکه به کجا می‌رود؛ MAC مشخص می‌کند فریم در لینک محلی به کدام رابط تحویل داده شود.**
+
+این دو مکمل یکدیگرند، نه جایگزین هم.
+
+---
+
+<link rel="stylesheet" href="../../../../assets/css/quiz.css">
+
+<section class="nf-quiz" data-nf-quiz aria-labelledby="nf-quiz-day03-title">
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-day03-title">آزمون تعاملی جلسه سوم</h2>
+    </div>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score>0</strong></div>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress" role="progressbar"
+       aria-label="پیشرفت آزمون"
+       aria-valuemin="0"
+       aria-valuemax="100"
+       aria-valuenow="0">
+    <div class="nf-quiz-progress-bar" data-progress></div>
+  </div>
+
+  <div class="nf-quiz-progress-label" data-progress-text></div>
+
+  <div data-content>
+    <h3 class="nf-quiz-question" data-question></h3>
+    <div class="nf-quiz-options" data-options></div>
+    <div class="nf-quiz-feedback" data-feedback aria-live="polite"></div>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next hidden>
+        سؤال بعدی
+      </button>
+    </div>
+  </div>
+
+  <div class="nf-quiz-result" data-result hidden aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+    <h3>نتیجه آزمون</h3>
+    <div class="nf-quiz-result-score" data-final-score></div>
+    <div class="nf-quiz-result-score" data-percentage></div>
+    <p data-result-message></p>
+    <button class="nf-quiz-primary" type="button" data-restart>
+      تلاش مجدد
+    </button>
+  </div>
+
+  <script type="application/json" data-quiz-questions>
+[
+  {
+    "explanation": "برای مقصد محلی، سیستم MAC Address رابط شبکه مقصد را در فریم قرار می‌دهد.",
+    "question": "یک کامپیوتر قصد ارسال Ethernet Frame به دستگاهی در همان شبکه محلی را دارد. کدام آدرس در فیلد Destination MAC قرار می‌گیرد؟",
+    "options": [
+      "MAC Address کارت شبکه مقصد",
+      "MAC Address روتر پیش‌فرض",
+      "IP Address مقصد",
+      "MAC Address سوئیچ"
+    ],
+    "answer": 0
+  },
+  {
+    "explanation": "سوئیچ با بررسی Source MAC و پورت ورودی، یک ورودی در MAC Address Table ایجاد یا به‌روزرسانی می‌کند.",
+    "question": "سوئیچ یک Frame جدید دریافت می‌کند و Source MAC آن را هنوز در جدول خود ندارد. چه کاری انجام می‌دهد؟",
+    "options": [
+      "Source MAC را از جدول حذف می‌کند",
+      "Source MAC را همراه پورت ورودی یاد می‌گیرد",
+      "فریم را همیشه به روتر می‌فرستد",
+      "برای Source MAC درخواست ARP می‌فرستد"
+    ],
+    "answer": 1
+  },
+  {
+    "explanation": "Unknown Unicast در محدوده همان VLAN Flood می‌شود، نه در تمام VLANهای سوئیچ.",
+    "question": "سوئیچ فریمی با Destination MAC ناشناخته دریافت می‌کند. رفتار معمول آن چیست؟",
+    "options": [
+      "فریم را Drop می‌کند",
+      "فریم را فقط به پورت ورودی برمی‌گرداند",
+      "فریم را در همان VLAN از پورت‌های واجد شرایط به‌جز پورت ورودی Flood می‌کند",
+      "فریم را به تمام VLANها ارسال می‌کند"
+    ],
+    "answer": 2
+  },
+  {
+    "explanation": "هر VLAN یک Broadcast Domain مجزا ایجاد می‌کند. ارتباط بین VLANها به مسیریابی لایه سوم نیاز دارد.",
+    "question": "دو کامپیوتر در VLANهای متفاوت یک سوئیچ قرار دارند. آیا Broadcast لایه دوم یکی به دیگری می‌رسد؟",
+    "options": [
+      "بله، چون هر دو به یک سوئیچ متصل‌اند",
+      "خیر، VLANها Broadcast Domain را از هم جدا می‌کنند",
+      "فقط اگر MAC Address آن‌ها مشابه باشد",
+      "بله، اگر سوئیچ جدول MAC را خالی کند"
+    ],
+    "answer": 1
+  },
+  {
+    "explanation": "در ARP Request، آدرس MAC مقصد معمولاً FF:FF:FF:FF:FF:FF است تا همه دستگاه‌های همان Broadcast Domain آن را دریافت کنند.",
+    "question": "کامپیوتر برای پیدا کردن MAC Address یک IP محلی، چه نوع پیام ARP ارسال می‌کند؟",
+    "options": [
+      "ARP Request به‌صورت Broadcast",
+      "ARP Reply به‌صورت Broadcast",
+      "ICMP Echo به‌صورت Unicast",
+      "DHCP Discover"
+    ],
+    "answer": 0
+  },
+  {
+    "explanation": "برای مقصد Remote، کامپیوتر فریم را به MAC Address رابط Default Gateway تحویل می‌دهد. روتر ادامه مسیر را مدیریت می‌کند.",
+    "question": "آدرس IP مقصد خارج از Subnet کامپیوتر است. کامپیوتر برای ارسال فریم اولیه باید MAC Address چه دستگاهی را پیدا کند؟",
+    "options": [
+      "MAC Address سرور DNS",
+      "MAC Address دستگاه مقصد نهایی",
+      "MAC Address Default Gateway",
+      "MAC Address تمام سوئیچ‌های مسیر"
+    ],
+    "answer": 2
+  },
+  {
+    "explanation": "روتر فریم ورودی را باز می‌کند و برای لینک بعدی فریم جدیدی با آدرس‌های MAC مناسب همان لینک می‌سازد.",
+    "question": "در مسیر عبور یک Packet از چند Router، کدام بخش در هر Hop معمولاً تغییر می‌کند؟",
+    "options": [
+      "Source و Destination MAC در فریم هر لینک",
+      "آدرس IP مبدأ در تمام شرایط",
+      "محتوای Application Data",
+      "شماره پورت TCP در هر روتر"
+    ],
+    "answer": 0
+  },
+  {
+    "explanation": "IEEE 802.1Q از VLAN Tag برای مشخص کردن شناسه VLAN در فریم‌های عبوری از Trunk استفاده می‌کند.",
+    "question": "یک Trunk Port باید اطلاعات VLAN را همراه فریم Ethernet منتقل کند. کدام استاندارد معمولاً برای این کار استفاده می‌شود؟",
+    "options": [
+      "IEEE 802.11",
+      "IEEE 802.1Q",
+      "IEEE 802.3af",
+      "RFC 826"
+    ],
+    "answer": 1
+  },
+  {
+    "explanation": "Dynamic ARP Inspection می‌تواند پیام‌های ARP را با اطلاعات Binding معتبر، معمولاً حاصل از DHCP Snooping، بررسی کند.",
+    "question": "در شبکه‌ای با DHCP Snooping، مدیر شبکه می‌خواهد از ARP Spoofing با بررسی تطابق IP و MAC جلوگیری کند. کدام قابلیت مناسب‌تر است؟",
+    "options": [
+      "Port Mirroring",
+      "Dynamic ARP Inspection",
+      "Spanning Tree",
+      "EtherChannel"
+    ],
+    "answer": 1
+  },
+  {
+    "explanation": "IP Conflict می‌تواند باعث تغییر نگاشت IP به MAC و اختلال ارتباط شود. بررسی ARP Cache و پیام‌های Gratuitous ARP می‌تواند در عیب‌یابی کمک کند.",
+    "question": "دو دستگاه در یک VLAN از یک IP Address استفاده می‌کنند. کدام نشانه می‌تواند به شناسایی این تعارض کمک کند؟",
+    "options": [
+      "تغییرات غیرمنتظره در ARP/Neighbor Cache و هشدار IP Conflict",
+      "افزایش MTU کارت شبکه",
+      "تغییر خودکار VLAN به Trunk",
+      "حذف تمام MAC Addressهای سوئیچ"
+    ],
+    "answer": 0
+  }
+]
+  </script>
+</section>
+
+## خروجی نهایی روز سوم
+
+پس از اتمام این جلسه باید بتوانی:
+
+- یک Ethernet Frame را تحلیل کنی.
+- MAC Learning را روی Switch توضیح بدهی.
+- ARP Request و Reply را در Wireshark تشخیص بدهی.
+- تفاوت Local Destination و Remote Destination را تحلیل کنی.
+- Neighbor Table ویندوز را بررسی کنی.
+- یک گزارش اولیه شبکه با PowerShell تولید کنی.
+- مشکلات پایه لایه دوم را عیب‌یابی کنی.
+
+**جلسه بعدی: IPv4 Addressing and Subnetting**
+
+در روز چهارم وارد یکی از مهم‌ترین مهارت‌های مهندسی شبکه می‌شویم: طراحی و تحلیل آدرس‌دهی IPv4 و Subnetting.
+
+:::
+

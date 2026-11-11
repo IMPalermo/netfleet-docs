@@ -1,0 +1,915 @@
+---
+title: "IPv4 Addressing and Subnetting"
+subtitle: "Week 01 | Day 04"
+---
+
+::: {.persian}
+
+# جلسه چهارم: آدرس‌دهی IPv4 و Subnetting
+
+## 1. اهداف یادگیری
+
+در پایان این جلسه باید بتوانی:
+
+- ساختار ۳۲ بیتی IPv4 را تحلیل کنی.
+- آدرس‌های Decimal و Binary را تبدیل کنی.
+- Network Address و Host Address را تشخیص بدهی.
+- Subnet Mask و CIDR Prefix را تفسیر کنی.
+- Network ID و Broadcast Address را محاسبه کنی.
+- با روش Block Size شبکه را تقسیم‌بندی کنی.
+- با VLSM برای بخش‌های مختلف سازمان آدرس‌دهی طراحی کنی.
+- نقش Default Gateway در ارسال Packet را توضیح بدهی.
+- تنظیمات IP را با PowerShell بررسی و عیب‌یابی کنی.
+
+---
+
+## 2. IPv4 چیست؟
+
+IPv4 یکی از پروتکل‌های اصلی لایه Network در مدل TCP/IP است که برای آدرس‌دهی و انتقال Packet بین شبکه‌ها استفاده می‌شود.
+
+هر آدرس IPv4 دارای ۳۲ بیت است و به چهار بخش ۸ بیتی تقسیم می‌شود.
+
+مثال:
+
+`192.168.10.25`
+
+هر بخش را Octet می‌نامیم.
+
+| Octet | مقدار Decimal | تعداد بیت |
+|---|---:|---:|
+| اول | 192 | 8 |
+| دوم | 168 | 8 |
+| سوم | 10 | 8 |
+| چهارم | 25 | 8 |
+| مجموع | | 32 |
+
+هر Octet می‌تواند عددی بین 0 تا 255 داشته باشد.
+
+\[
+2^8 = 256
+\]
+
+بنابراین محدوده هر Octet برابر 0 تا 255 است.
+
+## 3. Decimal و Binary
+
+کامپیوتر داده‌ها را در سطح سخت‌افزار به‌صورت بیت‌های صفر و یک پردازش می‌کند. برای فهم Subnetting باید بتوانیم بین نمایش Decimal و Binary جابه‌جا شویم.
+
+ارزش بیت‌های یک Octet:
+
+| موقعیت بیت | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| ارزش Decimal | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
+
+مثال تبدیل 192:
+
+\[
+192 = 128 + 64
+\]
+
+پس:
+
+`192 = 11000000`
+
+مثال تبدیل 168:
+
+\[
+168 = 128 + 32 + 8
+\]
+
+پس:
+
+`168 = 10101000`
+
+در نتیجه:
+
+`192.168.10.25`
+
+به شکل Binary:
+
+`11000000.10101000.00001010.00011001`
+
+**نکته:** برای تبدیل Decimal به Binary، اعداد 128، 64، 32، 16، 8، 4، 2 و 1 را بررسی می‌کنیم. اگر آن مقدار در عدد موردنظر وجود داشته باشد، بیت مربوطه 1 و در غیر این صورت 0 است.
+
+---
+
+## 4. Network Portion و Host Portion
+
+یک IPv4 Address از دو بخش منطقی تشکیل می‌شود:
+
+- Network Portion: مشخص می‌کند دستگاه عضو کدام شبکه است.
+- Host Portion: دستگاه را در همان شبکه مشخص می‌کند.
+
+مثال:
+
+`192.168.10.25/24`
+
+در Prefix `/24`:
+
+- 24 بیت اول برای Network است.
+- 8 بیت آخر برای Host است.
+
+نمایش Binary:
+
+`11111111.11111111.11111111.00000000`
+
+این مقدار معادل Subnet Mask زیر است:
+
+`255.255.255.0`
+
+## 5. Subnet Mask چیست؟
+
+Subnet Mask مشخص می‌کند کدام بیت‌های IP به Network و کدام بیت‌ها به Host تعلق دارند.
+
+در Subnet Mask:
+
+- بیت‌های 1 نشان‌دهنده Network Portion هستند.
+- بیت‌های 0 نشان‌دهنده Host Portion هستند.
+
+چند نمونه:
+
+| CIDR | Subnet Mask | تعداد بیت Host |
+|---|---|---:|
+| /8 | 255.0.0.0 | 24 |
+| /16 | 255.255.0.0 | 16 |
+| /24 | 255.255.255.0 | 8 |
+| /25 | 255.255.255.128 | 7 |
+| /26 | 255.255.255.192 | 6 |
+| /27 | 255.255.255.224 | 5 |
+| /28 | 255.255.255.240 | 4 |
+| /29 | 255.255.255.248 | 3 |
+| /30 | 255.255.255.252 | 2 |
+
+هرچه Prefix بزرگ‌تر باشد، تعداد بیت‌های Network بیشتر و تعداد بیت‌های Host کمتر می‌شود.
+
+## 6. CIDR و Prefix Length
+
+CIDR مخفف Classless Inter-Domain Routing است.
+
+در CIDR به‌جای تکیه بر Classهای قدیمی A، B و C، تعداد بیت‌های Network را مستقیماً مشخص می‌کنیم.
+
+مثلاً:
+
+`10.20.30.0/24`
+
+عدد 24 یعنی 24 بیت ابتدایی برای شناسایی Network استفاده می‌شوند.
+
+فرمول تعداد آدرس‌ها:
+
+\[
+Total = 2^{32-Prefix}
+\]
+
+برای تعداد Hostهای قابل استفاده در Subnetهای معمول:
+
+\[
+Usable = 2^{32-Prefix}-2
+\]
+
+دو آدرس معمولاً برای Network Address و Broadcast Address رزرو می‌شوند.
+
+| Prefix | کل آدرس‌ها | Host قابل استفاده |
+|---|---:|---:|
+| /24 | 256 | 254 |
+| /25 | 128 | 126 |
+| /26 | 64 | 62 |
+| /27 | 32 | 30 |
+| /28 | 16 | 14 |
+| /29 | 8 | 6 |
+| /30 | 4 | 2 |
+
+این قاعده برای Subnetهای معمول IPv4 است. در شبکه‌های Point-to-Point، Prefix `/31` طبق RFC 3021 می‌تواند هر دو آدرس را برای دو سر لینک استفاده کند. Prefix `/32` نیز یک آدرس منفرد را مشخص می‌کند.
+
+---
+
+## 7. Network Address و Broadcast Address
+
+هر Subnet معمولاً دو آدرس ویژه دارد:
+
+**Network Address**
+
+تمام بیت‌های Host برابر صفر هستند. این آدرس برای شناسایی خود Subnet استفاده می‌شود.
+
+**Broadcast Address**
+
+تمام بیت‌های Host برابر یک هستند. این آدرس برای ارسال Broadcast به تمام Hostهای همان Subnet استفاده می‌شود.
+
+مثال:
+
+`192.168.10.0/24`
+
+| نوع | آدرس |
+|---|---|
+| Network | 192.168.10.0 |
+| First Usable Host | 192.168.10.1 |
+| Last Usable Host | 192.168.10.254 |
+| Broadcast | 192.168.10.255 |
+
+---
+
+## 8. Subnetting چیست؟
+
+Subnetting فرآیند تقسیم یک شبکه IP بزرگ به چند شبکه کوچک‌تر است.
+
+دلایل استفاده:
+
+1. کاهش Broadcast Domain
+2. مدیریت بهتر آدرس‌های IP
+3. جداسازی بخش‌های سازمان
+4. بهبود ساختار امنیتی
+5. ساده‌تر شدن مدیریت و عیب‌یابی
+6. طراحی بهینه‌تر شبکه
+
+فرض کن سازمانی شبکه زیر را در اختیار دارد:
+
+`192.168.1.0/24`
+
+اگر بخواهیم آن را به چهار Subnet مساوی تقسیم کنیم، باید دو بیت از بخش Host قرض بگیریم.
+
+\[
+2^2 = 4
+\]
+
+Prefix جدید:
+
+\[
+/24+2=/26
+\]
+
+Subnet Mask جدید:
+
+`255.255.255.192`
+
+هر Subnet شامل 64 آدرس و 62 Host قابل استفاده خواهد بود.
+
+### 8.1. روش Block Size
+
+یکی از روش‌های سریع محاسبه Subnet، روش Block Size است.
+
+فرمول:
+
+\[
+Block\ Size = 256 - Subnet\ Mask\ Octet
+\]
+
+برای `/26`:
+
+`255.255.255.192`
+
+بنابراین:
+
+\[
+256-192=64
+\]
+
+پس مرز Subnetها در Octet آخر با فاصله 64 واحد افزایش پیدا می‌کند.
+
+| Subnet | Network Address | Usable Range | Broadcast |
+|---|---|---|---|
+| 1 | 192.168.1.0 | .1 تا .62 | .63 |
+| 2 | 192.168.1.64 | .65 تا .126 | .127 |
+| 3 | 192.168.1.128 | .129 تا .190 | .191 |
+| 4 | 192.168.1.192 | .193 تا .254 | .255 |
+
+### 8.2. مثال محاسبه یک IP
+
+فرض کن IP زیر را داریم:
+
+`192.168.10.77/26`
+
+ابتدا Subnet Mask را پیدا می‌کنیم:
+
+`255.255.255.192`
+
+Block Size:
+
+\[
+256-192=64
+\]
+
+مرز Subnetها:
+
+- 0
+- 64
+- 128
+- 192
+
+عدد 77 بین 64 و 128 قرار دارد.
+
+پس:
+
+| مشخصه | مقدار |
+|---|---|
+| IP Address | 192.168.10.77 |
+| Prefix | /26 |
+| Network | 192.168.10.64 |
+| First Host | 192.168.10.65 |
+| Last Host | 192.168.10.126 |
+| Broadcast | 192.168.10.127 |
+| Usable Hosts | 62 |
+
+---
+
+## 9. محاسبه Subnet با عملیات AND
+
+روش دقیق‌تر و بنیادی‌تر Subnetting استفاده از عملیات Bitwise AND است.
+
+قانون AND:
+
+| Bit A | Bit B | Result |
+|---:|---:|---:|
+| 0 | 0 | 0 |
+| 0 | 1 | 0 |
+| 1 | 0 | 0 |
+| 1 | 1 | 1 |
+
+برای محاسبه Network Address:
+
+\[
+IP\ Address\ AND\ Subnet\ Mask
+\]
+
+مثال:
+
+IP:
+
+`192.168.10.77`
+
+Mask:
+
+`255.255.255.192`
+
+در Octet آخر:
+
+`01001101` (77)
+
+`11000000` (192)
+
+نتیجه AND:
+
+`01000000` (64)
+
+بنابراین Network Address:
+
+`192.168.10.64`
+
+این روش درک عمیق‌تری از Subnetting ایجاد می‌کند و پایه بسیاری از محاسبات شبکه است.
+
+---
+
+## 10. VLSM چیست؟
+
+VLSM مخفف Variable Length Subnet Mask است.
+
+در Subnetting معمولی ممکن است تمام Subnetها اندازه یکسانی داشته باشند؛ اما در VLSM می‌توانیم برای هر بخش شبکه، Subnet متناسب با نیاز آن انتخاب کنیم.
+
+فرض کن یک سازمان شبکه زیر را دارد:
+
+`192.168.50.0/24`
+
+نیاز بخش‌ها:
+
+| بخش | تعداد Host موردنیاز |
+|---|---:|
+| Engineering | 100 |
+| Sales | 50 |
+| Support | 20 |
+| Management | 10 |
+
+برای هر بخش باید کوچک‌ترین Subnet مناسب را انتخاب کنیم.
+
+### 10.1. طراحی Subnetها
+
+| بخش | Subnet | ظرفیت قابل استفاده |
+|---|---|---:|
+| Engineering | 192.168.50.0/25 | 126 |
+| Sales | 192.168.50.128/26 | 62 |
+| Support | 192.168.50.192/27 | 30 |
+| Management | 192.168.50.224/28 | 14 |
+
+محدوده کامل:
+
+**Engineering**
+
+- Network: 192.168.50.0
+- Usable: 192.168.50.1 تا 192.168.50.126
+- Broadcast: 192.168.50.127
+
+**Sales**
+
+- Network: 192.168.50.128
+- Usable: 192.168.50.129 تا 192.168.50.190
+- Broadcast: 192.168.50.191
+
+**Support**
+
+- Network: 192.168.50.192
+- Usable: 192.168.50.193 تا 192.168.50.222
+- Broadcast: 192.168.50.223
+
+**Management**
+
+- Network: 192.168.50.224
+- Usable: 192.168.50.225 تا 192.168.50.238
+- Broadcast: 192.168.50.239
+
+بازه `192.168.50.240/28` نیز در این طراحی آزاد باقی می‌ماند.
+
+**اصل مهم VLSM:** تخصیص را معمولاً از بزرگ‌ترین نیاز به کوچک‌ترین نیاز انجام می‌دهیم تا فضای آدرس‌دهی هدر نرود.
+
+---
+
+## 11. Private و Public IPv4
+
+تمام آدرس‌های IPv4 برای استفاده مستقیم در اینترنت عمومی طراحی نشده‌اند.
+
+سه محدوده Private طبق RFC 1918:
+
+| محدوده | CIDR |
+|---|---|
+| 10.0.0.0 تا 10.255.255.255 | 10.0.0.0/8 |
+| 172.16.0.0 تا 172.31.255.255 | 172.16.0.0/12 |
+| 192.168.0.0 تا 192.168.255.255 | 192.168.0.0/16 |
+
+این محدوده‌ها در اینترنت عمومی Route نمی‌شوند.
+
+آدرس‌های Public برای ارتباط عمومی اینترنت استفاده می‌شوند و تخصیص آن‌ها تحت مدیریت ساختارهای آدرس‌دهی اینترنت انجام می‌شود.
+
+## 12. آدرس‌های ویژه IPv4
+
+| محدوده یا آدرس | کاربرد |
+|---|---|
+| 127.0.0.0/8 | Loopback |
+| 169.254.0.0/16 | Link-Local / APIPA |
+| 224.0.0.0/4 | Multicast |
+| 255.255.255.255 | Limited Broadcast |
+| 0.0.0.0 | Unspecified Address |
+| 0.0.0.0/0 | Default Route |
+
+### Loopback
+
+آدرس `127.0.0.1` برای ارتباط با خود سیستم استفاده می‌شود.
+
+### APIPA
+
+اگر دستگاه نتواند از DHCP آدرس دریافت کند، ممکن است آدرسی از محدوده `169.254.0.0/16` برای خود انتخاب کند.
+
+### Multicast
+
+محدوده `224.0.0.0/4` برای ارتباطات Multicast استفاده می‌شود.
+
+---
+
+## 13. Default Gateway و Routing
+
+Default Gateway معمولاً آدرس رابط روتر یا دستگاه لایه سوم در شبکه محلی است.
+
+وقتی کامپیوتر می‌خواهد Packet ارسال کند، ابتدا بررسی می‌کند مقصد در Subnet خودش قرار دارد یا خیر.
+
+**حالت اول: مقصد Local است**
+
+کامپیوتر با استفاده از Subnet Mask متوجه می‌شود مقصد در همان شبکه قرار دارد. سپس MAC Address مقصد را با ARP پیدا می‌کند و فریم را مستقیماً برای آن ارسال می‌کند.
+
+**حالت دوم: مقصد Remote است**
+
+کامپیوتر تشخیص می‌دهد مقصد خارج از Subnet است. سپس MAC Address مربوط به Default Gateway را پیدا می‌کند و Packet را به آن تحویل می‌دهد.
+
+در این حالت:
+
+- Destination IP همچنان IP مقصد نهایی است.
+- Destination MAC فریم اولیه، MAC رابط Gateway است.
+
+روتر با بررسی Routing Table تصمیم می‌گیرد Packet را به کدام مسیر ارسال کند.
+
+### مثال
+
+فرض کن:
+
+- IP سیستم: `192.168.1.20/24`
+- Gateway: `192.168.1.1`
+- Destination: `8.8.8.8`
+
+چون `8.8.8.8` در Subnet محلی نیست، سیستم Packet را به Default Gateway تحویل می‌دهد.
+
+---
+
+## 14. بررسی IPv4 در Windows با PowerShell
+
+برای یادگیری Network Automation باید بتوانی اطلاعات شبکه را از سیستم‌عامل استخراج کنی.
+
+### مشاهده تنظیمات IP
+
+```powershell
+Get-NetIPConfiguration
+```
+
+### مشاهده تمام IPv4 Addressها
+
+```powershell
+Get-NetIPAddress -AddressFamily IPv4
+```
+
+### مشاهده Default Route
+
+```powershell
+Get-NetRoute -AddressFamily IPv4 -DestinationPrefix "0.0.0.0/0"
+```
+
+### مشاهده Routing Table
+
+```powershell
+route print -4
+```
+
+### مشاهده ARP / Neighbor Cache
+
+```powershell
+Get-NetNeighbor -AddressFamily IPv4
+```
+
+### بررسی دسترسی به Gateway
+
+```powershell
+Test-Connection 192.168.1.1 -Count 4
+```
+
+آدرس Gateway را با آدرس واقعی شبکه خودت جایگزین کن.
+
+### استخراج اطلاعات یک Interface
+
+```powershell
+Get-NetIPConfiguration |
+Select-Object InterfaceAlias, IPv4Address, IPv4DefaultGateway, DNSServer
+```
+
+---
+
+## 15. Lab 1: تحلیل تنظیمات IP سیستم
+
+در PowerShell دستورات زیر را اجرا کن:
+
+```powershell
+Get-NetIPConfiguration
+
+Get-NetIPAddress -AddressFamily IPv4
+
+Get-NetRoute -AddressFamily IPv4
+
+Get-NetNeighbor -AddressFamily IPv4
+```
+
+موارد زیر را شناسایی کن:
+
+1. IPv4 Address کارت شبکه فعال
+2. Prefix Length
+3. Default Gateway
+4. DNS Server
+5. Network Interface Alias
+
+سپس مشخص کن سیستم از DHCP استفاده می‌کند یا IP آن به‌صورت دستی تنظیم شده است.
+
+برای بررسی DHCP:
+
+```powershell
+Get-NetIPInterface -AddressFamily IPv4 |
+Select-Object InterfaceAlias, Dhcp, ConnectionState
+```
+
+## 16. Lab 2: طراحی Subnet برای یک سازمان
+
+یک شرکت چهار بخش دارد:
+
+- Development: 60 Host
+- Finance: 25 Host
+- HR: 12 Host
+- IT: 6 Host
+
+شبکه اصلی:
+
+`10.10.10.0/24`
+
+وظایف:
+
+1. برای هر بخش Prefix مناسب پیدا کن.
+2. Network Address هر بخش را محاسبه کن.
+3. Broadcast Address را مشخص کن.
+4. First و Last Usable Host را پیدا کن.
+5. آدرس‌های آزاد باقی‌مانده را مشخص کن.
+6. بررسی کن هیچ دو Subnet با یکدیگر Overlap نداشته باشند.
+
+از VLSM استفاده کن و تخصیص را از بزرگ‌ترین بخش شروع کن.
+
+## 17. Lab 3: Cisco IOS
+
+در یک روتر Cisco، نمونه تنظیم یک Interface به شکل زیر است:
+
+```text
+enable
+configure terminal
+
+interface gigabitEthernet 0/0
+ip address 192.168.10.1 255.255.255.0
+no shutdown
+exit
+
+end
+show ip interface brief
+show ip route
+```
+
+این مثال فرض می‌کند Interface موردنظر در سناریوی آزمایشگاهی وجود دارد.
+
+برای بررسی وضعیت Interfaceها و Routing Table از دستورات زیر استفاده کن:
+
+```text
+show ip interface brief
+show running-config
+show ip route
+show arp
+```
+
+---
+
+## 18. Troubleshooting: عیب‌یابی IPv4
+
+### مشکل اول: IP Address اشتباه
+
+دو دستگاه ممکن است در Subnetهای متفاوت قرار گرفته باشند و بدون Routing مناسب نتوانند با یکدیگر ارتباط برقرار کنند.
+
+بررسی:
+
+```powershell
+Get-NetIPAddress -AddressFamily IPv4
+```
+
+### مشکل دوم: Subnet Mask اشتباه
+
+Subnet Mask نادرست ممکن است باعث شود سیستم مقصد Local را Remote تشخیص دهد یا برعکس.
+
+بررسی:
+
+```powershell
+Get-NetIPConfiguration
+```
+
+### مشکل سوم: Default Gateway اشتباه
+
+اگر Gateway در Subnet صحیح نباشد یا دسترسی به آن وجود نداشته باشد، ارتباط با شبکه‌های خارج از Subnet ممکن است مختل شود.
+
+بررسی:
+
+```powershell
+Get-NetRoute -AddressFamily IPv4 -DestinationPrefix "0.0.0.0/0"
+```
+
+### مشکل چهارم: IP Conflict
+
+اگر دو دستگاه از یک IP یکسان استفاده کنند، ممکن است ارتباط شبکه ناپایدار شود.
+
+بررسی Neighbor Cache:
+
+```powershell
+Get-NetNeighbor -AddressFamily IPv4
+```
+
+### مشکل پنجم: مشکل DHCP
+
+اگر سیستم نتواند از DHCP آدرس بگیرد، ممکن است از محدوده APIPA استفاده کند.
+
+بررسی:
+
+```powershell
+Get-NetIPConfiguration
+```
+
+وجود IP از محدوده `169.254.0.0/16` می‌تواند نشانه مشکل در دریافت تنظیمات DHCP باشد.
+
+---
+
+## 19. Network Automation و IPAM
+
+در شبکه‌های کوچک ممکن است مدیر شبکه آدرس‌ها را به‌صورت دستی مدیریت کند؛ اما در شبکه‌های بزرگ این روش خطاپذیر و دشوار است.
+
+دو مفهوم مهم:
+
+**IPAM (IP Address Management)**
+
+سامانه‌ای برای مدیریت متمرکز IP Addressها، Subnetها، تخصیص آدرس‌ها و جلوگیری از تداخل است.
+
+**Network Automation**
+
+با استفاده از اسکریپت‌ها و ابزارهای اتوماسیون می‌توان:
+
+- Subnetهای موردنیاز را محاسبه کرد.
+- IPهای تکراری را شناسایی کرد.
+- وضعیت Interfaceها را بررسی کرد.
+- گزارش آدرس‌دهی تولید کرد.
+- تنظیمات دستگاه‌های شبکه را مدیریت کرد.
+
+در آینده می‌توانیم یک Subnet Calculator تعاملی برای NetFleet بسازیم که ورودی IP و Prefix را دریافت کند و Network Address، Broadcast، Host Range و تعداد Hostها را محاسبه کند.
+
+---
+
+## 20. جمع‌بندی
+
+مفاهیم کلیدی این جلسه:
+
+- IPv4 دارای 32 بیت است.
+- Subnet Mask مرز Network و Host را مشخص می‌کند.
+- CIDR تعداد بیت‌های Network را نشان می‌دهد.
+- Network Address اولین آدرس Subnet است.
+- Broadcast Address آخرین آدرس Subnet معمولی است.
+- Block Size برای پیدا کردن مرز Subnetها استفاده می‌شود.
+- VLSM امکان تخصیص Subnetهای با اندازه متفاوت را فراهم می‌کند.
+- Default Gateway مسیر خروج از Subnet محلی را فراهم می‌کند.
+- Routing Table در انتخاب مسیر Packet نقش دارد.
+- PowerShell برای بررسی و عیب‌یابی تنظیمات شبکه ابزار قدرتمندی است.
+
+## 21. تمرین نهایی
+
+برای IP زیر اطلاعات کامل Subnet را محاسبه کن:
+
+`172.16.25.130/27`
+
+موارد موردنیاز:
+
+1. Subnet Mask
+2. Block Size
+3. Network Address
+4. Broadcast Address
+5. First Usable Host
+6. Last Usable Host
+7. تعداد Hostهای قابل استفاده
+
+سپس توضیح بده اگر مقصد خارج از این Subnet باشد، سیستم برای ارسال Packet چه مسیری را انتخاب می‌کند.
+
+---
+
+## منابع و استانداردها
+
+1. [RFC 4632: Classless Inter-domain Routing](https://www.rfc-editor.org/rfc/rfc4632)
+2. [RFC 1918: Address Allocation for Private Internets](https://www.rfc-editor.org/rfc/rfc1918)
+3. [RFC 3021: Using 31-Bit Prefixes on IPv4 Point-to-Point Links](https://www.rfc-editor.org/rfc/rfc3021)
+4. [Microsoft Learn: Get-NetIPAddress](https://learn.microsoft.com/en-us/powershell/module/nettcpip/get-netipaddress)
+5. [Microsoft Learn: Get-NetRoute](https://learn.microsoft.com/en-us/powershell/module/nettcpip/get-netroute)
+
+:::
+
+<section class="nf-quiz" data-nf-quiz aria-labelledby="nf-quiz-day04-title">
+<div class="nf-quiz-header">
+<div>
+<div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+<h2 id="nf-quiz-day04-title">آزمون تعاملی جلسه چهارم</h2>
+</div>
+<div class="nf-quiz-stats">
+<div class="nf-quiz-stat">امتیاز: <strong data-score>0</strong></div>
+</div>
+</div>
+
+<div class="nf-quiz-progress" role="progressbar"
+aria-label="پیشرفت آزمون"
+aria-valuemin="0"
+aria-valuemax="100"
+aria-valuenow="0">
+<div class="nf-quiz-progress-bar" data-progress></div>
+</div>
+
+<div class="nf-quiz-progress-label" data-progress-text></div>
+
+<div data-content>
+<h3 class="nf-quiz-question" data-question></h3>
+<div class="nf-quiz-options" data-options></div>
+<div class="nf-quiz-feedback" data-feedback aria-live="polite"></div>
+<div class="nf-quiz-actions">
+<button class="nf-quiz-primary" type="button" data-next hidden>
+سؤال بعدی
+</button>
+</div>
+</div>
+
+<div class="nf-quiz-result" data-result hidden aria-live="polite">
+<div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+<h3>نتیجه آزمون</h3>
+<div class="nf-quiz-result-score" data-final-score></div>
+<div class="nf-quiz-result-score" data-percentage></div>
+<p data-result-message></p>
+<button class="nf-quiz-primary" type="button" data-restart>
+تلاش مجدد
+</button>
+</div>
+
+<script type="application/json" data-quiz-questions>
+[
+{
+"question": "یک آدرس IPv4 چند بیت دارد؟",
+"options": [
+"16 بیت",
+"24 بیت",
+"32 بیت",
+"64 بیت"
+],
+"answer": 2,
+"explanation": "IPv4 از 32 بیت تشکیل شده که در قالب چهار Octet هشت‌بیتی نمایش داده می‌شود."
+},
+{
+"question": "Subnet Mask با Prefix /26 کدام است؟",
+"options": [
+"255.255.255.0",
+"255.255.255.128",
+"255.255.255.192",
+"255.255.255.224"
+],
+"answer": 2,
+"explanation": "در /26، دو بیت اول Octet چهارم نیز Network هستند؛ بنابراین مقدار آن Octet برابر 192 می‌شود."
+},
+{
+"question": "در یک Subnet معمولی با Prefix /27 چند Host قابل استفاده داریم؟",
+"options": [
+"14",
+"30",
+"32",
+"62"
+],
+"answer": 1,
+"explanation": "پنج بیت Host داریم. 2 به توان 5 برابر 32 آدرس است و با کنار گذاشتن Network و Broadcast، 30 Host باقی می‌ماند."
+},
+{
+"question": "Network Address مربوط به 192.168.10.77/26 کدام است؟",
+"options": [
+"192.168.10.0",
+"192.168.10.32",
+"192.168.10.64",
+"192.168.10.128"
+],
+"answer": 2,
+"explanation": "Block Size برابر 64 است. عدد 77 در بازه 64 تا 127 قرار می‌گیرد؛ پس Network برابر 192.168.10.64 است."
+},
+{
+"question": "Block Size برای Subnet Mask برابر 255.255.255.224 چقدر است؟",
+"options": [
+"16",
+"32",
+"64",
+"128"
+],
+"answer": 1,
+"explanation": "Block Size از تفریق Octet مربوطه از 256 به دست می‌آید: 256 منهای 224 برابر 32."
+},
+{
+"question": "در طراحی VLSM، معمولاً تخصیص Subnetها را از کدام بخش آغاز می‌کنیم؟",
+"options": [
+"کوچک‌ترین بخش",
+"بزرگ‌ترین بخش",
+"بخش دارای کمترین IP",
+"بخش دارای Default Gateway"
+],
+"answer": 1,
+"explanation": "با تخصیص بزرگ‌ترین نیازها در ابتدا، احتمال هدررفتن فضای پیوسته آدرس‌دهی کاهش پیدا می‌کند."
+},
+{
+"question": "اگر مقصد خارج از Subnet محلی باشد، کامپیوتر معمولاً Destination MAC فریم اولیه را متعلق به چه دستگاهی قرار می‌دهد؟",
+"options": [
+"دستگاه مقصد نهایی",
+"DNS Server",
+"Default Gateway",
+"تمام دستگاه‌های شبکه"
+],
+"answer": 2,
+"explanation": "برای مقصد Remote، کامپیوتر Packet را به MAC Address رابط Default Gateway تحویل می‌دهد."
+},
+{
+"question": "آدرس 169.254.10.20 معمولاً به کدام محدوده تعلق دارد؟",
+"options": [
+"Private Class A",
+"Loopback",
+"APIPA / Link-Local",
+"Multicast"
+],
+"answer": 2,
+"explanation": "محدوده 169.254.0.0/16 برای IPv4 Link-Local استفاده می‌شود و ممکن است در صورت شکست DHCP مشاهده شود."
+},
+{
+"question": "کدام دستور PowerShell برای مشاهده Routing Table مناسب است؟",
+"options": [
+"Get-NetNeighbor",
+"route print -4",
+"Get-Process",
+"Get-NetAdapterStatistics"
+],
+"answer": 1,
+"explanation": "دستور route print -4 جدول مسیرهای IPv4 سیستم را نمایش می‌دهد."
+},
+{
+"question": "Network Address مربوط به 172.16.25.130/27 کدام است؟",
+"options": [
+"172.16.25.96",
+"172.16.25.112",
+"172.16.25.128",
+"172.16.25.160"
+],
+"answer": 2,
+"explanation": "در /27 اندازه هر بلوک 32 است. عدد 130 در بازه 128 تا 159 قرار دارد؛ بنابراین Network برابر 172.16.25.128 است."
+}
+]
+</script>
+</section>

@@ -1,21 +1,65 @@
 ---
-title: "Week 4 - IPv4 and IPv6"
+title: "Week 4 - IP Addressing"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 4: IPv4 and IPv6
+::: {.nf-hero}
+<div class="nf-eyebrow">NETWORKING / WEEK 04</div>
 
-این هفته روی موضوع **IPv4 and IPv6** تمرکز دارد.
+# IP Addressing
 
-## جلسات
+Develop practical IPv4, subnetting, CIDR and IPv6 design skills.
 
-- [Day 1: IPv4 Subnetting Practice](day-01.qmd)
-- [Day 2: CIDR and VLSM Design](day-02.qmd)
-- [Day 3: IPv6 Address Structure](day-03.qmd)
-- [Day 4: IPv6 Neighbor Discovery](day-04.qmd)
-- [Day 5: Dual-Stack Network Design](day-05.qmd)
+[← Back to Networking](../index.qmd)
+:::
 
-## خروجی هفتگی
+## Weekly sessions
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01</div>
+
+### IPv4 Subnetting Practice
+
+[Open session →](day-01.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02</div>
+
+### CIDR and VLSM Design
+
+[Open session →](day-02.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03</div>
+
+### IPv6 Address Structure
+
+[Open session →](day-03.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04</div>
+
+### IPv6 Neighbor Discovery
+
+[Open session →](day-04.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05</div>
+
+### Dual-Stack Network Design
+
+[Open session →](day-05.qmd)
+:::
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · WEEK 04
 :::

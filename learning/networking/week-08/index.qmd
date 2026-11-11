@@ -1,21 +1,65 @@
 ---
-title: "Week 8 - Network Design and Review"
+title: "Week 8 - Network Engineering"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 8: Network Design and Review
+::: {.nf-hero}
+<div class="nf-eyebrow">NETWORKING / WEEK 08</div>
 
-این هفته روی موضوع **Network Design and Review** تمرکز دارد.
+# Network Engineering
 
-## جلسات
+Connect the fundamentals through design, resilience and practical engineering.
 
-- [Day 1: Hierarchical Network Design](day-01.qmd)
-- [Day 2: Redundancy and High Availability](day-02.qmd)
-- [Day 3: Capacity Planning](day-03.qmd)
-- [Day 4: Network Change Management](day-04.qmd)
-- [Day 5: Networking Fundamentals Practical Assessment](day-05.qmd)
+[← Back to Networking](../index.qmd)
+:::
 
-## خروجی هفتگی
+## Weekly sessions
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01</div>
+
+### Hierarchical Network Design
+
+[Open session →](day-01.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02</div>
+
+### Redundancy and High Availability
+
+[Open session →](day-02.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03</div>
+
+### Capacity Planning
+
+[Open session →](day-03.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04</div>
+
+### Network Change Management
+
+[Open session →](day-04.qmd)
+:::
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05</div>
+
+### Networking Fundamentals Practical Assessment
+
+[Open session →](day-05.qmd)
+:::
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · WEEK 08
 :::

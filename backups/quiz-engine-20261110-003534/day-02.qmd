@@ -1,0 +1,1091 @@
+
+---
+title: "OSI and TCP/IP Models"
+subtitle: "Week 01 · Day 02"
+description: "Deep understanding of network architecture, OSI layers, TCP/IP, encapsulation, packet analysis and layered troubleshooting"
+---
+
+::: {.persian}
+
+# جلسه دوم: مدل‌های OSI و TCP/IP
+
+<blockquote>
+هدف این جلسه حفظ کردن هفت لایه نیست. هدف این است که بتوانی یک ارتباط شبکه را از دید معماری، پروتکل، Packet و عیب‌یابی تحلیل کنی.
+</blockquote>
+
+## 1. اهداف یادگیری
+
+در پایان این جلسه باید بتوانی:
+
+- معماری لایه‌ای شبکه را توضیح بدهی و دلیل استفاده از آن را درک کنی.
+- وظایف هر هفت لایه OSI را با مثال‌های واقعی تشریح کنی.
+- تفاوت مدل مرجع OSI و معماری TCP/IP را توضیح بدهی.
+- Encapsulation و Decapsulation را مرحله‌به‌مرحله تحلیل کنی.
+- تفاوت Data، Segment، Datagram، Packet، Frame و Bits را تشخیص بدهی.
+- نقش MAC Address، IP Address و Port Number را در ارتباط شبکه توضیح بدهی.
+- با Wireshark ارتباط میان لایه‌ها را در یک ارتباط واقعی مشاهده کنی.
+- برای یک مشکل شبکه، لایه‌های محتمل خطا را شناسایی کنی.
+- از مدل لایه‌ای برای طراحی فرآیندهای Network Automation استفاده کنی.
+
+---
+
+## 2. چرا شبکه به مدل لایه‌ای نیاز دارد؟
+
+تصور کن می‌خواهیم یک کامپیوتر با سیستم‌عامل Windows را به سروری در یک کشور دیگر متصل کنیم.
+
+در این ارتباط اجزای زیادی دخالت دارند:
+
+- مرورگر وب
+- سیستم‌عامل
+- TCP یا UDP
+- IP
+- کارت شبکه
+- Switch
+- Router
+- کابل یا ارتباط بی‌سیم
+- تجهیزات شبکه بین مبدأ و مقصد
+- سیستم‌عامل سرور
+- برنامه‌ای که روی سرور اجرا می‌شود
+
+هر کدام از این اجزا وظیفه متفاوتی دارند.
+
+اگر تمام این وظایف در یک ساختار یکپارچه و بدون تفکیک طراحی می‌شدند، تغییر یا عیب‌یابی هر قسمت می‌توانست کل سیستم ارتباطی را پیچیده کند.
+
+### 2.1. مفهوم Layering
+
+در معماری لایه‌ای، وظایف ارتباطی به چند بخش مستقل تقسیم می‌شوند.
+
+هر لایه:
+
+1. مسئولیت مشخصی دارد.
+2. خدماتی را برای لایه بالاتر فراهم می‌کند.
+3. از خدمات لایه پایین‌تر استفاده می‌کند.
+4. برای ارتباط خود از قوانین و پروتکل‌های مشخصی پیروی می‌کند.
+
+این معماری باعث می‌شود بتوانیم یک بخش از شبکه را تغییر دهیم، بدون اینکه مجبور باشیم تمام بخش‌های دیگر را از ابتدا طراحی کنیم.
+
+### 2.2. مزایای معماری لایه‌ای
+
+| مزیت | توضیح |
+|---|---|
+| Modularity | تقسیم سیستم پیچیده به بخش‌های کوچک‌تر |
+| Interoperability | امکان ارتباط تجهیزات و سیستم‌های مختلف |
+| Troubleshooting | محدود کردن محدوده احتمالی مشکل |
+| Scalability | توسعه سیستم بدون بازطراحی کامل |
+| Standardization | استفاده از استانداردها و پروتکل‌های مشترک |
+
+### مثال واقعی
+
+فرض کن شرکت تصمیم می‌گیرد Switchهای خود را از یک تولیدکننده به تولیدکننده دیگری تغییر دهد.
+
+اگر تجهیزات جدید از استانداردهای Ethernet و پروتکل‌های مورد نیاز پشتیبانی کنند، برنامه‌های کاربردی و سرویس‌های شبکه لزوماً نیازی به تغییر ندارند.
+
+این یکی از مزایای جداسازی وظایف در معماری شبکه است.
+
+---
+
+## 3. مدل OSI چیست؟
+
+مدل OSI مخفف Open Systems Interconnection است.
+
+این مدل توسط ISO برای توصیف و استانداردسازی مفاهیم ارتباط میان سیستم‌های مختلف توسعه داده شد.
+
+OSI دارای هفت لایه است.
+
+| شماره | Layer | وظیفه اصلی | نمونه مفاهیم |
+|---|---|---|---|
+| 7 | Application | خدمات شبکه برای برنامه‌ها | HTTP, DNS, SMTP |
+| 6 | Presentation | نمایش و تبدیل داده | Encoding, Encryption |
+| 5 | Session | مدیریت نشست ارتباطی | Session Management |
+| 4 | Transport | انتقال انتها به انتها | TCP, UDP |
+| 3 | Network | آدرس‌دهی و مسیریابی | IPv4, IPv6 |
+| 2 | Data Link | انتقال فریم در لینک محلی | Ethernet, MAC |
+| 1 | Physical | انتقال سیگنال و بیت | Cable, Fiber, Radio |
+
+نکته مهم: OSI یک مدل مرجع است. در شبکه واقعی، مرز پروتکل‌ها همیشه دقیقاً مطابق مرزهای این هفت لایه نیست.
+
+---
+
+## 4. بررسی عمیق لایه‌های OSI
+
+### Layer 1: Physical
+
+<badge color="info">L1 · Physical</badge>
+
+این لایه مسئول انتقال بیت‌ها از طریق رسانه فیزیکی است.
+
+در این لایه هنوز مفاهیمی مانند IP Address یا TCP Port مطرح نیستند.
+
+وظایف اصلی:
+
+- تبدیل بیت‌ها به سیگنال قابل انتقال
+- انتقال سیگنال از طریق کابل، فیبر یا امواج رادیویی
+- تعیین مشخصات فیزیکی Interface
+- مشخصات الکتریکی، نوری و رادیویی
+- نرخ انتقال داده و ویژگی‌های رسانه
+
+#### اجزای مرتبط
+
+- Ethernet Cable
+- Fiber Optic
+- RJ45 Connector
+- Network Interface
+- Repeater
+- Hub
+- Wireless Radio
+
+#### مثال عیب‌یابی
+
+کاربری می‌گوید کامپیوترش به شبکه متصل نمی‌شود.
+
+اولین بررسی‌ها:
+
+- آیا کابل متصل است؟
+- چراغ Link روی کارت شبکه روشن است؟
+- Interface فعال است؟
+- کابل یا پورت Switch مشکل فیزیکی دارد؟
+- سرعت و Duplex دو سمت ارتباط با یکدیگر سازگارند؟
+
+در این شرایط باید از لایه فیزیکی شروع کنیم.
+
+#### آزمایش عملی
+
+در PowerShell:
+
+```powershell
+Get-NetAdapter
+```
+
+برای مشاهده وضعیت Interfaceها:
+
+```powershell
+Get-NetAdapter |
+    Format-Table Name, InterfaceDescription, Status, LinkSpeed
+```
+
+به ستون‌های Status و LinkSpeed توجه کن.
+
+**تمرین:** اگر Status یک Interface برابر Disconnected باشد، چه مواردی را بررسی می‌کنی؟
+
+---
+
+### Layer 2: Data Link
+
+<badge color="info">L2 · Data Link</badge>
+
+این لایه وظیفه انتقال Frame میان دستگاه‌هایی را بر عهده دارد که از طریق یک لینک یا شبکه محلی به یکدیگر متصل هستند.
+
+یکی از مفاهیم کلیدی این لایه MAC Address است.
+
+#### وظایف مهم
+
+- Frame Encapsulation
+- MAC Addressing
+- Media Access Control
+- Frame Delivery
+- Error Detection در سطح Frame
+
+#### MAC Address
+
+MAC Address یک شناسه مورد استفاده در ارتباطات لایه دوم است.
+
+یک MAC Address متداول Ethernet دارای 48 بیت است.
+
+مثال:
+
+```text
+00:1A:2B:3C:4D:5E
+```
+
+این مقدار معمولاً به شکل شش بخش hexadecimal نمایش داده می‌شود.
+
+#### Ethernet Frame
+
+یک Ethernet Frame معمولی شامل بخش‌های زیر است:
+
+| Field | کاربرد |
+|---|---|
+| Destination MAC | MAC مقصد |
+| Source MAC | MAC مبدأ |
+| EtherType | مشخص کردن نوع پروتکل بالاتر |
+| Payload | داده حمل‌شده |
+| FCS | بررسی خطای Frame |
+
+در Ethernet معمولی، FCS برای تشخیص خرابی Frame استفاده می‌شود.
+
+#### نقش Switch
+
+Switchهای لایه دوم از MAC Address برای تصمیم‌گیری درباره ارسال Frame استفاده می‌کنند.
+
+سه مرحله مهم:
+
+1. دریافت Frame
+2. یادگیری Source MAC و پورت ورودی
+3. بررسی Destination MAC و انتخاب پورت خروجی
+
+این اطلاعات در MAC Address Table نگهداری می‌شوند.
+
+#### آزمایش عملی
+
+```powershell
+Get-NetAdapter
+```
+
+مشاهده MAC Address:
+
+```powershell
+Get-NetAdapter |
+    Select-Object Name, MacAddress, Status
+```
+
+مشاهده ARP Cache:
+
+```powershell
+arp -a
+```
+
+نکته: ARP از نظر عملکرد بین آدرس‌دهی IPv4 و Ethernet ارتباط برقرار می‌کند. ARP معمولاً به‌عنوان پروتکل مستقلی میان لایه‌های Network و Data Link توضیح داده می‌شود، نه یک پروتکل ساده و کاملاً محدود به یک لایه.
+
+---
+
+### Layer 3: Network
+
+<badge color="info">L3 · Network</badge>
+
+این لایه مسئول آدرس‌دهی منطقی و انتقال Packet بین شبکه‌های مختلف است.
+
+مهم‌ترین پروتکل‌های این لایه:
+
+- IPv4
+- IPv6
+- ICMP
+
+#### IP Address
+
+IP Address مشخص می‌کند یک Interface در ساختار آدرس‌دهی IP چه آدرسی دارد.
+
+مثال:
+
+```text
+192.168.10.25
+```
+
+#### Routing
+
+اگر مقصد در شبکه محلی نباشد، سیستم باید Packet را به یک Router یا Default Gateway ارسال کند.
+
+Router با استفاده از Routing Table درباره مسیر بعدی تصمیم می‌گیرد.
+
+#### مثال
+
+فرض کن:
+
+```text
+Your IP:       192.168.10.25
+Subnet Mask:   255.255.255.0
+Gateway:       192.168.10.1
+Destination:   8.8.8.8
+```
+
+مقصد در Subnet محلی قرار ندارد.
+
+بنابراین سیستم Packet را به Gateway ارسال می‌کند.
+
+نکته بسیار مهم:
+
+در یک ارتباط معمولی Routed، آدرس IP مبدأ و مقصد در طول مسیر باقی می‌مانند، اما آدرس‌های MAC در هر لینک لایه دوم می‌توانند تغییر کنند.
+
+این تفاوت یکی از مهم‌ترین مفاهیم برای درک Routing است.
+
+#### آزمایش عملی
+
+```powershell
+Get-NetIPConfiguration
+```
+
+مشاهده جدول مسیریابی:
+
+```powershell
+route print
+```
+
+مشاهده مسیر تا مقصد:
+
+```powershell
+tracert 8.8.8.8
+```
+
+---
+
+### Layer 4: Transport
+
+<badge color="info">L4 · Transport</badge>
+
+این لایه ارتباط منطقی میان برنامه‌های در حال اجرا روی سیستم‌های مختلف را مدیریت می‌کند.
+
+دو پروتکل بسیار مهم:
+
+- TCP
+- UDP
+
+#### TCP
+
+TCP یک پروتکل Connection-oriented است.
+
+ویژگی‌های مهم:
+
+- اتصال منطقی با Three-Way Handshake
+- Sequence Number
+- Acknowledgment
+- Retransmission
+- Flow Control
+- Congestion Control
+
+#### TCP Three-Way Handshake
+
+فرآیند برقراری اتصال TCP:
+
+```text
+Client                  Server
+  |                        |
+  |-------- SYN ---------->|
+  |                        |
+  |<----- SYN + ACK -------|
+  |                        |
+  |-------- ACK ---------->|
+  |                        |
+  |     Connection         |
+  |      Established       |
+```
+
+سه مرحله:
+
+1. Client درخواست اتصال می‌فرستد.
+2. Server درخواست را تأیید می‌کند.
+3. Client تأیید نهایی را ارسال می‌کند.
+
+#### UDP
+
+UDP پروتکلی Connectionless است.
+
+ویژگی‌ها:
+
+- سربار کمتر نسبت به TCP
+- بدون تضمین تحویل در سطح پروتکل
+- بدون Three-Way Handshake
+- مناسب برای کاربردهایی که تأخیر اهمیت زیادی دارد
+
+#### مقایسه TCP و UDP
+
+| ویژگی | TCP | UDP |
+|---|---|---|
+| Connection | Connection-oriented | Connectionless |
+| Reliability | دارای سازوکار تحویل قابل اطمینان | بدون تضمین تحویل |
+| Ordering | پشتیبانی می‌کند | تضمین نمی‌کند |
+| Retransmission | دارد | در خود UDP ندارد |
+| Overhead | بیشتر | کمتر |
+| نمونه کاربرد | HTTPS روی TCP، SSH | DNS معمولی، VoIP، QUIC |
+
+نکته: DNS معمولاً از UDP استفاده می‌کند، اما در شرایطی مانند پاسخ‌های بزرگ یا Zone Transfer می‌تواند از TCP هم استفاده کند.
+
+#### Port Number
+
+Port مشخص می‌کند داده به کدام سرویس یا Endpoint برنامه‌ای تحویل داده شود.
+
+نمونه‌ها:
+
+| Port | Protocol / Service |
+|---|---|
+| 22 | SSH |
+| 53 | DNS |
+| 80 | HTTP |
+| 443 | HTTPS |
+| 3389 | RDP |
+
+#### آزمایش عملی
+
+```powershell
+Get-NetTCPConnection |
+    Select-Object -First 15 LocalAddress, LocalPort, RemoteAddress, RemotePort, State
+```
+
+بررسی پورت یک سرویس:
+
+```powershell
+Test-NetConnection google.com -Port 443
+```
+
+در خروجی، مقدار `TcpTestSucceeded` را بررسی کن.
+
+---
+
+### Layer 5: Session
+
+<badge color="info">L5 · Session</badge>
+
+این لایه در مدل OSI مسئول مفاهیم مرتبط با ایجاد، مدیریت و پایان دادن به نشست‌های ارتباطی است.
+
+وظایف مفهومی:
+
+- Session Establishment
+- Session Maintenance
+- Session Termination
+- Dialog Control
+- Synchronization
+
+#### مثال
+
+تصور کن یک برنامه در حال برقراری ارتباط با یک سرویس راه دور است.
+
+برنامه باید بداند:
+
+- نشست ارتباطی چه زمانی آغاز شده است؟
+- آیا نشست هنوز معتبر است؟
+- آیا ارتباط باید ادامه پیدا کند؟
+- چه زمانی نشست پایان می‌یابد؟
+
+در سیستم‌های واقعی، بسیاری از این وظایف می‌توانند توسط Application، Library یا پروتکل‌های دیگر پیاده‌سازی شوند.
+
+بنابراین نباید انتظار داشته باشیم همیشه یک پروتکل مستقل و مشخص به نام Session Layer در سیستم‌عامل ببینیم.
+
+---
+
+### Layer 6: Presentation
+
+<badge color="info">L6 · Presentation</badge>
+
+این لایه در مدل OSI مسئول نحوه نمایش، تبدیل و قالب‌بندی داده است.
+
+مفاهیم مهم:
+
+- Data Encoding
+- Character Set Conversion
+- Data Serialization
+- Compression
+- Encryption
+
+#### مثال‌های واقعی
+
+JSON:
+
+```json
+{
+  "hostname": "router-01",
+  "management_ip": "192.168.10.1",
+  "status": "online"
+}
+```
+
+این ساختار روشی برای نمایش و تبادل داده میان برنامه‌هاست.
+
+Encoding:
+
+- UTF-8
+- ASCII
+
+Serialization:
+
+- JSON
+- XML
+- Protocol Buffers
+
+Encryption:
+
+- TLS
+
+نکته: TLS معمولاً در منابع آموزشی با Layer 6 مرتبط می‌شود، اما در معماری واقعی اینترنت یک نگاشت کاملاً دقیق و یک‌به‌یک به لایه‌های OSI ندارد.
+
+---
+
+### Layer 7: Application
+
+<badge color="success">L7 · Application</badge>
+
+این لایه خدمات شبکه را برای برنامه‌های کاربردی فراهم می‌کند.
+
+پروتکل‌های مهم:
+
+| Protocol | کاربرد |
+|---|---|
+| HTTP | انتقال محتوای وب |
+| HTTPS | ارتباط وب با TLS |
+| DNS | تبدیل نام دامنه به IP |
+| SSH | مدیریت امن سیستم‌های راه دور |
+| SMTP | ارسال ایمیل |
+| DHCP | تخصیص خودکار تنظیمات IP |
+| SNMP | مدیریت و مانیتورینگ تجهیزات |
+
+#### مثال واقعی
+
+وقتی در مرورگر آدرس زیر را وارد می‌کنی:
+
+```text
+https://example.com
+```
+
+برنامه مرورگر باید بتواند:
+
+1. نام دامنه را Resolve کند.
+2. مقصد شبکه را پیدا کند.
+3. ارتباط مناسب را برقرار کند.
+4. درخواست وب را ارسال کند.
+5. پاسخ سرور را پردازش کند.
+
+این فرایند به همکاری چندین لایه وابسته است.
+
+---
+
+## 5. مدل TCP/IP
+
+مدل TCP/IP به معماری واقعی ارتباطات اینترنت نزدیک‌تر است.
+
+این مدل معمولاً در چهار لایه نمایش داده می‌شود.
+
+| TCP/IP Layer | لایه‌های OSI متناظر |
+|---|---|
+| Application | 5، 6، 7 |
+| Transport | 4 |
+| Internet | 3 |
+| Network Access / Link | 1، 2 |
+
+در برخی منابع، مدل TCP/IP با پنج لایه نیز نمایش داده می‌شود؛ در این نمایش، Physical و Data Link جدا هستند.
+
+بنابراین هنگام مطالعه منابع مختلف ممکن است با دو نوع نمودار مواجه شوی.
+
+### مقایسه OSI و TCP/IP
+
+| ویژگی | OSI | TCP/IP |
+|---|---|---|
+| تعداد لایه | 7 | معمولاً 4 |
+| ماهیت | Reference Model | Protocol Architecture |
+| کاربرد آموزشی | بسیار مهم | بسیار مهم |
+| ارتباط با اینترنت واقعی | مدل مرجع | نزدیک‌تر به پیاده‌سازی اینترنت |
+| تفکیک Session و Presentation | جداگانه | در Application ادغام شده‌اند |
+
+### نکته مهندسی
+
+OSI و TCP/IP رقیب یکدیگر نیستند.
+
+OSI به ما کمک می‌کند معماری ارتباط را تحلیل کنیم.
+
+TCP/IP کمک می‌کند پروتکل‌های واقعی مورد استفاده در اینترنت را درک کنیم.
+
+یک Network Engineer باید هر دو را بشناسد.
+
+---
+
+## 6. Encapsulation و Decapsulation
+
+یکی از مهم‌ترین مفاهیم این جلسه Encapsulation است.
+
+وقتی یک برنامه داده‌ای برای ارسال تولید می‌کند، داده از لایه‌های مختلف عبور می‌کند.
+
+هر لایه اطلاعات کنترلی مورد نیاز خود را به داده اضافه می‌کند.
+
+این اطلاعات معمولاً در قالب Header و در برخی موارد Trailer قرار می‌گیرند.
+
+### 6.1. فرایند Encapsulation
+
+```text
+Application Layer
+       |
+       v
+     DATA
+       |
+       v
+Transport Layer
+       |
+       v
+ [TCP Header | DATA]
+       |
+       v
+Network Layer
+       |
+       v
+[IP Header | TCP Segment]
+       |
+       v
+Data Link Layer
+       |
+       v
+[Ethernet Header | IP Packet | FCS]
+       |
+       v
+Physical Layer
+       |
+       v
+       BITS
+```
+
+### 6.2. اصطلاحات PDU
+
+PDU مخفف Protocol Data Unit است.
+
+هر لایه می‌تواند واحد داده را با نام متفاوتی توصیف کند.
+
+| لایه | PDU |
+|---|---|
+| Application | Data |
+| Transport | Segment در TCP |
+| Transport | Datagram در UDP |
+| Network | Packet |
+| Data Link | Frame |
+| Physical | Bits |
+
+نکته: نام‌گذاری PDU به پروتکل وابسته است. برای مثال TCP Segment و UDP Datagram نام‌های دقیق‌تری هستند.
+
+### 6.3. Decapsulation
+
+در مقصد، فرآیند معکوس اتفاق می‌افتد.
+
+هر لایه اطلاعات مربوط به خودش را پردازش می‌کند و داده را به لایه بالاتر تحویل می‌دهد.
+
+```text
+Received Bits
+      |
+      v
+Physical Layer
+      |
+      v
+Ethernet Frame
+      |
+      v
+Network Layer
+      |
+      v
+IP Packet
+      |
+      v
+Transport Layer
+      |
+      v
+TCP Segment / UDP Datagram
+      |
+      v
+Application Data
+```
+
+### 6.4. چرا Encapsulation مهم است؟
+
+چون هر لایه می‌تواند بدون نیاز به دانستن جزئیات داخلی تمام لایه‌های دیگر، وظیفه خودش را انجام دهد.
+
+برای مثال:
+
+- Ethernet مسئول Frame Delivery است.
+- IP مسئول آدرس‌دهی و Routing است.
+- TCP مسئول قابلیت اطمینان و ترتیب داده‌هاست.
+- HTTP مسئول قالب و معنای درخواست وب است.
+
+این تفکیک، معماری شبکه را قابل توسعه و عیب‌یابی می‌کند.
+
+---
+
+## 7. تحلیل یک ارتباط واقعی HTTPS
+
+حالا یک سناریوی واقعی را بررسی می‌کنیم.
+
+فرض کن سیستم تو می‌خواهد به این مقصد متصل شود:
+
+```text
+https://example.com
+```
+
+### مرحله اول: DNS Resolution
+
+مرورگر یا سیستم‌عامل باید آدرس IP مربوط به نام دامنه را پیدا کند.
+
+در این مرحله از DNS استفاده می‌شود.
+
+```powershell
+Resolve-DnsName example.com
+```
+
+خروجی شامل اطلاعات مربوط به پاسخ DNS است.
+
+### مرحله دوم: انتخاب مقصد و Route
+
+سیستم باید تشخیص دهد مقصد در شبکه محلی قرار دارد یا خیر.
+
+```powershell
+route print
+```
+
+اگر مقصد خارج از شبکه محلی باشد، سیستم از Default Gateway استفاده می‌کند.
+
+### مرحله سوم: برقراری ارتباط
+
+در HTTPS مبتنی بر TCP، ابتدا TCP Connection برقرار می‌شود.
+
+معمولاً:
+
+```text
+Client -> Server : SYN
+Server -> Client : SYN-ACK
+Client -> Server : ACK
+```
+
+سپس فرآیند TLS Handshake انجام می‌شود.
+
+### مرحله چهارم: انتقال داده
+
+پس از آماده شدن ارتباط امن، داده‌های HTTP از طریق TLS منتقل می‌شوند.
+
+در HTTPS مبتنی بر HTTP/1.1 یا HTTP/2، معمولاً TCP استفاده می‌شود.
+
+اما HTTP/3 از QUIC استفاده می‌کند که بر بستر UDP ساخته شده است.
+
+این تفاوت نشان می‌دهد که معماری پروتکل‌های واقعی همیشه به یک مسیر ساده و ثابت محدود نیست.
+
+### مرحله پنجم: دریافت پاسخ
+
+سرور درخواست را پردازش می‌کند و پاسخ را به Client برمی‌گرداند.
+
+سیستم مقصد داده را از لایه‌های پایین به بالا پردازش می‌کند.
+
+---
+
+## 8. مشاهده ارتباط لایه‌ها با Wireshark
+
+Wireshark یکی از ابزارهای اصلی تحلیل Packet در مهندسی شبکه است.
+
+با این ابزار می‌توانی بسته‌های واقعی را مشاهده و فیلتر کنی.
+
+### آزمایش اول: Capture
+
+1. Wireshark را اجرا کن.
+2. Interface فعال خودت را انتخاب کن.
+3. Capture را شروع کن.
+4. در مرورگر وارد `https://example.com` شو.
+5. چند ثانیه بعد Capture را متوقف کن.
+
+### آزمایش دوم: فیلتر DNS
+
+```text
+dns
+```
+
+در این فیلتر می‌توانی درخواست‌ها و پاسخ‌های DNS را بررسی کنی.
+
+### آزمایش سوم: فیلتر TCP
+
+```text
+tcp
+```
+
+برای مشاهده ارتباطات TCP.
+
+### آزمایش چهارم: فیلتر TLS
+
+```text
+tls
+```
+
+برای مشاهده پیام‌های مرتبط با TLS.
+
+### آزمایش پنجم: فیلتر ICMP
+
+```text
+icmp
+```
+
+برای مشاهده پیام‌های ICMP در IPv4.
+
+### بررسی یک Packet
+
+وقتی یک Packet را انتخاب می‌کنی، Wireshark معمولاً اطلاعات را به‌صورت لایه‌ای نمایش می‌دهد.
+
+برای نمونه:
+
+```text
+Frame
+ ├── Ethernet II
+ ├── Internet Protocol Version 4
+ ├── Transmission Control Protocol
+ └── Application Data
+```
+
+به این ترتیب می‌توانی ساختار Encapsulation را در یک ارتباط واقعی مشاهده کنی.
+
+**تمرین:** یک Packet را انتخاب کن و موارد زیر را یادداشت کن:
+
+- Source MAC
+- Destination MAC
+- Source IP
+- Destination IP
+- Source Port
+- Destination Port
+- Protocol
+
+نکته: در HTTPS، محتوای Application معمولاً رمزگذاری شده است و مشاهده Headerها به معنی مشاهده محتوای رمزگذاری‌شده نیست.
+
+---
+
+## 9. عیب‌یابی بر اساس مدل OSI
+
+مدل OSI یکی از ابزارهای ذهنی مهم برای Troubleshooting است.
+
+به جای اینکه بدون برنامه تنظیمات مختلف را تغییر بدهی، می‌توانی مرحله‌به‌مرحله لایه‌های محتمل مشکل را بررسی کنی.
+
+### سناریو اول: هیچ ارتباطی وجود ندارد
+
+مشکل:
+
+کامپیوتر به شبکه متصل نمی‌شود.
+
+نقطه شروع:
+
+Layer 1
+
+بررسی:
+
+```powershell
+Get-NetAdapter
+```
+
+### سناریو دوم: ارتباط محلی برقرار نیست
+
+مشکل:
+
+کامپیوتر به Switch متصل است اما دستگاه محلی دیگری را پیدا نمی‌کند.
+
+بررسی:
+
+- وضعیت VLAN
+- MAC Address Table
+- ARP Cache
+- Subnet Configuration
+
+نقطه شروع: Layer 2 و Layer 3
+
+### سناریو سوم: اینترنت با IP کار می‌کند اما با نام دامنه نه
+
+مشکل:
+
+```powershell
+ping 8.8.8.8
+```
+
+موفق است اما:
+
+```powershell
+nslookup example.com
+```
+
+با خطا مواجه می‌شود.
+
+نقطه شروع: بررسی DNS در لایه Application و تنظیمات شبکه سیستم.
+
+### سناریو چهارم: سرور قابل دسترسی است اما سرویس باز نیست
+
+مشکل:
+
+سرور Ping می‌شود اما اتصال به پورت 443 موفق نیست.
+
+بررسی:
+
+```powershell
+Test-NetConnection example.com -Port 443
+```
+
+نقطه شروع: Layer 4 و سپس بررسی Firewall و سرویس Application.
+
+### سناریو پنجم: ارتباط TCP برقرار است اما وب‌سایت خطا می‌دهد
+
+ممکن است:
+
+- سرور خطای HTTP برگرداند.
+- تنظیمات TLS مشکل داشته باشد.
+- برنامه سرور خطا داشته باشد.
+- درخواست از نظر Application معتبر نباشد.
+
+در این حالت باید به Layer 7 و اجزای بالاتر توجه کنیم.
+
+### جدول عیب‌یابی
+
+| نشانه | لایه‌های محتمل |
+|---|---|
+| کابل قطع است | L1 |
+| VLAN اشتباه است | L2 |
+| Subnet یا Route اشتباه است | L3 |
+| TCP Port بسته است | L4 |
+| مدیریت نشست مشکل دارد | L5 |
+| Encoding یا TLS مشکل دارد | L6 / L7 |
+| درخواست HTTP نامعتبر است | L7 |
+
+این جدول یک راهنمای اولیه است، نه قانون قطعی. یک مشکل واقعی می‌تواند چند لایه را هم‌زمان درگیر کند.
+
+---
+
+## 10. ارتباط مدل OSI با Network Automation
+
+هدف ما فقط یادگیری مفاهیم شبکه نیست.
+
+قرار است در آینده بتوانیم فرآیندهای شبکه را با Python، API و ابزارهای اتوماسیون مدیریت کنیم.
+
+برای این کار باید بدانیم هر ابزار چه چیزی را بررسی می‌کند.
+
+### مثال اول: بررسی Interfaceها
+
+```powershell
+Get-NetAdapter |
+    Select-Object Name, Status, LinkSpeed
+```
+
+این اطلاعات برای بررسی وضعیت Interface و ارتباط فیزیکی یا Link مفید هستند.
+
+### مثال دوم: بررسی IP Configuration
+
+```powershell
+Get-NetIPConfiguration
+```
+
+برای بررسی آدرس‌دهی و Gateway.
+
+### مثال سوم: بررسی TCP
+
+```powershell
+Get-NetTCPConnection |
+    Select-Object LocalPort, RemotePort, State
+```
+
+برای بررسی وضعیت اتصال‌های TCP.
+
+### مثال چهارم: بررسی سرویس
+
+```powershell
+Test-NetConnection example.com -Port 443
+```
+
+برای بررسی قابلیت برقراری ارتباط TCP با مقصد و پورت مشخص.
+
+### ارتباط با Python
+
+در آینده می‌توانیم همین بررسی‌ها را با Python به یک ابزار جمع‌آوری اطلاعات تبدیل کنیم.
+
+مثلاً یک ابزار Network Health Checker که:
+
+1. وضعیت Interfaceها را دریافت کند.
+2. تنظیمات IP را بررسی کند.
+3. Gateway را تست کند.
+4. DNS Resolution را بررسی کند.
+5. چند TCP Port را آزمایش کند.
+6. نتیجه را در قالب JSON گزارش دهد.
+
+این دقیقاً جایی است که دانش Networking به Network Automation تبدیل می‌شود.
+
+---
+
+## 11. چالش مهندسی
+
+<badge color="warning">Engineering Challenge</badge>
+
+### سناریو: سرویس وب شرکت در دسترس نیست
+
+یک شرکت گزارش داده که کارمندان نمی‌توانند به سرویس داخلی زیر متصل شوند:
+
+```text
+https://portal.company.local
+```
+
+اطلاعات اولیه:
+
+```text
+Client IP:       192.168.10.25
+Subnet Mask:     255.255.255.0
+Default Gateway: 192.168.10.1
+Server IP:       192.168.20.10
+Service Port:    443
+```
+
+نتایج آزمایش:
+
+```text
+Interface Status: Up
+Gateway Ping:     Success
+Server Ping:      Success
+DNS Resolution:   Success
+TCP Port 443:     Failed
+```
+
+### مأموریت تو
+
+به‌عنوان Network Engineer باید:
+
+1. مشخص کنی کدام لایه‌ها در این مشکل محتمل‌تر هستند.
+2. توضیح بدهی چرا موفقیت Ping به معنی سالم بودن سرویس نیست.
+3. سه علت احتمالی برای شکست TCP Port 443 پیشنهاد بدهی.
+4. حداقل سه آزمایش بعدی را مشخص کنی.
+5. یک گزارش کوتاه از مسیر عیب‌یابی بنویسی.
+
+### محدودیت
+
+بدون شواهد، تنظیمات شبکه را تغییر نده.
+
+ابتدا داده جمع‌آوری کن، سپس فرضیه بساز و بعد آزمایش انجام بده.
+
+---
+
+## 12. اشتباهات رایج
+
+1. تصور اینکه هر پروتکل دقیقاً فقط به یک لایه OSI تعلق دارد.
+2. اشتباه گرفتن MAC Address با IP Address.
+3. تصور اینکه Router در تمام مسیر از MAC Address اولیه استفاده می‌کند.
+4. تصور اینکه UDP هیچ‌وقت قابلیت اطمینان ندارد؛ برنامه‌ها می‌توانند روی UDP سازوکارهای خودشان را پیاده‌سازی کنند.
+5. فرض اینکه همه ارتباطات HTTPS الزاماً روی TCP هستند.
+6. تصور اینکه Session و Presentation همیشه به‌صورت دو ماژول مستقل در سیستم‌عامل وجود دارند.
+7. فرض اینکه موفقیت Ping یعنی تمام اجزای Application سالم هستند.
+
+---
+
+## 13. منابع آموزشی
+
+### منابع اصلی
+
+- [Cisco Networking Academy](https://www.netacad.com/)
+- [Cloudflare: What is the OSI Model?](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/)
+- [Wireshark Documentation](https://www.wireshark.org/docs/)
+- [Microsoft: Get-NetAdapter](https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapter)
+- [Microsoft: Test-NetConnection](https://learn.microsoft.com/en-us/powershell/module/nettcpip/test-netconnection)
+
+### استانداردها و منابع فنی
+
+- [RFC 9293: Transmission Control Protocol](https://www.rfc-editor.org/rfc/rfc9293)
+- [RFC 768: User Datagram Protocol](https://www.rfc-editor.org/rfc/rfc768)
+- [RFC 9114: HTTP/3](https://www.rfc-editor.org/rfc/rfc9114)
+- [RFC 1035: Domain Names](https://www.rfc-editor.org/rfc/rfc1035)
+
+---
+
+## 14. ارزیابی پایان جلسه
+
+قبل از رفتن به جلسه سوم باید بتوانی به این پرسش‌ها پاسخ بدهی:
+
+1. چرا شبکه به معماری لایه‌ای نیاز دارد؟
+2. وظیفه اصلی Layer 1 چیست؟
+3. تفاوت MAC Address و IP Address چیست؟
+4. Switch و Router در کدام لایه‌ها فعالیت می‌کنند؟
+5. تفاوت TCP و UDP چیست؟
+6. چرا Port Number اهمیت دارد؟
+7. Encapsulation چه کاری انجام می‌دهد؟
+8. تفاوت Segment و Packet چیست؟
+9. چرا در مسیر Routing آدرس MAC تغییر می‌کند اما IP معمولاً ثابت می‌ماند؟
+10. چرا موفقیت Ping به معنی سالم بودن HTTPS نیست؟
+11. تفاوت مدل OSI و TCP/IP چیست؟
+12. چطور با Wireshark می‌توان Encapsulation را مشاهده کرد؟
+
+---
+
+## خروجی مورد انتظار جلسه
+
+در پایان این جلسه باید بتوانی:
+
+- مدل OSI را بدون حفظ‌کردن صرف، از نظر عملکرد توضیح بدهی.
+- تفاوت OSI و TCP/IP را درک کنی.
+- یک ارتباط واقعی را از دید Headerها و PDUها تحلیل کنی.
+- با Wireshark یک Capture ساده انجام بدهی.
+- برای یک مشکل شبکه، مسیر عیب‌یابی لایه‌ای طراحی کنی.
+- تشخیص بدهی کدام اطلاعات برای یک ابزار Network Automation مفید هستند.
+
+**جلسه بعد: Ethernet, MAC Address and ARP**
+
+:::
