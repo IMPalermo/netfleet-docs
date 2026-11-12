@@ -1571,37 +1571,153 @@ Server</code></pre>
     <div>
       <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
       <h2 id="nf-quiz-day03-title" class="anchored" data-anchor-id="interactive-knowledge-check">آزمون تعاملی جلسه سوم</h2>
-      <p>Ethernet, MAC Address and ARP</p>
+    </div>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score="">0</strong></div>
     </div>
   </div>
 
-  <div class="nf-quiz-progress">
-    <div class="nf-quiz-progress-track">
-      <div class="nf-quiz-progress-bar" data-progress=""></div>
-    </div>
-    <div class="nf-quiz-progress-meta">
-      <span data-progress-text="">سؤال ۱ از ۱۰</span>
-      <span data-score="">امتیاز: ۰</span>
-    </div>
+  <div class="nf-quiz-progress" role="progressbar" aria-label="پیشرفت آزمون" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="nf-quiz-progress-bar" data-progress=""></div>
   </div>
+
+  <div class="nf-quiz-progress-label" data-progress-text=""></div>
 
   <div data-content="">
-    <h3 data-question="" class="anchored"></h3>
-    <div data-options=""></div>
-    <div data-feedback="" aria-live="polite"></div>
-    <button type="button" data-next="" hidden="" disabled="">سؤال بعدی</button>
+    <h3 class="nf-quiz-question anchored" data-question=""></h3>
+    <div class="nf-quiz-options" data-options=""></div>
+    <div class="nf-quiz-feedback" data-feedback="" aria-live="polite"></div>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next="" hidden="">
+        سؤال بعدی
+      </button>
+    </div>
   </div>
 
-  <div data-result="" class="nf-quiz-result" hidden="">
+  <div class="nf-quiz-result" data-result="" hidden="" aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
     <h3 class="anchored">نتیجه آزمون</h3>
-    <div data-final-score=""></div>
-    <div data-percentage=""></div>
+    <div class="nf-quiz-result-score" data-final-score=""></div>
+    <div class="nf-quiz-result-score" data-percentage=""></div>
     <p data-result-message=""></p>
-    <button type="button" data-restart="">تکرار آزمون</button>
+    <button class="nf-quiz-primary" type="button" data-restart="">
+      تلاش مجدد
+    </button>
   </div>
 
   <script type="application/json" data-quiz-questions="">
-[{"explanation":"سوئیچ Source MAC را همراه با پورت ورودی و VLAN ثبت می‌کند. Destination MAC برای تصمیم Forwarding استفاده می‌شود.","answer":1,"question":"یک Switch لایه دوم برای یادگیری MAC Address از کدام فیلد Frame استفاده می‌کند؟","options":["Destination MAC","Source MAC","EtherType","FCS"]},{"explanation":"I/G کم‌ارزش‌ترین بیت اولین Octet است. مقدار 1 نشان‌دهنده Group Address است که Multicast و Broadcast را شامل می‌شود.","answer":2,"question":"در MAC Address مقدار بیت I/G برابر 1 چه مفهومی دارد؟","options":["آدرس Locally Administered است","آدرس Unicast است","آدرس Group است","آدرس Broadcast است"]},{"explanation":"برای مقصد خارج از Subnet، فریم به MAC آدرس Next Hop یا Default Gateway ارسال می‌شود، نه MAC مقصد نهایی.","answer":2,"question":"کامپیوتر A می‌خواهد به یک IP در Subnet دیگری ارتباط برقرار کند. مقصد Ethernet Frame اولیه چیست؟","options":["MAC Address مقصد نهایی","FF:FF:FF:FF:FF:FF","MAC Address Default Gateway","MAC Address سرور DNS"]},{"explanation":"EtherType مقدار 0x0806 پروتکل ARP را مشخص می‌کند.","answer":1,"question":"EtherType برابر 0x0806 نشان‌دهنده کدام پروتکل است؟","options":["IPv4","ARP","IPv6","802.1Q"]},{"explanation":"Unknown Unicast در VLAN مربوطه Flood می‌شود. این رفتار با Broadcast یکسان نیست، هرچند خروجی Flooding مشابه است.","answer":2,"question":"اگر Destination MAC در جدول سوئیچ وجود نداشته باشد، رفتار معمول چیست؟","options":["Drop کردن قطعی Frame","ارسال فقط به پورت مدیریت","Flood کردن در VLAN مربوطه، به‌جز پورت ورودی","ارسال Frame به Default Gateway"]},{"explanation":"در IPv4 روی Ethernet، ARP Request معمولاً Broadcast است تا مالک IP موردنظر بتواند پاسخ دهد.","answer":1,"question":"ARP Request در Ethernet معمولاً به چه آدرسی ارسال می‌شود؟","options":["00:00:00:00:00:00","FF:FF:FF:FF:FF:FF","MAC مقصد مورد جست‌وجو","MAC آدرس Gateway در تمام شرایط"]},{"explanation":"FCS از CRC برای تشخیص خرابی احتمالی Frame استفاده می‌کند. این سازوکار Error Detection است، نه Error Correction.","answer":1,"question":"کدام گزینه درباره FCS صحیح است؟","options":["برای رمزنگاری Frame استفاده می‌شود","خطا را تشخیص می‌دهد، نه اینکه آن را اصلاح کند","آدرس مقصد را نگهداری می‌کند","شماره VLAN را مشخص می‌کند"]},{"explanation":"VID یک فیلد 12 بیتی است و شناسه VLAN را مشخص می‌کند.","answer":2,"question":"کدام فیلد در Tag استاندارد 802.1Q شناسه VLAN را نگهداری می‌کند؟","options":["PCP","DEI","VID","TPID"]},{"explanation":"ARP Cache نگاشت‌های IPv4 به آدرس‌های لایه دوم را نگهداری می‌کند تا برای هر ارتباط نیاز به ARP Request تکراری نباشد.","answer":0,"question":"ARP Cache کامپیوتر شامل چه اطلاعاتی است؟","options":["نگاشت IPv4 به MAC Address","نگاشت Domain به IP","جدول Routeهای اینترنت","شماره پورت TCP سرویس‌ها"]},{"explanation":"DAI می‌تواند اعتبار پیام‌های ARP را با استفاده از Bindingهای معتبر بررسی کند. DHCP Snooping معمولاً منبع ایجاد این Bindingها است.","answer":1,"question":"کدام روش یکی از راهکارهای مقابله با ARP Spoofing در شبکه سوئیچ‌شده است؟","options":["غیرفعال کردن تمام MAC Addressها","Dynamic ARP Inspection همراه با DHCP Snooping","افزایش MTU به 9000","تغییر EtherType به IPv6"]}]
+[
+  {
+    "explanation": "سوئیچ Source MAC را همراه با پورت ورودی و VLAN ثبت می‌کند. Destination MAC برای تصمیم Forwarding استفاده می‌شود.",
+    "answer": 1,
+    "question": "یک Switch لایه دوم برای یادگیری MAC Address از کدام فیلد Frame استفاده می‌کند؟",
+    "options": [
+      "Destination MAC",
+      "Source MAC",
+      "EtherType",
+      "FCS"
+    ]
+  },
+  {
+    "explanation": "I/G کم‌ارزش‌ترین بیت اولین Octet است. مقدار 1 نشان‌دهنده Group Address است که Multicast و Broadcast را شامل می‌شود.",
+    "answer": 2,
+    "question": "در MAC Address مقدار بیت I/G برابر 1 چه مفهومی دارد؟",
+    "options": [
+      "آدرس Locally Administered است",
+      "آدرس Unicast است",
+      "آدرس Group است",
+      "آدرس Broadcast است"
+    ]
+  },
+  {
+    "explanation": "برای مقصد خارج از Subnet، فریم به MAC آدرس Next Hop یا Default Gateway ارسال می‌شود، نه MAC مقصد نهایی.",
+    "answer": 2,
+    "question": "کامپیوتر A می‌خواهد به یک IP در Subnet دیگری ارتباط برقرار کند. مقصد Ethernet Frame اولیه چیست؟",
+    "options": [
+      "MAC Address مقصد نهایی",
+      "FF:FF:FF:FF:FF:FF",
+      "MAC Address Default Gateway",
+      "MAC Address سرور DNS"
+    ]
+  },
+  {
+    "explanation": "EtherType مقدار 0x0806 پروتکل ARP را مشخص می‌کند.",
+    "answer": 1,
+    "question": "EtherType برابر 0x0806 نشان‌دهنده کدام پروتکل است؟",
+    "options": [
+      "IPv4",
+      "ARP",
+      "IPv6",
+      "802.1Q"
+    ]
+  },
+  {
+    "explanation": "Unknown Unicast در VLAN مربوطه Flood می‌شود. این رفتار با Broadcast یکسان نیست، هرچند خروجی Flooding مشابه است.",
+    "answer": 2,
+    "question": "اگر Destination MAC در جدول سوئیچ وجود نداشته باشد، رفتار معمول چیست؟",
+    "options": [
+      "Drop کردن قطعی Frame",
+      "ارسال فقط به پورت مدیریت",
+      "Flood کردن در VLAN مربوطه، به‌جز پورت ورودی",
+      "ارسال Frame به Default Gateway"
+    ]
+  },
+  {
+    "explanation": "در IPv4 روی Ethernet، ARP Request معمولاً Broadcast است تا مالک IP موردنظر بتواند پاسخ دهد.",
+    "answer": 1,
+    "question": "ARP Request در Ethernet معمولاً به چه آدرسی ارسال می‌شود؟",
+    "options": [
+      "00:00:00:00:00:00",
+      "FF:FF:FF:FF:FF:FF",
+      "MAC مقصد مورد جست‌وجو",
+      "MAC آدرس Gateway در تمام شرایط"
+    ]
+  },
+  {
+    "explanation": "FCS از CRC برای تشخیص خرابی احتمالی Frame استفاده می‌کند. این سازوکار Error Detection است، نه Error Correction.",
+    "answer": 1,
+    "question": "کدام گزینه درباره FCS صحیح است؟",
+    "options": [
+      "برای رمزنگاری Frame استفاده می‌شود",
+      "خطا را تشخیص می‌دهد، نه اینکه آن را اصلاح کند",
+      "آدرس مقصد را نگهداری می‌کند",
+      "شماره VLAN را مشخص می‌کند"
+    ]
+  },
+  {
+    "explanation": "VID یک فیلد 12 بیتی است و شناسه VLAN را مشخص می‌کند.",
+    "answer": 2,
+    "question": "کدام فیلد در Tag استاندارد 802.1Q شناسه VLAN را نگهداری می‌کند؟",
+    "options": [
+      "PCP",
+      "DEI",
+      "VID",
+      "TPID"
+    ]
+  },
+  {
+    "explanation": "ARP Cache نگاشت‌های IPv4 به آدرس‌های لایه دوم را نگهداری می‌کند تا برای هر ارتباط نیاز به ARP Request تکراری نباشد.",
+    "answer": 0,
+    "question": "ARP Cache کامپیوتر شامل چه اطلاعاتی است؟",
+    "options": [
+      "نگاشت IPv4 به MAC Address",
+      "نگاشت Domain به IP",
+      "جدول Routeهای اینترنت",
+      "شماره پورت TCP سرویس‌ها"
+    ]
+  },
+  {
+    "explanation": "DAI می‌تواند اعتبار پیام‌های ARP را با استفاده از Bindingهای معتبر بررسی کند. DHCP Snooping معمولاً منبع ایجاد این Bindingها است.",
+    "answer": 1,
+    "question": "کدام روش یکی از راهکارهای مقابله با ARP Spoofing در شبکه سوئیچ‌شده است؟",
+    "options": [
+      "غیرفعال کردن تمام MAC Addressها",
+      "Dynamic ARP Inspection همراه با DHCP Snooping",
+      "افزایش MTU به 9000",
+      "تغییر EtherType به IPv6"
+    ]
+  }
+]
   </script>
 </section>
 </section>
@@ -1683,7 +1799,7 @@ Server</code></pre>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/IMPalermo\.github\.io\/netfleet-docs\/");
+        var filterRegex = new RegExp("https:\/\/impalermo\.github\.io\/netfleet-docs");
       const newWindowLabel = "(opens in a new tab)";
       const newWindowNoteId = "quarto-ext-newwindow-label";
       // Links reference one hidden label through aria-describedby, so the

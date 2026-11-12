@@ -156,23 +156,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vlan-concepts-and-segmentation" id="toc-vlan-concepts-and-segmentation" class="nav-link active" data-scroll-target="#vlan-concepts-and-segmentation">VLAN Concepts and Segmentation</a>
+  <li><a href="#جلسه-سوم-هفته-دوم-مفاهیم-vlan-و-segmentation" id="toc-جلسه-سوم-هفته-دوم-مفاهیم-vlan-و-segmentation" class="nav-link active" data-scroll-target="#جلسه-سوم-هفته-دوم-مفاهیم-vlan-و-segmentation">جلسه سوم هفته دوم: مفاهیم VLAN و Segmentation</a>
   <ul class="collapse">
+  <li><a href="#مقدمه-جلسه" id="toc-مقدمه-جلسه" class="nav-link" data-scroll-target="#مقدمه-جلسه">مقدمه جلسه</a></li>
   <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">اهداف یادگیری</a></li>
-  <li><a href="#جایگاه-موضوع-در-مسیر-مهندسی" id="toc-جایگاه-موضوع-در-مسیر-مهندسی" class="nav-link" data-scroll-target="#جایگاه-موضوع-در-مسیر-مهندسی">1. جایگاه موضوع در مسیر مهندسی</a></li>
-  <li><a href="#مفاهیم-کلیدی" id="toc-مفاهیم-کلیدی" class="nav-link" data-scroll-target="#مفاهیم-کلیدی">2. مفاهیم کلیدی</a></li>
-  <li><a href="#دیدگاه-مهندسی" id="toc-دیدگاه-مهندسی" class="nav-link" data-scroll-target="#دیدگاه-مهندسی">3. دیدگاه مهندسی</a></li>
-  <li><a href="#آزمایشگاه-عملی" id="toc-آزمایشگاه-عملی" class="nav-link" data-scroll-target="#آزمایشگاه-عملی">4. آزمایشگاه عملی</a>
+  <li><a href="#مشکل-یک-broadcast-domain-بزرگ" id="toc-مشکل-یک-broadcast-domain-بزرگ" class="nav-link" data-scroll-target="#مشکل-یک-broadcast-domain-بزرگ">1. مشکل: یک Broadcast Domain بزرگ</a></li>
+  <li><a href="#vlan-چیست" id="toc-vlan-چیست" class="nav-link" data-scroll-target="#vlan-چیست">2. VLAN چیست؟</a>
   <ul class="collapse">
-  <li><a href="#آزمایشگاه-پایه" id="toc-آزمایشگاه-پایه" class="nav-link" data-scroll-target="#آزمایشگاه-پایه">آزمایشگاه پایه</a></li>
-  <li><a href="#گزارش-آزمایشگاه" id="toc-گزارش-آزمایشگاه" class="nav-link" data-scroll-target="#گزارش-آزمایشگاه">گزارش آزمایشگاه</a></li>
+  <li><a href="#vlan-و-subnet" id="toc-vlan-و-subnet" class="nav-link" data-scroll-target="#vlan-و-subnet">VLAN و Subnet</a></li>
+  <li><a href="#ارتباط-بین-vlanها" id="toc-ارتباط-بین-vlanها" class="nav-link" data-scroll-target="#ارتباط-بین-vlanها">ارتباط بین VLANها</a></li>
   </ul></li>
-  <li><a href="#سناریوی-عیبیابی" id="toc-سناریوی-عیبیابی" class="nav-link" data-scroll-target="#سناریوی-عیبیابی">5. سناریوی عیب‌یابی</a></li>
-  <li><a href="#ارتباط-با-netfleet" id="toc-ارتباط-با-netfleet" class="nav-link" data-scroll-target="#ارتباط-با-netfleet">6. ارتباط با NetFleet</a></li>
-  <li><a href="#تمرین-و-ارزیابی" id="toc-تمرین-و-ارزیابی" class="nav-link" data-scroll-target="#تمرین-و-ارزیابی">7. تمرین و ارزیابی</a></li>
-  <li><a href="#تکلیف" id="toc-تکلیف" class="nav-link" data-scroll-target="#تکلیف">8. تکلیف</a></li>
-  <li><a href="#معیار-تکمیل-جلسه" id="toc-معیار-تکمیل-جلسه" class="nav-link" data-scroll-target="#معیار-تکمیل-جلسه">معیار تکمیل جلسه</a></li>
-  <li><a href="#منابع-پیشنهادی-برای-مطالعه-بیشتر" id="toc-منابع-پیشنهادی-برای-مطالعه-بیشتر" class="nav-link" data-scroll-target="#منابع-پیشنهادی-برای-مطالعه-بیشتر">منابع پیشنهادی برای مطالعه بیشتر</a></li>
+  <li><a href="#شمارههای-vlan" id="toc-شمارههای-vlan" class="nav-link" data-scroll-target="#شمارههای-vlan">3. شماره‌های VLAN</a>
+  <ul class="collapse">
+  <li><a href="#توصیه-vlan-1-را-برای-کاربران-استفاده-نکن" id="toc-توصیه-vlan-1-را-برای-کاربران-استفاده-نکن" class="nav-link" data-scroll-target="#توصیه-vlan-1-را-برای-کاربران-استفاده-نکن">توصیه: VLAN 1 را برای کاربران استفاده نکن</a></li>
+  </ul></li>
+  <li><a href="#طراحی-یک-طرح-vlan" id="toc-طراحی-یک-طرح-vlan" class="nav-link" data-scroll-target="#طراحی-یک-طرح-vlan">4. طراحی یک طرح VLAN</a></li>
+  <li><a href="#پیکربندی-vlan-در-سوئیچ-سیسکو" id="toc-پیکربندی-vlan-در-سوئیچ-سیسکو" class="nav-link" data-scroll-target="#پیکربندی-vlan-در-سوئیچ-سیسکو">5. پیکربندی VLAN در سوئیچ سیسکو</a>
+  <ul class="collapse">
+  <li><a href="#ساخت-vlan" id="toc-ساخت-vlan" class="nav-link" data-scroll-target="#ساخت-vlan">ساخت VLAN</a></li>
+  <li><a href="#اختصاص-پورتهای-access" id="toc-اختصاص-پورتهای-access" class="nav-link" data-scroll-target="#اختصاص-پورتهای-access">اختصاص پورت‌های Access</a></li>
+  <li><a href="#بررسی" id="toc-بررسی" class="nav-link" data-scroll-target="#بررسی">بررسی</a></li>
+  <li><a href="#نکته-حذف-vlan-و-پورتهای-inactive" id="toc-نکته-حذف-vlan-و-پورتهای-inactive" class="nav-link" data-scroll-target="#نکته-حذف-vlan-و-پورتهای-inactive">نکته: حذف VLAN و پورت‌های Inactive</a></li>
+  </ul></li>
+  <li><a href="#آزمایش-عملی-اول-دیدن-اثر-vlan-بر-broadcast" id="toc-آزمایش-عملی-اول-دیدن-اثر-vlan-بر-broadcast" class="nav-link" data-scroll-target="#آزمایش-عملی-اول-دیدن-اثر-vlan-بر-broadcast">6. آزمایش عملی اول: دیدن اثر VLAN بر Broadcast</a>
+  <ul class="collapse">
+  <li><a href="#هدف" id="toc-هدف" class="nav-link" data-scroll-target="#هدف">هدف</a></li>
+  <li><a href="#توپولوژی" id="toc-توپولوژی" class="nav-link" data-scroll-target="#توپولوژی">توپولوژی</a></li>
+  <li><a href="#مراحل" id="toc-مراحل" class="nav-link" data-scroll-target="#مراحل">مراحل</a></li>
+  <li><a href="#آزمایش-دوم-subnet-یکسان-vlan-متفاوت" id="toc-آزمایش-دوم-subnet-یکسان-vlan-متفاوت" class="nav-link" data-scroll-target="#آزمایش-دوم-subnet-یکسان-vlan-متفاوت">آزمایش دوم: Subnet یکسان، VLAN متفاوت</a></li>
+  <li><a href="#سؤالها" id="toc-سؤالها" class="nav-link" data-scroll-target="#سؤالها">سؤال‌ها</a></li>
+  </ul></li>
+  <li><a href="#مشاهده-vlan-از-دید-میزبان" id="toc-مشاهده-vlan-از-دید-میزبان" class="nav-link" data-scroll-target="#مشاهده-vlan-از-دید-میزبان">7. مشاهده VLAN از دید میزبان</a>
+  <ul class="collapse">
+  <li><a href="#vlan-روی-لینوکس" id="toc-vlan-روی-لینوکس" class="nav-link" data-scroll-target="#vlan-روی-لینوکس">VLAN روی لینوکس</a></li>
+  </ul></li>
+  <li><a href="#vlan-و-امنیت" id="toc-vlan-و-امنیت" class="nav-link" data-scroll-target="#vlan-و-امنیت">8. VLAN و امنیت</a>
+  <ul class="collapse">
+  <li><a href="#آنچه-vlan-میدهد" id="toc-آنچه-vlan-میدهد" class="nav-link" data-scroll-target="#آنچه-vlan-میدهد">آنچه VLAN می‌دهد</a></li>
+  <li><a href="#آنچه-vlan-نمیدهد" id="toc-آنچه-vlan-نمیدهد" class="nav-link" data-scroll-target="#آنچه-vlan-نمیدهد">آنچه VLAN نمی‌دهد</a></li>
+  <li><a href="#پورتهای-بلااستفاده" id="toc-پورتهای-بلااستفاده" class="nav-link" data-scroll-target="#پورتهای-بلااستفاده">پورت‌های بلااستفاده</a></li>
+  </ul></li>
+  <li><a href="#عیبیابی-مهندسی-vlan" id="toc-عیبیابی-مهندسی-vlan" class="nav-link" data-scroll-target="#عیبیابی-مهندسی-vlan">9. عیب‌یابی مهندسی VLAN</a>
+  <ul class="collapse">
+  <li><a href="#سناریو-1-دو-دستگاه-همvlan-هستند-ولی-پینگ-نمیگیرند" id="toc-سناریو-1-دو-دستگاه-همvlan-هستند-ولی-پینگ-نمیگیرند" class="nav-link" data-scroll-target="#سناریو-1-دو-دستگاه-همvlan-هستند-ولی-پینگ-نمیگیرند">سناریو 1: دو دستگاه هم‌VLAN هستند ولی پینگ نمی‌گیرند</a></li>
+  <li><a href="#سناریو-2-دستگاه-ip-اشتباه-میگیرد" id="toc-سناریو-2-دستگاه-ip-اشتباه-میگیرد" class="nav-link" data-scroll-target="#سناریو-2-دستگاه-ip-اشتباه-میگیرد">سناریو 2: دستگاه IP اشتباه می‌گیرد</a></li>
+  <li><a href="#سناریو-3-بعد-از-حذف-vlan-پورتها-کار-نمیکنند" id="toc-سناریو-3-بعد-از-حذف-vlan-پورتها-کار-نمیکنند" class="nav-link" data-scroll-target="#سناریو-3-بعد-از-حذف-vlan-پورتها-کار-نمیکنند">سناریو 3: بعد از حذف VLAN، پورت‌ها کار نمی‌کنند</a></li>
+  <li><a href="#سناریو-4-dhcp-کار-نمیکند-فقط-در-یک-vlan" id="toc-سناریو-4-dhcp-کار-نمیکند-فقط-در-یک-vlan" class="nav-link" data-scroll-target="#سناریو-4-dhcp-کار-نمیکند-فقط-در-یک-vlan">سناریو 4: DHCP کار نمی‌کند فقط در یک VLAN</a></li>
+  <li><a href="#سناریو-5-ارتباط-بین-vlanها-برقرار-نمیشود" id="toc-سناریو-5-ارتباط-بین-vlanها-برقرار-نمیشود" class="nav-link" data-scroll-target="#سناریو-5-ارتباط-بین-vlanها-برقرار-نمیشود">سناریو 5: ارتباط بین VLANها برقرار نمی‌شود</a></li>
+  </ul></li>
+  <li><a href="#خطاهای-مفهومی-رایج" id="toc-خطاهای-مفهومی-رایج" class="nav-link" data-scroll-target="#خطاهای-مفهومی-رایج">10. خطاهای مفهومی رایج</a></li>
+  <li><a href="#چالش-netfleet" id="toc-چالش-netfleet" class="nav-link" data-scroll-target="#چالش-netfleet">11. چالش NetFleet</a>
+  <ul class="collapse">
+  <li><a href="#سناریو" id="toc-سناریو" class="nav-link" data-scroll-target="#سناریو">سناریو</a></li>
+  <li><a href="#مأموریت" id="toc-مأموریت" class="nav-link" data-scroll-target="#مأموریت">مأموریت</a></li>
+  <li><a href="#خروجی-مورد-انتظار" id="toc-خروجی-مورد-انتظار" class="nav-link" data-scroll-target="#خروجی-مورد-انتظار">خروجی مورد انتظار</a></li>
+  </ul></li>
+  <li><a href="#جمعبندی-جلسه" id="toc-جمعبندی-جلسه" class="nav-link" data-scroll-target="#جمعبندی-جلسه">12. جمع‌بندی جلسه</a></li>
+  <li><a href="#تمرینهای-پایان-جلسه" id="toc-تمرینهای-پایان-جلسه" class="nav-link" data-scroll-target="#تمرینهای-پایان-جلسه">13. تمرین‌های پایان جلسه</a>
+  <ul class="collapse">
+  <li><a href="#تمرین-نظری" id="toc-تمرین-نظری" class="nav-link" data-scroll-target="#تمرین-نظری">تمرین نظری</a></li>
+  <li><a href="#تمرین-عملی" id="toc-تمرین-عملی" class="nav-link" data-scroll-target="#تمرین-عملی">تمرین عملی</a></li>
+  <li><a href="#منابع-و-مطالعه-بیشتر" id="toc-منابع-و-مطالعه-بیشتر" class="nav-link" data-scroll-target="#منابع-و-مطالعه-بیشتر">منابع و مطالعه بیشتر</a></li>
+  </ul></li>
+  <li><a href="#آزمون-تعاملی-جلسه" id="toc-آزمون-تعاملی-جلسه" class="nav-link" data-scroll-target="#آزمون-تعاملی-جلسه">14. آزمون تعاملی جلسه</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -183,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">VLAN Concepts and Segmentation</h1>
-<p class="subtitle lead">Networking Fundamentals | Week 2 | Day 3</p>
+<p class="subtitle lead">جداسازی منطقی شبکه، Broadcast Domain و طراحی VLAN در لایه ۲</p>
 </div>
 
 
@@ -200,143 +246,620 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="vlan-concepts-and-segmentation" class="level1 persian">
-<h1>VLAN Concepts and Segmentation</h1>
-<p><strong>مسیر:</strong> شبکه<br>
-<strong>هفته:</strong> 2، Switching Fundamentals<br>
-<strong>جلسه:</strong> 3 از ۵</p>
+<section id="جلسه-سوم-هفته-دوم-مفاهیم-vlan-و-segmentation" class="level1 persian">
+<h1>جلسه سوم هفته دوم: مفاهیم VLAN و Segmentation</h1>
+<section id="مقدمه-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="مقدمه-جلسه">مقدمه جلسه</h2>
+<p>در جلسه قبل دیدیم سوئیچ Broadcast را روی همه پورت‌های خود Flood می‌کند. در یک دفتر کوچک این مشکلی نیست. اما وقتی صدها دستگاه (کاربران، سرورها، چاپگرها، دوربین‌ها و مهمان‌ها) روی همان سوئیچ‌ها باشند، چند مشکل همزمان پیدا می‌شود: Broadcast زیاد، ترافیک بی‌ربط روی همه، و مهم‌تر از همه این‌که <strong>هر دستگاه می‌تواند مستقیماً با هر دستگاه دیگر در لایه 2 صحبت کند</strong>.</p>
+<p><strong>VLAN (Virtual LAN)</strong> راه‌حل استاندارد است: یک سوئیچ فیزیکی را به چند سوئیچ منطقی مستقل تقسیم می‌کند. این جلسه مفهوم، طراحی، پیکربندی و عیب‌یابی VLAN را پوشش می‌دهد. جلسه بعد (Trunk) نشان می‌دهد چگونه یک VLAN بین چند سوئیچ گسترش می‌یابد.</p>
+</section>
 <section id="اهداف-یادگیری" class="level2">
 <h2 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h2>
-<p>در پایان این جلسه باید بتوانی: - مفهوم VLAN Concepts and Segmentation را با زبان خودت توضیح بدهی. - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی. - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی. - یک آزمایش کنترل‌شده اجرا و نتیجه آن را مستند کنی. - خطاها، محدودیت‌ها و ملاحظات امنیتی را توضیح بدهی.</p>
-</section>
-<section id="جایگاه-موضوع-در-مسیر-مهندسی" class="level2">
-<h2 class="anchored" data-anchor-id="جایگاه-موضوع-در-مسیر-مهندسی">1. جایگاه موضوع در مسیر مهندسی</h2>
-<p>این جلسه بخشی از مسیر <strong>شبکه</strong> است. موضوع «VLAN Concepts and Segmentation» را باید در ارتباط با مباحث قبلی و بعدی ببینی، نه به‌عنوان یک دستور یا مفهوم جداافتاده.</p>
-<p>در کار مهندسی، هدف فقط حفظ کردن اصطلاحات نیست. باید بتوانی مسئله را تعریف کنی، شواهد جمع‌آوری کنی، فرضیه بسازی، آن را آزمایش کنی و نتیجه را با دقت گزارش بدهی.</p>
-</section>
-<section id="مفاهیم-کلیدی" class="level2">
-<h2 class="anchored" data-anchor-id="مفاهیم-کلیدی">2. مفاهیم کلیدی</h2>
-<p>هنگام مطالعه این موضوع، این پرسش‌ها را پاسخ بده:</p>
-<ol type="1">
-<li>این فناوری یا مفهوم چه مسئله‌ای را حل می‌کند؟</li>
-<li>اجزای اصلی آن چیست و هر جزء چه مسئولیتی دارد؟</li>
-<li>ورودی، خروجی و وابستگی‌های آن کدام‌اند؟</li>
-<li>در چه شرایطی درست کار نمی‌کند؟</li>
-<li>چه خطاهای پیکربندی یا عملیاتی در آن رایج‌اند؟</li>
-<li>چه داده‌ای برای تشخیص وضعیت آن باید جمع‌آوری شود؟</li>
-</ol>
-<p>واژگان جدید را در یک واژه‌نامه شخصی ثبت کن. برای هر اصطلاح، تعریف فارسی، نام انگلیسی و یک مثال فنی بنویس.</p>
-</section>
-<section id="دیدگاه-مهندسی" class="level2">
-<h2 class="anchored" data-anchor-id="دیدگاه-مهندسی">3. دیدگاه مهندسی</h2>
-<p>برای تحلیل درست، بین این سه مورد تفاوت بگذار:</p>
+<p>در پایان این جلسه باید بتوانی:</p>
 <ul>
-<li><strong>Configuration:</strong> چیزی که تنظیم شده است.</li>
-<li><strong>Operational State:</strong> وضعیتی که سیستم واقعاً در آن قرار دارد.</li>
-<li><strong>Observed Evidence:</strong> شواهدی که از خروجی ابزارها، لاگ‌ها یا تست‌ها به دست می‌آیند.</li>
+<li>توضیح بدهی VLAN چه مشکلی را حل می‌کند و چه مشکلی را حل نمی‌کند.</li>
+<li>رابطه VLAN، Broadcast Domain و Subnet را توضیح بدهی.</li>
+<li>یک طرح VLAN برای یک سازمان کوچک بنویسی (شماره، نام، Subnet و کاربرد).</li>
+<li>VLAN را روی سوئیچ سیسکو بسازی، پورت‌ها را اختصاص بدهی و صحت آن را بررسی کنی.</li>
+<li>اشتباه‌های رایج مثل حذف VLAN با پورت عضو یا Subnet نامتناسب را عیب‌یابی کنی.</li>
+<li>بدانی چرا VLAN جایگزین Firewall نیست.</li>
 </ul>
-<p>این سه مورد همیشه یکسان نیستند. یک پیکربندی صحیح لزوماً تضمین نمی‌کند سرویس در عمل سالم باشد.</p>
 </section>
-<section id="آزمایشگاه-عملی" class="level2">
-<h2 class="anchored" data-anchor-id="آزمایشگاه-عملی">4. آزمایشگاه عملی</h2>
-<section id="آزمایشگاه-پایه" class="level3">
-<h3 class="anchored" data-anchor-id="آزمایشگاه-پایه">آزمایشگاه پایه</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Get-NetRoute <span class="op">-</span>AddressFamily IPv4</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Test-NetConnection <span class="dv">1.1</span><span class="op">.</span><span class="dv">1.1</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>خروجی را ثبت کن، فیلدهای مهم را توضیح بده و مشخص کن کدام بخش از موضوع امروز را نشان می‌دهد.</p>
+<section id="مشکل-یک-broadcast-domain-بزرگ" class="level2">
+<h2 class="anchored" data-anchor-id="مشکل-یک-broadcast-domain-بزرگ">1. مشکل: یک Broadcast Domain بزرگ</h2>
+<p>بدون VLAN، همه پورت‌های سوئیچ در یک Broadcast Domain هستند. پیامدها:</p>
+<ol type="1">
+<li><strong>کارایی:</strong> هر Broadcast (ARP، DHCP Discover و …) به همه دستگاه‌ها می‌رسد و CPU و پهنای باند آن‌ها را مصرف می‌کند.</li>
+<li><strong>امنیت:</strong> دستگاه مهمان و سرور مالی در یک شبکه لایه 2 هستند. شنود، ARP Spoofing و DHCP جعلی روی همه اثر می‌گذارد.</li>
+<li><strong>مدیریت:</strong> تغییر در یک بخش (مثلاً اضافه کردن چاپگر) ممکن است بر کل شبکه اثر بگذارد.</li>
+<li><strong>محدوده خطا:</strong> یک Loop یا Broadcast Storm کل شبکه را از کار می‌اندازد.</li>
+</ol>
 </section>
-<section id="گزارش-آزمایشگاه" class="level3">
-<h3 class="anchored" data-anchor-id="گزارش-آزمایشگاه">گزارش آزمایشگاه</h3>
-<p>گزارش خود را با این قالب تکمیل کن:</p>
+<section id="vlan-چیست" class="level2">
+<h2 class="anchored" data-anchor-id="vlan-چیست">2. VLAN چیست؟</h2>
+<p>VLAN یک <strong>Broadcast Domain منطقی</strong> است که با پیکربندی سوئیچ ساخته می‌شود، نه با جابه‌جا کردن کابل. هر پورت Access به یک VLAN تعلق دارد. فریم‌هایی که از آن پورت وارد می‌شوند فقط در همان VLAN Forward یا Flood می‌شوند.</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>بخش</th>
-<th>چیزی که باید ثبت شود</th>
+<th>ویژگی</th>
+<th>توضیح</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>هدف</td>
-<td>چه چیزی را می‌خواهی بررسی کنی؟</td>
+<td>جداسازی</td>
+<td>Broadcast، Unknown Unicast و Multicast یک VLAN به VLAN دیگر نشت نمی‌کند</td>
 </tr>
 <tr class="even">
-<td>محیط</td>
-<td>سیستم‌عامل، ابزار و نسخه</td>
+<td>جدول MAC</td>
+<td>برای هر VLAN جدا نگه داشته می‌شود (یک MAC در دو VLAN می‌تواند دو ردیف جدا داشته باشد)</td>
 </tr>
 <tr class="odd">
-<td>فرضیه</td>
-<td>انتظار داری چه اتفاقی بیفتد؟</td>
+<td>انعطاف</td>
+<td>جابه‌جایی کاربر بدون تغییر کابل، فقط با تغییر عضویت پورت</td>
 </tr>
 <tr class="even">
-<td>اجرا</td>
-<td>مراحل و دستورهای اجراشده</td>
+<td>Subnet</td>
+<td>معمولاً هر VLAN = یک Subnet IP</td>
 </tr>
+</tbody>
+</table>
+<section id="vlan-و-subnet" class="level3">
+<h3 class="anchored" data-anchor-id="vlan-و-subnet">VLAN و Subnet</h3>
+<p>قاعده طراحی رایج: <strong>یک VLAN، یک Subnet</strong>. دلیلش این است که Broadcast Domain لایه 2 باید با شبکه IP لایه 3 هم‌خوان باشد. اگر دو Subnet مختلف را روی یک VLAN بگذاری، با هم ارتباط مستقیم لایه 2 دارند ولی در لایه 3 بدون روتر ارتباط ندارند. این طراحی گیج‌کننده است و توصیه نمی‌شود.</p>
+</section>
+<section id="ارتباط-بین-vlanها" class="level3">
+<h3 class="anchored" data-anchor-id="ارتباط-بین-vlanها">ارتباط بین VLANها</h3>
+<p>دستگاه‌های دو VLAN مختلف <strong>در لایه 2 هیچ راهی برای ارتباط ندارند</strong>. برای ارتباط باید ترافیک از یک دستگاه لایه 3 (روتر یا سوئیچ لایه 3) عبور کند. به این کار <strong>Inter-VLAN Routing</strong> می‌گویند و در هفته سوم (جلسه چهارم) بررسی می‌شود. مزیت این طراحی این است که روی روتر می‌توان ACL و Firewall گذاشت و ترافیک بین VLANها را کنترل کرد.</p>
+</section>
+</section>
+<section id="شمارههای-vlan" class="level2">
+<h2 class="anchored" data-anchor-id="شمارههای-vlan">3. شماره‌های VLAN</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>محدوده</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
-<td>مشاهده</td>
-<td>خروجی واقعی</td>
+<td>0 و 4095</td>
+<td>رزرو شده، قابل استفاده نیست</td>
 </tr>
 <tr class="even">
-<td>تحلیل</td>
-<td>نتیجه چه معنایی دارد؟</td>
+<td>1</td>
+<td>VLAN پیش‌فرض سیسکو. همه پورت‌ها ابتدا در آن هستند و قابل حذف نیست</td>
 </tr>
 <tr class="odd">
-<td>محدودیت</td>
-<td>چه چیزی هنوز اثبات نشده است؟</td>
+<td>2 تا 1001</td>
+<td>VLAN های معمولی</td>
+</tr>
+<tr class="even">
+<td>1002 تا 1005</td>
+<td>VLAN های قدیمی FDDI و Token Ring که روی سیسکو وجود دارند و حذف نمی‌شوند</td>
+</tr>
+<tr class="odd">
+<td>1006 تا 4094</td>
+<td>VLAN های Extended (در برخی نسخه‌ها و حالت‌های VTP محدودیت دارند)</td>
+</tr>
+</tbody>
+</table>
+<p>ID یک VLAN در تگ 802.1Q یک فیلد <strong>12 بیتی</strong> است. 4096 مقدار ممکن، منهای دو مقدار رزرو، می‌شود 4094 VLAN قابل استفاده.</p>
+<section id="توصیه-vlan-1-را-برای-کاربران-استفاده-نکن" class="level3">
+<h3 class="anchored" data-anchor-id="توصیه-vlan-1-را-برای-کاربران-استفاده-نکن">توصیه: VLAN 1 را برای کاربران استفاده نکن</h3>
+<p>VLAN 1 پیش‌فرض است و پروتکل‌های کنترلی (مثل CDP، VTP و DTP) به‌طور پیش‌فرض در آن کار می‌کنند. بهتر است برای کاربران و مدیریت از VLAN های مشخص استفاده کنی و پورت‌های بلااستفاده را به یک VLAN بدون مصرف منتقل کنی (در جلسه بعد بیشتر).</p>
+</section>
+</section>
+<section id="طراحی-یک-طرح-vlan" class="level2">
+<h2 class="anchored" data-anchor-id="طراحی-یک-طرح-vlan">4. طراحی یک طرح VLAN</h2>
+<p>طرح VLAN یک سند است که قبل از هر پیکربندی باید نوشته شود. مثال برای NetFleet:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>VLAN</th>
+<th>نام</th>
+<th>Subnet</th>
+<th>کاربرد</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+<td>STAFF</td>
+<td>192.168.10.0/24</td>
+<td>کامپیوتر کارکنان</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>SERVERS</td>
+<td>192.168.20.0/24</td>
+<td>سرورهای داخلی</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>GUEST</td>
+<td>192.168.30.0/24</td>
+<td>شبکه مهمان</td>
+</tr>
+<tr class="even">
+<td>99</td>
+<td>MGMT</td>
+<td>192.168.99.0/24</td>
+<td>مدیریت سوئیچ‌ها و تجهیزات</td>
+</tr>
+<tr class="odd">
+<td>999</td>
+<td>UNUSED</td>
+<td>بدون Subnet</td>
+<td>پورت‌های بلااستفاده (بدون مسیر خروج)</td>
+</tr>
+</tbody>
+</table>
+<p>اصول نام‌گذاری و شماره‌گذاری:</p>
+<ul>
+<li>شماره‌ها منطقی باشند (مثلاً VLAN 10 با Subnet <code>192.168.10.0/24</code>) تا حفظ آن‌ها ساده باشد.</li>
+<li>نام کوتاه، یکسان و بدون ابهام باشد.</li>
+<li>هر VLAN یک مالک و هدف مشخص داشته باشد.</li>
+<li>طرح را مستند کن. VLAN بدون مستندات به‌سرعت مشکل می‌شود.</li>
+</ul>
+</section>
+<section id="پیکربندی-vlan-در-سوئیچ-سیسکو" class="level2">
+<h2 class="anchored" data-anchor-id="پیکربندی-vlan-در-سوئیچ-سیسکو">5. پیکربندی VLAN در سوئیچ سیسکو</h2>
+<section id="ساخت-vlan" class="level3">
+<h3 class="anchored" data-anchor-id="ساخت-vlan">ساخت VLAN</h3>
+<pre class="text"><code>Switch(config)# vlan 10
+Switch(config-vlan)# name STAFF
+Switch(config-vlan)# exit
+Switch(config)# vlan 20
+Switch(config-vlan)# name SERVERS
+Switch(config-vlan)# exit</code></pre>
+</section>
+<section id="اختصاص-پورتهای-access" class="level3">
+<h3 class="anchored" data-anchor-id="اختصاص-پورتهای-access">اختصاص پورت‌های Access</h3>
+<pre class="text"><code>Switch(config)# interface range fa0/1 - 4
+Switch(config-if-range)# switchport mode access
+Switch(config-if-range)# switchport access vlan 10
+Switch(config-if-range)# exit
+Switch(config)# interface range fa0/5 - 8
+Switch(config-if-range)# switchport mode access
+Switch(config-if-range)# switchport access vlan 20</code></pre>
+</section>
+<section id="بررسی" class="level3">
+<h3 class="anchored" data-anchor-id="بررسی">بررسی</h3>
+<pre class="text"><code>Switch# show vlan brief
+Switch# show interfaces fa0/1 switchport
+Switch# show interfaces status</code></pre>
+<p>نمونه خروجی <code>show vlan brief</code>:</p>
+<pre class="text"><code>VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/9, Fa0/10, Fa0/11, Fa0/12
+10   STAFF                            active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+20   SERVERS                          active    Fa0/5, Fa0/6, Fa0/7, Fa0/8
+1002 fddi-default                     act/unsup
+1003 token-ring-default               act/unsup
+1004 fddinet-default                  act/unsup
+1005 trnet-default                    act/unsup</code></pre>
+<p>در <code>show interfaces fa0/1 switchport</code> به این مقدارها دقت کن:</p>
+<ul>
+<li><strong>Administrative Mode / Operational Mode:</strong> <code>static access</code></li>
+<li><strong>Access Mode VLAN:</strong> <code>10 (STAFF)</code></li>
+</ul>
+</section>
+<section id="نکته-حذف-vlan-و-پورتهای-inactive" class="level3">
+<h3 class="anchored" data-anchor-id="نکته-حذف-vlan-و-پورتهای-inactive">نکته: حذف VLAN و پورت‌های Inactive</h3>
+<p>اگر VLAN ای را حذف کنی (<code>no vlan 10</code>) در حالی که پورت‌هایی هنوز به آن اختصاص دارند، آن پورت‌ها <strong>حذف نمی‌شوند و به VLAN 1 هم برنمی‌گردند</strong>. در عوض غیرفعال (inactive) می‌شوند و هیچ ترافیکی ندارند. این پورت‌ها در خروجی <code>show vlan brief</code> در هیچ VLAN ای دیده نمی‌شوند. برای پیدا کردنشان از <code>show interfaces status</code> استفاده کن. راه درست: اول پورت‌ها را به VLAN دیگری ببر، بعد VLAN را حذف کن.</p>
+</section>
+</section>
+<section id="آزمایش-عملی-اول-دیدن-اثر-vlan-بر-broadcast" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایش-عملی-اول-دیدن-اثر-vlan-بر-broadcast">6. آزمایش عملی اول: دیدن اثر VLAN بر Broadcast</h2>
+<section id="هدف" class="level3">
+<h3 class="anchored" data-anchor-id="هدف">هدف</h3>
+<p>ثابت کنی VLAN Broadcast را جدا می‌کند.</p>
+</section>
+<section id="توپولوژی" class="level3">
+<h3 class="anchored" data-anchor-id="توپولوژی">توپولوژی</h3>
+<p>یک سوئیچ 2960 و چهار کامپیوتر.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>دستگاه</th>
+<th>IP</th>
+<th>پورت</th>
+<th>VLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PC1</td>
+<td>192.168.10.11/24</td>
+<td>Fa0/1</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>PC2</td>
+<td>192.168.10.12/24</td>
+<td>Fa0/2</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>PC3</td>
+<td>192.168.20.11/24</td>
+<td>Fa0/3</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>PC4</td>
+<td>192.168.20.12/24</td>
+<td>Fa0/4</td>
+<td>20</td>
 </tr>
 </tbody>
 </table>
 </section>
-</section>
-<section id="سناریوی-عیبیابی" class="level2">
-<h2 class="anchored" data-anchor-id="سناریوی-عیبیابی">5. سناریوی عیب‌یابی</h2>
-<p>فرض کن بخشی از زیرساخت مطابق انتظار کار نمی‌کند.</p>
+<section id="مراحل" class="level3">
+<h3 class="anchored" data-anchor-id="مراحل">مراحل</h3>
 <ol type="1">
-<li>محدوده مشکل را مشخص کن.</li>
-<li>آخرین تغییرات را بررسی کن.</li>
-<li>وضعیت فعلی را بدون ایجاد تغییر جمع‌آوری کن.</li>
-<li>فرضیه‌های محتمل را از ساده به پیچیده مرتب کن.</li>
-<li>هر فرضیه را با یک آزمایش مشخص بررسی کن.</li>
-<li>نتیجه و شواهد را مستند کن.</li>
+<li>در ابتدا همه پورت‌ها را در VLAN 1 بگذار و PC1 را به PC3 و PC4 پینگ کن. (برای اینکه کار کند همه را موقتاً در یک Subnet مثل 192.168.1.0/24 قرار بده و بعد IP را به جدول بالا تغییر بده.)</li>
+<li>VLAN 10 و 20 را بساز و پورت‌ها را اختصاص بده.</li>
+<li>آدرس‌ها را طبق جدول تنظیم کن.</li>
+<li>تست‌ها را انجام بده:</li>
 </ol>
-<p>از تغییر هم‌زمان چند متغیر خودداری کن؛ در غیر این صورت تشخیص علت واقعی دشوار می‌شود.</p>
+<pre class="text"><code>PC1&gt; ping 192.168.10.12     (باید موفق باشد)
+PC3&gt; ping 192.168.20.12     (باید موفق باشد)
+PC1&gt; ping 192.168.20.11     (باید ناموفق باشد)</code></pre>
 </section>
-<section id="ارتباط-با-netfleet" class="level2">
-<h2 class="anchored" data-anchor-id="ارتباط-با-netfleet">6. ارتباط با NetFleet</h2>
-<p>در پروژه NetFleet باید بتوانیم دانش این جلسه را به یک قابلیت قابل اندازه‌گیری تبدیل کنیم.</p>
-<p>به این پرسش پاسخ بده:</p>
-<p><strong>اگر بخواهیم موضوع «VLAN Concepts and Segmentation» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟</strong></p>
-<p>طرح اولیه خود را با سه بخش بنویس: - Data Source - Validation Rule - Expected Output</p>
-</section>
-<section id="تمرین-و-ارزیابی" class="level2">
-<h2 class="anchored" data-anchor-id="تمرین-و-ارزیابی">7. تمرین و ارزیابی</h2>
+<section id="آزمایش-دوم-subnet-یکسان-vlan-متفاوت" class="level3">
+<h3 class="anchored" data-anchor-id="آزمایش-دوم-subnet-یکسان-vlan-متفاوت">آزمایش دوم: Subnet یکسان، VLAN متفاوت</h3>
 <ol type="1">
-<li>موضوع امروز را در پنج جمله توضیح بده.</li>
-<li>سه اصطلاح مهم آن را تعریف کن.</li>
-<li>یک کاربرد واقعی و یک محدودیت آن را نام ببر.</li>
-<li>یک خطای رایج را توضیح بده و روش تشخیص آن را بنویس.</li>
-<li>مشخص کن چه چیزی را می‌توان خودکار کرد و چه چیزی به تأیید انسانی نیاز دارد.</li>
+<li>IP کامپیوتر PC3 را به <code>192.168.10.13/24</code> تغییر بده، در حالی که هنوز روی VLAN 20 است.</li>
+<li>از PC1 به <code>192.168.10.13</code> پینگ بگیر.</li>
+<li>در حالت Simulation ببین ARP Request از PC1 کجا می‌رسد.</li>
 </ol>
+<p><strong>نتیجه مورد انتظار:</strong> پینگ ناموفق است، چون ARP Request فقط در VLAN 10 Flood می‌شود و هیچ‌وقت به PC3 نمی‌رسد. این مثال نشان می‌دهد جداسازی VLAN در <strong>لایه 2</strong> است و به Subnet کاری ندارد.</p>
 </section>
-<section id="تکلیف" class="level2">
-<h2 class="anchored" data-anchor-id="تکلیف">8. تکلیف</h2>
-<p>یک گزارش کوتاه فنی تهیه کن که شامل هدف، معماری یا مفهوم، مراحل آزمایش، شواهد، نتیجه‌گیری و منابع باشد. از ادعایی که با آزمایش یا منبع معتبر پشتیبانی نمی‌شود خودداری کن.</p>
-</section>
-<section id="معیار-تکمیل-جلسه" class="level2">
-<h2 class="anchored" data-anchor-id="معیار-تکمیل-جلسه">معیار تکمیل جلسه</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">می‌توانم مفهوم را بدون نگاه به جزوه توضیح بدهم.</label></li>
-<li><label><input type="checkbox">می‌توانم آزمایش را دوباره اجرا کنم.</label></li>
-<li><label><input type="checkbox">خروجی را می‌توانم تفسیر کنم.</label></li>
-<li><label><input type="checkbox">محدودیت‌ها و ریسک‌ها را می‌شناسم.</label></li>
-<li><label><input type="checkbox">می‌توانم کاربرد آن را در NetFleet شرح بدهم.</label></li>
+<section id="سؤالها" class="level3">
+<h3 class="anchored" data-anchor-id="سؤالها">سؤال‌ها</h3>
+<ul>
+<li>چرا PC1 به PC3 در VLAN 20 پینگ نمی‌گیرد، حتی اگر IP درست باشد؟</li>
+<li>برای اینکه PC1 بتواند با PC3 صحبت کند، چه چیزی لازم است؟</li>
+<li>در آزمایش دوم ARP Request به کدام پورت‌ها رفت؟</li>
 </ul>
 </section>
-<section id="منابع-پیشنهادی-برای-مطالعه-بیشتر" class="level2">
-<h2 class="anchored" data-anchor-id="منابع-پیشنهادی-برای-مطالعه-بیشتر">منابع پیشنهادی برای مطالعه بیشتر</h2>
-<p>منابع رسمی و مستندات ابزارها را در اولویت قرار بده. نسخه و تاریخ دسترسی را در گزارش ثبت کن. لینک‌های این جلسه باید پیش از انتشار نهایی توسط مدرس یا بازبین بررسی شوند.</p>
+</section>
+<section id="مشاهده-vlan-از-دید-میزبان" class="level2">
+<h2 class="anchored" data-anchor-id="مشاهده-vlan-از-دید-میزبان">7. مشاهده VLAN از دید میزبان</h2>
+<p>یک میزبان معمولی روی پورت Access <strong>از VLAN خبر ندارد</strong>. فریم‌ها بدون تگ برایش می‌رسند و او فقط یک شبکه معمولی می‌بیند. بنابراین برای عیب‌یابی از میزبان فقط می‌توانی این‌ها را بررسی کنی:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ipconfig <span class="op">/</span>all</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>arp <span class="op">-</span>a</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">192.168</span><span class="op">.</span><span class="dv">10.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>اگر Gateway و DHCP Server یا دیگر دستگاه‌های همان VLAN را می‌بینی یعنی در VLAN درست هستی. اگر آدرس IP مربوط به Subnet دیگری گرفته‌ای، احتمالاً پورت در VLAN دیگری است (DHCP هر VLAN آدرس‌دهی متفاوتی دارد).</p>
+<section id="vlan-روی-لینوکس" class="level3">
+<h3 class="anchored" data-anchor-id="vlan-روی-لینوکس">VLAN روی لینوکس</h3>
+<p>سرورها (مثلاً Hypervisor) گاهی خودشان VLAN Tag می‌زنند. نمونه ساخت یک زیرواسط VLAN روی لینوکس:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ip link add link eth0 name eth0.10 type vlan id 10</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ip addr add 192.168.10.50/24 dev eth0.10</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ip link set eth0.10 up</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">ip</span> <span class="at">-d</span> link show eth0.10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>نام <code>eth0</code> را با اسم واسط واقعی خودت جایگزین کن. برای حذف:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ip link del eth0.10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>این حالت فقط وقتی کار می‌کند که پورت سوئیچ <strong>Trunk</strong> باشد (جلسه بعد). روی پورت Access معمولی، تگ‌دار بودن فریم‌ها معنی ندارد.</p>
+</section>
+</section>
+<section id="vlan-و-امنیت" class="level2">
+<h2 class="anchored" data-anchor-id="vlan-و-امنیت">8. VLAN و امنیت</h2>
+<section id="آنچه-vlan-میدهد" class="level3">
+<h3 class="anchored" data-anchor-id="آنچه-vlan-میدهد">آنچه VLAN می‌دهد</h3>
+<ul>
+<li>جداسازی لایه 2 بین گروه‌ها</li>
+<li>کاهش سطح حمله‌های لایه 2 (ARP Spoofing، DHCP جعلی و Broadcast Storm) به همان VLAN</li>
+<li>امکان اعمال سیاست‌های متفاوت به هر VLAN در لایه 3</li>
+</ul>
+</section>
+<section id="آنچه-vlan-نمیدهد" class="level3">
+<h3 class="anchored" data-anchor-id="آنچه-vlan-نمیدهد">آنچه VLAN نمی‌دهد</h3>
+<p>VLAN <strong>Firewall نیست</strong>. جداسازی آن فقط در لایه 2 است. به محض اینکه Inter-VLAN Routing فعال شود، هر ترافیکی که روتر اجازه بدهد عبور می‌کند. امنیت واقعی بین VLANها با <strong>ACL یا Firewall</strong> روی نقطه اتصال لایه 3 به دست می‌آید. VLAN فقط شروع Segmentation است.</p>
+<p>همچنین پیکربندی نادرست (مثل Trunk باز یا Native VLAN نامناسب) می‌تواند جداسازی را دور بزند. این حمله‌ها (VLAN Hopping) در جلسه بعد بررسی می‌شوند.</p>
+</section>
+<section id="پورتهای-بلااستفاده" class="level3">
+<h3 class="anchored" data-anchor-id="پورتهای-بلااستفاده">پورت‌های بلااستفاده</h3>
+<p>پورت‌های بلااستفاده را:</p>
+<ol type="1">
+<li><code>shutdown</code> کن،</li>
+<li>در حالت Access بگذار،</li>
+<li>به یک VLAN بلااستفاده (مثلاً 999) که هیچ Subnet و مسیری ندارد منتقل کن.</li>
+</ol>
+<pre class="text"><code>Switch(config)# vlan 999
+Switch(config-vlan)# name UNUSED
+Switch(config-vlan)# exit
+Switch(config)# interface range fa0/9 - 24
+Switch(config-if-range)# switchport mode access
+Switch(config-if-range)# switchport access vlan 999
+Switch(config-if-range)# shutdown</code></pre>
+</section>
+</section>
+<section id="عیبیابی-مهندسی-vlan" class="level2">
+<h2 class="anchored" data-anchor-id="عیبیابی-مهندسی-vlan">9. عیب‌یابی مهندسی VLAN</h2>
+<section id="سناریو-1-دو-دستگاه-همvlan-هستند-ولی-پینگ-نمیگیرند" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-1-دو-دستگاه-همvlan-هستند-ولی-پینگ-نمیگیرند">سناریو 1: دو دستگاه هم‌VLAN هستند ولی پینگ نمی‌گیرند</h3>
+<p><strong>بررسی‌ها:</strong></p>
+<ol type="1">
+<li>آیا هر دو پورت واقعاً در VLAN یکسان هستند؟ (<code>show vlan brief</code>)</li>
+<li>آیا Subnet و Mask هر دو درست است؟</li>
+<li>آیا Firewall میزبان (مثلاً Windows Firewall) ICMP را بسته؟</li>
+<li>آیا پورت در حالت Trunk یا Err-disabled است؟ (<code>show interfaces status</code>)</li>
+</ol>
+</section>
+<section id="سناریو-2-دستگاه-ip-اشتباه-میگیرد" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-2-دستگاه-ip-اشتباه-میگیرد">سناریو 2: دستگاه IP اشتباه می‌گیرد</h3>
+<p>DHCP هر VLAN معمولاً Scope جدا دارد. اگر کامپیوتر IP یک Subnet دیگر را گرفته، پورتش در VLAN اشتباه است. با <code>show mac address-table interface fa0/3</code> و <code>show vlan brief</code> تأیید کن.</p>
+</section>
+<section id="سناریو-3-بعد-از-حذف-vlan-پورتها-کار-نمیکنند" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-3-بعد-از-حذف-vlan-پورتها-کار-نمیکنند">سناریو 3: بعد از حذف VLAN، پورت‌ها کار نمی‌کنند</h3>
+<p>علامت: پورت متصل است ولی ارتباط ندارد و در <code>show vlan brief</code> دیده نمی‌شود. در <code>show interfaces status</code> وضعیت <code>inactive</code> است. راه‌حل: VLAN را دوباره بساز یا پورت را به VLAN دیگر ببر.</p>
+</section>
+<section id="سناریو-4-dhcp-کار-نمیکند-فقط-در-یک-vlan" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-4-dhcp-کار-نمیکند-فقط-در-یک-vlan">سناریو 4: DHCP کار نمی‌کند فقط در یک VLAN</h3>
+<p>DHCP Discover یک Broadcast است و از VLAN خارج نمی‌شود. اگر DHCP Server در VLAN دیگری است، روی Gateway همان VLAN باید <code>ip helper-address</code> تنظیم شود (مبحث هفته‌های بعد). بدون آن، فقط VLAN ای که Server دارد آدرس می‌گیرد.</p>
+</section>
+<section id="سناریو-5-ارتباط-بین-vlanها-برقرار-نمیشود" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-5-ارتباط-بین-vlanها-برقرار-نمیشود">سناریو 5: ارتباط بین VLANها برقرار نمی‌شود</h3>
+<p>این یک رفتار طبیعی است! بدون یک دستگاه لایه 3، VLANها از هم ایزوله‌اند. این مشکل نیست، طراحی است. بررسی کن Inter-VLAN Routing وجود دارد یا نه.</p>
+</section>
+</section>
+<section id="خطاهای-مفهومی-رایج" class="level2">
+<h2 class="anchored" data-anchor-id="خطاهای-مفهومی-رایج">10. خطاهای مفهومی رایج</h2>
+<ol type="1">
+<li><strong>«VLAN یعنی Subnet.»</strong> نه. VLAN مفهوم لایه 2 و Subnet مفهوم لایه 3 است. معمولاً یک‌به‌یک نگاشت می‌شوند ولی یکی نیستند.</li>
+<li><strong>«VLAN ها یک سوئیچ را امن می‌کنند.»</strong> تنها جداسازی لایه 2 می‌دهند. امنیت بین VLAN ها با ACL و Firewall است.</li>
+<li><strong>«پورت‌های VLAN حذف‌شده به VLAN 1 برمی‌گردند.»</strong> نه، Inactive می‌شوند.</li>
+<li><strong>«VLAN 1 را نمی‌توان حذف کرد پس نگران نیستم.»</strong> درست است که حذف نمی‌شود، ولی نباید کاربران یا مدیریت را در آن گذاشت.</li>
+<li><strong>«میزبان باید VLAN را بشناسد.»</strong> روی پورت Access نه. فقط سوئیچ می‌داند.</li>
+<li><strong>«بیشتر VLAN بهتر است.»</strong> نه. هر VLAN هزینه مدیریتی دارد. فقط جایی که دلیل واقعی (امنیت، کارایی، سیاست) وجود دارد.</li>
+</ol>
+</section>
+<section id="چالش-netfleet" class="level2">
+<h2 class="anchored" data-anchor-id="چالش-netfleet">11. چالش NetFleet</h2>
+<section id="سناریو" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو">سناریو</h3>
+<p>NetFleet یک دفتر با 40 کارمند، 5 سرور داخلی، 8 چاپگر/دوربین و یک شبکه Wi-Fi مهمان دارد. اکنون همه چیز روی یک VLAN و یک Subnet است. مدیر امنیت می‌گوید مهمان‌ها نباید به سرورها دسترسی داشته باشند و چاپگرها نباید با کامپیوتر کاربران در یک شبکه باشند.</p>
+</section>
+<section id="مأموریت" class="level3">
+<h3 class="anchored" data-anchor-id="مأموریت">مأموریت</h3>
+<ol type="1">
+<li>یک طرح VLAN کامل (شماره، نام، Subnet و کاربرد) برای NetFleet طراحی کن.</li>
+<li>برای یک سوئیچ 24 پورتی، تخصیص پورت‌ها را مشخص کن (کدام محدوده پورت‌ها به کدام VLAN).</li>
+<li>دستورهای پیکربندی لازم را بنویس.</li>
+<li>توضیح بده چه چیزی هنوز لازم است تا مهمان واقعاً از سرورها جدا شود (سرنخ: VLAN به‌تنهایی کافی است؟).</li>
+<li>یک فهرست بررسی (Checklist) برای تأیید پس از پیاده‌سازی بنویس.</li>
+</ol>
+</section>
+<section id="خروجی-مورد-انتظار" class="level3">
+<h3 class="anchored" data-anchor-id="خروجی-مورد-انتظار">خروجی مورد انتظار</h3>
+<p>یک سند طراحی کوتاه شامل جدول VLAN، تخصیص پورت‌ها، پیکربندی، آزمون‌های تأیید و توضیح محدودیت‌ها.</p>
+</section>
+</section>
+<section id="جمعبندی-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="جمعبندی-جلسه">12. جمع‌بندی جلسه</h2>
+<ul>
+<li>VLAN یک Broadcast Domain منطقی است که با پیکربندی سوئیچ ساخته می‌شود.</li>
+<li>قاعده طراحی: یک VLAN، یک Subnet.</li>
+<li>محدوده VLAN قابل استفاده 1 تا 4094 است (12 بیت ID).</li>
+<li>VLAN 1 پیش‌فرض است، حذف نمی‌شود و بهتر است برای کاربران استفاده نشود.</li>
+<li>پورت Access به یک VLAN تعلق دارد و میزبان از VLAN خبر ندارد.</li>
+<li>حذف VLAN با پورت عضو، پورت‌ها را Inactive می‌کند.</li>
+<li>VLAN جایگزین Firewall نیست. جداسازی در لایه 2 است و ارتباط بین VLAN ها نیاز به لایه 3 دارد.</li>
+<li>پورت‌های بلااستفاده را Shutdown و در VLAN بلااستفاده بگذار.</li>
+</ul>
+</section>
+<section id="تمرینهای-پایان-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="تمرینهای-پایان-جلسه">13. تمرین‌های پایان جلسه</h2>
+<section id="تمرین-نظری" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-نظری">تمرین نظری</h3>
+<ol type="1">
+<li>چرا دو VLAN با Subnet یکسان مشکل‌ساز هستند؟</li>
+<li>چرا جدول MAC برای هر VLAN جداست؟ مثالی بزن که یک MAC در دو VLAN ظاهر شود.</li>
+<li>فرق جداسازی VLAN و جداسازی Firewall را در یک پاراگراف توضیح بده.</li>
+</ol>
+</section>
+<section id="تمرین-عملی" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-عملی">تمرین عملی</h3>
+<ol type="1">
+<li>آزمایش‌های بخش 6 را در Packet Tracer انجام بده و خروجی <code>show vlan brief</code> را ذخیره کن.</li>
+<li>VLAN 20 را حذف کن (بدون انتقال پورت‌ها)، رفتار پورت‌ها را ببین و مشکل را برطرف کن.</li>
+<li>یک VLAN با نام و شماره خودت بساز و یک چاپگر فرضی را در آن قرار بده.</li>
+</ol>
+</section>
+<section id="منابع-و-مطالعه-بیشتر" class="level3">
+<h3 class="anchored" data-anchor-id="منابع-و-مطالعه-بیشتر">منابع و مطالعه بیشتر</h3>
+<p><strong>کتاب‌ها</strong></p>
+<ul>
+<li><a href="https://www.informit.com/store/ccna-200-301-official-cert-guide-volume-1-9780136171584">Wendell Odom — <em>CCNA 200-301 Official Cert Guide, Volume 1</em> (Cisco Press)</a>: بخش‌های VLAN</li>
+</ul>
+<p><strong>استانداردها</strong></p>
+<ul>
+<li><a href="https://1.ieee802.org/">IEEE 802.1 Working Group — صفحه استانداردهای 802.1</a>: IEEE 802.1Q (Bridges and Bridged Networks، شامل VLAN)</li>
+</ul>
+<p><strong>مستندات رسمی</strong></p>
+<ul>
+<li><a href="https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/24330-185.html">Cisco — Best Practices for Catalyst 6500/6000 and 4500/4000 Series Switches Running Cisco IOS</a>: بخش VLAN 1 و توصیه‌های طراحی</li>
+<li>Cisco — <em>Catalyst 2960-X Switch VLAN Configuration Guide</em> (مستند رسمی هر مدل را در پورتال Cisco جست‌وجو کن)</li>
+</ul>
+<p><strong>ابزار و مرجع دستورها</strong></p>
+<ul>
+<li><a href="https://man7.org/linux/man-pages/man8/ip-link.8.html">man7 — ip-link(8)</a></li>
+<li><a href="https://www.netacad.com/">Cisco Networking Academy و Packet Tracer</a></li>
+</ul>
+<blockquote class="blockquote">
+<p>برای مطالعه‌ی متن کامل استانداردهای IEEE ممکن است به نسخه‌ی خریداری‌شده یا دسترسی دانشگاهی نیاز داشته باشی. مستندات Cisco را همیشه با نسخه IOS و مدل سوئیچ خودت تطبیق بده، چون بعضی صفحات مربوط به خانواده‌های قدیمی‌تر Catalyst هستند.</p>
+</blockquote>
+</section>
+</section>
+<section id="آزمون-تعاملی-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="آزمون-تعاملی-جلسه">14. آزمون تعاملی جلسه</h2>
+
+<section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-week02-day03-title">
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-week02-day03-title" class="anchored">آزمون تعاملی جلسه سوم هفته دوم</h2>
+    </div>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score="">0</strong></div>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress" role="progressbar" aria-label="پیشرفت آزمون" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="nf-quiz-progress-bar" data-progress=""></div>
+  </div>
+
+  <div class="nf-quiz-progress-label" data-progress-text=""></div>
+
+  <div data-content="">
+    <h3 class="nf-quiz-question anchored" data-question=""></h3>
+    <div class="nf-quiz-options" data-options=""></div>
+    <div class="nf-quiz-feedback" data-feedback="" aria-live="polite"></div>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next="" hidden="">
+        سؤال بعدی
+      </button>
+    </div>
+  </div>
+
+  <div class="nf-quiz-result" data-result="" hidden="" aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+    <h3 class="anchored">نتیجه آزمون</h3>
+    <div class="nf-quiz-result-score" data-final-score=""></div>
+    <div class="nf-quiz-result-score" data-percentage=""></div>
+    <p data-result-message=""></p>
+    <button class="nf-quiz-primary" type="button" data-restart="">
+      تلاش مجدد
+    </button>
+  </div>
+
+  <script type="application/json" data-quiz-questions="">
+[
+  {
+    "question": "هر VLAN معمولاً معادل کدام مفهوم در شبکه است؟",
+    "options": [
+      "یک Broadcast Domain (و معمولاً یک Subnet)",
+      "یک مسیر Static",
+      "یک Port Channel",
+      "یک Collision Domain"
+    ],
+    "answer": 0,
+    "explanation": "VLAN یک Broadcast Domain منطقی است و در طراحی استاندارد هر VLAN یک Subnet IP دارد."
+  },
+  {
+    "question": "محدوده شماره VLAN که می‌توان برای ترافیک معمولی استفاده کرد کدام است؟",
+    "options": [
+      "0 تا 4095",
+      "1 تا 4094",
+      "1 تا 1024",
+      "100 تا 999"
+    ],
+    "answer": 1,
+    "explanation": "ID 12 بیتی است و مقدارهای 0 و 4095 رزرو هستند، پس 1 تا 4094 قابل استفاده است."
+  },
+  {
+    "question": "کدام دستور پورت Fa0/3 را در VLAN 20 قرار می‌دهد (پس از ورود به حالت پیکربندی واسط)؟",
+    "options": [
+      "ip vlan 20",
+      "switchport mode trunk vlan 20",
+      "switchport access vlan 20",
+      "vlan 20 interface fa0/3"
+    ],
+    "answer": 2,
+    "explanation": "پورت باید در حالت Access باشد و با switchport access vlan 20 به VLAN اختصاص داده می‌شود."
+  },
+  {
+    "question": "اگر VLAN 10 حذف شود در حالی که پورت‌هایی هنوز به آن اختصاص دارند، چه می‌شود؟",
+    "options": [
+      "پورت‌ها Trunk می‌شوند",
+      "سوئیچ ریبوت می‌کند",
+      "پورت‌ها خودکار به VLAN 1 می‌روند",
+      "پورت‌ها Inactive می‌شوند و ترافیکی ندارند"
+    ],
+    "answer": 3,
+    "explanation": "پورت‌ها در VLAN حذف‌شده می‌مانند ولی چون VLAN وجود ندارد Inactive هستند."
+  },
+  {
+    "question": "دو کامپیوتر در دو VLAN متفاوت روی یک سوئیچ هستند و هیچ دستگاه لایه 3 وجود ندارد. نتیجه چیست؟",
+    "options": [
+      "ارتباط برقرار نمی‌شود",
+      "فقط ICMP عبور می‌کند",
+      "فقط ارتباط HTTP برقرار می‌شود",
+      "ارتباط برقرار می‌شود چون سوئیچ یکی است"
+    ],
+    "answer": 0,
+    "explanation": "VLAN ها در لایه 2 ایزوله هستند و برای ارتباط بین آن‌ها دستگاه لایه 3 لازم است."
+  },
+  {
+    "question": "کدام دستور خلاصه VLAN ها و پورت‌های عضو آن‌ها را نشان می‌دهد؟",
+    "options": [
+      "show vlan brief",
+      "show ip interface brief",
+      "show mac address-table",
+      "show running-config vlan only"
+    ],
+    "answer": 0,
+    "explanation": "show vlan brief نام، وضعیت و پورت‌های عضو هر VLAN را فهرست می‌کند."
+  },
+  {
+    "question": "کدام جمله درباره امنیت VLAN درست است؟",
+    "options": [
+      "VLAN از Loop جلوگیری می‌کند",
+      "VLAN جایگزین Firewall است",
+      "VLAN فقط جداسازی لایه 2 می‌دهد و کنترل بین VLAN ها با ACL یا Firewall انجام می‌شود",
+      "VLAN ترافیک را رمزگذاری می‌کند"
+    ],
+    "answer": 2,
+    "explanation": "VLAN تقسیم‌بندی منطقی است. سیاست دسترسی بین VLAN ها در نقطه لایه 3 با ACL یا Firewall اعمال می‌شود."
+  },
+  {
+    "question": "چرا معمولاً یک VLAN مدیریتی جدا (مثل VLAN 99) ساخته می‌شود؟",
+    "options": [
+      "برای افزایش سرعت پورت‌ها",
+      "برای کاهش اندازه جدول MAC",
+      "چون VLAN 1 را نمی‌توان استفاده کرد",
+      "برای جدا کردن ترافیک مدیریت تجهیزات از ترافیک کاربران"
+    ],
+    "answer": 3,
+    "explanation": "جداسازی ترافیک مدیریتی دسترسی کاربران عادی به تجهیزات را محدود می‌کند و کنترل را ساده‌تر می‌کند."
+  },
+  {
+    "question": "فریم Broadcast از پورتی در VLAN 10 وارد می‌شود. این فریم به کجا می‌رسد؟",
+    "options": [
+      "فقط پورت‌های عضو VLAN 10 (و Trunk هایی که VLAN 10 را حمل می‌کنند)",
+      "فقط پورت اتصال به روتر",
+      "هیچ پورتی",
+      "همه پورت‌های سوئیچ"
+    ],
+    "answer": 0,
+    "explanation": "Broadcast Domain همان VLAN است، پس فریم فقط در VLAN 10 (و Trunk هایی که آن را حمل می‌کنند) Flood می‌شود."
+  },
+  {
+    "question": "دو کامپیوتر IP هم‌Subnet دارند ولی یکی در VLAN 10 و دیگری در VLAN 20 است. پینگ چه می‌شود؟",
+    "options": [
+      "موفق می‌شود چون Subnet یکی است",
+      "ناموفق است چون ARP Request به VLAN دیگر نمی‌رسد",
+      "فقط در جهت یک‌طرفه موفق می‌شود",
+      "سوئیچ خودکار VLAN را یکی می‌کند"
+    ],
+    "answer": 1,
+    "explanation": "جداسازی در لایه 2 انجام می‌شود. ARP Request فقط در VLAN مبدأ Flood می‌شود و به مقصد نمی‌رسد."
+  }
+]
+  </script>
+</section>
 </section>
 </section>
 
@@ -416,7 +939,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/IMPalermo\.github\.io\/netfleet-docs\/");
+        var filterRegex = new RegExp("https:\/\/impalermo\.github\.io\/netfleet-docs");
       const newWindowLabel = "(opens in a new tab)";
       const newWindowNoteId = "quarto-ext-newwindow-label";
       // Links reference one hidden label through aria-describedby, so the

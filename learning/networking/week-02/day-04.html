@@ -26,41 +26,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -156,23 +121,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#access-and-trunk-ports" id="toc-access-and-trunk-ports" class="nav-link active" data-scroll-target="#access-and-trunk-ports">Access and Trunk Ports</a>
+  <li><a href="#جلسه-چهارم-هفته-دوم-پورتهای-access-و-trunk" id="toc-جلسه-چهارم-هفته-دوم-پورتهای-access-و-trunk" class="nav-link active" data-scroll-target="#جلسه-چهارم-هفته-دوم-پورتهای-access-و-trunk">جلسه چهارم هفته دوم: پورت‌های Access و Trunk</a>
   <ul class="collapse">
+  <li><a href="#مقدمه-جلسه" id="toc-مقدمه-جلسه" class="nav-link" data-scroll-target="#مقدمه-جلسه">مقدمه جلسه</a></li>
   <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">اهداف یادگیری</a></li>
-  <li><a href="#جایگاه-موضوع-در-مسیر-مهندسی" id="toc-جایگاه-موضوع-در-مسیر-مهندسی" class="nav-link" data-scroll-target="#جایگاه-موضوع-در-مسیر-مهندسی">1. جایگاه موضوع در مسیر مهندسی</a></li>
-  <li><a href="#مفاهیم-کلیدی" id="toc-مفاهیم-کلیدی" class="nav-link" data-scroll-target="#مفاهیم-کلیدی">2. مفاهیم کلیدی</a></li>
-  <li><a href="#دیدگاه-مهندسی" id="toc-دیدگاه-مهندسی" class="nav-link" data-scroll-target="#دیدگاه-مهندسی">3. دیدگاه مهندسی</a></li>
-  <li><a href="#آزمایشگاه-عملی" id="toc-آزمایشگاه-عملی" class="nav-link" data-scroll-target="#آزمایشگاه-عملی">4. آزمایشگاه عملی</a>
+  <li><a href="#access-و-trunk" id="toc-access-و-trunk" class="nav-link" data-scroll-target="#access-و-trunk">1. Access و Trunk</a></li>
+  <li><a href="#استاندارد-ieee-802.1q" id="toc-استاندارد-ieee-802.1q" class="nav-link" data-scroll-target="#استاندارد-ieee-802.1q">2. استاندارد IEEE 802.1Q</a>
   <ul class="collapse">
-  <li><a href="#آزمایشگاه-پایه" id="toc-آزمایشگاه-پایه" class="nav-link" data-scroll-target="#آزمایشگاه-پایه">آزمایشگاه پایه</a></li>
-  <li><a href="#گزارش-آزمایشگاه" id="toc-گزارش-آزمایشگاه" class="nav-link" data-scroll-target="#گزارش-آزمایشگاه">گزارش آزمایشگاه</a></li>
+  <li><a href="#ساختار-تگ" id="toc-ساختار-تگ" class="nav-link" data-scroll-target="#ساختار-تگ">ساختار تگ</a></li>
+  <li><a href="#اثر-بر-اندازه-فریم" id="toc-اثر-بر-اندازه-فریم" class="nav-link" data-scroll-target="#اثر-بر-اندازه-فریم">اثر بر اندازه فریم</a></li>
+  <li><a href="#چرا-میزبان-تگ-را-نمیبیند" id="toc-چرا-میزبان-تگ-را-نمیبیند" class="nav-link" data-scroll-target="#چرا-میزبان-تگ-را-نمیبیند">چرا میزبان تگ را نمی‌بیند؟</a></li>
   </ul></li>
-  <li><a href="#سناریوی-عیبیابی" id="toc-سناریوی-عیبیابی" class="nav-link" data-scroll-target="#سناریوی-عیبیابی">5. سناریوی عیب‌یابی</a></li>
-  <li><a href="#ارتباط-با-netfleet" id="toc-ارتباط-با-netfleet" class="nav-link" data-scroll-target="#ارتباط-با-netfleet">6. ارتباط با NetFleet</a></li>
-  <li><a href="#تمرین-و-ارزیابی" id="toc-تمرین-و-ارزیابی" class="nav-link" data-scroll-target="#تمرین-و-ارزیابی">7. تمرین و ارزیابی</a></li>
-  <li><a href="#تکلیف" id="toc-تکلیف" class="nav-link" data-scroll-target="#تکلیف">8. تکلیف</a></li>
-  <li><a href="#معیار-تکمیل-جلسه" id="toc-معیار-تکمیل-جلسه" class="nav-link" data-scroll-target="#معیار-تکمیل-جلسه">معیار تکمیل جلسه</a></li>
-  <li><a href="#منابع-پیشنهادی-برای-مطالعه-بیشتر" id="toc-منابع-پیشنهادی-برای-مطالعه-بیشتر" class="nav-link" data-scroll-target="#منابع-پیشنهادی-برای-مطالعه-بیشتر">منابع پیشنهادی برای مطالعه بیشتر</a></li>
+  <li><a href="#native-vlan" id="toc-native-vlan" class="nav-link" data-scroll-target="#native-vlan">3. Native VLAN</a></li>
+  <li><a href="#پیکربندی-trunk-در-سیسکو" id="toc-پیکربندی-trunk-در-سیسکو" class="nav-link" data-scroll-target="#پیکربندی-trunk-در-سیسکو">4. پیکربندی Trunk در سیسکو</a>
+  <ul class="collapse">
+  <li><a href="#مدیریت-فهرست-vlan-مجاز" id="toc-مدیریت-فهرست-vlan-مجاز" class="nav-link" data-scroll-target="#مدیریت-فهرست-vlan-مجاز">مدیریت فهرست VLAN مجاز</a></li>
+  <li><a href="#بررسی" id="toc-بررسی" class="nav-link" data-scroll-target="#بررسی">بررسی</a></li>
+  </ul></li>
+  <li><a href="#dtp-مذاکره-خودکار-trunk" id="toc-dtp-مذاکره-خودکار-trunk" class="nav-link" data-scroll-target="#dtp-مذاکره-خودکار-trunk">5. DTP: مذاکره خودکار Trunk</a>
+  <ul class="collapse">
+  <li><a href="#توصیه-امنیتی" id="toc-توصیه-امنیتی" class="nav-link" data-scroll-target="#توصیه-امنیتی">توصیه امنیتی</a></li>
+  </ul></li>
+  <li><a href="#vlan-hopping" id="toc-vlan-hopping" class="nav-link" data-scroll-target="#vlan-hopping">6. VLAN Hopping</a>
+  <ul class="collapse">
+  <li><a href="#switch-spoofing" id="toc-switch-spoofing" class="nav-link" data-scroll-target="#switch-spoofing">6.1 Switch Spoofing</a></li>
+  <li><a href="#double-tagging" id="toc-double-tagging" class="nav-link" data-scroll-target="#double-tagging">6.2 Double Tagging</a></li>
+  <li><a href="#فهرست-سختسازی-trunk-و-access" id="toc-فهرست-سختسازی-trunk-و-access" class="nav-link" data-scroll-target="#فهرست-سختسازی-trunk-و-access">فهرست سخت‌سازی Trunk و Access</a></li>
+  </ul></li>
+  <li><a href="#vlan-صوتی-voice-vlan-بهطور-خلاصه" id="toc-vlan-صوتی-voice-vlan-بهطور-خلاصه" class="nav-link" data-scroll-target="#vlan-صوتی-voice-vlan-بهطور-خلاصه">7. VLAN صوتی (Voice VLAN) به‌طور خلاصه</a></li>
+  <li><a href="#router-on-a-stick-پیشنمایش" id="toc-router-on-a-stick-پیشنمایش" class="nav-link" data-scroll-target="#router-on-a-stick-پیشنمایش">8. Router-on-a-Stick: پیش‌نمایش</a></li>
+  <li><a href="#آزمایش-عملی-trunk-بین-دو-سوئیچ" id="toc-آزمایش-عملی-trunk-بین-دو-سوئیچ" class="nav-link" data-scroll-target="#آزمایش-عملی-trunk-بین-دو-سوئیچ">9. آزمایش عملی: Trunk بین دو سوئیچ</a>
+  <ul class="collapse">
+  <li><a href="#توپولوژی" id="toc-توپولوژی" class="nav-link" data-scroll-target="#توپولوژی">توپولوژی</a></li>
+  <li><a href="#مراحل" id="toc-مراحل" class="nav-link" data-scroll-target="#مراحل">مراحل</a></li>
+  <li><a href="#آزمایش-خرابی-1-vlan-غیرمجاز" id="toc-آزمایش-خرابی-1-vlan-غیرمجاز" class="nav-link" data-scroll-target="#آزمایش-خرابی-1-vlan-غیرمجاز">آزمایش خرابی 1: VLAN غیرمجاز</a></li>
+  <li><a href="#آزمایش-خرابی-2-native-vlan-mismatch" id="toc-آزمایش-خرابی-2-native-vlan-mismatch" class="nav-link" data-scroll-target="#آزمایش-خرابی-2-native-vlan-mismatch">آزمایش خرابی 2: Native VLAN Mismatch</a></li>
+  <li><a href="#آزمایش-در-wireshark-یا-simulation" id="toc-آزمایش-در-wireshark-یا-simulation" class="nav-link" data-scroll-target="#آزمایش-در-wireshark-یا-simulation">آزمایش در Wireshark یا Simulation</a></li>
+  </ul></li>
+  <li><a href="#عیبیابی-مهندسی" id="toc-عیبیابی-مهندسی" class="nav-link" data-scroll-target="#عیبیابی-مهندسی">10. عیب‌یابی مهندسی</a>
+  <ul class="collapse">
+  <li><a href="#سناریو-1-vlan-بین-دو-سوئیچ-کار-نمیکند" id="toc-سناریو-1-vlan-بین-دو-سوئیچ-کار-نمیکند" class="nav-link" data-scroll-target="#سناریو-1-vlan-بین-دو-سوئیچ-کار-نمیکند">سناریو 1: VLAN بین دو سوئیچ کار نمی‌کند</a></li>
+  <li><a href="#سناریو-2-trunk-تشکیل-نمیشود" id="toc-سناریو-2-trunk-تشکیل-نمیشود" class="nav-link" data-scroll-target="#سناریو-2-trunk-تشکیل-نمیشود">سناریو 2: Trunk تشکیل نمی‌شود</a></li>
+  <li><a href="#سناریو-3-فقط-بعضی-vlan-ها-کار-میکنند" id="toc-سناریو-3-فقط-بعضی-vlan-ها-کار-میکنند" class="nav-link" data-scroll-target="#سناریو-3-فقط-بعضی-vlan-ها-کار-میکنند">سناریو 3: فقط بعضی VLAN ها کار می‌کنند</a></li>
+  <li><a href="#سناریو-4-هشدار-native-vlan-mismatch" id="toc-سناریو-4-هشدار-native-vlan-mismatch" class="nav-link" data-scroll-target="#سناریو-4-هشدار-native-vlan-mismatch">سناریو 4: هشدار Native VLAN Mismatch</a></li>
+  <li><a href="#سناریو-5-ترافیک-vlan-بدون-دلیل-از-vlan-دیگر-دیده-میشود" id="toc-سناریو-5-ترافیک-vlan-بدون-دلیل-از-vlan-دیگر-دیده-میشود" class="nav-link" data-scroll-target="#سناریو-5-ترافیک-vlan-بدون-دلیل-از-vlan-دیگر-دیده-میشود">سناریو 5: ترافیک VLAN بدون دلیل از VLAN دیگر دیده می‌شود</a></li>
+  </ul></li>
+  <li><a href="#خطاهای-مفهومی-رایج" id="toc-خطاهای-مفهومی-رایج" class="nav-link" data-scroll-target="#خطاهای-مفهومی-رایج">11. خطاهای مفهومی رایج</a></li>
+  <li><a href="#چالش-netfleet" id="toc-چالش-netfleet" class="nav-link" data-scroll-target="#چالش-netfleet">12. چالش NetFleet</a>
+  <ul class="collapse">
+  <li><a href="#سناریو" id="toc-سناریو" class="nav-link" data-scroll-target="#سناریو">سناریو</a></li>
+  <li><a href="#مأموریت" id="toc-مأموریت" class="nav-link" data-scroll-target="#مأموریت">مأموریت</a></li>
+  <li><a href="#خروجی-مورد-انتظار" id="toc-خروجی-مورد-انتظار" class="nav-link" data-scroll-target="#خروجی-مورد-انتظار">خروجی مورد انتظار</a></li>
+  </ul></li>
+  <li><a href="#جمعبندی-جلسه" id="toc-جمعبندی-جلسه" class="nav-link" data-scroll-target="#جمعبندی-جلسه">13. جمع‌بندی جلسه</a></li>
+  <li><a href="#تمرینهای-پایان-جلسه" id="toc-تمرینهای-پایان-جلسه" class="nav-link" data-scroll-target="#تمرینهای-پایان-جلسه">14. تمرین‌های پایان جلسه</a>
+  <ul class="collapse">
+  <li><a href="#تمرین-نظری" id="toc-تمرین-نظری" class="nav-link" data-scroll-target="#تمرین-نظری">تمرین نظری</a></li>
+  <li><a href="#تمرین-عملی" id="toc-تمرین-عملی" class="nav-link" data-scroll-target="#تمرین-عملی">تمرین عملی</a></li>
+  <li><a href="#منابع-و-مطالعه-بیشتر" id="toc-منابع-و-مطالعه-بیشتر" class="nav-link" data-scroll-target="#منابع-و-مطالعه-بیشتر">منابع و مطالعه بیشتر</a></li>
+  </ul></li>
+  <li><a href="#آزمون-تعاملی-جلسه" id="toc-آزمون-تعاملی-جلسه" class="nav-link" data-scroll-target="#آزمون-تعاملی-جلسه">15. آزمون تعاملی جلسه</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -183,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Access and Trunk Ports</h1>
-<p class="subtitle lead">Networking Fundamentals | Week 2 | Day 4</p>
+<p class="subtitle lead">پورت Access، Trunk، تگ 802.1Q، Native VLAN و امنیت VLAN</p>
 </div>
 
 
@@ -200,143 +208,660 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="access-and-trunk-ports" class="level1 persian">
-<h1>Access and Trunk Ports</h1>
-<p><strong>مسیر:</strong> شبکه<br>
-<strong>هفته:</strong> 2، Switching Fundamentals<br>
-<strong>جلسه:</strong> 4 از ۵</p>
+<section id="جلسه-چهارم-هفته-دوم-پورتهای-access-و-trunk" class="level1 persian">
+<h1>جلسه چهارم هفته دوم: پورت‌های Access و Trunk</h1>
+<section id="مقدمه-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="مقدمه-جلسه">مقدمه جلسه</h2>
+<p>تا اینجا VLAN را روی یک سوئیچ ساختیم. اما در دنیای واقعی یک ساختمان چند سوئیچ دارد و VLAN کارکنان باید روی همه آن‌ها وجود داشته باشد. اگر برای هر VLAN یک کابل بین سوئیچ‌ها بکشیم، با 10 VLAN به 10 کابل و 10 پورت نیاز داریم. این روش مقیاس‌پذیر نیست.</p>
+<p>راه‌حل <strong>Trunk</strong> است: یک لینک فیزیکی که ترافیک چند VLAN را حمل می‌کند. برای اینکه سوئیچ سمت دیگر بداند هر فریم متعلق به کدام VLAN است، روی فریم‌ها یک <strong>تگ</strong> (استاندارد IEEE 802.1Q) قرار می‌گیرد. این جلسه تفاوت Access و Trunk، ساختار تگ، Native VLAN، پروتکل DTP و حمله‌های VLAN Hopping را بررسی می‌کند.</p>
+</section>
 <section id="اهداف-یادگیری" class="level2">
 <h2 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h2>
-<p>در پایان این جلسه باید بتوانی: - مفهوم Access and Trunk Ports را با زبان خودت توضیح بدهی. - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی. - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی. - یک آزمایش کنترل‌شده اجرا و نتیجه آن را مستند کنی. - خطاها، محدودیت‌ها و ملاحظات امنیتی را توضیح بدهی.</p>
-</section>
-<section id="جایگاه-موضوع-در-مسیر-مهندسی" class="level2">
-<h2 class="anchored" data-anchor-id="جایگاه-موضوع-در-مسیر-مهندسی">1. جایگاه موضوع در مسیر مهندسی</h2>
-<p>این جلسه بخشی از مسیر <strong>شبکه</strong> است. موضوع «Access and Trunk Ports» را باید در ارتباط با مباحث قبلی و بعدی ببینی، نه به‌عنوان یک دستور یا مفهوم جداافتاده.</p>
-<p>در کار مهندسی، هدف فقط حفظ کردن اصطلاحات نیست. باید بتوانی مسئله را تعریف کنی، شواهد جمع‌آوری کنی، فرضیه بسازی، آن را آزمایش کنی و نتیجه را با دقت گزارش بدهی.</p>
-</section>
-<section id="مفاهیم-کلیدی" class="level2">
-<h2 class="anchored" data-anchor-id="مفاهیم-کلیدی">2. مفاهیم کلیدی</h2>
-<p>هنگام مطالعه این موضوع، این پرسش‌ها را پاسخ بده:</p>
-<ol type="1">
-<li>این فناوری یا مفهوم چه مسئله‌ای را حل می‌کند؟</li>
-<li>اجزای اصلی آن چیست و هر جزء چه مسئولیتی دارد؟</li>
-<li>ورودی، خروجی و وابستگی‌های آن کدام‌اند؟</li>
-<li>در چه شرایطی درست کار نمی‌کند؟</li>
-<li>چه خطاهای پیکربندی یا عملیاتی در آن رایج‌اند؟</li>
-<li>چه داده‌ای برای تشخیص وضعیت آن باید جمع‌آوری شود؟</li>
-</ol>
-<p>واژگان جدید را در یک واژه‌نامه شخصی ثبت کن. برای هر اصطلاح، تعریف فارسی، نام انگلیسی و یک مثال فنی بنویس.</p>
-</section>
-<section id="دیدگاه-مهندسی" class="level2">
-<h2 class="anchored" data-anchor-id="دیدگاه-مهندسی">3. دیدگاه مهندسی</h2>
-<p>برای تحلیل درست، بین این سه مورد تفاوت بگذار:</p>
+<p>در پایان این جلسه باید بتوانی:</p>
 <ul>
-<li><strong>Configuration:</strong> چیزی که تنظیم شده است.</li>
-<li><strong>Operational State:</strong> وضعیتی که سیستم واقعاً در آن قرار دارد.</li>
-<li><strong>Observed Evidence:</strong> شواهدی که از خروجی ابزارها، لاگ‌ها یا تست‌ها به دست می‌آیند.</li>
+<li>تفاوت پورت Access و Trunk را توضیح بدهی.</li>
+<li>ساختار تگ 802.1Q و اثر آن بر اندازه فریم را شرح بدهی.</li>
+<li>Trunk را با Native VLAN و فهرست VLAN مجاز پیکربندی و بررسی کنی.</li>
+<li>DTP را توضیح بدهی و دلیل غیرفعال کردن آن را بیان کنی.</li>
+<li>دو روش اصلی VLAN Hopping و روش‌های جلوگیری را توضیح بدهی.</li>
+<li>مشکل‌های رایج Trunk مثل Native VLAN Mismatch و VLAN غیرمجاز را عیب‌یابی کنی.</li>
 </ul>
-<p>این سه مورد همیشه یکسان نیستند. یک پیکربندی صحیح لزوماً تضمین نمی‌کند سرویس در عمل سالم باشد.</p>
 </section>
-<section id="آزمایشگاه-عملی" class="level2">
-<h2 class="anchored" data-anchor-id="آزمایشگاه-عملی">4. آزمایشگاه عملی</h2>
-<section id="آزمایشگاه-پایه" class="level3">
-<h3 class="anchored" data-anchor-id="آزمایشگاه-پایه">آزمایشگاه پایه</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Get-NetRoute <span class="op">-</span>AddressFamily IPv4</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Test-NetConnection <span class="dv">1.1</span><span class="op">.</span><span class="dv">1.1</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>خروجی را ثبت کن، فیلدهای مهم را توضیح بده و مشخص کن کدام بخش از موضوع امروز را نشان می‌دهد.</p>
-</section>
-<section id="گزارش-آزمایشگاه" class="level3">
-<h3 class="anchored" data-anchor-id="گزارش-آزمایشگاه">گزارش آزمایشگاه</h3>
-<p>گزارش خود را با این قالب تکمیل کن:</p>
+<section id="access-و-trunk" class="level2">
+<h2 class="anchored" data-anchor-id="access-و-trunk">1. Access و Trunk</h2>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>بخش</th>
-<th>چیزی که باید ثبت شود</th>
+<th>ویژگی</th>
+<th>پورت Access</th>
+<th>پورت Trunk</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>هدف</td>
-<td>چه چیزی را می‌خواهی بررسی کنی؟</td>
+<td>تعداد VLAN</td>
+<td>یک VLAN</td>
+<td>چند VLAN</td>
 </tr>
 <tr class="even">
-<td>محیط</td>
-<td>سیستم‌عامل، ابزار و نسخه</td>
+<td>تگ 802.1Q روی فریم</td>
+<td>ندارد (Untagged)</td>
+<td>دارد (به‌جز Native VLAN)</td>
 </tr>
 <tr class="odd">
-<td>فرضیه</td>
-<td>انتظار داری چه اتفاقی بیفتد؟</td>
+<td>اتصال معمول</td>
+<td>کامپیوتر، چاپگر، سرور</td>
+<td>سوئیچ به سوئیچ، سوئیچ به روتر، سوئیچ به Hypervisor</td>
 </tr>
 <tr class="even">
-<td>اجرا</td>
-<td>مراحل و دستورهای اجراشده</td>
+<td>میزبان از VLAN خبر دارد؟</td>
+<td>نه</td>
+<td>بله (طرف مقابل باید تگ را بفهمد)</td>
 </tr>
+</tbody>
+</table>
+<p>در پورت Access، سوئیچ فریم ورودی بدون تگ را به VLAN پورت اختصاص می‌دهد و هنگام خروج، تگ را (اگر باشد) برمی‌دارد. میزبان همیشه فریم عادی می‌بیند.</p>
+<p>در پورت Trunk فریم‌ها با تگ VLAN حمل می‌شوند تا سوئیچ مقابل بتواند هر فریم را در VLAN درست قرار بدهد.</p>
+</section>
+<section id="استاندارد-ieee-802.1q" class="level2">
+<h2 class="anchored" data-anchor-id="استاندارد-ieee-802.1q">2. استاندارد IEEE 802.1Q</h2>
+<section id="ساختار-تگ" class="level3">
+<h3 class="anchored" data-anchor-id="ساختار-تگ">ساختار تگ</h3>
+<p>تگ 802.1Q یک فیلد <strong>4 بایتی</strong> است که بین Source MAC و EtherType اصلی درج می‌شود:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>فیلد</th>
+<th>اندازه</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
-<td>مشاهده</td>
-<td>خروجی واقعی</td>
+<td>TPID</td>
+<td>16 بیت</td>
+<td>مقدار ثابت <code>0x8100</code> که نشان می‌دهد فریم تگ‌دار است</td>
 </tr>
 <tr class="even">
-<td>تحلیل</td>
-<td>نتیجه چه معنایی دارد؟</td>
+<td>PCP</td>
+<td>3 بیت</td>
+<td>اولویت (Class of Service) برای QoS</td>
 </tr>
 <tr class="odd">
-<td>محدودیت</td>
-<td>چه چیزی هنوز اثبات نشده است؟</td>
+<td>DEI</td>
+<td>1 بیت</td>
+<td>نشان می‌دهد فریم در صورت ازدحام قابل حذف است</td>
+</tr>
+<tr class="even">
+<td>VID</td>
+<td>12 بیت</td>
+<td>شماره VLAN (0 تا 4095، قابل استفاده 1 تا 4094)</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="اثر-بر-اندازه-فریم" class="level3">
+<h3 class="anchored" data-anchor-id="اثر-بر-اندازه-فریم">اثر بر اندازه فریم</h3>
+<p>افزودن 4 بایت تگ، حداکثر اندازه فریم اترنت را از <strong>1518</strong> به <strong>1522</strong> بایت می‌رساند و حداقل را از 64 به 68 بایت (در حالی که MTU یعنی اندازه Payload همان 1500 باقی می‌ماند). تجهیزات مدرن این را پشتیبانی می‌کنند. اگر تجهیزی نتواند فریم 1522 بایتی را عبور بدهد، فریم‌های تگ‌دار بزرگ ممکن است بی‌صدا حذف شوند. (جلسه اول این هفته را برای ارتباط با MTU مرور کن.)</p>
 </section>
-<section id="سناریوی-عیبیابی" class="level2">
-<h2 class="anchored" data-anchor-id="سناریوی-عیبیابی">5. سناریوی عیب‌یابی</h2>
-<p>فرض کن بخشی از زیرساخت مطابق انتظار کار نمی‌کند.</p>
+<section id="چرا-میزبان-تگ-را-نمیبیند" class="level3">
+<h3 class="anchored" data-anchor-id="چرا-میزبان-تگ-را-نمیبیند">چرا میزبان تگ را نمی‌بیند؟</h3>
+<p>سوئیچ در خروج از پورت Access تگ را برمی‌دارد. حتی در Wireshark روی کارت شبکه خودت اغلب تگ را نمی‌بینی، چون درایور یا سیستم‌عامل آن را پردازش و حذف می‌کند. برای دیدن تگ باید روی خود لینک Trunk (با SPAN/Mirror) یا در شبیه‌ساز مثل Packet Tracer Simulation مشاهده کنی.</p>
+</section>
+</section>
+<section id="native-vlan" class="level2">
+<h2 class="anchored" data-anchor-id="native-vlan">3. Native VLAN</h2>
+<p>در لینک Trunk فریم‌های <strong>یک VLAN مشخص (Native VLAN) بدون تگ</strong> ارسال می‌شوند. در سیسکو به‌طور پیش‌فرض VLAN 1 است. هر فریمی که روی Trunk بدون تگ دریافت شود، به Native VLAN همان طرف نسبت داده می‌شود.</p>
+<p>دلیل تاریخی: سازگاری با تجهیزات قدیمی که تگ نمی‌فهمیدند.</p>
+<p>دو نکته حیاتی:</p>
 <ol type="1">
-<li>محدوده مشکل را مشخص کن.</li>
-<li>آخرین تغییرات را بررسی کن.</li>
-<li>وضعیت فعلی را بدون ایجاد تغییر جمع‌آوری کن.</li>
-<li>فرضیه‌های محتمل را از ساده به پیچیده مرتب کن.</li>
-<li>هر فرضیه را با یک آزمایش مشخص بررسی کن.</li>
-<li>نتیجه و شواهد را مستند کن.</li>
+<li><strong>Native VLAN باید در دو سر لینک یکسان باشد.</strong> اگر یک سر 1 و سر دیگر 99 باشد، فریم‌های بدون تگ به VLAN اشتباه می‌رسند. سیسکو معمولاً لاگ می‌دهد:</li>
 </ol>
-<p>از تغییر هم‌زمان چند متغیر خودداری کن؛ در غیر این صورت تشخیص علت واقعی دشوار می‌شود.</p>
-</section>
-<section id="ارتباط-با-netfleet" class="level2">
-<h2 class="anchored" data-anchor-id="ارتباط-با-netfleet">6. ارتباط با NetFleet</h2>
-<p>در پروژه NetFleet باید بتوانیم دانش این جلسه را به یک قابلیت قابل اندازه‌گیری تبدیل کنیم.</p>
-<p>به این پرسش پاسخ بده:</p>
-<p><strong>اگر بخواهیم موضوع «Access and Trunk Ports» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟</strong></p>
-<p>طرح اولیه خود را با سه بخش بنویس: - Data Source - Validation Rule - Expected Output</p>
-</section>
-<section id="تمرین-و-ارزیابی" class="level2">
-<h2 class="anchored" data-anchor-id="تمرین-و-ارزیابی">7. تمرین و ارزیابی</h2>
-<ol type="1">
-<li>موضوع امروز را در پنج جمله توضیح بده.</li>
-<li>سه اصطلاح مهم آن را تعریف کن.</li>
-<li>یک کاربرد واقعی و یک محدودیت آن را نام ببر.</li>
-<li>یک خطای رایج را توضیح بده و روش تشخیص آن را بنویس.</li>
-<li>مشخص کن چه چیزی را می‌توان خودکار کرد و چه چیزی به تأیید انسانی نیاز دارد.</li>
+<pre class="text"><code>%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on FastEthernet0/24 (99), with Switch FastEthernet0/24 (1).</code></pre>
+<ol start="2" type="1">
+<li>Native VLAN یک نقطه ضعف امنیتی است (بخش VLAN Hopping)، پس بهتر است از یک VLAN بلااستفاده و اختصاصی استفاده شود.</li>
 </ol>
 </section>
-<section id="تکلیف" class="level2">
-<h2 class="anchored" data-anchor-id="تکلیف">8. تکلیف</h2>
-<p>یک گزارش کوتاه فنی تهیه کن که شامل هدف، معماری یا مفهوم، مراحل آزمایش، شواهد، نتیجه‌گیری و منابع باشد. از ادعایی که با آزمایش یا منبع معتبر پشتیبانی نمی‌شود خودداری کن.</p>
+<section id="پیکربندی-trunk-در-سیسکو" class="level2">
+<h2 class="anchored" data-anchor-id="پیکربندی-trunk-در-سیسکو">4. پیکربندی Trunk در سیسکو</h2>
+<pre class="text"><code>Switch(config)# interface fa0/24
+Switch(config-if)# switchport mode trunk
+Switch(config-if)# switchport trunk native vlan 99
+Switch(config-if)# switchport trunk allowed vlan 10,20,99
+Switch(config-if)# switchport nonegotiate</code></pre>
+<p>اگر سوئیچ هم ISL و هم 802.1Q را پشتیبانی می‌کند (مثل بعضی Catalyst های قدیمی‌تر مثل 3560)، قبل از <code>switchport mode trunk</code> باید این دستور را بزنی:</p>
+<pre class="text"><code>Switch(config-if)# switchport trunk encapsulation dot1q</code></pre>
+<p>سوئیچ‌های 2960 فقط 802.1Q دارند و این دستور را نمی‌پذیرند (و لازم هم ندارند).</p>
+<section id="مدیریت-فهرست-vlan-مجاز" class="level3">
+<h3 class="anchored" data-anchor-id="مدیریت-فهرست-vlan-مجاز">مدیریت فهرست VLAN مجاز</h3>
+<pre class="text"><code>Switch(config-if)# switchport trunk allowed vlan 10,20,99
+Switch(config-if)# switchport trunk allowed vlan add 30
+Switch(config-if)# switchport trunk allowed vlan remove 20</code></pre>
+<p><strong>هشدار مهم:</strong> دستور بدون کلمه <code>add</code> یا <code>remove</code> کل فهرست را <strong>جایگزین</strong> می‌کند. اگر روی Trunk در حال کار <code>switchport trunk allowed vlan 30</code> بزنی، فقط VLAN 30 باقی می‌ماند و بقیه VLAN ها بین سوئیچ‌ها قطع می‌شوند. برای افزودن همیشه از <code>add</code> استفاده کن.</p>
 </section>
-<section id="معیار-تکمیل-جلسه" class="level2">
-<h2 class="anchored" data-anchor-id="معیار-تکمیل-جلسه">معیار تکمیل جلسه</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">می‌توانم مفهوم را بدون نگاه به جزوه توضیح بدهم.</label></li>
-<li><label><input type="checkbox">می‌توانم آزمایش را دوباره اجرا کنم.</label></li>
-<li><label><input type="checkbox">خروجی را می‌توانم تفسیر کنم.</label></li>
-<li><label><input type="checkbox">محدودیت‌ها و ریسک‌ها را می‌شناسم.</label></li>
-<li><label><input type="checkbox">می‌توانم کاربرد آن را در NetFleet شرح بدهم.</label></li>
+<section id="بررسی" class="level3">
+<h3 class="anchored" data-anchor-id="بررسی">بررسی</h3>
+<pre class="text"><code>Switch# show interfaces trunk
+Switch# show interfaces fa0/24 switchport</code></pre>
+<p>نمونه خروجی:</p>
+<pre class="text"><code>Port        Mode         Encapsulation  Status        Native vlan
+Fa0/24      on           802.1q         trunking      99
+
+Port        Vlans allowed on trunk
+Fa0/24      10,20,99
+
+Port        Vlans allowed and active in management domain
+Fa0/24      10,20,99
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Fa0/24      10,20,99</code></pre>
+<p>سه فهرست پایین مراحل متوالی فیلتر هستند: VLAN های مجاز، مجاز و فعال (واقعاً روی سوئیچ ساخته شده‌اند)، و مجاز و در حالت Forwarding STP. اگر VLAN ای در فهرست اول هست ولی در فهرست‌های بعدی نیست، ترتیب را دنبال کن: یا VLAN روی این سوئیچ ساخته نشده، یا STP پورت را Block کرده.</p>
+</section>
+</section>
+<section id="dtp-مذاکره-خودکار-trunk" class="level2">
+<h2 class="anchored" data-anchor-id="dtp-مذاکره-خودکار-trunk">5. DTP: مذاکره خودکار Trunk</h2>
+<p><strong>DTP (Dynamic Trunking Protocol)</strong> پروتکل اختصاصی سیسکو است که دو سر لینک را خودکار روی Trunk یا Access مذاکره می‌دهد.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>حالت</th>
+<th>رفتار</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>access</td>
+<td>همیشه Access، مذاکره نمی‌کند</td>
+</tr>
+<tr class="even">
+<td>trunk</td>
+<td>همیشه Trunk و به طرف مقابل هم پیشنهاد Trunk می‌دهد</td>
+</tr>
+<tr class="odd">
+<td>dynamic auto</td>
+<td>Trunk می‌شود فقط اگر طرف مقابل درخواست کند (پیش‌فرض بسیاری از سوئیچ‌ها)</td>
+</tr>
+<tr class="even">
+<td>dynamic desirable</td>
+<td>فعالانه درخواست Trunk می‌دهد</td>
+</tr>
+</tbody>
+</table>
+<p>نتیجه مذاکره:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>سمت A &nbsp;سمت B</th>
+<th>trunk</th>
+<th>dynamic desirable</th>
+<th>dynamic auto</th>
+<th>access</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>trunk</td>
+<td>Trunk</td>
+<td>Trunk</td>
+<td>Trunk</td>
+<td>مشکل‌دار (ناسازگار)</td>
+</tr>
+<tr class="even">
+<td>dynamic desirable</td>
+<td>Trunk</td>
+<td>Trunk</td>
+<td>Trunk</td>
+<td>Access</td>
+</tr>
+<tr class="odd">
+<td>dynamic auto</td>
+<td>Trunk</td>
+<td>Trunk</td>
+<td>Access</td>
+<td>Access</td>
+</tr>
+<tr class="even">
+<td>access</td>
+<td>مشکل‌دار</td>
+<td>Access</td>
+<td>Access</td>
+<td>Access</td>
+</tr>
+</tbody>
+</table>
+<p>نکته جالب: دو سر <code>dynamic auto</code> هرگز Trunk نمی‌شوند، چون هیچ‌کدام درخواست نمی‌دهد.</p>
+<section id="توصیه-امنیتی" class="level3">
+<h3 class="anchored" data-anchor-id="توصیه-امنیتی">توصیه امنیتی</h3>
+<p>DTP پیش‌فرض باعث می‌شود یک دستگاه مهاجم که به پورت Access (در حالت dynamic) وصل شده، بتواند با فرستادن فریم DTP لینک را به Trunk تبدیل کند و به همه VLAN ها دسترسی پیدا کند. بنابراین:</p>
+<ul>
+<li>پورت‌های کاربر را صریحاً <code>switchport mode access</code> کن.</li>
+<li>پورت‌های Trunk را صریحاً <code>switchport mode trunk</code> کن و <code>switchport nonegotiate</code> بزن.</li>
+<li>هرگز به حالت‌های dynamic اتکا نکن.</li>
 </ul>
 </section>
-<section id="منابع-پیشنهادی-برای-مطالعه-بیشتر" class="level2">
-<h2 class="anchored" data-anchor-id="منابع-پیشنهادی-برای-مطالعه-بیشتر">منابع پیشنهادی برای مطالعه بیشتر</h2>
-<p>منابع رسمی و مستندات ابزارها را در اولویت قرار بده. نسخه و تاریخ دسترسی را در گزارش ثبت کن. لینک‌های این جلسه باید پیش از انتشار نهایی توسط مدرس یا بازبین بررسی شوند.</p>
+</section>
+<section id="vlan-hopping" class="level2">
+<h2 class="anchored" data-anchor-id="vlan-hopping">6. VLAN Hopping</h2>
+<p>VLAN Hopping یعنی مهاجم از VLAN خود به ترافیک VLAN دیگر دسترسی پیدا کند. دو روش اصلی:</p>
+<section id="switch-spoofing" class="level3">
+<h3 class="anchored" data-anchor-id="switch-spoofing">6.1 Switch Spoofing</h3>
+<p>مهاجم کارت شبکه‌اش را وادار می‌کند DTP بفرستد و خود را سوئیچ جا بزند. اگر پورت در حالت dynamic باشد، Trunk تشکیل می‌شود و مهاجم همه VLAN ها را دریافت می‌کند.</p>
+<p><strong>پیشگیری:</strong> پورت کاربر را <code>access</code> ثابت و <code>nonegotiate</code> کن.</p>
+</section>
+<section id="double-tagging" class="level3">
+<h3 class="anchored" data-anchor-id="double-tagging">6.2 Double Tagging</h3>
+<p>مهاجم فریمی با <strong>دو تگ</strong> می‌فرستد: تگ بیرونی = Native VLAN، تگ داخلی = VLAN قربانی.</p>
+<ol type="1">
+<li>مهاجم روی پورت Access ای است که VLAN آن با Native VLAN Trunk برابر است.</li>
+<li>سوئیچ اول تگ بیرونی (Native VLAN) را برمی‌دارد، چون Native Untagged ارسال می‌شود.</li>
+<li>فریم با تگ داخلی (VLAN قربانی) روی Trunk می‌رود.</li>
+<li>سوئیچ دوم تگ داخلی را می‌خواند و فریم را در VLAN قربانی تحویل می‌دهد.</li>
+</ol>
+<p>حمله <strong>یک‌طرفه</strong> است (پاسخی برنمی‌گردد) ولی می‌تواند برای ارسال بسته‌های مخرب کافی باشد.</p>
+<p><strong>پیشگیری:</strong></p>
+<ul>
+<li>Native VLAN را به یک VLAN بلااستفاده تغییر بده (مثل 99) و هیچ پورت کاربری را در آن نگذار.</li>
+<li>روی Trunk فقط VLAN های لازم را مجاز کن.</li>
+<li>در صورت امکان، Native VLAN را هم تگ‌دار کن (روی سوئیچ‌هایی که پشتیبانی می‌کنند).</li>
+</ul>
+</section>
+<section id="فهرست-سختسازی-trunk-و-access" class="level3">
+<h3 class="anchored" data-anchor-id="فهرست-سختسازی-trunk-و-access">فهرست سخت‌سازی Trunk و Access</h3>
+<ol type="1">
+<li>پورت‌های Access را <code>switchport mode access</code> کن.</li>
+<li>روی Trunk ها <code>switchport nonegotiate</code> بزن.</li>
+<li>Native VLAN را اختصاصی و بلااستفاده کن.</li>
+<li>VLAN های مجاز Trunk را محدود کن.</li>
+<li>پورت‌های بلااستفاده را Shutdown و در VLAN بلااستفاده بگذار.</li>
+<li>VLAN 1 را برای کاربران و مدیریت استفاده نکن.</li>
+</ol>
+</section>
+</section>
+<section id="vlan-صوتی-voice-vlan-بهطور-خلاصه" class="level2">
+<h2 class="anchored" data-anchor-id="vlan-صوتی-voice-vlan-بهطور-خلاصه">7. VLAN صوتی (Voice VLAN) به‌طور خلاصه</h2>
+<p>در دفاتر، تلفن IP معمولاً بین سوئیچ و کامپیوتر قرار می‌گیرد. پورت یک VLAN داده (Untagged) و یک VLAN صوت (Tagged) دارد:</p>
+<pre class="text"><code>Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 10
+Switch(config-if)# switchport voice vlan 150</code></pre>
+<p>اینجا پورت Access است ولی ترافیک تلفن با تگ جدا می‌شود. این حالت خاص برای QoS و جداسازی صوت از داده است.</p>
+</section>
+<section id="router-on-a-stick-پیشنمایش" class="level2">
+<h2 class="anchored" data-anchor-id="router-on-a-stick-پیشنمایش">8. Router-on-a-Stick: پیش‌نمایش</h2>
+<p>اتصال یک روتر به Trunk سوئیچ، روشی برای مسیریابی بین VLAN هاست. روتر روی همان واسط فیزیکی زیرواسط‌های مجازی دارد که هر کدام یک VLAN را تگ می‌کنند:</p>
+<pre class="text"><code>Router(config)# interface g0/0.10
+Router(config-subif)# encapsulation dot1Q 10
+Router(config-subif)# ip address 192.168.10.1 255.255.255.0</code></pre>
+<p>جزئیات این مبحث در هفته سوم (جلسه Inter-VLAN Routing) است. فعلاً کافی است بدانی Trunk فقط برای اتصال سوئیچ‌ها نیست و می‌تواند به روتر یا Hypervisor هم وصل شود.</p>
+</section>
+<section id="آزمایش-عملی-trunk-بین-دو-سوئیچ" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایش-عملی-trunk-بین-دو-سوئیچ">9. آزمایش عملی: Trunk بین دو سوئیچ</h2>
+<section id="توپولوژی" class="level3">
+<h3 class="anchored" data-anchor-id="توپولوژی">توپولوژی</h3>
+<p>دو سوئیچ 2960 (SW1 و SW2) که با پورت Fa0/24 به هم وصل‌اند.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>دستگاه</th>
+<th>سوئیچ</th>
+<th>پورت</th>
+<th>VLAN</th>
+<th>IP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PC1</td>
+<td>SW1</td>
+<td>Fa0/1</td>
+<td>10</td>
+<td>192.168.10.11/24</td>
+</tr>
+<tr class="even">
+<td>PC3</td>
+<td>SW1</td>
+<td>Fa0/2</td>
+<td>20</td>
+<td>192.168.20.11/24</td>
+</tr>
+<tr class="odd">
+<td>PC2</td>
+<td>SW2</td>
+<td>Fa0/1</td>
+<td>10</td>
+<td>192.168.10.12/24</td>
+</tr>
+<tr class="even">
+<td>PC4</td>
+<td>SW2</td>
+<td>Fa0/2</td>
+<td>20</td>
+<td>192.168.20.12/24</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="مراحل" class="level3">
+<h3 class="anchored" data-anchor-id="مراحل">مراحل</h3>
+<ol type="1">
+<li>روی هر دو سوئیچ VLAN 10، 20 و 99 را بساز.</li>
+<li>پورت‌های Access را اختصاص بده.</li>
+<li>Trunk را روی Fa0/24 هر دو سوئیچ پیکربندی کن (Native 99).</li>
+<li>تست کن:</li>
+</ol>
+<pre class="text"><code>PC1&gt; ping 192.168.10.12     (VLAN 10 بین دو سوئیچ، باید موفق باشد)
+PC3&gt; ping 192.168.20.12     (VLAN 20 بین دو سوئیچ، باید موفق باشد)
+PC1&gt; ping 192.168.20.11     (باید ناموفق باشد، VLAN متفاوت)</code></pre>
+<ol start="5" type="1">
+<li><code>show interfaces trunk</code> و <code>show vlan brief</code> را روی هر دو سوئیچ بررسی کن.</li>
+</ol>
+</section>
+<section id="آزمایش-خرابی-1-vlan-غیرمجاز" class="level3">
+<h3 class="anchored" data-anchor-id="آزمایش-خرابی-1-vlan-غیرمجاز">آزمایش خرابی 1: VLAN غیرمجاز</h3>
+<p>روی SW1 دستور زیر را بزن:</p>
+<pre class="text"><code>SW1(config)# interface fa0/24
+SW1(config-if)# switchport trunk allowed vlan 10</code></pre>
+<p>حالا از PC3 به PC4 پینگ بگیر. باید ناموفق شود. <code>show interfaces trunk</code> را ببین و توضیح بده چه شد. سپس مشکل را با دستور <code>add</code> برطرف کن.</p>
+</section>
+<section id="آزمایش-خرابی-2-native-vlan-mismatch" class="level3">
+<h3 class="anchored" data-anchor-id="آزمایش-خرابی-2-native-vlan-mismatch">آزمایش خرابی 2: Native VLAN Mismatch</h3>
+<p>روی SW1 Native VLAN را به 99 و روی SW2 به 1 بگذار. لاگ‌ها را ببین و توضیح بده چه خطری دارد. (در Packet Tracer ممکن است پیام CDP ظاهر شود یا نشود؛ روی تجهیزات واقعی معمولاً دیده می‌شود.)</p>
+</section>
+<section id="آزمایش-در-wireshark-یا-simulation" class="level3">
+<h3 class="anchored" data-anchor-id="آزمایش-در-wireshark-یا-simulation">آزمایش در Wireshark یا Simulation</h3>
+<p>در Packet Tracer حالت Simulation را روشن کن و PDU را روی لینک Trunk دنبال کن. به فیلد VLAN در فریم دقت کن. اگر روی یک لینک Trunk واقعی Capture داری، از فیلتر زیر استفاده کن:</p>
+<pre class="text"><code>vlan.id == 10</code></pre>
+</section>
+</section>
+<section id="عیبیابی-مهندسی" class="level2">
+<h2 class="anchored" data-anchor-id="عیبیابی-مهندسی">10. عیب‌یابی مهندسی</h2>
+<section id="سناریو-1-vlan-بین-دو-سوئیچ-کار-نمیکند" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-1-vlan-بین-دو-سوئیچ-کار-نمیکند">سناریو 1: VLAN بین دو سوئیچ کار نمی‌کند</h3>
+<p>بررسی‌ها به ترتیب:</p>
+<ol type="1">
+<li>آیا VLAN روی <strong>هر دو</strong> سوئیچ ساخته شده؟ (<code>show vlan brief</code>)</li>
+<li>آیا لینک Trunk شده؟ (<code>show interfaces trunk</code>)</li>
+<li>آیا VLAN در فهرست <code>allowed</code> است؟</li>
+<li>آیا VLAN در STP در حالت Forwarding است؟ (سومین فهرست <code>show interfaces trunk</code>)</li>
+<li>آیا Native VLAN دو سر یکسان است؟</li>
+</ol>
+</section>
+<section id="سناریو-2-trunk-تشکیل-نمیشود" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-2-trunk-تشکیل-نمیشود">سناریو 2: Trunk تشکیل نمی‌شود</h3>
+<ul>
+<li>ترکیب نامناسب حالت‌ها (مثلاً <code>dynamic auto</code> در هر دو سر یا <code>trunk</code> با <code>access</code>)</li>
+<li>Encapsulation ناسازگار (یک طرف ISL و یک طرف dot1q)</li>
+<li><code>nonegotiate</code> در یک طرف و <code>dynamic</code> در طرف دیگر</li>
+<li>لینک فیزیکی یا Duplex/Speed Mismatch</li>
+</ul>
+</section>
+<section id="سناریو-3-فقط-بعضی-vlan-ها-کار-میکنند" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-3-فقط-بعضی-vlan-ها-کار-میکنند">سناریو 3: فقط بعضی VLAN ها کار می‌کنند</h3>
+<p>معمولاً فهرست <code>allowed vlan</code> ناقص است، یا یک VLAN روی یک سوئیچ ساخته نشده است.</p>
+</section>
+<section id="سناریو-4-هشدار-native-vlan-mismatch" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-4-هشدار-native-vlan-mismatch">سناریو 4: هشدار Native VLAN Mismatch</h3>
+<p>دو سر را مقایسه کن و یکسان کن. تا قبل از اصلاح، ترافیک بدون تگ ممکن است به VLAN اشتباه برسد و حتی Loop ایجاد کند.</p>
+</section>
+<section id="سناریو-5-ترافیک-vlan-بدون-دلیل-از-vlan-دیگر-دیده-میشود" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-5-ترافیک-vlan-بدون-دلیل-از-vlan-دیگر-دیده-میشود">سناریو 5: ترافیک VLAN بدون دلیل از VLAN دیگر دیده می‌شود</h3>
+<p>بررسی کن آیا Trunk ناخواسته روی یک پورت کاربر تشکیل شده (<code>show interfaces trunk</code> را روی همه سوئیچ‌ها اجرا کن و دنبال Trunk های ناشناس بگرد).</p>
+</section>
+</section>
+<section id="خطاهای-مفهومی-رایج" class="level2">
+<h2 class="anchored" data-anchor-id="خطاهای-مفهومی-رایج">11. خطاهای مفهومی رایج</h2>
+<ol type="1">
+<li><strong>«Trunk یعنی چند کابل.»</strong> نه. یک لینک فیزیکی است که چند VLAN را با تگ حمل می‌کند.</li>
+<li><strong>«همه فریم‌ها روی Trunk تگ دارند.»</strong> نه. فریم‌های Native VLAN بدون تگ ارسال می‌شوند.</li>
+<li><strong>«Native VLAN فقط یک تنظیم محلی است.»</strong> نه. اگر دو سر متفاوت باشد ترافیک به VLAN اشتباه می‌رسد.</li>
+<li><strong>«<code>allowed vlan 30</code> یک VLAN اضافه می‌کند.»</strong> نه. کل فهرست را جایگزین می‌کند. برای افزودن <code>add</code> لازم است.</li>
+<li><strong>«DTP امن است چون خودکار است.»</strong> برعکس، خودکار بودنش ریسک است.</li>
+<li><strong>«تگ VLAN روی کامپیوتر دیده می‌شود.»</strong> معمولاً نه، چون سوئیچ یا درایور آن را برمی‌دارد.</li>
+<li><strong>«اندازه تگ MTU را کم می‌کند.»</strong> نه. حداکثر اندازه فریم 1522 می‌شود، MTU (Payload) همان 1500 می‌ماند.</li>
+</ol>
+</section>
+<section id="چالش-netfleet" class="level2">
+<h2 class="anchored" data-anchor-id="چالش-netfleet">12. چالش NetFleet</h2>
+<section id="سناریو" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو">سناریو</h3>
+<p>NetFleet دو طبقه دارد و هر طبقه یک سوئیچ. VLAN 10 (کارکنان) و VLAN 20 (سرورها) باید روی هر دو طبقه وجود داشته باشند. مدیر امنیت می‌خواهد مهاجمی که کابل یک پورت کاربری را به لپ‌تاپ خود وصل می‌کند نتواند به VLAN سرورها برسد. یک تکنسین هم دستور <code>switchport trunk allowed vlan 30</code> را روی لینک بین دو سوئیچ زده و اکنون هیچ‌کس از طبقه دیگر دسترسی ندارد.</p>
+</section>
+<section id="مأموریت" class="level3">
+<h3 class="anchored" data-anchor-id="مأموریت">مأموریت</h3>
+<ol type="1">
+<li>توضیح بده چرا اشتباه تکنسین قطعی ایجاد کرد و چگونه سریع آن را بدون قطع VLAN 30 برطرف می‌کنی.</li>
+<li>پیکربندی کامل و امن Trunk بین دو سوئیچ را بنویس (شامل Native VLAN اختصاصی، VLAN های مجاز و nonegotiate).</li>
+<li>پیکربندی پورت کاربر را طوری بنویس که Switch Spoofing ممکن نباشد.</li>
+<li>توضیح بده Double Tagging چگونه کار می‌کند و کدام تنظیم شما آن را خنثی می‌کند.</li>
+<li>یک فهرست بررسی (Checklist) برای ممیزی Trunk ها بنویس.</li>
+</ol>
+</section>
+<section id="خروجی-مورد-انتظار" class="level3">
+<h3 class="anchored" data-anchor-id="خروجی-مورد-انتظار">خروجی مورد انتظار</h3>
+<p>یک سند فنی کوتاه شامل پیکربندی، توضیح خطای تکنسین، سناریوی حمله و دفاع، و Checklist ممیزی.</p>
+</section>
+</section>
+<section id="جمعبندی-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="جمعبندی-جلسه">13. جمع‌بندی جلسه</h2>
+<ul>
+<li>Access یک VLAN و بدون تگ، Trunk چند VLAN با تگ 802.1Q.</li>
+<li>تگ 802.1Q چهار بایت است (TPID، PCP، DEI، VID 12 بیتی) و حداکثر فریم را به 1522 می‌رساند.</li>
+<li>Native VLAN بدون تگ ارسال می‌شود و باید دو سر یکسان باشد.</li>
+<li><code>switchport trunk allowed vlan</code> بدون <code>add</code> کل فهرست را جایگزین می‌کند.</li>
+<li>DTP را غیرفعال کن: Access و Trunk را صریح تعیین کن و <code>nonegotiate</code> بزن.</li>
+<li>VLAN Hopping: Switch Spoofing و Double Tagging. با Native VLAN اختصاصی و حالت‌های ثابت خنثی می‌شود.</li>
+<li>عیب‌یابی Trunk: ساخته‌شدن VLAN دو سر، Trunk بودن، allowed، STP و Native.</li>
+</ul>
+</section>
+<section id="تمرینهای-پایان-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="تمرینهای-پایان-جلسه">14. تمرین‌های پایان جلسه</h2>
+<section id="تمرین-نظری" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-نظری">تمرین نظری</h3>
+<ol type="1">
+<li>جدول سازگاری حالت‌های DTP را بدون نگاه کردن بازسازی کن.</li>
+<li>فریم Double Tagged را مرحله‌به‌مرحله از مهاجم تا قربانی رسم کن.</li>
+<li>توضیح بده چرا Native VLAN باید با VLAN کاربران متفاوت باشد.</li>
+</ol>
+</section>
+<section id="تمرین-عملی" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-عملی">تمرین عملی</h3>
+<ol type="1">
+<li>آزمایش‌های بخش 9 را انجام بده و خروجی <code>show interfaces trunk</code> را در هر مرحله ذخیره کن.</li>
+<li>یک سوئیچ سوم اضافه کن و Trunk را به آن هم گسترش بده.</li>
+<li>روی همه پورت‌های کاربر <code>switchport mode access</code> و <code>nonegotiate</code> را اعمال کن و بررسی کن Trunk ناخواسته وجود ندارد.</li>
+</ol>
+</section>
+<section id="منابع-و-مطالعه-بیشتر" class="level3">
+<h3 class="anchored" data-anchor-id="منابع-و-مطالعه-بیشتر">منابع و مطالعه بیشتر</h3>
+<p><strong>کتاب‌ها</strong></p>
+<ul>
+<li><a href="https://www.informit.com/store/ccna-200-301-official-cert-guide-volume-1-9780136171584">Wendell Odom — <em>CCNA 200-301 Official Cert Guide, Volume 1</em> (Cisco Press)</a>: بخش‌های VLAN و Trunking</li>
+</ul>
+<p><strong>استانداردها</strong></p>
+<ul>
+<li><a href="https://1.ieee802.org/">IEEE 802.1 Working Group — صفحه استانداردهای 802.1</a>: IEEE 802.1Q (ساختار تگ، TPID و VID)</li>
+</ul>
+<p><strong>مستندات رسمی</strong></p>
+<ul>
+<li><a href="https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/24330-185.html">Cisco — Best Practices for Catalyst 6500/6000 and 4500/4000 Series Switches Running Cisco IOS</a>: بخش‌های DTP، Native VLAN و VLAN 1</li>
+<li>Cisco — <em>Catalyst 2960 Switch Software Configuration Guide</em>، فصل Configuring VLANs و بخش «IEEE 802.1Q Configuration Considerations»</li>
+</ul>
+<p><strong>ابزار و مرجع دستورها</strong></p>
+<ul>
+<li><a href="https://man7.org/linux/man-pages/man8/bridge.8.html">man7 — bridge(8)</a></li>
+<li><a href="https://www.wireshark.org/docs/wsug_html/">Wireshark User’s Guide</a></li>
+<li><a href="https://www.netacad.com/">Cisco Networking Academy و Packet Tracer</a></li>
+</ul>
+<blockquote class="blockquote">
+<p>برای مطالعه‌ی متن کامل استانداردهای IEEE ممکن است به نسخه‌ی خریداری‌شده یا دسترسی دانشگاهی نیاز داشته باشی. مستندات Cisco را همیشه با نسخه IOS و مدل سوئیچ خودت تطبیق بده، چون بعضی صفحات مربوط به خانواده‌های قدیمی‌تر Catalyst هستند.</p>
+</blockquote>
+</section>
+</section>
+<section id="آزمون-تعاملی-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="آزمون-تعاملی-جلسه">15. آزمون تعاملی جلسه</h2>
+
+<section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-week02-day04-title">
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-week02-day04-title" class="anchored">آزمون تعاملی جلسه چهارم هفته دوم</h2>
+    </div>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score="">0</strong></div>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress" role="progressbar" aria-label="پیشرفت آزمون" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="nf-quiz-progress-bar" data-progress=""></div>
+  </div>
+
+  <div class="nf-quiz-progress-label" data-progress-text=""></div>
+
+  <div data-content="">
+    <h3 class="nf-quiz-question anchored" data-question=""></h3>
+    <div class="nf-quiz-options" data-options=""></div>
+    <div class="nf-quiz-feedback" data-feedback="" aria-live="polite"></div>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next="" hidden="">
+        سؤال بعدی
+      </button>
+    </div>
+  </div>
+
+  <div class="nf-quiz-result" data-result="" hidden="" aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+    <h3 class="anchored">نتیجه آزمون</h3>
+    <div class="nf-quiz-result-score" data-final-score=""></div>
+    <div class="nf-quiz-result-score" data-percentage=""></div>
+    <p data-result-message=""></p>
+    <button class="nf-quiz-primary" type="button" data-restart="">
+      تلاش مجدد
+    </button>
+  </div>
+
+  <script type="application/json" data-quiz-questions="">
+[
+  {
+    "question": "پورت Trunk چه کاری انجام می‌دهد؟",
+    "options": [
+      "ترافیک چند VLAN را با تگ روی یک لینک حمل می‌کند",
+      "ترافیک را رمزگذاری می‌کند",
+      "پهنای باند را دو برابر می‌کند",
+      "فقط یک VLAN را به میزبان می‌رساند"
+    ],
+    "answer": 0,
+    "explanation": "Trunk چند VLAN را روی یک لینک فیزیکی حمل می‌کند و برای تشخیص VLAN از تگ 802.1Q استفاده می‌کند."
+  },
+  {
+    "question": "تگ 802.1Q چند بایت است؟",
+    "options": [
+      "2 بایت",
+      "4 بایت",
+      "8 بایت",
+      "12 بایت"
+    ],
+    "answer": 1,
+    "explanation": "تگ 802.1Q چهار بایت است: TPID (2 بایت) و TCI (2 بایت شامل PCP، DEI و VID)."
+  },
+  {
+    "question": "فیلد VLAN ID در تگ 802.1Q چند بیت است؟",
+    "options": [
+      "16 بیت",
+      "8 بیت",
+      "10 بیت",
+      "12 بیت"
+    ],
+    "answer": 3,
+    "explanation": "VID دوازده بیتی است که 4096 مقدار می‌دهد و پس از کنار گذاشتن مقدارهای رزرو 4094 VLAN قابل استفاده است."
+  },
+  {
+    "question": "فریم‌های Native VLAN روی Trunk چگونه ارسال می‌شوند؟",
+    "options": [
+      "رمزگذاری‌شده",
+      "فقط به صورت Broadcast",
+      "با تگ دوبل",
+      "بدون تگ (Untagged)"
+    ],
+    "answer": 3,
+    "explanation": "فریم‌های Native VLAN روی Trunk بدون تگ ارسال می‌شوند و گیرنده آن‌ها را به Native VLAN خودش نسبت می‌دهد."
+  },
+  {
+    "question": "اگر Native VLAN دو سر یک Trunk متفاوت باشد چه خطری دارد؟",
+    "options": [
+      "فریم‌های بدون تگ به VLAN اشتباه می‌رسند و CDP هشدار Mismatch می‌دهد",
+      "Trunk سرعتش نصف می‌شود",
+      "سوئیچ خاموش می‌شود",
+      "هیچ خطری ندارد"
+    ],
+    "answer": 0,
+    "explanation": "عدم تطابق باعث می‌شود ترافیک بدون تگ در VLAN های متفاوت قرار بگیرد، که ایزولاسیون را می‌شکند و لاگ NATIVE_VLAN_MISMATCH ایجاد می‌کند."
+  },
+  {
+    "question": "کدام دستور وضعیت Trunk، VLAN های مجاز و Native VLAN را نشان می‌دهد؟",
+    "options": [
+      "show vlan brief",
+      "show interfaces trunk",
+      "show mac address-table",
+      "show ip interface brief"
+    ],
+    "answer": 1,
+    "explanation": "show interfaces trunk حالت، Encapsulation، Native VLAN و فهرست VLAN های مجاز را نمایش می‌دهد."
+  },
+  {
+    "question": "چرا توصیه می‌شود DTP غیرفعال شود (switchport nonegotiate و حالت‌های ثابت)؟",
+    "options": [
+      "چون DTP VLAN ها را حذف می‌کند",
+      "چون DTP پهنای باند مصرف می‌کند",
+      "چون مهاجم می‌تواند با DTP لینک را به Trunk تبدیل کند (Switch Spoofing)",
+      "چون DTP فقط روی IPv6 کار می‌کند"
+    ],
+    "answer": 2,
+    "explanation": "حالت‌های dynamic اجازه می‌دهند دستگاه مهاجم با فریم DTP یک Trunk تشکیل دهد و به همه VLAN ها دسترسی بگیرد."
+  },
+  {
+    "question": "حمله Double Tagging به کدام ویژگی تکیه دارد؟",
+    "options": [
+      "ضعف پروتکل ARP",
+      "تغییر آدرس MAC سوئیچ",
+      "پرتاب فریم‌های بزرگ",
+      "بدون تگ بودن Native VLAN روی Trunk"
+    ],
+    "answer": 3,
+    "explanation": "سوئیچ اول تگ بیرونی Native VLAN را برمی‌دارد و تگ داخلی روی Trunk می‌رود و در VLAN قربانی تحویل داده می‌شود."
+  },
+  {
+    "question": "دستور switchport trunk allowed vlan 30 (بدون add) روی Trunk فعال چه می‌کند؟",
+    "options": [
+      "کل فهرست مجاز را با VLAN 30 جایگزین می‌کند",
+      "VLAN 30 را حذف می‌کند",
+      "Native VLAN را 30 می‌کند",
+      "VLAN 30 را به فهرست اضافه می‌کند"
+    ],
+    "answer": 0,
+    "explanation": "بدون add یا remove دستور فهرست را جایگزین می‌کند و بقیه VLAN ها روی Trunk قطع می‌شوند."
+  },
+  {
+    "question": "کدام توصیف درباره حداکثر اندازه فریم با تگ 802.1Q درست است؟",
+    "options": [
+      "حداکثر به 1518 بایت کاهش می‌یابد",
+      "حداکثر 1522 بایت می‌شود در حالی که MTU همان 1500 می‌ماند",
+      "MTU به 1496 تغییر می‌کند و فریم 1518 می‌ماند",
+      "تگ تأثیری بر اندازه ندارد"
+    ],
+    "answer": 1,
+    "explanation": "تگ 4 بایت اضافه می‌کند، پس حداکثر فریم 1522 بایت است؛ MTU (اندازه Payload) همان 1500 بایت است."
+  }
+]
+  </script>
+</section>
 </section>
 </section>
 
@@ -416,7 +941,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/IMPalermo\.github\.io\/netfleet-docs\/");
+        var filterRegex = new RegExp("https:\/\/impalermo\.github\.io\/netfleet-docs");
       const newWindowLabel = "(opens in a new tab)";
       const newWindowNoteId = "quarto-ext-newwindow-label";
       // Links reference one hidden label through aria-describedby, so the

@@ -26,41 +26,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -156,23 +121,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#spanning-tree-fundamentals" id="toc-spanning-tree-fundamentals" class="nav-link active" data-scroll-target="#spanning-tree-fundamentals">Spanning Tree Fundamentals</a>
+  <li><a href="#جلسه-پنجم-هفته-دوم-مبانی-spanning-tree" id="toc-جلسه-پنجم-هفته-دوم-مبانی-spanning-tree" class="nav-link active" data-scroll-target="#جلسه-پنجم-هفته-دوم-مبانی-spanning-tree">جلسه پنجم هفته دوم: مبانی Spanning Tree</a>
   <ul class="collapse">
+  <li><a href="#مقدمه-جلسه" id="toc-مقدمه-جلسه" class="nav-link" data-scroll-target="#مقدمه-جلسه">مقدمه جلسه</a></li>
   <li><a href="#اهداف-یادگیری" id="toc-اهداف-یادگیری" class="nav-link" data-scroll-target="#اهداف-یادگیری">اهداف یادگیری</a></li>
-  <li><a href="#جایگاه-موضوع-در-مسیر-مهندسی" id="toc-جایگاه-موضوع-در-مسیر-مهندسی" class="nav-link" data-scroll-target="#جایگاه-موضوع-در-مسیر-مهندسی">1. جایگاه موضوع در مسیر مهندسی</a></li>
-  <li><a href="#مفاهیم-کلیدی" id="toc-مفاهیم-کلیدی" class="nav-link" data-scroll-target="#مفاهیم-کلیدی">2. مفاهیم کلیدی</a></li>
-  <li><a href="#دیدگاه-مهندسی" id="toc-دیدگاه-مهندسی" class="nav-link" data-scroll-target="#دیدگاه-مهندسی">3. دیدگاه مهندسی</a></li>
-  <li><a href="#آزمایشگاه-عملی" id="toc-آزمایشگاه-عملی" class="nav-link" data-scroll-target="#آزمایشگاه-عملی">4. آزمایشگاه عملی</a>
+  <li><a href="#چرا-loop-در-لایه-2-خطرناک-است" id="toc-چرا-loop-در-لایه-2-خطرناک-است" class="nav-link" data-scroll-target="#چرا-loop-در-لایه-2-خطرناک-است">1. چرا Loop در لایه 2 خطرناک است؟</a></li>
+  <li><a href="#ایده-اصلی-stp" id="toc-ایده-اصلی-stp" class="nav-link" data-scroll-target="#ایده-اصلی-stp">2. ایده اصلی STP</a></li>
+  <li><a href="#bridge-id-و-انتخاب-root-bridge" id="toc-bridge-id-و-انتخاب-root-bridge" class="nav-link" data-scroll-target="#bridge-id-و-انتخاب-root-bridge">3. Bridge ID و انتخاب Root Bridge</a>
   <ul class="collapse">
-  <li><a href="#آزمایشگاه-پایه" id="toc-آزمایشگاه-پایه" class="nav-link" data-scroll-target="#آزمایشگاه-پایه">آزمایشگاه پایه</a></li>
-  <li><a href="#گزارش-آزمایشگاه" id="toc-گزارش-آزمایشگاه" class="nav-link" data-scroll-target="#گزارش-آزمایشگاه">گزارش آزمایشگاه</a></li>
+  <li><a href="#extended-system-id-در-pvst" id="toc-extended-system-id-در-pvst" class="nav-link" data-scroll-target="#extended-system-id-در-pvst">Extended System ID در PVST+</a></li>
+  <li><a href="#خطر-root-تصادفی" id="toc-خطر-root-تصادفی" class="nav-link" data-scroll-target="#خطر-root-تصادفی">خطر: Root تصادفی</a></li>
   </ul></li>
-  <li><a href="#سناریوی-عیبیابی" id="toc-سناریوی-عیبیابی" class="nav-link" data-scroll-target="#سناریوی-عیبیابی">5. سناریوی عیب‌یابی</a></li>
-  <li><a href="#ارتباط-با-netfleet" id="toc-ارتباط-با-netfleet" class="nav-link" data-scroll-target="#ارتباط-با-netfleet">6. ارتباط با NetFleet</a></li>
-  <li><a href="#تمرین-و-ارزیابی" id="toc-تمرین-و-ارزیابی" class="nav-link" data-scroll-target="#تمرین-و-ارزیابی">7. تمرین و ارزیابی</a></li>
-  <li><a href="#تکلیف" id="toc-تکلیف" class="nav-link" data-scroll-target="#تکلیف">8. تکلیف</a></li>
-  <li><a href="#معیار-تکمیل-جلسه" id="toc-معیار-تکمیل-جلسه" class="nav-link" data-scroll-target="#معیار-تکمیل-جلسه">معیار تکمیل جلسه</a></li>
-  <li><a href="#منابع-پیشنهادی-برای-مطالعه-بیشتر" id="toc-منابع-پیشنهادی-برای-مطالعه-بیشتر" class="nav-link" data-scroll-target="#منابع-پیشنهادی-برای-مطالعه-بیشتر">منابع پیشنهادی برای مطالعه بیشتر</a></li>
+  <li><a href="#هزینه-مسیر-path-cost" id="toc-هزینه-مسیر-path-cost" class="nav-link" data-scroll-target="#هزینه-مسیر-path-cost">4. هزینه مسیر (Path Cost)</a></li>
+  <li><a href="#سه-مرحله-انتخاب" id="toc-سه-مرحله-انتخاب" class="nav-link" data-scroll-target="#سه-مرحله-انتخاب">5. سه مرحله انتخاب</a>
+  <ul class="collapse">
+  <li><a href="#مرحله-1-root-bridge" id="toc-مرحله-1-root-bridge" class="nav-link" data-scroll-target="#مرحله-1-root-bridge">مرحله 1: Root Bridge</a></li>
+  <li><a href="#مرحله-2-root-port-روی-هر-سوئیچ-غیر-root" id="toc-مرحله-2-root-port-روی-هر-سوئیچ-غیر-root" class="nav-link" data-scroll-target="#مرحله-2-root-port-روی-هر-سوئیچ-غیر-root">مرحله 2: Root Port (روی هر سوئیچ غیر Root)</a></li>
+  <li><a href="#مرحله-3-designated-port-روی-هر-قطعه" id="toc-مرحله-3-designated-port-روی-هر-قطعه" class="nav-link" data-scroll-target="#مرحله-3-designated-port-روی-هر-قطعه">مرحله 3: Designated Port (روی هر قطعه)</a></li>
+  </ul></li>
+  <li><a href="#مثال-حلشده-سه-سوئیچ" id="toc-مثال-حلشده-سه-سوئیچ" class="nav-link" data-scroll-target="#مثال-حلشده-سه-سوئیچ">6. مثال حل‌شده: سه سوئیچ</a></li>
+  <li><a href="#وضعیت-پورتها-در-802.1d" id="toc-وضعیت-پورتها-در-802.1d" class="nav-link" data-scroll-target="#وضعیت-پورتها-در-802.1d">7. وضعیت پورت‌ها در 802.1D</a></li>
+  <li><a href="#rstp-802.1w-نسخه-سریع" id="toc-rstp-802.1w-نسخه-سریع" class="nav-link" data-scroll-target="#rstp-802.1w-نسخه-سریع">8. RSTP (802.1w): نسخه سریع</a>
+  <ul class="collapse">
+  <li><a href="#حالتهای-stp-در-سیسکو" id="toc-حالتهای-stp-در-سیسکو" class="nav-link" data-scroll-target="#حالتهای-stp-در-سیسکو">حالت‌های STP در سیسکو</a></li>
+  </ul></li>
+  <li><a href="#کنترل-root-bridge-و-بار" id="toc-کنترل-root-bridge-و-بار" class="nav-link" data-scroll-target="#کنترل-root-bridge-و-بار">9. کنترل Root Bridge و بار</a>
+  <ul class="collapse">
+  <li><a href="#انتخاب-root-با-تنظیم-priority" id="toc-انتخاب-root-با-تنظیم-priority" class="nav-link" data-scroll-target="#انتخاب-root-با-تنظیم-priority">انتخاب Root با تنظیم Priority</a></li>
+  <li><a href="#توزیع-بار-با-root-متفاوت" id="toc-توزیع-بار-با-root-متفاوت" class="nav-link" data-scroll-target="#توزیع-بار-با-root-متفاوت">توزیع بار با Root متفاوت</a></li>
+  </ul></li>
+  <li><a href="#ابزارهای-حفاظتی" id="toc-ابزارهای-حفاظتی" class="nav-link" data-scroll-target="#ابزارهای-حفاظتی">10. ابزارهای حفاظتی</a>
+  <ul class="collapse">
+  <li><a href="#portfast" id="toc-portfast" class="nav-link" data-scroll-target="#portfast">PortFast</a></li>
+  <li><a href="#bpdu-guard" id="toc-bpdu-guard" class="nav-link" data-scroll-target="#bpdu-guard">BPDU Guard</a></li>
+  <li><a href="#root-guard" id="toc-root-guard" class="nav-link" data-scroll-target="#root-guard">Root Guard</a></li>
+  <li><a href="#loop-guard-و-udld" id="toc-loop-guard-و-udld" class="nav-link" data-scroll-target="#loop-guard-و-udld">Loop Guard و UDLD</a></li>
+  </ul></li>
+  <li><a href="#آزمایش-عملی-در-packet-tracer" id="toc-آزمایش-عملی-در-packet-tracer" class="nav-link" data-scroll-target="#آزمایش-عملی-در-packet-tracer">11. آزمایش عملی در Packet Tracer</a>
+  <ul class="collapse">
+  <li><a href="#توپولوژی" id="toc-توپولوژی" class="nav-link" data-scroll-target="#توپولوژی">توپولوژی</a></li>
+  <li><a href="#مراحل" id="toc-مراحل" class="nav-link" data-scroll-target="#مراحل">مراحل</a></li>
+  <li><a href="#نمونه-خروجی-show-spanning-tree-روی-root" id="toc-نمونه-خروجی-show-spanning-tree-روی-root" class="nav-link" data-scroll-target="#نمونه-خروجی-show-spanning-tree-روی-root">نمونه خروجی <code>show spanning-tree</code> (روی Root)</a></li>
+  <li><a href="#سؤالها" id="toc-سؤالها" class="nav-link" data-scroll-target="#سؤالها">سؤال‌ها</a></li>
+  </ul></li>
+  <li><a href="#آزمایش-شبیهسازی-loop-و-محافظت-با-احتیاط" id="toc-آزمایش-شبیهسازی-loop-و-محافظت-با-احتیاط" class="nav-link" data-scroll-target="#آزمایش-شبیهسازی-loop-و-محافظت-با-احتیاط">12. آزمایش: شبیه‌سازی Loop و محافظت (با احتیاط)</a></li>
+  <li><a href="#عیبیابی-مهندسی-stp" id="toc-عیبیابی-مهندسی-stp" class="nav-link" data-scroll-target="#عیبیابی-مهندسی-stp">13. عیب‌یابی مهندسی STP</a>
+  <ul class="collapse">
+  <li><a href="#سناریو-1-شبکه-ناگهان-بسیار-کند-یا-قطع-میشود-چراغها-دیوانهوار-چشمک-میزنند" id="toc-سناریو-1-شبکه-ناگهان-بسیار-کند-یا-قطع-میشود-چراغها-دیوانهوار-چشمک-میزنند" class="nav-link" data-scroll-target="#سناریو-1-شبکه-ناگهان-بسیار-کند-یا-قطع-میشود-چراغها-دیوانهوار-چشمک-میزنند">سناریو 1: شبکه ناگهان بسیار کند یا قطع می‌شود، چراغ‌ها دیوانه‌وار چشمک می‌زنند</a></li>
+  <li><a href="#سناریو-2-root-bridge-نادرست" id="toc-سناریو-2-root-bridge-نادرست" class="nav-link" data-scroll-target="#سناریو-2-root-bridge-نادرست">سناریو 2: Root Bridge نادرست</a></li>
+  <li><a href="#سناریو-3-تغییرات-مکرر-توپولوژی-topology-change" id="toc-سناریو-3-تغییرات-مکرر-توپولوژی-topology-change" class="nav-link" data-scroll-target="#سناریو-3-تغییرات-مکرر-توپولوژی-topology-change">سناریو 3: تغییرات مکرر توپولوژی (Topology Change)</a></li>
+  <li><a href="#سناریو-4-پورت-به-err-disabled-رفته-bpdu-guard" id="toc-سناریو-4-پورت-به-err-disabled-رفته-bpdu-guard" class="nav-link" data-scroll-target="#سناریو-4-پورت-به-err-disabled-رفته-bpdu-guard">سناریو 4: پورت به Err-disabled رفته (BPDU Guard)</a></li>
+  <li><a href="#سناریو-5-لینک-اضافه-کار-نمیکند-مثلا-دو-لینک-موازی-و-یکی-بلااستفاده" id="toc-سناریو-5-لینک-اضافه-کار-نمیکند-مثلا-دو-لینک-موازی-و-یکی-بلااستفاده" class="nav-link" data-scroll-target="#سناریو-5-لینک-اضافه-کار-نمیکند-مثلا-دو-لینک-موازی-و-یکی-بلااستفاده">سناریو 5: لینک اضافه کار نمی‌کند (مثلاً دو لینک موازی و یکی بلااستفاده)</a></li>
+  </ul></li>
+  <li><a href="#خطاهای-مفهومی-رایج" id="toc-خطاهای-مفهومی-رایج" class="nav-link" data-scroll-target="#خطاهای-مفهومی-رایج">14. خطاهای مفهومی رایج</a></li>
+  <li><a href="#چالش-netfleet" id="toc-چالش-netfleet" class="nav-link" data-scroll-target="#چالش-netfleet">15. چالش NetFleet</a>
+  <ul class="collapse">
+  <li><a href="#سناریو" id="toc-سناریو" class="nav-link" data-scroll-target="#سناریو">سناریو</a></li>
+  <li><a href="#مأموریت" id="toc-مأموریت" class="nav-link" data-scroll-target="#مأموریت">مأموریت</a></li>
+  <li><a href="#خروجی-مورد-انتظار" id="toc-خروجی-مورد-انتظار" class="nav-link" data-scroll-target="#خروجی-مورد-انتظار">خروجی مورد انتظار</a></li>
+  </ul></li>
+  <li><a href="#جمعبندی-جلسه" id="toc-جمعبندی-جلسه" class="nav-link" data-scroll-target="#جمعبندی-جلسه">16. جمع‌بندی جلسه</a></li>
+  <li><a href="#تمرینهای-پایان-جلسه" id="toc-تمرینهای-پایان-جلسه" class="nav-link" data-scroll-target="#تمرینهای-پایان-جلسه">17. تمرین‌های پایان جلسه</a>
+  <ul class="collapse">
+  <li><a href="#تمرین-نظری" id="toc-تمرین-نظری" class="nav-link" data-scroll-target="#تمرین-نظری">تمرین نظری</a></li>
+  <li><a href="#تمرین-عملی" id="toc-تمرین-عملی" class="nav-link" data-scroll-target="#تمرین-عملی">تمرین عملی</a></li>
+  <li><a href="#منابع-و-مطالعه-بیشتر" id="toc-منابع-و-مطالعه-بیشتر" class="nav-link" data-scroll-target="#منابع-و-مطالعه-بیشتر">منابع و مطالعه بیشتر</a></li>
+  </ul></li>
+  <li><a href="#آزمون-تعاملی-جلسه" id="toc-آزمون-تعاملی-جلسه" class="nav-link" data-scroll-target="#آزمون-تعاملی-جلسه">18. آزمون تعاملی جلسه</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -183,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Spanning Tree Fundamentals</h1>
-<p class="subtitle lead">Networking Fundamentals | Week 2 | Day 5</p>
+<p class="subtitle lead">جلوگیری از Loop در لایه ۲: STP، RSTP، انتخاب Root و حفاظت پورت‌ها</p>
 </div>
 
 
@@ -200,143 +215,657 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="spanning-tree-fundamentals" class="level1 persian">
-<h1>Spanning Tree Fundamentals</h1>
-<p><strong>مسیر:</strong> شبکه<br>
-<strong>هفته:</strong> 2، Switching Fundamentals<br>
-<strong>جلسه:</strong> 5 از ۵</p>
+<section id="جلسه-پنجم-هفته-دوم-مبانی-spanning-tree" class="level1 persian">
+<h1>جلسه پنجم هفته دوم: مبانی Spanning Tree</h1>
+<section id="مقدمه-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="مقدمه-جلسه">مقدمه جلسه</h2>
+<p>برای اینکه شبکه با خرابی یک لینک یا سوئیچ از کار نیفتد، مهندسان <strong>مسیر اضافه (Redundancy)</strong> می‌گذارند: دو سوئیچ را با دو کابل به هم وصل می‌کنند. اما در لایه 2 اترنت این کار یک مشکل بزرگ دارد: <strong>Loop</strong>. فریم اترنت هیچ مکانیزمی مثل TTL ندارد. فریمی که در یک حلقه بیفتد تا ابد می‌چرخد و در دقایقی کل شبکه را از کار می‌اندازد.</p>
+<p><strong>Spanning Tree Protocol (STP)</strong> این تناقض را حل می‌کند: لینک‌های اضافه را فیزیکی نگه می‌دارد ولی به‌طور منطقی بعضی از آن‌ها را <strong>مسدود (Block)</strong> می‌کند تا توپولوژی بدون حلقه (درخت) بماند. وقتی لینک فعال خراب شود، لینک مسدود فعال می‌شود. این جلسه نحوه عملکرد STP و RSTP، انتخاب Root Bridge، نقش و وضعیت پورت‌ها، و ابزارهای حفاظتی را پوشش می‌دهد.</p>
+</section>
 <section id="اهداف-یادگیری" class="level2">
 <h2 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h2>
-<p>در پایان این جلسه باید بتوانی: - مفهوم Spanning Tree Fundamentals را با زبان خودت توضیح بدهی. - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی. - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی. - یک آزمایش کنترل‌شده اجرا و نتیجه آن را مستند کنی. - خطاها، محدودیت‌ها و ملاحظات امنیتی را توضیح بدهی.</p>
-</section>
-<section id="جایگاه-موضوع-در-مسیر-مهندسی" class="level2">
-<h2 class="anchored" data-anchor-id="جایگاه-موضوع-در-مسیر-مهندسی">1. جایگاه موضوع در مسیر مهندسی</h2>
-<p>این جلسه بخشی از مسیر <strong>شبکه</strong> است. موضوع «Spanning Tree Fundamentals» را باید در ارتباط با مباحث قبلی و بعدی ببینی، نه به‌عنوان یک دستور یا مفهوم جداافتاده.</p>
-<p>در کار مهندسی، هدف فقط حفظ کردن اصطلاحات نیست. باید بتوانی مسئله را تعریف کنی، شواهد جمع‌آوری کنی، فرضیه بسازی، آن را آزمایش کنی و نتیجه را با دقت گزارش بدهی.</p>
-</section>
-<section id="مفاهیم-کلیدی" class="level2">
-<h2 class="anchored" data-anchor-id="مفاهیم-کلیدی">2. مفاهیم کلیدی</h2>
-<p>هنگام مطالعه این موضوع، این پرسش‌ها را پاسخ بده:</p>
-<ol type="1">
-<li>این فناوری یا مفهوم چه مسئله‌ای را حل می‌کند؟</li>
-<li>اجزای اصلی آن چیست و هر جزء چه مسئولیتی دارد؟</li>
-<li>ورودی، خروجی و وابستگی‌های آن کدام‌اند؟</li>
-<li>در چه شرایطی درست کار نمی‌کند؟</li>
-<li>چه خطاهای پیکربندی یا عملیاتی در آن رایج‌اند؟</li>
-<li>چه داده‌ای برای تشخیص وضعیت آن باید جمع‌آوری شود؟</li>
-</ol>
-<p>واژگان جدید را در یک واژه‌نامه شخصی ثبت کن. برای هر اصطلاح، تعریف فارسی، نام انگلیسی و یک مثال فنی بنویس.</p>
-</section>
-<section id="دیدگاه-مهندسی" class="level2">
-<h2 class="anchored" data-anchor-id="دیدگاه-مهندسی">3. دیدگاه مهندسی</h2>
-<p>برای تحلیل درست، بین این سه مورد تفاوت بگذار:</p>
+<p>در پایان این جلسه باید بتوانی:</p>
 <ul>
-<li><strong>Configuration:</strong> چیزی که تنظیم شده است.</li>
-<li><strong>Operational State:</strong> وضعیتی که سیستم واقعاً در آن قرار دارد.</li>
-<li><strong>Observed Evidence:</strong> شواهدی که از خروجی ابزارها، لاگ‌ها یا تست‌ها به دست می‌آیند.</li>
+<li>توضیح بدهی چرا Loop در اترنت خطرناک است (Broadcast Storm، MAC Flapping، فریم تکراری).</li>
+<li>سه مرحله اصلی STP را شرح بدهی: انتخاب Root Bridge، Root Port و Designated Port.</li>
+<li>Bridge ID و Path Cost را محاسبه و در یک توپولوژی ساده نقش پورت‌ها را مشخص کنی.</li>
+<li>تفاوت STP (802.1D) و RSTP (802.1w) را توضیح بدهی.</li>
+<li>Root Bridge را کنترل کنی و PortFast، BPDU Guard و Root Guard را درست به کار ببری.</li>
+<li>نشانه‌های Loop و مشکل STP را عیب‌یابی کنی.</li>
 </ul>
-<p>این سه مورد همیشه یکسان نیستند. یک پیکربندی صحیح لزوماً تضمین نمی‌کند سرویس در عمل سالم باشد.</p>
 </section>
-<section id="آزمایشگاه-عملی" class="level2">
-<h2 class="anchored" data-anchor-id="آزمایشگاه-عملی">4. آزمایشگاه عملی</h2>
-<section id="آزمایشگاه-پایه" class="level3">
-<h3 class="anchored" data-anchor-id="آزمایشگاه-پایه">آزمایشگاه پایه</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Get-NetAdapter</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Get-NetIPConfiguration</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Get-NetRoute <span class="op">-</span>AddressFamily IPv4</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Test-NetConnection <span class="dv">1.1</span><span class="op">.</span><span class="dv">1.1</span> <span class="op">-</span>Port <span class="dv">443</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>خروجی را ثبت کن، فیلدهای مهم را توضیح بده و مشخص کن کدام بخش از موضوع امروز را نشان می‌دهد.</p>
+<section id="چرا-loop-در-لایه-2-خطرناک-است" class="level2">
+<h2 class="anchored" data-anchor-id="چرا-loop-در-لایه-2-خطرناک-است">1. چرا Loop در لایه 2 خطرناک است؟</h2>
+<p>سه مشکل همزمان رخ می‌دهد:</p>
+<ol type="1">
+<li><strong>Broadcast Storm:</strong> سوئیچ‌ها Broadcast را روی همه پورت‌ها Flood می‌کنند. در حلقه، هر کپی دوباره Flood می‌شود و تعداد فریم‌ها به‌صورت نمایی بالا می‌رود تا پهنای باند و CPU تمام شود.</li>
+<li><strong>MAC Flapping:</strong> یک فریم از چند مسیر می‌رسد و سوئیچ MAC مبدأ را مرتب از پورت‌های مختلف یاد می‌گیرد و جدول MAC ناپایدار می‌شود (جلسه دوم).</li>
+<li><strong>فریم تکراری:</strong> میزبان ممکن است چند نسخه از یک فریم دریافت کند.</li>
+</ol>
+<p>اترنت TTL ندارد، پس فریم خودش هرگز منقضی نمی‌شود. تنها راه، قطع فیزیکی حلقه یا جلوگیری از شکل‌گیری آن است، و کار STP همین است.</p>
 </section>
-<section id="گزارش-آزمایشگاه" class="level3">
-<h3 class="anchored" data-anchor-id="گزارش-آزمایشگاه">گزارش آزمایشگاه</h3>
-<p>گزارش خود را با این قالب تکمیل کن:</p>
+<section id="ایده-اصلی-stp" class="level2">
+<h2 class="anchored" data-anchor-id="ایده-اصلی-stp">2. ایده اصلی STP</h2>
+<p>سوئیچ‌ها با تبادل پیام‌هایی به نام <strong>BPDU (Bridge Protocol Data Unit)</strong> با یکدیگر درباره توپولوژی توافق می‌کنند:</p>
+<ol type="1">
+<li>یک سوئیچ به‌عنوان <strong>Root Bridge</strong> (ریشه درخت) انتخاب می‌شود.</li>
+<li>هر سوئیچ غیر Root بهترین مسیر به Root را پیدا می‌کند (<strong>Root Port</strong>).</li>
+<li>روی هر قطعه شبکه (Segment) یک سوئیچ مسئول رساندن ترافیک به Root می‌شود (<strong>Designated Port</strong>).</li>
+<li>پورت‌هایی که نه Root هستند و نه Designated <strong>مسدود</strong> می‌شوند.</li>
+</ol>
+<p>BPDU ها به آدرس Multicast <code>01:80:C2:00:00:00</code> ارسال می‌شوند و Root Bridge هر 2 ثانیه (Hello Time) BPDU می‌فرستد.</p>
+</section>
+<section id="bridge-id-و-انتخاب-root-bridge" class="level2">
+<h2 class="anchored" data-anchor-id="bridge-id-و-انتخاب-root-bridge">3. Bridge ID و انتخاب Root Bridge</h2>
+<p>هر سوئیچ یک <strong>Bridge ID</strong> دارد:</p>
+<pre class="text"><code>Bridge ID = Priority + MAC Address</code></pre>
+<ul>
+<li><strong>Priority:</strong> پیش‌فرض 32768</li>
+<li><strong>MAC:</strong> آدرس MAC سوئیچ</li>
+</ul>
+<p><strong>سوئیچ با کوچک‌ترین Bridge ID برنده Root می‌شود.</strong> اول Priority مقایسه می‌شود و اگر برابر بود MAC.</p>
+<section id="extended-system-id-در-pvst" class="level3">
+<h3 class="anchored" data-anchor-id="extended-system-id-در-pvst">Extended System ID در PVST+</h3>
+<p>سوئیچ‌های سیسکو به‌طور پیش‌فرض برای هر VLAN یک نمونه STP جدا اجرا می‌کنند (PVST+). برای این کار شماره VLAN در Priority جاسازی می‌شود، بنابراین Priority واقعی = مضرب 4096 + شماره VLAN. برای VLAN 1: <code>32768 + 1 = 32769</code>. به همین دلیل مقدارهای Priority قابل تنظیم فقط مضرب 4096 هستند (0، 4096، 8192، … تا 61440).</p>
+</section>
+<section id="خطر-root-تصادفی" class="level3">
+<h3 class="anchored" data-anchor-id="خطر-root-تصادفی">خطر: Root تصادفی</h3>
+<p>اگر هیچ تنظیمی نکنی، سوئیچی که <strong>MAC کوچک‌تر دارد</strong> (معمولاً قدیمی‌ترین سوئیچ) Root می‌شود. ممکن است یک سوئیچ ضعیف دسترسی در گوشه ساختمان Root شود و تمام ترافیک شبکه از آن عبور کند. برای همین باید Root را <strong>عمداً</strong> انتخاب کنی (معمولاً سوئیچ Core).</p>
+</section>
+</section>
+<section id="هزینه-مسیر-path-cost" class="level2">
+<h2 class="anchored" data-anchor-id="هزینه-مسیر-path-cost">4. هزینه مسیر (Path Cost)</h2>
+<p>هزینه یک لینک بر اساس سرعت آن است. مقدارهای رایج روش کوتاه (802.1D قدیمی):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>بخش</th>
-<th>چیزی که باید ثبت شود</th>
+<th>سرعت</th>
+<th>Cost (روش کوتاه)</th>
+<th>Cost (روش بلند 802.1t)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>هدف</td>
-<td>چه چیزی را می‌خواهی بررسی کنی؟</td>
+<td>10 Mbps</td>
+<td>100</td>
+<td>2,000,000</td>
 </tr>
 <tr class="even">
-<td>محیط</td>
-<td>سیستم‌عامل، ابزار و نسخه</td>
+<td>100 Mbps</td>
+<td>19</td>
+<td>200,000</td>
 </tr>
 <tr class="odd">
-<td>فرضیه</td>
-<td>انتظار داری چه اتفاقی بیفتد؟</td>
+<td>1 Gbps</td>
+<td>4</td>
+<td>20,000</td>
 </tr>
 <tr class="even">
-<td>اجرا</td>
-<td>مراحل و دستورهای اجراشده</td>
-</tr>
-<tr class="odd">
-<td>مشاهده</td>
-<td>خروجی واقعی</td>
-</tr>
-<tr class="even">
-<td>تحلیل</td>
-<td>نتیجه چه معنایی دارد؟</td>
-</tr>
-<tr class="odd">
-<td>محدودیت</td>
-<td>چه چیزی هنوز اثبات نشده است؟</td>
+<td>10 Gbps</td>
+<td>2</td>
+<td>2,000</td>
 </tr>
 </tbody>
 </table>
+<p>سوئیچ‌های جدید معمولاً از روش بلند استفاده می‌کنند چون لینک‌های 10G و بالاتر در روش کوتاه قابل تمایز نیستند. نکته مهم: همه سوئیچ‌های یک شبکه باید از یک روش استفاده کنند وگرنه مقایسه Cost ها بی‌معنی می‌شود.</p>
+<p><strong>Root Path Cost</strong> مجموع Cost لینک‌های خروجی در مسیر تا Root است.</p>
 </section>
+<section id="سه-مرحله-انتخاب" class="level2">
+<h2 class="anchored" data-anchor-id="سه-مرحله-انتخاب">5. سه مرحله انتخاب</h2>
+<section id="مرحله-1-root-bridge" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-1-root-bridge">مرحله 1: Root Bridge</h3>
+<p>کوچک‌ترین Bridge ID. همه پورت‌های Root Bridge <strong>Designated</strong> هستند.</p>
 </section>
-<section id="سناریوی-عیبیابی" class="level2">
-<h2 class="anchored" data-anchor-id="سناریوی-عیبیابی">5. سناریوی عیب‌یابی</h2>
-<p>فرض کن بخشی از زیرساخت مطابق انتظار کار نمی‌کند.</p>
+<section id="مرحله-2-root-port-روی-هر-سوئیچ-غیر-root" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-2-root-port-روی-هر-سوئیچ-غیر-root">مرحله 2: Root Port (روی هر سوئیچ غیر Root)</h3>
+<p>پورتی که کمترین <strong>Root Path Cost</strong> را دارد. اگر برابر بود به ترتیب:</p>
 <ol type="1">
-<li>محدوده مشکل را مشخص کن.</li>
-<li>آخرین تغییرات را بررسی کن.</li>
-<li>وضعیت فعلی را بدون ایجاد تغییر جمع‌آوری کن.</li>
-<li>فرضیه‌های محتمل را از ساده به پیچیده مرتب کن.</li>
-<li>هر فرضیه را با یک آزمایش مشخص بررسی کن.</li>
-<li>نتیجه و شواهد را مستند کن.</li>
-</ol>
-<p>از تغییر هم‌زمان چند متغیر خودداری کن؛ در غیر این صورت تشخیص علت واقعی دشوار می‌شود.</p>
-</section>
-<section id="ارتباط-با-netfleet" class="level2">
-<h2 class="anchored" data-anchor-id="ارتباط-با-netfleet">6. ارتباط با NetFleet</h2>
-<p>در پروژه NetFleet باید بتوانیم دانش این جلسه را به یک قابلیت قابل اندازه‌گیری تبدیل کنیم.</p>
-<p>به این پرسش پاسخ بده:</p>
-<p><strong>اگر بخواهیم موضوع «Spanning Tree Fundamentals» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟</strong></p>
-<p>طرح اولیه خود را با سه بخش بنویس: - Data Source - Validation Rule - Expected Output</p>
-</section>
-<section id="تمرین-و-ارزیابی" class="level2">
-<h2 class="anchored" data-anchor-id="تمرین-و-ارزیابی">7. تمرین و ارزیابی</h2>
-<ol type="1">
-<li>موضوع امروز را در پنج جمله توضیح بده.</li>
-<li>سه اصطلاح مهم آن را تعریف کن.</li>
-<li>یک کاربرد واقعی و یک محدودیت آن را نام ببر.</li>
-<li>یک خطای رایج را توضیح بده و روش تشخیص آن را بنویس.</li>
-<li>مشخص کن چه چیزی را می‌توان خودکار کرد و چه چیزی به تأیید انسانی نیاز دارد.</li>
+<li>کوچک‌ترین Bridge ID فرستنده (همسایه)</li>
+<li>کوچک‌ترین Port Priority فرستنده</li>
+<li>کوچک‌ترین Port ID فرستنده</li>
 </ol>
 </section>
-<section id="تکلیف" class="level2">
-<h2 class="anchored" data-anchor-id="تکلیف">8. تکلیف</h2>
-<p>یک گزارش کوتاه فنی تهیه کن که شامل هدف، معماری یا مفهوم، مراحل آزمایش، شواهد، نتیجه‌گیری و منابع باشد. از ادعایی که با آزمایش یا منبع معتبر پشتیبانی نمی‌شود خودداری کن.</p>
+<section id="مرحله-3-designated-port-روی-هر-قطعه" class="level3">
+<h3 class="anchored" data-anchor-id="مرحله-3-designated-port-روی-هر-قطعه">مرحله 3: Designated Port (روی هر قطعه)</h3>
+<p>روی هر لینک، پورتی که BPDU بهتر (Root Path Cost کمتر، سپس Bridge ID کوچک‌تر) ارسال می‌کند Designated است. پورتی که نه Root و نه Designated باشد <strong>مسدود (Alternate/Blocking)</strong> می‌شود.</p>
 </section>
-<section id="معیار-تکمیل-جلسه" class="level2">
-<h2 class="anchored" data-anchor-id="معیار-تکمیل-جلسه">معیار تکمیل جلسه</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">می‌توانم مفهوم را بدون نگاه به جزوه توضیح بدهم.</label></li>
-<li><label><input type="checkbox">می‌توانم آزمایش را دوباره اجرا کنم.</label></li>
-<li><label><input type="checkbox">خروجی را می‌توانم تفسیر کنم.</label></li>
-<li><label><input type="checkbox">محدودیت‌ها و ریسک‌ها را می‌شناسم.</label></li>
-<li><label><input type="checkbox">می‌توانم کاربرد آن را در NetFleet شرح بدهم.</label></li>
+</section>
+<section id="مثال-حلشده-سه-سوئیچ" class="level2">
+<h2 class="anchored" data-anchor-id="مثال-حلشده-سه-سوئیچ">6. مثال حل‌شده: سه سوئیچ</h2>
+<p>سه سوئیچ در مثلث، همه لینک‌ها 100 Mbps (Cost = 19) و VLAN 1:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>سوئیچ</th>
+<th>Priority</th>
+<th>MAC</th>
+<th>Bridge ID</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SW1</td>
+<td>32769</td>
+<td>0000.0000.0001</td>
+<td>32769 / …0001</td>
+</tr>
+<tr class="even">
+<td>SW2</td>
+<td>32769</td>
+<td>0000.0000.0002</td>
+<td>32769 / …0002</td>
+</tr>
+<tr class="odd">
+<td>SW3</td>
+<td>32769</td>
+<td>0000.0000.0003</td>
+<td>32769 / …0003</td>
+</tr>
+</tbody>
+</table>
+<p>لینک‌ها: SW1–SW2، SW1–SW3، SW2–SW3.</p>
+<p><strong>Root Bridge:</strong> Priority یکسان است، پس MAC کوچک‌تر: <strong>SW1</strong> برنده است.</p>
+<p><strong>Root Port روی SW2:</strong> مسیر مستقیم به SW1 با Cost 19. مسیر از SW3 برابر 19 + 19 = 38. پس Root Port پورت متصل به SW1 است.</p>
+<p><strong>Root Port روی SW3:</strong> مشابه، پورت متصل به SW1 (Cost 19).</p>
+<p><strong>قطعه SW2–SW3:</strong> هر دو سوئیچ Root Path Cost برابر 19 را اعلام می‌کنند. تساوی را با Bridge ID می‌شکنیم: SW2 کوچک‌تر است، پس پورت SW2 روی این قطعه <strong>Designated</strong> است و پورت SW3 روی همین قطعه <strong>Blocked (Alternate)</strong> می‌شود.</p>
+<p><strong>نتیجه:</strong> حلقه SW1–SW2–SW3 شکسته شد. اگر لینک SW1–SW3 خراب شود، پورت مسدود SW3 فعال می‌شود و ترافیک SW3 از مسیر SW2 به SW1 می‌رسد.</p>
+<p>نمودار متنی:</p>
+<pre class="text"><code>          SW1 (Root)
+         /  Desg   \ Desg
+        /           \
+   Root/             \Root
+      SW2 ---------- SW3
+        Desg       Blocked</code></pre>
+</section>
+<section id="وضعیت-پورتها-در-802.1d" class="level2">
+<h2 class="anchored" data-anchor-id="وضعیت-پورتها-در-802.1d">7. وضعیت پورت‌ها در 802.1D</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>وضعیت</th>
+<th>ارسال داده</th>
+<th>یادگیری MAC</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Blocking</td>
+<td>نه</td>
+<td>نه</td>
+<td>فقط BPDU دریافت می‌کند</td>
+</tr>
+<tr class="even">
+<td>Listening</td>
+<td>نه</td>
+<td>نه</td>
+<td>منتظر تثبیت توپولوژی</td>
+</tr>
+<tr class="odd">
+<td>Learning</td>
+<td>نه</td>
+<td>بله</td>
+<td>جدول MAC را می‌سازد</td>
+</tr>
+<tr class="even">
+<td>Forwarding</td>
+<td>بله</td>
+<td>بله</td>
+<td>عملکرد عادی</td>
+</tr>
+<tr class="odd">
+<td>Disabled</td>
+<td>نه</td>
+<td>نه</td>
+<td>خاموش (Shutdown)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>تایمرها:</strong> Hello = 2 ثانیه، Forward Delay = 15 ثانیه، Max Age = 20 ثانیه.</p>
+<p>برای اینکه پورت Blocked پس از خرابی لینک فعال شود: صبر Max Age (20 ثانیه) + Listening (15) + Learning (15) = تا <strong>50 ثانیه</strong> (و گاهی 30 ثانیه در حالت‌های مستقیم). در این مدت پورت ترافیک عبور نمی‌دهد. این زمان در شبکه‌های امروزی زیاد است.</p>
+</section>
+<section id="rstp-802.1w-نسخه-سریع" class="level2">
+<h2 class="anchored" data-anchor-id="rstp-802.1w-نسخه-سریع">8. RSTP (802.1w): نسخه سریع</h2>
+<p><strong>Rapid STP</strong> همان هدف را با همگرایی خیلی سریع‌تر (معمولاً چند ثانیه یا کمتر) به دست می‌آورد.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ویژگی</th>
+<th>STP (802.1D)</th>
+<th>RSTP (802.1w)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>وضعیت‌ها</td>
+<td>Blocking، Listening، Learning، Forwarding، Disabled</td>
+<td>Discarding، Learning، Forwarding</td>
+</tr>
+<tr class="even">
+<td>نقش‌ها</td>
+<td>Root، Designated، Blocked</td>
+<td>Root، Designated، <strong>Alternate</strong>، <strong>Backup</strong></td>
+</tr>
+<tr class="odd">
+<td>همگرایی</td>
+<td>30 تا 50 ثانیه</td>
+<td>معمولاً کمتر از چند ثانیه</td>
+</tr>
+<tr class="even">
+<td>مکانیزم</td>
+<td>تایمر</td>
+<td>Proposal / Agreement بین همسایه‌ها</td>
+</tr>
+<tr class="odd">
+<td>Edge Port</td>
+<td>ندارد (PortFast سیسکو)</td>
+<td>پشتیبانی استاندارد</td>
+</tr>
+</tbody>
+</table>
+<p><strong>نقش Alternate:</strong> مسیر جایگزین برای Root Port (مثل پورت Blocked سناریوی بالا). <strong>نقش Backup:</strong> مسیر جایگزین Designated Port روی همان سوئیچ (وقتی دو پورت یک سوئیچ به یک Segment وصل‌اند، مثل هاب).</p>
+<p>RSTP لینک‌های Point-to-Point (Full Duplex) را بسیار سریع و بدون تایمر همگرا می‌کند و هر سوئیچ BPDU را خودش تولید می‌کند (نه فقط Root).</p>
+<section id="حالتهای-stp-در-سیسکو" class="level3">
+<h3 class="anchored" data-anchor-id="حالتهای-stp-در-سیسکو">حالت‌های STP در سیسکو</h3>
+<ul>
+<li><strong>PVST+:</strong> STP کلاسیک به‌ازای هر VLAN (پیش‌فرض بسیاری از Catalyst ها)</li>
+<li><strong>Rapid PVST+:</strong> RSTP به‌ازای هر VLAN (پیشنهادی در بیشتر شبکه‌های سیسکو)</li>
+<li><strong>MST (802.1s):</strong> چند VLAN را در چند نمونه گروه‌بندی می‌کند تا کار کمتر شود</li>
+</ul>
+<p>برای فعال کردن Rapid PVST+:</p>
+<pre class="text"><code>Switch(config)# spanning-tree mode rapid-pvst</code></pre>
+</section>
+</section>
+<section id="کنترل-root-bridge-و-بار" class="level2">
+<h2 class="anchored" data-anchor-id="کنترل-root-bridge-و-بار">9. کنترل Root Bridge و بار</h2>
+<section id="انتخاب-root-با-تنظیم-priority" class="level3">
+<h3 class="anchored" data-anchor-id="انتخاب-root-با-تنظیم-priority">انتخاب Root با تنظیم Priority</h3>
+<pre class="text"><code>Core(config)# spanning-tree vlan 10 priority 4096
+Core(config)# spanning-tree vlan 20 priority 4096</code></pre>
+<p>یا با دستور کمکی:</p>
+<pre class="text"><code>Core(config)# spanning-tree vlan 10 root primary
+Core(config)# spanning-tree vlan 10 root secondary    (روی سوئیچ دوم، برای Root پشتیبان)</code></pre>
+<p><code>root primary</code> Priority را طوری پایین می‌آورد که سوئیچ Root شود (معمولاً 24576 یا کمتر)، و <code>root secondary</code> آن را روی 28672 می‌گذارد.</p>
+</section>
+<section id="توزیع-بار-با-root-متفاوت" class="level3">
+<h3 class="anchored" data-anchor-id="توزیع-بار-با-root-متفاوت">توزیع بار با Root متفاوت</h3>
+<p>چون PVST+ برای هر VLAN مستقل است، می‌توان Root VLAN 10 را روی SW-A و Root VLAN 20 را روی SW-B گذاشت. به این ترتیب لینک‌های مختلف برای VLAN های مختلف Blocked می‌شوند و هر دو لینک استفاده می‌شوند.</p>
+</section>
+</section>
+<section id="ابزارهای-حفاظتی" class="level2">
+<h2 class="anchored" data-anchor-id="ابزارهای-حفاظتی">10. ابزارهای حفاظتی</h2>
+<section id="portfast" class="level3">
+<h3 class="anchored" data-anchor-id="portfast">PortFast</h3>
+<p>پورت‌های متصل به <strong>کامپیوتر یا سرور</strong> (نه سوئیچ) نباید 30 ثانیه صبر کنند. PortFast آن‌ها را بلافاصله به Forwarding می‌برد:</p>
+<pre class="text"><code>Switch(config)# interface fa0/1
+Switch(config-if)# switchport mode access
+Switch(config-if)# spanning-tree portfast</code></pre>
+<p>PortFast <strong>فقط</strong> برای پورت‌های Edge (میزبان نهایی). اگر روی پورتی که به سوئیچ وصل است فعال شود، خطر Loop لحظه‌ای وجود دارد.</p>
+</section>
+<section id="bpdu-guard" class="level3">
+<h3 class="anchored" data-anchor-id="bpdu-guard">BPDU Guard</h3>
+<p>اگر روی پورت PortFast ناگهان BPDU برسد (یعنی کسی سوئیچ وصل کرده)، پورت <strong>Err-disabled</strong> می‌شود:</p>
+<pre class="text"><code>Switch(config-if)# spanning-tree bpduguard enable</code></pre>
+<p>یا برای همه پورت‌های PortFast:</p>
+<pre class="text"><code>Switch(config)# spanning-tree portfast default
+Switch(config)# spanning-tree portfast bpduguard default</code></pre>
+<p>بازیابی خودکار پورت‌های Err-disabled (اختیاری):</p>
+<pre class="text"><code>Switch(config)# errdisable recovery cause bpduguard
+Switch(config)# errdisable recovery interval 300</code></pre>
+</section>
+<section id="root-guard" class="level3">
+<h3 class="anchored" data-anchor-id="root-guard">Root Guard</h3>
+<p>روی پورت‌هایی که نباید به Root منتهی شوند (مثلاً پورت رو به سوئیچ‌های لبه) اگر BPDU بهتری برسد پورت به حالت Root-Inconsistent می‌رود و مانع تصاحب Root توسط یک سوئیچ ناخواسته می‌شود:</p>
+<pre class="text"><code>Switch(config-if)# spanning-tree guard root</code></pre>
+</section>
+<section id="loop-guard-و-udld" class="level3">
+<h3 class="anchored" data-anchor-id="loop-guard-و-udld">Loop Guard و UDLD</h3>
+<p>برای لینک‌های یک‌طرفه (Unidirectional) که BPDU فقط در یک جهت می‌رسد و ممکن است Loop بسازند، <strong>Loop Guard</strong> و <strong>UDLD</strong> وجود دارند. جزئیات آن‌ها از این دوره جلوتر است، ولی بدان وجود دارند.</p>
+</section>
+</section>
+<section id="آزمایش-عملی-در-packet-tracer" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایش-عملی-در-packet-tracer">11. آزمایش عملی در Packet Tracer</h2>
+<section id="توپولوژی" class="level3">
+<h3 class="anchored" data-anchor-id="توپولوژی">توپولوژی</h3>
+<p>سه سوئیچ 2960 در مثلث (SW1، SW2، SW3) و یک PC به هر سوئیچ.</p>
+</section>
+<section id="مراحل" class="level3">
+<h3 class="anchored" data-anchor-id="مراحل">مراحل</h3>
+<ol type="1">
+<li>سوئیچ‌ها را با Fa0/1 و Fa0/2 به هم وصل کن (مثلث).</li>
+<li>روی هر سوئیچ بررسی کن:</li>
+</ol>
+<pre class="text"><code>Switch# show spanning-tree</code></pre>
+<ol start="3" type="1">
+<li>Root Bridge را پیدا کن (خط <code>This bridge is the root</code> یا آدرس Root ID).</li>
+<li>روی هر سوئیچ غیر Root، پورت Root و پورت Blocked (Alternate) را مشخص کن. <code>Role</code> و <code>Sts</code> ستون‌های مهم هستند.</li>
+<li>Priority را روی یک سوئیچ دیگر پایین بیاور و ببین Root تغییر می‌کند:</li>
+</ol>
+<pre class="text"><code>Switch(config)# spanning-tree vlan 1 priority 4096</code></pre>
+<ol start="6" type="1">
+<li>یک لینک فعال را قطع کن (Shutdown) و مشاهده کن پورت Blocked چطور فعال می‌شود. زمان تقریبی را اندازه بگیر.</li>
+<li>حالت را به Rapid PVST+ تغییر بده و آزمایش را تکرار کن:</li>
+</ol>
+<pre class="text"><code>Switch(config)# spanning-tree mode rapid-pvst</code></pre>
+</section>
+<section id="نمونه-خروجی-show-spanning-tree-روی-root" class="level3">
+<h3 class="anchored" data-anchor-id="نمونه-خروجی-show-spanning-tree-روی-root">نمونه خروجی <code>show spanning-tree</code> (روی Root)</h3>
+<pre class="text"><code>VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32769
+             Address     0000.0000.0001
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0000.0000.0001
+
+Interface        Role Sts Cost      Prio.Nbr Type
+---------------- ---- --- --------- -------- ------------------
+Fa0/1            Desg FWD 19        128.1    P2p
+Fa0/2            Desg FWD 19        128.2    P2p</code></pre>
+<p>دقت کن: روی Root Bridge همه پورت‌ها Designated هستند.</p>
+</section>
+<section id="سؤالها" class="level3">
+<h3 class="anchored" data-anchor-id="سؤالها">سؤال‌ها</h3>
+<ul>
+<li>کدام پورت Blocked شد و چرا؟</li>
+<li>بعد از خرابی لینک STP کلاسیک چقدر طول کشید؟ RSTP چطور؟</li>
+<li>اگر Priority دو سوئیچ را برابر بگذاری چه کسی Root می‌شود؟</li>
 </ul>
 </section>
-<section id="منابع-پیشنهادی-برای-مطالعه-بیشتر" class="level2">
-<h2 class="anchored" data-anchor-id="منابع-پیشنهادی-برای-مطالعه-بیشتر">منابع پیشنهادی برای مطالعه بیشتر</h2>
-<p>منابع رسمی و مستندات ابزارها را در اولویت قرار بده. نسخه و تاریخ دسترسی را در گزارش ثبت کن. لینک‌های این جلسه باید پیش از انتشار نهایی توسط مدرس یا بازبین بررسی شوند.</p>
+</section>
+<section id="آزمایش-شبیهسازی-loop-و-محافظت-با-احتیاط" class="level2">
+<h2 class="anchored" data-anchor-id="آزمایش-شبیهسازی-loop-و-محافظت-با-احتیاط">12. آزمایش: شبیه‌سازی Loop و محافظت (با احتیاط)</h2>
+<p><strong>فقط در Packet Tracer یا آزمایشگاه جداشده.</strong> هرگز روی شبکه واقعی انجام نده.</p>
+<ol type="1">
+<li>STP را روی یک VLAN غیرفعال کن (<code>no spanning-tree vlan 1</code>) و دو سوئیچ را با دو کابل به هم وصل کن.</li>
+<li>یک Broadcast (مثلاً پینگ به IP ناموجود) بفرست و Simulation را ببین: فریم‌ها بی‌پایان می‌چرخند.</li>
+<li>STP را دوباره فعال کن و تفاوت را ببین.</li>
+</ol>
+</section>
+<section id="عیبیابی-مهندسی-stp" class="level2">
+<h2 class="anchored" data-anchor-id="عیبیابی-مهندسی-stp">13. عیب‌یابی مهندسی STP</h2>
+<section id="سناریو-1-شبکه-ناگهان-بسیار-کند-یا-قطع-میشود-چراغها-دیوانهوار-چشمک-میزنند" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-1-شبکه-ناگهان-بسیار-کند-یا-قطع-میشود-چراغها-دیوانهوار-چشمک-میزنند">سناریو 1: شبکه ناگهان بسیار کند یا قطع می‌شود، چراغ‌ها دیوانه‌وار چشمک می‌زنند</h3>
+<p>نشانه کلاسیک Loop و Broadcast Storm. بررسی:</p>
+<pre class="text"><code>Switch# show processes cpu sorted
+Switch# show interfaces | include line protocol|input rate|broadcasts
+Switch# show spanning-tree summary</code></pre>
+<p>اقدام فوری: لینک مشکوک (آخرین کابل اضافه‌شده) را جدا کن تا Loop شکسته شود، سپس علت را بررسی کن. دلیل رایج: Loop از طریق یک سوئیچ غیرمدیریتی که با دو کابل وصل شده، یا STP غیرفعال شده، یا فیلتر BPDU.</p>
+</section>
+<section id="سناریو-2-root-bridge-نادرست" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-2-root-bridge-نادرست">سناریو 2: Root Bridge نادرست</h3>
+<p>با <code>show spanning-tree vlan 10</code> ببین Root ID متعلق به کدام سوئیچ است. اگر یک سوئیچ دسترسی Root شده، Priority سوئیچ Core را پایین بیاور.</p>
+</section>
+<section id="سناریو-3-تغییرات-مکرر-توپولوژی-topology-change" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-3-تغییرات-مکرر-توپولوژی-topology-change">سناریو 3: تغییرات مکرر توپولوژی (Topology Change)</h3>
+<p>هر بار توپولوژی تغییر می‌کند، سوئیچ‌ها Aging جدول MAC را کوتاه می‌کنند و ترافیک Flood می‌شود. برای پیدا کردن منبع:</p>
+<pre class="text"><code>Switch# show spanning-tree detail | include ieee|occurr|from|is exec</code></pre>
+<p>خط <code>last change occurred ... from FastEthernet0/3</code> پورتی را نشان می‌دهد که مشکل از آن شروع شده است. معمولاً یک پورت کاربر که مدام Up/Down می‌شود و PortFast ندارد.</p>
+</section>
+<section id="سناریو-4-پورت-به-err-disabled-رفته-bpdu-guard" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-4-پورت-به-err-disabled-رفته-bpdu-guard">سناریو 4: پورت به Err-disabled رفته (BPDU Guard)</h3>
+<p>لاگ <code>%SPANTREE-2-BLOCK_BPDUGUARD</code> را ببین. کسی به پورت کاربری یک سوئیچ یا دستگاه BPDU-ساز وصل کرده است. دستگاه را جدا کن، پورت را <code>shutdown</code> و <code>no shutdown</code> کن.</p>
+</section>
+<section id="سناریو-5-لینک-اضافه-کار-نمیکند-مثلا-دو-لینک-موازی-و-یکی-بلااستفاده" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو-5-لینک-اضافه-کار-نمیکند-مثلا-دو-لینک-موازی-و-یکی-بلااستفاده">سناریو 5: لینک اضافه کار نمی‌کند (مثلاً دو لینک موازی و یکی بلااستفاده)</h3>
+<p>طبیعی است! STP عمداً یکی را Block کرده. اگر هر دو لینک را می‌خواهی، از <strong>EtherChannel (LACP)</strong> استفاده کن تا STP آن‌ها را یک لینک منطقی ببیند (در جلسات بعد).</p>
+</section>
+</section>
+<section id="خطاهای-مفهومی-رایج" class="level2">
+<h2 class="anchored" data-anchor-id="خطاهای-مفهومی-رایج">14. خطاهای مفهومی رایج</h2>
+<ol type="1">
+<li><strong>«STP لینک اضافی را خاموش می‌کند.»</strong> نه. آن را مسدود می‌کند ولی BPDU همچنان رد و بدل می‌شود و در صورت خرابی فعال می‌شود.</li>
+<li><strong>«STP بار را بین لینک‌ها تقسیم می‌کند.»</strong> نه (در حالت پایه). PVST+ با Root های متفاوت برای VLAN های متفاوت این کار را غیرمستقیم انجام می‌دهد. EtherChannel برای تقسیم بار روی لینک‌های موازی است.</li>
+<li><strong>«Root Bridge قوی‌ترین سوئیچ است.»</strong> نه، فقط کوچک‌ترین Bridge ID. باید عمداً Core را Root کنی.</li>
+<li><strong>«PortFast یعنی STP روی پورت خاموش است.»</strong> نه. فقط انتظار را حذف می‌کند و باید با BPDU Guard همراه باشد.</li>
+<li><strong>«RSTP یعنی تنظیم مجدد همه چیز.»</strong> RSTP با STP کلاسیک سازگار است ولی با تجهیزات 802.1D سریع نیست.</li>
+<li><strong>«در حلقه فریم‌ها یک‌بار منقضی می‌شوند.»</strong> نه. اترنت TTL ندارد.</li>
+</ol>
+</section>
+<section id="چالش-netfleet" class="level2">
+<h2 class="anchored" data-anchor-id="چالش-netfleet">15. چالش NetFleet</h2>
+<section id="سناریو" class="level3">
+<h3 class="anchored" data-anchor-id="سناریو">سناریو</h3>
+<p>NetFleet یک شبکه دو طبقه دارد: یک سوئیچ Core در اتاق سرور و دو سوئیچ دسترسی در طبقات. هر سوئیچ دسترسی با دو لینک (یکی اصلی و یکی پشتیبان) به Core وصل است. روزی یک کارمند برای گسترش پورت‌ها یک سوئیچ ارزان و غیرمدیریتی به یک پورت کاربری وصل می‌کند و با دو کابل به دو پورت مختلف دیوار وصلش می‌کند. چند ثانیه بعد کل طبقه قطع می‌شود و CPU سوئیچ‌ها 100% است. بعداً مشخص می‌شود که یک سوئیچ دسترسی قدیمی Root شده است.</p>
+</section>
+<section id="مأموریت" class="level3">
+<h3 class="anchored" data-anchor-id="مأموریت">مأموریت</h3>
+<ol type="1">
+<li>توضیح بده چه اتفاقی افتاد (Loop، Storm، MAC Flapping) و چرا STP موجود جلوی آن را نگرفت یا دیر گرفت.</li>
+<li>یک پیکربندی کامل STP برای NetFleet بنویس: Rapid PVST+، Root اصلی روی Core با Priority 4096، Root پشتیبان، PortFast و BPDU Guard روی پورت‌های کاربر و Root Guard روی لینک‌های مناسب.</li>
+<li>روشی برای پیدا کردن منبع Loop از طریق خط فرمان بنویس.</li>
+<li>توضیح بده چرا BPDU Guard در این سناریو مشکل را از ابتدا برطرف می‌کرد.</li>
+<li>یک برنامه پاسخ به رخداد (Runbook) ده‌خطی برای «Loop در شبکه» بنویس.</li>
+</ol>
+</section>
+<section id="خروجی-مورد-انتظار" class="level3">
+<h3 class="anchored" data-anchor-id="خروجی-مورد-انتظار">خروجی مورد انتظار</h3>
+<p>یک گزارش فنی شامل تحلیل رخداد، پیکربندی پیشنهادی، دستورهای عیب‌یابی و Runbook.</p>
+</section>
+</section>
+<section id="جمعبندی-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="جمعبندی-جلسه">16. جمع‌بندی جلسه</h2>
+<ul>
+<li>Loop در اترنت چون TTL ندارد فاجعه است: Broadcast Storm، MAC Flapping، فریم تکراری.</li>
+<li>STP با تبادل BPDU یک درخت بدون حلقه می‌سازد و لینک‌های اضافه را مسدود نگه می‌دارد.</li>
+<li>Root Bridge = کوچک‌ترین Bridge ID (Priority سپس MAC). پیش‌فرض Priority 32768 (+ شماره VLAN در PVST+).</li>
+<li>Root Port = کمترین Root Path Cost؛ Designated Port روی هر قطعه؛ بقیه Blocked.</li>
+<li>Cost پیش‌فرض (روش کوتاه): 100 Mbps = 19، 1 Gbps = 4.</li>
+<li>STP کلاسیک تا حدود 30 تا 50 ثانیه برای همگرایی؛ RSTP بسیار سریع‌تر و دارای نقش‌های Alternate و Backup.</li>
+<li>Root را عمداً روی Core بگذار. PortFast + BPDU Guard روی پورت‌های کاربر، Root Guard روی پورت‌های لبه.</li>
+<li>برای عیب‌یابی: <code>show spanning-tree</code>، <code>show spanning-tree detail</code>، CPU و شمارنده‌های Broadcast.</li>
+</ul>
+</section>
+<section id="تمرینهای-پایان-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="تمرینهای-پایان-جلسه">17. تمرین‌های پایان جلسه</h2>
+<section id="تمرین-نظری" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-نظری">تمرین نظری</h3>
+<ol type="1">
+<li>در یک توپولوژی چهار سوئیچ حلقه‌ای با Cost های مختلف، Root Bridge، Root Port ها و پورت‌های Blocked را مشخص کن.</li>
+<li>توضیح بده چرا Priority در PVST+ فقط مضرب 4096 است.</li>
+<li>تفاوت نقش Alternate و Backup را با مثال توضیح بده.</li>
+</ol>
+</section>
+<section id="تمرین-عملی" class="level3">
+<h3 class="anchored" data-anchor-id="تمرین-عملی">تمرین عملی</h3>
+<ol type="1">
+<li>آزمایش بخش 11 را انجام بده و برای هر سوئیچ خروجی <code>show spanning-tree</code> را ذخیره کن.</li>
+<li>زمان همگرایی را در حالت PVST+ و Rapid PVST+ مقایسه و ثبت کن.</li>
+<li>BPDU Guard را روی یک پورت PortFast فعال کن، یک سوئیچ به آن وصل کن و رفتار پورت و لاگ را مستند کن.</li>
+</ol>
+</section>
+<section id="منابع-و-مطالعه-بیشتر" class="level3">
+<h3 class="anchored" data-anchor-id="منابع-و-مطالعه-بیشتر">منابع و مطالعه بیشتر</h3>
+<p><strong>کتاب‌ها</strong></p>
+<ul>
+<li><a href="https://www.informit.com/store/ccna-200-301-official-cert-guide-volume-1-9780136171584">Wendell Odom — <em>CCNA 200-301 Official Cert Guide, Volume 1</em> (Cisco Press)</a>: بخش‌های STP و RSTP</li>
+<li>Radia Perlman — <em>Interconnections: Bridges, Routers, Switches, and Internetworking Protocols</em> (Addison-Wesley)؛ توضیح کلاسیک الگوریتم Spanning Tree از طراح آن</li>
+</ul>
+<p><strong>استانداردها</strong></p>
+<ul>
+<li><a href="https://1.ieee802.org/">IEEE 802.1 Working Group — صفحه استانداردهای 802.1</a>: IEEE 802.1D (STP و RSTP) و IEEE 802.1Q (MSTP)</li>
+</ul>
+<p><strong>مستندات رسمی</strong></p>
+<ul>
+<li><a href="https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/5234-5.html">Cisco — Understanding and Configuring Spanning Tree Protocol (STP) on Catalyst Switches</a></li>
+<li><a href="https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10556-16.html">Cisco — عیب‌یابی و پیشگیری از خرابی STP در شبکه‌های Catalyst</a></li>
+<li><a href="https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/28943-170.html">Cisco — Troubleshoot Spanning Tree Protocol Issues with Cisco IOS</a></li>
+<li><a href="https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/24330-185.html">Cisco — Best Practices for Catalyst 6500/6000 and 4500/4000 Series Switches Running Cisco IOS</a></li>
+</ul>
+<p><strong>ابزار و مرجع دستورها</strong></p>
+<ul>
+<li><a href="https://www.wireshark.org/docs/wsug_html/">Wireshark User’s Guide</a></li>
+<li><a href="https://www.netacad.com/">Cisco Networking Academy و Packet Tracer</a></li>
+</ul>
+<blockquote class="blockquote">
+<p>برای مطالعه‌ی متن کامل استانداردهای IEEE ممکن است به نسخه‌ی خریداری‌شده یا دسترسی دانشگاهی نیاز داشته باشی. مستندات Cisco را همیشه با نسخه IOS و مدل سوئیچ خودت تطبیق بده، چون بعضی صفحات مربوط به خانواده‌های قدیمی‌تر Catalyst هستند.</p>
+</blockquote>
+</section>
+</section>
+<section id="آزمون-تعاملی-جلسه" class="level2">
+<h2 class="anchored" data-anchor-id="آزمون-تعاملی-جلسه">18. آزمون تعاملی جلسه</h2>
+
+<section class="nf-quiz" data-nf-quiz="" aria-labelledby="nf-quiz-week02-day05-title">
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-week02-day05-title" class="anchored">آزمون تعاملی جلسه پنجم هفته دوم</h2>
+    </div>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score="">0</strong></div>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress" role="progressbar" aria-label="پیشرفت آزمون" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="nf-quiz-progress-bar" data-progress=""></div>
+  </div>
+
+  <div class="nf-quiz-progress-label" data-progress-text=""></div>
+
+  <div data-content="">
+    <h3 class="nf-quiz-question anchored" data-question=""></h3>
+    <div class="nf-quiz-options" data-options=""></div>
+    <div class="nf-quiz-feedback" data-feedback="" aria-live="polite"></div>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next="" hidden="">
+        سؤال بعدی
+      </button>
+    </div>
+  </div>
+
+  <div class="nf-quiz-result" data-result="" hidden="" aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+    <h3 class="anchored">نتیجه آزمون</h3>
+    <div class="nf-quiz-result-score" data-final-score=""></div>
+    <div class="nf-quiz-result-score" data-percentage=""></div>
+    <p data-result-message=""></p>
+    <button class="nf-quiz-primary" type="button" data-restart="">
+      تلاش مجدد
+    </button>
+  </div>
+
+  <script type="application/json" data-quiz-questions="">
+[
+  {
+    "question": "هدف اصلی STP چیست؟",
+    "options": [
+      "جلوگیری از Loop در شبکه لایه 2 با حفظ مسیرهای اضافه",
+      "رمزگذاری فریم‌ها",
+      "تقسیم Broadcast Domain",
+      "افزایش سرعت لینک‌ها"
+    ],
+    "answer": 0,
+    "explanation": "STP لینک‌های اضافه را فیزیکی نگه می‌دارد ولی به‌طور منطقی بعضی را Block می‌کند تا حلقه ایجاد نشود."
+  },
+  {
+    "question": "چرا Loop در اترنت بسیار خطرناک است؟",
+    "options": [
+      "چون اترنت فریم‌ها را رمزگذاری می‌کند",
+      "چون فریم اترنت TTL ندارد و در حلقه بی‌پایان می‌چرخد",
+      "چون سوئیچ‌ها آدرس IP ندارند",
+      "چون Loop فقط به کابل آسیب می‌زند"
+    ],
+    "answer": 1,
+    "explanation": "اترنت مکانیزم انقضای فریم ندارد؛ فریم و Broadcast تا قطع حلقه می‌چرخند و پهنای باند و CPU را مصرف می‌کنند."
+  },
+  {
+    "question": "Root Bridge چگونه انتخاب می‌شود؟",
+    "options": [
+      "سوئیچ با بیشترین پهنای باند",
+      "سوئیچ با بیشترین پورت",
+      "سوئیچ با کوچک‌ترین Bridge ID (Priority و سپس MAC)",
+      "سوئیچ با بزرگ‌ترین MAC"
+    ],
+    "answer": 2,
+    "explanation": "کوچک‌ترین Bridge ID برنده است؛ ابتدا Priority مقایسه می‌شود و در صورت برابری MAC."
+  },
+  {
+    "question": "Priority پیش‌فرض STP برای VLAN 1 در PVST+ سیسکو چقدر نمایش داده می‌شود؟",
+    "options": [
+      "4096",
+      "61440",
+      "32768",
+      "32769"
+    ],
+    "answer": 3,
+    "explanation": "Priority پایه 32768 است و شماره VLAN (1) به‌عنوان Extended System ID به آن اضافه می‌شود: 32769."
+  },
+  {
+    "question": "Cost پیش‌فرض یک لینک 100 Mbps در روش کوتاه 802.1D چقدر است؟",
+    "options": [
+      "19",
+      "100",
+      "2",
+      "4"
+    ],
+    "answer": 0,
+    "explanation": "در روش کوتاه: 10 Mbps = 100، 100 Mbps = 19، 1 Gbps = 4، 10 Gbps = 2."
+  },
+  {
+    "question": "Root Port روی یک سوئیچ غیر Root کدام پورت است؟",
+    "options": [
+      "پورتی که کمترین Root Path Cost را دارد",
+      "پورتی که بیشترین ترافیک دارد",
+      "پورتی که به کامپیوتر وصل است",
+      "پورتی که Blocked شده است"
+    ],
+    "answer": 0,
+    "explanation": "هر سوئیچ غیر Root یک Root Port دارد که کمترین Root Path Cost تا Root Bridge را دارد."
+  },
+  {
+    "question": "PortFast روی چه پورت‌هایی باید فعال شود؟",
+    "options": [
+      "همه پورت‌ها",
+      "پورت‌های متصل به سوئیچ‌های دیگر",
+      "پورت‌های Edge که به میزبان نهایی (کامپیوتر، سرور) وصل‌اند",
+      "فقط پورت‌های Root"
+    ],
+    "answer": 2,
+    "explanation": "PortFast انتظار Listening و Learning را حذف می‌کند و فقط برای پورت‌های میزبان مناسب است، چون روی پورت سوئیچ می‌تواند Loop لحظه‌ای بسازد."
+  },
+  {
+    "question": "BPDU Guard روی یک پورت PortFast وقتی BPDU دریافت کند چه می‌کند؟",
+    "options": [
+      "Root Bridge را تغییر می‌دهد",
+      "Priority را صفر می‌کند",
+      "BPDU را نادیده می‌گیرد",
+      "پورت را Err-disabled می‌کند"
+    ],
+    "answer": 3,
+    "explanation": "دریافت BPDU روی پورت Edge یعنی سوئیچ یا دستگاه ناخواسته وصل شده، پس BPDU Guard پورت را Err-disabled می‌کند."
+  },
+  {
+    "question": "کدام ویژگی RSTP نسبت به STP کلاسیک درست است؟",
+    "options": [
+      "فقط روی VLAN 1 کار می‌کند",
+      "نیاز به Root Bridge ندارد",
+      "BPDU استفاده نمی‌کند",
+      "همگرایی بسیار سریع‌تر و نقش‌های Alternate و Backup"
+    ],
+    "answer": 3,
+    "explanation": "RSTP با مکانیزم Proposal/Agreement در چند ثانیه همگرا می‌شود و نقش‌های Alternate و Backup را تعریف می‌کند."
+  },
+  {
+    "question": "زمان همگرایی STP کلاسیک (802.1D) پس از خرابی لینک معمولاً چقدر است؟",
+    "options": [
+      "کمتر از 1 ثانیه",
+      "حدود 30 تا 50 ثانیه",
+      "حدود 5 دقیقه",
+      "هرگز همگرا نمی‌شود"
+    ],
+    "answer": 1,
+    "explanation": "با تایمرهای پیش‌فرض (Max Age 20 + Listening 15 + Learning 15) همگرایی تا حدود 50 ثانیه طول می‌کشد."
+  }
+]
+  </script>
+</section>
 </section>
 </section>
 
@@ -416,7 +945,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/IMPalermo\.github\.io\/netfleet-docs\/");
+        var filterRegex = new RegExp("https:\/\/impalermo\.github\.io\/netfleet-docs");
       const newWindowLabel = "(opens in a new tab)";
       const newWindowNoteId = "quarto-ext-newwindow-label";
       // Links reference one hidden label through aria-describedby, so the

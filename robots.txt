@@ -1,1 +1,1 @@
-Sitemap: https://IMPalermo.github.io/netfleet-docs/sitemap.xml
+Sitemap: https://impalermo.github.io/netfleet-docs/sitemap.xml
