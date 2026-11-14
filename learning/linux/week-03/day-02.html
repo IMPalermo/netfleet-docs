@@ -71,6 +71,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../learning/linux/week-03/day-03.html" rel="next">
+<link href="../../../learning/linux/week-03/day-01.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -81,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-57ed3a935a28463f2c68fd94771f4c27.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-2a0edf55b8f7ef50adbf293540c66b1f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-3c178617820a50617d2065c2cc0b50bf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -112,10 +114,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="../../../assets/css/fonts.css">
 <link rel="stylesheet" href="../../../assets/css/quiz.css">
 </head>
 
-<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -135,9 +138,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-learning-paths" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Learning paths</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-learning-paths">    
+        <li>
+    <a class="dropdown-item" href="../../../learning/networking/index.html">
+ <span class="dropdown-text">Networking Engineering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/python/index.html">
+ <span class="dropdown-text">Python Engineering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/linux/index.html">
+ <span class="dropdown-text">Linux Engineering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/backend/index.html">
+ <span class="dropdown-text">Backend and APIs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/infrastructure/index.html">
+ <span class="dropdown-text">Infrastructure Engineering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/automation/index.html">
+ <span class="dropdown-text">Network Automation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/security/index.html">
+ <span class="dropdown-text">Security and Reliability</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../learning/networking/index.html"> 
-<span class="menu-text">Networking</span></a>
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -146,10 +184,361 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../learning/linux/week-03/index.html">Week 3 - Linux Administration</a></li><li class="breadcrumb-item"><a href="../../../learning/linux/week-03/day-02.html">Systemd and Service Management</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linux Engineering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/linux/week-01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Week 1 - Linux Environment</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section: Week 1 - Linux Environment">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-01/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linux Distributions and Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-01/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Shell and Terminal Fundamentals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-01/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Filesystem Hierarchy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-01/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Files and Directories</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-01/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Help with man and –help</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/linux/week-02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Week 2 - Users and Permissions</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section: Week 2 - Users and Permissions">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-02/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Users and Groups</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-02/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ownership and Permission Bits</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-02/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">sudo and Privilege Boundaries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-02/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Processes and Signals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-02/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Environment Variables and Shell Profiles</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/linux/week-03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Week 3 - Linux Administration</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section: Week 3 - Linux Administration">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-03/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Package Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-03/day-02.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Systemd and Service Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-03/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logs with journalctl</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-03/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Storage, Partitions and Filesystems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-03/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mounts, fstab and Disk Usage</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/linux/week-04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Week 4 - Linux Networking</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section: Week 4 - Linux Networking">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-04/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linux Network Interfaces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-04/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IP Addressing with iproute2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-04/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Routes and Neighbor Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-04/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNS Resolution on Linux</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-04/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Socket Inspection with ss</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/linux/week-05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Week 5 - SSH and Remote Operations</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section: Week 5 - SSH and Remote Operations">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-05/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SSH Client and Server</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-05/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SSH Keys and Agent</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-05/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Secure Copy and Rsync</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-05/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SSH Hardening</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-05/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Remote Administration Lab</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/linux/week-06/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">Week 6 - Bash Automation</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section: Week 6 - Bash Automation">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-06/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bash Variables and Quoting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-06/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conditions and Loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-06/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions and Exit Codes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-06/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipes, Redirection and Text Processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-06/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reliable Shell Scripts</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/linux/week-07/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-7-label">Week 7 - System Observability</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-controls="quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section: Week 7 - System Observability">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-7" aria-labelledby="quarto-sidebar-section-7-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-07/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CPU and Memory Inspection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-07/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Disk and I/O Monitoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-07/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Process and Service Troubleshooting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-07/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Log Analysis and Rotation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-07/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Baseline and Performance Investigation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/linux/week-08/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-8-label">Week 8 - Linux Operations Project</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section: Week 8 - Linux Operations Project">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-8" aria-labelledby="quarto-sidebar-section-8-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-08/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cron and Scheduled Tasks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-08/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">System Backup and Restore</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-08/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Firewall Basics with nftables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-08/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Secure Server Baseline</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/linux/week-08/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linux Administration Practical Assessment</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
@@ -180,7 +569,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../learning/linux/week-03/index.html">Week 3 - Linux Administration</a></li><li class="breadcrumb-item"><a href="../../../learning/linux/week-03/day-02.html">Systemd and Service Management</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Systemd and Service Management</h1>
 <p class="subtitle lead">Linux and Systems | Week 3 | Day 2</p>
@@ -207,7 +596,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <strong>جلسه:</strong> 2 از ۵</p>
 <section id="اهداف-یادگیری" class="level2">
 <h2 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h2>
-<p>در پایان این جلسه باید بتوانی: - مفهوم Systemd and Service Management را با زبان خودت توضیح بدهی. - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی. - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی. - یک آزمایش کنترل‌شده اجرا و نتیجه آن را مستند کنی. - خطاها، محدودیت‌ها و ملاحظات امنیتی را توضیح بدهی.</p>
+<p>در پایان این جلسه باید بتوانی:</p>
+<ul>
+<li>مفهوم Systemd and Service Management را با زبان خودت توضیح بدهی.</li>
+<li>اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.</li>
+<li>کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.</li>
+<li>یک آزمایش کنترل‌شده اجرا و نتیجه آن را مستند کنی.</li>
+<li>خطاها، محدودیت‌ها و ملاحظات امنیتی را توضیح بدهی.</li>
+</ul>
 </section>
 <section id="جایگاه-موضوع-در-مسیر-مهندسی" class="level2">
 <h2 class="anchored" data-anchor-id="جایگاه-موضوع-در-مسیر-مهندسی">1. جایگاه موضوع در مسیر مهندسی</h2>
@@ -308,7 +704,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>در پروژه NetFleet باید بتوانیم دانش این جلسه را به یک قابلیت قابل اندازه‌گیری تبدیل کنیم.</p>
 <p>به این پرسش پاسخ بده:</p>
 <p><strong>اگر بخواهیم موضوع «Systemd and Service Management» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟</strong></p>
-<p>طرح اولیه خود را با سه بخش بنویس: - Data Source - Validation Rule - Expected Output</p>
+<p>طرح اولیه خود را با سه بخش بنویس:</p>
+<ul>
+<li>Data Source</li>
+<li>Validation Rule</li>
+<li>Expected Output</li>
+</ul>
 </section>
 <section id="تمرین-و-ارزیابی" class="level2">
 <h2 class="anchored" data-anchor-id="تمرین-و-ارزیابی">7. تمرین و ارزیابی</h2>
@@ -843,17 +1244,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script type="application/javascript">
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../learning/linux/week-03/day-01.html" class="pagination-link" aria-label="Package Management">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Package Management</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../learning/linux/week-03/day-03.html" class="pagination-link" aria-label="Logs with journalctl">
+        <span class="nav-page-text">Logs with journalctl</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <script>
 (() => {
   // Load the quiz engine only on pages that contain a quiz.
   if (!document.querySelector("[data-nf-quiz]")) return;
 
-  const base = window.location.pathname.startsWith("/netfleet-docs/")
-    ? "/netfleet-docs/"
-    : "/";
+  // Quarto publishes the relative path back to the site root on every page,
+  // so this works on GitHub Pages sub-paths, custom domains and local preview.
+  const meta = document.querySelector('meta[name="quarto:offset"]');
+  const offset = meta ? meta.getAttribute("content") : "./";
   const script = document.createElement("script");
-  script.src = base + "assets/js/labs/network-fundamentals.js";
+  script.src = new URL(offset + "assets/js/labs/network-fundamentals.js", window.location.href).href;
   script.async = false;
   document.head.appendChild(script);
 })();

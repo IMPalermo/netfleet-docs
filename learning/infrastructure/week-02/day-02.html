@@ -36,6 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../learning/infrastructure/week-02/day-03.html" rel="next">
+<link href="../../../learning/infrastructure/week-02/day-01.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -46,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-57ed3a935a28463f2c68fd94771f4c27.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-2a0edf55b8f7ef50adbf293540c66b1f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-3c178617820a50617d2065c2cc0b50bf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,10 +79,11 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="../../../assets/css/fonts.css">
 <link rel="stylesheet" href="../../../assets/css/quiz.css">
 </head>
 
-<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -100,9 +103,44 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-learning-paths" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Learning paths</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-learning-paths">    
+        <li>
+    <a class="dropdown-item" href="../../../learning/networking/index.html">
+ <span class="dropdown-text">Networking Engineering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/python/index.html">
+ <span class="dropdown-text">Python Engineering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/linux/index.html">
+ <span class="dropdown-text">Linux Engineering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/backend/index.html">
+ <span class="dropdown-text">Backend and APIs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/infrastructure/index.html">
+ <span class="dropdown-text">Infrastructure Engineering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/automation/index.html">
+ <span class="dropdown-text">Network Automation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../learning/security/index.html">
+ <span class="dropdown-text">Security and Reliability</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../learning/networking/index.html"> 
-<span class="menu-text">Networking</span></a>
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -111,10 +149,279 @@ ul.task-list li input[type="checkbox"] {
             <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../learning/infrastructure/week-02/index.html">Week 2 - Containers</a></li><li class="breadcrumb-item"><a href="../../../learning/infrastructure/week-02/day-02.html">Dockerfiles and Build Context</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Infrastructure Engineering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/infrastructure/week-01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Week 1 - Infrastructure Foundations</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section: Week 1 - Infrastructure Foundations">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-01/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Infrastructure as Code Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-01/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git Workflows for Infrastructure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-01/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Configuration Management Principles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-01/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Secrets and Configuration Separation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-01/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Infrastructure Documentation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/infrastructure/week-02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Week 2 - Containers</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section: Week 2 - Containers">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-02/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Container Concepts and Images</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-02/day-02.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Dockerfiles and Build Context</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-02/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Container Networking</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-02/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Volumes and Persistent Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-02/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Docker Compose for Services</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/infrastructure/week-03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Week 3 - Virtualization and Cloud</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section: Week 3 - Virtualization and Cloud">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-03/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Machines and Hypervisors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-03/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Networking</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-03/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud Networking Fundamentals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-03/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Identity and Access in Cloud Platforms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-03/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hybrid Infrastructure Concepts</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/infrastructure/week-04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Week 4 - Infrastructure as Code</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section: Week 4 - Infrastructure as Code">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-04/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terraform Core Workflow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-04/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Providers, Resources and State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-04/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables, Outputs and Modules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-04/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plan Review and Safe Apply</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-04/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Drift Detection and State Management</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/infrastructure/week-05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Week 5 - Delivery and Observability</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section: Week 5 - Delivery and Observability">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-05/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CI/CD Pipeline Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-05/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Automated Validation in CI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-05/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Metrics, Logs and Traces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-05/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prometheus and Grafana Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-05/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Backup, Recovery and Reliability</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../learning/infrastructure/week-06/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">Week 6 - Infrastructure Project</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section: Week 6 - Infrastructure Project">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-06/day-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Design a Small Lab Environment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-06/day-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Provision Services Reproducibly</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-06/day-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Automate Configuration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-06/day-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Add Monitoring and Recovery</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../learning/infrastructure/week-06/day-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Infrastructure Capstone Assessment</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
@@ -145,7 +452,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../learning/infrastructure/week-02/index.html">Week 2 - Containers</a></li><li class="breadcrumb-item"><a href="../../../learning/infrastructure/week-02/day-02.html">Dockerfiles and Build Context</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Dockerfiles and Build Context</h1>
 <p class="subtitle lead">Infrastructure Engineering | Week 2 | Day 2</p>
@@ -172,7 +479,14 @@ ul.task-list li input[type="checkbox"] {
 <strong>جلسه:</strong> 2 از ۵</p>
 <section id="اهداف-یادگیری" class="level2">
 <h2 class="anchored" data-anchor-id="اهداف-یادگیری">اهداف یادگیری</h2>
-<p>در پایان این جلسه باید بتوانی: - مفهوم Dockerfiles and Build Context را با زبان خودت توضیح بدهی. - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی. - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی. - یک آزمایش کنترل‌شده اجرا و نتیجه آن را مستند کنی. - خطاها، محدودیت‌ها و ملاحظات امنیتی را توضیح بدهی.</p>
+<p>در پایان این جلسه باید بتوانی:</p>
+<ul>
+<li>مفهوم Dockerfiles and Build Context را با زبان خودت توضیح بدهی.</li>
+<li>اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.</li>
+<li>کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.</li>
+<li>یک آزمایش کنترل‌شده اجرا و نتیجه آن را مستند کنی.</li>
+<li>خطاها، محدودیت‌ها و ملاحظات امنیتی را توضیح بدهی.</li>
+</ul>
 </section>
 <section id="جایگاه-موضوع-در-مسیر-مهندسی" class="level2">
 <h2 class="anchored" data-anchor-id="جایگاه-موضوع-در-مسیر-مهندسی">1. جایگاه موضوع در مسیر مهندسی</h2>
@@ -269,7 +583,12 @@ ul.task-list li input[type="checkbox"] {
 <p>در پروژه NetFleet باید بتوانیم دانش این جلسه را به یک قابلیت قابل اندازه‌گیری تبدیل کنیم.</p>
 <p>به این پرسش پاسخ بده:</p>
 <p><strong>اگر بخواهیم موضوع «Dockerfiles and Build Context» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟</strong></p>
-<p>طرح اولیه خود را با سه بخش بنویس: - Data Source - Validation Rule - Expected Output</p>
+<p>طرح اولیه خود را با سه بخش بنویس:</p>
+<ul>
+<li>Data Source</li>
+<li>Validation Rule</li>
+<li>Expected Output</li>
+</ul>
 </section>
 <section id="تمرین-و-ارزیابی" class="level2">
 <h2 class="anchored" data-anchor-id="تمرین-و-ارزیابی">7. تمرین و ارزیابی</h2>
@@ -804,17 +1123,30 @@ ul.task-list li input[type="checkbox"] {
   <script type="application/javascript">
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../learning/infrastructure/week-02/day-01.html" class="pagination-link" aria-label="Container Concepts and Images">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Container Concepts and Images</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../learning/infrastructure/week-02/day-03.html" class="pagination-link" aria-label="Container Networking">
+        <span class="nav-page-text">Container Networking</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <script>
 (() => {
   // Load the quiz engine only on pages that contain a quiz.
   if (!document.querySelector("[data-nf-quiz]")) return;
 
-  const base = window.location.pathname.startsWith("/netfleet-docs/")
-    ? "/netfleet-docs/"
-    : "/";
+  // Quarto publishes the relative path back to the site root on every page,
+  // so this works on GitHub Pages sub-paths, custom domains and local preview.
+  const meta = document.querySelector('meta[name="quarto:offset"]');
+  const offset = meta ? meta.getAttribute("content") : "./";
   const script = document.createElement("script");
-  script.src = base + "assets/js/labs/network-fundamentals.js";
+  script.src = new URL(offset + "assets/js/labs/network-fundamentals.js", window.location.href).href;
   script.async = false;
   document.head.appendChild(script);
 })();
