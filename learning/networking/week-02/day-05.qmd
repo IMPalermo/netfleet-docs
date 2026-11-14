@@ -1,128 +1,586 @@
 ---
 title: "Spanning Tree Fundamentals"
-subtitle: "Networking Fundamentals | Week 2 | Day 5"
+subtitle: "جلوگیری از Loop در لایه ۲: STP، RSTP، انتخاب Root و حفاظت پورت‌ها"
 ---
+
 ::: {.persian}
-# Spanning Tree Fundamentals
 
-<text></text>
+# جلسه پنجم هفته دوم: مبانی Spanning Tree
 
-**مسیر:** شبکه  
-**هفته:** 2، Switching Fundamentals  
-**جلسه:** 5 از ۵
+## مقدمه جلسه
+
+برای اینکه شبکه با خرابی یک لینک یا سوئیچ از کار نیفتد، مهندسان **مسیر اضافه (Redundancy)** می‌گذارند: دو سوئیچ را با دو کابل به هم وصل می‌کنند. اما در لایه 2 اترنت این کار یک مشکل بزرگ دارد: **Loop**. فریم اترنت هیچ مکانیزمی مثل TTL ندارد. فریمی که در یک حلقه بیفتد تا ابد می‌چرخد و در دقایقی کل شبکه را از کار می‌اندازد.
+
+**Spanning Tree Protocol (STP)** این تناقض را حل می‌کند: لینک‌های اضافه را فیزیکی نگه می‌دارد ولی به‌طور منطقی بعضی از آن‌ها را **مسدود (Block)** می‌کند تا توپولوژی بدون حلقه (درخت) بماند. وقتی لینک فعال خراب شود، لینک مسدود فعال می‌شود. این جلسه نحوه عملکرد STP و RSTP، انتخاب Root Bridge، نقش و وضعیت پورت‌ها، و ابزارهای حفاظتی را پوشش می‌دهد.
 
 ## اهداف یادگیری
 
 در پایان این جلسه باید بتوانی:
-- مفهوم Spanning Tree Fundamentals را با زبان خودت توضیح بدهی.
-- اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.
-- کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.
-- یک آزمایش کنترل‌شده اجرا و نتیجه آن را مستند کنی.
-- خطاها، محدودیت‌ها و ملاحظات امنیتی را توضیح بدهی.
 
-## 1. جایگاه موضوع در مسیر مهندسی
+- توضیح بدهی چرا Loop در اترنت خطرناک است (Broadcast Storm، MAC Flapping، فریم تکراری).
+- سه مرحله اصلی STP را شرح بدهی: انتخاب Root Bridge، Root Port و Designated Port.
+- Bridge ID و Path Cost را محاسبه و در یک توپولوژی ساده نقش پورت‌ها را مشخص کنی.
+- تفاوت STP (802.1D) و RSTP (802.1w) را توضیح بدهی.
+- Root Bridge را کنترل کنی و PortFast، BPDU Guard و Root Guard را درست به کار ببری.
+- نشانه‌های Loop و مشکل STP را عیب‌یابی کنی.
 
-این جلسه بخشی از مسیر **شبکه** است. موضوع «Spanning Tree Fundamentals» را باید در ارتباط با مباحث قبلی و بعدی ببینی، نه به‌عنوان یک دستور یا مفهوم جداافتاده.
+## 1. چرا Loop در لایه 2 خطرناک است؟
 
-در کار مهندسی، هدف فقط حفظ کردن اصطلاحات نیست. باید بتوانی مسئله را تعریف کنی، شواهد جمع‌آوری کنی، فرضیه بسازی، آن را آزمایش کنی و نتیجه را با دقت گزارش بدهی.
+سه مشکل همزمان رخ می‌دهد:
 
-## 2. مفاهیم کلیدی
+1. **Broadcast Storm:** سوئیچ‌ها Broadcast را روی همه پورت‌ها Flood می‌کنند. در حلقه، هر کپی دوباره Flood می‌شود و تعداد فریم‌ها به‌صورت نمایی بالا می‌رود تا پهنای باند و CPU تمام شود.
+2. **MAC Flapping:** یک فریم از چند مسیر می‌رسد و سوئیچ MAC مبدأ را مرتب از پورت‌های مختلف یاد می‌گیرد و جدول MAC ناپایدار می‌شود (جلسه دوم).
+3. **فریم تکراری:** میزبان ممکن است چند نسخه از یک فریم دریافت کند.
 
-هنگام مطالعه این موضوع، این پرسش‌ها را پاسخ بده:
+اترنت TTL ندارد، پس فریم خودش هرگز منقضی نمی‌شود. تنها راه، قطع فیزیکی حلقه یا جلوگیری از شکل‌گیری آن است، و کار STP همین است.
 
-1. این فناوری یا مفهوم چه مسئله‌ای را حل می‌کند؟
-2. اجزای اصلی آن چیست و هر جزء چه مسئولیتی دارد؟
-3. ورودی، خروجی و وابستگی‌های آن کدام‌اند؟
-4. در چه شرایطی درست کار نمی‌کند؟
-5. چه خطاهای پیکربندی یا عملیاتی در آن رایج‌اند؟
-6. چه داده‌ای برای تشخیص وضعیت آن باید جمع‌آوری شود؟
+## 2. ایده اصلی STP
 
-واژگان جدید را در یک واژه‌نامه شخصی ثبت کن. برای هر اصطلاح، تعریف فارسی، نام انگلیسی و یک مثال فنی بنویس.
+سوئیچ‌ها با تبادل پیام‌هایی به نام **BPDU (Bridge Protocol Data Unit)** با یکدیگر درباره توپولوژی توافق می‌کنند:
 
-## 3. دیدگاه مهندسی
+1. یک سوئیچ به‌عنوان **Root Bridge** (ریشه درخت) انتخاب می‌شود.
+2. هر سوئیچ غیر Root بهترین مسیر به Root را پیدا می‌کند (**Root Port**).
+3. روی هر قطعه شبکه (Segment) یک سوئیچ مسئول رساندن ترافیک به Root می‌شود (**Designated Port**).
+4. پورت‌هایی که نه Root هستند و نه Designated **مسدود** می‌شوند.
 
-برای تحلیل درست، بین این سه مورد تفاوت بگذار:
+BPDU ها به آدرس Multicast `01:80:C2:00:00:00` ارسال می‌شوند و Root Bridge هر 2 ثانیه (Hello Time) BPDU می‌فرستد.
 
-- **Configuration:** چیزی که تنظیم شده است.
-- **Operational State:** وضعیتی که سیستم واقعاً در آن قرار دارد.
-- **Observed Evidence:** شواهدی که از خروجی ابزارها، لاگ‌ها یا تست‌ها به دست می‌آیند.
+## 3. Bridge ID و انتخاب Root Bridge
 
-این سه مورد همیشه یکسان نیستند. یک پیکربندی صحیح لزوماً تضمین نمی‌کند سرویس در عمل سالم باشد.
+هر سوئیچ یک **Bridge ID** دارد:
 
-## 4. آزمایشگاه عملی
-
-### آزمایشگاه پایه
-
-```powershell
-Get-NetAdapter
-Get-NetIPConfiguration
-Get-NetRoute -AddressFamily IPv4
-Test-NetConnection 1.1.1.1 -Port 443
+```text
+Bridge ID = Priority + MAC Address
 ```
 
-خروجی را ثبت کن، فیلدهای مهم را توضیح بده و مشخص کن کدام بخش از موضوع امروز را نشان می‌دهد.
+- **Priority:** پیش‌فرض 32768
+- **MAC:** آدرس MAC سوئیچ
 
-### گزارش آزمایشگاه
+**سوئیچ با کوچک‌ترین Bridge ID برنده Root می‌شود.** اول Priority مقایسه می‌شود و اگر برابر بود MAC.
 
-گزارش خود را با این قالب تکمیل کن:
+### Extended System ID در PVST+
 
-| بخش | چیزی که باید ثبت شود |
-|---|---|
-| هدف | چه چیزی را می‌خواهی بررسی کنی؟ |
-| محیط | سیستم‌عامل، ابزار و نسخه |
-| فرضیه | انتظار داری چه اتفاقی بیفتد؟ |
-| اجرا | مراحل و دستورهای اجراشده |
-| مشاهده | خروجی واقعی |
-| تحلیل | نتیجه چه معنایی دارد؟ |
-| محدودیت | چه چیزی هنوز اثبات نشده است؟ |
+سوئیچ‌های سیسکو به‌طور پیش‌فرض برای هر VLAN یک نمونه STP جدا اجرا می‌کنند (PVST+). برای این کار شماره VLAN در Priority جاسازی می‌شود، بنابراین Priority واقعی = مضرب 4096 + شماره VLAN. برای VLAN 1: `32768 + 1 = 32769`. به همین دلیل مقدارهای Priority قابل تنظیم فقط مضرب 4096 هستند (0، 4096، 8192، ... تا 61440).
 
-## 5. سناریوی عیب‌یابی
+### خطر: Root تصادفی
 
-فرض کن بخشی از زیرساخت مطابق انتظار کار نمی‌کند.
+اگر هیچ تنظیمی نکنی، سوئیچی که **MAC کوچک‌تر دارد** (معمولاً قدیمی‌ترین سوئیچ) Root می‌شود. ممکن است یک سوئیچ ضعیف دسترسی در گوشه ساختمان Root شود و تمام ترافیک شبکه از آن عبور کند. برای همین باید Root را **عمداً** انتخاب کنی (معمولاً سوئیچ Core).
 
-1. محدوده مشکل را مشخص کن.
-2. آخرین تغییرات را بررسی کن.
-3. وضعیت فعلی را بدون ایجاد تغییر جمع‌آوری کن.
-4. فرضیه‌های محتمل را از ساده به پیچیده مرتب کن.
-5. هر فرضیه را با یک آزمایش مشخص بررسی کن.
-6. نتیجه و شواهد را مستند کن.
+## 4. هزینه مسیر (Path Cost)
 
-از تغییر هم‌زمان چند متغیر خودداری کن؛ در غیر این صورت تشخیص علت واقعی دشوار می‌شود.
+هزینه یک لینک بر اساس سرعت آن است. مقدارهای رایج روش کوتاه (802.1D قدیمی):
 
-## 6. ارتباط با NetFleet
+| سرعت | Cost (روش کوتاه) | Cost (روش بلند 802.1t) |
+|---|---|---|
+| 10 Mbps | 100 | 2,000,000 |
+| 100 Mbps | 19 | 200,000 |
+| 1 Gbps | 4 | 20,000 |
+| 10 Gbps | 2 | 2,000 |
 
-در پروژه NetFleet باید بتوانیم دانش این جلسه را به یک قابلیت قابل اندازه‌گیری تبدیل کنیم.
+سوئیچ‌های جدید معمولاً از روش بلند استفاده می‌کنند چون لینک‌های 10G و بالاتر در روش کوتاه قابل تمایز نیستند. نکته مهم: همه سوئیچ‌های یک شبکه باید از یک روش استفاده کنند وگرنه مقایسه Cost ها بی‌معنی می‌شود.
 
-به این پرسش پاسخ بده:
+**Root Path Cost** مجموع Cost لینک‌های خروجی در مسیر تا Root است.
 
-**اگر بخواهیم موضوع «Spanning Tree Fundamentals» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟**
+## 5. سه مرحله انتخاب
 
-طرح اولیه خود را با سه بخش بنویس:
-- Data Source
-- Validation Rule
-- Expected Output
+### مرحله 1: Root Bridge
 
-## 7. تمرین و ارزیابی
+کوچک‌ترین Bridge ID. همه پورت‌های Root Bridge **Designated** هستند.
 
-1. موضوع امروز را در پنج جمله توضیح بده.
-2. سه اصطلاح مهم آن را تعریف کن.
-3. یک کاربرد واقعی و یک محدودیت آن را نام ببر.
-4. یک خطای رایج را توضیح بده و روش تشخیص آن را بنویس.
-5. مشخص کن چه چیزی را می‌توان خودکار کرد و چه چیزی به تأیید انسانی نیاز دارد.
+### مرحله 2: Root Port (روی هر سوئیچ غیر Root)
 
-## 8. تکلیف
+پورتی که کمترین **Root Path Cost** را دارد. اگر برابر بود به ترتیب:
 
-یک گزارش کوتاه فنی تهیه کن که شامل هدف، معماری یا مفهوم، مراحل آزمایش، شواهد، نتیجه‌گیری و منابع باشد. از ادعایی که با آزمایش یا منبع معتبر پشتیبانی نمی‌شود خودداری کن.
+1. کوچک‌ترین Bridge ID فرستنده (همسایه)
+2. کوچک‌ترین Port Priority فرستنده
+3. کوچک‌ترین Port ID فرستنده
 
-## معیار تکمیل جلسه
+### مرحله 3: Designated Port (روی هر قطعه)
 
-- [ ] می‌توانم مفهوم را بدون نگاه به جزوه توضیح بدهم.
-- [ ] می‌توانم آزمایش را دوباره اجرا کنم.
-- [ ] خروجی را می‌توانم تفسیر کنم.
-- [ ] محدودیت‌ها و ریسک‌ها را می‌شناسم.
-- [ ] می‌توانم کاربرد آن را در NetFleet شرح بدهم.
+روی هر لینک، پورتی که BPDU بهتر (Root Path Cost کمتر، سپس Bridge ID کوچک‌تر) ارسال می‌کند Designated است. پورتی که نه Root و نه Designated باشد **مسدود (Alternate/Blocking)** می‌شود.
 
-## منابع پیشنهادی برای مطالعه بیشتر
+## 6. مثال حل‌شده: سه سوئیچ
 
-منابع رسمی و مستندات ابزارها را در اولویت قرار بده. نسخه و تاریخ دسترسی را در گزارش ثبت کن. لینک‌های این جلسه باید پیش از انتشار نهایی توسط مدرس یا بازبین بررسی شوند.
+سه سوئیچ در مثلث، همه لینک‌ها 100 Mbps (Cost = 19) و VLAN 1:
+
+| سوئیچ | Priority | MAC | Bridge ID |
+|---|---|---|---|
+| SW1 | 32769 | 0000.0000.0001 | 32769 / ...0001 |
+| SW2 | 32769 | 0000.0000.0002 | 32769 / ...0002 |
+| SW3 | 32769 | 0000.0000.0003 | 32769 / ...0003 |
+
+لینک‌ها: SW1–SW2، SW1–SW3، SW2–SW3.
+
+**Root Bridge:** Priority یکسان است، پس MAC کوچک‌تر: **SW1** برنده است.
+
+**Root Port روی SW2:** مسیر مستقیم به SW1 با Cost 19. مسیر از SW3 برابر 19 + 19 = 38. پس Root Port پورت متصل به SW1 است.
+
+**Root Port روی SW3:** مشابه، پورت متصل به SW1 (Cost 19).
+
+**قطعه SW2–SW3:** هر دو سوئیچ Root Path Cost برابر 19 را اعلام می‌کنند. تساوی را با Bridge ID می‌شکنیم: SW2 کوچک‌تر است، پس پورت SW2 روی این قطعه **Designated** است و پورت SW3 روی همین قطعه **Blocked (Alternate)** می‌شود.
+
+**نتیجه:** حلقه SW1–SW2–SW3 شکسته شد. اگر لینک SW1–SW3 خراب شود، پورت مسدود SW3 فعال می‌شود و ترافیک SW3 از مسیر SW2 به SW1 می‌رسد.
+
+نمودار متنی:
+
+```text
+          SW1 (Root)
+         /  Desg   \ Desg
+        /           \
+   Root/             \Root
+      SW2 ---------- SW3
+        Desg       Blocked
+```
+
+## 7. وضعیت پورت‌ها در 802.1D
+
+| وضعیت | ارسال داده | یادگیری MAC | توضیح |
+|---|---|---|---|
+| Blocking | نه | نه | فقط BPDU دریافت می‌کند |
+| Listening | نه | نه | منتظر تثبیت توپولوژی |
+| Learning | نه | بله | جدول MAC را می‌سازد |
+| Forwarding | بله | بله | عملکرد عادی |
+| Disabled | نه | نه | خاموش (Shutdown) |
+
+**تایمرها:** Hello = 2 ثانیه، Forward Delay = 15 ثانیه، Max Age = 20 ثانیه.
+
+برای اینکه پورت Blocked پس از خرابی لینک فعال شود: صبر Max Age (20 ثانیه) + Listening (15) + Learning (15) = تا **50 ثانیه** (و گاهی 30 ثانیه در حالت‌های مستقیم). در این مدت پورت ترافیک عبور نمی‌دهد. این زمان در شبکه‌های امروزی زیاد است.
+
+## 8. RSTP (802.1w): نسخه سریع
+
+**Rapid STP** همان هدف را با همگرایی خیلی سریع‌تر (معمولاً چند ثانیه یا کمتر) به دست می‌آورد.
+
+| ویژگی | STP (802.1D) | RSTP (802.1w) |
+|---|---|---|
+| وضعیت‌ها | Blocking، Listening، Learning، Forwarding، Disabled | Discarding، Learning، Forwarding |
+| نقش‌ها | Root، Designated، Blocked | Root، Designated، **Alternate**، **Backup** |
+| همگرایی | 30 تا 50 ثانیه | معمولاً کمتر از چند ثانیه |
+| مکانیزم | تایمر | Proposal / Agreement بین همسایه‌ها |
+| Edge Port | ندارد (PortFast سیسکو) | پشتیبانی استاندارد |
+
+**نقش Alternate:** مسیر جایگزین برای Root Port (مثل پورت Blocked سناریوی بالا). **نقش Backup:** مسیر جایگزین Designated Port روی همان سوئیچ (وقتی دو پورت یک سوئیچ به یک Segment وصل‌اند، مثل هاب).
+
+RSTP لینک‌های Point-to-Point (Full Duplex) را بسیار سریع و بدون تایمر همگرا می‌کند و هر سوئیچ BPDU را خودش تولید می‌کند (نه فقط Root).
+
+### حالت‌های STP در سیسکو
+
+- **PVST+:** STP کلاسیک به‌ازای هر VLAN (پیش‌فرض بسیاری از Catalyst ها)
+- **Rapid PVST+:** RSTP به‌ازای هر VLAN (پیشنهادی در بیشتر شبکه‌های سیسکو)
+- **MST (802.1s):** چند VLAN را در چند نمونه گروه‌بندی می‌کند تا کار کمتر شود
+
+برای فعال کردن Rapid PVST+:
+
+```text
+Switch(config)# spanning-tree mode rapid-pvst
+```
+
+## 9. کنترل Root Bridge و بار
+
+### انتخاب Root با تنظیم Priority
+
+```text
+Core(config)# spanning-tree vlan 10 priority 4096
+Core(config)# spanning-tree vlan 20 priority 4096
+```
+
+یا با دستور کمکی:
+
+```text
+Core(config)# spanning-tree vlan 10 root primary
+Core(config)# spanning-tree vlan 10 root secondary    (روی سوئیچ دوم، برای Root پشتیبان)
+```
+
+`root primary` Priority را طوری پایین می‌آورد که سوئیچ Root شود (معمولاً 24576 یا کمتر)، و `root secondary` آن را روی 28672 می‌گذارد.
+
+### توزیع بار با Root متفاوت
+
+چون PVST+ برای هر VLAN مستقل است، می‌توان Root VLAN 10 را روی SW-A و Root VLAN 20 را روی SW-B گذاشت. به این ترتیب لینک‌های مختلف برای VLAN های مختلف Blocked می‌شوند و هر دو لینک استفاده می‌شوند.
+
+## 10. ابزارهای حفاظتی
+
+### PortFast
+
+پورت‌های متصل به **کامپیوتر یا سرور** (نه سوئیچ) نباید 30 ثانیه صبر کنند. PortFast آن‌ها را بلافاصله به Forwarding می‌برد:
+
+```text
+Switch(config)# interface fa0/1
+Switch(config-if)# switchport mode access
+Switch(config-if)# spanning-tree portfast
+```
+
+PortFast **فقط** برای پورت‌های Edge (میزبان نهایی). اگر روی پورتی که به سوئیچ وصل است فعال شود، خطر Loop لحظه‌ای وجود دارد.
+
+### BPDU Guard
+
+اگر روی پورت PortFast ناگهان BPDU برسد (یعنی کسی سوئیچ وصل کرده)، پورت **Err-disabled** می‌شود:
+
+```text
+Switch(config-if)# spanning-tree bpduguard enable
+```
+
+یا برای همه پورت‌های PortFast:
+
+```text
+Switch(config)# spanning-tree portfast default
+Switch(config)# spanning-tree portfast bpduguard default
+```
+
+بازیابی خودکار پورت‌های Err-disabled (اختیاری):
+
+```text
+Switch(config)# errdisable recovery cause bpduguard
+Switch(config)# errdisable recovery interval 300
+```
+
+### Root Guard
+
+روی پورت‌هایی که نباید به Root منتهی شوند (مثلاً پورت رو به سوئیچ‌های لبه) اگر BPDU بهتری برسد پورت به حالت Root-Inconsistent می‌رود و مانع تصاحب Root توسط یک سوئیچ ناخواسته می‌شود:
+
+```text
+Switch(config-if)# spanning-tree guard root
+```
+
+### Loop Guard و UDLD
+
+برای لینک‌های یک‌طرفه (Unidirectional) که BPDU فقط در یک جهت می‌رسد و ممکن است Loop بسازند، **Loop Guard** و **UDLD** وجود دارند. جزئیات آن‌ها از این دوره جلوتر است، ولی بدان وجود دارند.
+
+## 11. آزمایش عملی در Packet Tracer
+
+### توپولوژی
+
+سه سوئیچ 2960 در مثلث (SW1، SW2، SW3) و یک PC به هر سوئیچ.
+
+### مراحل
+
+1. سوئیچ‌ها را با Fa0/1 و Fa0/2 به هم وصل کن (مثلث).
+2. روی هر سوئیچ بررسی کن:
+
+```text
+Switch# show spanning-tree
+```
+
+3. Root Bridge را پیدا کن (خط `This bridge is the root` یا آدرس Root ID).
+4. روی هر سوئیچ غیر Root، پورت Root و پورت Blocked (Alternate) را مشخص کن. `Role` و `Sts` ستون‌های مهم هستند.
+5. Priority را روی یک سوئیچ دیگر پایین بیاور و ببین Root تغییر می‌کند:
+
+```text
+Switch(config)# spanning-tree vlan 1 priority 4096
+```
+
+6. یک لینک فعال را قطع کن (Shutdown) و مشاهده کن پورت Blocked چطور فعال می‌شود. زمان تقریبی را اندازه بگیر.
+7. حالت را به Rapid PVST+ تغییر بده و آزمایش را تکرار کن:
+
+```text
+Switch(config)# spanning-tree mode rapid-pvst
+```
+
+### نمونه خروجی `show spanning-tree` (روی Root)
+
+```text
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32769
+             Address     0000.0000.0001
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0000.0000.0001
+
+Interface        Role Sts Cost      Prio.Nbr Type
+---------------- ---- --- --------- -------- ------------------
+Fa0/1            Desg FWD 19        128.1    P2p
+Fa0/2            Desg FWD 19        128.2    P2p
+```
+
+دقت کن: روی Root Bridge همه پورت‌ها Designated هستند.
+
+### سؤال‌ها
+
+- کدام پورت Blocked شد و چرا؟
+- بعد از خرابی لینک STP کلاسیک چقدر طول کشید؟ RSTP چطور؟
+- اگر Priority دو سوئیچ را برابر بگذاری چه کسی Root می‌شود؟
+
+## 12. آزمایش: شبیه‌سازی Loop و محافظت (با احتیاط)
+
+**فقط در Packet Tracer یا آزمایشگاه جداشده.** هرگز روی شبکه واقعی انجام نده.
+
+1. STP را روی یک VLAN غیرفعال کن (`no spanning-tree vlan 1`) و دو سوئیچ را با دو کابل به هم وصل کن.
+2. یک Broadcast (مثلاً پینگ به IP ناموجود) بفرست و Simulation را ببین: فریم‌ها بی‌پایان می‌چرخند.
+3. STP را دوباره فعال کن و تفاوت را ببین.
+
+## 13. عیب‌یابی مهندسی STP
+
+### سناریو 1: شبکه ناگهان بسیار کند یا قطع می‌شود، چراغ‌ها دیوانه‌وار چشمک می‌زنند
+
+نشانه کلاسیک Loop و Broadcast Storm. بررسی:
+
+```text
+Switch# show processes cpu sorted
+Switch# show interfaces | include line protocol|input rate|broadcasts
+Switch# show spanning-tree summary
+```
+
+اقدام فوری: لینک مشکوک (آخرین کابل اضافه‌شده) را جدا کن تا Loop شکسته شود، سپس علت را بررسی کن. دلیل رایج: Loop از طریق یک سوئیچ غیرمدیریتی که با دو کابل وصل شده، یا STP غیرفعال شده، یا فیلتر BPDU.
+
+### سناریو 2: Root Bridge نادرست
+
+با `show spanning-tree vlan 10` ببین Root ID متعلق به کدام سوئیچ است. اگر یک سوئیچ دسترسی Root شده، Priority سوئیچ Core را پایین بیاور.
+
+### سناریو 3: تغییرات مکرر توپولوژی (Topology Change)
+
+هر بار توپولوژی تغییر می‌کند، سوئیچ‌ها Aging جدول MAC را کوتاه می‌کنند و ترافیک Flood می‌شود. برای پیدا کردن منبع:
+
+```text
+Switch# show spanning-tree detail | include ieee|occurr|from|is exec
+```
+
+خط `last change occurred ... from FastEthernet0/3` پورتی را نشان می‌دهد که مشکل از آن شروع شده است. معمولاً یک پورت کاربر که مدام Up/Down می‌شود و PortFast ندارد.
+
+### سناریو 4: پورت به Err-disabled رفته (BPDU Guard)
+
+لاگ `%SPANTREE-2-BLOCK_BPDUGUARD` را ببین. کسی به پورت کاربری یک سوئیچ یا دستگاه BPDU-ساز وصل کرده است. دستگاه را جدا کن، پورت را `shutdown` و `no shutdown` کن.
+
+### سناریو 5: لینک اضافه کار نمی‌کند (مثلاً دو لینک موازی و یکی بلااستفاده)
+
+طبیعی است! STP عمداً یکی را Block کرده. اگر هر دو لینک را می‌خواهی، از **EtherChannel (LACP)** استفاده کن تا STP آن‌ها را یک لینک منطقی ببیند (در جلسات بعد).
+
+## 14. خطاهای مفهومی رایج
+
+1. **«STP لینک اضافی را خاموش می‌کند.»** نه. آن را مسدود می‌کند ولی BPDU همچنان رد و بدل می‌شود و در صورت خرابی فعال می‌شود.
+2. **«STP بار را بین لینک‌ها تقسیم می‌کند.»** نه (در حالت پایه). PVST+ با Root های متفاوت برای VLAN های متفاوت این کار را غیرمستقیم انجام می‌دهد. EtherChannel برای تقسیم بار روی لینک‌های موازی است.
+3. **«Root Bridge قوی‌ترین سوئیچ است.»** نه، فقط کوچک‌ترین Bridge ID. باید عمداً Core را Root کنی.
+4. **«PortFast یعنی STP روی پورت خاموش است.»** نه. فقط انتظار را حذف می‌کند و باید با BPDU Guard همراه باشد.
+5. **«RSTP یعنی تنظیم مجدد همه چیز.»** RSTP با STP کلاسیک سازگار است ولی با تجهیزات 802.1D سریع نیست.
+6. **«در حلقه فریم‌ها یک‌بار منقضی می‌شوند.»** نه. اترنت TTL ندارد.
+
+## 15. چالش NetFleet
+
+### سناریو
+
+NetFleet یک شبکه دو طبقه دارد: یک سوئیچ Core در اتاق سرور و دو سوئیچ دسترسی در طبقات. هر سوئیچ دسترسی با دو لینک (یکی اصلی و یکی پشتیبان) به Core وصل است. روزی یک کارمند برای گسترش پورت‌ها یک سوئیچ ارزان و غیرمدیریتی به یک پورت کاربری وصل می‌کند و با دو کابل به دو پورت مختلف دیوار وصلش می‌کند. چند ثانیه بعد کل طبقه قطع می‌شود و CPU سوئیچ‌ها 100% است. بعداً مشخص می‌شود که یک سوئیچ دسترسی قدیمی Root شده است.
+
+### مأموریت
+
+1. توضیح بده چه اتفاقی افتاد (Loop، Storm، MAC Flapping) و چرا STP موجود جلوی آن را نگرفت یا دیر گرفت.
+2. یک پیکربندی کامل STP برای NetFleet بنویس: Rapid PVST+، Root اصلی روی Core با Priority 4096، Root پشتیبان، PortFast و BPDU Guard روی پورت‌های کاربر و Root Guard روی لینک‌های مناسب.
+3. روشی برای پیدا کردن منبع Loop از طریق خط فرمان بنویس.
+4. توضیح بده چرا BPDU Guard در این سناریو مشکل را از ابتدا برطرف می‌کرد.
+5. یک برنامه پاسخ به رخداد (Runbook) ده‌خطی برای «Loop در شبکه» بنویس.
+
+### خروجی مورد انتظار
+
+یک گزارش فنی شامل تحلیل رخداد، پیکربندی پیشنهادی، دستورهای عیب‌یابی و Runbook.
+
+## 16. جمع‌بندی جلسه
+
+- Loop در اترنت چون TTL ندارد فاجعه است: Broadcast Storm، MAC Flapping، فریم تکراری.
+- STP با تبادل BPDU یک درخت بدون حلقه می‌سازد و لینک‌های اضافه را مسدود نگه می‌دارد.
+- Root Bridge = کوچک‌ترین Bridge ID (Priority سپس MAC). پیش‌فرض Priority 32768 (+ شماره VLAN در PVST+).
+- Root Port = کمترین Root Path Cost؛ Designated Port روی هر قطعه؛ بقیه Blocked.
+- Cost پیش‌فرض (روش کوتاه): 100 Mbps = 19، 1 Gbps = 4.
+- STP کلاسیک تا حدود 30 تا 50 ثانیه برای همگرایی؛ RSTP بسیار سریع‌تر و دارای نقش‌های Alternate و Backup.
+- Root را عمداً روی Core بگذار. PortFast + BPDU Guard روی پورت‌های کاربر، Root Guard روی پورت‌های لبه.
+- برای عیب‌یابی: `show spanning-tree`، `show spanning-tree detail`، CPU و شمارنده‌های Broadcast.
+
+## 17. تمرین‌های پایان جلسه
+
+### تمرین نظری
+
+1. در یک توپولوژی چهار سوئیچ حلقه‌ای با Cost های مختلف، Root Bridge، Root Port ها و پورت‌های Blocked را مشخص کن.
+2. توضیح بده چرا Priority در PVST+ فقط مضرب 4096 است.
+3. تفاوت نقش Alternate و Backup را با مثال توضیح بده.
+
+### تمرین عملی
+
+1. آزمایش بخش 11 را انجام بده و برای هر سوئیچ خروجی `show spanning-tree` را ذخیره کن.
+2. زمان همگرایی را در حالت PVST+ و Rapid PVST+ مقایسه و ثبت کن.
+3. BPDU Guard را روی یک پورت PortFast فعال کن، یک سوئیچ به آن وصل کن و رفتار پورت و لاگ را مستند کن.
+
+### منابع و مطالعه بیشتر
+
+**کتاب‌ها**
+
+- [Wendell Odom — *CCNA 200-301 Official Cert Guide, Volume 1* (Cisco Press)](https://www.informit.com/store/ccna-200-301-official-cert-guide-volume-1-9780136171584): بخش‌های STP و RSTP
+- Radia Perlman — *Interconnections: Bridges, Routers, Switches, and Internetworking Protocols* (Addison-Wesley)؛ توضیح کلاسیک الگوریتم Spanning Tree از طراح آن
+
+**استانداردها**
+
+- [IEEE 802.1 Working Group — صفحه استانداردهای 802.1](https://1.ieee802.org/): IEEE 802.1D (STP و RSTP) و IEEE 802.1Q (MSTP)
+
+**مستندات رسمی**
+
+- [Cisco — Understanding and Configuring Spanning Tree Protocol (STP) on Catalyst Switches](https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/5234-5.html)
+- [Cisco — عیب‌یابی و پیشگیری از خرابی STP در شبکه‌های Catalyst](https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10556-16.html)
+- [Cisco — Troubleshoot Spanning Tree Protocol Issues with Cisco IOS](https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/28943-170.html)
+- [Cisco — Best Practices for Catalyst 6500/6000 and 4500/4000 Series Switches Running Cisco IOS](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/24330-185.html)
+
+**ابزار و مرجع دستورها**
+
+- [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html/)
+- [Cisco Networking Academy و Packet Tracer](https://www.netacad.com/)
+
+> برای مطالعه‌ی متن کامل استانداردهای IEEE ممکن است به نسخه‌ی خریداری‌شده یا دسترسی دانشگاهی نیاز داشته باشی. مستندات Cisco را همیشه با نسخه IOS و مدل سوئیچ خودت تطبیق بده، چون بعضی صفحات مربوط به خانواده‌های قدیمی‌تر Catalyst هستند.
+
+## 18. آزمون تعاملی جلسه
+
+````{=html}
+
+<section class="nf-quiz" data-nf-quiz aria-labelledby="nf-quiz-week02-day05-title">
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-week02-day05-title">آزمون تعاملی جلسه پنجم هفته دوم</h2>
+    </div>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score>0</strong></div>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress" role="progressbar"
+       aria-label="پیشرفت آزمون"
+       aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="nf-quiz-progress-bar" data-progress></div>
+  </div>
+
+  <div class="nf-quiz-progress-label" data-progress-text></div>
+
+  <div data-content>
+    <h3 class="nf-quiz-question" data-question></h3>
+    <div class="nf-quiz-options" data-options></div>
+    <div class="nf-quiz-feedback" data-feedback aria-live="polite"></div>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next hidden>
+        سؤال بعدی
+      </button>
+    </div>
+  </div>
+
+  <div class="nf-quiz-result" data-result hidden aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+    <h3>نتیجه آزمون</h3>
+    <div class="nf-quiz-result-score" data-final-score></div>
+    <div class="nf-quiz-result-score" data-percentage></div>
+    <p data-result-message></p>
+    <button class="nf-quiz-primary" type="button" data-restart>
+      تلاش مجدد
+    </button>
+  </div>
+
+  <script type="application/json" data-quiz-questions>
+[
+  {
+    "question": "هدف اصلی STP چیست؟",
+    "options": [
+      "جلوگیری از Loop در شبکه لایه 2 با حفظ مسیرهای اضافه",
+      "رمزگذاری فریم‌ها",
+      "تقسیم Broadcast Domain",
+      "افزایش سرعت لینک‌ها"
+    ],
+    "answer": 0,
+    "explanation": "STP لینک‌های اضافه را فیزیکی نگه می‌دارد ولی به‌طور منطقی بعضی را Block می‌کند تا حلقه ایجاد نشود."
+  },
+  {
+    "question": "چرا Loop در اترنت بسیار خطرناک است؟",
+    "options": [
+      "چون اترنت فریم‌ها را رمزگذاری می‌کند",
+      "چون فریم اترنت TTL ندارد و در حلقه بی‌پایان می‌چرخد",
+      "چون سوئیچ‌ها آدرس IP ندارند",
+      "چون Loop فقط به کابل آسیب می‌زند"
+    ],
+    "answer": 1,
+    "explanation": "اترنت مکانیزم انقضای فریم ندارد؛ فریم و Broadcast تا قطع حلقه می‌چرخند و پهنای باند و CPU را مصرف می‌کنند."
+  },
+  {
+    "question": "Root Bridge چگونه انتخاب می‌شود؟",
+    "options": [
+      "سوئیچ با بیشترین پهنای باند",
+      "سوئیچ با بیشترین پورت",
+      "سوئیچ با کوچک‌ترین Bridge ID (Priority و سپس MAC)",
+      "سوئیچ با بزرگ‌ترین MAC"
+    ],
+    "answer": 2,
+    "explanation": "کوچک‌ترین Bridge ID برنده است؛ ابتدا Priority مقایسه می‌شود و در صورت برابری MAC."
+  },
+  {
+    "question": "Priority پیش‌فرض STP برای VLAN 1 در PVST+ سیسکو چقدر نمایش داده می‌شود؟",
+    "options": [
+      "4096",
+      "61440",
+      "32768",
+      "32769"
+    ],
+    "answer": 3,
+    "explanation": "Priority پایه 32768 است و شماره VLAN (1) به‌عنوان Extended System ID به آن اضافه می‌شود: 32769."
+  },
+  {
+    "question": "Cost پیش‌فرض یک لینک 100 Mbps در روش کوتاه 802.1D چقدر است؟",
+    "options": [
+      "19",
+      "100",
+      "2",
+      "4"
+    ],
+    "answer": 0,
+    "explanation": "در روش کوتاه: 10 Mbps = 100، 100 Mbps = 19، 1 Gbps = 4، 10 Gbps = 2."
+  },
+  {
+    "question": "Root Port روی یک سوئیچ غیر Root کدام پورت است؟",
+    "options": [
+      "پورتی که کمترین Root Path Cost را دارد",
+      "پورتی که بیشترین ترافیک دارد",
+      "پورتی که به کامپیوتر وصل است",
+      "پورتی که Blocked شده است"
+    ],
+    "answer": 0,
+    "explanation": "هر سوئیچ غیر Root یک Root Port دارد که کمترین Root Path Cost تا Root Bridge را دارد."
+  },
+  {
+    "question": "PortFast روی چه پورت‌هایی باید فعال شود؟",
+    "options": [
+      "همه پورت‌ها",
+      "پورت‌های متصل به سوئیچ‌های دیگر",
+      "پورت‌های Edge که به میزبان نهایی (کامپیوتر، سرور) وصل‌اند",
+      "فقط پورت‌های Root"
+    ],
+    "answer": 2,
+    "explanation": "PortFast انتظار Listening و Learning را حذف می‌کند و فقط برای پورت‌های میزبان مناسب است، چون روی پورت سوئیچ می‌تواند Loop لحظه‌ای بسازد."
+  },
+  {
+    "question": "BPDU Guard روی یک پورت PortFast وقتی BPDU دریافت کند چه می‌کند؟",
+    "options": [
+      "Root Bridge را تغییر می‌دهد",
+      "Priority را صفر می‌کند",
+      "BPDU را نادیده می‌گیرد",
+      "پورت را Err-disabled می‌کند"
+    ],
+    "answer": 3,
+    "explanation": "دریافت BPDU روی پورت Edge یعنی سوئیچ یا دستگاه ناخواسته وصل شده، پس BPDU Guard پورت را Err-disabled می‌کند."
+  },
+  {
+    "question": "کدام ویژگی RSTP نسبت به STP کلاسیک درست است؟",
+    "options": [
+      "فقط روی VLAN 1 کار می‌کند",
+      "نیاز به Root Bridge ندارد",
+      "BPDU استفاده نمی‌کند",
+      "همگرایی بسیار سریع‌تر و نقش‌های Alternate و Backup"
+    ],
+    "answer": 3,
+    "explanation": "RSTP با مکانیزم Proposal/Agreement در چند ثانیه همگرا می‌شود و نقش‌های Alternate و Backup را تعریف می‌کند."
+  },
+  {
+    "question": "زمان همگرایی STP کلاسیک (802.1D) پس از خرابی لینک معمولاً چقدر است؟",
+    "options": [
+      "کمتر از 1 ثانیه",
+      "حدود 30 تا 50 ثانیه",
+      "حدود 5 دقیقه",
+      "هرگز همگرا نمی‌شود"
+    ],
+    "answer": 1,
+    "explanation": "با تایمرهای پیش‌فرض (Max Age 20 + Listening 15 + Learning 15) همگرایی تا حدود 50 ثانیه طول می‌کشد."
+  }
+]
+  </script>
+</section>
+````
 :::

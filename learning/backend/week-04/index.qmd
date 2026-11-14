@@ -1,21 +1,72 @@
 ---
 title: "Week 4 - Data Persistence"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 4: Data Persistence
+::: {.nf-hero}
+<div class="nf-eyebrow">BACKEND / WEEK 04</div>
 
+# Data Persistence
+
+::: {.nf-fa}
 این هفته روی موضوع **Data Persistence** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Backend and APIs](../index.qmd)
+:::
 
-- [Day 1: Relational Database Fundamentals](day-01.qmd)
-- [Day 2: SQL Queries and Joins](day-02.qmd)
-- [Day 3: Schema Design and Constraints](day-03.qmd)
-- [Day 4: Transactions and ACID](day-04.qmd)
-- [Day 5: SQLite to PostgreSQL Concepts](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Relational Database Fundamentals
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### SQL Queries and Joins
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Schema Design and Constraints
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Transactions and ACID
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### SQLite to PostgreSQL Concepts
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · BACKEND · WEEK 04
 :::

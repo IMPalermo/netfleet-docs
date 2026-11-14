@@ -1,21 +1,72 @@
 ---
 title: "Week 3 - Python API Development"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 3: Python API Development
+::: {.nf-hero}
+<div class="nf-eyebrow">BACKEND / WEEK 03</div>
 
+# Python API Development
+
+::: {.nf-fa}
 این هفته روی موضوع **Python API Development** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Backend and APIs](../index.qmd)
+:::
 
-- [Day 1: Flask Application Structure](day-01.qmd)
-- [Day 2: Routing and Request Handling](day-02.qmd)
-- [Day 3: Input Validation and Serialization](day-03.qmd)
-- [Day 4: Configuration and Environment Variables](day-04.qmd)
-- [Day 5: Application Logging and Error Handling](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Flask Application Structure
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Routing and Request Handling
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Input Validation and Serialization
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Configuration and Environment Variables
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Application Logging and Error Handling
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · BACKEND · WEEK 03
 :::

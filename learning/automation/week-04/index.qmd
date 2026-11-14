@@ -1,21 +1,72 @@
 ---
 title: "Week 4 - Configuration Automation"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 4: Configuration Automation
+::: {.nf-hero}
+<div class="nf-eyebrow">AUTOMATION / WEEK 04</div>
 
+# Configuration Automation
+
+::: {.nf-fa}
 این هفته روی موضوع **Configuration Automation** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Network Automation](../index.qmd)
+:::
 
-- [Day 1: Configuration Templates](day-01.qmd)
-- [Day 2: Jinja2 for Network Configurations](day-02.qmd)
-- [Day 3: Pre-Change Validation](day-03.qmd)
-- [Day 4: Safe Configuration Deployment](day-04.qmd)
-- [Day 5: Rollback and Change Verification](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Configuration Templates
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Jinja2 for Network Configurations
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Pre-Change Validation
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Safe Configuration Deployment
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Rollback and Change Verification
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · AUTOMATION · WEEK 04
 :::

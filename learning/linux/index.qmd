@@ -1,7 +1,94 @@
 ---
 title: "Linux Engineering"
+page-layout: full
+toc: false
 ---
+
+::: {.nf-hero}
+<div class="nf-eyebrow">LEARNING PATH / 03</div>
 
 # Linux Engineering
 
-Learning path for NetFleet engineering.
+::: {.nf-fa}
+مدیریت سرور لینوکس، دسترسی‌ها، SSH و عملیات روزمره یک مهندس زیرساخت.
+:::
+
+<div class="nf-stats">
+  <div><strong>08</strong><span>Weeks</span></div>
+  <div><strong>40</strong><span>Sessions</span></div>
+  <div><strong>0</strong><span>Sessions ready</span></div>
+</div>
+:::
+
+## Curriculum
+
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">WEEK 01 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Linux Environment
+
+[Explore week →](week-01/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 02 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Users and Permissions
+
+[Explore week →](week-02/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 03 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Linux Administration
+
+[Explore week →](week-03/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 04 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Linux Networking
+
+[Explore week →](week-04/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 05 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### SSH and Remote Operations
+
+[Explore week →](week-05/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 06 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Bash Automation
+
+[Explore week →](week-06/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 07 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### System Observability
+
+[Explore week →](week-07/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 08 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Linux Operations Project
+
+[Explore week →](week-08/index.qmd)
+:::
+
+:::
+
+::: {.nf-footer}
+LINUX ENGINEERING · 8-WEEK CURRICULUM
+:::

@@ -5,8 +5,6 @@ subtitle: "Python for Network Engineers | Week 4 | Day 4"
 ::: {.persian}
 # Regular Expressions
 
-<text></text>
-
 **مسیر:** پایتون برای مهندسان شبکه  
 **هفته:** 4، Working with Data  
 **جلسه:** 4 از ۵
@@ -14,6 +12,7 @@ subtitle: "Python for Network Engineers | Week 4 | Day 4"
 ## اهداف یادگیری
 
 در پایان این جلسه باید بتوانی:
+
 - مفهوم Regular Expressions را با زبان خودت توضیح بدهی.
 - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.
 - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.
@@ -99,6 +98,7 @@ if __name__ == "__main__":
 **اگر بخواهیم موضوع «Regular Expressions» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟**
 
 طرح اولیه خود را با سه بخش بنویس:
+
 - Data Source
 - Validation Rule
 - Expected Output

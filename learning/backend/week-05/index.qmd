@@ -1,21 +1,72 @@
 ---
 title: "Week 5 - API Security"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 5: API Security
+::: {.nf-hero}
+<div class="nf-eyebrow">BACKEND / WEEK 05</div>
 
+# API Security
+
+::: {.nf-fa}
 این هفته روی موضوع **API Security** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Backend and APIs](../index.qmd)
+:::
 
-- [Day 1: Authentication and Authorization](day-01.qmd)
-- [Day 2: API Keys and Bearer Tokens](day-02.qmd)
-- [Day 3: Password Hashing Fundamentals](day-03.qmd)
-- [Day 4: Input Validation and Injection Risks](day-04.qmd)
-- [Day 5: CORS, Rate Limits and Secure Defaults](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Authentication and Authorization
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### API Keys and Bearer Tokens
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Password Hashing Fundamentals
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Input Validation and Injection Risks
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### CORS, Rate Limits and Secure Defaults
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · BACKEND · WEEK 05
 :::

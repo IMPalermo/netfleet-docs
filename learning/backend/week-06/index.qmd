@@ -1,21 +1,72 @@
 ---
 title: "Week 6 - API Engineering"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 6: API Engineering
+::: {.nf-hero}
+<div class="nf-eyebrow">BACKEND / WEEK 06</div>
 
+# API Engineering
+
+::: {.nf-fa}
 این هفته روی موضوع **API Engineering** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Backend and APIs](../index.qmd)
+:::
 
-- [Day 1: OpenAPI and API Documentation](day-01.qmd)
-- [Day 2: Automated API Testing](day-02.qmd)
-- [Day 3: Database Migrations](day-03.qmd)
-- [Day 4: Background Jobs and Task Queues](day-04.qmd)
-- [Day 5: Caching and Performance Basics](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### OpenAPI and API Documentation
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Automated API Testing
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Database Migrations
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Background Jobs and Task Queues
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Caching and Performance Basics
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · BACKEND · WEEK 06
 :::

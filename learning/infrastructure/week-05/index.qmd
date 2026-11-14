@@ -1,21 +1,72 @@
 ---
 title: "Week 5 - Delivery and Observability"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 5: Delivery and Observability
+::: {.nf-hero}
+<div class="nf-eyebrow">INFRASTRUCTURE / WEEK 05</div>
 
+# Delivery and Observability
+
+::: {.nf-fa}
 این هفته روی موضوع **Delivery and Observability** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Infrastructure Engineering](../index.qmd)
+:::
 
-- [Day 1: CI/CD Pipeline Concepts](day-01.qmd)
-- [Day 2: Automated Validation in CI](day-02.qmd)
-- [Day 3: Metrics, Logs and Traces](day-03.qmd)
-- [Day 4: Prometheus and Grafana Concepts](day-04.qmd)
-- [Day 5: Backup, Recovery and Reliability](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### CI/CD Pipeline Concepts
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Automated Validation in CI
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Metrics, Logs and Traces
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Prometheus and Grafana Concepts
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Backup, Recovery and Reliability
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · INFRASTRUCTURE · WEEK 05
 :::

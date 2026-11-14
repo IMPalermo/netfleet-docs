@@ -1,21 +1,72 @@
 ---
 title: "Week 1 - Automation Foundations"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 1: Automation Foundations
+::: {.nf-hero}
+<div class="nf-eyebrow">AUTOMATION / WEEK 01</div>
 
+# Automation Foundations
+
+::: {.nf-fa}
 این هفته روی موضوع **Automation Foundations** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Network Automation](../index.qmd)
+:::
 
-- [Day 1: Why Network Automation Matters](day-01.qmd)
-- [Day 2: Automation Workflows and Control Loops](day-02.qmd)
-- [Day 3: CLI Automation Risks and Guardrails](day-03.qmd)
-- [Day 4: Inventory and Source of Truth](day-04.qmd)
-- [Day 5: Idempotency and Desired State](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Why Network Automation Matters
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Automation Workflows and Control Loops
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### CLI Automation Risks and Guardrails
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Inventory and Source of Truth
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Idempotency and Desired State
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · AUTOMATION · WEEK 01
 :::

@@ -1,7 +1,78 @@
 ---
-title: "Infrastructure Automation"
+title: "Network Automation"
+page-layout: full
+toc: false
 ---
 
-# Infrastructure Automation
+::: {.nf-hero}
+<div class="nf-eyebrow">LEARNING PATH / 06</div>
 
-Learning path for NetFleet engineering.
+# Network Automation
+
+::: {.nf-fa}
+اتوماسیون تجهیزات شبکه: اتصال، APIها، مدیریت پیکربندی و کیفیت.
+:::
+
+<div class="nf-stats">
+  <div><strong>06</strong><span>Weeks</span></div>
+  <div><strong>30</strong><span>Sessions</span></div>
+  <div><strong>0</strong><span>Sessions ready</span></div>
+</div>
+:::
+
+## Curriculum
+
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">WEEK 01 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Automation Foundations
+
+[Explore week →](week-01/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 02 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Device Connectivity
+
+[Explore week →](week-02/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 03 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Network APIs
+
+[Explore week →](week-03/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 04 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Configuration Automation
+
+[Explore week →](week-04/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 05 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Automation Quality
+
+[Explore week →](week-05/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 06 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Automation Project
+
+[Explore week →](week-06/index.qmd)
+:::
+
+:::
+
+::: {.nf-footer}
+NETWORK AUTOMATION · 6-WEEK CURRICULUM
+:::

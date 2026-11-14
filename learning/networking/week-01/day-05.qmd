@@ -1129,50 +1129,45 @@ flowchart TD
 :::
 
 ````{=html}
-<link rel="stylesheet" href="../../../assets/css/quiz.css">
 
 <section class="nf-quiz" data-nf-quiz aria-labelledby="nf-quiz-day05-title">
-
   <div class="nf-quiz-header">
     <div>
       <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
       <h2 id="nf-quiz-day05-title">آزمون تعاملی جلسه پنجم</h2>
-      <p>۱۰ سؤال برای سنجش درک شما از TCP، UDP، DNS و DHCP</p>
+    </div>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score>0</strong></div>
     </div>
   </div>
 
-  <div class="nf-quiz-content" data-content>
-
-    <div class="nf-quiz-progress">
-      <div class="nf-quiz-progress-track">
-        <div class="nf-quiz-progress-bar" data-progress></div>
-      </div>
-
-      <div class="nf-quiz-progress-meta">
-        <span data-progress-text></span>
-        <span data-score></span>
-      </div>
-    </div>
-
-    <h3 data-question></h3>
-
-    <div data-options></div>
-
-    <div data-feedback></div>
-
-    <button type="button" data-next hidden>
-      سؤال بعدی
-    </button>
-
+  <div class="nf-quiz-progress" role="progressbar"
+       aria-label="پیشرفت آزمون"
+       aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="nf-quiz-progress-bar" data-progress></div>
   </div>
 
-  <div class="nf-quiz-result" data-result hidden>
-    <div data-final-score></div>
-    <div data-percentage></div>
+  <div class="nf-quiz-progress-label" data-progress-text></div>
+
+  <div data-content>
+    <h3 class="nf-quiz-question" data-question></h3>
+    <div class="nf-quiz-options" data-options></div>
+    <div class="nf-quiz-feedback" data-feedback aria-live="polite"></div>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next hidden>
+        سؤال بعدی
+      </button>
+    </div>
+  </div>
+
+  <div class="nf-quiz-result" data-result hidden aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+    <h3>نتیجه آزمون</h3>
+    <div class="nf-quiz-result-score" data-final-score></div>
+    <div class="nf-quiz-result-score" data-percentage></div>
     <p data-result-message></p>
-
-    <button type="button" data-restart>
-      شروع دوباره آزمون
+    <button class="nf-quiz-primary" type="button" data-restart>
+      تلاش مجدد
     </button>
   </div>
 
@@ -1290,8 +1285,5 @@ flowchart TD
   }
 ]
   </script>
-
 </section>
-
-<script src="../../../assets/js/labs/quiz-engine.js" defer></script>
 ````

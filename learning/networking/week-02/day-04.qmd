@@ -1,128 +1,538 @@
 ---
 title: "Access and Trunk Ports"
-subtitle: "Networking Fundamentals | Week 2 | Day 4"
+subtitle: "پورت Access، Trunk، تگ 802.1Q، Native VLAN و امنیت VLAN"
 ---
+
 ::: {.persian}
-# Access and Trunk Ports
 
-<text></text>
+# جلسه چهارم هفته دوم: پورت‌های Access و Trunk
 
-**مسیر:** شبکه  
-**هفته:** 2، Switching Fundamentals  
-**جلسه:** 4 از ۵
+## مقدمه جلسه
+
+تا اینجا VLAN را روی یک سوئیچ ساختیم. اما در دنیای واقعی یک ساختمان چند سوئیچ دارد و VLAN کارکنان باید روی همه آن‌ها وجود داشته باشد. اگر برای هر VLAN یک کابل بین سوئیچ‌ها بکشیم، با 10 VLAN به 10 کابل و 10 پورت نیاز داریم. این روش مقیاس‌پذیر نیست.
+
+راه‌حل **Trunk** است: یک لینک فیزیکی که ترافیک چند VLAN را حمل می‌کند. برای اینکه سوئیچ سمت دیگر بداند هر فریم متعلق به کدام VLAN است، روی فریم‌ها یک **تگ** (استاندارد IEEE 802.1Q) قرار می‌گیرد. این جلسه تفاوت Access و Trunk، ساختار تگ، Native VLAN، پروتکل DTP و حمله‌های VLAN Hopping را بررسی می‌کند.
 
 ## اهداف یادگیری
 
 در پایان این جلسه باید بتوانی:
-- مفهوم Access and Trunk Ports را با زبان خودت توضیح بدهی.
-- اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.
-- کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.
-- یک آزمایش کنترل‌شده اجرا و نتیجه آن را مستند کنی.
-- خطاها، محدودیت‌ها و ملاحظات امنیتی را توضیح بدهی.
 
-## 1. جایگاه موضوع در مسیر مهندسی
+- تفاوت پورت Access و Trunk را توضیح بدهی.
+- ساختار تگ 802.1Q و اثر آن بر اندازه فریم را شرح بدهی.
+- Trunk را با Native VLAN و فهرست VLAN مجاز پیکربندی و بررسی کنی.
+- DTP را توضیح بدهی و دلیل غیرفعال کردن آن را بیان کنی.
+- دو روش اصلی VLAN Hopping و روش‌های جلوگیری را توضیح بدهی.
+- مشکل‌های رایج Trunk مثل Native VLAN Mismatch و VLAN غیرمجاز را عیب‌یابی کنی.
 
-این جلسه بخشی از مسیر **شبکه** است. موضوع «Access and Trunk Ports» را باید در ارتباط با مباحث قبلی و بعدی ببینی، نه به‌عنوان یک دستور یا مفهوم جداافتاده.
+## 1. Access و Trunk
 
-در کار مهندسی، هدف فقط حفظ کردن اصطلاحات نیست. باید بتوانی مسئله را تعریف کنی، شواهد جمع‌آوری کنی، فرضیه بسازی، آن را آزمایش کنی و نتیجه را با دقت گزارش بدهی.
+| ویژگی | پورت Access | پورت Trunk |
+|---|---|---|
+| تعداد VLAN | یک VLAN | چند VLAN |
+| تگ 802.1Q روی فریم | ندارد (Untagged) | دارد (به‌جز Native VLAN) |
+| اتصال معمول | کامپیوتر، چاپگر، سرور | سوئیچ به سوئیچ، سوئیچ به روتر، سوئیچ به Hypervisor |
+| میزبان از VLAN خبر دارد؟ | نه | بله (طرف مقابل باید تگ را بفهمد) |
 
-## 2. مفاهیم کلیدی
+در پورت Access، سوئیچ فریم ورودی بدون تگ را به VLAN پورت اختصاص می‌دهد و هنگام خروج، تگ را (اگر باشد) برمی‌دارد. میزبان همیشه فریم عادی می‌بیند.
 
-هنگام مطالعه این موضوع، این پرسش‌ها را پاسخ بده:
+در پورت Trunk فریم‌ها با تگ VLAN حمل می‌شوند تا سوئیچ مقابل بتواند هر فریم را در VLAN درست قرار بدهد.
 
-1. این فناوری یا مفهوم چه مسئله‌ای را حل می‌کند؟
-2. اجزای اصلی آن چیست و هر جزء چه مسئولیتی دارد؟
-3. ورودی، خروجی و وابستگی‌های آن کدام‌اند؟
-4. در چه شرایطی درست کار نمی‌کند؟
-5. چه خطاهای پیکربندی یا عملیاتی در آن رایج‌اند؟
-6. چه داده‌ای برای تشخیص وضعیت آن باید جمع‌آوری شود؟
+## 2. استاندارد IEEE 802.1Q
 
-واژگان جدید را در یک واژه‌نامه شخصی ثبت کن. برای هر اصطلاح، تعریف فارسی، نام انگلیسی و یک مثال فنی بنویس.
+### ساختار تگ
 
-## 3. دیدگاه مهندسی
+تگ 802.1Q یک فیلد **4 بایتی** است که بین Source MAC و EtherType اصلی درج می‌شود:
 
-برای تحلیل درست، بین این سه مورد تفاوت بگذار:
+| فیلد | اندازه | توضیح |
+|---|---|---|
+| TPID | 16 بیت | مقدار ثابت `0x8100` که نشان می‌دهد فریم تگ‌دار است |
+| PCP | 3 بیت | اولویت (Class of Service) برای QoS |
+| DEI | 1 بیت | نشان می‌دهد فریم در صورت ازدحام قابل حذف است |
+| VID | 12 بیت | شماره VLAN (0 تا 4095، قابل استفاده 1 تا 4094) |
 
-- **Configuration:** چیزی که تنظیم شده است.
-- **Operational State:** وضعیتی که سیستم واقعاً در آن قرار دارد.
-- **Observed Evidence:** شواهدی که از خروجی ابزارها، لاگ‌ها یا تست‌ها به دست می‌آیند.
+### اثر بر اندازه فریم
 
-این سه مورد همیشه یکسان نیستند. یک پیکربندی صحیح لزوماً تضمین نمی‌کند سرویس در عمل سالم باشد.
+افزودن 4 بایت تگ، حداکثر اندازه فریم اترنت را از **1518** به **1522** بایت می‌رساند و حداقل را از 64 به 68 بایت (در حالی که MTU یعنی اندازه Payload همان 1500 باقی می‌ماند). تجهیزات مدرن این را پشتیبانی می‌کنند. اگر تجهیزی نتواند فریم 1522 بایتی را عبور بدهد، فریم‌های تگ‌دار بزرگ ممکن است بی‌صدا حذف شوند. (جلسه اول این هفته را برای ارتباط با MTU مرور کن.)
 
-## 4. آزمایشگاه عملی
+### چرا میزبان تگ را نمی‌بیند؟
 
-### آزمایشگاه پایه
+سوئیچ در خروج از پورت Access تگ را برمی‌دارد. حتی در Wireshark روی کارت شبکه خودت اغلب تگ را نمی‌بینی، چون درایور یا سیستم‌عامل آن را پردازش و حذف می‌کند. برای دیدن تگ باید روی خود لینک Trunk (با SPAN/Mirror) یا در شبیه‌ساز مثل Packet Tracer Simulation مشاهده کنی.
 
-```powershell
-Get-NetAdapter
-Get-NetIPConfiguration
-Get-NetRoute -AddressFamily IPv4
-Test-NetConnection 1.1.1.1 -Port 443
+## 3. Native VLAN
+
+در لینک Trunk فریم‌های **یک VLAN مشخص (Native VLAN) بدون تگ** ارسال می‌شوند. در سیسکو به‌طور پیش‌فرض VLAN 1 است. هر فریمی که روی Trunk بدون تگ دریافت شود، به Native VLAN همان طرف نسبت داده می‌شود.
+
+دلیل تاریخی: سازگاری با تجهیزات قدیمی که تگ نمی‌فهمیدند.
+
+دو نکته حیاتی:
+
+1. **Native VLAN باید در دو سر لینک یکسان باشد.** اگر یک سر 1 و سر دیگر 99 باشد، فریم‌های بدون تگ به VLAN اشتباه می‌رسند. سیسکو معمولاً لاگ می‌دهد:
+
+```text
+%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on FastEthernet0/24 (99), with Switch FastEthernet0/24 (1).
 ```
 
-خروجی را ثبت کن، فیلدهای مهم را توضیح بده و مشخص کن کدام بخش از موضوع امروز را نشان می‌دهد.
+2. Native VLAN یک نقطه ضعف امنیتی است (بخش VLAN Hopping)، پس بهتر است از یک VLAN بلااستفاده و اختصاصی استفاده شود.
 
-### گزارش آزمایشگاه
+## 4. پیکربندی Trunk در سیسکو
 
-گزارش خود را با این قالب تکمیل کن:
+```text
+Switch(config)# interface fa0/24
+Switch(config-if)# switchport mode trunk
+Switch(config-if)# switchport trunk native vlan 99
+Switch(config-if)# switchport trunk allowed vlan 10,20,99
+Switch(config-if)# switchport nonegotiate
+```
 
-| بخش | چیزی که باید ثبت شود |
+اگر سوئیچ هم ISL و هم 802.1Q را پشتیبانی می‌کند (مثل بعضی Catalyst های قدیمی‌تر مثل 3560)، قبل از `switchport mode trunk` باید این دستور را بزنی:
+
+```text
+Switch(config-if)# switchport trunk encapsulation dot1q
+```
+
+سوئیچ‌های 2960 فقط 802.1Q دارند و این دستور را نمی‌پذیرند (و لازم هم ندارند).
+
+### مدیریت فهرست VLAN مجاز
+
+```text
+Switch(config-if)# switchport trunk allowed vlan 10,20,99
+Switch(config-if)# switchport trunk allowed vlan add 30
+Switch(config-if)# switchport trunk allowed vlan remove 20
+```
+
+**هشدار مهم:** دستور بدون کلمه `add` یا `remove` کل فهرست را **جایگزین** می‌کند. اگر روی Trunk در حال کار `switchport trunk allowed vlan 30` بزنی، فقط VLAN 30 باقی می‌ماند و بقیه VLAN ها بین سوئیچ‌ها قطع می‌شوند. برای افزودن همیشه از `add` استفاده کن.
+
+### بررسی
+
+```text
+Switch# show interfaces trunk
+Switch# show interfaces fa0/24 switchport
+```
+
+نمونه خروجی:
+
+```text
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/24      on           802.1q         trunking      99
+
+Port        Vlans allowed on trunk
+Fa0/24      10,20,99
+
+Port        Vlans allowed and active in management domain
+Fa0/24      10,20,99
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Fa0/24      10,20,99
+```
+
+سه فهرست پایین مراحل متوالی فیلتر هستند: VLAN های مجاز، مجاز و فعال (واقعاً روی سوئیچ ساخته شده‌اند)، و مجاز و در حالت Forwarding STP. اگر VLAN ای در فهرست اول هست ولی در فهرست‌های بعدی نیست، ترتیب را دنبال کن: یا VLAN روی این سوئیچ ساخته نشده، یا STP پورت را Block کرده.
+
+## 5. DTP: مذاکره خودکار Trunk
+
+**DTP (Dynamic Trunking Protocol)** پروتکل اختصاصی سیسکو است که دو سر لینک را خودکار روی Trunk یا Access مذاکره می‌دهد.
+
+| حالت | رفتار |
 |---|---|
-| هدف | چه چیزی را می‌خواهی بررسی کنی؟ |
-| محیط | سیستم‌عامل، ابزار و نسخه |
-| فرضیه | انتظار داری چه اتفاقی بیفتد؟ |
-| اجرا | مراحل و دستورهای اجراشده |
-| مشاهده | خروجی واقعی |
-| تحلیل | نتیجه چه معنایی دارد؟ |
-| محدودیت | چه چیزی هنوز اثبات نشده است؟ |
+| access | همیشه Access، مذاکره نمی‌کند |
+| trunk | همیشه Trunk و به طرف مقابل هم پیشنهاد Trunk می‌دهد |
+| dynamic auto | Trunk می‌شود فقط اگر طرف مقابل درخواست کند (پیش‌فرض بسیاری از سوئیچ‌ها) |
+| dynamic desirable | فعالانه درخواست Trunk می‌دهد |
 
-## 5. سناریوی عیب‌یابی
+نتیجه مذاکره:
 
-فرض کن بخشی از زیرساخت مطابق انتظار کار نمی‌کند.
+| سمت A \ سمت B | trunk | dynamic desirable | dynamic auto | access |
+|---|---|---|---|---|
+| trunk | Trunk | Trunk | Trunk | مشکل‌دار (ناسازگار) |
+| dynamic desirable | Trunk | Trunk | Trunk | Access |
+| dynamic auto | Trunk | Trunk | Access | Access |
+| access | مشکل‌دار | Access | Access | Access |
 
-1. محدوده مشکل را مشخص کن.
-2. آخرین تغییرات را بررسی کن.
-3. وضعیت فعلی را بدون ایجاد تغییر جمع‌آوری کن.
-4. فرضیه‌های محتمل را از ساده به پیچیده مرتب کن.
-5. هر فرضیه را با یک آزمایش مشخص بررسی کن.
-6. نتیجه و شواهد را مستند کن.
+نکته جالب: دو سر `dynamic auto` هرگز Trunk نمی‌شوند، چون هیچ‌کدام درخواست نمی‌دهد.
 
-از تغییر هم‌زمان چند متغیر خودداری کن؛ در غیر این صورت تشخیص علت واقعی دشوار می‌شود.
+### توصیه امنیتی
 
-## 6. ارتباط با NetFleet
+DTP پیش‌فرض باعث می‌شود یک دستگاه مهاجم که به پورت Access (در حالت dynamic) وصل شده، بتواند با فرستادن فریم DTP لینک را به Trunk تبدیل کند و به همه VLAN ها دسترسی پیدا کند. بنابراین:
 
-در پروژه NetFleet باید بتوانیم دانش این جلسه را به یک قابلیت قابل اندازه‌گیری تبدیل کنیم.
+- پورت‌های کاربر را صریحاً `switchport mode access` کن.
+- پورت‌های Trunk را صریحاً `switchport mode trunk` کن و `switchport nonegotiate` بزن.
+- هرگز به حالت‌های dynamic اتکا نکن.
 
-به این پرسش پاسخ بده:
+## 6. VLAN Hopping
 
-**اگر بخواهیم موضوع «Access and Trunk Ports» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟**
+VLAN Hopping یعنی مهاجم از VLAN خود به ترافیک VLAN دیگر دسترسی پیدا کند. دو روش اصلی:
 
-طرح اولیه خود را با سه بخش بنویس:
-- Data Source
-- Validation Rule
-- Expected Output
+### 6.1 Switch Spoofing
 
-## 7. تمرین و ارزیابی
+مهاجم کارت شبکه‌اش را وادار می‌کند DTP بفرستد و خود را سوئیچ جا بزند. اگر پورت در حالت dynamic باشد، Trunk تشکیل می‌شود و مهاجم همه VLAN ها را دریافت می‌کند.
 
-1. موضوع امروز را در پنج جمله توضیح بده.
-2. سه اصطلاح مهم آن را تعریف کن.
-3. یک کاربرد واقعی و یک محدودیت آن را نام ببر.
-4. یک خطای رایج را توضیح بده و روش تشخیص آن را بنویس.
-5. مشخص کن چه چیزی را می‌توان خودکار کرد و چه چیزی به تأیید انسانی نیاز دارد.
+**پیشگیری:** پورت کاربر را `access` ثابت و `nonegotiate` کن.
 
-## 8. تکلیف
+### 6.2 Double Tagging
 
-یک گزارش کوتاه فنی تهیه کن که شامل هدف، معماری یا مفهوم، مراحل آزمایش، شواهد، نتیجه‌گیری و منابع باشد. از ادعایی که با آزمایش یا منبع معتبر پشتیبانی نمی‌شود خودداری کن.
+مهاجم فریمی با **دو تگ** می‌فرستد: تگ بیرونی = Native VLAN، تگ داخلی = VLAN قربانی.
 
-## معیار تکمیل جلسه
+1. مهاجم روی پورت Access ای است که VLAN آن با Native VLAN Trunk برابر است.
+2. سوئیچ اول تگ بیرونی (Native VLAN) را برمی‌دارد، چون Native Untagged ارسال می‌شود.
+3. فریم با تگ داخلی (VLAN قربانی) روی Trunk می‌رود.
+4. سوئیچ دوم تگ داخلی را می‌خواند و فریم را در VLAN قربانی تحویل می‌دهد.
 
-- [ ] می‌توانم مفهوم را بدون نگاه به جزوه توضیح بدهم.
-- [ ] می‌توانم آزمایش را دوباره اجرا کنم.
-- [ ] خروجی را می‌توانم تفسیر کنم.
-- [ ] محدودیت‌ها و ریسک‌ها را می‌شناسم.
-- [ ] می‌توانم کاربرد آن را در NetFleet شرح بدهم.
+حمله **یک‌طرفه** است (پاسخی برنمی‌گردد) ولی می‌تواند برای ارسال بسته‌های مخرب کافی باشد.
 
-## منابع پیشنهادی برای مطالعه بیشتر
+**پیشگیری:**
 
-منابع رسمی و مستندات ابزارها را در اولویت قرار بده. نسخه و تاریخ دسترسی را در گزارش ثبت کن. لینک‌های این جلسه باید پیش از انتشار نهایی توسط مدرس یا بازبین بررسی شوند.
+- Native VLAN را به یک VLAN بلااستفاده تغییر بده (مثل 99) و هیچ پورت کاربری را در آن نگذار.
+- روی Trunk فقط VLAN های لازم را مجاز کن.
+- در صورت امکان، Native VLAN را هم تگ‌دار کن (روی سوئیچ‌هایی که پشتیبانی می‌کنند).
+
+### فهرست سخت‌سازی Trunk و Access
+
+1. پورت‌های Access را `switchport mode access` کن.
+2. روی Trunk ها `switchport nonegotiate` بزن.
+3. Native VLAN را اختصاصی و بلااستفاده کن.
+4. VLAN های مجاز Trunk را محدود کن.
+5. پورت‌های بلااستفاده را Shutdown و در VLAN بلااستفاده بگذار.
+6. VLAN 1 را برای کاربران و مدیریت استفاده نکن.
+
+## 7. VLAN صوتی (Voice VLAN) به‌طور خلاصه
+
+در دفاتر، تلفن IP معمولاً بین سوئیچ و کامپیوتر قرار می‌گیرد. پورت یک VLAN داده (Untagged) و یک VLAN صوت (Tagged) دارد:
+
+```text
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 10
+Switch(config-if)# switchport voice vlan 150
+```
+
+اینجا پورت Access است ولی ترافیک تلفن با تگ جدا می‌شود. این حالت خاص برای QoS و جداسازی صوت از داده است.
+
+## 8. Router-on-a-Stick: پیش‌نمایش
+
+اتصال یک روتر به Trunk سوئیچ، روشی برای مسیریابی بین VLAN هاست. روتر روی همان واسط فیزیکی زیرواسط‌های مجازی دارد که هر کدام یک VLAN را تگ می‌کنند:
+
+```text
+Router(config)# interface g0/0.10
+Router(config-subif)# encapsulation dot1Q 10
+Router(config-subif)# ip address 192.168.10.1 255.255.255.0
+```
+
+جزئیات این مبحث در هفته سوم (جلسه Inter-VLAN Routing) است. فعلاً کافی است بدانی Trunk فقط برای اتصال سوئیچ‌ها نیست و می‌تواند به روتر یا Hypervisor هم وصل شود.
+
+## 9. آزمایش عملی: Trunk بین دو سوئیچ
+
+### توپولوژی
+
+دو سوئیچ 2960 (SW1 و SW2) که با پورت Fa0/24 به هم وصل‌اند.
+
+| دستگاه | سوئیچ | پورت | VLAN | IP |
+|---|---|---|---|---|
+| PC1 | SW1 | Fa0/1 | 10 | 192.168.10.11/24 |
+| PC3 | SW1 | Fa0/2 | 20 | 192.168.20.11/24 |
+| PC2 | SW2 | Fa0/1 | 10 | 192.168.10.12/24 |
+| PC4 | SW2 | Fa0/2 | 20 | 192.168.20.12/24 |
+
+### مراحل
+
+1. روی هر دو سوئیچ VLAN 10، 20 و 99 را بساز.
+2. پورت‌های Access را اختصاص بده.
+3. Trunk را روی Fa0/24 هر دو سوئیچ پیکربندی کن (Native 99).
+4. تست کن:
+
+```text
+PC1> ping 192.168.10.12     (VLAN 10 بین دو سوئیچ، باید موفق باشد)
+PC3> ping 192.168.20.12     (VLAN 20 بین دو سوئیچ، باید موفق باشد)
+PC1> ping 192.168.20.11     (باید ناموفق باشد، VLAN متفاوت)
+```
+
+5. `show interfaces trunk` و `show vlan brief` را روی هر دو سوئیچ بررسی کن.
+
+### آزمایش خرابی 1: VLAN غیرمجاز
+
+روی SW1 دستور زیر را بزن:
+
+```text
+SW1(config)# interface fa0/24
+SW1(config-if)# switchport trunk allowed vlan 10
+```
+
+حالا از PC3 به PC4 پینگ بگیر. باید ناموفق شود. `show interfaces trunk` را ببین و توضیح بده چه شد. سپس مشکل را با دستور `add` برطرف کن.
+
+### آزمایش خرابی 2: Native VLAN Mismatch
+
+روی SW1 Native VLAN را به 99 و روی SW2 به 1 بگذار. لاگ‌ها را ببین و توضیح بده چه خطری دارد. (در Packet Tracer ممکن است پیام CDP ظاهر شود یا نشود؛ روی تجهیزات واقعی معمولاً دیده می‌شود.)
+
+### آزمایش در Wireshark یا Simulation
+
+در Packet Tracer حالت Simulation را روشن کن و PDU را روی لینک Trunk دنبال کن. به فیلد VLAN در فریم دقت کن. اگر روی یک لینک Trunk واقعی Capture داری، از فیلتر زیر استفاده کن:
+
+```text
+vlan.id == 10
+```
+
+## 10. عیب‌یابی مهندسی
+
+### سناریو 1: VLAN بین دو سوئیچ کار نمی‌کند
+
+بررسی‌ها به ترتیب:
+
+1. آیا VLAN روی **هر دو** سوئیچ ساخته شده؟ (`show vlan brief`)
+2. آیا لینک Trunk شده؟ (`show interfaces trunk`)
+3. آیا VLAN در فهرست `allowed` است؟
+4. آیا VLAN در STP در حالت Forwarding است؟ (سومین فهرست `show interfaces trunk`)
+5. آیا Native VLAN دو سر یکسان است؟
+
+### سناریو 2: Trunk تشکیل نمی‌شود
+
+- ترکیب نامناسب حالت‌ها (مثلاً `dynamic auto` در هر دو سر یا `trunk` با `access`)
+- Encapsulation ناسازگار (یک طرف ISL و یک طرف dot1q)
+- `nonegotiate` در یک طرف و `dynamic` در طرف دیگر
+- لینک فیزیکی یا Duplex/Speed Mismatch
+
+### سناریو 3: فقط بعضی VLAN ها کار می‌کنند
+
+معمولاً فهرست `allowed vlan` ناقص است، یا یک VLAN روی یک سوئیچ ساخته نشده است.
+
+### سناریو 4: هشدار Native VLAN Mismatch
+
+دو سر را مقایسه کن و یکسان کن. تا قبل از اصلاح، ترافیک بدون تگ ممکن است به VLAN اشتباه برسد و حتی Loop ایجاد کند.
+
+### سناریو 5: ترافیک VLAN بدون دلیل از VLAN دیگر دیده می‌شود
+
+بررسی کن آیا Trunk ناخواسته روی یک پورت کاربر تشکیل شده (`show interfaces trunk` را روی همه سوئیچ‌ها اجرا کن و دنبال Trunk های ناشناس بگرد).
+
+## 11. خطاهای مفهومی رایج
+
+1. **«Trunk یعنی چند کابل.»** نه. یک لینک فیزیکی است که چند VLAN را با تگ حمل می‌کند.
+2. **«همه فریم‌ها روی Trunk تگ دارند.»** نه. فریم‌های Native VLAN بدون تگ ارسال می‌شوند.
+3. **«Native VLAN فقط یک تنظیم محلی است.»** نه. اگر دو سر متفاوت باشد ترافیک به VLAN اشتباه می‌رسد.
+4. **«`allowed vlan 30` یک VLAN اضافه می‌کند.»** نه. کل فهرست را جایگزین می‌کند. برای افزودن `add` لازم است.
+5. **«DTP امن است چون خودکار است.»** برعکس، خودکار بودنش ریسک است.
+6. **«تگ VLAN روی کامپیوتر دیده می‌شود.»** معمولاً نه، چون سوئیچ یا درایور آن را برمی‌دارد.
+7. **«اندازه تگ MTU را کم می‌کند.»** نه. حداکثر اندازه فریم 1522 می‌شود، MTU (Payload) همان 1500 می‌ماند.
+
+## 12. چالش NetFleet
+
+### سناریو
+
+NetFleet دو طبقه دارد و هر طبقه یک سوئیچ. VLAN 10 (کارکنان) و VLAN 20 (سرورها) باید روی هر دو طبقه وجود داشته باشند. مدیر امنیت می‌خواهد مهاجمی که کابل یک پورت کاربری را به لپ‌تاپ خود وصل می‌کند نتواند به VLAN سرورها برسد. یک تکنسین هم دستور `switchport trunk allowed vlan 30` را روی لینک بین دو سوئیچ زده و اکنون هیچ‌کس از طبقه دیگر دسترسی ندارد.
+
+### مأموریت
+
+1. توضیح بده چرا اشتباه تکنسین قطعی ایجاد کرد و چگونه سریع آن را بدون قطع VLAN 30 برطرف می‌کنی.
+2. پیکربندی کامل و امن Trunk بین دو سوئیچ را بنویس (شامل Native VLAN اختصاصی، VLAN های مجاز و nonegotiate).
+3. پیکربندی پورت کاربر را طوری بنویس که Switch Spoofing ممکن نباشد.
+4. توضیح بده Double Tagging چگونه کار می‌کند و کدام تنظیم شما آن را خنثی می‌کند.
+5. یک فهرست بررسی (Checklist) برای ممیزی Trunk ها بنویس.
+
+### خروجی مورد انتظار
+
+یک سند فنی کوتاه شامل پیکربندی، توضیح خطای تکنسین، سناریوی حمله و دفاع، و Checklist ممیزی.
+
+## 13. جمع‌بندی جلسه
+
+- Access یک VLAN و بدون تگ، Trunk چند VLAN با تگ 802.1Q.
+- تگ 802.1Q چهار بایت است (TPID، PCP، DEI، VID 12 بیتی) و حداکثر فریم را به 1522 می‌رساند.
+- Native VLAN بدون تگ ارسال می‌شود و باید دو سر یکسان باشد.
+- `switchport trunk allowed vlan` بدون `add` کل فهرست را جایگزین می‌کند.
+- DTP را غیرفعال کن: Access و Trunk را صریح تعیین کن و `nonegotiate` بزن.
+- VLAN Hopping: Switch Spoofing و Double Tagging. با Native VLAN اختصاصی و حالت‌های ثابت خنثی می‌شود.
+- عیب‌یابی Trunk: ساخته‌شدن VLAN دو سر، Trunk بودن، allowed، STP و Native.
+
+## 14. تمرین‌های پایان جلسه
+
+### تمرین نظری
+
+1. جدول سازگاری حالت‌های DTP را بدون نگاه کردن بازسازی کن.
+2. فریم Double Tagged را مرحله‌به‌مرحله از مهاجم تا قربانی رسم کن.
+3. توضیح بده چرا Native VLAN باید با VLAN کاربران متفاوت باشد.
+
+### تمرین عملی
+
+1. آزمایش‌های بخش 9 را انجام بده و خروجی `show interfaces trunk` را در هر مرحله ذخیره کن.
+2. یک سوئیچ سوم اضافه کن و Trunk را به آن هم گسترش بده.
+3. روی همه پورت‌های کاربر `switchport mode access` و `nonegotiate` را اعمال کن و بررسی کن Trunk ناخواسته وجود ندارد.
+
+### منابع و مطالعه بیشتر
+
+**کتاب‌ها**
+
+- [Wendell Odom — *CCNA 200-301 Official Cert Guide, Volume 1* (Cisco Press)](https://www.informit.com/store/ccna-200-301-official-cert-guide-volume-1-9780136171584): بخش‌های VLAN و Trunking
+
+**استانداردها**
+
+- [IEEE 802.1 Working Group — صفحه استانداردهای 802.1](https://1.ieee802.org/): IEEE 802.1Q (ساختار تگ، TPID و VID)
+
+**مستندات رسمی**
+
+- [Cisco — Best Practices for Catalyst 6500/6000 and 4500/4000 Series Switches Running Cisco IOS](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/24330-185.html): بخش‌های DTP، Native VLAN و VLAN 1
+- Cisco — *Catalyst 2960 Switch Software Configuration Guide*، فصل Configuring VLANs و بخش «IEEE 802.1Q Configuration Considerations»
+
+**ابزار و مرجع دستورها**
+
+- [man7 — bridge(8)](https://man7.org/linux/man-pages/man8/bridge.8.html)
+- [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html/)
+- [Cisco Networking Academy و Packet Tracer](https://www.netacad.com/)
+
+> برای مطالعه‌ی متن کامل استانداردهای IEEE ممکن است به نسخه‌ی خریداری‌شده یا دسترسی دانشگاهی نیاز داشته باشی. مستندات Cisco را همیشه با نسخه IOS و مدل سوئیچ خودت تطبیق بده، چون بعضی صفحات مربوط به خانواده‌های قدیمی‌تر Catalyst هستند.
+
+## 15. آزمون تعاملی جلسه
+
+````{=html}
+
+<section class="nf-quiz" data-nf-quiz aria-labelledby="nf-quiz-week02-day04-title">
+  <div class="nf-quiz-header">
+    <div>
+      <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
+      <h2 id="nf-quiz-week02-day04-title">آزمون تعاملی جلسه چهارم هفته دوم</h2>
+    </div>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score>0</strong></div>
+    </div>
+  </div>
+
+  <div class="nf-quiz-progress" role="progressbar"
+       aria-label="پیشرفت آزمون"
+       aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="nf-quiz-progress-bar" data-progress></div>
+  </div>
+
+  <div class="nf-quiz-progress-label" data-progress-text></div>
+
+  <div data-content>
+    <h3 class="nf-quiz-question" data-question></h3>
+    <div class="nf-quiz-options" data-options></div>
+    <div class="nf-quiz-feedback" data-feedback aria-live="polite"></div>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next hidden>
+        سؤال بعدی
+      </button>
+    </div>
+  </div>
+
+  <div class="nf-quiz-result" data-result hidden aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+    <h3>نتیجه آزمون</h3>
+    <div class="nf-quiz-result-score" data-final-score></div>
+    <div class="nf-quiz-result-score" data-percentage></div>
+    <p data-result-message></p>
+    <button class="nf-quiz-primary" type="button" data-restart>
+      تلاش مجدد
+    </button>
+  </div>
+
+  <script type="application/json" data-quiz-questions>
+[
+  {
+    "question": "پورت Trunk چه کاری انجام می‌دهد؟",
+    "options": [
+      "ترافیک چند VLAN را با تگ روی یک لینک حمل می‌کند",
+      "ترافیک را رمزگذاری می‌کند",
+      "پهنای باند را دو برابر می‌کند",
+      "فقط یک VLAN را به میزبان می‌رساند"
+    ],
+    "answer": 0,
+    "explanation": "Trunk چند VLAN را روی یک لینک فیزیکی حمل می‌کند و برای تشخیص VLAN از تگ 802.1Q استفاده می‌کند."
+  },
+  {
+    "question": "تگ 802.1Q چند بایت است؟",
+    "options": [
+      "2 بایت",
+      "4 بایت",
+      "8 بایت",
+      "12 بایت"
+    ],
+    "answer": 1,
+    "explanation": "تگ 802.1Q چهار بایت است: TPID (2 بایت) و TCI (2 بایت شامل PCP، DEI و VID)."
+  },
+  {
+    "question": "فیلد VLAN ID در تگ 802.1Q چند بیت است؟",
+    "options": [
+      "16 بیت",
+      "8 بیت",
+      "10 بیت",
+      "12 بیت"
+    ],
+    "answer": 3,
+    "explanation": "VID دوازده بیتی است که 4096 مقدار می‌دهد و پس از کنار گذاشتن مقدارهای رزرو 4094 VLAN قابل استفاده است."
+  },
+  {
+    "question": "فریم‌های Native VLAN روی Trunk چگونه ارسال می‌شوند؟",
+    "options": [
+      "رمزگذاری‌شده",
+      "فقط به صورت Broadcast",
+      "با تگ دوبل",
+      "بدون تگ (Untagged)"
+    ],
+    "answer": 3,
+    "explanation": "فریم‌های Native VLAN روی Trunk بدون تگ ارسال می‌شوند و گیرنده آن‌ها را به Native VLAN خودش نسبت می‌دهد."
+  },
+  {
+    "question": "اگر Native VLAN دو سر یک Trunk متفاوت باشد چه خطری دارد؟",
+    "options": [
+      "فریم‌های بدون تگ به VLAN اشتباه می‌رسند و CDP هشدار Mismatch می‌دهد",
+      "Trunk سرعتش نصف می‌شود",
+      "سوئیچ خاموش می‌شود",
+      "هیچ خطری ندارد"
+    ],
+    "answer": 0,
+    "explanation": "عدم تطابق باعث می‌شود ترافیک بدون تگ در VLAN های متفاوت قرار بگیرد، که ایزولاسیون را می‌شکند و لاگ NATIVE_VLAN_MISMATCH ایجاد می‌کند."
+  },
+  {
+    "question": "کدام دستور وضعیت Trunk، VLAN های مجاز و Native VLAN را نشان می‌دهد؟",
+    "options": [
+      "show vlan brief",
+      "show interfaces trunk",
+      "show mac address-table",
+      "show ip interface brief"
+    ],
+    "answer": 1,
+    "explanation": "show interfaces trunk حالت، Encapsulation، Native VLAN و فهرست VLAN های مجاز را نمایش می‌دهد."
+  },
+  {
+    "question": "چرا توصیه می‌شود DTP غیرفعال شود (switchport nonegotiate و حالت‌های ثابت)؟",
+    "options": [
+      "چون DTP VLAN ها را حذف می‌کند",
+      "چون DTP پهنای باند مصرف می‌کند",
+      "چون مهاجم می‌تواند با DTP لینک را به Trunk تبدیل کند (Switch Spoofing)",
+      "چون DTP فقط روی IPv6 کار می‌کند"
+    ],
+    "answer": 2,
+    "explanation": "حالت‌های dynamic اجازه می‌دهند دستگاه مهاجم با فریم DTP یک Trunk تشکیل دهد و به همه VLAN ها دسترسی بگیرد."
+  },
+  {
+    "question": "حمله Double Tagging به کدام ویژگی تکیه دارد؟",
+    "options": [
+      "ضعف پروتکل ARP",
+      "تغییر آدرس MAC سوئیچ",
+      "پرتاب فریم‌های بزرگ",
+      "بدون تگ بودن Native VLAN روی Trunk"
+    ],
+    "answer": 3,
+    "explanation": "سوئیچ اول تگ بیرونی Native VLAN را برمی‌دارد و تگ داخلی روی Trunk می‌رود و در VLAN قربانی تحویل داده می‌شود."
+  },
+  {
+    "question": "دستور switchport trunk allowed vlan 30 (بدون add) روی Trunk فعال چه می‌کند؟",
+    "options": [
+      "کل فهرست مجاز را با VLAN 30 جایگزین می‌کند",
+      "VLAN 30 را حذف می‌کند",
+      "Native VLAN را 30 می‌کند",
+      "VLAN 30 را به فهرست اضافه می‌کند"
+    ],
+    "answer": 0,
+    "explanation": "بدون add یا remove دستور فهرست را جایگزین می‌کند و بقیه VLAN ها روی Trunk قطع می‌شوند."
+  },
+  {
+    "question": "کدام توصیف درباره حداکثر اندازه فریم با تگ 802.1Q درست است؟",
+    "options": [
+      "حداکثر به 1518 بایت کاهش می‌یابد",
+      "حداکثر 1522 بایت می‌شود در حالی که MTU همان 1500 می‌ماند",
+      "MTU به 1496 تغییر می‌کند و فریم 1518 می‌ماند",
+      "تگ تأثیری بر اندازه ندارد"
+    ],
+    "answer": 1,
+    "explanation": "تگ 4 بایت اضافه می‌کند، پس حداکثر فریم 1522 بایت است؛ MTU (اندازه Payload) همان 1500 بایت است."
+  }
+]
+  </script>
+</section>
+````
 :::

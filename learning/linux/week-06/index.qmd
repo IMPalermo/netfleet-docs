@@ -1,21 +1,72 @@
 ---
 title: "Week 6 - Bash Automation"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 6: Bash Automation
+::: {.nf-hero}
+<div class="nf-eyebrow">LINUX / WEEK 06</div>
 
+# Bash Automation
+
+::: {.nf-fa}
 این هفته روی موضوع **Bash Automation** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Linux Engineering](../index.qmd)
+:::
 
-- [Day 1: Bash Variables and Quoting](day-01.qmd)
-- [Day 2: Conditions and Loops](day-02.qmd)
-- [Day 3: Functions and Exit Codes](day-03.qmd)
-- [Day 4: Pipes, Redirection and Text Processing](day-04.qmd)
-- [Day 5: Reliable Shell Scripts](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Bash Variables and Quoting
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Conditions and Loops
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Functions and Exit Codes
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Pipes, Redirection and Text Processing
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Reliable Shell Scripts
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · LINUX · WEEK 06
 :::

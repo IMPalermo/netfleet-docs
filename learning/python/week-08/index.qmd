@@ -1,21 +1,72 @@
 ---
 title: "Week 8 - Python Network Project"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 8: Python Network Project
+::: {.nf-hero}
+<div class="nf-eyebrow">PYTHON / WEEK 08</div>
 
+# Python Network Project
+
+::: {.nf-fa}
 این هفته روی موضوع **Python Network Project** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Python Engineering](../index.qmd)
+:::
 
-- [Day 1: Build a Network Inventory CLI](day-01.qmd)
-- [Day 2: Add Reachability Checks](day-02.qmd)
-- [Day 3: Export JSON and CSV Reports](day-03.qmd)
-- [Day 4: Add Tests and Logging](day-04.qmd)
-- [Day 5: Python Network Tool Practical Assessment](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Build a Network Inventory CLI
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Add Reachability Checks
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Export JSON and CSV Reports
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Add Tests and Logging
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Python Network Tool Practical Assessment
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · PYTHON · WEEK 08
 :::

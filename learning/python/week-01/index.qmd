@@ -1,21 +1,72 @@
 ---
 title: "Week 1 - Python Foundations"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 1: Python Foundations
+::: {.nf-hero}
+<div class="nf-eyebrow">PYTHON / WEEK 01</div>
 
+# Python Foundations
+
+::: {.nf-fa}
 این هفته روی موضوع **Python Foundations** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Python Engineering](../index.qmd)
+:::
 
-- [Day 1: Python Runtime and Development Environment](day-01.qmd)
-- [Day 2: Variables and Core Data Types](day-02.qmd)
-- [Day 3: Strings and Formatting](day-03.qmd)
-- [Day 4: Numbers, Booleans and Operators](day-04.qmd)
-- [Day 5: Input, Output and Type Conversion](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-ready">READY</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Day 01 | Python Fundamentals
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Variables and Core Data Types
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Strings and Formatting
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Numbers, Booleans and Operators
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Input, Output and Type Conversion
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · PYTHON · WEEK 01
 :::

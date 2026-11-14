@@ -1,21 +1,72 @@
 ---
 title: "Week 1 - Infrastructure Foundations"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 1: Infrastructure Foundations
+::: {.nf-hero}
+<div class="nf-eyebrow">INFRASTRUCTURE / WEEK 01</div>
 
+# Infrastructure Foundations
+
+::: {.nf-fa}
 این هفته روی موضوع **Infrastructure Foundations** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Infrastructure Engineering](../index.qmd)
+:::
 
-- [Day 1: Infrastructure as Code Concepts](day-01.qmd)
-- [Day 2: Git Workflows for Infrastructure](day-02.qmd)
-- [Day 3: Configuration Management Principles](day-03.qmd)
-- [Day 4: Secrets and Configuration Separation](day-04.qmd)
-- [Day 5: Infrastructure Documentation](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Infrastructure as Code Concepts
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Git Workflows for Infrastructure
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Configuration Management Principles
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Secrets and Configuration Separation
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Infrastructure Documentation
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · INFRASTRUCTURE · WEEK 01
 :::

@@ -5,8 +5,6 @@ subtitle: "Backend and APIs | Week 2 | Day 2"
 ::: {.persian}
 # Resource and Endpoint Design
 
-<text></text>
-
 **مسیر:** Backend و API  
 **هفته:** 2، API Design  
 **جلسه:** 2 از ۵
@@ -14,6 +12,7 @@ subtitle: "Backend and APIs | Week 2 | Day 2"
 ## اهداف یادگیری
 
 در پایان این جلسه باید بتوانی:
+
 - مفهوم Resource and Endpoint Design را با زبان خودت توضیح بدهی.
 - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.
 - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.
@@ -91,6 +90,7 @@ subtitle: "Backend and APIs | Week 2 | Day 2"
 **اگر بخواهیم موضوع «Resource and Endpoint Design» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟**
 
 طرح اولیه خود را با سه بخش بنویس:
+
 - Data Source
 - Validation Rule
 - Expected Output

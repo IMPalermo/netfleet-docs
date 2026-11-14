@@ -6,10 +6,9 @@ $link-color: #A8D5B6;
 $primary: #6FAF88;
 $font-family-sans-serif: "Space Grotesk", "Vazirmatn", sans-serif;
 $font-family-monospace: "JetBrains Mono", monospace;
+$web-font-path: false; // the theme's Google Fonts import is disabled; fonts are self-hosted
 
 /*-- scss:rules --*/
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700&display=swap');
 
 :root {
   --nf-bg: #090D0B;
@@ -232,7 +231,22 @@ a:hover {
   direction: rtl;
   text-align: right;
   font-family: "Vazirmatn", sans-serif;
-  line-height: 2.1;
+  line-height: 2;
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+/* Persian text inside otherwise-LTR page blocks (hero, outcome boxes) */
+.nf-fa,
+.nf-outcome {
+  direction: rtl;
+  text-align: right;
+  font-family: "Vazirmatn", sans-serif;
+  line-height: 2;
+}
+
+.nf-hero .nf-fa p {
+  max-width: 760px;
 }
 
 .persian h1,
@@ -324,4 +338,68 @@ blockquote {
   main.content {
     padding-top: 1.5rem;
   }
+}
+
+/* Status badges and progress */
+.nf-badge {
+  display: inline-block;
+  margin-inline-start: 0.6rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--nf-border);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  vertical-align: middle;
+}
+
+.nf-badge-ready { color: #08110B; background: var(--nf-green); border-color: var(--nf-green); }
+.nf-badge-part  { color: var(--nf-light); border-color: var(--nf-green); }
+.nf-badge-draft { color: var(--nf-muted); }
+
+.nf-progress {
+  height: 5px;
+  background: var(--nf-border);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0.9rem 0 0.3rem;
+}
+
+.nf-progress span {
+  display: block;
+  height: 100%;
+  background: var(--nf-green);
+  border-radius: 999px;
+}
+
+/* Sidebar */
+.sidebar nav[role=doc-toc] ul > li > a,
+.sidebar-item a {
+  font-size: 0.9rem;
+}
+
+.sidebar-item-section > .sidebar-item-container .menu-text {
+  color: var(--nf-light);
+  font-weight: 600;
+}
+
+/* Pages that open with a hero already carry their own H1: hide Quarto's duplicate title block. */
+#title-block-header:has(~ .nf-hero) {
+  display: none;
+}
+
+/* Lesson pages: compact Persian H1 and a title block that follows the RTL body */
+.persian h1 {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-top: 1.5rem;
+}
+
+main:has(.persian) #title-block-header {
+  direction: rtl;
+  text-align: right;
+}
+
+main:has(.persian) .quarto-page-breadcrumbs {
+  direction: ltr;
+  text-align: left;
 }

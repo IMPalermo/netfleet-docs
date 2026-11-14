@@ -1,21 +1,72 @@
 ---
 title: "Week 6 - Infrastructure Project"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 6: Infrastructure Project
+::: {.nf-hero}
+<div class="nf-eyebrow">INFRASTRUCTURE / WEEK 06</div>
 
+# Infrastructure Project
+
+::: {.nf-fa}
 این هفته روی موضوع **Infrastructure Project** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Infrastructure Engineering](../index.qmd)
+:::
 
-- [Day 1: Design a Small Lab Environment](day-01.qmd)
-- [Day 2: Provision Services Reproducibly](day-02.qmd)
-- [Day 3: Automate Configuration](day-03.qmd)
-- [Day 4: Add Monitoring and Recovery](day-04.qmd)
-- [Day 5: Infrastructure Capstone Assessment](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Design a Small Lab Environment
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Provision Services Reproducibly
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Automate Configuration
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Add Monitoring and Recovery
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Infrastructure Capstone Assessment
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · INFRASTRUCTURE · WEEK 06
 :::

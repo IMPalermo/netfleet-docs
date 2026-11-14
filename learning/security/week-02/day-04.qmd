@@ -5,8 +5,6 @@ subtitle: "Network and Systems Security | Week 2 | Day 4"
 ::: {.persian}
 # TLS, Certificates and PKI
 
-<text></text>
-
 **مسیر:** امنیت شبکه و سیستم  
 **هفته:** 2، Network Security  
 **جلسه:** 4 از ۵
@@ -14,6 +12,7 @@ subtitle: "Network and Systems Security | Week 2 | Day 4"
 ## اهداف یادگیری
 
 در پایان این جلسه باید بتوانی:
+
 - مفهوم TLS, Certificates and PKI را با زبان خودت توضیح بدهی.
 - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.
 - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.
@@ -91,6 +90,7 @@ subtitle: "Network and Systems Security | Week 2 | Day 4"
 **اگر بخواهیم موضوع «TLS, Certificates and PKI» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟**
 
 طرح اولیه خود را با سه بخش بنویس:
+
 - Data Source
 - Validation Rule
 - Expected Output

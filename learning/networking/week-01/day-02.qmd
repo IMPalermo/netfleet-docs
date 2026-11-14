@@ -1092,7 +1092,6 @@ TCP Port 443:     Failed
 
  
 ```{=html}
-<link rel="stylesheet" href="../../../../assets/css/quiz.css">
 
 <section class="nf-quiz" data-nf-quiz aria-labelledby="nf-quiz-title">
   <div class="nf-quiz-header">
@@ -1251,5 +1250,4 @@ TCP Port 443:     Failed
   </script>
 </section>
 
-<script src="../../../../assets/js/labs/quiz-engine.js" defer></script>
 ```

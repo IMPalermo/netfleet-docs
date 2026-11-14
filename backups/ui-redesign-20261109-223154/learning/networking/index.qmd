@@ -1,7 +1,0 @@
----
-title: "Networking Engineering"
----
-
-# Networking Engineering
-
-Learning path for NetFleet engineering.

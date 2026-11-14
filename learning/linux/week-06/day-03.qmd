@@ -5,8 +5,6 @@ subtitle: "Linux and Systems | Week 6 | Day 3"
 ::: {.persian}
 # Functions and Exit Codes
 
-<text></text>
-
 **مسیر:** لینوکس و مدیریت سیستم  
 **هفته:** 6، Bash Automation  
 **جلسه:** 3 از ۵
@@ -14,6 +12,7 @@ subtitle: "Linux and Systems | Week 6 | Day 3"
 ## اهداف یادگیری
 
 در پایان این جلسه باید بتوانی:
+
 - مفهوم Functions and Exit Codes را با زبان خودت توضیح بدهی.
 - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.
 - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.
@@ -98,6 +97,7 @@ ss -tulpen
 **اگر بخواهیم موضوع «Functions and Exit Codes» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟**
 
 طرح اولیه خود را با سه بخش بنویس:
+
 - Data Source
 - Validation Rule
 - Expected Output

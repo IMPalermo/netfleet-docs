@@ -5,8 +5,6 @@ subtitle: "Infrastructure Engineering | Week 1 | Day 3"
 ::: {.persian}
 # Configuration Management Principles
 
-<text></text>
-
 **مسیر:** مهندسی زیرساخت  
 **هفته:** 1، Infrastructure Foundations  
 **جلسه:** 3 از ۵
@@ -14,6 +12,7 @@ subtitle: "Infrastructure Engineering | Week 1 | Day 3"
 ## اهداف یادگیری
 
 در پایان این جلسه باید بتوانی:
+
 - مفهوم Configuration Management Principles را با زبان خودت توضیح بدهی.
 - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.
 - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.
@@ -91,6 +90,7 @@ subtitle: "Infrastructure Engineering | Week 1 | Day 3"
 **اگر بخواهیم موضوع «Configuration Management Principles» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟**
 
 طرح اولیه خود را با سه بخش بنویس:
+
 - Data Source
 - Validation Rule
 - Expected Output

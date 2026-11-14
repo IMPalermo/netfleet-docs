@@ -1,21 +1,72 @@
 ---
 title: "Week 7 - Data Models and Automation"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 7: Data Models and Automation
+::: {.nf-hero}
+<div class="nf-eyebrow">PYTHON / WEEK 07</div>
 
+# Data Models and Automation
+
+::: {.nf-fa}
 این هفته روی موضوع **Data Models and Automation** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Python Engineering](../index.qmd)
+:::
 
-- [Day 1: Dataclasses and Structured Inventory](day-01.qmd)
-- [Day 2: Parsing Command Output](day-02.qmd)
-- [Day 3: Configuration Data Validation](day-03.qmd)
-- [Day 4: Concurrent Tasks and Thread Pools](day-04.qmd)
-- [Day 5: Safe Automation Patterns](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Dataclasses and Structured Inventory
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Parsing Command Output
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Configuration Data Validation
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Concurrent Tasks and Thread Pools
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Safe Automation Patterns
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · PYTHON · WEEK 07
 :::

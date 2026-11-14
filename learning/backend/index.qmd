@@ -1,7 +1,94 @@
 ---
-title: "Backend Engineering"
+title: "Backend and APIs"
+page-layout: full
+toc: false
 ---
 
-# Backend Engineering
+::: {.nf-hero}
+<div class="nf-eyebrow">LEARNING PATH / 04</div>
 
-Learning path for NetFleet engineering.
+# Backend and APIs
+
+::: {.nf-fa}
+طراحی و ساخت API با پایتون، پایگاه‌داده، امنیت و استقرار.
+:::
+
+<div class="nf-stats">
+  <div><strong>08</strong><span>Weeks</span></div>
+  <div><strong>40</strong><span>Sessions</span></div>
+  <div><strong>0</strong><span>Sessions ready</span></div>
+</div>
+:::
+
+## Curriculum
+
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">WEEK 01 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Web and HTTP Foundations
+
+[Explore week →](week-01/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 02 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### API Design
+
+[Explore week →](week-02/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 03 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Python API Development
+
+[Explore week →](week-03/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 04 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Data Persistence
+
+[Explore week →](week-04/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 05 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### API Security
+
+[Explore week →](week-05/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 06 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### API Engineering
+
+[Explore week →](week-06/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 07 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Deployment
+
+[Explore week →](week-07/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 08 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Backend Project
+
+[Explore week →](week-08/index.qmd)
+:::
+
+:::
+
+::: {.nf-footer}
+BACKEND AND APIS · 8-WEEK CURRICULUM
+:::

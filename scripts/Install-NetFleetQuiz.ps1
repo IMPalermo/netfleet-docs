@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 
 $root = (Get-Location).Path
-$backup = Join-Path $root ("backups\quiz-install-" + (Get-Date -Format "yyyyMMdd-HHmmss"))
+$backup = Join-Path $root ("_backups\quiz-install-" + (Get-Date -Format "yyyyMMdd-HHmmss"))
 
 $filesToBackup = @(
     "_quarto.yml",

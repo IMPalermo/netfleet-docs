@@ -1,7 +1,78 @@
 ---
-title: "Infrastructure Management"
+title: "Infrastructure Engineering"
+page-layout: full
+toc: false
 ---
 
-# Infrastructure Management
+::: {.nf-hero}
+<div class="nf-eyebrow">LEARNING PATH / 05</div>
 
-Learning path for NetFleet engineering.
+# Infrastructure Engineering
+
+::: {.nf-fa}
+کانتینر، مجازی‌سازی، ابر و زیرساخت به‌صورت کد.
+:::
+
+<div class="nf-stats">
+  <div><strong>06</strong><span>Weeks</span></div>
+  <div><strong>30</strong><span>Sessions</span></div>
+  <div><strong>0</strong><span>Sessions ready</span></div>
+</div>
+:::
+
+## Curriculum
+
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">WEEK 01 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Infrastructure Foundations
+
+[Explore week →](week-01/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 02 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Containers
+
+[Explore week →](week-02/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 03 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Virtualization and Cloud
+
+[Explore week →](week-03/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 04 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Infrastructure as Code
+
+[Explore week →](week-04/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 05 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Delivery and Observability
+
+[Explore week →](week-05/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 06 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Infrastructure Project
+
+[Explore week →](week-06/index.qmd)
+:::
+
+:::
+
+::: {.nf-footer}
+INFRASTRUCTURE ENGINEERING · 6-WEEK CURRICULUM
+:::

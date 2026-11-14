@@ -1,5 +1,29 @@
 ---
 title: "About"
+toc: false
 ---
 
-About this site
+## What is NetFleet Docs?
+
+NetFleet Docs is a hands-on engineering curriculum. The goal is practical: after a session you should be able to do the work, not only talk about it. Every lesson is written in Persian with English technical terms, so the vocabulary matches what you will meet on the job.
+
+## How a lesson works
+
+- **Learning objectives** at the start tell you what you must be able to do.
+- **Concepts and labs** explain the idea, then have you run a controlled experiment and read the result.
+- **Quiz** at the end checks understanding, with immediate feedback.
+- **Assignment and completion checklist** turn the session into a short technical report you can keep.
+
+## Learning paths
+
+- [Networking Engineering](learning/networking/index.qmd): Network architecture, switching, routing, services and troubleshooting.
+- [Python Engineering](learning/python/index.qmd): Programming fundamentals, scripting, APIs and network automation.
+- [Linux Engineering](learning/linux/index.qmd): Linux administration, permissions, SSH, bash and server operations.
+- [Backend and APIs](learning/backend/index.qmd): HTTP, API design, Python services, data persistence and deployment.
+- [Infrastructure Engineering](learning/infrastructure/index.qmd): Containers, virtualization, cloud, infrastructure as code and delivery.
+- [Network Automation](learning/automation/index.qmd): Device connectivity, network APIs, configuration automation and quality.
+- [Security and Reliability](learning/security/index.qmd): Network, host and API security, monitoring and incident response.
+
+## Status
+
+11 of 250 sessions are fully written. Sessions marked **DRAFT** are outlines that will be replaced with full lessons.

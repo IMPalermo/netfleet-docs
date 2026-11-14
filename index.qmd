@@ -5,13 +5,19 @@ toc: false
 ---
 
 ::: {.nf-hero}
-<div class="nf-eyebrow">PERSONAL ENGINEERING WORKSPACE</div>
+<div class="nf-eyebrow">HANDS-ON · JOB-READY ENGINEERING</div>
 
 # Build. Understand. Automate.
 
-A structured learning environment for modern infrastructure and network engineering.
+A hands-on engineering curriculum. Learn by doing the work you would actually do on the job: configure, break, fix and document real infrastructure.
 
 [Explore Networking](learning/networking/index.qmd){.nf-primary-link}
+
+<div class="nf-stats">
+  <div><strong>07</strong><span>Learning paths</span></div>
+  <div><strong>50</strong><span>Weeks planned</span></div>
+  <div><strong>11/250</strong><span>Sessions ready</span></div>
+</div>
 :::
 
 ## Learning paths
@@ -19,43 +25,87 @@ A structured learning environment for modern infrastructure and network engineer
 ::: {.nf-grid}
 
 ::: {.nf-card}
-<div class="nf-card-number">01 / ACTIVE</div>
+<div class="nf-card-number">01 / ACTIVE · 10/40 SESSIONS READY</div>
 
 ### Networking Engineering
 
-Learn network architecture, protocols, switching, routing, troubleshooting and practical network engineering.
+Network architecture, switching, routing, services and troubleshooting.
+
+<div class="nf-progress" role="img" aria-label="25% of sessions ready"><span style="width:25%"></span></div>
 
 [Open learning path →](learning/networking/index.qmd)
 :::
 
 ::: {.nf-card}
-<div class="nf-card-number">02 / LEARNING PATH</div>
+<div class="nf-card-number">02 / ACTIVE · 1/40 SESSIONS READY</div>
 
 ### Python Engineering
 
-Programming fundamentals, scripting, APIs and automation.
+Programming fundamentals, scripting, APIs and network automation.
 
-[Explore Python →](learning/python/index.qmd)
+<div class="nf-progress" role="img" aria-label="2% of sessions ready"><span style="width:2%"></span></div>
+
+[Open learning path →](learning/python/index.qmd)
 :::
 
 ::: {.nf-card}
-<div class="nf-card-number">03 / PLANNED</div>
+<div class="nf-card-number">03 / PLANNED · DRAFT OUTLINE</div>
 
 ### Linux Engineering
 
-Linux administration, shell environments, SSH and server operations.
+Linux administration, permissions, SSH, bash and server operations.
 
-<span class="nf-muted">In development</span>
+<div class="nf-progress" role="img" aria-label="0% of sessions ready"><span style="width:0%"></span></div>
+
+[Open learning path →](learning/linux/index.qmd)
 :::
 
 ::: {.nf-card}
-<div class="nf-card-number">04 / PLANNED</div>
+<div class="nf-card-number">04 / PLANNED · DRAFT OUTLINE</div>
 
-### Infrastructure Automation
+### Backend and APIs
 
-Ansible, infrastructure as code and automated operations.
+HTTP, API design, Python services, data persistence and deployment.
 
-<span class="nf-muted">In development</span>
+<div class="nf-progress" role="img" aria-label="0% of sessions ready"><span style="width:0%"></span></div>
+
+[Open learning path →](learning/backend/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">05 / PLANNED · DRAFT OUTLINE</div>
+
+### Infrastructure Engineering
+
+Containers, virtualization, cloud, infrastructure as code and delivery.
+
+<div class="nf-progress" role="img" aria-label="0% of sessions ready"><span style="width:0%"></span></div>
+
+[Open learning path →](learning/infrastructure/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">06 / PLANNED · DRAFT OUTLINE</div>
+
+### Network Automation
+
+Device connectivity, network APIs, configuration automation and quality.
+
+<div class="nf-progress" role="img" aria-label="0% of sessions ready"><span style="width:0%"></span></div>
+
+[Open learning path →](learning/automation/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">07 / PLANNED · DRAFT OUTLINE</div>
+
+### Security and Reliability
+
+Network, host and API security, monitoring and incident response.
+
+<div class="nf-progress" role="img" aria-label="0% of sessions ready"><span style="width:0%"></span></div>
+
+[Open learning path →](learning/security/index.qmd)
 :::
 
 :::

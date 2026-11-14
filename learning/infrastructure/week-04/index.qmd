@@ -1,21 +1,72 @@
 ---
 title: "Week 4 - Infrastructure as Code"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 4: Infrastructure as Code
+::: {.nf-hero}
+<div class="nf-eyebrow">INFRASTRUCTURE / WEEK 04</div>
 
+# Infrastructure as Code
+
+::: {.nf-fa}
 این هفته روی موضوع **Infrastructure as Code** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Infrastructure Engineering](../index.qmd)
+:::
 
-- [Day 1: Terraform Core Workflow](day-01.qmd)
-- [Day 2: Providers, Resources and State](day-02.qmd)
-- [Day 3: Variables, Outputs and Modules](day-03.qmd)
-- [Day 4: Plan Review and Safe Apply](day-04.qmd)
-- [Day 5: Drift Detection and State Management](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Terraform Core Workflow
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Providers, Resources and State
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Variables, Outputs and Modules
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Plan Review and Safe Apply
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Drift Detection and State Management
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · INFRASTRUCTURE · WEEK 04
 :::

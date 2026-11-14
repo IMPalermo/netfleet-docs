@@ -1,21 +1,72 @@
 ---
 title: "Week 4 - Linux Networking"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 4: Linux Networking
+::: {.nf-hero}
+<div class="nf-eyebrow">LINUX / WEEK 04</div>
 
+# Linux Networking
+
+::: {.nf-fa}
 این هفته روی موضوع **Linux Networking** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Linux Engineering](../index.qmd)
+:::
 
-- [Day 1: Linux Network Interfaces](day-01.qmd)
-- [Day 2: IP Addressing with iproute2](day-02.qmd)
-- [Day 3: Routes and Neighbor Tables](day-03.qmd)
-- [Day 4: DNS Resolution on Linux](day-04.qmd)
-- [Day 5: Socket Inspection with ss](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Linux Network Interfaces
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### IP Addressing with iproute2
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Routes and Neighbor Tables
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### DNS Resolution on Linux
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Socket Inspection with ss
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · LINUX · WEEK 04
 :::

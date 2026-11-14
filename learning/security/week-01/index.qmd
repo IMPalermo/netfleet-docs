@@ -1,21 +1,72 @@
 ---
 title: "Week 1 - Security Foundations"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 1: Security Foundations
+::: {.nf-hero}
+<div class="nf-eyebrow">SECURITY / WEEK 01</div>
 
+# Security Foundations
+
+::: {.nf-fa}
 این هفته روی موضوع **Security Foundations** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Security and Reliability](../index.qmd)
+:::
 
-- [Day 1: Security Principles and Threat Modeling](day-01.qmd)
-- [Day 2: CIA Triad and Risk](day-02.qmd)
-- [Day 3: Identity, Authentication and Authorization](day-03.qmd)
-- [Day 4: Least Privilege and Zero Trust Concepts](day-04.qmd)
-- [Day 5: Security Baselines and Asset Inventory](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Security Principles and Threat Modeling
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### CIA Triad and Risk
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Identity, Authentication and Authorization
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Least Privilege and Zero Trust Concepts
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Security Baselines and Asset Inventory
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · SECURITY · WEEK 01
 :::

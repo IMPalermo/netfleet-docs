@@ -1,21 +1,72 @@
 ---
 title: "Week 7 - System Observability"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 7: System Observability
+::: {.nf-hero}
+<div class="nf-eyebrow">LINUX / WEEK 07</div>
 
+# System Observability
+
+::: {.nf-fa}
 این هفته روی موضوع **System Observability** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Linux Engineering](../index.qmd)
+:::
 
-- [Day 1: CPU and Memory Inspection](day-01.qmd)
-- [Day 2: Disk and I/O Monitoring](day-02.qmd)
-- [Day 3: Process and Service Troubleshooting](day-03.qmd)
-- [Day 4: Log Analysis and Rotation](day-04.qmd)
-- [Day 5: Baseline and Performance Investigation](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### CPU and Memory Inspection
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Disk and I/O Monitoring
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Process and Service Troubleshooting
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Log Analysis and Rotation
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Baseline and Performance Investigation
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · LINUX · WEEK 07
 :::

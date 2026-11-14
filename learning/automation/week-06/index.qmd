@@ -1,21 +1,72 @@
 ---
 title: "Week 6 - Automation Project"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 6: Automation Project
+::: {.nf-hero}
+<div class="nf-eyebrow">AUTOMATION / WEEK 06</div>
 
+# Automation Project
+
+::: {.nf-fa}
 این هفته روی موضوع **Automation Project** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Network Automation](../index.qmd)
+:::
 
-- [Day 1: Build a Multi-Device Inventory Collector](day-01.qmd)
-- [Day 2: Collect Interface and Routing Data](day-02.qmd)
-- [Day 3: Generate Configuration Proposals](day-03.qmd)
-- [Day 4: Validate and Compare Device State](day-04.qmd)
-- [Day 5: Network Automation Capstone Assessment](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Build a Multi-Device Inventory Collector
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Collect Interface and Routing Data
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Generate Configuration Proposals
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Validate and Compare Device State
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Network Automation Capstone Assessment
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · AUTOMATION · WEEK 06
 :::

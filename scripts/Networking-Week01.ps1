@@ -18,7 +18,7 @@ if (-not (Test-Path (Join-Path $Root "_quarto.yml"))) {
 }
 
 $LessonDir = Join-Path $Root "learning\networking\week-01"
-$BackupDir = Join-Path $Root "backups\networking-week-01"
+$BackupDir = Join-Path $Root "_backups\networking-week-01"
 
 New-Item -ItemType Directory -Path $LessonDir -Force | Out-Null
 

@@ -9,7 +9,7 @@ description: "جلسه اول مسیر مهندسی پایتون در پروژه
 
 # جلسه اول: مبانی پایتون
 
-<text class="muted">NETFLEET LEARNING PATH / PYTHON ENGINEERING / WEEK 01</text>
+<div class="nf-eyebrow" dir="ltr">NETFLEET LEARNING PATH / PYTHON ENGINEERING / WEEK 01</div>
 
 ---
 
@@ -830,7 +830,7 @@ node-03
 - اطلاعات هر سرور را با حلقه `for` نمایش بدهی.
 - تفاوت انتساب و مقایسه را توضیح بدهی.
 
-<text color="success" weight="semibold">END OF SESSION 01</text>
+<p dir="ltr" style="text-align:center;font-weight:600;letter-spacing:0.08em;color:var(--nf-green)">END OF SESSION 01</p>
 
 **NEXT SESSION: Conditions, Logic & Decision Making**
 

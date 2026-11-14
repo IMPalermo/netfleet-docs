@@ -5,8 +5,6 @@ subtitle: "Networking Fundamentals | Week 7 | Day 3"
 ::: {.persian}
 # Latency, Jitter and Packet Loss
 
-<text></text>
-
 **مسیر:** شبکه  
 **هفته:** 7، Network Operations  
 **جلسه:** 3 از ۵
@@ -14,6 +12,7 @@ subtitle: "Networking Fundamentals | Week 7 | Day 3"
 ## اهداف یادگیری
 
 در پایان این جلسه باید بتوانی:
+
 - مفهوم Latency, Jitter and Packet Loss را با زبان خودت توضیح بدهی.
 - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.
 - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.
@@ -98,6 +97,7 @@ Test-NetConnection 1.1.1.1 -Port 443
 **اگر بخواهیم موضوع «Latency, Jitter and Packet Loss» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟**
 
 طرح اولیه خود را با سه بخش بنویس:
+
 - Data Source
 - Validation Rule
 - Expected Output

@@ -1,21 +1,72 @@
 ---
 title: "Week 8 - Linux Operations Project"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 8: Linux Operations Project
+::: {.nf-hero}
+<div class="nf-eyebrow">LINUX / WEEK 08</div>
 
+# Linux Operations Project
+
+::: {.nf-fa}
 این هفته روی موضوع **Linux Operations Project** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Linux Engineering](../index.qmd)
+:::
 
-- [Day 1: Cron and Scheduled Tasks](day-01.qmd)
-- [Day 2: System Backup and Restore](day-02.qmd)
-- [Day 3: Firewall Basics with nftables](day-03.qmd)
-- [Day 4: Secure Server Baseline](day-04.qmd)
-- [Day 5: Linux Administration Practical Assessment](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Cron and Scheduled Tasks
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### System Backup and Restore
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Firewall Basics with nftables
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Secure Server Baseline
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Linux Administration Practical Assessment
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · LINUX · WEEK 08
 :::

@@ -1,21 +1,72 @@
 ---
 title: "Week 7 - Deployment"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 7: Deployment
+::: {.nf-hero}
+<div class="nf-eyebrow">BACKEND / WEEK 07</div>
 
+# Deployment
+
+::: {.nf-fa}
 این هفته روی موضوع **Deployment** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Backend and APIs](../index.qmd)
+:::
 
-- [Day 1: Application Configuration for Deployment](day-01.qmd)
-- [Day 2: WSGI and Production Servers](day-02.qmd)
-- [Day 3: Reverse Proxies](day-03.qmd)
-- [Day 4: Environment Secrets and Deployment Safety](day-04.qmd)
-- [Day 5: Health Checks and Observability](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Application Configuration for Deployment
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### WSGI and Production Servers
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Reverse Proxies
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Environment Secrets and Deployment Safety
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Health Checks and Observability
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · BACKEND · WEEK 07
 :::

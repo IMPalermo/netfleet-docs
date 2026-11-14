@@ -178,8 +178,6 @@ if __name__ == "__main__":
 ::: {.persian}
 # $LessonTitle
 
-<text></text>
-
 **مسیر:** $domain  
 **هفته:** $WeekNumber، $WeekTheme  
 **جلسه:** $DayNumber از ۵

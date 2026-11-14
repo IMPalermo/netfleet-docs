@@ -1,21 +1,94 @@
-
 ---
 title: "Python Engineering"
+page-layout: full
+toc: false
 ---
+
+::: {.nf-hero}
+<div class="nf-eyebrow">LEARNING PATH / 02</div>
 
 # Python Engineering
 
-مسیر یادگیری Python با تمرکز بر مهندسی زیرساخت و توسعه NetFleet.
+::: {.nf-fa}
+پایتون برای مهندسی زیرساخت: از اسکریپت‌نویسی تا ابزارهای واقعی اتوماسیون شبکه.
+:::
 
-## Month 01: Python Fundamentals
+<div class="nf-stats">
+  <div><strong>08</strong><span>Weeks</span></div>
+  <div><strong>40</strong><span>Sessions</span></div>
+  <div><strong>1</strong><span>Sessions ready</span></div>
+</div>
+:::
 
-### Week 01: Core Concepts
+## Curriculum
 
-| Session | Topic | Status |
-|---|---|---|
-| Day 01 | Variables and Data Structures | In Progress |
-| Day 02 | Conditions and Logic | Upcoming |
-| Day 03 | Loops and Iteration | Upcoming |
-| Day 04 | Functions | Upcoming |
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">WEEK 01 · 05 SESSIONS <span class="nf-badge nf-badge-part">1/5 READY</span></div>
 
-[شروع یادگیری Python ←](week-01/day-01.qmd)
+### Python Foundations
+
+[Explore week →](week-01/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 02 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Control Flow
+
+[Explore week →](week-02/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 03 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Functions and Structure
+
+[Explore week →](week-03/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 04 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Working with Data
+
+[Explore week →](week-04/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 05 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Network Programming
+
+[Explore week →](week-05/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 06 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Engineering Python
+
+[Explore week →](week-06/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 07 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Data Models and Automation
+
+[Explore week →](week-07/index.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">WEEK 08 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Python Network Project
+
+[Explore week →](week-08/index.qmd)
+:::
+
+:::
+
+::: {.nf-footer}
+PYTHON ENGINEERING · 8-WEEK CURRICULUM
+:::

@@ -5,8 +5,6 @@ subtitle: "Linux and Systems | Week 3 | Day 5"
 ::: {.persian}
 # Mounts, fstab and Disk Usage
 
-<text></text>
-
 **مسیر:** لینوکس و مدیریت سیستم  
 **هفته:** 3، Linux Administration  
 **جلسه:** 5 از ۵
@@ -14,6 +12,7 @@ subtitle: "Linux and Systems | Week 3 | Day 5"
 ## اهداف یادگیری
 
 در پایان این جلسه باید بتوانی:
+
 - مفهوم Mounts, fstab and Disk Usage را با زبان خودت توضیح بدهی.
 - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.
 - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.
@@ -98,6 +97,7 @@ ss -tulpen
 **اگر بخواهیم موضوع «Mounts, fstab and Disk Usage» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟**
 
 طرح اولیه خود را با سه بخش بنویس:
+
 - Data Source
 - Validation Rule
 - Expected Output

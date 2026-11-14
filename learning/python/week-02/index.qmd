@@ -1,21 +1,72 @@
 ---
 title: "Week 2 - Control Flow"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 2: Control Flow
+::: {.nf-hero}
+<div class="nf-eyebrow">PYTHON / WEEK 02</div>
 
+# Control Flow
+
+::: {.nf-fa}
 این هفته روی موضوع **Control Flow** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Python Engineering](../index.qmd)
+:::
 
-- [Day 1: Conditions and Boolean Logic](day-01.qmd)
-- [Day 2: For Loops and Iteration](day-02.qmd)
-- [Day 3: While Loops and Loop Control](day-03.qmd)
-- [Day 4: Lists and Tuples](day-04.qmd)
-- [Day 5: Dictionaries and Sets](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Conditions and Boolean Logic
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### For Loops and Iteration
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### While Loops and Loop Control
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Lists and Tuples
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Dictionaries and Sets
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · PYTHON · WEEK 02
 :::

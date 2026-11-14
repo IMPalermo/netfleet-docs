@@ -9,12 +9,14 @@ toc: false
 
 # Networking Engineering
 
-از مبانی شبکه تا درک معماری، عیب‌یابی و مهندسی شبکه.
+::: {.nf-fa}
+از مبانی شبکه تا معماری، عیب‌یابی و مهندسی شبکه، همراه با آزمایش‌های عملی.
+:::
 
 <div class="nf-stats">
   <div><strong>08</strong><span>Weeks</span></div>
   <div><strong>40</strong><span>Sessions</span></div>
-  <div><strong>01</strong><span>Learning Path</span></div>
+  <div><strong>10</strong><span>Sessions ready</span></div>
 </div>
 :::
 
@@ -22,7 +24,7 @@ toc: false
 
 ::: {.nf-grid}
 ::: {.nf-card}
-<div class="nf-card-number">WEEK 01 · 05 SESSIONS</div>
+<div class="nf-card-number">WEEK 01 · 05 SESSIONS <span class="nf-badge nf-badge-ready">READY</span></div>
 
 ### Network Foundations
 
@@ -30,8 +32,9 @@ Understand how computer networks communicate, address devices and transfer data.
 
 [Explore week →](week-01/index.qmd)
 :::
+
 ::: {.nf-card}
-<div class="nf-card-number">WEEK 02 · 05 SESSIONS</div>
+<div class="nf-card-number">WEEK 02 · 05 SESSIONS <span class="nf-badge nf-badge-ready">READY</span></div>
 
 ### Switching
 
@@ -39,8 +42,9 @@ Explore Ethernet switching, MAC learning, VLAN segmentation and loop prevention.
 
 [Explore week →](week-02/index.qmd)
 :::
+
 ::: {.nf-card}
-<div class="nf-card-number">WEEK 03 · 05 SESSIONS</div>
+<div class="nf-card-number">WEEK 03 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
 ### Routing
 
@@ -48,8 +52,9 @@ Learn how routers make forwarding decisions and connect different networks.
 
 [Explore week →](week-03/index.qmd)
 :::
+
 ::: {.nf-card}
-<div class="nf-card-number">WEEK 04 · 05 SESSIONS</div>
+<div class="nf-card-number">WEEK 04 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
 ### IP Addressing
 
@@ -57,8 +62,9 @@ Develop practical IPv4, subnetting, CIDR and IPv6 design skills.
 
 [Explore week →](week-04/index.qmd)
 :::
+
 ::: {.nf-card}
-<div class="nf-card-number">WEEK 05 · 05 SESSIONS</div>
+<div class="nf-card-number">WEEK 05 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
 ### Network Services
 
@@ -66,8 +72,9 @@ Understand essential network services and how they operate in production environ
 
 [Explore week →](week-05/index.qmd)
 :::
+
 ::: {.nf-card}
-<div class="nf-card-number">WEEK 06 · 05 SESSIONS</div>
+<div class="nf-card-number">WEEK 06 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
 ### Wireless and Remote Access
 
@@ -75,8 +82,9 @@ Study wireless architecture, authentication, VPNs and remote connectivity.
 
 [Explore week →](week-06/index.qmd)
 :::
+
 ::: {.nf-card}
-<div class="nf-card-number">WEEK 07 · 05 SESSIONS</div>
+<div class="nf-card-number">WEEK 07 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
 ### Monitoring and Troubleshooting
 
@@ -84,8 +92,9 @@ Build practical observability, packet analysis and incident investigation skills
 
 [Explore week →](week-07/index.qmd)
 :::
+
 ::: {.nf-card}
-<div class="nf-card-number">WEEK 08 · 05 SESSIONS</div>
+<div class="nf-card-number">WEEK 08 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
 ### Network Engineering
 
@@ -93,6 +102,7 @@ Connect the fundamentals through design, resilience and practical engineering.
 
 [Explore week →](week-08/index.qmd)
 :::
+
 :::
 
 ::: {.nf-footer}

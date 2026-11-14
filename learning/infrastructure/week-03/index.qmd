@@ -1,21 +1,72 @@
 ---
 title: "Week 3 - Virtualization and Cloud"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 3: Virtualization and Cloud
+::: {.nf-hero}
+<div class="nf-eyebrow">INFRASTRUCTURE / WEEK 03</div>
 
+# Virtualization and Cloud
+
+::: {.nf-fa}
 این هفته روی موضوع **Virtualization and Cloud** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Infrastructure Engineering](../index.qmd)
+:::
 
-- [Day 1: Virtual Machines and Hypervisors](day-01.qmd)
-- [Day 2: Virtual Networking](day-02.qmd)
-- [Day 3: Cloud Networking Fundamentals](day-03.qmd)
-- [Day 4: Identity and Access in Cloud Platforms](day-04.qmd)
-- [Day 5: Hybrid Infrastructure Concepts](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Virtual Machines and Hypervisors
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Virtual Networking
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Cloud Networking Fundamentals
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Identity and Access in Cloud Platforms
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Hybrid Infrastructure Concepts
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · INFRASTRUCTURE · WEEK 03
 :::

@@ -756,7 +756,6 @@ Get-NetIPConfiguration
 :::
 
 ````{=html}
-<link rel="stylesheet" href="../../../assets/css/quiz.css">
 
 <section class="nf-quiz" data-nf-quiz aria-labelledby="nf-quiz-day04-title">
 <div class="nf-quiz-header">
@@ -900,6 +899,5 @@ aria-valuenow="0">
   }
 ]
 </script>
-<script src="../../../assets/js/labs/quiz-engine.js"></script>
 </section>
 ````

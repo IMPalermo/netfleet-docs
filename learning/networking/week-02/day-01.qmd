@@ -747,164 +747,162 @@ show mac address-table
 :::
 
 
-```{=html}
-<link rel="stylesheet" href="../../../assets/css/quiz.css" />
+````{=html}
 
 <section class="nf-quiz" data-nf-quiz aria-labelledby="nf-quiz-week02-day01-title">
   <div class="nf-quiz-header">
     <div>
       <div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div>
       <h2 id="nf-quiz-week02-day01-title">آزمون تعاملی جلسه اول هفته دوم</h2>
-      <p>Ethernet Frame Structure</p>
     </div>
-    <div class="nf-quiz-score">
-      <span>امتیاز</span>
-      <strong data-score>0</strong>
-      <small>از 10</small>
+    <div class="nf-quiz-stats">
+      <div class="nf-quiz-stat">امتیاز: <strong data-score>0</strong></div>
     </div>
   </div>
 
-  <div class="nf-quiz-progress-wrap">
-    <div class="nf-quiz-progress-label">
-      <span>پیشرفت آزمون</span>
-      <span data-progress-text>سؤال 1 از 10</span>
-    </div>
-    <div class="nf-quiz-progress-track">
-      <div class="nf-quiz-progress" data-progress style="width:0%" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
-    </div>
+  <div class="nf-quiz-progress" role="progressbar"
+       aria-label="پیشرفت آزمون"
+       aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="nf-quiz-progress-bar" data-progress></div>
   </div>
 
-  <div class="nf-quiz-content" data-content>
+  <div class="nf-quiz-progress-label" data-progress-text></div>
+
+  <div data-content>
     <h3 class="nf-quiz-question" data-question></h3>
     <div class="nf-quiz-options" data-options></div>
     <div class="nf-quiz-feedback" data-feedback aria-live="polite"></div>
-    <button class="nf-quiz-next" data-next type="button" hidden>سؤال بعدی</button>
+    <div class="nf-quiz-actions">
+      <button class="nf-quiz-primary" type="button" data-next hidden>
+        سؤال بعدی
+      </button>
+    </div>
   </div>
 
-  <div class="nf-quiz-result" data-result hidden>
-    <div class="nf-quiz-result-icon">✓</div>
-    <h3>آزمون به پایان رسید</h3>
-    <div class="nf-quiz-final-score" data-final-score>0 از 10</div>
-    <div class="nf-quiz-percentage" data-percentage>0%</div>
+  <div class="nf-quiz-result" data-result hidden aria-live="polite">
+    <div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div>
+    <h3>نتیجه آزمون</h3>
+    <div class="nf-quiz-result-score" data-final-score></div>
+    <div class="nf-quiz-result-score" data-percentage></div>
     <p data-result-message></p>
-    <button class="nf-quiz-restart" data-restart type="button">شروع دوباره آزمون</button>
+    <button class="nf-quiz-primary" type="button" data-restart>
+      تلاش مجدد
+    </button>
   </div>
 
   <script type="application/json" data-quiz-questions>
-  [
-    {
-      "question": "کدام گزینه ترتیب صحیح Encapsulation را از دیدگاه ارسال داده نشان می‌دهد؟",
-      "options": [
-        "Frame → Packet → Segment → Data",
-        "Data → Segment → Packet → Frame",
-        "Packet → Frame → Data → Segment",
-        "Segment → Data → Frame → Packet"
-      ],
-      "answer": 1,
-      "explanation": "داده برنامه ابتدا در لایه انتقال به Segment یا Datagram تبدیل می‌شود، سپس در لایه شبکه Packet و در لایه پیوند داده Frame ساخته می‌شود."
-    },
-    {
-      "question": "اندازه Destination MAC و Source MAC در Ethernet به‌ترتیب چقدر است؟",
-      "options": [
-        "هرکدام 4 بایت",
-        "هرکدام 8 بایت",
-        "هرکدام 6 بایت",
-        "هرکدام 2 بایت"
-      ],
-      "answer": 2,
-      "explanation": "هر آدرس MAC استاندارد 48 بیت یا 6 بایت است."
-    },
-    {
-      "question": "مقدار EtherType برابر 0x0800 نشان‌دهنده کدام پروتکل است؟",
-      "options": [
-        "ARP",
-        "IPv4",
-        "IPv6",
-        "802.1Q"
-      ],
-      "answer": 1,
-      "explanation": "مقدار 0x0800 شناسه EtherType برای IPv4 است. مقدار 0x0806 برای ARP و 0x86DD برای IPv6 استفاده می‌شود."
-    },
-    {
-      "question": "چرا حداقل اندازه Payload در Ethernet معمولی 46 بایت است؟",
-      "options": [
-        "برای جا دادن آدرس IPv6",
-        "برای تضمین حداقل اندازه فریم 64 بایتی",
-        "به دلیل اندازه EtherType",
-        "برای نگهداری VLAN ID"
-      ],
-      "answer": 1,
-      "explanation": "فیلدهای MAC مقصد، MAC مبدأ، EtherType و FCS مجموعاً 18 بایت هستند. برای رسیدن به حداقل فریم 64 بایتی، Payload باید حداقل 46 بایت باشد."
-    },
-    {
-      "question": "اندازه یک فریم Ethernet II با Payload برابر 1500 بایت و بدون VLAN، از MAC مقصد تا FCS چقدر است؟",
-      "options": [
-        "1500 بایت",
-        "1514 بایت",
-        "1518 بایت",
-        "1522 بایت"
-      ],
-      "answer": 2,
-      "explanation": "6 + 6 + 2 + 1500 + 4 برابر 1518 بایت است. این محاسبه Preamble و SFD را شامل نمی‌شود."
-    },
-    {
-      "question": "کدام گزینه درباره FCS صحیح است؟",
-      "options": [
-        "خطاهای فریم را اصلاح می‌کند",
-        "برای رمزنگاری Payload استفاده می‌شود",
-        "با CRC-32 خطاهای انتقال فریم را تشخیص می‌دهد",
-        "آدرس IP مقصد را نگهداری می‌کند"
-      ],
-      "answer": 2,
-      "explanation": "FCS از CRC-32 برای تشخیص خرابی فریم استفاده می‌کند، اما وظیفه اصلاح خطا یا رمزنگاری را ندارد."
-    },
-    {
-      "question": "در فریم Tagged با استاندارد 802.1Q، اندازه Tag چند بایت است؟",
-      "options": [
-        "2 بایت",
-        "4 بایت",
-        "6 بایت",
-        "8 بایت"
-      ],
-      "answer": 1,
-      "explanation": "802.1Q از TPID دو بایتی و TCI دو بایتی تشکیل شده است؛ در مجموع چهار بایت."
-    },
-    {
-      "question": "کدام گزینه تفاوت MTU و Frame Size را درست توضیح می‌دهد؟",
-      "options": [
-        "هر دو همیشه دقیقاً 1500 بایت هستند",
-        "MTU اندازه کل فریم به‌همراه FCS است",
-        "MTU اندازه Payload لایه شبکه را مشخص می‌کند، اما Frame Size شامل سربار لایه دوم نیز هست",
-        "MTU فقط برای VLAN استفاده می‌شود"
-      ],
-      "answer": 2,
-      "explanation": "MTU رایج Ethernet برابر 1500 بایت است، اما فریم با احتساب Header و FCS به 1518 بایت می‌رسد."
-    },
-    {
-      "question": "اگر فیلد EtherType برابر 0x0806 باشد، Payload معمولاً مربوط به چیست؟",
-      "options": [
-        "IPv4",
-        "ARP",
-        "IPv6",
-        "TCP"
-      ],
-      "answer": 1,
-      "explanation": "0x0806 شناسه پروتکل ARP است که برای نگاشت IPv4 به MAC در شبکه محلی استفاده می‌شود."
-    },
-    {
-      "question": "وقتی یک Packet از روتر عبور می‌کند و وارد لینک Ethernet دیگری می‌شود، چه اتفاقی برای فریم رخ می‌دهد؟",
-      "options": [
-        "همان فریم با همان MACها بدون تغییر عبور می‌کند",
-        "روتر فقط EtherType را حذف می‌کند",
-        "روتر فریم ورودی را پردازش می‌کند و برای لینک خروجی فریم جدیدی با MACهای مناسب می‌سازد",
-        "آدرس IP و MAC همیشه هم‌زمان تغییر می‌کنند"
-      ],
-      "answer": 2,
-      "explanation": "روتر هدر لایه دوم ورودی را کنار می‌گذارد، Packet لایه شبکه را پردازش می‌کند و برای لینک خروجی یک فریم جدید با MAC مبدأ و مقصد همان لینک می‌سازد."
-    }
-  ]
+[
+  {
+    "question": "کدام گزینه ترتیب صحیح Encapsulation را از دیدگاه ارسال داده نشان می‌دهد؟",
+    "options": [
+      "Frame → Packet → Segment → Data",
+      "Data → Segment → Packet → Frame",
+      "Packet → Frame → Data → Segment",
+      "Segment → Data → Frame → Packet"
+    ],
+    "answer": 1,
+    "explanation": "داده برنامه ابتدا در لایه انتقال به Segment یا Datagram تبدیل می‌شود، سپس در لایه شبکه Packet و در لایه پیوند داده Frame ساخته می‌شود."
+  },
+  {
+    "question": "اندازه Destination MAC و Source MAC در Ethernet به‌ترتیب چقدر است؟",
+    "options": [
+      "هرکدام 4 بایت",
+      "هرکدام 8 بایت",
+      "هرکدام 6 بایت",
+      "هرکدام 2 بایت"
+    ],
+    "answer": 2,
+    "explanation": "هر آدرس MAC استاندارد 48 بیت یا 6 بایت است."
+  },
+  {
+    "question": "مقدار EtherType برابر 0x0800 نشان‌دهنده کدام پروتکل است؟",
+    "options": [
+      "ARP",
+      "IPv4",
+      "IPv6",
+      "802.1Q"
+    ],
+    "answer": 1,
+    "explanation": "مقدار 0x0800 شناسه EtherType برای IPv4 است. مقدار 0x0806 برای ARP و 0x86DD برای IPv6 استفاده می‌شود."
+  },
+  {
+    "question": "چرا حداقل اندازه Payload در Ethernet معمولی 46 بایت است؟",
+    "options": [
+      "برای جا دادن آدرس IPv6",
+      "برای تضمین حداقل اندازه فریم 64 بایتی",
+      "به دلیل اندازه EtherType",
+      "برای نگهداری VLAN ID"
+    ],
+    "answer": 1,
+    "explanation": "فیلدهای MAC مقصد، MAC مبدأ، EtherType و FCS مجموعاً 18 بایت هستند. برای رسیدن به حداقل فریم 64 بایتی، Payload باید حداقل 46 بایت باشد."
+  },
+  {
+    "question": "اندازه یک فریم Ethernet II با Payload برابر 1500 بایت و بدون VLAN، از MAC مقصد تا FCS چقدر است؟",
+    "options": [
+      "1500 بایت",
+      "1514 بایت",
+      "1518 بایت",
+      "1522 بایت"
+    ],
+    "answer": 2,
+    "explanation": "6 + 6 + 2 + 1500 + 4 برابر 1518 بایت است. این محاسبه Preamble و SFD را شامل نمی‌شود."
+  },
+  {
+    "question": "کدام گزینه درباره FCS صحیح است؟",
+    "options": [
+      "خطاهای فریم را اصلاح می‌کند",
+      "برای رمزنگاری Payload استفاده می‌شود",
+      "با CRC-32 خطاهای انتقال فریم را تشخیص می‌دهد",
+      "آدرس IP مقصد را نگهداری می‌کند"
+    ],
+    "answer": 2,
+    "explanation": "FCS از CRC-32 برای تشخیص خرابی فریم استفاده می‌کند، اما وظیفه اصلاح خطا یا رمزنگاری را ندارد."
+  },
+  {
+    "question": "در فریم Tagged با استاندارد 802.1Q، اندازه Tag چند بایت است؟",
+    "options": [
+      "2 بایت",
+      "4 بایت",
+      "6 بایت",
+      "8 بایت"
+    ],
+    "answer": 1,
+    "explanation": "802.1Q از TPID دو بایتی و TCI دو بایتی تشکیل شده است؛ در مجموع چهار بایت."
+  },
+  {
+    "question": "کدام گزینه تفاوت MTU و Frame Size را درست توضیح می‌دهد؟",
+    "options": [
+      "هر دو همیشه دقیقاً 1500 بایت هستند",
+      "MTU اندازه کل فریم به‌همراه FCS است",
+      "MTU اندازه Payload لایه شبکه را مشخص می‌کند، اما Frame Size شامل سربار لایه دوم نیز هست",
+      "MTU فقط برای VLAN استفاده می‌شود"
+    ],
+    "answer": 2,
+    "explanation": "MTU رایج Ethernet برابر 1500 بایت است، اما فریم با احتساب Header و FCS به 1518 بایت می‌رسد."
+  },
+  {
+    "question": "اگر فیلد EtherType برابر 0x0806 باشد، Payload معمولاً مربوط به چیست؟",
+    "options": [
+      "IPv4",
+      "ARP",
+      "IPv6",
+      "TCP"
+    ],
+    "answer": 1,
+    "explanation": "0x0806 شناسه پروتکل ARP است که برای نگاشت IPv4 به MAC در شبکه محلی استفاده می‌شود."
+  },
+  {
+    "question": "وقتی یک Packet از روتر عبور می‌کند و وارد لینک Ethernet دیگری می‌شود، چه اتفاقی برای فریم رخ می‌دهد؟",
+    "options": [
+      "همان فریم با همان MACها بدون تغییر عبور می‌کند",
+      "روتر فقط EtherType را حذف می‌کند",
+      "روتر فریم ورودی را پردازش می‌کند و برای لینک خروجی فریم جدیدی با MACهای مناسب می‌سازد",
+      "آدرس IP و MAC همیشه هم‌زمان تغییر می‌کنند"
+    ],
+    "answer": 2,
+    "explanation": "روتر هدر لایه دوم ورودی را کنار می‌گذارد، Packet لایه شبکه را پردازش می‌کند و برای لینک خروجی یک فریم جدید با MAC مبدأ و مقصد همان لینک می‌سازد."
+  }
+]
   </script>
 </section>
-
-<script src="../../../assets/js/labs/quiz-engine.js" defer></script>
-```
+````

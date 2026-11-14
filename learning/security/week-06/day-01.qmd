@@ -5,8 +5,6 @@ subtitle: "Network and Systems Security | Week 6 | Day 1"
 ::: {.persian}
 # Threat Model a Network Lab
 
-<text></text>
-
 **مسیر:** امنیت شبکه و سیستم  
 **هفته:** 6، Security Project  
 **جلسه:** 1 از ۵
@@ -14,6 +12,7 @@ subtitle: "Network and Systems Security | Week 6 | Day 1"
 ## اهداف یادگیری
 
 در پایان این جلسه باید بتوانی:
+
 - مفهوم Threat Model a Network Lab را با زبان خودت توضیح بدهی.
 - اجزای اصلی و واژگان فنی مرتبط را تشخیص بدهی.
 - کاربرد این موضوع را در یک محیط واقعی مهندسی تحلیل کنی.
@@ -91,6 +90,7 @@ subtitle: "Network and Systems Security | Week 6 | Day 1"
 **اگر بخواهیم موضوع «Threat Model a Network Lab» را در NetFleet خودکار کنیم، چه داده‌ای باید جمع‌آوری شود، چه قانونی باید بررسی شود و چه گزارشی باید تولید شود؟**
 
 طرح اولیه خود را با سه بخش بنویس:
+
 - Data Source
 - Validation Rule
 - Expected Output

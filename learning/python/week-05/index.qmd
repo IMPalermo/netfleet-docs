@@ -1,21 +1,72 @@
 ---
 title: "Week 5 - Network Programming"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 5: Network Programming
+::: {.nf-hero}
+<div class="nf-eyebrow">PYTHON / WEEK 05</div>
 
+# Network Programming
+
+::: {.nf-fa}
 این هفته روی موضوع **Network Programming** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Python Engineering](../index.qmd)
+:::
 
-- [Day 1: IP Address Handling with ipaddress](day-01.qmd)
-- [Day 2: DNS Lookups with Python](day-02.qmd)
-- [Day 3: TCP Client and Server Basics](day-03.qmd)
-- [Day 4: HTTP Requests and REST APIs](day-04.qmd)
-- [Day 5: Timeouts, Retries and Network Errors](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### IP Address Handling with ipaddress
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### DNS Lookups with Python
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### TCP Client and Server Basics
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### HTTP Requests and REST APIs
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Timeouts, Retries and Network Errors
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · PYTHON · WEEK 05
 :::

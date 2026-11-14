@@ -1,21 +1,72 @@
 ---
 title: "Week 3 - Functions and Structure"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 3: Functions and Structure
+::: {.nf-hero}
+<div class="nf-eyebrow">PYTHON / WEEK 03</div>
 
+# Functions and Structure
+
+::: {.nf-fa}
 این هفته روی موضوع **Functions and Structure** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Python Engineering](../index.qmd)
+:::
 
-- [Day 1: Defining and Calling Functions](day-01.qmd)
-- [Day 2: Parameters, Return Values and Scope](day-02.qmd)
-- [Day 3: Modules and Imports](day-03.qmd)
-- [Day 4: Exceptions and Error Handling](day-04.qmd)
-- [Day 5: Writing Readable and Testable Code](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Defining and Calling Functions
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Parameters, Return Values and Scope
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Modules and Imports
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Exceptions and Error Handling
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Writing Readable and Testable Code
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · PYTHON · WEEK 03
 :::

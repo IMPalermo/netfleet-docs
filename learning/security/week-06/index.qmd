@@ -1,21 +1,72 @@
 ---
 title: "Week 6 - Security Project"
+page-layout: full
+toc: false
 ---
 
-::: {.persian}
-# هفته 6: Security Project
+::: {.nf-hero}
+<div class="nf-eyebrow">SECURITY / WEEK 06</div>
 
+# Security Project
+
+::: {.nf-fa}
 این هفته روی موضوع **Security Project** تمرکز دارد.
+:::
 
-## جلسات
+[← Back to Security and Reliability](../index.qmd)
+:::
 
-- [Day 1: Threat Model a Network Lab](day-01.qmd)
-- [Day 2: Create a Secure Configuration Baseline](day-02.qmd)
-- [Day 3: Validate Firewall and Access Rules](day-03.qmd)
-- [Day 4: Build a Basic Security Audit Report](day-04.qmd)
-- [Day 5: Security Practical Assessment](day-05.qmd)
+## Weekly sessions
 
-## خروجی هفتگی
+::: {.nf-grid}
+::: {.nf-card}
+<div class="nf-card-number">SESSION 01 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
 
-در پایان هفته باید بتوانی مفاهیم را توضیح بدهی، آزمایش‌ها را تکرار کنی و یک گزارش فنی کوتاه همراه با شواهد ارائه بدهی.
+### Threat Model a Network Lab
+
+[Open session →](day-01.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 02 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Create a Secure Configuration Baseline
+
+[Open session →](day-02.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 03 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Validate Firewall and Access Rules
+
+[Open session →](day-03.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 04 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Build a Basic Security Audit Report
+
+[Open session →](day-04.qmd)
+:::
+
+::: {.nf-card}
+<div class="nf-card-number">SESSION 05 <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+
+### Security Practical Assessment
+
+[Open session →](day-05.qmd)
+:::
+
+:::
+
+## Weekly outcome
+
+::: {.nf-outcome}
+در پایان این هفته باید بتوانی مفاهیم اصلی را توضیح بدهی، آزمایش‌های عملی را تکرار کنی و نتایج را در قالب یک گزارش فنی کوتاه مستند کنی.
+:::
+
+::: {.nf-footer}
+NETFLEET · SECURITY · WEEK 06
 :::
