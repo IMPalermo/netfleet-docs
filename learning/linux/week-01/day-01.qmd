@@ -5,6 +5,10 @@ subtitle: "Linux and Systems | Week 1 | Day 1"
 ::: {.persian}
 # Linux Distributions and Architecture
 
+::: {.nf-outcome}
+**پیش‌نیاز Level 0:** لینوکس یک سیستم‌عامل است. پیش از این جلسه، تفاوت سخت‌افزار و نرم‌افزار، فایل و پوشه، برنامه و پردازه و ترمینال را در [Level 0](../../foundations/index.qmd) بخوان. سپس [Operating System](../../glossary.qmd#operating-system) و [Terminal](../../glossary.qmd#terminal) را مرور کن.
+:::
+
 **مسیر:** لینوکس و مدیریت سیستم  
 **هفته:** 1، Linux Environment  
 **جلسه:** 1 از ۵

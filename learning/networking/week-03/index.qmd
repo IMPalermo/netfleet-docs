@@ -16,6 +16,10 @@ Learn how routers make forwarding decisions and connect different networks.
 
 ## Weekly sessions
 
+::: {.nf-outcome .nf-fa}
+**وضعیت محتوا:** این هفته فعلاً یک نقشهٔ آموزشی و تمرین هدایت‌شده است. پیش از شروع، هفته‌های ۱ و ۲ و مفاهیم IP، Subnet و Default Gateway را مرور کن. تا وقتی جزوهٔ تفصیلی منتشر نشده، تغییر تنظیمات Router را فقط در آزمایشگاه انجام بده.
+:::
+
 ::: {.nf-grid}
 ::: {.nf-card}
 <div class="nf-card-number">SESSION 01</div>

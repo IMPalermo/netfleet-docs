@@ -217,6 +217,25 @@ a:hover {
   color: var(--nf-muted);
 }
 
+/* Accessible, JavaScript-free glossary references. */
+.nf-term {
+  color: var(--nf-light);
+  border-bottom: 1px dotted var(--nf-green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nf-term:hover,
+.nf-term:focus-visible {
+  color: #D0EBD8;
+  border-bottom-style: solid;
+}
+
+.persian h2[id],
+.persian span[id] {
+  scroll-margin-top: 5rem;
+}
+
 .nf-footer {
   border-top: 1px solid var(--nf-border);
   padding-top: 1.2rem;

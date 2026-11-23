@@ -9,6 +9,10 @@ description: "جلسه اول مسیر مهندسی پایتون در پروژه
 
 # جلسه اول: مبانی پایتون
 
+::: {.nf-outcome}
+**پیش‌نیاز Level 0:** قبل از نوشتن کد، باید فایل، مسیر فایل، برنامه، سیستم‌عامل و ترمینال را بشناسی. [جلسه‌های ۵ تا ۱۱ مبانی کامپیوتر](../../foundations/index.qmd) را بگذران؛ سپس در [فرهنگ‌نامه](../../glossary.qmd#terminal) واژهٔ Terminal را مرور کن. Python یک زبان برنامه‌نویسی است، نه خودِ ویندوز یا یک ویرایشگر متن.
+:::
+
 <div class="nf-eyebrow" dir="ltr">NETFLEET LEARNING PATH / PYTHON ENGINEERING / WEEK 01</div>
 
 ---

@@ -16,6 +16,10 @@ Explore Ethernet switching, MAC learning, VLAN segmentation and loop prevention.
 
 ## Weekly sessions
 
+::: {.nf-outcome .nf-fa}
+**پیش‌نیاز این هفته:** هفتهٔ ۱ را کامل کرده باش؛ به‌خصوص تفاوت Frame و Packet، MAC و IP، ARP و شبکهٔ محلی. این هفته دربارهٔ Switching است، بنابراین قبل از پیکربندی VLAN یا تغییر Port، ابتدا مفهوم و اثر آن را در محیط آزمایشی درک کن.
+:::
+
 ::: {.nf-grid}
 ::: {.nf-card}
 <div class="nf-card-number">SESSION 01</div>

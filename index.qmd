@@ -11,7 +11,7 @@ toc: false
 
 A hands-on engineering curriculum. Learn by doing the work you would actually do on the job: configure, break, fix and document real infrastructure.
 
-[Explore Networking](learning/networking/index.qmd){.nf-primary-link}
+[شروع از صفر](learning/foundations/index.qmd){.nf-primary-link}
 
 <div class="nf-stats">
   <div><strong>07</strong><span>Learning paths</span></div>
@@ -21,6 +21,10 @@ A hands-on engineering curriculum. Learn by doing the work you would actually do
 :::
 
 ## Learning paths
+
+::: {.nf-outcome .nf-fa}
+**از کجا شروع کنم؟** اگر مفاهیمی مانند فایل، ویندوز، مرورگر، شبکه یا دستور را هنوز نمی‌شناسی، ابتدا [Level 0 — مبانی کار با کامپیوتر](learning/foundations/index.qmd) را بگذران. این مسیر پیش‌نیازهای مشترک همهٔ مسیرهای تخصصی را می‌سازد و واژه‌های آن در [فرهنگ‌نامه](learning/glossary.qmd) قابل مرورند.
+:::
 
 ::: {.nf-grid}
 

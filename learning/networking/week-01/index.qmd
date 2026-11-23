@@ -16,6 +16,10 @@ Understand how computer networks communicate, address devices and transfer data.
 
 ## Weekly sessions
 
+::: {.nf-outcome .nf-fa}
+**پیش‌نیاز این هفته:** Level 0، به‌ویژه درس‌های «داده»، «مرورگر»، «شبکهٔ محلی» و «ترمینال». ابتدا جلسهٔ ۱ را بخوان، سپس مدل لایه‌ای، Ethernet/ARP، IP و سرویس‌ها را به همین ترتیب پیش ببر. هیچ دستور `ipconfig` یا `ping` را بدون دانستن هدف آن اجرا نکن.
+:::
+
 ::: {.nf-grid}
 ::: {.nf-card}
 <div class="nf-card-number">SESSION 01</div>

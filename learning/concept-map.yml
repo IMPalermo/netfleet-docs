@@ -1,0 +1,21 @@
+# مرجع نگهداری وابستگی‌های مفهومی. کلیدها به شناسه‌های glossary.qmd اشاره دارند.
+concepts:
+  data: { prerequisites: [], lesson: foundations/module-01/day-04.qmd }
+  computer: { prerequisites: [data], lesson: foundations/module-01/day-01.qmd }
+  hardware: { prerequisites: [computer], lesson: foundations/module-01/day-02.qmd }
+  software: { prerequisites: [hardware], lesson: foundations/module-01/day-02.qmd }
+  file: { prerequisites: [data, software], lesson: foundations/module-02/day-01.qmd }
+  path: { prerequisites: [file], lesson: foundations/module-02/day-02.qmd }
+  operating-system: { prerequisites: [hardware, software, file], lesson: foundations/module-02/day-03.qmd }
+  process: { prerequisites: [operating-system], lesson: foundations/module-02/day-04.qmd }
+  network: { prerequisites: [data, computer], lesson: foundations/module-03/day-02.qmd }
+  ip-address: { prerequisites: [network], lesson: networking/week-01/day-01.qmd }
+  ethernet: { prerequisites: [network], lesson: networking/week-01/day-03.qmd }
+  frame: { prerequisites: [ethernet], lesson: networking/week-02/day-01.qmd }
+  mac-address: { prerequisites: [ethernet], lesson: networking/week-01/day-03.qmd }
+  arp: { prerequisites: [ip-address, mac-address], lesson: networking/week-01/day-03.qmd }
+  switch: { prerequisites: [frame, mac-address], lesson: networking/week-02/day-02.qmd }
+  router: { prerequisites: [ip-address, frame], lesson: networking/week-01/day-01.qmd }
+  vlan: { prerequisites: [switch, frame], lesson: networking/week-02/day-03.qmd }
+  dns: { prerequisites: [network, ip-address], lesson: networking/week-01/day-01.qmd }
+  terminal: { prerequisites: [operating-system, path], lesson: foundations/module-03/day-03.qmd }

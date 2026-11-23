@@ -16,6 +16,10 @@ Connect the fundamentals through design, resilience and practical engineering.
 
 ## Weekly sessions
 
+::: {.nf-outcome .nf-fa}
+**وضعیت محتوا:** این هفته مسیر جمع‌بندی مهندسی است و به تمام مفاهیم پیشین وابسته است. تا انتشار جزوه‌های تفصیلی، از آن به‌عنوان چک‌لیست طراحی، آزمایش و مستندسازی استفاده کن.
+:::
+
 ::: {.nf-grid}
 ::: {.nf-card}
 <div class="nf-card-number">SESSION 01</div>

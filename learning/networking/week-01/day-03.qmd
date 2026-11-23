@@ -8,6 +8,10 @@ toc-depth: 3
 
 ::: {.persian}
 
+::: {.nf-outcome}
+**پیش‌نیاز و واژه‌ها:** پیش از ادامه، [شبکهٔ محلی](../../glossary.qmd#network)، [IP Address](../../glossary.qmd#ip-address) و تفاوت Frame و Packet را در Level 0 و جلسه‌های ۱–۲ این مسیر مرور کن. Ethernet، MAC، ARP و Switch هر کدام مسئله‌ای متفاوت در تحویل داده حل می‌کنند.
+:::
+
 # جلسه سوم: Ethernet، MAC Address و ARP
 <blockquote>
 هدف این جلسه حفظ کردن ساختار Ethernet Frame یا چند دستور ARP نیست. هدف این است که بتوانی مسیر واقعی تحویل یک Frame را تحلیل کنی، تصمیم‌های یک Switch را توضیح بدهی و تشخیص بدهی یک سیستم برای ارتباط با مقصد محلی یا مقصد خارج از Subnet به کدام MAC Address نیاز دارد.

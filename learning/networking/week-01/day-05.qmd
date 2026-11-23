@@ -8,6 +8,10 @@ toc-depth: 3
 
 ::: {.persian}
 
+::: {.nf-outcome}
+**پیش‌نیاز:** قبل از DNS، DHCP، TCP و UDP باید تفاوت نام وب‌سایت، IP Address، شبکهٔ محلی و Router را بدانی. [Level 0](../../foundations/index.qmd) و جلسه‌های ۱ تا ۴ این هفته را به‌ترتیب انجام بده. پاسخ ندادن `ping` به‌تنهایی اثبات خرابی اینترنت نیست.
+:::
+
 # جلسه پنجم: TCP، UDP، DNS و DHCP
 
 <blockquote>

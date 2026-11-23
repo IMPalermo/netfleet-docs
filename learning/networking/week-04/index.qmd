@@ -16,6 +16,10 @@ Develop practical IPv4, subnetting, CIDR and IPv6 design skills.
 
 ## Weekly sessions
 
+::: {.nf-outcome .nf-fa}
+**وضعیت محتوا:** این هفته قالب آموزشی دارد و به دانش هفته‌های ۱ تا ۳ وابسته است. مفهوم IP Address، Subnet و Router را پیش از محاسبه یا تغییر آدرس‌دهی درک کن.
+:::
+
 ::: {.nf-grid}
 ::: {.nf-card}
 <div class="nf-card-number">SESSION 01</div>

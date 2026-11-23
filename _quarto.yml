@@ -16,6 +16,8 @@ website:
         href: index.qmd
       - text: "Learning paths"
         menu:
+          - text: "Level 0 — Computer Foundations"
+            href: learning/foundations/index.qmd
           - text: "Networking Engineering"
             href: learning/networking/index.qmd
           - text: "Python Engineering"
@@ -30,10 +32,37 @@ website:
             href: learning/automation/index.qmd
           - text: "Security and Reliability"
             href: learning/security/index.qmd
+          - text: "Technical Glossary"
+            href: learning/glossary.qmd
       - text: "About"
         href: about.qmd
 
   sidebar:
+    - id: foundations
+      title: "Level 0 — Computer Foundations"
+      style: docked
+      collapse-level: 1
+      contents:
+        - learning/foundations/index.qmd
+        - section: "Module 1 — Device and Data"
+          contents:
+            - learning/foundations/module-01/day-01.qmd
+            - learning/foundations/module-01/day-02.qmd
+            - learning/foundations/module-01/day-03.qmd
+            - learning/foundations/module-01/day-04.qmd
+        - section: "Module 2 — Windows and Web"
+          contents:
+            - learning/foundations/module-02/day-01.qmd
+            - learning/foundations/module-02/day-02.qmd
+            - learning/foundations/module-02/day-03.qmd
+            - learning/foundations/module-02/day-04.qmd
+        - section: "Module 3 — Connection and Troubleshooting"
+          contents:
+            - learning/foundations/module-03/day-01.qmd
+            - learning/foundations/module-03/day-02.qmd
+            - learning/foundations/module-03/day-03.qmd
+            - learning/foundations/module-03/day-04.qmd
+        - learning/glossary.qmd
     - id: networking
       title: "Networking Engineering"
       style: docked
