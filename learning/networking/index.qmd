@@ -13,16 +13,16 @@ toc: false
 از مبانی شبکه تا معماری، عیب‌یابی و مهندسی شبکه، همراه با آزمایش‌های عملی.
 :::
 
-::: {.nf-outcome .nf-fa}
-**پیش از شروع:** این مسیر از مفاهیم Level 0 استفاده می‌کند: فایل، سیستم‌عامل، مرورگر، شبکهٔ محلی و ترمینال. اگر هیچ‌کدام را پیش‌تر نخوانده‌ای، از [مبانی کار با کامپیوتر](../foundations/index.qmd) شروع کن. هفته‌های ۱ و ۲ جزوه و آزمایش تفصیلی دارند؛ هفته‌های ۳ تا ۸ فعلاً نقشهٔ درس و تمرین مهندسی‌اند، نه جایگزین آموزش کامل.
+::: {.nf-outcome .nf-ui}
+**Before you begin:** this path assumes Level 0 foundations: files, operating systems, browsers, local networks and terminals. Start with [Computer Foundations](../foundations/index.qmd) if any of these are new. Weeks 1–2 contain full lessons and labs; Weeks 3–8 are currently structured engineering outlines, not substitutes for a complete lesson.
 
-برای مرور یک واژه، از [فرهنگ‌نامهٔ فنی](../glossary.qmd) استفاده کن. ترتیب توصیه‌شدهٔ مفاهیم: داده → شبکهٔ محلی → Ethernet → MAC/ARP → IP → Router → DNS/DHCP.
+Use the [Technical Glossary](../glossary.qmd) to review terminology. Recommended concept order: data → local network → Ethernet → MAC/ARP → IP → router → DNS/DHCP.
 :::
 
 <div class="nf-stats">
   <div><strong>08</strong><span>Weeks</span></div>
   <div><strong>40</strong><span>Sessions</span></div>
-  <div><strong>10</strong><span>Sessions ready</span></div>
+  <div><strong>15</strong><span>Sessions ready</span></div>
 </div>
 :::
 
@@ -50,7 +50,7 @@ Explore Ethernet switching, MAC learning, VLAN segmentation and loop prevention.
 :::
 
 ::: {.nf-card}
-<div class="nf-card-number">WEEK 03 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+<div class="nf-card-number">WEEK 03 · 05 SESSIONS <span class="nf-badge nf-badge-ready">READY</span></div>
 
 ### Routing
 

@@ -9,51 +9,49 @@ toc: false
 
 # مبانی کار با کامپیوتر
 
-::: {.nf-fa}
-این مسیر برای کسی است که می‌خواهد بدون فرضِ دانش قبلی، از کار روزمره با ویندوز به درک شبکه، لینوکس و برنامه‌نویسی برسد. پیش از مسیرهای تخصصی، این ۱۲ جلسه را به‌ترتیب انجام بده.
+Build practical computer literacy before networking, Linux and programming. Complete the 12 lessons in order; no technical background is assumed.
+
+[Start lesson 1 →](module-01/day-01.qmd){.nf-primary-link}
 :::
 
-[شروع از جلسهٔ اول →](module-01/day-01.qmd){.nf-primary-link}
-:::
-
-## نقشهٔ یادگیری
+## Learning roadmap
 
 ::: {.nf-grid}
 ::: {.nf-card}
 <div class="nf-card-number">MODULE 01 · دستگاه و داده</div>
-### ۱. کامپیوتر چیست؟
-[شروع →](module-01/day-01.qmd)
-### ۲. سخت‌افزار و نرم‌افزار
-[ادامه →](module-01/day-02.qmd)
-### ۳. CPU، RAM و فضای ذخیره‌سازی
-[ادامه →](module-01/day-03.qmd)
-### ۴. داده و اطلاعات
-[ادامه →](module-01/day-04.qmd)
+### 1. What is a computer?
+[Start →](module-01/day-01.qmd)
+### 2. Hardware and software
+[Continue →](module-01/day-02.qmd)
+### 3. CPU, RAM and storage
+[Continue →](module-01/day-03.qmd)
+### 4. Data and information
+[Continue →](module-01/day-04.qmd)
 :::
 ::: {.nf-card}
 <div class="nf-card-number">MODULE 02 · ویندوز و وب</div>
-### ۵. فایل و پوشه
-[ادامه →](module-02/day-01.qmd)
-### ۶. نام، پسوند و مسیر فایل
-[ادامه →](module-02/day-02.qmd)
-### ۷. سیستم‌عامل و ویندوز
-[ادامه →](module-02/day-03.qmd)
-### ۸. برنامه و پردازه
-[ادامه →](module-02/day-04.qmd)
+### 5. Files and folders
+[Continue →](module-02/day-01.qmd)
+### 6. Names, extensions and paths
+[Continue →](module-02/day-02.qmd)
+### 7. Operating systems and Windows
+[Continue →](module-02/day-03.qmd)
+### 8. Applications and processes
+[Continue →](module-02/day-04.qmd)
 :::
 ::: {.nf-card}
 <div class="nf-card-number">MODULE 03 · ارتباط و حل مسئله</div>
-### ۹. مرورگر و وب‌سایت
-[ادامه →](module-03/day-01.qmd)
-### ۱۰. اینترنت و شبکهٔ محلی
-[ادامه →](module-03/day-02.qmd)
-### ۱۱. ترمینال و دستور
-[ادامه →](module-03/day-03.qmd)
-### ۱۲. عیب‌یابی پایه
-[ادامه →](module-03/day-04.qmd)
+### 9. Browsers and websites
+[Continue →](module-03/day-01.qmd)
+### 10. Internet and local networks
+[Continue →](module-03/day-02.qmd)
+### 11. Terminals and commands
+[Continue →](module-03/day-03.qmd)
+### 12. Fundamental troubleshooting
+[Continue →](module-03/day-04.qmd)
 :::
 :::
 
-## پس از تکمیل
+## After Level 0
 
-می‌توانی مسیر [مهندسی شبکه](../networking/index.qmd)، [پایتون](../python/index.qmd) یا [لینوکس](../linux/index.qmd) را آغاز کنی. برای مرور واژه‌ها به [فرهنگ‌نامهٔ فنی](../glossary.qmd) برو.
+Continue with [Networking Engineering](../networking/index.qmd), [Python Engineering](../python/index.qmd), or [Linux Engineering](../linux/index.qmd). Use the [Technical Glossary](../glossary.qmd) whenever you need to review a term.

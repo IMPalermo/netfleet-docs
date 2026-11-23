@@ -16,8 +16,8 @@ Understand essential network services and how they operate in production environ
 
 ## Weekly sessions
 
-::: {.nf-outcome .nf-fa}
-**وضعیت محتوا:** پیش از DNS، DHCP یا دیگر سرویس‌ها، باید شبکهٔ محلی، IP Address و Default Gateway را بشناسی. این هفته تا انتشار جزوهٔ تفصیلی یک نقشهٔ تمرین است.
+::: {.nf-outcome .nf-ui}
+**Content status:** understand local networks, IP addresses and default gateways before DNS, DHCP or other services. This week remains a practice map until the detailed lessons are published.
 :::
 
 ::: {.nf-grid}

@@ -16,8 +16,8 @@ Study wireless architecture, authentication, VPNs and remote connectivity.
 
 ## Weekly sessions
 
-::: {.nf-outcome .nf-fa}
-**وضعیت محتوا:** مباحث بی‌سیم و دسترسی راه‌دور به شبکه، IP و امنیت پایه وابسته‌اند. این صفحه فعلاً نقشهٔ مسیر است؛ تنظیمات واقعی را فقط در محیط مجاز و آزمایشی تغییر بده.
+::: {.nf-outcome .nf-ui}
+**Content status:** wireless and remote-access topics depend on networking, IP and security fundamentals. This is currently a learning map; alter real settings only in an authorized lab environment.
 :::
 
 ::: {.nf-grid}

@@ -16,26 +16,26 @@ A hands-on engineering curriculum. Learn by doing the work you would actually do
 <div class="nf-stats">
   <div><strong>07</strong><span>Learning paths</span></div>
   <div><strong>50</strong><span>Weeks planned</span></div>
-  <div><strong>11/250</strong><span>Sessions ready</span></div>
+  <div><strong>28/262</strong><span>Sessions ready</span></div>
 </div>
 :::
 
 ## Learning paths
 
-::: {.nf-outcome .nf-fa}
-**از کجا شروع کنم؟** اگر مفاهیمی مانند فایل، ویندوز، مرورگر، شبکه یا دستور را هنوز نمی‌شناسی، ابتدا [Level 0 — مبانی کار با کامپیوتر](learning/foundations/index.qmd) را بگذران. این مسیر پیش‌نیازهای مشترک همهٔ مسیرهای تخصصی را می‌سازد و واژه‌های آن در [فرهنگ‌نامه](learning/glossary.qmd) قابل مرورند.
+::: {.nf-outcome .nf-ui}
+**New to technology?** Start with [Level 0 — Computer Foundations](learning/foundations/index.qmd) before selecting a specialist path. It establishes the shared foundations for every curriculum; technical vocabulary is collected in the [Glossary](learning/glossary.qmd).
 :::
 
 ::: {.nf-grid}
 
 ::: {.nf-card}
-<div class="nf-card-number">01 / ACTIVE · 10/40 SESSIONS READY</div>
+<div class="nf-card-number">01 / ACTIVE · 15/40 SESSIONS READY</div>
 
 ### Networking Engineering
 
 Network architecture, switching, routing, services and troubleshooting.
 
-<div class="nf-progress" role="img" aria-label="25% of sessions ready"><span style="width:25%"></span></div>
+<div class="nf-progress" role="img" aria-label="38% of sessions ready"><span style="width:38%"></span></div>
 
 [Open learning path →](learning/networking/index.qmd)
 :::

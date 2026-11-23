@@ -217,6 +217,19 @@ a:hover {
   color: var(--nf-muted);
 }
 
+/* Navigation and dashboard copy stays English/LTR; lesson bodies remain RTL Persian. */
+.nf-outcome.nf-ui {
+  direction: ltr;
+  text-align: left;
+  font-family: "Space Grotesk", "Vazirmatn", sans-serif;
+  line-height: 1.75;
+  color: var(--nf-text);
+}
+
+.nf-outcome.nf-ui strong {
+  color: var(--nf-light);
+}
+
 /* Accessible, JavaScript-free glossary references. */
 .nf-term {
   color: var(--nf-light);

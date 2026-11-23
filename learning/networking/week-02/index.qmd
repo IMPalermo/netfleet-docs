@@ -16,8 +16,8 @@ Explore Ethernet switching, MAC learning, VLAN segmentation and loop prevention.
 
 ## Weekly sessions
 
-::: {.nf-outcome .nf-fa}
-**پیش‌نیاز این هفته:** هفتهٔ ۱ را کامل کرده باش؛ به‌خصوص تفاوت Frame و Packet، MAC و IP، ARP و شبکهٔ محلی. این هفته دربارهٔ Switching است، بنابراین قبل از پیکربندی VLAN یا تغییر Port، ابتدا مفهوم و اثر آن را در محیط آزمایشی درک کن.
+::: {.nf-outcome .nf-ui}
+**Prerequisites:** Complete Week 1, particularly the differences between frames and packets, MAC and IP, ARP and local networks. This week covers switching: understand an intended VLAN or port change in a lab before applying it to a live network.
 :::
 
 ::: {.nf-grid}

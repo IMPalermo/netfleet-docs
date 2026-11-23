@@ -16,8 +16,8 @@ Build practical observability, packet analysis and incident investigation skills
 
 ## Weekly sessions
 
-::: {.nf-outcome .nf-fa}
-**وضعیت محتوا:** پیش از تحلیل خطا، روش عیب‌یابی پایه و مفاهیم هفته‌های ۱ تا ۳ را مرور کن. مشاهده، ثبت شواهد و آزمون کم‌خطر بر تغییر تصادفی تنظیمات مقدم است.
+::: {.nf-outcome .nf-ui}
+**Content status:** review fundamental troubleshooting and Weeks 1–3 before investigating faults. Observe first, record evidence, and run low-risk tests before changing settings.
 :::
 
 ::: {.nf-grid}

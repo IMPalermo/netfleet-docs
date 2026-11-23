@@ -16,8 +16,8 @@ Understand how computer networks communicate, address devices and transfer data.
 
 ## Weekly sessions
 
-::: {.nf-outcome .nf-fa}
-**پیش‌نیاز این هفته:** Level 0، به‌ویژه درس‌های «داده»، «مرورگر»، «شبکهٔ محلی» و «ترمینال». ابتدا جلسهٔ ۱ را بخوان، سپس مدل لایه‌ای، Ethernet/ARP، IP و سرویس‌ها را به همین ترتیب پیش ببر. هیچ دستور `ipconfig` یا `ping` را بدون دانستن هدف آن اجرا نکن.
+::: {.nf-outcome .nf-ui}
+**Prerequisites:** Level 0, especially data, browsers, local networks and terminals. Complete Session 1 first, then work through layered models, Ethernet/ARP, IP and services in sequence. Do not run `ipconfig` or `ping` without knowing what question each command is answering.
 :::
 
 ::: {.nf-grid}
