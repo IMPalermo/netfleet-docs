@@ -1,5 +1,5 @@
 ---
-title: "Level 0 — مبانی کار با کامپیوتر"
+title: "Level 0 — Computer Foundations"
 page-layout: full
 toc: false
 ---
@@ -7,7 +7,7 @@ toc: false
 ::: {.nf-hero}
 <div class="nf-eyebrow">LEVEL 00 / START HERE</div>
 
-# مبانی کار با کامپیوتر
+# Computer Foundations
 
 Build practical computer literacy before networking, Linux and programming. Complete the 12 lessons in order; no technical background is assumed.
 
@@ -18,7 +18,7 @@ Build practical computer literacy before networking, Linux and programming. Comp
 
 ::: {.nf-grid}
 ::: {.nf-card}
-<div class="nf-card-number">MODULE 01 · دستگاه و داده</div>
+<div class="nf-card-number">MODULE 01 · DEVICE AND DATA</div>
 ### 1. What is a computer?
 [Start →](module-01/day-01.qmd)
 ### 2. Hardware and software
@@ -29,7 +29,7 @@ Build practical computer literacy before networking, Linux and programming. Comp
 [Continue →](module-01/day-04.qmd)
 :::
 ::: {.nf-card}
-<div class="nf-card-number">MODULE 02 · ویندوز و وب</div>
+<div class="nf-card-number">MODULE 02 · WINDOWS AND THE WEB</div>
 ### 5. Files and folders
 [Continue →](module-02/day-01.qmd)
 ### 6. Names, extensions and paths
@@ -40,7 +40,7 @@ Build practical computer literacy before networking, Linux and programming. Comp
 [Continue →](module-02/day-04.qmd)
 :::
 ::: {.nf-card}
-<div class="nf-card-number">MODULE 03 · ارتباط و حل مسئله</div>
+<div class="nf-card-number">MODULE 03 · CONNECTION AND TROUBLESHOOTING</div>
 ### 9. Browsers and websites
 [Continue →](module-03/day-01.qmd)
 ### 10. Internet and local networks

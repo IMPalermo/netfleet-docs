@@ -9,9 +9,7 @@ toc: false
 
 # Networking Engineering
 
-::: {.nf-fa}
-از مبانی شبکه تا معماری، عیب‌یابی و مهندسی شبکه، همراه با آزمایش‌های عملی.
-:::
+From network foundations to architecture, troubleshooting and engineering—supported by practical labs.
 
 ::: {.nf-outcome .nf-ui}
 **Before you begin:** this path assumes Level 0 foundations: files, operating systems, browsers, local networks and terminals. Start with [Computer Foundations](../foundations/index.qmd) if any of these are new. Weeks 1–2 contain full lessons and labs; Weeks 3–8 are currently structured engineering outlines, not substitutes for a complete lesson.

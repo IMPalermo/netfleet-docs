@@ -11,7 +11,7 @@ toc: false
 
 A hands-on engineering curriculum. Learn by doing the work you would actually do on the job: configure, break, fix and document real infrastructure.
 
-[شروع از صفر](learning/foundations/index.qmd){.nf-primary-link}
+[Start from zero](learning/foundations/index.qmd){.nf-primary-link}
 
 <div class="nf-stats">
   <div><strong>07</strong><span>Learning paths</span></div>
