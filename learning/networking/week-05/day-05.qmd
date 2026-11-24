@@ -5,6 +5,24 @@ subtitle: "Networking Fundamentals | Week 5 | Day 5"
 ::: {.persian}
 # Network Service Troubleshooting
 
+::: {.nf-outcome}
+**پیش‌نیاز:** DNS، DHCP، NAT و NTP این هفته را به‌ترتیب بخوان. عیب‌یابی با مشاهده شروع می‌شود، نه restart تصادفی.
+:::
+
+## درخت تصمیم ساده
+
+برای «وب‌سایت باز نمی‌شود» دامنه را محدود کن: آیا دستگاه IP معتبر، Gateway و DNS server دارد؟ آیا Gateway قابل دسترسی است؟ آیا نام resolve می‌شود؟ آیا اتصال TCP/443 برقرار می‌شود؟ هر پاسخ فقط یک لایه را روشن می‌کند.
+
+```powershell
+Get-NetIPConfiguration
+Resolve-DnsName example.com
+Test-NetConnection example.com -Port 443
+```
+
+اگر DNS پاسخ دهد اما TCP برقرار نشود، مشکل DNS اثبات نشده است. اگر TCP برقرار شود اما صفحهٔ وب خطا دهد، مرورگر، TLS یا سرویس وب نیز باید بررسی شود. خروجی، زمان آزمون و تغییرات انجام‌شده را ثبت کن تا همکار دیگری بتواند نتیجه را تکرار کند.
+
+**راهنمای ابزار:** [Microsoft Learn: Test-NetConnection](https://learn.microsoft.com/powershell/module/nettcpip/test-netconnection)، [Wireshark User’s Guide](https://www.wireshark.org/docs/wsug_html_chunked/)
+
 **مسیر:** شبکه  
 **هفته:** 5، Core Network Services  
 **جلسه:** 5 از ۵

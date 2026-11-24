@@ -5,6 +5,23 @@ subtitle: "Networking Fundamentals | Week 5 | Day 1"
 ::: {.persian}
 # DNS Resolution in Depth
 
+::: {.nf-outcome}
+**پیش‌نیاز:** تفاوت نام وب‌سایت، IP Address و Router را بدان. DNS اینترنت نیست؛ سامانه‌ای برای پیدا کردن اطلاعات نام است.
+:::
+
+## مسئله و مسیر پاسخ
+
+**DNS (دی‌اِن‌اِس؛ سامانهٔ نام دامنه)** نامی مانند `www.example.com` را به داده‌ای مانند IPv4 (`A`) یا IPv6 (`AAAA`) تبدیل می‌کند. Resolver سیستم ابتدا cache را بررسی می‌کند، سپس از DNS server پیکربندی‌شده می‌پرسد. آن server ممکن است پاسخ را از cache بدهد یا به‌صورت recursive از سلسله‌مراتب root، TLD و authoritative server پاسخ را پیدا کند.
+
+در مثال یک مرورگر، نام را می‌خواهد؛ DNS فقط نشانی را برمی‌گرداند؛ سپس مرورگر با IP و پورت مناسب ارتباط می‌سازد. اگر `ping 8.8.8.8` کار کند اما نام resolve نشود، DNS مظنون است؛ اما پاسخ ندادن ping به‌تنهایی اثبات خرابی DNS نیست.
+
+```powershell
+Resolve-DnsName example.com -Type A
+Resolve-DnsName example.com -Type AAAA
+```
+
+`TTL` مدت cache شدن پاسخ است، نه تضمین سلامت دامنه. **منابع:** [RFC 1034](https://www.rfc-editor.org/rfc/rfc1034)، [RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)
+
 **مسیر:** شبکه  
 **هفته:** 5، Core Network Services  
 **جلسه:** 1 از ۵

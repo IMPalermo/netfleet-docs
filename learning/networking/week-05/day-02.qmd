@@ -5,6 +5,20 @@ subtitle: "Networking Fundamentals | Week 5 | Day 2"
 ::: {.persian}
 # DHCP Scopes and Leases
 
+::: {.nf-outcome}
+**پیش‌نیاز:** IP، Subnet، Gateway و DNS را بشناس. DHCP فقط IP نمی‌دهد؛ یک مجموعه تنظیمات شبکه تحویل می‌دهد.
+:::
+
+## DHCP چه می‌کند؟
+
+**DHCP (دی‌اچ‌سی‌پی؛ پروتکل پیکربندی پویای میزبان)** به Client تنظیمات موقت مانند IP، Prefix/Mask، Gateway و DNS server می‌دهد. جریان سادهٔ IPv4 را با DORA به یاد بسپار: Discover، Offer، Request، Acknowledge. این نام ترتیب پیام‌هاست، نه چهار دکمه‌ای که کاربر فشار می‌دهد.
+
+**Scope (اِسکوپ؛ محدوده)** بازهٔ نشانی و گزینه‌هایی است که Server می‌تواند اجاره دهد. **Lease (لیز؛ اجاره)** زمان استفاده از آن پیکربندی است. Range باید با subnet واقعی سازگار باشد و نشانی Gateway، تجهیزات ثابت و رزروها را در نظر بگیرد.
+
+تمرین امن: `ipconfig /all` را بخوان و DHCP Server، Lease Obtained و DNS Servers را پیدا کن. `release` و `renew` اتصال را تغییر می‌دهند؛ فقط در لَب اجرا شوند.
+
+**منبع:** [RFC 2131](https://www.rfc-editor.org/rfc/rfc2131)
+
 **مسیر:** شبکه  
 **هفته:** 5، Core Network Services  
 **جلسه:** 2 از ۵

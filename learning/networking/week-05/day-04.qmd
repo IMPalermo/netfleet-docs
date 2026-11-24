@@ -5,6 +5,23 @@ subtitle: "Networking Fundamentals | Week 5 | Day 4"
 ::: {.persian}
 # NTP and Time Synchronization
 
+::: {.nf-outcome}
+**پیش‌نیاز:** Client/Server و UDP را بدان. زمان درست برای log، گواهی و تحلیل رخداد ضروری است.
+:::
+
+## چرا زمان شبکه مهم است؟
+
+**NTP (اِن‌تی‌پی؛ پروتکل زمان شبکه)** ساعت سیستم را با یک منبع زمان هماهنگ می‌کند. اگر Firewall، سرور و Client ساعت‌های متفاوتی داشته باشند، ترتیب رخدادها در logها گمراه‌کننده می‌شود؛ اعتبار گواهی TLS و Kerberos نیز ممکن است مشکل پیدا کند.
+
+NTP معمولاً از UDP/123 استفاده می‌کند. Client فقط یک زمان را کورکورانه قبول نمی‌کند؛ offset، delay و کیفیت منبع مهم‌اند. یک ساعت دستگاه را با دستکاری دستی برای «حل مشکل» تغییر نده؛ منبع زمان، مسیر شبکه و policy را بررسی کن.
+
+```powershell
+w32tm /query /status
+w32tm /query /source
+```
+
+**منبع:** [RFC 5905](https://www.rfc-editor.org/rfc/rfc5905)
+
 **مسیر:** شبکه  
 **هفته:** 5، Core Network Services  
 **جلسه:** 4 از ۵
