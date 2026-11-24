@@ -20,7 +20,7 @@ Use the [Technical Glossary](../glossary.qmd) to review terminology. Recommended
 <div class="nf-stats">
   <div><strong>08</strong><span>Weeks</span></div>
   <div><strong>40</strong><span>Sessions</span></div>
-  <div><strong>15</strong><span>Sessions ready</span></div>
+  <div><strong>20</strong><span>Sessions ready</span></div>
 </div>
 :::
 
@@ -58,7 +58,7 @@ Learn how routers make forwarding decisions and connect different networks.
 :::
 
 ::: {.nf-card}
-<div class="nf-card-number">WEEK 04 · 05 SESSIONS <span class="nf-badge nf-badge-draft">DRAFT</span></div>
+<div class="nf-card-number">WEEK 04 · 05 SESSIONS <span class="nf-badge nf-badge-ready">READY</span></div>
 
 ### IP Addressing
 

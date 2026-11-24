@@ -16,7 +16,7 @@ A hands-on engineering curriculum. Learn by doing the work you would actually do
 <div class="nf-stats">
   <div><strong>07</strong><span>Learning paths</span></div>
   <div><strong>50</strong><span>Weeks planned</span></div>
-  <div><strong>28/262</strong><span>Sessions ready</span></div>
+  <div><strong>33/262</strong><span>Sessions ready</span></div>
 </div>
 :::
 
@@ -29,13 +29,13 @@ A hands-on engineering curriculum. Learn by doing the work you would actually do
 ::: {.nf-grid}
 
 ::: {.nf-card}
-<div class="nf-card-number">01 / ACTIVE · 15/40 SESSIONS READY</div>
+<div class="nf-card-number">01 / ACTIVE · 20/40 SESSIONS READY</div>
 
 ### Networking Engineering
 
 Network architecture, switching, routing, services and troubleshooting.
 
-<div class="nf-progress" role="img" aria-label="38% of sessions ready"><span style="width:38%"></span></div>
+<div class="nf-progress" role="img" aria-label="50% of sessions ready"><span style="width:50%"></span></div>
 
 [Open learning path →](learning/networking/index.qmd)
 :::

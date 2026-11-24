@@ -17,7 +17,7 @@ Develop practical IPv4, subnetting, CIDR and IPv6 design skills.
 ## Weekly sessions
 
 ::: {.nf-outcome .nf-ui}
-**Content status:** this week is a structured learning outline and depends on Weeks 1–3. Understand IP addresses, subnets and routers before calculating or changing addressing.
+**Prerequisites:** complete Weeks 1–3 first. This week builds practical IPv4 subnetting, CIDR/VLSM, IPv6, Neighbor Discovery and Dual-Stack design skills. Calculate and document addressing before changing a live network.
 :::
 
 ::: {.nf-grid}

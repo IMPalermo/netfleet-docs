@@ -5,6 +5,27 @@ subtitle: "Networking Fundamentals | Week 4 | Day 4"
 ::: {.persian}
 # IPv6 Neighbor Discovery
 
+::: {.nf-outcome}
+**پیش‌نیاز:** IPv6 و link-local address را از جلسهٔ قبل بخوان. Neighbor Discovery نسخهٔ نام‌عوض‌شدهٔ ARP نیست؛ وظایف بیشتری دارد.
+:::
+
+## مسئله و سازوکار
+
+دستگاه IPv6 باید Routerها، Prefixهای معتبر و نشانی link-layer همسایه را در همان لینک بشناسد. **Neighbor Discovery / ND (نیبِر دیسکاوری؛ کشف همسایه)** با پیام‌های ICMPv6 این کارها را انجام می‌دهد: Router Solicitation/Advertisement برای آگاهی از Router و Prefix، و Neighbor Solicitation/Advertisement برای resolve کردن همسایه و بررسی دسترس‌پذیری.
+
+مثال: لپ‌تاپ پس از اتصال Wi-Fi یک link-local می‌سازد. با دریافت Router Advertisement، Prefix شبکه را می‌فهمد و ممکن است یک global address بسازد. برای فرستادن Packet به همسایه، Neighbor Solicitation می‌فرستد و MAC او را می‌آموزد. فیلترکردن بی‌دلیل ICMPv6 می‌تواند این سازوکار را خراب کند.
+
+## آزمایش خواندنی
+
+```powershell
+Get-NetIPAddress -AddressFamily IPv6
+Get-NetNeighbor -AddressFamily IPv6
+```
+
+در خروجی، link-local و وضعیت neighbor را پیدا کن؛ هیچ مقدار پیکربندی را تغییر نده.
+
+**منبع رسمی:** [RFC 4861 — Neighbor Discovery](https://www.rfc-editor.org/rfc/rfc4861)
+
 **مسیر:** شبکه  
 **هفته:** 4، IPv4 and IPv6  
 **جلسه:** 4 از ۵
