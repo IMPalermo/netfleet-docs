@@ -529,17 +529,23 @@ format:
       text: |
         <script>
         (() => {
-          // Load the quiz engine only on pages that contain a quiz.
-          if (!document.querySelector("[data-nf-quiz]")) return;
-
           // Quarto publishes the relative path back to the site root on every page,
           // so this works on GitHub Pages sub-paths, custom domains and local preview.
           const meta = document.querySelector('meta[name="quarto:offset"]');
           const offset = meta ? meta.getAttribute("content") : "./";
-          const script = document.createElement("script");
-          script.src = new URL(offset + "assets/js/labs/network-fundamentals.js", window.location.href).href;
-          script.async = false;
-          document.head.appendChild(script);
+          const lessonCheck = document.createElement("script");
+          lessonCheck.src = new URL(offset + "assets/js/labs/networking-lesson-check.js", window.location.href).href;
+          lessonCheck.async = false;
+          lessonCheck.addEventListener("load", () => {
+            // Custom lesson quizzes take precedence; the check script adds a baseline
+            // quiz when a Networking lesson has not yet received one.
+            if (!document.querySelector("[data-nf-quiz]")) return;
+            const script = document.createElement("script");
+            script.src = new URL(offset + "assets/js/labs/network-fundamentals.js", window.location.href).href;
+            script.async = false;
+            document.head.appendChild(script);
+          }, { once: true });
+          document.head.appendChild(lessonCheck);
         })();
         </script>
 
