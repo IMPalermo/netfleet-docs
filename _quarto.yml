@@ -517,6 +517,7 @@ format:
       - assets/css/fonts.css
       - assets/css/quiz.css
     toc: true
+    toc-location: right
     toc-depth: 3
     code-copy: true
     code-overflow: wrap

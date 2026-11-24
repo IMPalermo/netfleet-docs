@@ -321,6 +321,20 @@ td, th {
   border-left: 1px solid var(--nf-border);
 }
 
+/* Keep the lesson map readable on wide screens, without forcing it over Persian text. */
+@media (min-width: 992px) {
+  #quarto-margin-sidebar .quarto-alternate-formats,
+  #quarto-margin-sidebar .quarto-other-links {
+    margin-bottom: 1rem;
+  }
+
+  #TOC {
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+    padding-inline-start: 0.9rem;
+  }
+}
+
 #TOC a {
   color: var(--nf-muted);
 }
