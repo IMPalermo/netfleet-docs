@@ -17,7 +17,7 @@ Learn how routers make forwarding decisions and connect different networks.
 ## Weekly sessions
 
 ::: {.nf-outcome .nf-ui}
-**Content status:** this week currently provides a structured learning map and guided practice. Review Weeks 1–2 plus IP addressing, subnets and default gateways before starting. Make router configuration changes only in a lab until the complete lessons are published.
+**Content status: partial.** Each session has a foundational learning core, but the remaining generic sections are being replaced with complete lessons. Review Weeks 1–2 plus IP addressing, subnets and default gateways before starting. Make router configuration changes only in a lab.
 :::
 
 ::: {.nf-grid}
