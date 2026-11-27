@@ -2,21 +2,20 @@
 title: "Ethernet, MAC Address and ARP"
 subtitle: "Week 01 · Day 03"
 description: "Deep understanding of Ethernet framing, MAC addressing, switching, ARP resolution, VLAN behavior, Layer 2 security and packet-level troubleshooting"
-toc: true
-toc-depth: 3
 ---
 
 ::: {.persian}
+
+# جلسه سوم: Ethernet، MAC Address و ARP
 
 ::: {.nf-outcome}
 **پیش‌نیاز و واژه‌ها:** پیش از ادامه، [شبکهٔ محلی](../../glossary.qmd#network)، [IP Address](../../glossary.qmd#ip-address) و تفاوت Frame و Packet را در Level 0 و جلسه‌های ۱–۲ این مسیر مرور کن. Ethernet، MAC، ARP و Switch هر کدام مسئله‌ای متفاوت در تحویل داده حل می‌کنند.
 :::
 
-# جلسه سوم: Ethernet، MAC Address و ARP
 <blockquote>
 هدف این جلسه حفظ کردن ساختار Ethernet Frame یا چند دستور ARP نیست. هدف این است که بتوانی مسیر واقعی تحویل یک Frame را تحلیل کنی، تصمیم‌های یک Switch را توضیح بدهی و تشخیص بدهی یک سیستم برای ارتباط با مقصد محلی یا مقصد خارج از Subnet به کدام MAC Address نیاز دارد.
 </blockquote>
-### مقدمه جلسه
+## مقدمه جلسه
 
 در شبکه، داشتن IP Address به‌تنهایی برای ارسال داده کافی نیست. IP به سیستم کمک می‌کند مقصد منطقی را مشخص کند، اما برای تحویل داده روی یک شبکه Ethernet، رابط شبکه باید یک Frame بسازد و آدرس لایه دوم مقصد را تعیین کند.
 
@@ -28,7 +27,7 @@ toc-depth: 3
 
 در پایان باید بتوانی توضیح بدهی وقتی یک کامپیوتر به یک سیستم دیگر ارتباط برقرار می‌کند، چگونه IP مقصد به MAC مقصد لایه دوم تبدیل می‌شود، سوئیچ چه تصمیمی می‌گیرد و چرا MAC مقصد در ارتباط با یک سیستم خارج از Subnet با MAC مقصد نهایی متفاوت است.
 
-### اهداف یادگیری
+## اهداف یادگیری
 
 پس از پایان این جلسه باید بتوانی:
 
@@ -1298,7 +1297,7 @@ Server
 
 ---
 
-# Interactive Knowledge Check
+## Interactive Knowledge Check
 
 در آزمون زیر ۱۰ سؤال چهارگزینه‌ای وجود دارد. بعد از انتخاب پاسخ، توضیح هر سؤال نمایش داده می‌شود.
 
