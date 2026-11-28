@@ -17,7 +17,340 @@ description: "جلسه اول مسیر مهندسی پایتون در پروژه
 
 ---
 
-## ۱. مقدمه: چرا پایتون؟
+## ۰. قبل از کد: برنامه‌نویسی در دوران AI یعنی چه؟
+
+امروز لازم نیست هر خط کد را از حافظه بنویسی؛ ابزارهای AI می‌توانند در چند ثانیه یک draft بسازند. اما این به معنی بی‌نیازی از برنامه‌نویسی نیست. در کار حرفه‌ای، خطرناک‌ترین کد معمولاً کدی نیست که نوشته نشده؛ کدی است که **بدون فهم، test و review اجرا شده است**.
+
+مهندس باید بتواند پنج پرسش را پاسخ دهد:
+
+1. مسئلهٔ واقعی چیست و چه چیزی خارج از محدودهٔ مسئله است؟
+2. دادهٔ ورودی از کجا می‌آید و چه شکل/اعتباری دارد؟
+3. خروجی درست دقیقاً چه شکلی است و چه کسی آن را استفاده می‌کند؟
+4. اگر داده ناقص یا غیرمنتظره بود، برنامه چه واکنشی باید داشته باشد؟
+5. چه testی نشان می‌دهد که پیشنهاد AI واقعاً مسئله را حل کرده است؟
+
+در این مسیر از الگوی زیر استفاده می‌کنیم:
+
+```text
+UNDERSTAND → DESIGN → GENERATE WITH AI → EXPLAIN → TEST → DEBUG
+```
+
+<ul>
+<li><strong>UNDERSTAND (فهم):</strong> مسئله را به زبان طبیعی و با مثال روشن می‌کنیم.</li>
+<li><strong>DESIGN (طراحی):</strong> ورودی، خروجی، قانون و محدودیت را می‌نویسیم.</li>
+<li><strong>GENERATE WITH AI (تولید با AI):</strong> از AI یک draft محدود و قابل بررسی می‌گیریم.</li>
+<li><strong>EXPLAIN (توضیح):</strong> هر بخش کد را با زبان خودمان توضیح می‌دهیم.</li>
+<li><strong>TEST (آزمون):</strong> حالت عادی، مرزی و خراب را بررسی می‌کنیم.</li>
+<li><strong>DEBUG (رفع خطا):</strong> شواهد خطا را می‌خوانیم و فقط یک فرضیه را در هر نوبت آزمایش می‌کنیم.</li>
+</ul>
+
+::: {.callout-warning}
+## قانون ایمنی جلسه
+
+هیچ کد تولیدشده توسط AI را که به دستگاه شبکه، فایل مهم، credential، API production یا سیستم‌عامل دست می‌زند، بدون خواندن و آزمایش در محیط امن اجرا نکن. در این جلسه برنامه فقط دادهٔ نمونه را در حافظه تحلیل می‌کند و هیچ تغییری در شبکه ایجاد نمی‌کند.
+:::
+
+## ۱. پروژهٔ هفته: Network Inventory Reporter
+
+به‌جای پنج روز تمرین جدا از واقعیت، Week 1 روی یک پروژهٔ کوچک پیش می‌رود: ابزاری که فهرست تجهیزات نمونه را می‌خواند، دادهٔ ناقص را تشخیص می‌دهد و وضعیت‌ها را گزارش می‌کند. امروز نسخهٔ بسیار کوچک آن را می‌فهمیم؛ در روزهای بعد آن را قابل‌اعتمادتر می‌کنیم.
+
+### مسئلهٔ کسب‌وکاری
+
+یک تیم شبکه فهرستی از deviceها دارد. می‌خواهد بداند:
+
+- چند device در inventory ثبت شده است؛
+- کدام‌ها `offline` هستند؛
+- کدام رکوردها ناقص‌اند و نباید مبنای تصمیم عملیاتی باشند؛
+- گزارش برای انسان چه چیزی را روشن می‌کند.
+
+این مسئله کوچک است، اما ساختارش همان ساختار ابزارهای واقعی NetFleet است: **دریافت داده → اعتبارسنجی → تحلیل → گزارش**.
+
+### قرارداد داده (Data Contract)
+
+**Data contract (دیتا کانترکت؛ قرارداد داده)** توافقی است که می‌گوید داده چه کلیدها، نوع‌ها و مقدارهای مجازی دارد. بدون قرارداد، AI ممکن است نام کلیدها را حدس بزند و برنامه در اولین دادهٔ واقعی خراب شود.
+
+در نسخهٔ امروز هر device یک dictionary است:
+
+| فیلد | نوع مورد انتظار | نمونه | چرا لازم است؟ |
+|---|---|---|
+| `name` | `str` | `"core-sw-01"` | گزارش باید قابل شناسایی باشد. |
+| `role` | `str` | `"switch"` | بعداً تحلیل بر اساس نقش را ممکن می‌کند. |
+| `status` | `str` | `"online"` یا `"offline"` | قانون گزارش بر اساس آن تصمیم می‌گیرد. |
+| `management_ip` | `str` | `"192.0.2.10"` | فعلاً فقط دادهٔ نمایشی است؛ اتصال ایجاد نمی‌کند. |
+
+### دادهٔ نمونه
+
+```python
+devices = [
+    {
+        "name": "core-sw-01",
+        "role": "switch",
+        "status": "online",
+        "management_ip": "192.0.2.10",
+    },
+    {
+        "name": "branch-rtr-01",
+        "role": "router",
+        "status": "offline",
+        "management_ip": "192.0.2.20",
+    },
+    {
+        "name": "lab-fw-01",
+        "role": "firewall",
+        "status": "unknown",
+        "management_ip": "192.0.2.30",
+    },
+]
+```
+
+این داده ادعا نمی‌کند که device واقعاً online است؛ فقط **نمونهٔ ورودی** برنامه است. فرق میان دادهٔ گزارش‌شده و وضعیت مشاهده‌شده (observed state) را در تمام مسیر حفظ کن.
+
+## ۲. مدل ذهنی برنامه
+
+یک برنامه را صرفاً «چند دستور Python» نبین. آن یک تبدیل قابل توضیح است:
+
+```text
+Input                       Rule                         Output
+-----                       ----                         ------
+لیست deviceها  →  بررسی رکورد و وضعیت هر device  →  گزارش offline و دادهٔ ناقص
+```
+
+اگر نتوانی Input، Rule و Output را روی کاغذ بنویسی، هنوز زمان درخواست کد از AI نیست.
+
+### طراحی پیش از prompt
+
+برای پروژهٔ امروز، design کوتاه ما این است:
+
+```text
+Input:  list[dict] با کلیدهای name و status
+Rule:   رکورد ناقص را جدا کن؛ فقط status == "offline" را offline بشمار
+Output: dictionary شامل total, offline_names و invalid_records
+Limit:  برنامه هیچ device یا API را لمس نمی‌کند
+```
+
+این design از خود کد مهم‌تر است؛ زیرا با تغییر زبان یا ابزار، همچنان معتبر می‌ماند.
+
+## ۳. درخواست حرفه‌ای از AI
+
+Prompt ضعیف: «کدی برای چک کردن deviceها بنویس.»
+
+مشکل آن: ورودی، خروجی، تعریف offline، دادهٔ ناقص، اثر جانبی و test را مشخص نکرده است.
+
+Prompt بهتر:
+
+```text
+در Python یک function به نام summarize_devices بنویس.
+ورودی آن list of dictionaries است. هر رکورد معتبر باید name و status از نوع str داشته باشد.
+خروجی dictionary با total، offline_names و invalid_records باشد.
+فقط status دقیقاً برابر "offline" را offline حساب کن.
+رکورد ناقص نباید exception ایجاد کند؛ آن را در invalid_records نگه دار.
+از شبکه، فایل، subprocess یا کتابخانهٔ خارجی استفاده نکن.
+سه test case با expected output ارائه کن و سپس هر خط را توضیح بده.
+```
+
+این prompt جای فهم را نمی‌گیرد؛ فهم را قابل تبدیل به کد می‌کند.
+
+## ۴. یک draft قابل review
+
+کد زیر نمونه‌ای از پاسخ مطلوب است. ابتدا آن را نخوانده اجرا نکن؛ هر بخش را بررسی کن:
+
+```python
+def summarize_devices(devices):
+    offline_names = []
+    invalid_records = []
+
+    for device in devices:
+        if not isinstance(device, dict):
+            invalid_records.append(device)
+            continue
+
+        name = device.get("name")
+        status = device.get("status")
+
+        if not isinstance(name, str) or not isinstance(status, str):
+            invalid_records.append(device)
+            continue
+
+        if status == "offline":
+            offline_names.append(name)
+
+    return {
+        "total": len(devices),
+        "offline_names": offline_names,
+        "invalid_records": invalid_records,
+    }
+```
+
+### کد را با صدای بلند توضیح بده
+
+| بخش | توضیح ساده | پرسش review |
+|---|---|---|
+| `def` | functionی با ورودی `devices` تعریف می‌کند. | آیا نام function هدف را روشن می‌کند؟ |
+| `offline_names = []` | ظرفی خالی برای نام‌های offline می‌سازد. | چرا list است، نه string؟ |
+| `for device in devices` | هر item را یکی‌یکی بررسی می‌کند. | اگر ورودی list نباشد چه می‌شود؟ |
+| `isinstance(device, dict)` | قبل از دسترسی به کلیدها، شکل رکورد را می‌سنجد. | آیا همین اعتبارسنجی برای پروژهٔ بزرگ کافی است؟ |
+| `.get()` | مقدار کلید را بدون `KeyError` می‌خواند. | نبود کلید چگونه دیده می‌شود؟ |
+| `continue` | رکورد نامعتبر را ثبت و آن iteration را رد می‌کند. | آیا خطا پنهان شده یا گزارش شده است؟ |
+| `return` | نتیجهٔ ساختاریافته را به caller می‌دهد. | آیا خروجی برای test آسان است؟ |
+
+اگر یک خط را نمی‌توانی توضیح دهی، از AI بخواه همان خط را با مثال توضیح دهد، اما سپس مثال را خودت تغییر بده و نتیجه را پیش‌بینی کن.
+
+## ۵. اجرای امن و مشاهدهٔ خروجی
+
+فایل جدیدی مانند `inventory_reporter.py` بساز و دادهٔ نمونه را همراه کد قرار بده:
+
+```python
+report = summarize_devices(devices)
+print(report)
+```
+
+خروجی مورد انتظار برای دادهٔ سه‌تایی بالا چنین ساختاری دارد:
+
+```text
+{
+  'total': 3,
+  'offline_names': ['branch-rtr-01'],
+  'invalid_records': []
+}
+```
+
+ممکن است ترتیب نمایش یا quote در محیط‌های متفاوت کمی فرق کند؛ چیزی که باید test کنی **معنای data structure** است، نه شکل ظاهری چاپ‌شده.
+
+### مشاهده پیش از قضاوت
+
+این سه جمله فرق دارند:
+
+- «برنامه اجرا شد.»
+- «برنامه exception نداد.»
+- «برنامه برای دادهٔ مشخص، خروجی درست تولید کرد.»
+
+فقط جملهٔ سوم evidence برای درست‌بودن رفتار است.
+
+## ۶. Test design: سه حالت حداقلی
+
+**Test case (تِست کِیس؛ حالت آزمون)** شامل input، expected output و دلیل است. قبل از اجرا expected output را بنویس.
+
+| test | input | انتظار | دلیل |
+|---|---|---|---|
+| Normal | دو online و یک offline | یک نام در `offline_names` | مسیر عادی را بررسی می‌کند. |
+| Empty | `[]` | total برابر صفر و listهای خالی | مرز خالی را بررسی می‌کند. |
+| Invalid | یک dict بدون `status` و یک string | هر دو در invalid ثبت شوند | دادهٔ خراب نباید برنامه را متوقف کند. |
+
+```python
+def check_equal(actual, expected, label):
+    if actual == expected:
+        print(f"PASS: {label}")
+    else:
+        print(f"FAIL: {label}")
+        print("expected:", expected)
+        print("actual:  ", actual)
+
+
+normal = summarize_devices([
+    {"name": "r1", "status": "online"},
+    {"name": "r2", "status": "offline"},
+])
+check_equal(normal["offline_names"], ["r2"], "one offline device")
+
+empty = summarize_devices([])
+check_equal(empty["total"], 0, "empty inventory")
+
+invalid = summarize_devices([{"name": "r3"}, "not a device"])
+check_equal(len(invalid["invalid_records"]), 2, "invalid records are reported")
+```
+
+در آینده از frameworkهای test استفاده می‌کنیم. امروز هدف این است که بفهمی test یک ritual نیست؛ توافقی اجرایی دربارهٔ رفتار مورد انتظار است.
+
+## ۷. Debugging: از traceback فرار نکن
+
+**Traceback (تِریس‌بَک؛ مسیر خطا)** گزارش Python از مسیر اجرای برنامه تا محل exception است. خط آخر معمولاً نوع خطا و توضیح کوتاه را می‌دهد؛ اما خط‌های بالاتر نشان می‌دهند برنامه کجا به آن رسیده است.
+
+سه خطای رایج در همین پروژه:
+
+```python
+devices = None
+summarize_devices(devices)
+```
+
+این نمونه معمولاً به `TypeError` می‌رسد، چون `None` قابل پیمایش نیست. این evidence می‌گوید contract ورودی شکسته است، نه اینکه باید بی‌دلیل همهٔ کد را تغییر داد.
+
+```python
+device = {"name": "r1"}
+print(device["status"])
+```
+
+این نمونه `KeyError` می‌دهد، چون کلید وجود ندارد. استفاده از `.get()` یا validation می‌تواند با دادهٔ ناقص رفتار کنترل‌شده‌تری بسازد.
+
+```python
+print("offline devices: " + 2)
+```
+
+این نمونه `TypeError` می‌دهد؛ string و integer را نمی‌توان این‌طور به‌هم چسباند. اول بپرس آیا واقعاً متن می‌خواهی یا عدد قابل محاسبه، سپس طراحی خروجی را اصلاح کن.
+
+### الگوریتم رفع خطا
+
+1. خط آخر traceback را بخوان: type و message چیست؟
+2. file و line number را پیدا کن.
+3. input واقعی همان لحظه را چاپ یا ثبت کن؛ data را حدس نزن.
+4. یک فرضیه بنویس: «status در این رکورد وجود ندارد.»
+5. کوچک‌ترین test برای همان فرضیه بساز.
+6. پس از fix، test عادی و test خراب را دوباره اجرا کن.
+
+مستندات رسمی Python تفاوت syntax error و exception زمان اجرا را توضیح می‌دهد؛ این distinction در review کد AI ضروری است. [Python: Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html)
+
+## ۸. تمرین اصلی: AI reviewer باش
+
+از AI بخواه نسخهٔ زیر را «بهبود» دهد، اما قبل از دیدن پاسخ، سه ایرادش را بنویس:
+
+```python
+def offline_devices(devices):
+    result = []
+    for device in devices:
+        if device["status"] == "offline":
+            result.append(device["name"])
+    return result
+```
+
+راهنمای review:
+
+1. اگر `devices` یک list نباشد چه evidence داریم؟
+2. اگر itemها dictionary نباشند چه اتفاقی می‌افتد؟
+3. اگر `status` یا `name` وجود نداشته باشد چه می‌شود؟
+4. آیا status با `"Offline"` یا فاصلهٔ اضافه باید همان معنی را بدهد؟ این یک تصمیم product است، نه صرفاً تصمیم syntax.
+5. آیا ما باید رکورد ناقص را نادیده بگیریم، log کنیم یا اجرای job را متوقف کنیم؟ چرا؟
+
+پاسخ خوب AI باید trade-off را توضیح دهد، نه فقط یک `try/except` بزرگ دور همهٔ کد بگذارد.
+
+## ۹. قرارداد AI در NetFleet
+
+در پروژهٔ واقعی، یک request قابل قبول به AI این اطلاعات را دارد:
+
+| بخش | نمونهٔ خوب |
+|---|---|
+| Context | «این ابزار فقط inventory نمونه را تحلیل می‌کند.» |
+| Input schema | «list[dict] با `name`, `role`, `status`» |
+| Output schema | «dict با `total`, `offline_names`, `invalid_records`» |
+| Constraints | «بدون network access، بدون dependency خارجی، Python 3» |
+| Failure policy | «دادهٔ ناقص report شود، exception بی‌دلیل ندهد» |
+| Tests | «normal, empty, invalid input» |
+| Review request | «هر function و trade-off را توضیح بده» |
+
+از promptهایی که credential، configuration کامل production یا دادهٔ شخصی را می‌فرستند اجتناب کن. برای آموزش از IPهای documentation مانند `192.0.2.0/24` و نام‌های ساختگی استفاده می‌کنیم.
+
+## ۱۰. معیار تکمیل جلسه
+
+- [ ] می‌توانم Input، Rule و Output پروژه را بدون نگاه‌کردن تعریف کنم.
+- [ ] می‌توانم فرق dictionary معتبر، ناقص و نامعتبر را بگویم.
+- [ ] می‌توانم حداقل سه test case برای یک function طراحی کنم.
+- [ ] می‌توانم در traceback نوع خطا، محل خطا و فرضیهٔ اولیه را پیدا کنم.
+- [ ] می‌توانم توضیح بدهم چرا کد تولیدشده توسط AI قبل از اجرا نیاز به review دارد.
+- [ ] هیچ کد خودکار را خارج از محیط امن و بدون فهم اثر آن اجرا نمی‌کنم.
+
+---
+
+## پیوست عملی: syntax موردنیاز پروژه
+
+بخش زیر فرهنگ کوچک syntax موردنیاز پروژهٔ امروز است، نه مسیر اصلی یادگیری. هدف حفظ‌کردن نام typeها یا نوشتن کد از صفر نیست؛ هنگام خواندن، test و review کد تولیدشده توسط AI به آن برگرد.
 
 تصور کن یک زیرساخت شبکه شامل ۱۰۰ سرور لینوکسی، چندین روتر و تعداد زیادی سرویس مختلف داری.
 
@@ -824,6 +1157,19 @@ node-03
 **پیشنهاد مطالعه:** بخش‌های مربوط به متغیرها، انواع داده، لیست، دیکشنری و حلقه‌های تکرار را در دوره جادی مرور کن.
 
 ---
+
+## آزمون مفهومی پایان جلسه
+
+<section class="nf-quiz" data-nf-quiz aria-label="آزمون پایان جلسهٔ Python">
+  <div class="nf-quiz-header"><div><div class="nf-quiz-eyebrow">NETFLEET / KNOWLEDGE CHECK</div><h3>آزمون پایان جلسه</h3></div><div class="nf-quiz-stats">امتیاز: <strong data-score>0</strong></div></div>
+  <p>هدف آزمون، سنجش فهم مسئله، data contract، test و debugging است.</p>
+  <div class="nf-quiz-progress" role="progressbar" aria-label="پیشرفت آزمون" aria-valuemin="0" aria-valuemax="100"><div class="nf-quiz-progress-bar" data-progress></div></div><div class="nf-quiz-progress-label" data-progress-text></div>
+  <div data-content><h3 class="nf-quiz-question" data-question></h3><div class="nf-quiz-options" data-options></div><div class="nf-quiz-feedback" data-feedback aria-live="polite"></div><div class="nf-quiz-actions"><button class="nf-quiz-primary" type="button" data-next hidden>سؤال بعدی</button></div></div>
+  <div class="nf-quiz-result" data-result hidden aria-live="polite"><div class="nf-quiz-eyebrow">ASSESSMENT COMPLETE</div><h3>نتیجه آزمون</h3><div class="nf-quiz-result-score" data-final-score></div><div class="nf-quiz-result-score" data-percentage></div><p data-result-message></p><button class="nf-quiz-primary" type="button" data-restart>تلاش مجدد</button></div>
+  <script type="application/json" data-quiz-questions>
+[{"question":"پیش از درخواست کد از AI چه چیزی باید روشن باشد؟","options":["رنگ editor","Input، output و محدودیت‌ها","نام یک library","سرعت اینترنت"],"answer":1,"explanation":"طراحی روشن، خروجی AI را قابل review می‌کند."},{"question":"کدام مورد evidence درست‌بودن برنامه است؟","options":["کد کوتاه است","برنامه اجرا شد","expected output در test تأیید شد","AI آن را نوشته"],"answer":2,"explanation":"test با انتظار مشخص، رفتار را بررسی می‌کند."},{"question":"Data contract چه می‌گوید؟","options":["سرعت CPU","شکل و فیلدهای معتبر داده","رمز عبور","نسخهٔ editor"],"answer":1,"explanation":"قرارداد داده، ورودی قابل‌قبول را تعیین می‌کند."},{"question":"برای رکورد بدون status چه رفتار آموزشی مناسب‌تر است؟","options":["offline فرضش کنیم","آن را invalid report کنیم","همه‌چیز را restart کنیم","پنهانش کنیم"],"answer":1,"explanation":"دادهٔ ناقص باید در گزارش دیده شود."},{"question":"خط آخر traceback معمولاً چیست؟","options":["نوع و پیام خطا","رمز سیستم","نتیجهٔ test","نام نویسنده"],"answer":0,"explanation":"ابتدا exception type و message را بخوان."},{"question":".get در dictionary چه کمکی می‌کند؟","options":["شبکه را سریع می‌کند","نبود key را قابل مدیریت می‌کند","داده را معتبر می‌سازد","test را حذف می‌کند"],"answer":1,"explanation":"پس از .get همچنان validation لازم است."},{"question":"کدام حالت مرزی است؟","options":["یک device offline","inventory خالی","کد کوتاه","نام واقعی تجهیز"],"answer":1,"explanation":"ورودی خالی فرض‌های پنهان را آشکار می‌کند."},{"question":"AI کد restart device پیشنهاد داده؛ چه می‌کنی؟","options":["روی production اجرا می‌کنم","اثر، مجوز و test را review می‌کنم","بدون خواندن می‌فرستم","همهٔ testها را حذف می‌کنم"],"answer":1,"explanation":"کد دارای اثر جانبی نیازمند کنترل دقیق است."},{"question":"status == \"offline\" چه می‌کند؟","options":["انتساب","مقایسه","حذف داده","ساخت list"],"answer":1,"explanation":"== برای مقایسه و = برای انتساب است."},{"question":"مزیت return کردن dictionary چیست؟","options":["همیشه زیباتر است","test و استفادهٔ مجدد را آسان می‌کند","خطا را حذف می‌کند","نیازی به docs ندارد"],"answer":1,"explanation":"خروجی ساختاریافته از نمایش جدا می‌ماند."}]
+  </script>
+</section>
 
 ## وضعیت پایان جلسه
 
