@@ -34,6 +34,8 @@ website:
             href: learning/security/index.qmd
           - text: "Technical Glossary"
             href: learning/glossary.qmd
+          - text: "Learning Resources"
+            href: learning/resources.qmd
       - text: "About"
         href: about.qmd
 

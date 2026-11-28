@@ -1,0 +1,439 @@
+---
+title: "Learning Resource Library"
+subtitle: "کتابخانهٔ منابع رسمی NetFleet"
+page-layout: full
+toc: true
+toc-location: right
+toc-depth: 2
+---
+
+::: {.persian}
+
+::: {.nf-hero}
+<div class="nf-eyebrow" dir="ltr">NETFLEET / OFFICIAL LEARNING LIBRARY</div>
+
+# کتابخانهٔ منابع یادگیری
+
+این صفحه نقشهٔ منابع معتبر مسیر NetFleet است؛ جایگزین جزوه‌ها نیست. هر منبع برای هدف مشخصی انتخاب شده: فهم مفهوم، تمرین، شبیه‌سازی، تحلیل یا مراجعهٔ فنی. لینک‌ها به منبع رسمی باز می‌شوند.
+
+::: {.nf-outcome}
+**روش استفاده:** برای یادگیری از سطح و هدف منبع شروع کن، نه از سخت‌ترین کتاب. استاندارد و مستندات رسمی مرجع رفتار فنی‌اند؛ کتاب و دوره برای توضیح و ترتیب یادگیری‌اند. «رایگان» یا «پولی» بودن هیچ موردی بدون بررسی جداگانه ادعا نمی‌شود.
+:::
+:::
+
+## Networking
+
+::: {.nf-resource-grid}
+::: {.nf-resource-card}
+### Practical Networking
+`COURSE` · سطح: Beginner → Intermediate
+
+مبانی شبکه، IP، Subnetting، ARP و Routing با توضیح‌های کاربردی و تصویری.
+
+[Official website ↗](https://www.practicalnetworking.net/)
+:::
+::: {.nf-resource-card}
+### Cisco Networking Academy
+`COURSE` · سطح: Beginner → Intermediate
+
+مسیر ساختاریافتهٔ مفاهیم شبکه و نقطهٔ دسترسی اصلی برای آزمایشگاه‌های Cisco.
+
+[Official website ↗](https://www.netacad.com/)
+:::
+::: {.nf-resource-card}
+### Jeremy's IT Lab
+`COURSE` · سطح: Beginner → Intermediate
+
+درس‌های CCNA و تمرین‌های Packet Tracer؛ مناسب پس از شکل‌گیری مبانی.
+
+[Official website ↗](https://www.jeremysitlab.com/)
+:::
+::: {.nf-resource-card}
+### Computer Networking: A Top-Down Approach
+`BOOK` · James Kurose, Keith Ross · سطح: Intermediate
+
+مرجع دانشگاهی برای فهم شبکه از دید برنامه‌ها و پروتکل‌ها.
+
+[Book website ↗](https://gaia.cs.umass.edu/kurose_ross/)
+:::
+::: {.nf-resource-card}
+### Computer Networks
+`BOOK` · Andrew S. Tanenbaum, Nick Feamster, David J. Wetherall · سطح: Intermediate
+
+معماری شبکه و منطق پروتکل‌ها با نگاه عمیق‌تر.
+
+[Official website ↗](https://computernetworksbook.com/)
+:::
+::: {.nf-resource-card}
+### CCNA 200-301 Official Cert Guide Library
+`BOOK` · Wendell Odom and contributors · سطح: Intermediate
+
+مرجع عملیِ ساختار موضوعات CCNA؛ برای تمرین و مرور مسیر.
+
+[Publisher page ↗](https://www.ciscopress.com/store/ccna-200-301-official-cert-guide-library-9780138221393)
+:::
+::: {.nf-resource-card}
+### Wireshark
+`TOOL` · سطح: Beginner → Advanced
+
+مشاهدهٔ packet و تحلیل رفتار واقعی پروتکل‌ها؛ پس از یادگیری مفهوم، نه قبل از آن.
+
+[Official website ↗](https://www.wireshark.org/)
+:::
+::: {.nf-resource-card}
+### Cisco Packet Tracer
+`TOOL` · سطح: Beginner → Intermediate
+
+شبیه‌سازی topology و labهای امن پیش از کار با تجهیزات واقعی.
+
+[Access through NetAcad ↗](https://www.netacad.com/)
+:::
+:::
+
+## Python and programming concepts
+
+::: {.nf-resource-grid}
+::: {.nf-resource-card}
+### Python for Everybody
+`BOOK / COURSE` · Charles Severance · سطح: Beginner
+
+فهم برنامه‌نویسی و کار با داده؛ پایهٔ مناسب پیش از automation.
+
+[Official website ↗](https://www.py4e.com/)
+:::
+::: {.nf-resource-card}
+### CS50's Introduction to Programming with Python
+`COURSE` · Harvard · سطح: Beginner → Intermediate
+
+منطق برنامه، function، error و testing با تأکید بر حل مسئله.
+
+[Course website ↗](https://cs50.harvard.edu/python/)
+:::
+::: {.nf-resource-card}
+### Python Tutor
+`TOOL` · سطح: Beginner
+
+نمایش تصویری تغییر متغیرها و اجرای قدم‌به‌قدم کد.
+
+[Open tool ↗](https://pythontutor.com/)
+:::
+::: {.nf-resource-card}
+### Automate the Boring Stuff with Python
+`BOOK` · Al Sweigart · سطح: Beginner → Intermediate
+
+مثال‌های عملی automation برای تبدیل دانش پایه به ابزارهای کوچک.
+
+[Official website ↗](https://automatetheboringstuff.com/)
+:::
+::: {.nf-resource-card}
+### Think Python
+`BOOK` · Allen B. Downey · سطح: Beginner → Intermediate
+
+تفکر محاسباتی و مدل ذهنی لازم برای خواندن و طراحی برنامه.
+
+[Official website ↗](https://allendowney.github.io/ThinkPython/)
+:::
+::: {.nf-resource-card}
+### Python Crash Course
+`BOOK` · Eric Matthes · سطح: Beginner
+
+مسیر آغاز Python و پروژه‌های کوچک؛ برای تمرین ساختن، نه حفظ کردن syntax.
+
+[Publisher page ↗](https://nostarch.com/python-crash-course-3rd-edition)
+:::
+::: {.nf-resource-card}
+### Official Python Tutorial
+`DOCUMENTATION` · سطح: Beginner → Intermediate
+
+مرجع رسمی زبان Python؛ برای بررسی دقیق رفتار زبان و مثال‌ها.
+
+[Read documentation ↗](https://docs.python.org/3/tutorial/)
+:::
+::: {.nf-resource-card}
+### Exercism Python Track
+`PRACTICE PLATFORM` · سطح: Beginner → Intermediate
+
+تمرین‌های کوتاه همراه با بازخورد؛ مناسب بعد از فهم هر مفهوم.
+
+[Open track ↗](https://exercism.org/tracks/python)
+:::
+::: {.nf-resource-card}
+### AI PY4E
+`AI-ASSISTED COURSE` · سطح: Beginner
+
+کاوش در یادگیری Python با کمک AI؛ خروجی AI باید خوانده، آزموده و نقد شود.
+
+[Official website ↗](https://ai.py4e.com/)
+:::
+:::
+
+## Network automation and infrastructure
+
+::: {.nf-resource-grid}
+::: {.nf-resource-card}
+### Cisco DevNet
+`COURSE / DOCUMENTATION` · سطح: Intermediate
+
+API، JSON و network programmability با labهای Cisco.
+
+[Learning portal ↗](https://developer.cisco.com/learning/)
+:::
+::: {.nf-resource-card}
+### Network Programmability and Automation
+`BOOK` · Jason Edelman, Scott S. Lowe, Matt Oswalt, Christian Adell · سطح: Intermediate → Advanced
+
+معماری و مهارت‌های automation برای مهندس شبکهٔ مدرن.
+
+[Publisher page ↗](https://www.oreilly.com/library/view/network-programmability-and/9781098110826/)
+:::
+::: {.nf-resource-card}
+### Python for Network Engineers
+`COURSE` · Kirk Byers · سطح: Intermediate
+
+Python scripting و automation تجهیزات شبکه؛ پس از مبانی Python و networking.
+
+[Official website ↗](https://pynet.twb-tech.com/)
+:::
+::: {.nf-resource-card}
+### Network to Code
+`WEBSITE / LEARNING RESOURCE` · سطح: Intermediate
+
+الگوها، tooling و نگاه مهندسی به network automation.
+
+[Official website ↗](https://networktocode.com/)
+:::
+::: {.nf-resource-card}
+### Netmiko
+`DOCUMENTATION` · Python library · سطح: Intermediate
+
+اتوماسیون SSH تجهیزات شبکه با Python؛ قبل از اجرا روی تجهیزات واقعی، lab بساز.
+
+[Documentation and code ↗](https://github.com/ktbyers/netmiko)
+:::
+::: {.nf-resource-card}
+### NAPALM
+`DOCUMENTATION` · Python library · سطح: Intermediate
+
+لایهٔ automation چندسازنده برای خواندن و اعمال وضعیت تجهیزات.
+
+[Documentation ↗](https://napalm.readthedocs.io/)
+:::
+::: {.nf-resource-card}
+### Ansible
+`DOCUMENTATION / TOOL` · سطح: Intermediate
+
+اتوماسیون infrastructure و network با playbook و inventory.
+
+[Official documentation ↗](https://docs.ansible.com/)
+:::
+::: {.nf-resource-card}
+### FastAPI
+`DOCUMENTATION / FRAMEWORK` · سطح: Intermediate
+
+ساخت API و backend برای ابزارهای automation و integration.
+
+[Official documentation ↗](https://fastapi.tiangolo.com/)
+:::
+:::
+
+## Linux and infrastructure
+
+::: {.nf-resource-grid}
+::: {.nf-resource-card}
+### The Linux Command Line
+`BOOK` · William Shotts · سطح: Beginner
+
+فهم terminal، فایل و command line پیش از automation.
+
+[Official website ↗](https://linuxcommand.org/tlcl.php)
+:::
+::: {.nf-resource-card}
+### How Linux Works
+`BOOK` · Brian Ward · سطح: Intermediate
+
+درک معماری سیستم‌عامل Linux، process، boot و networking.
+
+[Publisher page ↗](https://nostarch.com/howlinuxworks3)
+:::
+::: {.nf-resource-card}
+### Linux Journey
+`WEBSITE / COURSE` · سطح: Beginner
+
+مسیر آموزشی کوتاه و مرحله‌ای برای مفاهیم Linux.
+
+[Official website ↗](https://linuxjourney.com/)
+:::
+::: {.nf-resource-card}
+### Linux Foundation Training
+`COURSE` · سطح: Beginner → Advanced
+
+دوره‌های ساختاریافتهٔ Linux و infrastructure؛ سطح هر دوره را جدا بررسی کن.
+
+[Training portal ↗](https://training.linuxfoundation.org/)
+:::
+::: {.nf-resource-card}
+### Ubuntu Server Documentation
+`DOCUMENTATION` · سطح: Intermediate
+
+راهنمای عملی مدیریت Ubuntu Server؛ رفتار commandها را از مستندات نسخهٔ مقصد بررسی کن.
+
+[Official documentation ↗](https://documentation.ubuntu.com/server/)
+:::
+::: {.nf-resource-card}
+### Pro Git
+`BOOK` · Scott Chacon, Ben Straub · سطح: Beginner → Intermediate
+
+مبانی version control برای نگهداری امن و قابل بازبینی پروژه‌ها.
+
+[Read Pro Git ↗](https://git-scm.com/book/en/v2)
+:::
+:::
+
+## RFC and network standards
+
+::: {.nf-resource-grid}
+::: {.nf-resource-card}
+### RFC 791 — Internet Protocol (IPv4)
+`RFC` · سطح: Intermediate · Historical
+
+مرجع تاریخی IPv4؛ هنگام استناد، وضعیت و استانداردهای به‌روزشده را بررسی کن.
+
+[Read RFC 791 ↗](https://www.rfc-editor.org/rfc/rfc791)
+:::
+::: {.nf-resource-card}
+### RFC 8200 — IPv6
+`RFC` · سطح: Intermediate
+
+مرجع IPv6 برای ساختار header و رفتار پایهٔ پروتکل.
+
+[Read RFC 8200 ↗](https://www.rfc-editor.org/rfc/rfc8200)
+:::
+::: {.nf-resource-card}
+### RFC 9293 — Transmission Control Protocol
+`RFC` · سطح: Intermediate
+
+مرجع TCP؛ مناسب پس از آشنایی مفهومی با handshake و reliability.
+
+[Read RFC 9293 ↗](https://www.rfc-editor.org/rfc/rfc9293)
+:::
+::: {.nf-resource-card}
+### RFC 768 — User Datagram Protocol
+`RFC` · سطح: Intermediate · Historical
+
+تعریف پایهٔ UDP؛ برای رفتارهای جدیدتر، وضعیت RFC را در Datatracker ببین.
+
+[Read RFC 768 ↗](https://www.rfc-editor.org/rfc/rfc768)
+:::
+::: {.nf-resource-card}
+### RFC 1034 — Domain Names: Concepts and Facilities
+`RFC` · سطح: Intermediate
+
+مفاهیم اصلی DNS؛ متن استاندارد برای مراجعه، نه نقطهٔ آغاز یادگیری.
+
+[Read RFC 1034 ↗](https://www.rfc-editor.org/rfc/rfc1034)
+:::
+::: {.nf-resource-card}
+### RFC 1035 — Domain Names: Implementation and Specification
+`RFC` · سطح: Intermediate
+
+جزئیات specification DNS؛ آن را همراه با RFC 1034 و مستندات resolver/DNS server بخوان.
+
+[Read RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035)
+:::
+::: {.nf-resource-card}
+### RFC 2131 — DHCP
+`RFC` · سطح: Intermediate
+
+رفتار پایهٔ DHCP و تخصیص پویای تنظیمات IP.
+
+[Read RFC 2131 ↗](https://www.rfc-editor.org/rfc/rfc2131)
+:::
+::: {.nf-resource-card}
+### RFC 826 — Address Resolution Protocol
+`RFC` · سطح: Intermediate · Historical
+
+مرجع تاریخی ARP در IPv4؛ آن را همراه با درس و capture شبکه بخوان.
+
+[Read RFC 826 ↗](https://www.rfc-editor.org/rfc/rfc826)
+:::
+::: {.nf-resource-card}
+### RFC 9110 — HTTP Semantics
+`RFC` · سطح: Intermediate
+
+معناشناسی HTTP برای مسیر Backend، API و automation.
+
+[Read RFC 9110 ↗](https://www.rfc-editor.org/rfc/rfc9110)
+:::
+::: {.nf-resource-card}
+### IETF Datatracker
+`STANDARDS DIRECTORY` · سطح: Intermediate → Advanced
+
+جست‌وجوی RFC، Internet-Draft و وضعیت به‌روز استانداردها.
+
+[Open Datatracker ↗](https://datatracker.ietf.org/)
+:::
+:::
+
+## AI-first engineering
+
+::: {.nf-resource-grid}
+::: {.nf-resource-card}
+### ChatGPT
+`AI LEARNING ASSISTANT` · سطح: Beginner → Advanced
+
+برای توضیح مفهوم، review کد و debugging؛ پاسخ‌ها را با test و منبع رسمی اعتبارسنجی کن.
+
+[Open ChatGPT ↗](https://chatgpt.com/)
+:::
+::: {.nf-resource-card}
+### OpenAI Codex
+`AI CODING AGENT` · سطح: Beginner → Advanced
+
+کمک در توسعه و code generation؛ مسئولیت review، test و تصمیم نهایی با مهندس است.
+
+[Official documentation ↗](https://developers.openai.com/codex/)
+:::
+::: {.nf-resource-card}
+### GitHub Copilot
+`AI CODING ASSISTANT` · سطح: Beginner → Advanced
+
+کمک هنگام نوشتن کد؛ پیشنهاد را بدون فهم و آزمون وارد production نکن.
+
+[Official documentation ↗](https://docs.github.com/en/copilot)
+:::
+::: {.nf-resource-card}
+### Claude Code
+`AI CODING AGENT` · سطح: Beginner → Advanced
+
+عامل توسعه و review کد؛ خروجی را با قرارداد پروژه و تست‌ها بسنج.
+
+[Official documentation ↗](https://code.claude.com/docs/en/overview)
+:::
+::: {.nf-resource-card}
+### Google Colab
+`TOOL` · سطح: Beginner
+
+محیط تعاملی اجرای Python برای آزمایش و یادگیری؛ secret یا دادهٔ سازمانی را وارد نکن.
+
+[Open Colab ↗](https://colab.research.google.com/)
+:::
+::: {.nf-resource-card}
+### JupyterLab
+`TOOL` · سطح: Beginner → Intermediate
+
+محیط notebook برای experiment، تحلیل داده و توضیح گام‌به‌گام.
+
+[Official website ↗](https://jupyter.org/)
+:::
+:::
+
+## الگوی پیشنهادی یادگیری
+
+::: {.nf-outcome}
+**Python:** UNDERSTAND → DESIGN → GENERATE WITH AI → EXPLAIN → TEST → DEBUG  
+**Networking:** UNDERSTAND → VISUALIZE → SIMULATE → CAPTURE → TROUBLESHOOT
+
+AI سرعت تولید را بالا می‌برد؛ مهارت حرفه‌ای یعنی بتوانی مسئله، ورودی، خروجی، ریسک، test و failure mode را توضیح بدهی.
+:::
+
+:::

@@ -178,6 +178,48 @@ a:hover {
   font-weight: 600;
 }
 
+.nf-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 3rem;
+}
+
+.nf-resource-card {
+  min-width: 0;
+  background: var(--nf-card);
+  border: 1px solid var(--nf-border);
+  border-radius: 13px;
+  padding: 1.35rem;
+}
+
+.nf-resource-card:hover {
+  border-color: var(--nf-green);
+  background: var(--nf-hover);
+}
+
+.nf-resource-card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 .65rem;
+}
+
+.nf-resource-card p {
+  color: var(--nf-muted);
+  margin-bottom: .8rem;
+}
+
+.nf-resource-card code {
+  color: var(--nf-light);
+  border: 1px solid var(--nf-border);
+  background: var(--nf-surface);
+  font-family: "JetBrains Mono", monospace;
+  font-size: .72rem;
+}
+
+@media (max-width: 767px) {
+  .nf-resource-grid { grid-template-columns: 1fr; }
+}
+
 .nf-muted {
   display: inline-block;
   margin-top: 0.7rem;
