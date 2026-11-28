@@ -1,4 +1,6 @@
-# Networking Curriculum — Primary Sources
+# Networking Curriculum — Technical Sources
+
+For the complete NetFleet-approved catalogue and authoring policy, see [Curriculum Sources](../CURRICULUM-SOURCES.md). This file remains the short, technical reference for Networking lessons.
 
 NetFleet lessons use primary standards and vendor documentation as the technical authority. Explanations and examples are original Persian teaching material; learners should use the sources below to verify protocol behavior and continue their study.
 
